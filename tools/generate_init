@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import argparse
+import io
+from pathlib import Path
+
+BODY = """
+const char *g_TR2XVersion = "{version}";
+"""
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--version-file", type=Path)
+    parser.add_argument("-o", "--output", type=Path)
+    return parser.parse_args()
+
+
+def get_init_c(version: str) -> str:
+    with io.StringIO() as handle:
+        print(BODY.format(version=version).lstrip(), file=handle)
+        return handle.getvalue()
+
+
+def update_init_c(output_path: Path, version: str) -> None:
+    new_text = get_init_c(version=version)
+    if not output_path.exists() or output_path.read_text() != new_text:
+        output_path.write_text(new_text)
+
+
+def main() -> None:
+    args = parse_args()
+    if args.version_file and args.version_file.exists():
+        version = args.version_file.read_text().strip()
+    else:
+        version = ""
+    update_init_c(output_path=args.output, version=version)
+
+
+if __name__ == "__main__":
+    main()

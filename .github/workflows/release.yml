@@ -1,0 +1,141 @@
+
+name: Publish a new release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branch: stable
+    tags:
+    - 'v?[0-9]*'
+  workflow_call:
+    inputs:
+      draft:
+        description: 'Draft'
+        required: true
+        default: false
+        type: boolean
+      prerelease:
+        description: 'Prerelease'
+        required: true
+        type: boolean
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: 'Draft'
+        required: true
+        default: true
+        type: boolean
+      prerelease:
+        description: 'Prerelease'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  publish_release:
+    name: Create a GitHub release
+    runs-on: ubuntu-latest
+    needs: [package_game_win]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: .
+          fetch-depth: 0
+
+      - name: Download built game asset
+        uses: actions/download-artifact@v1
+        with:
+          path: artifacts/
+          name: game-win-all
+
+      - name: Extract tag name
+        id: get_version
+        run: echo ::set-output name=VERSION::$(git describe --abbrev=7 --tags)
+
+      - name: Rename assets
+        run: |
+          mv artifacts/game-win.zip artifacts/TR2X-${{ steps.get_version.outputs.VERSION }}-Windows.zip
+
+      - name: Generate Changelog
+        run: |
+          python3 -c '''
+          import re
+          from pathlib import Path
+          sections = [s for s in Path("CHANGELOG.md").read_text().split("\n\n") if re.search("- \w", s)]
+          if sections:
+              section = sections[0]
+              print("\n".join(line for line in section.splitlines() if not line.startswith("#")))
+          ''' > artifacts/changes.txt
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Release ${{ github.ref_name }}
+          body_path: artifacts/changes.txt
+          draft: ${{ inputs.draft }}
+          prerelease: ${{ inputs.prerelease }}
+          fail_on_unmatched_files: true
+          files: |
+            artifacts/TR2X-${{ steps.get_version.outputs.VERSION }}-Windows.zip
+
+  build_game_win:
+    name: Build the game (Windows)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: .
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          echo "$GITHUB_CONTEXT"
+          sudo apt-get update
+          sudo apt-get install -y make moby-engine moby-cli
+
+      - name: Build the game
+        run: |
+          make clean release
+          mkdir out/
+          cp build/win/*.exe out/
+          cp build/win/*.dll out/
+          cp -r bin/* out/
+
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: game-win
+          path: out/
+
+  package_game_win:
+    name: Package the game (Windows)
+    needs: [build_game_win]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built game assets
+        uses: actions/download-artifact@v1
+        with:
+          path: artifacts/
+          name: game-win
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make p7zip-full
+
+      - name: Package the game
+        run: |
+          mkdir out
+          cd artifacts
+          7z a ../out/game-win.zip *
+
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: game-win-all
+          path: out/game-win.zip
