@@ -1,0 +1,20 @@
+#pragma once
+
+#include <stdint.h>
+
+#pragma pack(push, 1)
+typedef struct {
+    uint8_t opcode; // must be 0xE9
+    uint32_t offset;
+} JMP;
+#pragma pack(pop)
+
+void Inject_Impl(void (*from)(void), void (*to)(void));
+
+#define VAR_U_(address, type) (*(type *)(address))
+#define VAR_I_(address, type, value) (*(type *)(address))
+#define ARRAY_(address, type, length) (*(type(*) length)(address))
+#define INJECT(from, to)                                                       \
+    {                                                                          \
+        Inject_Impl((void (*)(void))from, (void (*)(void))to);                 \
+    }

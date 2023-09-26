@@ -1,0 +1,545 @@
+#!/usr/bin/python3
+import re
+from collections.abc import Callable, Iterable
+from dataclasses import dataclass
+from enum import StrEnum, auto
+from itertools import groupby
+from pathlib import Path
+from typing import Any
+
+DOCUMENT_MARGIN = 2
+GRID_MAX_SQUARES = 50
+GRID_SQUARE_SIZE = 12
+GRID_SQUARE_MARGIN = 3
+LEGEND_SQUARE_SIZE = GRID_SQUARE_SIZE
+LEGEND_SQUARE_MARGIN = GRID_SQUARE_MARGIN
+LEGEND_ROW_PADDING = 3
+LEGEND_MARGIN = 15
+TEXT_SIZE = 15
+TEXT_MARGIN = 5
+SECTION_MARGIN = GRID_SQUARE_SIZE + LEGEND_MARGIN
+DOCS_DIR = Path(__file__).parent.parent / "docs"
+PROGRESS_TXT_FILE = DOCS_DIR / "progress.txt"
+PROGRESS_SVG_FILE = DOCS_DIR / "progress.svg"
+
+
+class SumMode(StrEnum):
+    BYTES = auto()
+    COUNT = auto()
+
+
+class FunctionStatus(StrEnum):
+    TODO = auto()
+    NAMED = auto()
+    DECOMPILED = auto()
+
+
+COLOR_MAP = {
+    FunctionStatus.DECOMPILED: "forestgreen",
+    FunctionStatus.NAMED: "lightpink",
+    FunctionStatus.TODO: "mistyrose",
+}
+
+
+@dataclass
+class Box:
+    x1: float
+    y1: float
+    x2: float
+    y2: float
+
+    @property
+    def dx(self) -> float:
+        return self.x2 - self.x1
+
+    @property
+    def dy(self) -> float:
+        return self.y2 - self.y1
+
+
+@dataclass
+class SquarifyResult(Box):
+    item: Any
+
+
+class Squarify:
+    def __init__(
+        self,
+        items: Iterable[Any],
+        key: Callable[[Any], float],
+        box: Box,
+        normalize: bool = True,
+    ) -> None:
+        if normalize:
+            total_size = sum(map(key, items))
+            total_area = box.dx * box.dy
+
+            def normalized_key(item: Any) -> float:
+                return key(item) * total_area / total_size
+
+            self.key = normalized_key
+        else:
+            self.key = key
+
+        self.items = list(sorted(items, key=self.key, reverse=True))
+        self.box = box
+
+    def layoutrow(self, items: Iterable[Any]) -> Iterable[SquarifyResult]:
+        covered_area = sum(self.key(item) for item in items)
+        dx = covered_area / self.box.dy
+        y = self.box.y1
+        for item in items:
+            yield SquarifyResult(
+                item=item,
+                x1=self.box.x1,
+                y1=y,
+                x2=self.box.x1 + dx,
+                y2=y + self.key(item) / dx,
+            )
+            y += self.key(item) / dx
+
+    def layoutcol(self, items: Iterable[Any]) -> Iterable[SquarifyResult]:
+        covered_area = sum(self.key(item) for item in items)
+        dy = covered_area / self.box.dx
+        x = self.box.x1
+        for item in items:
+            yield SquarifyResult(
+                item=item,
+                x1=x,
+                y1=self.box.y1,
+                x2=x + self.key(item) / dy,
+                y2=self.box.y1 + dy,
+            )
+            x += self.key(item) / dy
+
+    def layout(self, items: Iterable[Any]) -> Iterable[SquarifyResult]:
+        yield from (
+            self.layoutrow(items)
+            if self.box.dx >= self.box.dy
+            else self.layoutcol(items)
+        )
+
+    def leftoverrow(self, items: Iterable[Any]) -> Box:
+        covered_area = sum(self.key(item) for item in items)
+        dx = covered_area / self.box.dy
+        return Box(
+            x1=self.box.x1 + dx,
+            y1=self.box.y1,
+            x2=self.box.x1 + self.box.dx,
+            y2=self.box.y1 + self.box.dy,
+        )
+
+    def leftovercol(self, items: Iterable[Any]) -> Box:
+        covered_area = sum(self.key(item) for item in items)
+        dy = covered_area / self.box.dx
+        return Box(
+            x1=self.box.x1,
+            y1=self.box.y1 + dy,
+            x2=self.box.x1 + self.box.dx,
+            y2=self.box.y1 + self.box.dy,
+        )
+
+    def leftover(self, items: Iterable[Any]) -> Box:
+        return (
+            self.leftoverrow(items)
+            if self.box.dx >= self.box.dy
+            else self.leftovercol(items)
+        )
+
+    def worst_ratio(self, items: Iterable[Any]) -> float:
+        return max(
+            max(result.dx / result.dy, result.dy / result.dx)
+            for result in self.layout(items)
+        )
+
+    def run(self, items: list[Any] | None = None) -> Iterable[SquarifyResult]:
+        if not items:
+            items = self.items
+
+        if len(items) == 0:
+            return
+
+        if len(items) == 1:
+            yield from self.layout(items)
+            return
+
+        i = 1
+        while i < len(items) and self.worst_ratio(
+            items[:i]
+        ) >= self.worst_ratio(items[: i + 1]):
+            i += 1
+        current = items[:i]
+        remaining = items[i:]
+
+        leftover_box = self.leftover(current)
+        yield from self.layout(current)
+        yield from Squarify(
+            remaining, key=self.key, box=leftover_box, normalize=False
+        ).run()
+
+
+def squarify(
+    items: list[Any], key: Callable[[Any], float], box: Box
+) -> Iterable[SquarifyResult]:
+    yield from Squarify(items, key, box).run()
+
+
+@dataclass
+class Function:
+    name: str
+    offset: int
+    size: int
+    flags: str
+
+    @property
+    def is_decompiled(self) -> bool:
+        return "+" in self.flags or "x" in self.flags
+
+    @property
+    def is_called(self) -> bool:
+        return "*" in self.flags
+
+    @property
+    def is_named(self) -> bool:
+        return not self.name.startswith("sub_")
+
+    @property
+    def status(self) -> FunctionStatus:
+        if self.is_decompiled:
+            return FunctionStatus.DECOMPILED
+        elif self.is_named:
+            return FunctionStatus.NAMED
+        return FunctionStatus.TODO
+
+
+def collect_functions() -> Iterable[Function]:
+    for line in PROGRESS_TXT_FILE.open():
+        line = line.strip()
+        if line.startswith("#") or not line:
+            continue
+        func_name, offset, size, flags = re.split(r"\s+", line)
+        if not offset.replace("-", ""):
+            continue
+        yield Function(
+            name=func_name,
+            offset=int(offset, 16),
+            size=int(size, 16),
+            flags=flags,
+        )
+
+
+class Shape:
+    @property
+    def box(self) -> Box:
+        raise NotImplementedError("not implemented")
+
+    def render(self) -> str:
+        raise NotImplementedError("not implemented")
+
+
+def get_common_bbox(shapes: list[Shape]) -> Box:
+    return Box(
+        x1=min(shape.box.x1 for shape in shapes),
+        y1=min(shape.box.y1 for shape in shapes),
+        x2=max(shape.box.x2 for shape in shapes),
+        y2=max(shape.box.y2 for shape in shapes),
+    )
+
+
+@dataclass
+class Rectangle(Shape):
+    x: float
+    y: float
+    class_name: str
+    dx: float
+    dy: float
+    title: str | None = None
+
+    @property
+    def box(self) -> Box:
+        return Box(
+            x1=self.x,
+            y1=self.y,
+            x2=self.x + self.dx,
+            y2=self.y + self.dy,
+        )
+
+    def render(self) -> str:
+        return (
+            f"<rect "
+            f'width="{self.dx:.02f}" '
+            f'height="{self.dy:.02f}" '
+            f'x="{self.x:.02f}" '
+            f'y="{self.y:.02f}" '
+            f'class="{self.class_name}"'
+            + (f"><title>{self.title}</title></rect>" if self.title else "/>")
+        )
+
+
+class Square(Rectangle):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        class_name: str,
+        size: float = GRID_SQUARE_SIZE,
+        title: str | None = None,
+    ) -> None:
+        super().__init__(
+            x=x, y=y, class_name=class_name, dx=size, dy=size, title=title
+        )
+
+
+@dataclass
+class Text(Shape):
+    x: float
+    y: float
+    text: str
+
+    @property
+    def box(self) -> Box:
+        return Box(x1=self.x, y1=self.y, x2=self.x, y2=self.y + TEXT_SIZE)
+
+    def render(self) -> str:
+        return (
+            f"<text "
+            f'x="{self.x:.02f}" y="{self.y + TEXT_SIZE/2:.02f}">'
+            f"{self.text}"
+            f"</text>"
+        )
+
+
+@dataclass
+class LegendText(Shape):
+    x: float
+    y: float
+    class_name: str
+    text: str
+
+    @property
+    def _square(self) -> Square:
+        return Square(
+            x=self.x,
+            y=self.y + (TEXT_SIZE - LEGEND_SQUARE_SIZE) / 2,
+            class_name=self.class_name,
+            size=LEGEND_SQUARE_SIZE,
+        )
+
+    @property
+    def _text(self) -> Text:
+        return Text(
+            x=LEGEND_SQUARE_SIZE + TEXT_MARGIN,
+            y=self.y,
+            text=self.text,
+        )
+
+    @property
+    def box(self) -> Box:
+        return get_common_bbox([self._square, self._text])
+
+    def render(self) -> str:
+        return self._square.render() + self._text.render()
+
+
+def render_grid(all_functions: list[Function], by: float) -> Iterable[Shape]:
+    for i, function in enumerate(all_functions):
+        x = (i % GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+        y = (i // GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+        yield Square(
+            x=x,
+            y=by + y,
+            class_name=function.status.value,
+            title=function.name,
+        )
+
+
+def render_tree_grid(
+    all_functions: list[Function], box: Box
+) -> Iterable[Shape]:
+    for result in squarify(
+        all_functions, key=lambda function: float(function.size), box=box
+    ):
+        result.x2 = max(0, result.x2 - GRID_SQUARE_MARGIN)
+        result.y2 = max(0, result.y2 - GRID_SQUARE_MARGIN)
+
+        yield Rectangle(
+            x=result.x1,
+            y=result.y1,
+            dx=result.dx,
+            dy=result.dy,
+            class_name=result.item.status.value,
+            title=result.item.name,
+        )
+
+
+def render_progress(
+    all_functions: list[Function],
+    y1: int,
+    y2: int,
+    x1: int,
+    x2: int,
+    mode: SumMode,
+) -> Iterable[Shape]:
+    x = x1
+
+    def sorter(function):
+        return function.status.value
+
+    for status_value, group in groupby(
+        sorted(all_functions, key=sorter), sorter
+    ):
+        group = list(group)
+        match mode:
+            case SumMode.COUNT:
+                ratio = len(group) / len(all_functions)
+            case SumMode.BYTES:
+                ratio = sum(function.size for function in group) / sum(
+                    function.size for function in all_functions
+                )
+            case _:
+                assert False
+        yield Rectangle(
+            x=x,
+            y=y1,
+            dx=x1 + (x2 - x1) * ratio,
+            dy=y2 - y1,
+            class_name=status_value,
+        )
+        x += (x2 - x1) * ratio
+
+
+def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
+    y = 0.0
+    yield Text(
+        0,
+        y,
+        "Tomb2.exe functions, arranged according to the physical file layout:",
+    )
+    y = TEXT_SIZE + TEXT_MARGIN
+
+    shapes = list(
+        render_progress(
+            all_functions,
+            y,
+            y + GRID_SQUARE_SIZE,
+            0,
+            (
+                GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+                - GRID_SQUARE_MARGIN
+            ),
+            mode=SumMode.COUNT,
+        ),
+    )
+    yield from shapes
+    y = max(shape.box.y2 for shape in shapes)
+    y += GRID_SQUARE_MARGIN
+
+    shapes = list(render_grid(all_functions, y))
+    yield from shapes
+
+    y = max(shape.box.y2 for shape in shapes)
+    y += SECTION_MARGIN
+    yield Text(
+        0, y, "Tomb2.exe functions, arranged according to the function sizes:"
+    )
+    y += TEXT_SIZE + TEXT_MARGIN
+    dx = max(shape.box.x2 for shape in shapes)
+
+
+    shapes = list(
+        render_progress(
+            all_functions,
+            y,
+            y + GRID_SQUARE_SIZE,
+            0,
+            (
+                GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+                - GRID_SQUARE_MARGIN
+            ),
+            mode=SumMode.BYTES,
+        ),
+    )
+    yield from shapes
+    y = max(shape.box.y2 for shape in shapes)
+    y += GRID_SQUARE_MARGIN
+
+
+    shapes = list(
+        render_tree_grid(all_functions, Box(x1=0, y1=y, x2=dx, y2=y + y))
+    )
+    yield from shapes
+
+    y = max(shape.box.y2 for shape in shapes)
+    y += SECTION_MARGIN
+
+    ready_functions = [func for func in all_functions if func.is_decompiled]
+    named_functions = [
+        func
+        for func in all_functions
+        if func.is_named and func not in ready_functions
+    ]
+    todo_functions = [
+        func
+        for func in all_functions
+        if func not in ready_functions and func not in named_functions
+    ]
+
+    def sum_size(functions: Iterable[Function]) -> int:
+        return sum(func.size for func in functions)
+
+    yield Text(x=0, y=y, text="Lenged:")
+    y += TEXT_SIZE + TEXT_MARGIN
+    for status, text, functions in [
+        (
+            FunctionStatus.DECOMPILED,
+            "Function fully decompiled",
+            ready_functions,
+        ),
+        (
+            FunctionStatus.NAMED,
+            "Function not yet decompiled, but with a known name",
+            named_functions,
+        ),
+        (
+            FunctionStatus.TODO,
+            "Function not yet decompiled, with an unknown name",
+            todo_functions,
+        ),
+    ]:
+        yield LegendText(
+            x=0,
+            y=y,
+            class_name=status.value,
+            text=f"{text}",
+        )
+        y += TEXT_SIZE + LEGEND_ROW_PADDING
+
+
+def main() -> None:
+    functions = list(collect_functions())
+
+    with PROGRESS_SVG_FILE.open("w") as handle:
+        shapes = list(render_svg(functions))
+        bbox = get_common_bbox(shapes)
+
+        svg = (
+            f"""
+        <svg version="1.1"
+            viewBox="-{DOCUMENT_MARGIN} -{DOCUMENT_MARGIN} {bbox.dx + DOCUMENT_MARGIN * 2} {bbox.dy + DOCUMENT_MARGIN * 2}"
+            xmlns="http://www.w3.org/2000/svg">
+            <style>
+                .todo {{ fill: none; stroke: rgba(100, 100, 100, 0.5); stroke-width: 0.5; }}
+                .named {{ fill: rgba(255, 255, 0, 0.25); stroke: rgba(250, 150, 0, 0.85); }}
+                .decompiled {{ fill: rgba(0, 255, 0, 0.5); stroke: rgba(0, 150, 0, 0.85); }}
+                text {{ alignment-baseline: central; font-family: sans-serif; font-size: {TEXT_SIZE}px; }}
+            </style>
+        """
+            + "\n".join(shape.render() for shape in shapes)
+            + "</svg>"
+        )
+
+        print(svg, file=handle)
+
+
+if __name__ == "__main__":
+    main()

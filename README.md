@@ -47,6 +47,10 @@ overall gameplay experience.
 TR2X is currently in the early stages of development, focusing on the
 decompilation process. We recognize that there is much work to be done.
 
+## Decompilation progress
+
+![](docs/progress.svg)
+
 ## Contributions
 
 Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) file for more

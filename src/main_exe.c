@@ -22,6 +22,7 @@ int main()
     char dll_path[MAX_PATH];
     GetModuleFileNameA(NULL, dll_path, MAX_PATH);
     strcpy(strstr(dll_path, ".exe"), ".dll");
+    fprintf(stderr, "injecting %s\n", dll_path);
 
     STARTUPINFO si;
     ZeroMemory(&si, sizeof(si));

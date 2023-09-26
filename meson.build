@@ -73,11 +73,14 @@ exe_sources = [
 ]
 
 dll_sources = [
-  'src/main_dll.c',
   'src/filesystem.c',
-  'src/specific/s_filesystem.c',
+  'src/game/matrix.c',
+  'src/inject_exec.c',
+  'src/inject_util.c',
   'src/log.c',
+  'src/main_dll.c',
   'src/memory.c',
+  'src/specific/s_filesystem.c',
 ]
 
 executable(

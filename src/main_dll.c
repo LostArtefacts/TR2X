@@ -1,3 +1,4 @@
+#include "inject_exec.h"
 #include "log.h"
 
 #include <stdio.h>
@@ -9,14 +10,18 @@ DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
     switch (ul_reason_for_call) {
     case DLL_PROCESS_ATTACH:
         Log_Init();
-        LOG_DEBUG("Injected DLL: DLL_PROCESS_ATTACH\n");
+        LOG_DEBUG("Injected\n");
+
+        Inject_Exec();
+
         break;
+
     case DLL_THREAD_ATTACH:
-        break;
     case DLL_THREAD_DETACH:
         break;
+
     case DLL_PROCESS_DETACH:
-        LOG_DEBUG("Injected DLL: DLL_PROCESS_DETACH\n");
+        LOG_DEBUG("Exiting\n");
         break;
     }
     return TRUE;
