@@ -35,9 +35,9 @@ typedef struct PHD_3DPOS {
 00401000    000001D0    +       void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);
 004011D0    00000072    +       void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);
 00401250    00000078    -       void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);
-004012D0    000000AA    +       void __cdecl Matrix_RotX(int16_t angle);
-00401380    000000A8    -       void __cdecl Matrix_RotY(int16_t angle);
-00401430    000000A8    -       void __cdecl Matrix_RotZ(int16_t angle);
+004012D0    000000AA    +       void __cdecl Matrix_RotX(int16_t rx);
+00401380    000000A8    +       void __cdecl Matrix_RotY(int16_t ry);
+00401430    000000A8    -       void __cdecl Matrix_RotZ(int16_t rz);
 004014E0    000001DC    -       sub_4014E0
 004016C0    000001E7    -       sub_4016C0
 004018B0    000000AB    -       sub_4018B0
