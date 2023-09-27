@@ -49,7 +49,7 @@ void __cdecl Matrix_LookAt(
     PHD_ANGLE angles[2];
     Math_GetVectorAngles(xtar - xsrc, ytar - ysrc, ztar - zsrc, angles);
 
-    PHD_3DPOS viewer;
+    struct PHD_3DPOS viewer;
     viewer.x = xsrc;
     viewer.y = ysrc;
     viewer.z = zsrc;
@@ -57,4 +57,31 @@ void __cdecl Matrix_LookAt(
     viewer.y_rot = angles[0];
     viewer.z_rot = roll;
     Matrix_GenerateW2V(&viewer);
+}
+
+void __cdecl Matrix_RotX(PHD_ANGLE rx)
+{
+    if (!rx) {
+        return;
+    }
+
+    struct MATRIX *mptr = g_MatrixPtr;
+    int32_t sx = Math_Sin(rx);
+    int32_t cx = Math_Cos(rx);
+
+    int32_t r0, r1;
+    r0 = mptr->_01 * cx + mptr->_02 * sx;
+    r1 = mptr->_02 * cx - mptr->_01 * sx;
+    mptr->_01 = r0 >> W2V_MATRIX;
+    mptr->_02 = r1 >> W2V_MATRIX;
+
+    r0 = mptr->_11 * cx + mptr->_12 * sx;
+    r1 = mptr->_12 * cx - mptr->_11 * sx;
+    mptr->_11 = r0 >> W2V_MATRIX;
+    mptr->_12 = r1 >> W2V_MATRIX;
+
+    r0 = mptr->_21 * cx + mptr->_22 * sx;
+    r1 = mptr->_22 * cx - mptr->_21 * sx;
+    mptr->_21 = r0 >> W2V_MATRIX;
+    mptr->_22 = r1 >> W2V_MATRIX;
 }
