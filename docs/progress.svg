@@ -9,15 +9,15 @@
                 text { alignment-baseline: central; font-family: sans-serif; font-size: 15px; }
             </style>
         <text x="0.00" y="7.50">Tomb2.exe functions, arranged according to the physical file layout:</text>
-<rect width="2.50" height="12.00" x="0.00" y="20.00" class="decompiled"/>
-<rect width="3.13" height="12.00" x="2.50" y="20.00" class="named"/>
+<rect width="3.13" height="12.00" x="0.00" y="20.00" class="decompiled"/>
+<rect width="2.50" height="12.00" x="3.13" y="20.00" class="named"/>
 <rect width="741.36" height="12.00" x="5.64" y="20.00" class="todo"/>
 <rect width="12.00" height="12.00" x="0.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
 <rect width="12.00" height="12.00" x="15.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);</title></rect>
 <rect width="12.00" height="12.00" x="30.00" y="35.00" class="named"><title>void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);</title></rect>
 <rect width="12.00" height="12.00" x="45.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_RotX(int16_t rx);</title></rect>
 <rect width="12.00" height="12.00" x="60.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_RotY(int16_t ry);</title></rect>
-<rect width="12.00" height="12.00" x="75.00" y="35.00" class="named"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
+<rect width="12.00" height="12.00" x="75.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
 <rect width="12.00" height="12.00" x="90.00" y="35.00" class="todo"><title>sub_4014E0</title></rect>
 <rect width="12.00" height="12.00" x="105.00" y="35.00" class="todo"><title>sub_4016C0</title></rect>
 <rect width="12.00" height="12.00" x="120.00" y="35.00" class="todo"><title>sub_4018B0</title></rect>
@@ -1206,8 +1206,8 @@
 <rect width="12.00" height="12.00" x="615.00" y="380.00" class="todo"><title>sub_457C79</title></rect>
 <rect width="12.00" height="12.00" x="630.00" y="380.00" class="todo"><title>sub_457C93</title></rect>
 <text x="0.00" y="426.50">Tomb2.exe functions, arranged according to the function sizes:</text>
-<rect width="2.04" height="12.00" x="0.00" y="439.00" class="decompiled"/>
-<rect width="1.76" height="12.00" x="2.04" y="439.00" class="named"/>
+<rect width="2.41" height="12.00" x="0.00" y="439.00" class="decompiled"/>
+<rect width="1.39" height="12.00" x="2.41" y="439.00" class="named"/>
 <rect width="743.20" height="12.00" x="3.80" y="439.00" class="todo"/>
 <rect width="58.80" height="83.88" x="0.00" y="454.00" class="todo"><title>sub_404300</title></rect>
 <rect width="58.80" height="70.71" x="0.00" y="540.88" class="todo"><title>sub_422080</title></rect>
@@ -1711,7 +1711,7 @@
 <rect width="9.68" height="10.55" x="518.95" y="747.92" class="todo"><title>sub_42F150</title></rect>
 <rect width="9.68" height="10.55" x="518.95" y="761.47" class="todo"><title>sub_4567F0</title></rect>
 <rect width="9.68" height="10.39" x="518.95" y="775.01" class="decompiled"><title>void __cdecl Matrix_RotY(int16_t ry);</title></rect>
-<rect width="9.68" height="10.39" x="518.95" y="788.40" class="named"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
+<rect width="9.68" height="10.39" x="518.95" y="788.40" class="decompiled"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
 <rect width="9.68" height="10.39" x="518.95" y="801.79" class="todo"><title>sub_40FFB0</title></rect>
 <rect width="9.68" height="10.39" x="518.95" y="815.17" class="todo"><title>sub_41EEE0</title></rect>
 <rect width="9.68" height="10.31" x="518.95" y="828.56" class="todo"><title>sub_40E950</title></rect>

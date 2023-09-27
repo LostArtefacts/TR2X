@@ -12,3 +12,4 @@ void __cdecl Matrix_LookAt(
     int32_t ztar, int16_t roll);
 void __cdecl Matrix_RotX(PHD_ANGLE rx);
 void __cdecl Matrix_RotY(PHD_ANGLE ry);
+void __cdecl Matrix_RotZ(PHD_ANGLE rz);

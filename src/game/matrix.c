@@ -112,3 +112,30 @@ void __cdecl Matrix_RotY(PHD_ANGLE ry)
     mptr->_20 = r0 >> W2V_MATRIX;
     mptr->_22 = r1 >> W2V_MATRIX;
 }
+
+void __cdecl Matrix_RotZ(PHD_ANGLE rz)
+{
+    if (!rz) {
+        return;
+    }
+
+    struct MATRIX *mptr = g_MatrixPtr;
+    int32_t sz = Math_Sin(rz);
+    int32_t cz = Math_Cos(rz);
+
+    int32_t r0, r1;
+    r0 = mptr->_00 * cz + mptr->_01 * sz;
+    r1 = mptr->_01 * cz - mptr->_00 * sz;
+    mptr->_00 = r0 >> W2V_MATRIX;
+    mptr->_01 = r1 >> W2V_MATRIX;
+
+    r0 = mptr->_10 * cz + mptr->_11 * sz;
+    r1 = mptr->_11 * cz - mptr->_10 * sz;
+    mptr->_10 = r0 >> W2V_MATRIX;
+    mptr->_11 = r1 >> W2V_MATRIX;
+
+    r0 = mptr->_20 * cz + mptr->_21 * sz;
+    r1 = mptr->_21 * cz - mptr->_20 * sz;
+    mptr->_20 = r0 >> W2V_MATRIX;
+    mptr->_21 = r1 >> W2V_MATRIX;
+}
