@@ -7,8 +7,8 @@
 # Name                              Offset      Size        Flags
 
 Matrix_GenerateW2V                  00401000    000001D0    +
-sub_4011D0                          004011D0    00000072    -
-sub_401250                          00401250    00000078    -
+Matrix_LookAt                       004011D0    00000072    +
+Math_GetVectorAngles                00401250    00000078    -
 sub_4012D0                          004012D0    000000AA    -
 sub_401380                          00401380    000000A8    -
 sub_401430                          00401430    000000A8    -

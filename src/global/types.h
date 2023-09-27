@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+typedef int16_t PHD_ANGLE;
+
 typedef struct MATRIX {
     int32_t _00;
     int32_t _01;

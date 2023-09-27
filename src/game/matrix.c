@@ -1,13 +1,14 @@
 #include "game/matrix.h"
 
 #include "game/math.h"
+#include "game/math_misc.h"
 #include "global/const.h"
 #include "global/types.h"
 #include "global/vars.h"
 
 #include <stdint.h>
 
-void Matrix_GenerateW2V(struct PHD_3DPOS *viewpos)
+void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos)
 {
     g_MatrixPtr = &g_MatrixStack[0];
     int32_t sx = Math_Sin(viewpos->x_rot);
@@ -39,4 +40,21 @@ void Matrix_GenerateW2V(struct PHD_3DPOS *viewpos)
     g_MatrixPtr->_12 *= g_ViewportAspectRatio;
 
     g_W2VMatrix = *g_MatrixPtr;
+}
+
+void __cdecl Matrix_LookAt(
+    int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar,
+    int32_t ztar, int16_t roll)
+{
+    PHD_ANGLE angles[2];
+    Math_GetVectorAngles(xtar - xsrc, ytar - ysrc, ztar - zsrc, angles);
+
+    PHD_3DPOS viewer;
+    viewer.x = xsrc;
+    viewer.y = ysrc;
+    viewer.z = zsrc;
+    viewer.x_rot = angles[1];
+    viewer.y_rot = angles[0];
+    viewer.z_rot = roll;
+    Matrix_GenerateW2V(&viewer);
 }

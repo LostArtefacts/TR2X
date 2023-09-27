@@ -9,12 +9,12 @@
                 text { alignment-baseline: central; font-family: sans-serif; font-size: 15px; }
             </style>
         <text x="0.00" y="7.50">Tomb2.exe functions, arranged according to the physical file layout:</text>
-<rect width="0.63" height="12.00" x="0.00" y="20.00" class="decompiled"/>
-<rect width="1.88" height="12.00" x="0.63" y="20.00" class="named"/>
-<rect width="744.50" height="12.00" x="2.50" y="20.00" class="todo"/>
+<rect width="1.25" height="12.00" x="0.00" y="20.00" class="decompiled"/>
+<rect width="2.50" height="12.00" x="1.25" y="20.00" class="named"/>
+<rect width="743.24" height="12.00" x="3.76" y="20.00" class="todo"/>
 <rect width="12.00" height="12.00" x="0.00" y="35.00" class="decompiled"><title>Matrix_GenerateW2V</title></rect>
-<rect width="12.00" height="12.00" x="15.00" y="35.00" class="todo"><title>sub_4011D0</title></rect>
-<rect width="12.00" height="12.00" x="30.00" y="35.00" class="todo"><title>sub_401250</title></rect>
+<rect width="12.00" height="12.00" x="15.00" y="35.00" class="decompiled"><title>Matrix_LookAt</title></rect>
+<rect width="12.00" height="12.00" x="30.00" y="35.00" class="named"><title>Math_GetVectorAngles</title></rect>
 <rect width="12.00" height="12.00" x="45.00" y="35.00" class="todo"><title>sub_4012D0</title></rect>
 <rect width="12.00" height="12.00" x="60.00" y="35.00" class="todo"><title>sub_401380</title></rect>
 <rect width="12.00" height="12.00" x="75.00" y="35.00" class="todo"><title>sub_401430</title></rect>
@@ -1206,9 +1206,9 @@
 <rect width="12.00" height="12.00" x="615.00" y="380.00" class="todo"><title>sub_457C79</title></rect>
 <rect width="12.00" height="12.00" x="630.00" y="380.00" class="todo"><title>sub_457C93</title></rect>
 <text x="0.00" y="426.50">Tomb2.exe functions, arranged according to the function sizes:</text>
-<rect width="1.03" height="12.00" x="0.00" y="439.00" class="decompiled"/>
-<rect width="1.12" height="12.00" x="1.03" y="439.00" class="named"/>
-<rect width="744.85" height="12.00" x="2.15" y="439.00" class="todo"/>
+<rect width="1.29" height="12.00" x="0.00" y="439.00" class="decompiled"/>
+<rect width="1.39" height="12.00" x="1.29" y="439.00" class="named"/>
+<rect width="744.33" height="12.00" x="2.67" y="439.00" class="todo"/>
 <rect width="58.80" height="83.88" x="0.00" y="454.00" class="todo"><title>sub_404300</title></rect>
 <rect width="58.80" height="70.71" x="0.00" y="540.88" class="todo"><title>sub_422080</title></rect>
 <rect width="58.80" height="64.90" x="0.00" y="614.58" class="todo"><title>sub_43A480</title></rect>
@@ -1844,7 +1844,7 @@
 <rect width="8.29" height="7.83" x="613.24" y="728.14" class="todo"><title>sub_4137E0</title></rect>
 <rect width="8.29" height="7.83" x="624.52" y="728.14" class="todo"><title>sub_429DF0</title></rect>
 <rect width="8.29" height="7.83" x="635.81" y="728.14" class="todo"><title>sub_44ACF0</title></rect>
-<rect width="8.19" height="7.83" x="647.10" y="728.14" class="todo"><title>sub_401250</title></rect>
+<rect width="8.19" height="7.83" x="647.10" y="728.14" class="named"><title>Math_GetVectorAngles</title></rect>
 <rect width="8.19" height="7.83" x="658.29" y="728.14" class="todo"><title>sub_413860</title></rect>
 <rect width="8.19" height="7.83" x="669.48" y="728.14" class="todo"><title>sub_41C910</title></rect>
 <rect width="8.10" height="7.83" x="680.68" y="728.14" class="todo"><title>sub_413940</title></rect>
@@ -1859,7 +1859,7 @@
 <rect width="7.93" height="7.72" x="567.43" y="771.50" class="todo"><title>sub_420EA0</title></rect>
 <rect width="7.93" height="7.72" x="567.43" y="782.22" class="todo"><title>sub_42A020</title></rect>
 <rect width="7.93" height="7.63" x="567.43" y="792.94" class="todo"><title>sub_444C70</title></rect>
-<rect width="7.93" height="7.54" x="567.43" y="803.57" class="todo"><title>sub_4011D0</title></rect>
+<rect width="7.93" height="7.54" x="567.43" y="803.57" class="decompiled"><title>Matrix_LookAt</title></rect>
 <rect width="7.93" height="7.54" x="567.43" y="814.10" class="todo"><title>sub_41C7F0</title></rect>
 <rect width="7.93" height="7.54" x="567.43" y="824.64" class="todo"><title>sub_427790</title></rect>
 <rect width="7.93" height="7.44" x="567.43" y="835.17" class="todo"><title>sub_41CB60</title></rect>
