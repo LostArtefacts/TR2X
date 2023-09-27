@@ -1,15 +1,41 @@
+#!/usr/bin/env python3
 import ctypes
+import re
+import tempfile
+from collections import defaultdict
+from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import ida_typeinf
-import idaapi
-import idc
+try:
+    import idaapi
+    import idc
+except ImportError:
+    idaapi = None
+    idc = None
 
 REPO_DIR = Path(__file__).parent.parent
 DOCS_DIR = REPO_DIR / "docs"
-TYPES_FILE = DOCS_DIR / "ida_types.h"
-VARIABLES_FILE = DOCS_DIR / "ida_variables.txt"
+PROGRESS_FILE = DOCS_DIR / "progress.txt"
+
+
+class ProgressFileSection(Enum):
+    TYPES = "types"
+    FUNCTIONS = "functions"
+    VARIABLES = "variables"
+
+
+@dataclass
+class Declaration:
+    offset: int
+    declaration: str
+
+
+@dataclass
+class ProgressFile:
+    type_definitions: str
+    declarations: list[Declaration]
 
 
 def to_int(source: str) -> Optional[int]:
@@ -26,36 +52,85 @@ def to_int(source: str) -> Optional[int]:
     return int(source, 16)
 
 
-def import_types() -> None:
-    print(f"Importing type information from {TYPES_FILE}:")
-    error_count = idaapi.idc_parse_types(str(TYPES_FILE), idc.PT_FILE)
+def parse_progress_file(path: Path) -> ProgressFile:
+    current_section: ProgressFileSection | None = None
+    section_map: dict[ProgressFileSection.TYPES, list[str]] = defaultdict(list)
+    for line in path.read_text().splitlines():
+        for section in ProgressFileSection:
+            if line == f"# {section.value.upper()}":
+                current_section = section
+        if line.startswith("#") or not line:
+            continue
+        if current_section is not None:
+            section_map[current_section].append(line)
+
+    declarations: list[Declaration] = []
+    for line in section_map[ProgressFileSection.VARIABLES]:
+        offset, declaration = re.split("\s+", line, maxsplit=1)
+        offset = to_int(offset)
+        declarations.append(
+            Declaration(offset=offset, declaration=declaration)
+        )
+
+    for line in section_map[ProgressFileSection.FUNCTIONS]:
+        offset, size, flags, declaration = re.split("\s+", line, maxsplit=3)
+        offset = to_int(offset)
+        declarations.append(
+            Declaration(offset=offset, declaration=declaration)
+        )
+
+    return ProgressFile(
+        type_definitions="\n".join(section_map[ProgressFileSection.TYPES]),
+        declarations=declarations,
+    )
+
+
+def import_types_from_file(path: Path) -> None:
+    print(f"Importing type information:")
+    if idaapi:
+        error_count = idaapi.idc_parse_types(str(path), idc.PT_FILE)
+    else:
+        error_count = 0
     print(f"    done ({error_count} errors)")
 
 
-def import_variables() -> None:
-    print(f"Importing variables information from {VARIABLES_FILE}:")
-    with VARIABLES_FILE.open("r") as handle:
-        for line in handle:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            offset, decl = line.split(maxsplit=1)
-            offset = to_int(offset)
-            if True:
-                print(f"    renaming 0x{offset:08x} to {decl}")
+def import_functions_from_file(declarations: list[Declaration]) -> None:
+    print(f"Importing declarations:")
+    for declaration in declarations:
+        if re.match(r"(\s+|^)(dword|sub)_", declaration.declaration):
+            continue
 
-                til = idaapi.get_idati()
-                ti = idaapi.tinfo_t()
+        print(
+            f"    renaming 0x{declaration.offset:08x} to {declaration.declaration}"
+        )
 
-                name = idaapi.parse_decl(ti, til, decl, idaapi.PT_VAR)
-                if name.startswith("_"):
-                    name = name[1:]
-                if not name.startswith('dword_'):
-                    idaapi.set_name(offset, name)
-                idaapi.apply_tinfo(offset, ti, 0)
+        if not idaapi:
+            continue
+
+        til = idaapi.get_idati()
+        ti = idaapi.tinfo_t()
+
+        name = idaapi.parse_decl(ti, til, declaration.declaration, idaapi.PT_VAR)
+        if name.startswith("_"):
+            name = name[1:]
+
+        idaapi.set_name(declaration.offset, name)
+        idaapi.apply_tinfo(declaration.offset, ti, 0)
     print("    done")
 
 
+def main():
+    progress_file = parse_progress_file(PROGRESS_FILE)
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmpdir = Path(tmpdir)
+
+        types_file = tmpdir / "types.txt"
+        types_file.write_text(progress_file.type_definitions)
+
+        import_types_from_file(types_file)
+        import_functions_from_file(progress_file.declarations)
+
+
 if __name__ == "__main__":
-    import_types()
-    import_variables()
+    main()

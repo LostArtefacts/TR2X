@@ -12,9 +12,9 @@
 <rect width="1.25" height="12.00" x="0.00" y="20.00" class="decompiled"/>
 <rect width="2.50" height="12.00" x="1.25" y="20.00" class="named"/>
 <rect width="743.24" height="12.00" x="3.76" y="20.00" class="todo"/>
-<rect width="12.00" height="12.00" x="0.00" y="35.00" class="decompiled"><title>Matrix_GenerateW2V</title></rect>
-<rect width="12.00" height="12.00" x="15.00" y="35.00" class="decompiled"><title>Matrix_LookAt</title></rect>
-<rect width="12.00" height="12.00" x="30.00" y="35.00" class="named"><title>Math_GetVectorAngles</title></rect>
+<rect width="12.00" height="12.00" x="0.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
+<rect width="12.00" height="12.00" x="15.00" y="35.00" class="decompiled"><title>void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);</title></rect>
+<rect width="12.00" height="12.00" x="30.00" y="35.00" class="named"><title>void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);</title></rect>
 <rect width="12.00" height="12.00" x="45.00" y="35.00" class="todo"><title>sub_4012D0</title></rect>
 <rect width="12.00" height="12.00" x="60.00" y="35.00" class="todo"><title>sub_401380</title></rect>
 <rect width="12.00" height="12.00" x="75.00" y="35.00" class="todo"><title>sub_401430</title></rect>
@@ -1021,7 +1021,7 @@
 <rect width="12.00" height="12.00" x="90.00" y="335.00" class="todo"><title>sub_44D8F0</title></rect>
 <rect width="12.00" height="12.00" x="105.00" y="335.00" class="todo"><title>sub_44DA10</title></rect>
 <rect width="12.00" height="12.00" x="120.00" y="335.00" class="todo"><title>sub_44E4E0</title></rect>
-<rect width="12.00" height="12.00" x="135.00" y="335.00" class="named"><title>WinMain</title></rect>
+<rect width="12.00" height="12.00" x="135.00" y="335.00" class="named"><title>int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);</title></rect>
 <rect width="12.00" height="12.00" x="150.00" y="335.00" class="todo"><title>sub_44E6F0</title></rect>
 <rect width="12.00" height="12.00" x="165.00" y="335.00" class="todo"><title>sub_44E700</title></rect>
 <rect width="12.00" height="12.00" x="180.00" y="335.00" class="todo"><title>sub_44E770</title></rect>
@@ -1201,8 +1201,8 @@
 <rect width="12.00" height="12.00" x="540.00" y="380.00" class="todo"><title>sub_4575CF</title></rect>
 <rect width="12.00" height="12.00" x="555.00" y="380.00" class="todo"><title>sub_4578CC</title></rect>
 <rect width="12.00" height="12.00" x="570.00" y="380.00" class="todo"><title>sub_457C10</title></rect>
-<rect width="12.00" height="12.00" x="585.00" y="380.00" class="named"><title>Math_Cos</title></rect>
-<rect width="12.00" height="12.00" x="600.00" y="380.00" class="named"><title>Math_Sin</title></rect>
+<rect width="12.00" height="12.00" x="585.00" y="380.00" class="named"><title>int32_t __fastcall Math_Cos(int16_t angle);</title></rect>
+<rect width="12.00" height="12.00" x="600.00" y="380.00" class="named"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="12.00" height="12.00" x="615.00" y="380.00" class="todo"><title>sub_457C79</title></rect>
 <rect width="12.00" height="12.00" x="630.00" y="380.00" class="todo"><title>sub_457C93</title></rect>
 <text x="0.00" y="426.50">Tomb2.exe functions, arranged according to the function sizes:</text>
@@ -1402,9 +1402,9 @@
 <rect width="18.89" height="18.74" x="364.01" y="799.55" class="todo"><title>sub_42FA20</title></rect>
 <rect width="18.89" height="18.69" x="364.01" y="821.28" class="todo"><title>sub_426340</title></rect>
 <rect width="18.89" height="18.69" x="364.01" y="842.97" class="todo"><title>sub_44A5B0</title></rect>
-<rect width="18.89" height="18.69" x="364.01" y="864.66" class="named"><title>WinMain</title></rect>
+<rect width="18.89" height="18.69" x="364.01" y="864.66" class="named"><title>int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);</title></rect>
 <rect width="18.89" height="18.64" x="364.01" y="886.36" class="todo"><title>sub_401D60</title></rect>
-<rect width="19.10" height="18.21" x="385.89" y="530.49" class="decompiled"><title>Matrix_GenerateW2V</title></rect>
+<rect width="19.10" height="18.21" x="385.89" y="530.49" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
 <rect width="18.91" height="18.21" x="407.99" y="530.49" class="todo"><title>sub_451800</title></rect>
 <rect width="18.77" height="18.21" x="429.90" y="530.49" class="todo"><title>sub_409BD0</title></rect>
 <rect width="18.77" height="18.21" x="451.67" y="530.49" class="todo"><title>sub_451FA0</title></rect>
@@ -1844,7 +1844,7 @@
 <rect width="8.29" height="7.83" x="613.24" y="728.14" class="todo"><title>sub_4137E0</title></rect>
 <rect width="8.29" height="7.83" x="624.52" y="728.14" class="todo"><title>sub_429DF0</title></rect>
 <rect width="8.29" height="7.83" x="635.81" y="728.14" class="todo"><title>sub_44ACF0</title></rect>
-<rect width="8.19" height="7.83" x="647.10" y="728.14" class="named"><title>Math_GetVectorAngles</title></rect>
+<rect width="8.19" height="7.83" x="647.10" y="728.14" class="named"><title>void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);</title></rect>
 <rect width="8.19" height="7.83" x="658.29" y="728.14" class="todo"><title>sub_413860</title></rect>
 <rect width="8.19" height="7.83" x="669.48" y="728.14" class="todo"><title>sub_41C910</title></rect>
 <rect width="8.10" height="7.83" x="680.68" y="728.14" class="todo"><title>sub_413940</title></rect>
@@ -1859,7 +1859,7 @@
 <rect width="7.93" height="7.72" x="567.43" y="771.50" class="todo"><title>sub_420EA0</title></rect>
 <rect width="7.93" height="7.72" x="567.43" y="782.22" class="todo"><title>sub_42A020</title></rect>
 <rect width="7.93" height="7.63" x="567.43" y="792.94" class="todo"><title>sub_444C70</title></rect>
-<rect width="7.93" height="7.54" x="567.43" y="803.57" class="decompiled"><title>Matrix_LookAt</title></rect>
+<rect width="7.93" height="7.54" x="567.43" y="803.57" class="decompiled"><title>void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);</title></rect>
 <rect width="7.93" height="7.54" x="567.43" y="814.10" class="todo"><title>sub_41C7F0</title></rect>
 <rect width="7.93" height="7.54" x="567.43" y="824.64" class="todo"><title>sub_427790</title></rect>
 <rect width="7.93" height="7.44" x="567.43" y="835.17" class="todo"><title>sub_41CB60</title></rect>
@@ -2290,7 +2290,7 @@
 <rect width="2.06" height="2.39" x="717.03" y="862.23" class="todo"><title>sub_4256E0</title></rect>
 <rect width="2.06" height="2.39" x="722.08" y="862.23" class="todo"><title>sub_430EF0</title></rect>
 <rect width="2.06" height="2.39" x="727.14" y="862.23" class="todo"><title>sub_435A40</title></rect>
-<rect width="2.06" height="2.39" x="732.20" y="862.23" class="named"><title>Math_Sin</title></rect>
+<rect width="2.06" height="2.39" x="732.20" y="862.23" class="named"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="1.87" height="2.39" x="737.26" y="862.23" class="todo"><title>sub_445F20</title></rect>
 <rect width="1.87" height="2.39" x="742.13" y="862.23" class="todo"><title>sub_447220</title></rect>
 <rect width="2.29" height="1.97" x="706.72" y="867.63" class="todo"><title>sub_448050</title></rect>
@@ -2384,7 +2384,7 @@
 <rect width="-0.75" height="-0.30" x="744.75" y="896.42" class="todo"><title>sub_44C670</title></rect>
 <rect width="-0.39" height="-0.68" x="738.02" y="899.12" class="todo"><title>sub_450AE0</title></rect>
 <rect width="-0.39" height="-0.68" x="738.02" y="901.43" class="todo"><title>sub_450AF0</title></rect>
-<rect width="-0.39" height="-0.68" x="738.02" y="903.75" class="named"><title>Math_Cos</title></rect>
+<rect width="-0.39" height="-0.68" x="738.02" y="903.75" class="named"><title>int32_t __fastcall Math_Cos(int16_t angle);</title></rect>
 <rect width="-0.39" height="-1.07" x="738.02" y="906.07" class="todo"><title>sub_41D790</title></rect>
 <rect width="-0.88" height="-0.62" x="740.63" y="899.12" class="todo"><title>sub_41DA10</title></rect>
 <rect width="-0.88" height="-0.62" x="742.76" y="899.12" class="todo"><title>sub_4239E0</title></rect>
