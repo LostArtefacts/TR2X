@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from decimal import Decimal
 from enum import StrEnum, auto
+from fractions import Fraction
 from itertools import groupby
 from pathlib import Path
 from typing import Any
@@ -37,7 +38,12 @@ class FunctionStatus(StrEnum):
 
 
 def format_decimal(source: Decimal) -> str:
-    return str(source.quantize(Decimal('1.11'))).replace('.00', '')
+    return str(source.quantize(Decimal("1.11"))).replace(".00", "")
+
+
+def fraction_to_decimal(source: Fraction) -> Decimal:
+    return Decimal(source.numerator) / Decimal(source.denominator)
+
 
 @dataclass
 class Box:
@@ -381,6 +387,23 @@ def render_tree_grid(
         )
 
 
+def get_function_done_percentage(
+    mode: SumMode,
+    chosen_functions: list[Function],
+    all_functions: list[Function],
+) -> Fraction:
+    match mode:
+        case SumMode.COUNT:
+            return Fraction(len(chosen_functions), len(all_functions))
+        case SumMode.BYTES:
+            return Fraction(
+                sum(function.size for function in chosen_functions),
+                sum(function.size for function in all_functions),
+            )
+        case _:
+            assert False
+
+
 def render_progress(
     all_functions: list[Function],
     y1: Decimal,
@@ -398,15 +421,9 @@ def render_progress(
         sorted(all_functions, key=sorter), sorter
     ):
         group = list(iter_group)
-        match mode:
-            case SumMode.COUNT:
-                ratio = Decimal(len(group)) / Decimal(len(all_functions))
-            case SumMode.BYTES:
-                ratio = Decimal(
-                    sum(function.size for function in group)
-                ) / Decimal(sum(function.size for function in all_functions))
-            case _:
-                assert False
+        ratio = fraction_to_decimal(
+            get_function_done_percentage(mode, group, all_functions)
+        )
         yield Rectangle(
             x=x,
             y=y1,
@@ -419,10 +436,22 @@ def render_progress(
 
 def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
     y = ZERO
+
+    fraction = get_function_done_percentage(
+        mode=SumMode.COUNT,
+        chosen_functions=[
+            function
+            for function in all_functions
+            if function.status == FunctionStatus.DECOMPILED
+        ],
+        all_functions=all_functions,
+    )
     yield Text(
         ZERO,
         y,
-        "Tomb2.exe functions, arranged according to the physical file layout:",
+        "Tomb2.exe functions, arranged according to the physical file layout "
+        f"({fraction.numerator} of {fraction.denominator} / "
+        f"{format_decimal(fraction_to_decimal(fraction) * 100)}% functions done):",
     )
     y = TEXT_SIZE + TEXT_MARGIN
 
@@ -448,8 +477,20 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
 
     y = max(shape.box.y2 for shape in shapes)
     y += SECTION_MARGIN
+    fraction = get_function_done_percentage(
+        mode=SumMode.BYTES,
+        chosen_functions=[
+            function
+            for function in all_functions
+            if function.status == FunctionStatus.DECOMPILED
+        ],
+        all_functions=all_functions,
+    )
     yield Text(
-        ZERO, y, "Tomb2.exe functions, arranged according to the function sizes:"
+        ZERO,
+        y,
+        "Tomb2.exe functions, arranged according to the function sizes "
+        f"({format_decimal(fraction_to_decimal(fraction) * 100)}% game code done):",
     )
     y += TEXT_SIZE + TEXT_MARGIN
     dx = max(shape.box.x2 for shape in shapes)

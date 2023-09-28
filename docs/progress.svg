@@ -8,7 +8,7 @@
                 .decompiled { fill: rgba(0, 255, 0, 0.5); stroke: rgba(0, 150, 0, 0.85); }
                 text { alignment-baseline: central; font-family: sans-serif; font-size: 15px; }
             </style>
-        <text x="0" y="7.50">Tomb2.exe functions, arranged according to the physical file layout:</text>
+        <text x="0" y="7.50">Tomb2.exe functions, arranged according to the physical file layout (8 of 1193 / 0.67% functions done):</text>
 <rect width="5.01" height="12" x="0" y="20" class="decompiled"/>
 <rect width="2.50" height="12" x="5.01" y="20" class="named"/>
 <rect width="739.49" height="12" x="7.51" y="20" class="todo"/>
@@ -1205,7 +1205,7 @@
 <rect width="12" height="12" x="600" y="380" class="named"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="12" height="12" x="615" y="380" class="todo"><title>sub_457C79</title></rect>
 <rect width="12" height="12" x="630" y="380" class="todo"><title>sub_457C93</title></rect>
-<text x="0" y="426.50">Tomb2.exe functions, arranged according to the function sizes:</text>
+<text x="0" y="426.50">Tomb2.exe functions, arranged according to the function sizes (0.66% game code done):</text>
 <rect width="4.93" height="12" x="0" y="439" class="decompiled"/>
 <rect width="1.39" height="12" x="4.93" y="439" class="named"/>
 <rect width="740.68" height="12" x="6.32" y="439" class="todo"/>
