@@ -139,3 +139,67 @@ void __cdecl Matrix_RotZ(PHD_ANGLE rz)
     mptr->_20 = r0 >> W2V_MATRIX;
     mptr->_21 = r1 >> W2V_MATRIX;
 }
+
+void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz)
+{
+    int32_t r0, r1;
+    struct MATRIX *mptr = g_MatrixPtr;
+
+    if (ry) {
+        int32_t sy = Math_Sin(ry);
+        int32_t cy = Math_Cos(ry);
+        r0 = mptr->_00 * cy - mptr->_02 * sy;
+        r1 = mptr->_02 * cy + mptr->_00 * sy;
+        mptr->_00 = r0 >> W2V_MATRIX;
+        mptr->_02 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_10 * cy - mptr->_12 * sy;
+        r1 = mptr->_12 * cy + mptr->_10 * sy;
+        mptr->_10 = r0 >> W2V_MATRIX;
+        mptr->_12 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_20 * cy - mptr->_22 * sy;
+        r1 = mptr->_22 * cy + mptr->_20 * sy;
+        mptr->_20 = r0 >> W2V_MATRIX;
+        mptr->_22 = r1 >> W2V_MATRIX;
+    }
+
+    if (rx) {
+        int32_t sx = Math_Sin(rx);
+        int32_t cx = Math_Cos(rx);
+
+        r0 = mptr->_01 * cx + mptr->_02 * sx;
+        r1 = mptr->_02 * cx - mptr->_01 * sx;
+        mptr->_01 = r0 >> W2V_MATRIX;
+        mptr->_02 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_11 * cx + mptr->_12 * sx;
+        r1 = mptr->_12 * cx - mptr->_11 * sx;
+        mptr->_11 = r0 >> W2V_MATRIX;
+        mptr->_12 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_21 * cx + mptr->_22 * sx;
+        r1 = mptr->_22 * cx - mptr->_21 * sx;
+        mptr->_21 = r0 >> W2V_MATRIX;
+        mptr->_22 = r1 >> W2V_MATRIX;
+    }
+
+    if (rz) {
+        int32_t sz = Math_Sin(rz);
+        int32_t cz = Math_Cos(rz);
+        r0 = mptr->_00 * cz + mptr->_01 * sz;
+        r1 = mptr->_01 * cz - mptr->_00 * sz;
+        mptr->_00 = r0 >> W2V_MATRIX;
+        mptr->_01 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_10 * cz + mptr->_11 * sz;
+        r1 = mptr->_11 * cz - mptr->_10 * sz;
+        mptr->_10 = r0 >> W2V_MATRIX;
+        mptr->_11 = r1 >> W2V_MATRIX;
+
+        r0 = mptr->_20 * cz + mptr->_21 * sz;
+        r1 = mptr->_21 * cz - mptr->_20 * sz;
+        mptr->_20 = r0 >> W2V_MATRIX;
+        mptr->_21 = r1 >> W2V_MATRIX;
+    }
+}
