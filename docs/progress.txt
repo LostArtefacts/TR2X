@@ -25,6 +25,57 @@ typedef struct PHD_3DPOS {
     int16_t z_rot;
 } PHD_3DPOS;
 
+typedef struct PHD_VBUF {
+    float xv;
+    float yv;
+    float zv;
+    float rhw;
+    float xs;
+    float ys;
+    int16_t clip;
+    int16_t g;
+    int16_t u;
+    int16_t v;
+} PHD_VBUF;
+
+typedef struct PHD_UV {
+	uint16_t u;
+	uint16_t v;
+} PHD_UV;
+
+typedef struct PHD_TEXTURE {
+	uint16_t drawtype;
+	uint16_t tpage;
+	PHD_UV uv[4];
+} PHD_TEXTURE;
+
+typedef struct POINT_INFO {
+    float xv;
+    float yv;
+    float zv;
+    float rhw;
+    float xs;
+    float ys;
+    float u;
+    float v;
+    float g;
+} POINT_INFO;
+
+typedef struct VERTEX_INFO {
+    float x;
+    float y;
+    float rhw;
+    float u;
+    float v;
+    float g;
+} VERTEX_INFO;
+
+typedef enum SORT_TYPE {
+    ST_AVG_Z,
+    ST_MAX_Z,
+    ST_FAR_Z,
+} SORT_TYPE;
+
 # FUNCTIONS
 #   Flags:
 #   - to do
@@ -41,79 +92,81 @@ typedef struct PHD_3DPOS {
 004014E0    000001DC    +       void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);
 004016C0    000001E7    +       void __cdecl Matrix_RotYXZpack(uint32_t rpack);
 004018B0    000000AB    +       bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
-00401960    0000007A    -       sub_401960
-004019E0    000000F3    -       sub_4019E0
-00401AE0    000000EA    -       sub_401AE0
-00401BD0    00000032    -       sub_401BD0
-00401C10    00000134    -       sub_401C10
-00401D50    00000001    -       sub_401D50
-00401D60    000001D5    -       sub_401D60
-00401F40    0000016D    -       sub_401F40
-004020B0    0000027D    -       sub_4020B0
-00402330    000000C7    -       sub_402330
-00402400    00000039    -       sub_402400
-00402430    00000033    -       sub_402430
-00402470    000000C5    -       sub_402470
-00402540    00000036    -       sub_402540
-00402580    000000A1    -       sub_402580
-00402690    00000095    -       sub_402690
-004026E0    0000006B    -       sub_4026E0
-00402700    00000266    -       sub_402700
-00402970    0000019F    -       sub_402970
-00402B10    00000035    -       sub_402B10
-00402B50    00000035    -       sub_402B50
-00402B90    00000035    -       sub_402B90
-00402BD0    0000003C    -       sub_402BD0
-00402C10    0000003C    -       sub_402C10
-00402C50    000000D2    -       sub_402C50
-00402D30    00000146    -       sub_402D30
-00402E80    00000219    -       sub_402E80
-004030A0    00000284    -       sub_4030A0
-00403330    00000FC6    -       sub_403330
-00404300    000014C4    -       sub_404300
-004057D0    00000037    -       sub_4057D0
-00405810    00000037    -       sub_405810
-00405850    0000006C    -       sub_405850
-004058C0    00000140    -       sub_4058C0
-00405A00    00000511    -       sub_405A00
-00405F20    00000A5C    -       sub_405F20
-00406980    00000872    -       sub_406980
-00407200    00000422    -       sub_407200
-00407630    000003D1    -       sub_407630
-00407A10    0000031B    -       sub_407A10
-00407D30    000002D0    -       sub_407D30
-00408000    000004A4    -       sub_408000
-004084B0    000000D3    -       sub_4084B0
-00408590    000000CB    -       sub_408590
-00408660    000000B5    -       sub_408660
-00408720    00000642    -       sub_408720
-00408D70    00000140    -       sub_408D70
-00408EB0    00000444    -       sub_408EB0
-00409300    00000091    -       sub_409300
-004093A0    000000AA    -       sub_4093A0
-00409450    0000039C    -       sub_409450
-004097F0    000000F7    -       sub_4097F0
-004098F0    000002D3    -       sub_4098F0
-00409BD0    000001C9    -       sub_409BD0
-00409DA0    00000133    -       sub_409DA0
-00409EE0    00000706    -       sub_409EE0
-0040A5F0    000001AC    -       sub_40A5F0
-0040A7A0    000004D7    -       sub_40A7A0
-0040AC80    0000008C    -       sub_40AC80
-0040AD10    0000009F    -       sub_40AD10
-0040ADB0    0000043B    -       sub_40ADB0
-0040B1F0    00000175    -       sub_40B1F0
-0040B370    00000343    -       sub_40B370
-0040B6C0    00000347    -       sub_40B6C0
-0040BA10    0000017F    -       sub_40BA10
-0040BCC0    00000195    -       sub_40BCC0
-0040BE60    0000013D    -       sub_40BE60
-0040C050    000002C7    -       sub_40C050
-0040C320    00000085    -       sub_40C320
-0040C3B0    00000152    -       sub_40C3B0
-0040C510    00000096    -       sub_40C510
-0040C5B0    0000009D    -       sub_40C5B0
-0040C650    00000223    -       sub_40C650
+00401960    0000007A    -       void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);
+004019E0    000000F3    -       void __cdecl Output_InsertPolygons(int16_t *obj_ptr, int32_t clip);
+00401AE0    000000EA    -       void __cdecl Output_InsertRoom(const int16_t *obj_ptr);
+00401BD0    00000032    -       int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);
+00401C10    00000134    -       void __cdecl Output_InsertBackground(int16_t *obj_ptr);
+00401D50    00000001    -       void __cdecl Output_InsertInventoryBackground(int16_t *obj_ptr);
+00401D60    000001D5    -       const int16_t *Output_CalcObjectVertices(const int16_t *obj_ptr);
+00401F40    0000016D    -       const int16_t *Output_CalcVerticeLight(const int16_t *obj_ptr);
+004020B0    0000027D    -       const int16_t *Output_CalcRoomVertices(const int16_t *obj_ptr);
+00402330    000000C7    -       void Output_RotateLight(int16_t pitch, int16_t yaw);
+00402400    00000039    -       void __cdecl Output_InitPolyList(void);
+00402430    00000033    -       void __cdecl Output_SortPolyList(void);
+00402470    000000C5    -       void __cdecl Output_QuickSort(int32_t left, int32_t right);
+00402540    00000036    -       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
+00402580    000000A1    -       void __cdecl Viewport_AlterFOV(int16_t fov);
+00402690    00000095    -       void __cdecl Output_SetNearZ(int32_t near_z);
+004026E0    0000006B    -       void __cdecl Output_SetFarZ(int32_t far_z);
+00402700    00000266    -       void __cdecl Viewport_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);
+00402970    0000019F    -       void __cdecl Output_DrawPolyLine(int16_t *obj_ptr);
+00402B10    00000035    -       void __cdecl Output_DrawPolyFlat(int16_t *obj_ptr);
+00402B50    00000035    -       void __cdecl Output_DrawPolyTrans(int16_t *obj_ptr);
+00402B90    00000035    -       void __cdecl Output_DrawPolyGouraud(int16_t *obj_ptr);
+00402BD0    0000003C    -       void __cdecl Output_DrawPolyGTMap(int16_t *obj_ptr);
+00402C10    0000003C    -       void __cdecl Output_DrawPolyWGTMap(int16_t *obj_ptr);
+00402C50    000000D2    -       bool __cdecl Output_XGenX(int16_t *obj_ptr);
+00402D30    00000146    -       bool __cdecl Output_XGenXG(int16_t *obj_ptr);
+00402E80    00000219    -       bool __cdecl Output_XGenXGUV(int16_t *obj_ptr);
+004030A0    00000284    -       bool __cdecl Output_XGen_XGUVPerspFP(int16_t *obj_ptr);
+00403330    00000FC6    -       void __cdecl Output_GTMap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
+00404300    000014C4    -       void __cdecl Output_WGTmap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
+004057D0    00000037    -       void __cdecl Output_DrawPolyGTMapPersp(int16_t *obj_ptr);
+00405810    00000037    -       void __cdecl Output_DrawPolyWGTMapPersp(int16_t *obj_ptr);
+00405850    0000006C    -       bool __cdecl Output_VisibleZClip(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2);
+004058C0    00000140    -       int32_t __cdecl Output_ZedClipper(int32_t vtx_count, POINT_INFO *pts, VERTEX_INFO *vtx);
+00405A00    00000511    -       int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, VERTEX_INFO *vtx);
+00405F20    00000A5C    -       int16_t *__cdecl Output_InsertObjectGT4(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00406980    00000872    -       int16_t *__cdecl Output_InsertObjectGT3(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00407200    00000422    -       int32_t __cdecl Output_XYGClipper(int32_t vtx_count, VERTEX_INFO *vtx);
+00407630    000003D1    -       int16_t *__cdecl Output_InsertObjectG4(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00407A10    0000031B    -       int16_t *__cdecl Output_InsertObjectG3(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00407D30    000002D0    -       int32_t __cdecl Output_XYClipper(int32_t vtx_count, VERTEX_INFO *vtx);
+00408000    000004A4    -       void __cdecl Output_InsertTrans8(PHD_VBUF *vbuf, int16_t shade);
+004084B0    000000D3    -       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+00408590    000000CB    -       void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00408660    000000B5    -       void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_TEXTURE *texture, PHD_UV *uv0, PHD_UV *uv1, PHD_UV *uv2);
+00408D70    00000140    -       void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
+00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_VBUF *vtx3, PHD_TEXTURE *texture);
+00409300    00000091    -       int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+004093A0    000000AA    -       int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00409450    0000039C    -       int16_t *__cdecl Output_InsertObjectG4_ZBuffered(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
+004098F0    000002D3    -       int16_t *__cdecl Output_InsertObjectG3_ZBuffered(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_TEXTURE *texture, PHD_UV *uv0, PHD_UV *uv1, PHD_UV *uv2, SORT_TYPE sort_type);
+0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
+0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_VBUF *vtx3, PHD_TEXTURE *texture, SORT_TYPE sort_type);
+0040AC80    0000008C    -       int16_t *__cdecl Output_InsertObjectGT4_Sorted(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+0040AD10    0000009F    -       int16_t *__cdecl Output_InsertObjectGT3_Sorted(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+0040ADB0    0000043B    -       int16_t *__cdecl Output_InsertObjectG4_Sorted(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+0040B1F0    00000175    -       void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);
+0040B370    00000343    -       int16_t *__cdecl Output_InsertObjectG3_Sorted(int16_t *obj_ptr, int32_t number, SORT_TYPE sort_type);
+0040B6C0    00000347    -       void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
+0040BA10    0000017F    -       void __cdecl Output_InsertFlatRect_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+0040BB90    0000012B    -       void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(PHD_VBUF *vbuf, int16_t shade);
+0040BE60    0000013D    -       void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+0040BFA0    000000A7    -       void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
+0040C050    000002C7    -       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
+0040C320    00000085    -       void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
+0040C3B0    00000152    -       int16_t *__cdecl Output_InsertRoomSprite(int16_t *obj_ptr, int32_t vtx_count);
+0040C510    00000096    -       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
+0040C5B0    0000009D    -       void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
+0040C650    00000223    -       void __cdecl Output_DrawScaledSpriteC(int16_t *obj_ptr);
 0040C880    00000089    -       sub_40C880
 0040C910    00000200    -       sub_40C910
 0040CB70    00000170    -       sub_40CB70
@@ -1023,7 +1076,7 @@ typedef struct PHD_3DPOS {
 0044D170    00000059    -       sub_44D170
 0044D1D0    00000024    -       sub_44D1D0
 0044D200    0000004A    -       sub_44D200
-0044D250    00000082    -       sub_44D250
+0044D250    00000082    -       void __cdecl HWR_EnableZBuffer(bool z_write_enable, bool z_enable);
 0044D2E0    00000016    -       sub_44D2E0
 0044D310    0000016C    -       sub_44D310
 0044D490    0000008E    -       sub_44D490
@@ -1226,10 +1279,31 @@ typedef struct PHD_3DPOS {
 00457C79    0000001A    -       sub_457C79
 00457C93    0000002C    -       sub_457C93
 
-# VARIABLES
 # Offset    Declaration
-004B2A28    MATRIX *g_MatrixPtr;
-004BCB58    MATRIX g_MatrixStack[];
-004B2AC0    MATRIX g_W2VMatrix;
+# VARIABLES
 0046C304    float g_ViewportAspectRatio = 0.0f;
-00478058    int32_t PhdFarZ;
+0046E310    int32_t g_PhdWinTop;
+0047031C    float g_FltWinBottom;
+00470330    int32_t g_PhdWinCenterX;
+00470334    int32_t g_PhdWinCenterY;
+00470340    float g_FltWinTop;
+00478048    float g_FltWinLeft;
+0047804C    int16_t g_PhdWinMinY;
+00478058    int32_t g_PhdFarZ;
+00478060    int32_t g_PhdWinBottom;
+00478068    int32_t g_PhdWinLeft;
+004B2A00    float g_FltWinCenterX;
+004B2A04    float g_FltWinCenterY;
+004B2A10    int16_t g_PhdWinMinX;
+004B2A28    MATRIX *g_MatrixPtr;
+004B2AC0    MATRIX g_W2VMatrix;
+004BCB58    MATRIX g_MatrixStack[];
+004BF3E0    PHD_VBUF g_PhdVBuf[1500];
+004D6B60    float g_FltWinRight;
+004D6BF8    int32_t PhdWinRight;
+
+004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, SORT_TYPE);
+004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, SORT_TYPE);
+004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, SORT_TYPE);
+004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, SORT_TYPE);
+004B2AF8    void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
