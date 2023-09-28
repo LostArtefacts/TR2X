@@ -40,7 +40,7 @@ typedef struct PHD_3DPOS {
 00401430    000000A8    +       void __cdecl Matrix_RotZ(int16_t rz);
 004014E0    000001DC    +       void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);
 004016C0    000001E7    +       void __cdecl Matrix_RotYXZpack(uint32_t rpack);
-004018B0    000000AB    -       sub_4018B0
+004018B0    000000AB    +       bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
 00401960    0000007A    -       sub_401960
 004019E0    000000F3    -       sub_4019E0
 00401AE0    000000EA    -       sub_401AE0
@@ -1232,3 +1232,4 @@ typedef struct PHD_3DPOS {
 004BCB58    MATRIX g_MatrixStack[];
 004B2AC0    MATRIX g_W2VMatrix;
 0046C304    float g_ViewportAspectRatio = 0.0f;
+00478058    int32_t PhdFarZ;

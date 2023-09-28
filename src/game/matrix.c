@@ -5,6 +5,7 @@
 #include "global/const.h"
 #include "global/types.h"
 #include "global/vars.h"
+#include "util.h"
 
 #include <stdint.h>
 
@@ -269,4 +270,16 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack)
         mptr->_20 = r0 >> W2V_MATRIX;
         mptr->_21 = r1 >> W2V_MATRIX;
     }
+}
+
+bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z)
+{
+    struct MATRIX *mptr = g_MatrixPtr;
+    mptr->_03 += z * mptr->_02 + y * mptr->_01 + x * mptr->_00;
+    mptr->_13 += z * mptr->_12 + y * mptr->_11 + x * mptr->_10;
+    mptr->_23 += z * mptr->_22 + y * mptr->_21 + x * mptr->_20;
+
+    return (
+        ABS(mptr->_03) <= g_PhdFarZ && ABS(mptr->_13) <= g_PhdFarZ
+        && ABS(mptr->_23) <= g_PhdFarZ);
 }

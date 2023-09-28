@@ -2,6 +2,7 @@
 
 #include "global/types.h"
 
+#include <stdbool.h>
 #include <stdint.h>
 
 struct PHD_3DPOS;
@@ -15,3 +16,4 @@ void __cdecl Matrix_RotY(PHD_ANGLE ry);
 void __cdecl Matrix_RotZ(PHD_ANGLE rz);
 void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);
 void __cdecl Matrix_RotYXZpack(uint32_t rpack);
+bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
