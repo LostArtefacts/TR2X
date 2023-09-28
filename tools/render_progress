@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from decimal import Decimal
 from enum import StrEnum, auto
 from fractions import Fraction
+from functools import cache
 from itertools import groupby
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,7 @@ DOCUMENT_MARGIN = Decimal(2)
 GRID_MAX_SQUARES = 50
 GRID_SQUARE_SIZE = Decimal(12)
 GRID_SQUARE_MARGIN = Decimal(3)
+PROGRESS_BAR_SIZE = Decimal(6)
 LEGEND_SQUARE_SIZE = GRID_SQUARE_SIZE
 LEGEND_SQUARE_MARGIN = GRID_SQUARE_MARGIN
 LEGEND_ROW_PADDING = Decimal(3)
@@ -23,7 +25,12 @@ SECTION_MARGIN = GRID_SQUARE_SIZE + LEGEND_MARGIN
 DOCS_DIR = Path(__file__).parent.parent / "docs"
 PROGRESS_TXT_FILE = DOCS_DIR / "progress.txt"
 PROGRESS_SVG_FILE = DOCS_DIR / "progress.svg"
+GRID_WIDTH = (
+    GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+    - GRID_SQUARE_MARGIN
+)
 ZERO = Decimal(0)
+EPSILON = Decimal("0.1")
 
 
 class SumMode(StrEnum):
@@ -39,6 +46,10 @@ class FunctionStatus(StrEnum):
 
 def format_decimal(source: Decimal) -> str:
     return str(source.quantize(Decimal("1.11"))).replace(".00", "")
+
+
+def format_percent(source: Fraction) -> str:
+    return format_decimal(fraction_to_decimal(source) * 100) + "%"
 
 
 def fraction_to_decimal(source: Fraction) -> Decimal:
@@ -243,12 +254,21 @@ def collect_functions() -> Iterable[Function]:
 
 
 class Shape:
-    @property
-    def box(self) -> Box:
-        raise NotImplementedError("not implemented")
+    box: Box = ...
 
     def render(self) -> str:
         raise NotImplementedError("not implemented")
+
+
+class Container(Shape):
+    def __init__(self):
+        self.children: list[Shape] = []
+
+    def __post_init__(self) -> None:
+        self.box = get_common_bbox(self.children)
+
+    def render(self) -> str:
+        return "\n".join(child.render() for child in self.children)
 
 
 def get_common_bbox(shapes: list[Shape]) -> Box:
@@ -269,9 +289,8 @@ class Rectangle(Shape):
     dy: Decimal
     title: str | None = None
 
-    @property
-    def box(self) -> Box:
-        return Box(
+    def __post_init__(self) -> None:
+        self.box = Box(
             x1=self.x,
             y1=self.y,
             x2=self.x + self.dx,
@@ -281,8 +300,8 @@ class Rectangle(Shape):
     def render(self) -> str:
         return (
             f"<rect "
-            f'width="{format_decimal(self.dx)}" '
-            f'height="{format_decimal(self.dy)}" '
+            f'width="{format_decimal(max(self.dx, EPSILON))}" '
+            f'height="{format_decimal(max(self.dy, EPSILON))}" '
             f'x="{format_decimal(self.x)}" '
             f'y="{format_decimal(self.y)}" '
             f'class="{self.class_name}"'
@@ -309,88 +328,189 @@ class Text(Shape):
     x: Decimal
     y: Decimal
     text: str
+    class_name: str | None = None
+    size: Decimal = TEXT_SIZE
 
-    @property
-    def box(self) -> Box:
-        return Box(x1=self.x, y1=self.y, x2=self.x, y2=self.y + TEXT_SIZE)
+    def __post_init__(self) -> None:
+        self.style = ""
+        if self.size != TEXT_SIZE:
+            self.style = f"font-size: {self.size}px; "
+        self.box = Box(x1=self.x, y1=self.y, x2=self.x, y2=self.y + self.size)
 
     def render(self) -> str:
         return (
             f"<text "
-            f'x="{format_decimal(self.x)}" '
-            f'y="{format_decimal(self.y + TEXT_SIZE/2)}">'
+            + (f'class="{self.class_name}" ' if self.class_name else "")
+            + (f'style="{self.style}" ' if self.style else "")
+            + f'x="{format_decimal(self.x)}" '
+            f'y="{format_decimal(self.y + self.size/2)}">'
             f"{self.text}"
             f"</text>"
         )
 
 
-@dataclass
-class LegendText(Shape):
-    x: Decimal
-    y: Decimal
-    class_name: str
-    text: str
+class LegendText(Container):
+    def __init__(self, class_name: str, text: str) -> None:
+        super().__init__()
+        text_shape = Text(
+            x=LEGEND_SQUARE_SIZE + TEXT_MARGIN,
+            y=ZERO,
+            text=text,
+        )
 
-    @property
-    def _square(self) -> Square:
-        return Square(
-            x=self.x,
-            y=self.y + (TEXT_SIZE - LEGEND_SQUARE_SIZE) / 2,
-            class_name=self.class_name,
+        square_shape = Square(
+            x=ZERO,
+            y=(text_shape.size - LEGEND_SQUARE_SIZE) / 2,
+            class_name=class_name,
             size=LEGEND_SQUARE_SIZE,
         )
 
-    @property
-    def _text(self) -> Text:
-        return Text(
-            x=LEGEND_SQUARE_SIZE + TEXT_MARGIN,
-            y=self.y,
-            text=self.text,
-        )
+        self.children.extend([text_shape, square_shape])
 
-    @property
-    def box(self) -> Box:
-        return get_common_bbox([self._square, self._text])
+        self.__post_init__()
+
+
+@dataclass
+class TranslateShape(Container):
+    def __init__(
+        self, children: list[Shape], x: Decimal = ZERO, y: Decimal = ZERO
+    ) -> None:
+        self.children = children
+        self.x = x
+        self.y = y
+
+        super().__post_init__()
+
+        self.box.x1 += self.x
+        self.box.x2 += self.x
+        self.box.y1 += self.y
+        self.box.y2 += self.y
 
     def render(self) -> str:
-        return self._square.render() + self._text.render()
-
-
-def render_grid(all_functions: list[Function], by: Decimal) -> Iterable[Shape]:
-    for i, function in enumerate(all_functions):
-        x = (i % GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-        y = (i // GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-        yield Square(
-            x=x,
-            y=by + y,
-            class_name=function.status.value,
-            title=function.signature,
+        return (
+            f'<g transform="translate({format_decimal(self.x)} {format_decimal(self.y)})">\n'
+            f"{super().render()}\n"
+            "</g>"
         )
 
 
-def render_tree_grid(
-    all_functions: list[Function], box: Box
-) -> Iterable[Shape]:
-    for result in squarify(
-        all_functions, key=lambda function: Decimal(function.size), box=box
-    ):
-        result.x2 = max(ZERO, result.x2 - GRID_SQUARE_MARGIN)
-        result.y2 = max(ZERO, result.y2 - GRID_SQUARE_MARGIN)
+@dataclass
+class LegendSection(Container):
+    def __init__(self, all_functions: list[Function]) -> None:
+        super().__init__()
 
-        yield Rectangle(
-            x=result.x1,
-            y=result.y1,
-            dx=result.dx,
-            dy=result.dy,
-            class_name=result.item.status.value,
-            title=result.item.signature,
+        ready_functions = [
+            func for func in all_functions if func.is_decompiled
+        ]
+        named_functions = [
+            func
+            for func in all_functions
+            if func.is_named and func not in ready_functions
+        ]
+        todo_functions = [
+            func
+            for func in all_functions
+            if func not in ready_functions and func not in named_functions
+        ]
+
+        self.title = Text(x=ZERO, y=0, text="Legend:")
+        self.children.append(self.title)
+
+        y = self.title.size + TEXT_MARGIN
+        for status, text, functions in [
+            (
+                FunctionStatus.DECOMPILED,
+                "Function fully decompiled",
+                ready_functions,
+            ),
+            (
+                FunctionStatus.NAMED,
+                "Function not yet decompiled, but with a known name",
+                named_functions,
+            ),
+            (
+                FunctionStatus.TODO,
+                "Function not yet decompiled, with an unknown name",
+                todo_functions,
+            ),
+        ]:
+            legend_text = TranslateShape(
+                [
+                    LegendText(
+                        class_name=status.value,
+                        text=text,
+                    ),
+                ],
+                y=y,
+            )
+            self.children.append(legend_text)
+            y = legend_text.box.y2 + LEGEND_ROW_PADDING
+
+        self.__post_init__()
+
+
+class FunctionGrid(Container):
+    def __init__(self, all_functions: list[Function]) -> None:
+        super().__init__()
+        for i, function in enumerate(all_functions):
+            x = (i % GRID_MAX_SQUARES) * (
+                GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN
+            )
+            y = (i // GRID_MAX_SQUARES) * (
+                GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN
+            )
+            self.children.append(
+                Square(
+                    x=x,
+                    y=y,
+                    class_name=function.status.value,
+                    title=function.signature,
+                )
+            )
+
+        self.__post_init__()
+
+
+class FunctionTreeGrid(Container):
+    def __init__(self, all_functions: list[Function]) -> None:
+        super().__init__()
+        box = Box(
+            x1=ZERO,
+            y1=ZERO,
+            x2=GRID_WIDTH,
+            y2=(
+                (
+                    (len(all_functions) + GRID_MAX_SQUARES - 1)
+                    // GRID_MAX_SQUARES
+                )
+                * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
+            ),
         )
+
+        for result in squarify(
+            all_functions, key=lambda function: Decimal(function.size), box=box
+        ):
+            result.x2 = max(ZERO, result.x2 - GRID_SQUARE_MARGIN)
+            result.y2 = max(ZERO, result.y2 - GRID_SQUARE_MARGIN)
+
+            self.children.append(
+                Rectangle(
+                    x=result.x1,
+                    y=result.y1,
+                    dx=result.dx,
+                    dy=result.dy,
+                    class_name=result.item.status.value,
+                    title=result.item.signature,
+                )
+            )
+
+        self.__post_init__()
 
 
 def get_function_done_percentage(
-    mode: SumMode,
     chosen_functions: list[Function],
     all_functions: list[Function],
+    mode: SumMode,
 ) -> Fraction:
     match mode:
         case SumMode.COUNT:
@@ -404,189 +524,209 @@ def get_function_done_percentage(
             assert False
 
 
-def render_progress(
+class ProgressBar(Container):
+    def __init__(self, all_functions: list[Function], mode: SumMode) -> None:
+        super().__init__()
+        lx2 = ZERO
+
+        def sorter(function):
+            return function.status.value
+
+        for status_value, group in groupby(
+            sorted(all_functions, key=sorter), sorter
+        ):
+            chosen_functions = list(group)
+            fraction = get_function_done_percentage(
+                chosen_functions, all_functions, mode=mode
+            )
+            ratio = fraction_to_decimal(fraction)
+            lx1 = lx2
+            lx2 += ratio * GRID_WIDTH
+            self.children.append(
+                Rectangle(
+                    x=lx1,
+                    y=ZERO,
+                    dx=lx2 - lx1,
+                    dy=PROGRESS_BAR_SIZE,
+                    class_name=status_value,
+                )
+            )
+
+        self.__post_init__()
+
+
+def get_progress_parts(
     all_functions: list[Function],
-    y1: Decimal,
-    y2: Decimal,
-    x1: Decimal,
-    x2: Decimal,
-    mode: SumMode,
-) -> Iterable[Shape]:
-    x = x1
+) -> dict[FunctionStatus, tuple[list[Function], dict[SumMode, Fraction]]]:
+    function_groups: dict[FunctionStatus, list[Function]] = {
+        status: [] for status in FunctionStatus
+    }
 
-    def sorter(function):
-        return function.status.value
+    for func in all_functions:
+        if func.is_decompiled:
+            function_groups[FunctionStatus.DECOMPILED].append(func)
+        elif func.is_named:
+            function_groups[FunctionStatus.NAMED].append(func)
+        else:
+            function_groups[FunctionStatus.TODO].append(func)
 
-    for status_value, iter_group in groupby(
-        sorted(all_functions, key=sorter), sorter
-    ):
-        group = list(iter_group)
-        ratio = fraction_to_decimal(
-            get_function_done_percentage(mode, group, all_functions)
+    return {
+        status: (
+            function_groups[status],
+            {
+                mode: get_function_done_percentage(
+                    function_groups[status], all_functions, mode=mode
+                )
+                for mode in SumMode
+            },
         )
-        yield Rectangle(
-            x=x,
-            y=y1,
-            dx=x1 + (x2 - x1) * ratio,
-            dy=y2 - y1,
-            class_name=status_value,
+        for status in FunctionStatus
+    }
+
+
+class GridSection(Container):
+    def __init__(
+        self, header: str, all_functions: list[Function], mode: SumMode
+    ) -> None:
+        super().__init__()
+        header_shape = Text(x=ZERO, y=ZERO, text=header)
+
+        y = header_shape.size + TEXT_MARGIN
+        x2 = GRID_WIDTH
+
+        progress_bar = TranslateShape(
+            [ProgressBar(all_functions, mode=mode)], y=y
         )
-        x += (x2 - x1) * ratio
 
+        y = progress_bar.box.y2 + TEXT_MARGIN
 
-def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
-    y = ZERO
+        if mode == SumMode.COUNT:
+            grid = TranslateShape([FunctionGrid(all_functions)], y=y)
+        else:
+            grid = TranslateShape([FunctionTreeGrid(all_functions)], y=y)
 
-    fraction = get_function_done_percentage(
-        mode=SumMode.COUNT,
-        chosen_functions=[
-            function
-            for function in all_functions
-            if function.status == FunctionStatus.DECOMPILED
-        ],
-        all_functions=all_functions,
-    )
-    yield Text(
-        ZERO,
-        y,
-        "Tomb2.exe functions, arranged according to the physical file layout "
-        f"({fraction.numerator} of {fraction.denominator} / "
-        f"{format_decimal(fraction_to_decimal(fraction) * 100)}% functions done):",
-    )
-    y = TEXT_SIZE + TEXT_MARGIN
+        progress_parts = get_progress_parts(all_functions)
 
-    shapes = list(
-        render_progress(
-            all_functions,
-            y,
-            y + GRID_SQUARE_SIZE,
-            ZERO,
-            (
-                GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-                - GRID_SQUARE_MARGIN
+        progress_text = Text(
+            x=GRID_WIDTH,
+            y=Decimal(3),
+            size=Decimal(12),
+            class_name=FunctionStatus.TODO.value,
+            text=(
+                '<tspan text-anchor="end">'
+                + " · ".join(
+                    f'<tspan class="{status.value}">'
+                    + (
+                        f"{progress_parts[status][1][mode].numerator} of "
+                        f"{progress_parts[status][1][mode].denominator} / "
+                        if mode == SumMode.COUNT
+                        else ""
+                    )
+                    + f"{format_percent(progress_parts[status][1][mode])}"
+                    + "</tspan>"
+                    for status in FunctionStatus
+                )
+                + "</tspan>"
             ),
+        )
+
+        self.children.extend(
+            [
+                header_shape,
+                progress_text,
+                progress_bar,
+                grid,
+            ]
+        )
+
+        self.__post_init__()
+
+
+class ProgressSVG(Container):
+    def __init__(self, all_functions: list[Function]) -> None:
+        super().__init__()
+
+        y = ZERO
+
+        section1 = GridSection(
+            header="Tomb2.exe progress according to the physical function order:",
+            all_functions=all_functions,
             mode=SumMode.COUNT,
-        ),
-    )
-    yield from shapes
-    y = max(shape.box.y2 for shape in shapes)
-    y += GRID_SQUARE_MARGIN
-
-    shapes = list(render_grid(all_functions, y))
-    yield from shapes
-
-    y = max(shape.box.y2 for shape in shapes)
-    y += SECTION_MARGIN
-    fraction = get_function_done_percentage(
-        mode=SumMode.BYTES,
-        chosen_functions=[
-            function
-            for function in all_functions
-            if function.status == FunctionStatus.DECOMPILED
-        ],
-        all_functions=all_functions,
-    )
-    yield Text(
-        ZERO,
-        y,
-        "Tomb2.exe functions, arranged according to the function sizes "
-        f"({format_decimal(fraction_to_decimal(fraction) * 100)}% game code done):",
-    )
-    y += TEXT_SIZE + TEXT_MARGIN
-    dx = max(shape.box.x2 for shape in shapes)
-
-    shapes = list(
-        render_progress(
-            all_functions,
-            y,
-            y + GRID_SQUARE_SIZE,
-            ZERO,
-            (
-                GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-                - GRID_SQUARE_MARGIN
-            ),
-            mode=SumMode.BYTES,
-        ),
-    )
-    yield from shapes
-    y = max(shape.box.y2 for shape in shapes)
-    y += GRID_SQUARE_MARGIN
-
-    shapes = list(
-        render_tree_grid(all_functions, Box(x1=ZERO, y1=y, x2=dx, y2=y + y))
-    )
-    yield from shapes
-
-    y = max(shape.box.y2 for shape in shapes)
-    y += SECTION_MARGIN
-
-    ready_functions = [func for func in all_functions if func.is_decompiled]
-    named_functions = [
-        func
-        for func in all_functions
-        if func.is_named and func not in ready_functions
-    ]
-    todo_functions = [
-        func
-        for func in all_functions
-        if func not in ready_functions and func not in named_functions
-    ]
-
-    def sum_size(functions: Iterable[Function]) -> int:
-        return sum(func.size for func in functions)
-
-    yield Text(x=ZERO, y=y, text="Lenged:")
-    y += TEXT_SIZE + TEXT_MARGIN
-    for status, text, functions in [
-        (
-            FunctionStatus.DECOMPILED,
-            "Function fully decompiled",
-            ready_functions,
-        ),
-        (
-            FunctionStatus.NAMED,
-            "Function not yet decompiled, but with a known name",
-            named_functions,
-        ),
-        (
-            FunctionStatus.TODO,
-            "Function not yet decompiled, with an unknown name",
-            todo_functions,
-        ),
-    ]:
-        yield LegendText(
-            x=ZERO,
-            y=y,
-            class_name=status.value,
-            text=f"{text}",
         )
-        y += TEXT_SIZE + LEGEND_ROW_PADDING
+
+        section2 = GridSection(
+            header="Tomb2.exe progress according to the function sizes:",
+            all_functions=all_functions,
+            mode=SumMode.BYTES,
+        )
+
+        legend = LegendSection(all_functions)
+
+        section1_wrap = TranslateShape(
+            [section1], y=legend.box.y2 + SECTION_MARGIN
+        )
+        section2_wrap = TranslateShape(
+            [section2], y=section1_wrap.box.y2 + SECTION_MARGIN
+        )
+        legend_wrap = TranslateShape([legend])
+
+        self.children.extend(
+            [
+                legend_wrap,
+                section1_wrap,
+                section2_wrap,
+            ]
+        )
+
+        super().__post_init__()
+
+    def render(self) -> str:
+        return (
+            f"""<svg version="1.1"
+    viewBox="{format_decimal(-DOCUMENT_MARGIN)} {format_decimal(-DOCUMENT_MARGIN)} {format_decimal(self.box.dx + DOCUMENT_MARGIN * 2)} {format_decimal(self.box.dy + DOCUMENT_MARGIN * 2)}"
+    xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .todo {{
+            --bg: rgba(255, 255, 255, 0.25);
+            --fg: rgba(100, 100, 100, 0.5);
+        }}
+        .named {{
+            --bg: rgba(255, 255, 0, 0.25);
+            --fg: rgba(250, 150, 0, 0.85);
+        }}
+        .decompiled {{
+            --bg: rgba(0, 255, 0, 0.5);
+            --fg: rgba(0, 150, 0, 0.85);
+        }}
+        rect {{
+            fill: var(--bg);
+            stroke: var(--fg);
+            stroke-width: 0.5;
+        }}
+        text {{
+            alignment-baseline: central;
+            font-family: sans-serif;
+            font-size: {TEXT_SIZE}px;
+            fill: var(--fg, black);
+            stroke: none;
+        }}
+        tspan {{
+            alignment-baseline: central;
+            fill: var(--fg, inherit);
+        }}
+    </style>
+"""
+            + super().render()
+            + "\n</svg>"
+        )
 
 
 def main() -> None:
     functions = list(collect_functions())
 
     with PROGRESS_SVG_FILE.open("w") as handle:
-        shapes = list(render_svg(functions))
-        bbox = get_common_bbox(shapes)
-
-        svg = (
-            f"""
-        <svg version="1.1"
-            viewBox="{format_decimal(-DOCUMENT_MARGIN)} {format_decimal(-DOCUMENT_MARGIN)} {format_decimal(bbox.dx + DOCUMENT_MARGIN * 2)} {format_decimal(bbox.dy + DOCUMENT_MARGIN * 2)}"
-            xmlns="http://www.w3.org/2000/svg">
-            <style>
-                .todo {{ fill: rgba(255, 255, 255, 0.25); stroke: rgba(100, 100, 100, 0.5); stroke-width: 0.5; }}
-                .named {{ fill: rgba(255, 255, 0, 0.25); stroke: rgba(250, 150, 0, 0.85); }}
-                .decompiled {{ fill: rgba(0, 255, 0, 0.5); stroke: rgba(0, 150, 0, 0.85); }}
-                text {{ alignment-baseline: central; font-family: sans-serif; font-size: {TEXT_SIZE}px; }}
-            </style>
-        """
-            + "\n".join(shape.render() for shape in shapes)
-            + "</svg>"
-        )
-
-        print(svg, file=handle)
+        svg = ProgressSVG(functions)
+        print(svg.render(), file=handle)
 
 
 if __name__ == "__main__":
