@@ -2,25 +2,27 @@
 import re
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
+from decimal import Decimal
 from enum import StrEnum, auto
 from itertools import groupby
 from pathlib import Path
 from typing import Any
 
-DOCUMENT_MARGIN = 2
+DOCUMENT_MARGIN = Decimal(2)
 GRID_MAX_SQUARES = 50
-GRID_SQUARE_SIZE = 12
-GRID_SQUARE_MARGIN = 3
+GRID_SQUARE_SIZE = Decimal(12)
+GRID_SQUARE_MARGIN = Decimal(3)
 LEGEND_SQUARE_SIZE = GRID_SQUARE_SIZE
 LEGEND_SQUARE_MARGIN = GRID_SQUARE_MARGIN
-LEGEND_ROW_PADDING = 3
-LEGEND_MARGIN = 15
-TEXT_SIZE = 15
-TEXT_MARGIN = 5
+LEGEND_ROW_PADDING = Decimal(3)
+LEGEND_MARGIN = Decimal(15)
+TEXT_SIZE = Decimal(15)
+TEXT_MARGIN = Decimal(5)
 SECTION_MARGIN = GRID_SQUARE_SIZE + LEGEND_MARGIN
 DOCS_DIR = Path(__file__).parent.parent / "docs"
 PROGRESS_TXT_FILE = DOCS_DIR / "progress.txt"
 PROGRESS_SVG_FILE = DOCS_DIR / "progress.svg"
+ZERO = Decimal(0)
 
 
 class SumMode(StrEnum):
@@ -34,26 +36,22 @@ class FunctionStatus(StrEnum):
     DECOMPILED = auto()
 
 
-COLOR_MAP = {
-    FunctionStatus.DECOMPILED: "forestgreen",
-    FunctionStatus.NAMED: "lightpink",
-    FunctionStatus.TODO: "mistyrose",
-}
-
+def format_decimal(source: Decimal) -> str:
+    return str(source.quantize(Decimal('1.11'))).replace('.00', '')
 
 @dataclass
 class Box:
-    x1: float
-    y1: float
-    x2: float
-    y2: float
+    x1: Decimal
+    y1: Decimal
+    x2: Decimal
+    y2: Decimal
 
     @property
-    def dx(self) -> float:
+    def dx(self) -> Decimal:
         return self.x2 - self.x1
 
     @property
-    def dy(self) -> float:
+    def dy(self) -> Decimal:
         return self.y2 - self.y1
 
 
@@ -66,20 +64,20 @@ class Squarify:
     def __init__(
         self,
         items: Iterable[Any],
-        key: Callable[[Any], float],
+        key: Callable[[Any], Decimal],
         box: Box,
         normalize: bool = True,
     ) -> None:
+        self.key: Callable[[Any], Decimal] = key
+
         if normalize:
             total_size = sum(map(key, items))
             total_area = box.dx * box.dy
 
-            def normalized_key(item: Any) -> float:
+            def normalized_key(item: Any) -> Decimal:
                 return key(item) * total_area / total_size
 
             self.key = normalized_key
-        else:
-            self.key = key
 
         self.items = list(sorted(items, key=self.key, reverse=True))
         self.box = box
@@ -146,7 +144,7 @@ class Squarify:
             else self.leftovercol(items)
         )
 
-    def worst_ratio(self, items: Iterable[Any]) -> float:
+    def worst_ratio(self, items: Iterable[Any]) -> Decimal:
         return max(
             max(result.dx / result.dy, result.dy / result.dx)
             for result in self.layout(items)
@@ -179,7 +177,7 @@ class Squarify:
 
 
 def squarify(
-    items: list[Any], key: Callable[[Any], float], box: Box
+    items: list[Any], key: Callable[[Any], Decimal], box: Box
 ) -> Iterable[SquarifyResult]:
     yield from Squarify(items, key, box).run()
 
@@ -216,16 +214,18 @@ def collect_functions() -> Iterable[Function]:
     in_functions = False
     for line in PROGRESS_TXT_FILE.open():
         line = line.strip()
-        if line == '# FUNCTIONS':
+        if line == "# FUNCTIONS":
             in_functions = True
-        elif re.match('^# [A-Z]*$', line):
+        elif re.match("^# [A-Z]*$", line):
             in_functions = False
         if not in_functions:
             continue
 
         if line.startswith("#") or not line:
             continue
-        offset, size, flags, func_signature = re.split(r"\s+", line, maxsplit=3)
+        offset, size, flags, func_signature = re.split(
+            r"\s+", line, maxsplit=3
+        )
         if not offset.replace("-", ""):
             continue
         yield Function(
@@ -256,11 +256,11 @@ def get_common_bbox(shapes: list[Shape]) -> Box:
 
 @dataclass
 class Rectangle(Shape):
-    x: float
-    y: float
+    x: Decimal
+    y: Decimal
     class_name: str
-    dx: float
-    dy: float
+    dx: Decimal
+    dy: Decimal
     title: str | None = None
 
     @property
@@ -275,10 +275,10 @@ class Rectangle(Shape):
     def render(self) -> str:
         return (
             f"<rect "
-            f'width="{self.dx:.02f}" '
-            f'height="{self.dy:.02f}" '
-            f'x="{self.x:.02f}" '
-            f'y="{self.y:.02f}" '
+            f'width="{format_decimal(self.dx)}" '
+            f'height="{format_decimal(self.dy)}" '
+            f'x="{format_decimal(self.x)}" '
+            f'y="{format_decimal(self.y)}" '
             f'class="{self.class_name}"'
             + (f"><title>{self.title}</title></rect>" if self.title else "/>")
         )
@@ -287,10 +287,10 @@ class Rectangle(Shape):
 class Square(Rectangle):
     def __init__(
         self,
-        x: float,
-        y: float,
+        x: Decimal,
+        y: Decimal,
         class_name: str,
-        size: float = GRID_SQUARE_SIZE,
+        size: Decimal = GRID_SQUARE_SIZE,
         title: str | None = None,
     ) -> None:
         super().__init__(
@@ -300,8 +300,8 @@ class Square(Rectangle):
 
 @dataclass
 class Text(Shape):
-    x: float
-    y: float
+    x: Decimal
+    y: Decimal
     text: str
 
     @property
@@ -311,7 +311,8 @@ class Text(Shape):
     def render(self) -> str:
         return (
             f"<text "
-            f'x="{self.x:.02f}" y="{self.y + TEXT_SIZE/2:.02f}">'
+            f'x="{format_decimal(self.x)}" '
+            f'y="{format_decimal(self.y + TEXT_SIZE/2)}">'
             f"{self.text}"
             f"</text>"
         )
@@ -319,8 +320,8 @@ class Text(Shape):
 
 @dataclass
 class LegendText(Shape):
-    x: float
-    y: float
+    x: Decimal
+    y: Decimal
     class_name: str
     text: str
 
@@ -349,7 +350,7 @@ class LegendText(Shape):
         return self._square.render() + self._text.render()
 
 
-def render_grid(all_functions: list[Function], by: float) -> Iterable[Shape]:
+def render_grid(all_functions: list[Function], by: Decimal) -> Iterable[Shape]:
     for i, function in enumerate(all_functions):
         x = (i % GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
         y = (i // GRID_MAX_SQUARES) * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
@@ -365,10 +366,10 @@ def render_tree_grid(
     all_functions: list[Function], box: Box
 ) -> Iterable[Shape]:
     for result in squarify(
-        all_functions, key=lambda function: float(function.size), box=box
+        all_functions, key=lambda function: Decimal(function.size), box=box
     ):
-        result.x2 = max(0, result.x2 - GRID_SQUARE_MARGIN)
-        result.y2 = max(0, result.y2 - GRID_SQUARE_MARGIN)
+        result.x2 = max(ZERO, result.x2 - GRID_SQUARE_MARGIN)
+        result.y2 = max(ZERO, result.y2 - GRID_SQUARE_MARGIN)
 
         yield Rectangle(
             x=result.x1,
@@ -382,10 +383,10 @@ def render_tree_grid(
 
 def render_progress(
     all_functions: list[Function],
-    y1: int,
-    y2: int,
-    x1: int,
-    x2: int,
+    y1: Decimal,
+    y2: Decimal,
+    x1: Decimal,
+    x2: Decimal,
     mode: SumMode,
 ) -> Iterable[Shape]:
     x = x1
@@ -393,17 +394,17 @@ def render_progress(
     def sorter(function):
         return function.status.value
 
-    for status_value, group in groupby(
+    for status_value, iter_group in groupby(
         sorted(all_functions, key=sorter), sorter
     ):
-        group = list(group)
+        group = list(iter_group)
         match mode:
             case SumMode.COUNT:
-                ratio = len(group) / len(all_functions)
+                ratio = Decimal(len(group)) / Decimal(len(all_functions))
             case SumMode.BYTES:
-                ratio = sum(function.size for function in group) / sum(
-                    function.size for function in all_functions
-                )
+                ratio = Decimal(
+                    sum(function.size for function in group)
+                ) / Decimal(sum(function.size for function in all_functions))
             case _:
                 assert False
         yield Rectangle(
@@ -417,9 +418,9 @@ def render_progress(
 
 
 def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
-    y = 0.0
+    y = ZERO
     yield Text(
-        0,
+        ZERO,
         y,
         "Tomb2.exe functions, arranged according to the physical file layout:",
     )
@@ -430,7 +431,7 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
             all_functions,
             y,
             y + GRID_SQUARE_SIZE,
-            0,
+            ZERO,
             (
                 GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
                 - GRID_SQUARE_MARGIN
@@ -448,18 +449,17 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
     y = max(shape.box.y2 for shape in shapes)
     y += SECTION_MARGIN
     yield Text(
-        0, y, "Tomb2.exe functions, arranged according to the function sizes:"
+        ZERO, y, "Tomb2.exe functions, arranged according to the function sizes:"
     )
     y += TEXT_SIZE + TEXT_MARGIN
     dx = max(shape.box.x2 for shape in shapes)
-
 
     shapes = list(
         render_progress(
             all_functions,
             y,
             y + GRID_SQUARE_SIZE,
-            0,
+            ZERO,
             (
                 GRID_MAX_SQUARES * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
                 - GRID_SQUARE_MARGIN
@@ -471,9 +471,8 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
     y = max(shape.box.y2 for shape in shapes)
     y += GRID_SQUARE_MARGIN
 
-
     shapes = list(
-        render_tree_grid(all_functions, Box(x1=0, y1=y, x2=dx, y2=y + y))
+        render_tree_grid(all_functions, Box(x1=ZERO, y1=y, x2=dx, y2=y + y))
     )
     yield from shapes
 
@@ -495,7 +494,7 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
     def sum_size(functions: Iterable[Function]) -> int:
         return sum(func.size for func in functions)
 
-    yield Text(x=0, y=y, text="Lenged:")
+    yield Text(x=ZERO, y=y, text="Lenged:")
     y += TEXT_SIZE + TEXT_MARGIN
     for status, text, functions in [
         (
@@ -515,7 +514,7 @@ def render_svg(all_functions: list[Function]) -> Iterable[Shape]:
         ),
     ]:
         yield LegendText(
-            x=0,
+            x=ZERO,
             y=y,
             class_name=status.value,
             text=f"{text}",
@@ -533,7 +532,7 @@ def main() -> None:
         svg = (
             f"""
         <svg version="1.1"
-            viewBox="-{DOCUMENT_MARGIN} -{DOCUMENT_MARGIN} {bbox.dx + DOCUMENT_MARGIN * 2} {bbox.dy + DOCUMENT_MARGIN * 2}"
+            viewBox="{format_decimal(-DOCUMENT_MARGIN)} {format_decimal(-DOCUMENT_MARGIN)} {format_decimal(bbox.dx + DOCUMENT_MARGIN * 2)} {format_decimal(bbox.dy + DOCUMENT_MARGIN * 2)}"
             xmlns="http://www.w3.org/2000/svg">
             <style>
                 .todo {{ fill: none; stroke: rgba(100, 100, 100, 0.5); stroke-width: 0.5; }}
