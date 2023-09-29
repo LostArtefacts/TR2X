@@ -26,6 +26,11 @@
             fill: var(--fg, black);
             stroke: none;
         }
+        @media (prefers-color-scheme: dark) {
+          text {
+            fill: var(--fg, white);
+          }
+        }
         tspan {
             alignment-baseline: central;
             fill: var(--fg, inherit);
