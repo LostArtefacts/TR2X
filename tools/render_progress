@@ -621,13 +621,12 @@ class GridSection(Container):
                 '<tspan text-anchor="end">'
                 + " · ".join(
                     f'<tspan class="{status.value}">'
+                    + f"{format_percent(progress_parts[status][1][mode])}"
                     + (
-                        f"{progress_parts[status][1][mode].numerator} of "
-                        f"{progress_parts[status][1][mode].denominator} / "
+                        f" ({progress_parts[status][1][mode].numerator})"
                         if mode == SumMode.COUNT
                         else ""
                     )
-                    + f"{format_percent(progress_parts[status][1][mode])}"
                     + "</tspan>"
                     for status in FunctionStatus
                 )
