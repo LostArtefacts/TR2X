@@ -38,16 +38,19 @@ class SumMode(StrEnum):
 
 
 class FunctionStatus(StrEnum):
-    TODO = auto()
-    KNOWN = auto()
     DECOMPILED = auto()
+    KNOWN = auto()
+    TODO = auto()
+    UNUSED = auto()
 
 
 @dataclass
 class MyFraction:
     """Fraction that doesn't normalize (eg 8/12 doesn't become 2/3)"""
+
     numerator: int
     denominator: int
+
 
 def format_decimal(source: Decimal) -> str:
     return str(source.quantize(Decimal("1.11"))).replace(".00", "")
@@ -213,11 +216,15 @@ class Function:
 
     @property
     def is_decompiled(self) -> bool:
-        return "+" in self.flags or "x" in self.flags
+        return "+" in self.flags
 
     @property
     def is_called(self) -> bool:
         return "*" in self.flags
+
+    @property
+    def is_unused(self) -> bool:
+        return "x" in self.flags
 
     @property
     def is_known(self) -> bool:
@@ -227,6 +234,8 @@ class Function:
     def status(self) -> FunctionStatus:
         if self.is_decompiled:
             return FunctionStatus.DECOMPILED
+        elif self.is_unused:
+            return FunctionStatus.UNUSED
         elif self.is_known:
             return FunctionStatus.KNOWN
         return FunctionStatus.TODO
@@ -404,49 +413,24 @@ class LegendSection(Container):
     def __init__(self, all_functions: list[Function]) -> None:
         super().__init__()
 
-        ready_functions = [
-            func for func in all_functions if func.is_decompiled
-        ]
-        known_functions = [
-            func
-            for func in all_functions
-            if func.is_known and func not in ready_functions
-        ]
-        todo_functions = [
-            func
-            for func in all_functions
-            if func not in ready_functions and func not in known_functions
-        ]
+        functions_status_map = get_functions_status_map(all_functions)
 
         self.title = Text(x=ZERO, y=0, text="Legend:")
         self.children.append(self.title)
 
+        captions = {
+            FunctionStatus.DECOMPILED: "Function fully decompiled",
+            FunctionStatus.UNUSED: "Function not used by the game",
+            FunctionStatus.KNOWN: "Function not yet decompiled, but with a known signature",
+            FunctionStatus.TODO: "Function not yet decompiled, with an unknown signature",
+        }
+
         y = self.title.size + TEXT_MARGIN
-        for status, text, functions in [
-            (
-                FunctionStatus.DECOMPILED,
-                "Function fully decompiled",
-                ready_functions,
-            ),
-            (
-                FunctionStatus.KNOWN,
-                "Function not yet decompiled, but with a known signature",
-                known_functions,
-            ),
-            (
-                FunctionStatus.TODO,
-                "Function not yet decompiled, with an unknown signature",
-                todo_functions,
-            ),
-        ]:
+        for status in FunctionStatus:
+            caption = captions[status]
+            functions = functions_status_map[status]
             legend_text = TranslateShape(
-                [
-                    LegendText(
-                        class_name=status.value,
-                        text=text,
-                    ),
-                ],
-                y=y,
+                [LegendText(class_name=status.value, text=caption)], y=y
             )
             self.children.append(legend_text)
             y = legend_text.box.y2 + LEGEND_ROW_PADDING
@@ -535,12 +519,16 @@ class ProgressBar(Container):
         lx2 = ZERO
 
         def sorter(function):
-            return function.status.value
+            return list(FunctionStatus).index(function.status)
 
         for status_value, group in groupby(
             sorted(all_functions, key=sorter), sorter
         ):
             chosen_functions = list(group)
+            if not chosen_functions:
+                continue
+
+            status = chosen_functions[0].status
             fraction = get_function_done_percentage(
                 chosen_functions, all_functions, mode=mode
             )
@@ -553,34 +541,35 @@ class ProgressBar(Container):
                     y=ZERO,
                     dx=lx2 - lx1,
                     dy=PROGRESS_BAR_SIZE,
-                    class_name=status_value,
+                    class_name=status,
                 )
             )
 
         self.__post_init__()
 
 
+def get_functions_status_map(
+    all_functions: list[Function],
+) -> dict[FunctionStatus, list[Function]]:
+    functions_status_map: dict[FunctionStatus, list[Function]] = {
+        status: [] for status in FunctionStatus
+    }
+    for function in all_functions:
+        functions_status_map[function.status].append(function)
+    return functions_status_map
+
+
 def get_progress_parts(
     all_functions: list[Function],
 ) -> dict[FunctionStatus, tuple[list[Function], dict[SumMode, MyFraction]]]:
-    function_groups: dict[FunctionStatus, list[Function]] = {
-        status: [] for status in FunctionStatus
-    }
-
-    for func in all_functions:
-        if func.is_decompiled:
-            function_groups[FunctionStatus.DECOMPILED].append(func)
-        elif func.is_known:
-            function_groups[FunctionStatus.KNOWN].append(func)
-        else:
-            function_groups[FunctionStatus.TODO].append(func)
+    functions_status_map = get_functions_status_map(all_functions)
 
     return {
         status: (
-            function_groups[status],
+            functions_status_map[status],
             {
                 mode: get_function_done_percentage(
-                    function_groups[status], all_functions, mode=mode
+                    functions_status_map[status], all_functions, mode=mode
                 )
                 for mode in SumMode
             },
@@ -706,10 +695,17 @@ class ProgressSVG(Container):
             --bg: rgba(0, 255, 0, 0.5);
             --fg: rgba(0, 150, 0, 0.85);
         }}
+        .unused {{
+            --bg: rgba(255, 0, 0, 0.05);
+            --fg: rgba(250, 0, 0, 0.5);
+        }}
         rect {{
             fill: var(--bg);
             stroke: var(--fg);
             stroke-width: 0.5;
+        }}
+        rect.unused {{
+            fill: url("#unused-cross");
         }}
         text {{
             alignment-baseline: central;
@@ -728,6 +724,11 @@ class ProgressSVG(Container):
             fill: var(--fg, inherit);
         }}
     </style>
+    <defs>
+        <pattern id='unused-cross' x='0' y='0' width='100%' height='100%' viewBox='0 0 12 12' preserveAspectRatio='none'>
+            <path d='M0,0L12,12M0,12L12,0' stroke-width='0.5' stroke='red'/>
+        </pattern>
+    </defs>
 """
             + super().render()
             + "\n</svg>"
