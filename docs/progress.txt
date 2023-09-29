@@ -31,6 +31,39 @@ typedef struct PHD_3DPOS {
     int16_t z_rot;
 } PHD_3DPOS;
 
+typedef struct SPHERE {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int32_t r;
+} SPHERE;
+
+typedef struct TEXTSTRING {
+    uint32_t flags;
+    uint16_t text_flags;
+    uint16_t bgnd_flags;
+    uint16_t outl_flags;
+    int16_t xpos;
+    int16_t ypos;
+    int16_t zpos;
+    int16_t letter_spacing;
+    int16_t word_spacing;
+    int16_t flash_rate;
+    int16_t flash_count;
+    int16_t bgnd_colour;
+    uint16_t *bgnd_gour;
+    int16_t outl_colour;
+    uint16_t *outl_gour;
+    int16_t bgnd_size_x;
+    int16_t bgnd_size_y;
+    int16_t bgnd_off_x;
+    int16_t bgnd_off_y;
+    int16_t bgnd_off_z;
+    int32_t scale_h;
+    int32_t scale_v;
+    char *string;
+} TEXTSTRING;
+
 typedef struct PHD_VBUF {
     float xv;
     float yv;
@@ -45,14 +78,14 @@ typedef struct PHD_VBUF {
 } PHD_VBUF;
 
 typedef struct PHD_UV {
-	uint16_t u;
-	uint16_t v;
+    uint16_t u;
+    uint16_t v;
 } PHD_UV;
 
 typedef struct PHD_TEXTURE {
-	uint16_t drawtype;
-	uint16_t tpage;
-	PHD_UV uv[4];
+    uint16_t draw_type;
+    uint16_t tex_page;
+    PHD_UV uv[4];
 } PHD_TEXTURE;
 
 typedef struct POINT_INFO {
@@ -157,6 +190,33 @@ typedef struct FLOOR_INFO {
     int8_t ceiling;
 } FLOOR_INFO;
 
+typedef struct WEAPON_INFO {
+    int16_t lock_angles[4];
+    int16_t left_angles[4];
+    int16_t right_angles[4];
+    int16_t aim_speed;
+    int16_t shot_accuracy;
+    int32_t gun_height;
+    int32_t damage;
+    int32_t target_dist;
+    int16_t recoil_frame;
+    int16_t flash_time;
+    int16_t sample_num;
+} WEAPON_INFO;
+
+typedef struct FX_INFO {
+    struct PHD_3DPOS pos;
+    int16_t room_num;
+    int16_t object_num;
+    int16_t next_fx;
+    int16_t next_active;
+    int16_t speed;
+    int16_t fallspeed;
+    int16_t frame_num;
+    int16_t counter;
+    int16_t shade;
+} FX_INFO;
+
 typedef struct AI_INFO {
     int16_t zone_num;
     int16_t enemy_zone;
@@ -209,6 +269,101 @@ typedef struct BITE_INFO {
     int32_t mesh_idx;
 } BITE_INFO;
 
+typedef struct ANIM_STRUCT {
+    int16_t *frame_ptr;
+    int16_t interpolation;
+    int16_t current_anim_state;
+    int32_t velocity;
+    int32_t acceleration;
+    int16_t frame_base;
+    int16_t frame_end;
+    int16_t jump_anim_num;
+    int16_t jump_frame_num;
+    int16_t num_changes;
+    int16_t change_idx;
+    int16_t num_commands;
+    int16_t command_idx;
+} ANIM_STRUCT;
+
+typedef struct DOOR_INFO {
+    int16_t room;
+    int16_t x;
+    int16_t y;
+    int16_t z;
+    struct POS_3D vertex[4];
+} DOOR_INFO;
+
+typedef struct DOOR_INFOS {
+    int16_t count;
+    struct DOOR_INFO door[];
+} DOOR_INFOS;
+
+typedef struct LIGHT_INFO {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t intensity1;
+    int16_t intensity2;
+    int falloff1;
+    int falloff2;
+} LIGHT_INFO;
+
+typedef struct MESH_INFO {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t y_rot;
+    int16_t shade1;
+    int16_t shade2;
+    int16_t static_num;
+} MESH_INFO;
+
+
+typedef struct ROOM_INFO {
+    int16_t *data;
+    struct DOOR_INFOS *doors;
+    struct FLOOR_INFO *floor;
+    struct LIGHT_INFO *light;
+    struct MESH_INFO *mesh;
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int32_t min_floor;
+    int32_t max_ceiling;
+    int16_t x_size;
+    int16_t y_size;
+    int16_t ambient1;
+    int16_t ambient2;
+    int16_t light_mode;
+    int16_t num_lights;
+    int16_t num_meshes;
+    int16_t bound_left;
+    int16_t bound_right;
+    int16_t bound_top;
+    int16_t bound_bottom;
+    uint16_t bound_active;
+    int16_t left;
+    int16_t right;
+    int16_t top;
+    int16_t bottom;
+    int16_t item_num;
+    int16_t fx_num;
+    int16_t flipped_room;
+    uint16_t flags;
+} ROOM_INFO;
+
+typedef struct CREATURE_INFO {
+    int16_t head_rotation;
+    int16_t neck_rotation;
+    int16_t maximum_turn;
+    uint16_t flags;
+    int16_t item_num;
+    enum MOOD_TYPE mood;
+    struct LOT_INFO lot;
+    struct PHD_VECTOR target;
+    struct ITEM_INFO *enemy;
+} CREATURE_INFO;
+
 # FUNCTIONS
 #   Flags:
 #   - to do
@@ -219,7 +374,7 @@ typedef struct BITE_INFO {
 # 3dsystem/3d_gen.c
 00401000    000001D0    +       void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);
 004011D0    00000072    +       void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);
-00401250    00000078    -       void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);
+00401250    00000078    -       void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t *dest);
 004012D0    000000AA    +       void __cdecl Matrix_RotX(int16_t rx);
 00401380    000000A8    +       void __cdecl Matrix_RotY(int16_t ry);
 00401430    000000A8    +       void __cdecl Matrix_RotZ(int16_t rz);
@@ -315,7 +470,7 @@ typedef struct BITE_INFO {
 # game/boat.c
 0040CB30    0000003C    -       void __cdecl Boat_Initialise(int16_t item_num);
 0040CB70    00000170    -       int32_t __cdecl Boat_CheckGeton(int16_t item_num, struct COLL_INFO *coll);
-0040CCE0    0000015E    -       void __cdecl Boat_Collision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
+0040CCE0    0000015E    -       void __cdecl Boat_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
 0040CE40    000000F8    -       int32_t __cdecl Boat_TestWaterHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);
 0040CF40    000001C1    -       void __cdecl Boat_DoShift(int32_t boat_num);
 0040D110    00000174    -       void __cdecl Boat_DoWakeEffect(struct ITEM_INFO *boat);
@@ -348,7 +503,7 @@ typedef struct BITE_INFO {
 0040FF60    0000004E    -       void __cdecl Creature_Neck(struct ITEM_INFO *item, int16_t required);
 0040FFB0    000000A8    -       void __cdecl Creature_Float(int16_t item_num);
 00410060    00000050    -       void __cdecl Creature_Underwater(struct ITEM_INFO *item, int32_t depth);
-004100B0    0000005C    -       int16_t __cdecl Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_num));
+004100B0    0000005C    -       int16_t __cdecl Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t y_rot, int16_t room_num));
 00410110    00000131    -       int32_t __cdecl Creature_Vault(int16_t item_num, int16_t angle, int32_t vault, int32_t shift);
 00410250    0000016F    -       void __cdecl Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);
 004103C0    000001DB    -       void __cdecl Creature_GetBaddieTarget(int16_t item_num, int32_t goody);
@@ -368,645 +523,732 @@ typedef struct BITE_INFO {
 00411AA0    000004A9    -       void __cdecl Camera_Update(void);
 00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);
 00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
-00412080    00000093    -       void __cdecl Misc_InitCinematicRooms(void);
+00412080    00000093    -R      void __cdecl Misc_InitCinematicRooms(void);
 00412120    0000016F    -       int32_t __cdecl Game_Cutscene_Control(int32_t nframes);
 00412290    00000138    -       void __cdecl Camera_UpdateCutscene(void);
-004123D0    0000007F    -       int32_t __cdecl Misc_GetCinematicRoom(int32_t x, int32_t y, int32_t z);
+004123D0    0000007F    -R      int32_t __cdecl GetCinematicRoom(int32_t x, int32_t y, int32_t z);
 00412450    000000DC    -       void __cdecl CutscenePlayer_Control(int16_t item_num);
 00412530    00000096    -       void __cdecl Lara_Control_Cutscene(int16_t item_num);
-004125D0    0000008F    -       void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
-00412660    00000033    -       void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);
+004125D0    0000008F    -R      void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
+00412660    00000033    -R      void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);
 004126A0    00000245    -       void __cdecl Camera_LoadCutsceneFrame(void);
 
-# ???
-004128F0    0000067C    -       sub_4128F0
-00412FB0    0000002F    -       sub_412FB0
-00412FE0    000003D2    -       sub_412FE0
-004133D0    000000C8    -       sub_4133D0
-004134A0    00000055    -       sub_4134A0
-00413500    00000037    -       sub_413500
-00413540    0000005D    -       sub_413540
-004135A0    00000099    -       sub_4135A0
-00413640    00000195    -       sub_413640
-004137E0    00000079    -       sub_4137E0
-00413860    00000078    -       sub_413860
-004138E0    00000055    -       sub_4138E0
-00413940    00000077    -       sub_413940
-004139C0    00000067    -       sub_4139C0
-00413A30    00000306    -       sub_413A30
-00413D40    000000CB    -       sub_413D40
-00413E10    00000137    -       sub_413E10
-00413F50    0000013B    -       sub_413F50
-00414090    00000187    -       sub_414090
-00414220    0000016E    -       sub_414220
-00414390    00000356    -       sub_414390
+# game/collide.c
+004128F0    0000067C    -       void __cdecl Collide_GetCollisionInfo(struct COLL_INFO *coll, int32_t xpos, int32_t ypos, int32_t zpos, int16_t room_num, int32_t obj_height);
+00412FB0    0000002F    -       int32_t __cdecl Room_FindGridShift(int32_t src, int32_t dst);
+00412FE0    000003D2    -       int32_t __cdecl Collide_CollideStaticObjects(struct COLL_INFO *coll, int32_t x, int32_t y, int32_t z, int16_t room_num, int32_t hite);
+004133D0    000000C8    -       void __cdecl Room_GetNearbyRooms(int32_t x, int32_t y, int32_t z, int32_t r, int32_t h, int16_t room_num);
+004134A0    00000055    -       void __cdecl Room_GetNewRoom(int32_t x, int32_t y, int32_t z, int16_t room_num);
+00413500    00000037    -       void __cdecl Item_ShiftCol(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00413540    0000005D    -       void __cdecl Item_UpdateRoom(struct ITEM_INFO *item, int32_t height);
+004135A0    00000099    -       int16_t __cdecl Room_GetTiltType(struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);
+00413640    00000195    -       void __cdecl Lara_BaddieCollision(struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+004137E0    00000079    -R      void __cdecl Misc_EffectSpaz(struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00413860    00000078    -       void __cdecl Creature_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+004138E0    00000055    -       void __cdecl Object_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00413940    00000077    -       void __cdecl Door_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+004139C0    00000067    -       void __cdecl Object_CollisionTrap(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00413A30    00000306    -       void __cdecl Lara_Push(struct ITEM_INFO *item, struct ITEM_INFO *lara_item, struct COLL_INFO *coll, int32_t spaz_on, int32_t big_push);
+00413D40    000000CB    -       int32_t __cdecl Item_TestBoundsCollide(struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item, int32_t radius);
+00413E10    00000137    -       int32_t __cdecl Item_TestPosition(int16_t *bounds, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);
+00413F50    0000013B    -       void __cdecl Item_AlignPosition(struct PHD_VECTOR *vec, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);
+00414090    00000187    -       int32_t __cdecl Lara_MovePosition(struct PHD_VECTOR *vec, struct ITEM_INFO *item, struct ITEM_INFO *lara_item);
+00414220    0000016E    -R      int32_t __cdecl Misc_Move3DPosTo3DPos(struct PHD_3DPOS *src_pos, struct PHD_3DPOS *dest_pos, int32_t velocity, PHD_ANGLE ang_add);
+
+# game/control.c
+00414390    00000356    -       int32_t __cdecl Game_Control(int32_t nframes, int32_t demo_mode);
 004146F0    00000338    -       void __cdecl Item_Animate(struct ITEM_INFO *item);
-00414A60    000000AB    -       sub_414A60
-00414B10    0000005F    -       sub_414B10
+00414A60    000000AB    -       int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, ANIM_STRUCT *anim);
+00414B10    0000005F    -       void __cdecl Item_Translate(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z);
 00414B70    00000198    -       struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);
-00414D10    00000168    -       sub_414D10
+00414D10    00000168    -       int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00414E80    00000265    -       int32_t __cdecl Room_GetHeight(struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);
-00415100    000000E7    -       sub_415100
-004151F0    00000690    -       sub_4151F0
-004158D0    00000055    -       sub_4158D0
-00415930    0000023D    -       sub_415930
-00415B90    0000004E    -       sub_415B90
-00415BE0    000000A0    -       sub_415BE0
-00415C80    000002EB    -       sub_415C80
-00415F70    000002EC    -       sub_415F70
-00416260    000000DA    -       sub_416260
-00416340    000002FE    -       sub_416340
-00416640    000000B3    -       sub_416640
-00416700    00000096    -       sub_416700
-004167A0    0000005C    -       sub_4167A0
-00416800    00000024    -       sub_416800
-00416830    000000DA    -       sub_416830
-00416910    00000059    -       sub_416910
-00416970    000001B0    -       sub_416970
-00416B20    000000CD    -       sub_416B20
-00416BF0    0000002D    -       sub_416BF0
-00416CA0    00000106    -       sub_416CA0
-00416DB0    00000389    -       sub_416DB0
-00417160    00000387    -       sub_417160
-00417510    0000027E    -       sub_417510
-00417930    000000D9    -       sub_417930
-00417A10    000000AB    -       sub_417A10
-00417AC0    000002ED    -       sub_417AC0
-00417DB0    000000D9    -       sub_417DB0
-00417E90    00000519    -       sub_417E90
-004183E0    00000114    -       sub_4183E0
-00418500    00000193    -       sub_418500
-004186A0    00000287    -       sub_4186A0
-00418950    00000037    -       sub_418950
-00418990    00000037    -       sub_418990
-004189D0    000002B0    -       sub_4189D0
-00418C80    000001C6    -       sub_418C80
-00418E50    0000037F    -       sub_418E50
-004191D0    000003D2    -       sub_4191D0
-004195B0    000000B4    -       sub_4195B0
-00419670    00000218    -       sub_419670
-00419890    00000147    -       sub_419890
-004199E0    00000083    -       sub_4199E0
-00419A70    00000378    -       sub_419A70
-00419DF0    00000D02    -       sub_419DF0
-0041AB20    00000BC6    -       sub_41AB20
-0041B710    00000034    -       sub_41B710
-0041B750    00000022    -       sub_41B750
-0041B780    00000027    -       sub_41B780
-0041B7B0    00000031    -       sub_41B7B0
-0041B7F0    00000031    -       sub_41B7F0
-0041B830    00000031    -       sub_41B830
-0041B870    00000041    -       sub_41B870
-0041B8C0    00000047    -       sub_41B8C0
-0041B910    00000041    -       sub_41B910
-0041B960    0000003D    -       sub_41B960
-0041B9A0    000000A1    -       sub_41B9A0
-0041BA50    0000002A    -       sub_41BA50
-0041BA80    000001A5    -       sub_41BA80
-0041BC30    000000FC    -       sub_41BC30
-0041BD30    0000014B    -       sub_41BD30
-0041BEA0    000000E8    -       sub_41BEA0
-0041BF90    00000092    -       sub_41BF90
-0041C030    0000007C    -       sub_41C030
-0041C0B0    00000035    -       sub_41C0B0
-0041C0F0    00000048    -       sub_41C0F0
-0041C140    0000019D    -       sub_41C140
-0041C2E0    000001E1    -       sub_41C2E0
-0041C4D0    0000008C    -       sub_41C4D0
-0041C560    00000068    -       sub_41C560
-0041C5D0    00000059    -       sub_41C5D0
-0041C630    000000A4    -       sub_41C630
-0041C6E0    00000082    -       sub_41C6E0
-0041C770    0000007F    -       sub_41C770
-0041C7F0    00000072    -       sub_41C7F0
-0041C870    00000030    -       sub_41C870
-0041C8A0    00000064    -       sub_41C8A0
-0041C910    00000078    -       sub_41C910
-0041C990    000000F3    -       sub_41C990
-0041CA90    000000C2    -       sub_41CA90
-0041CB60    00000071    -       sub_41CB60
-0041CBE0    000000AE    -       sub_41CBE0
-0041CD20    000000DE    -       sub_41CD20
-0041CF40    0000000B    -       sub_41CF40
-0041CF50    00000016    -       sub_41CF50
-0041CF70    00000096    -       sub_41CF70
-0041D010    00000040    -       sub_41D010
-0041D050    0000001C    -       sub_41D050
-0041D070    0000008F    -       sub_41D070
-0041D100    00000023    -       sub_41D100
-0041D130    0000002C    -       sub_41D130
-0041D160    00000023    -       sub_41D160
-0041D190    0000001C    -       sub_41D190
-0041D1B0    0000001C    -       sub_41D1B0
-0041D1D0    0000001C    -       sub_41D1D0
-0041D1F0    0000001C    -       sub_41D1F0
-0041D290    00000067    -       sub_41D290
-0041D300    0000005D    -       sub_41D300
-0041D360    00000059    -       sub_41D360
-0041D3C0    00000068    -       sub_41D3C0
-0041D430    00000128    -       sub_41D430
-0041D560    000000F0    -       sub_41D560
-0041D650    0000012D    -       sub_41D650
-0041D780    0000000A    -       sub_41D780
-0041D790    00000005    -       sub_41D790
-0041D7A0    00000043    -       sub_41D7A0
-0041D7F0    00000043    -       sub_41D7F0
-0041D840    00000063    -       sub_41D840
-0041D8B0    00000063    -       sub_41D8B0
-0041D920    0000009A    -       sub_41D920
-0041D9C0    00000009    -       sub_41D9C0
-0041D9D0    00000016    -       sub_41D9D0
-0041D9F0    00000009    -       sub_41D9F0
-0041DA00    0000000B    -       sub_41DA00
-0041DA10    00000005    -       sub_41DA10
-0041DA20    00000024    -       sub_41DA20
-0041DA50    0000001F    -       sub_41DA50
-0041DA70    00000017    -       sub_41DA70
-0041DA90    000000B2    -       sub_41DA90
-0041DB50    00000076    -       sub_41DB50
-0041DBD0    0000040B    -       sub_41DBD0
-0041E000    000004A1    -       sub_41E000
-0041E4D0    000005BD    -       sub_41E4D0
-0041EAE0    000003F7    -       sub_41EAE0
-0041EEE0    000000A8    -       sub_41EEE0
-0041EF90    00000058    -       sub_41EF90
-0041EFF0    00000590    -       sub_41EFF0
-0041F5D0    00000098    -       sub_41F5D0
-0041F670    000003BA    -       sub_41F670
-0041FA60    000001E9    -       sub_41FA60
-0041FC50    0000001F    -       sub_41FC50
-0041FC70    00000066    -       sub_41FC70
-0041FCE0    0000047C    -       sub_41FCE0
-004201C0    00000CD3    -       sub_4201C0
-00420EA0    00000074    -       sub_420EA0
-00420F20    000009E5    -       sub_420F20
-00421920    00000076    -       sub_421920
-004219A0    0000002D    -       sub_4219A0
-004219D0    00000145    -       sub_4219D0
-00421B20    00000045    -       sub_421B20
-00421B70    000000AB    -       sub_421B70
-00421C20    00000097    -       sub_421C20
-00421CC0    00000028    -       sub_421CC0
-00421CF0    00000132    -       sub_421CF0
-00421E40    00000015    -       sub_421E40
-00421E60    000000FD    -       sub_421E60
-00421F60    0000006C    -       sub_421F60
-00421FD0    0000007A    -       sub_421FD0
-00422050    0000002C    -       sub_422050
-00422080    0000119E    -       sub_422080
-00423310    00000156    -       sub_423310
-00423470    00000089    -       sub_423470
-00423500    00000081    -       sub_423500
-00423590    0000041D    -       sub_423590
-004239C0    00000019    -       sub_4239C0
-004239E0    00000005    -       sub_4239E0
-004239F0    00000132    -       sub_4239F0
-00423B30    0000010A    -       sub_423B30
-00423C40    00000167    -       sub_423C40
-00423DB0    00000081    -       sub_423DB0
-00423E40    00000369    -       sub_423E40
-004242B0    00000032    -       sub_4242B0
-004242F0    000006BE    -       sub_4242F0
-00424B00    00000129    -       sub_424B00
-00424C30    00000077    -       sub_424C30
-00424CB0    0000001B    -       sub_424CB0
-00424CD0    00000110    -       sub_424CD0
-00424DE0    000000C1    -       sub_424DE0
-00424FD0    00000024    -       sub_424FD0
-00425000    0000010F    -       sub_425000
-00425110    00000060    -       sub_425110
-00425170    00000040    -       sub_425170
-004251B0    0000002C    -       sub_4251B0
-004251E0    0000013E    -       sub_4251E0
-00425320    0000002F    -       sub_425320
-00425350    0000002F    -       sub_425350
-00425380    00000063    -       sub_425380
-004253F0    0000002C    -       sub_4253F0
-00425420    00000026    -       sub_425420
-00425450    00000022    -       sub_425450
-00425480    00000025    -       sub_425480
-004254B0    00000020    -       sub_4254B0
-004254D0    0000005D    -       sub_4254D0
-00425530    00000063    -       sub_425530
-004255A0    00000082    -       sub_4255A0
-00425630    000000A3    -       sub_425630
-004256E0    0000001B    -       sub_4256E0
-00425700    00000054    -       sub_425700
-00425760    00000056    -       sub_425760
-004257C0    00000866    -       sub_4257C0
-00426030    000000AA    -       sub_426030
-004260E0    00000013    -       sub_4260E0
-00426100    000000C0    -       sub_426100
-004261C0    000000AC    -       sub_4261C0
-00426270    00000039    -       sub_426270
-004262B0    00000081    -       sub_4262B0
-00426340    000001D6    -       sub_426340
-00426520    00000397    -       sub_426520
-004268C0    00000425    -       sub_4268C0
-00426CF0    00000052    -       sub_426CF0
-00426D50    0000011E    -       sub_426D50
-00426E70    00000039    -       sub_426E70
-00426EB0    000001B3    -       sub_426EB0
+00415100    000000E7    -       void __cdecl Camera_RefreshFromTrigger(int16_t type, int16_t *data);
+004151F0    00000690    -       void __cdecl Room_TestTriggers(int16_t *data, int32_t heavy);
+004158D0    00000055    -       int32_t __cdecl Item_IsTriggerActive(struct ITEM_INFO *item);
+00415930    0000023D    -       int32_t __cdecl Room_GetCeiling(struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);
+00415B90    0000004E    -       int16_t __cdecl Room_GetDoor(struct FLOOR_INFO *floor);
+00415BE0    000000A0    -       int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00415C80    000002EB    -       int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00415F70    000002EC    -       int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00416260    000000DA    -       int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, FLOOR_INFO *floor);
+00416340    000002FE    -       int32_t __cdecl LOS_ObjectOnLOS(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00416640    000000B3    -       void __cdecl Room_FlipMap(void);
+00416700    00000096    -       void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);
+004167A0    0000005C    -       void __cdecl Room_AddFlipItems(struct ROOM_INFO *r);
+00416800    00000024    -       void __cdecl Control_TriggerMusicTrack(int16_t value, int16_t flags, int16_t type);
+00416830    000000DA    -       void __cdecl Control_TriggerMusicNormalTrack(int16_t value, int16_t flags, int16_t type);
+
+# game/demo.c
+00416910    00000059    -       int32_t __cdecl Demo_Control(int32_t level_num);
+00416970    000001B0    -       int32_t __cdecl Demo_Start(int32_t level_num);
+00416B20    000000CD    -       void __cdecl Demo_LoadLaraPos(void);
+00416BF0    0000002D    -       void __cdecl Demo_GetInput(void);
+
+# game/diver.c
+00416C20    0000007A    -       int16_t __cdecl Diver_Harpoon(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE y_rot, int16_t room_num);
+00416CA0    00000106    -       int32_t __cdecl Diver_GetWaterSurface(int32_t x, int32_t y, int32_t z, int16_t room_num);
+00416DB0    00000389    -       void __cdecl Diver_Control(int16_t item_num);
+
+# game/dog.c
+00417160    00000387    -       void __cdecl Dog_Control(int16_t item_num);
+00417510    0000027E    -       void __cdecl Tiger_Control(int16_t item_num);
+
+# game/dragon.c
+004177B0    0000017F    -R      void __cdecl ControlTwinkle(int16_t fx_num);
+00417930    000000D9    -R      void __cdecl CreateBartoliLight(int16_t item_num);
+00417A10    000000AB    -R      int16_t __cdecl DragonFire(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
+00417AC0    000002ED    -R      void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00417DB0    000000D9    -R      void __cdecl DragonBones(int16_t item_num);
+00417E90    00000519    -R      void __cdecl DragonControl(int16_t back_num);
+004183E0    00000114    -R      void __cdecl InitialiseBartoli(int16_t item_num);
+00418500    00000193    -R      void __cdecl BartoliControl(int16_t item_num);
+004186A0    00000287    -R      void __cdecl DinoControl(int16_t item_num);
+
+# game/draw.c
+00418950    00000037    -R      int32_t __cdecl DrawPhaseCinematic(void);
+00418990    00000037    -R      int32_t __cdecl DrawPhaseGame(void);
+004189D0    000002B0    -R      void __cdecl DrawRooms(int16_t current_room);
+00418C80    000001C6    -R      void __cdecl GetRoomBounds(void);
+00418E50    0000037F    -R      void __cdecl SetRoomBounds(int16_t *objptr, int32_t room_num, ROOM_INFO *parent);
+004191D0    000003D2    -R      void __cdecl ClipRoom(struct ROOM_INFO *r);
+004195B0    000000B4    -R      void __cdecl PrintRooms(int16_t room_num);
+00419670    00000218    -R      void __cdecl PrintObjects(int16_t room_num);
+00419890    00000147    -R      void __cdecl DrawEffect(int16_t fx_num);
+004199E0    00000083    -R      void __cdecl DrawSpriteItem(struct ITEM_INFO *item);
+00419A70    00000378    -R      void __cdecl DrawAnimatingItem(struct ITEM_INFO *item);
+00419DF0    00000D02    -R      void __cdecl DrawLara(struct ITEM_INFO *item);
+0041AB20    00000BC6    -R      void __cdecl DrawLaraInt(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
+0041B710    00000034    -R      void __cdecl InitInterpolate(int32_t frac, int32_t rate);
+0041B750    00000022    -R      void __cdecl phd_PopMatrix_I(void);
+0041B780    00000027    -R      void __cdecl phd_PushMatrix_I(void);
+0041B7B0    00000031    -R      void __cdecl phd_RotY_I(int16_t ang);
+0041B7F0    00000031    -R      void __cdecl phd_RotX_I(int16_t ang);
+0041B830    00000031    -R      void __cdecl phd_RotZ_I(int16_t ang);
+0041B870    00000041    -R      void __cdecl phd_TranslateRel_I(int32_t x, int32_t y, int32_t z);
+0041B8C0    00000047    -R      void __cdecl phd_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);
+0041B910    00000041    -R      void __cdecl phd_RotYXZ_I(int16_t y, int16_t x, int16_t z);
+0041B960    0000003D    -R      void __cdecl gar_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);
+0041B9A0    000000A1    -R      void __cdecl gar_RotYXZsuperpack(int16_t **pprot, int32_t skip);
+0041BA50    0000002A    -R      void __cdecl phd_PutPolygons_I(int16_t *ptr, int32_t clip);
+0041BA80    000001A5    -R      void __cdecl InterpolateMatrix(void);
+0041BC30    000000FC    -R      void __cdecl InterpolateArmMatrix(void);
+0041BD30    0000014B    -R      void __cdecl DrawGunFlash(int32_t weapon_type, int32_t clip);
+0041BEA0    000000E8    -R      void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);
+0041BF90    00000092    -R      int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
+0041C030    0000007C    -R      int16_t *__cdecl GetBoundsAccurate(struct ITEM_INFO *item);
+0041C0B0    00000035    -R      int16_t *__cdecl GetBestFrame(struct ITEM_INFO *item);
+0041C0F0    00000048    -R      void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);
+
+# game/eel.c
+0041C140    0000019D    -R      void __cdecl BigEelControl(int16_t item_num);
+0041C2E0    000001E1    -R      void __cdecl EelControl(int16_t item_num);
+
+# game/effects.c
+0041C4D0    0000008C    -R      int32_t __cdecl ItemNearLara(struct PHD_3DPOS *pos, int32_t distance);
+0041C560    00000068    -R      void __cdecl SoundEffects(void);
+0041C5D0    00000059    -R      int16_t __cdecl DoBloodSplat(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num);
+0041C630    000000A4    -R      void __cdecl DoLotsOfBlood(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num, int32_t num);
+0041C6E0    00000082    -R      void __cdecl ControlBlood1(int16_t fx_num);
+0041C770    0000007F    -R      void __cdecl ControlExplosion1(int16_t fx_num);
+0041C7F0    00000072    -R      void __cdecl Richochet(struct GAME_VECTOR *pos);
+0041C870    00000030    -R      void __cdecl ControlRichochet1(int16_t fx_num);
+0041C8A0    00000064    -R      void __cdecl CreateBubble(struct PHD_3DPOS *pos, int16_t room_num);
+0041C910    00000078    -R      void __cdecl LaraBubbles(struct ITEM_INFO *item);
+0041C990    000000F3    -R      void __cdecl ControlBubble1(int16_t fx_num);
+0041CA90    000000C2    -R      void __cdecl Splash(struct ITEM_INFO *item);
+0041CB60    00000071    -R      void __cdecl ControlSplash1(int16_t fx_num);
+0041CBE0    000000AE    -R      void __cdecl ControlWaterSprite(int16_t fx_num);
+0041CD20    000000DE    -R      void __cdecl ControlHotLiquid(int16_t fx_num);
+0041CF40    0000000B    -R      void __cdecl finish_level_effect(struct ITEM_INFO *item);
+0041CF50    00000016    -R      void __cdecl turn180_effect(struct ITEM_INFO *item);
+0041CF70    00000096    -R      void __cdecl floor_shake_effect(struct ITEM_INFO *item);
+0041D010    00000040    -R      void __cdecl lara_normal_effect(struct ITEM_INFO *item);
+0041D050    0000001C    -R      void __cdecl BoilerFX(struct ITEM_INFO *item);
+0041D070    0000008F    -R      void __cdecl FloodFX(struct ITEM_INFO *item);
+0041D100    00000023    -R      void __cdecl RubbleFX(struct ITEM_INFO *item);
+0041D130    0000002C    -R      void __cdecl ChandelierFX(struct ITEM_INFO *item);
+0041D160    00000023    -R      void __cdecl ExplosionFX(struct ITEM_INFO *item);
+0041D190    0000001C    -R      void __cdecl PistonFX(struct ITEM_INFO *item);
+0041D1B0    0000001C    -R      void __cdecl CurtainFX(struct ITEM_INFO *item);
+0041D1D0    0000001C    -R      void __cdecl StatueFX(struct ITEM_INFO *item);
+0041D1F0    0000001C    -R      void __cdecl SetChangeFX(struct ITEM_INFO *item);
+0041D290    00000067    -R      void __cdecl ControlAlarmSound(int16_t item_num);
+0041D300    0000005D    -R      void __cdecl ControlBirdTweeter(int16_t item_num);
+0041D360    00000059    -R      void __cdecl DoChimeSound(struct ITEM_INFO *item);
+0041D3C0    00000068    -R      void __cdecl ControlClockChimes(int16_t item_num);
+0041D430    00000128    -R      void __cdecl SphereOfDoomCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+0041D560    000000F0    -R      void __cdecl SphereOfDoom(int16_t item_num);
+0041D650    0000012D    -R      void __cdecl DrawSphereOfDoom(struct ITEM_INFO *item);
+0041D780    0000000A    -R      void __cdecl lara_hands_free(struct ITEM_INFO *item);
+0041D790    00000005    -R      void __cdecl flip_map_effect(struct ITEM_INFO *item);
+0041D7A0    00000043    -R      void __cdecl draw_right_gun(struct ITEM_INFO *item);
+0041D7F0    00000043    -R      void __cdecl draw_left_gun(struct ITEM_INFO *item);
+0041D840    00000063    -R      void __cdecl swap_meshes_with_meshswap1(struct ITEM_INFO *item);
+0041D8B0    00000063    -R      void __cdecl swap_meshes_with_meshswap2(struct ITEM_INFO *item);
+0041D920    0000009A    -R      void __cdecl swap_meshes_with_meshswap3(struct ITEM_INFO *item);
+0041D9C0    00000009    -R      void __cdecl invisibility_on(struct ITEM_INFO *item);
+0041D9D0    00000016    -R      void __cdecl invisibility_off(struct ITEM_INFO *item);
+0041D9F0    00000009    -R      void __cdecl dynamic_light_on(struct ITEM_INFO *item);
+0041DA00    0000000B    -R      void __cdecl dynamic_light_off(struct ITEM_INFO *item);
+0041DA10    00000005    -R      void __cdecl reset_hair(struct ITEM_INFO *item);
+0041DA20    00000024    -R      void __cdecl AssaultStart(struct ITEM_INFO *item);
+0041DA50    0000001F    -R      void __cdecl AssaultStop(struct ITEM_INFO *item);
+0041DA70    00000017    -R      void __cdecl AssaultReset(struct ITEM_INFO *item);
+0041DA90    000000B2    -R      void __cdecl AssaultFinished(struct ITEM_INFO *item);
+
+# game/enemies.c
+0041DB50    00000076    -R      int16_t __cdecl Knife(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
+0041DBD0    0000040B    -R      void __cdecl Cult2Control(int16_t item_num);
+0041E000    000004A1    -R      void __cdecl MonkControl(int16_t item_num);
+0041E4D0    000005BD    -R      void __cdecl Worker3Control(int16_t item_num);
+0041EAE0    000003F7    -R      void __cdecl DrawXianLord(struct ITEM_INFO *item);
+0041EEE0    000000A8    -R      void __cdecl XianDamage(struct ITEM_INFO *item, CREATURE_INFO *xian, int32_t damage);
+0041EF90    00000058    -R      void __cdecl InitialiseXianLord(int16_t item_num);
+0041EFF0    00000590    -R      void __cdecl XianLordControl(int16_t item_num);
+0041F5D0    00000098    -R      void __cdecl WarriorSparkleTrail(struct ITEM_INFO *item);
+0041F670    000003BA    -R      void __cdecl WarriorControl(int16_t item_num);
+
+# game/gameflow.c
+0041FA60    000001E9    -R      int32_t __cdecl GF_LoadScriptFile(char *fname);
+0041FC50    0000001F    -R      int32_t __cdecl GF_DoFrontEndSequence(void);
+0041FC70    00000066    -R      int32_t __cdecl GF_DoLevelSequence(int32_t level, int32_t type);
+0041FCE0    0000047C    -R      int32_t __cdecl GF_InterpretSequence(int16_t *ptr, int32_t type, int32_t seq_type);
+004201C0    00000CD3    -R      void __cdecl GF_ModifyInventory(int32_t level, int32_t type);
+
+# game/hair.c
+00420EA0    00000074    -R      void __cdecl InitialiseHair(void);
+00420F20    000009E5    -R      void __cdecl HairControl(int32_t in_cutscene);
+00421920    00000076    -R      void __cdecl DrawHair(void);
+
+# game/health.c
+004219A0    0000002D    -R      int32_t __cdecl FlashIt(void);
+004219D0    00000145    -R      void __cdecl DrawAssaultTimer(void);
+00421B20    00000045    -R      void __cdecl DrawGameInfo(int32_t timed);
+00421B70    000000AB    -R      void __cdecl DrawHealthBar(int32_t flash_state);
+00421C20    00000097    -R      void __cdecl DrawAirBar(int32_t flash_state);
+00421CC0    00000028    -R      void __cdecl MakeAmmoString(char *string);
+00421CF0    00000132    -R      void __cdecl DrawAmmoInfo(void);
+00421E40    00000015    -R      void __cdecl InitialisePickUpDisplay(void);
+00421E60    000000FD    -R      void __cdecl DrawPickups(int32_t timed);
+00421F60    0000006C    -R      void __cdecl AddDisplayPickup(int16_t obj_num);
+00421FD0    0000007A    -R      void __cdecl DisplayModeInfo(char* string);
+00422050    0000002C    -R      void __cdecl DrawModeInfo(void);
+
+# game/inventory.c
+00422080    0000119E    -R      int32_t __cdecl Display_Inventory(int32_t inventory_mode);
+00423310    00000156    -R      void __cdecl Construct_Inventory(void);
+00423470    00000089    -R      void __cdecl SelectMeshes(struct INVENTORY_ITEM *inv_item);
+00423500    00000081    -R      int32_t __cdecl AnimateInventoryItem(struct INVENTORY_ITEM *inv_item);
+00423590    0000041D    -R      void __cdecl DrawInventoryItem(struct INVENTORY_ITEM *inv_item);
+004239C0    00000019    -R      int32_t __cdecl GetDebouncedInput(int32_t input);
+004239E0    00000005    -R      void __cdecl DoInventoryPicture(void);
+004239F0    00000132    -R      void __cdecl DoInventoryBackground(void);
+
+# game/invfunc.c
+00423B30    0000010A    -R      void __cdecl InitColours(void);
+00423C40    00000167    -R      void __cdecl RingIsOpen(struct RING_INFO *ring);
+00423DB0    00000081    -R      void __cdecl RingIsNotOpen(struct RING_INFO *ring);
+00423E40    00000369    -R      void __cdecl RingNotActive(struct INVENTORY_ITEM *inv_item);
+004242B0    00000032    -R      void __cdecl RingActive(void);
+004242F0    000006BE    -R      int32_t __cdecl Inv_AddItem(int32_t itemNum);
+00424B00    00000129    -R      void __cdecl Inv_InsertItem(struct INVENTORY_ITEM *inv_item);
+00424C30    00000077    -R      int32_t __cdecl Inv_RequestItem(int32_t itemNum);
+00424CB0    0000001B    -R      void __cdecl Inv_RemoveAllItems(void);
+00424CD0    00000110    -R      int32_t __cdecl Inv_RemoveItem(int32_t itemNum);
+00424DE0    000000C1    -R      int32_t __cdecl Inv_GetItemOption(int32_t itemNum);
+00424FD0    00000024    -R      void __cdecl RemoveInventoryText(void);
+00425000    0000010F    -R      void __cdecl Inv_RingInit(struct RING_INFO *ring, int16_t type, struct INVENTORY_ITEM **list, int16_t qty, int16_t current, struct IMOTION_INFO *imo);
+00425110    00000060    -R      void __cdecl Inv_RingGetView(struct RING_INFO *ring, struct PHD_3DPOS *viewer);
+00425170    00000040    -R      void __cdecl Inv_RingLight(struct RING_INFO *ring);
+004251B0    0000002C    -R      void __cdecl Inv_RingCalcAdders(struct RING_INFO *ring, int16_t rotation_duration);
+004251E0    0000013E    -R      void __cdecl Inv_RingDoMotions(struct RING_INFO *ring);
+00425320    0000002F    -R      void __cdecl Inv_RingRotateLeft(struct RING_INFO *ring);
+00425350    0000002F    -R      void __cdecl Inv_RingRotateRight(struct RING_INFO *ring);
+00425380    00000063    -R      void __cdecl Inv_RingMotionInit(struct RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);
+004253F0    0000002C    -R      void __cdecl Inv_RingMotionSetup(struct RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames);
+00425420    00000026    -R      void __cdecl Inv_RingMotionRadius(struct RING_INFO *ring, int16_t target);
+00425450    00000022    -R      void __cdecl Inv_RingMotionRotation(struct RING_INFO *ring, int16_t rotation, int16_t target);
+00425480    00000025    -R      void __cdecl Inv_RingMotionCameraPos(struct RING_INFO *ring, int16_t target);
+004254B0    00000020    -R      void __cdecl Inv_RingMotionCameraPitch(struct RING_INFO *ring, int16_t target);
+004254D0    0000005D    -R      void __cdecl Inv_RingMotionItemSelect(struct RING_INFO *ring, struct INVENTORY_ITEM *inv_item);
+00425530    00000063    -R      void __cdecl Inv_RingMotionItemDeselect(struct RING_INFO *ring, struct INVENTORY_ITEM *inv_item);
+
+# game/invtext.c
+004255A0    00000082    -R      void __cdecl Init_Requester(struct REQUEST_INFO *req);
+00425630    000000A3    -R      void __cdecl Remove_Requester(struct REQUEST_INFO *req);
+004256E0    0000001B    -R      void __cdecl ReqItemCentreAlign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);
+00425700    00000054    -R      void __cdecl ReqItemLeftalign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);
+00425760    00000056    -R      void __cdecl ReqItemRightalign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);
+004257C0    00000866    -R      int32_t __cdecl Display_Requester(struct REQUEST_INFO *req, int32_t des, int32_t backgrounds);
+00426030    000000AA    -R      void __cdecl SetRequesterHeading(struct REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);
+004260E0    00000013    -R      void __cdecl RemoveAllReqItems(struct REQUEST_INFO *req);
+00426100    000000C0    -R      void __cdecl ChangeRequesterItem(struct REQUEST_INFO *req, int32_t item, char *text1, uint32_t flags1, char *text2, uint32_t flags2);
+004261C0    000000AC    -R      void __cdecl AddRequesterItem(struct REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);
+00426270    00000039    -R      void __cdecl SetPCRequesterSize(struct REQUEST_INFO *req, int32_t maxlines, int32_t ypos);
+004262B0    00000081    -R      int32_t __cdecl AddAssaultTime(uint32_t time);
+00426340    000001D6    -R      void __cdecl ShowGymStatsText(char *time_str, int32_t type);
+00426520    00000397    -R      void __cdecl ShowStatsText(char *time_str, int32_t type);
+004268C0    00000425    -R      void __cdecl ShowEndStatsText(void);
+
+# game/items.c
+00426CF0    00000052    -R      void __cdecl InitialiseItemArray(int32_t numitems);
+00426D50    0000011E    -R      void __cdecl KillItem(int16_t item_num);
+00426E70    00000039    -R      int16_t __cdecl CreateItem(void);
+00426EB0    000001B3    -R      void __cdecl InitialiseItem(int16_t item_num);
 00427070    0000008A    -       void __cdecl Item_RemoveActive(int16_t item_num);
-00427100    0000006F    -       sub_427100
-00427170    0000005A    -       sub_427170
-004271D0    0000009C    -       sub_4271D0
-00427270    0000007C    -       sub_427270
-004272F0    00000030    -       sub_4272F0
-00427320    0000006C    -       sub_427320
-00427390    000000E3    -       sub_427390
-00427480    00000093    -       sub_427480
-00427520    00000058    -       sub_427520
-00427580    00000195    -       sub_427580
-00427720    00000066    -       sub_427720
-00427790    00000072    -       sub_427790
-00427810    00000089    -       sub_427810
-004278A0    0000008B    -       sub_4278A0
-00427930    00000143    -       sub_427930
-00427A80    00000148    -       sub_427A80
-00427BD0    000000D3    -       sub_427BD0
-00427CB0    00000057    -       sub_427CB0
-00427D10    0000008A    -       sub_427D10
-00427DA0    00000089    -       sub_427DA0
-00427E30    00000014    -       sub_427E30
-00427E50    00000040    -       sub_427E50
-00427E90    00000058    -       sub_427E90
-00427EF0    0000001C    -       sub_427EF0
-00427F10    0000000A    -       sub_427F10
-00427F20    0000010C    -       sub_427F20
-00428030    00000084    -       sub_428030
-004280C0    0000000B    -       sub_4280C0
-004280D0    0000004B    -       sub_4280D0
-00428120    0000007C    -       sub_428120
-004281A0    0000007C    -       sub_4281A0
-00428220    0000002B    -       sub_428220
-00428250    0000004A    -       sub_428250
-004282A0    00000033    -       sub_4282A0
-004282E0    00000033    -       sub_4282E0
-00428320    00000013    -       sub_428320
-00428340    0000002C    -       sub_428340
-00428370    00000035    -       sub_428370
-004283B0    00000035    -       sub_4283B0
-004283F0    00000018    -       sub_4283F0
-00428410    00000030    -       sub_428410
-00428440    00000027    -       sub_428440
-00428470    00000030    -       sub_428470
-004284A0    00000058    -       sub_4284A0
-00428500    00000039    -       sub_428500
-00428540    00000030    -       sub_428540
-00428570    0000001D    -       sub_428570
-00428590    0000002F    -       sub_428590
-004285C0    00000054    -       sub_4285C0
-00428620    00000015    -       sub_428620
-00428640    000000CA    -       sub_428640
-00428710    00000096    -       sub_428710
-004287B0    0000004C    -       sub_4287B0
-00428800    00000047    -       sub_428800
-00428850    00000091    -       sub_428850
-004288F0    00000013    -       sub_4288F0
-00428910    0000001D    -       sub_428910
-00428930    00000051    -       sub_428930
-00428990    000000BC    -       sub_428990
-00428A50    0000004D    -       sub_428A50
-00428AA0    000000A5    -       sub_428AA0
-00428B50    000000A3    -       sub_428B50
-00428C00    00000051    -       sub_428C00
-00428C60    0000009B    -       sub_428C60
-00428D20    00000191    -       sub_428D20
-00428EC0    00000176    -       sub_428EC0
-00429040    00000081    -       sub_429040
-004290D0    000000D7    -       sub_4290D0
-004291B0    000000B3    -       sub_4291B0
-00429270    00000095    -       sub_429270
-00429310    00000013    -       sub_429310
-00429330    00000068    -       sub_429330
-004293A0    00000099    -       sub_4293A0
-00429440    00000127    -       sub_429440
-00429570    00000090    -       sub_429570
-00429600    00000059    -       sub_429600
-00429660    00000013    -       sub_429660
-00429680    00000096    -       sub_429680
-00429720    000000FB    -       sub_429720
-00429820    000000BE    -       sub_429820
-004298E0    00000013    -       sub_4298E0
-00429900    0000001E    -       sub_429900
-00429920    00000023    -       sub_429920
-00429950    00000023    -       sub_429950
-00429980    00000023    -       sub_429980
-004299B0    0000011B    -       sub_4299B0
-00429AD0    00000083    -       sub_429AD0
-00429B60    00000033    -       sub_429B60
-00429BA0    00000033    -       sub_429BA0
-00429BE0    00000023    -       sub_429BE0
-00429C10    00000013    -       sub_429C10
-00429C30    00000081    -       sub_429C30
-00429CC0    000000B3    -       sub_429CC0
-00429D80    00000069    -       sub_429D80
-00429DF0    00000079    -       sub_429DF0
-00429E70    00000162    -       sub_429E70
-00429FE0    00000036    -       sub_429FE0
-0042A020    00000074    -       sub_42A020
-0042A0A0    00000032    -       sub_42A0A0
-0042A0E0    000000E2    -       sub_42A0E0
-0042A1D0    00000067    -       sub_42A1D0
-0042A240    0000007F    -       sub_42A240
-0042A2C0    00000136    -       sub_42A2C0
-0042A440    000000AB    -       sub_42A440
-0042A530    000000E1    -       sub_42A530
-0042A640    000000F5    -       sub_42A640
-0042A750    000000BE    -       sub_42A750
-0042A810    0000033E    -       sub_42A810
-0042AB70    000000AD    -       sub_42AB70
-0042AC20    0000016D    -       sub_42AC20
-0042AD90    0000019E    -       sub_42AD90
-0042AF30    000000B1    -       sub_42AF30
-0042AFF0    000002E7    -       sub_42AFF0
-0042B2E0    00000130    -       sub_42B2E0
-0042B410    00000075    -       sub_42B410
-0042B490    000000BB    -       sub_42B490
-0042B550    0000038F    -       sub_42B550
-0042B8E0    0000031A    -       sub_42B8E0
-0042BC00    00000033    -       sub_42BC00
-0042BC40    0000002B    -       sub_42BC40
-0042BC70    00000070    -       sub_42BC70
-0042BCE0    000000F5    -       sub_42BCE0
-0042BDE0    000000F2    -       sub_42BDE0
-0042BEE0    0000007B    -       sub_42BEE0
-0042BF60    00000187    -       sub_42BF60
-0042C0F0    00000344    -       sub_42C0F0
-0042C440    000000F0    -       sub_42C440
-0042C530    000003FD    -       sub_42C530
-0042C930    00000166    -       sub_42C930
-0042CAA0    00000104    -       sub_42CAA0
-0042CBB0    0000037E    -       sub_42CBB0
-0042CF60    0000004F    -       sub_42CF60
-0042CFB0    0000007C    -       sub_42CFB0
-0042D030    00000225    -       sub_42D030
-0042D260    0000005C    -       sub_42D260
-0042D2C0    0000004E    -       sub_42D2C0
-0042D310    0000003A    -       sub_42D310
-0042D350    0000003A    -       sub_42D350
-0042D390    0000018C    -       sub_42D390
-0042D520    00000330    -       sub_42D520
-0042D850    00000035    -       sub_42D850
-0042D890    00000035    -       sub_42D890
-0042D8D0    00000075    -       sub_42D8D0
-0042D950    00000014    -       sub_42D950
-0042D970    0000001E    -       sub_42D970
-0042D990    00000014    -       sub_42D990
-0042D9B0    0000005D    -       sub_42D9B0
-0042DA10    00000059    -       sub_42DA10
-0042DA70    0000020D    -       sub_42DA70
-0042DC80    0000014D    -       sub_42DC80
-0042DDD0    0000019C    -       sub_42DDD0
-0042DF70    000000AA    -       sub_42DF70
-0042E020    00000263    -       sub_42E020
-0042E290    000000BC    -       sub_42E290
-0042E360    000000EF    -       sub_42E360
-0042E450    00000235    -       sub_42E450
-0042E6A0    000004E8    -       sub_42E6A0
-0042EC10    0000003B    -       sub_42EC10
-0042EC50    0000011C    -       sub_42EC50
-0042ED90    00000194    -       sub_42ED90
-0042EF30    0000021C    -       sub_42EF30
-0042F150    000000AA    -       sub_42F150
-0042F200    000000C1    -       sub_42F200
-0042F2D0    00000360    -       sub_42F2D0
-0042F640    00000096    -       sub_42F640
-0042F6E0    00000051    -       sub_42F6E0
-0042F740    0000003B    -       sub_42F740
-0042F7A0    0000009D    -       sub_42F7A0
-0042F840    000000D3    -       sub_42F840
-0042F920    000000F8    -       sub_42F920
-0042FA20    000001D7    -       sub_42FA20
-0042FC00    0000004B    -       sub_42FC00
-0042FC50    00000169    -       sub_42FC50
-0042FDC0    00000221    -       sub_42FDC0
-0042FFF0    00000018    -       sub_42FFF0
-00430010    00000018    -       sub_430010
-00430030    0000003E    -       sub_430030
-004302E0    00000668    -       sub_4302E0
-00430970    000002CD    -       sub_430970
-00430C70    0000013F    -       sub_430C70
-00430E30    000000BA    -       sub_430E30
-00430EF0    0000001B    -       sub_430EF0
-00430F10    00000021    -       sub_430F10
-00430F40    000002BD    -       sub_430F40
-00431200    0000036C    -       sub_431200
-00431570    000000FA    -       sub_431570
-00431670    00000158    -       sub_431670
-004317D0    00000070    -       sub_4317D0
-00431840    0000005E    -       sub_431840
-004318A0    00000060    -       sub_4318A0
-00431900    00000060    -       sub_431900
-00431960    000000EB    -       sub_431960
-00431A50    00000032    -       sub_431A50
-00431A90    00000023    -       sub_431A90
-00431AC0    00000023    -       sub_431AC0
-00431AF0    00000023    -       sub_431AF0
-00431B20    0000001E    -       sub_431B20
-00431B40    000000F3    -       sub_431B40
-00431C40    000000E7    -       sub_431C40
-00431D30    0000021C    -       sub_431D30
-00431F50    00000223    -       sub_431F50
-00432180    00000086    -       sub_432180
-00432210    0000006B    -       sub_432210
-00432280    00000076    -       sub_432280
-00432300    00000085    -       sub_432300
-00432390    00000014    -       sub_432390
-004323B0    00000053    -       sub_4323B0
-00432410    0000000B    -       sub_432410
-00432420    00000013    -       sub_432420
-00432440    0000005B    -       sub_432440
-004324A0    00000192    -       sub_4324A0
-00432640    000000CE    -       sub_432640
-00432710    0000015C    -       sub_432710
-00432870    000001EC    -       sub_432870
-00432A60    00000053    -       sub_432A60
-00432AC0    0000004F    -       sub_432AC0
+00427100    0000006F    -R      void __cdecl RemoveDrawnItem(int16_t item_num);
+00427170    0000005A    -R      void __cdecl AddActiveItem(int16_t item_num);
+004271D0    0000009C    -R      void __cdecl ItemNewRoom(int16_t item_num, int16_t room_num);
+00427270    0000007C    -R      int32_t __cdecl GlobalItemReplace(int32_t in_objnum, int32_t out_objnum);
+004272F0    00000030    -R      void __cdecl InitialiseFXArray(void);
+00427320    0000006C    -R      int16_t __cdecl CreateEffect(int16_t room_num);
+00427390    000000E3    -R      void __cdecl KillEffect(int16_t fx_num);
+00427480    00000093    -R      void __cdecl EffectNewRoom(int16_t fx_num, int16_t room_num);
+00427520    00000058    -R      void __cdecl ClearBodyBag(void);
+
+# game/lara.c
+00427580    00000195    -R      void __cdecl LaraAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427720    00000066    -R      void __cdecl LookUpDown(void);
+00427790    00000072    -R      void __cdecl LookLeftRight(void);
+00427810    00000089    -R      void __cdecl ResetLook(void);
+004278A0    0000008B    -R      void __cdecl lara_as_walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427930    00000143    -R      void __cdecl lara_as_run(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427A80    00000148    -R      void __cdecl lara_as_stop(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427BD0    000000D3    -R      void __cdecl lara_as_forwardjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427CB0    00000057    -R      void __cdecl lara_as_fastback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427D10    0000008A    -R      void __cdecl lara_as_turn_r(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427DA0    00000089    -R      void __cdecl lara_as_turn_l(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427E30    00000014    -R      void __cdecl lara_as_death(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427E50    00000040    -R      void __cdecl lara_as_fastfall(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427E90    00000058    -R      void __cdecl lara_as_hang(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427EF0    0000001C    -R      void __cdecl lara_as_reach(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427F10    0000000A    -R      void __cdecl lara_as_splat(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427F20    0000010C    -R      void __cdecl lara_as_compress(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428030    00000084    -R      void __cdecl lara_as_back(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004280C0    0000000B    -R      void __cdecl lara_as_null(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004280D0    0000004B    -R      void __cdecl lara_as_fastturn(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428120    0000007C    -R      void __cdecl lara_as_stepright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004281A0    0000007C    -R      void __cdecl lara_as_stepleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428220    0000002B    -R      void __cdecl lara_as_slide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428250    0000004A    -R      void __cdecl lara_as_backjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004282A0    00000033    -R      void __cdecl lara_as_rightjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004282E0    00000033    -R      void __cdecl lara_as_leftjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428320    00000013    -R      void __cdecl lara_as_upjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428340    0000002C    -R      void __cdecl lara_as_fallback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428370    00000035    -R      void __cdecl lara_as_hangleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004283B0    00000035    -R      void __cdecl lara_as_hangright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004283F0    00000018    -R      void __cdecl lara_as_slideback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428410    00000030    -R      void __cdecl lara_as_pushblock(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428440    00000027    -R      void __cdecl lara_as_ppready(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428470    00000030    -R      void __cdecl lara_as_pickup(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004284A0    00000058    -R      void __cdecl lara_as_pickupflare(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428500    00000039    -R      void __cdecl lara_as_switchon(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428540    00000030    -R      void __cdecl lara_as_usekey(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428570    0000001D    -R      void __cdecl lara_as_special(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428590    0000002F    -R      void __cdecl lara_as_swandive(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004285C0    00000054    -R      void __cdecl lara_as_fastdive(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428620    00000015    -R      void __cdecl lara_as_waterout(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428640    000000CA    -R      void __cdecl lara_as_wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428710    00000096    -R      void __cdecl lara_as_deathslide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004287B0    0000004C    -R      void __cdecl extra_as_breath(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428800    00000047    -R      void __cdecl extra_as_yetikill(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428850    00000091    -R      void __cdecl extra_as_sharkkill(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004288F0    00000013    -R      void __cdecl extra_as_airlock(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428910    0000001D    -R      void __cdecl extra_as_gongbong(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428930    00000051    -R      void __cdecl extra_as_dinokill(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428990    000000BC    -R      void __cdecl extra_as_pulldagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428A50    0000004D    -R      void __cdecl extra_as_startanim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428AA0    000000A5    -R      void __cdecl extra_as_starthouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428B50    000000A3    -R      void __cdecl extra_as_finalanim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428C00    00000051    -R      int32_t __cdecl LaraFallen(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428C60    0000009B    -R      void __cdecl LaraCollideStop(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428D20    00000191    -R      void __cdecl lara_col_walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428EC0    00000176    -R      void __cdecl lara_col_run(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429040    00000081    -R      void __cdecl lara_col_stop(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004290D0    000000D7    -R      void __cdecl lara_col_forwardjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004291B0    000000B3    -R      void __cdecl lara_col_fastback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429270    00000095    -R      void __cdecl lara_col_turn_r(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429310    00000013    -R      void __cdecl lara_col_turn_l(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429330    00000068    -R      void __cdecl lara_col_death(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004293A0    00000099    -R      void __cdecl lara_col_fastfall(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429440    00000127    -R      void __cdecl lara_col_hang(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429570    00000090    -R      void __cdecl lara_col_reach(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429600    00000059    -R      void __cdecl lara_col_splat(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429660    00000013    -R      void __cdecl lara_col_compress(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429680    00000096    -R      void __cdecl lara_col_back( ITEM_INFO *item, COLL_INFO *coll );
+00429720    000000FB    -R      void __cdecl lara_col_fastturn(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429820    000000BE    -R      void __cdecl lara_col_stepright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004298E0    00000013    -R      void __cdecl lara_col_stepleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429900    0000001E    -R      void __cdecl lara_col_slide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429920    00000023    -R      void __cdecl lara_col_backjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429950    00000023    -R      void __cdecl lara_col_rightjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429980    00000023    -R      void __cdecl lara_col_leftjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004299B0    0000011B    -R      void __cdecl lara_col_upjump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429AD0    00000083    -R      void __cdecl lara_col_fallback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429B60    00000033    -R      void __cdecl lara_col_hangleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429BA0    00000033    -R      void __cdecl lara_col_hangright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429BE0    00000023    -R      void __cdecl lara_col_slideback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429C10    00000013    -R      void __cdecl lara_col_roll(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429C30    00000081    -R      void __cdecl lara_col_roll2(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429CC0    000000B3    -R      void __cdecl lara_col_special(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429D80    00000069    -R      void __cdecl lara_col_swandive(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429DF0    00000079    -R      void __cdecl lara_col_fastdive(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429E70    00000162    -R      void __cdecl lara_col_wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00429FE0    00000036    -R      void __cdecl lara_default_col(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A020    00000074    -R      void __cdecl lara_col_jumper(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A0A0    00000032    -R      void __cdecl GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A0E0    000000E2    -R      void __cdecl lara_slide_slope(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A1D0    00000067    -R      int32_t __cdecl LaraHitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A240    0000007F    -R      int32_t __cdecl LaraDeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A2C0    00000136    -R      void __cdecl LaraDeflectEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A440    000000AB    -R      void __cdecl LaraSlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A530    000000E1    -R      int32_t __cdecl TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);
+0042A640    000000F5    -R      int32_t __cdecl LaraTestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A750    000000BE    -R      int32_t __cdecl LaraTestClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A810    0000033E    -R      void __cdecl LaraHangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042AB70    000000AD    -R      int32_t __cdecl LaraTestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
+0042AC20    0000016D    -R      int32_t __cdecl LaraTestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042AD90    0000019E    -R      int32_t __cdecl LaraTestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042AF30    000000B1    -R      int32_t __cdecl TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);
+0042AFF0    000002E7    -R      int32_t __cdecl TestLaraVault(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042B2E0    00000130    -R      int32_t __cdecl TestLaraSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042B410    00000075    -R      int16_t __cdecl LaraFloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);
+0042B490    000000BB    -R      int32_t __cdecl LaraLandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042B550    0000038F    -R      void __cdecl GetLaraJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
+0042B8E0    0000031A    -R      void __cdecl GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
+
+# game/lara1gun.c
+0042BC00    00000033    -R      void __cdecl draw_shotgun_meshes(int32_t weapon_type);
+0042BC40    0000002B    -R      void __cdecl undraw_shotgun_meshes(int32_t weapon_type);
+0042BC70    00000070    -R      void __cdecl ready_shotgun(int32_t weapon_type);
+0042BCE0    000000F5    -R      void __cdecl RifleHandler(int32_t weapon_type);
+0042BDE0    000000F2    -R      void __cdecl FireShotgun(void);
+0042BEE0    0000007B    -R      void __cdecl FireM16(int32_t running);
+0042BF60    00000187    -R      void __cdecl FireHarpoon(void);
+0042C0F0    00000344    -R      void __cdecl ControlHarpoonBolt(int16_t item_num);
+0042C440    000000F0    -R      void __cdecl FireRocket(void);
+0042C530    000003FD    -R      void __cdecl ControlRocket(int16_t item_num);
+0042C930    00000166    -R      void __cdecl draw_shotgun(int32_t weapon_type);
+0042CAA0    00000104    -R      void __cdecl undraw_shotgun(int32_t weapon_type);
+0042CBB0    0000037E    -R      void __cdecl AnimateShotgun(int32_t weapon_type);
+
+# game/lara2gun.c
+0042CF60    0000004F    -R      void __cdecl set_arm_info(struct LARA_ARM *arm, int frame);
+0042CFB0    0000007C    -R      void __cdecl draw_pistols(int32_t weapon_type);
+0042D030    00000225    -R      void __cdecl undraw_pistols(int32_t weapon_type);
+0042D260    0000005C    -R      void __cdecl ready_pistols(int32_t weapon_type);
+0042D2C0    0000004E    -R      void __cdecl draw_pistol_meshes(int32_t weapon_type);
+0042D310    0000003A    -R      void __cdecl undraw_pistol_mesh_left(int32_t weapon_type);
+0042D350    0000003A    -R      void __cdecl undraw_pistol_mesh_right(int32_t weapon_type);
+0042D390    0000018C    -R      void __cdecl PistolHandler(int32_t weapon_type);
+0042D520    00000330    -R      void __cdecl AnimatePistols(int32_t weapon_type);
+
+# game/laraclimb.c
+0042D850    00000035    -R      void __cdecl lara_as_climbleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D890    00000035    -R      void __cdecl lara_as_climbright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D8D0    00000075    -R      void __cdecl lara_as_climbstnc(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D950    00000014    -R      void __cdecl lara_as_climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D970    0000001E    -R      void __cdecl lara_as_climbend(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D990    00000014    -R      void __cdecl lara_as_climbdown(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D9B0    0000005D    -R      void __cdecl lara_col_climbleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DA10    00000059    -R      void __cdecl lara_col_climbright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DA70    0000020D    -R      void __cdecl lara_col_climbstnc(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DC80    0000014D    -R      void __cdecl lara_col_climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DDD0    0000019C    -R      void __cdecl lara_col_climbdown(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DF70    000000AA    -R      int32_t __cdecl LaraCheckForLetGo(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042E020    00000263    -R      int32_t __cdecl LaraTestClimb(int32_t x, int32_t y, int32_t z, int32_t xfront, int32_t zfront, int32_t item_height, int16_t item_room, int32_t *shift);
+0042E290    000000BC    -R      int32_t __cdecl LaraTestClimbPos(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t origin, int32_t height, int32_t *shift);
+0042E360    000000EF    -R      void __cdecl LaraDoClimbLeftRight(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t result, int32_t shift);
+0042E450    00000235    -R      int32_t __cdecl LaraTestClimbUpPos(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t *shift, int32_t *ledge);
+
+# game/larafire.c
+0042E6A0    000004E8    -R      void __cdecl LaraGun(void);
+0042EC10    0000003B    -R      int32_t __cdecl CheckForHoldingState(int32_t state);
+0042EC50    0000011C    -R      void __cdecl InitialiseNewWeapon(void);
+0042ED90    00000194    -R      void __cdecl LaraTargetInfo(struct WEAPON_INFO *winfo);
+0042EF30    0000021C    -R      void __cdecl LaraGetNewTarget(struct WEAPON_INFO *winfo);
+0042F150    000000AA    -R      void __cdecl find_target_point(struct ITEM_INFO *item, struct GAME_VECTOR *target);
+0042F200    000000C1    -R      void __cdecl AimWeapon(struct WEAPON_INFO *winfo, struct LARA_ARM *arm);
+0042F2D0    00000360    -R      int32_t __cdecl FireWeapon(int32_t weapon_type, struct ITEM_INFO *target, struct ITEM_INFO *src, PHD_ANGLE *angles);
+0042F640    00000096    -R      void __cdecl HitTarget(struct ITEM_INFO *item, struct GAME_VECTOR *hitpos, int32_t damage);
+0042F6E0    00000051    -R      void __cdecl SmashItem(int16_t item_num, int32_t weapon_type);
+0042F740    0000003B    -R      int32_t __cdecl WeaponObject(int32_t weapon_type);
+
+# game/laraflare.c
+0042F7A0    0000009D    -R      int32_t __cdecl DoFlareLight(struct PHD_VECTOR *pos, int32_t flare_age);
+0042F840    000000D3    -R      void __cdecl DoFlareInHand(int32_t flare_age);
+0042F920    000000F8    -R      void __cdecl DrawFlareInAir(struct ITEM_INFO *item);
+0042FA20    000001D7    -R      void __cdecl CreateFlare(int32_t thrown);
+0042FC00    0000004B    -R      void __cdecl set_flare_arm(int32_t frame);
+0042FC50    00000169    -R      void __cdecl draw_flare(void);
+0042FDC0    00000221    -R      void __cdecl undraw_flare(void);
+0042FFF0    00000018    -R      void __cdecl draw_flare_meshes(void);
+00430010    00000018    -R      void __cdecl undraw_flare_meshes(void);
+00430030    0000003E    -R      void __cdecl ready_flare(void);
+
+# game/laramisc.c
+004302E0    00000668    -R      void __cdecl LaraControl(int16_t item_num);
+00430970    000002CD    -R      void __cdecl AnimateLara(struct ITEM_INFO *item);
+00430C70    0000013F    -R      void __cdecl UseItem(int16_t object_num);
+00430E30    000000BA    -R      void __cdecl LaraCheatGetStuff(void);
+00430EF0    0000001B    -R      void __cdecl ControlLaraExtra(int16_t item_num);
+00430F10    00000021    -R      void __cdecl InitialiseLaraLoad(int16_t item_num);
+00430F40    000002BD    -R      void __cdecl InitialiseLara(int32_t type);
+00431200    0000036C    -R      void __cdecl InitialiseLaraInventory(int32_t level_num);
+00431570    000000FA    -R      void __cdecl LaraInitialiseMeshes(int32_t level_num);
+
+# game/larasurf.c
+00431670    00000158    -R      void __cdecl LaraSurface(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004317D0    00000070    -R      void __cdecl lara_as_surfswim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431840    0000005E    -R      void __cdecl lara_as_surfback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004318A0    00000060    -R      void __cdecl lara_as_surfleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431900    00000060    -R      void __cdecl lara_as_surfright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431960    000000EB    -R      void __cdecl lara_as_surftread(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431A50    00000032    -R      void __cdecl lara_col_surfswim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431A90    00000023    -R      void __cdecl lara_col_surfback(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431AC0    00000023    -R      void __cdecl lara_col_surfleft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431AF0    00000023    -R      void __cdecl lara_col_surfright(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431B20    0000001E    -R      void __cdecl lara_col_surftread(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431B40    000000F3    -R      void __cdecl LaraSurfaceCollision(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431C40    000000E7    -R      int32_t __cdecl LaraTestWaterStepOut(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431D30    0000021C    -R      int32_t __cdecl LaraTestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);
+
+# game/laraswim.c
+00431F50    00000223    -R      void __cdecl LaraUnderWater(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432180    00000086    -R      void __cdecl SwimTurn(struct ITEM_INFO *item);
+00432210    0000006B    -R      void __cdecl lara_as_swim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432280    00000076    -R      void __cdecl lara_as_glide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432300    00000085    -R      void __cdecl lara_as_tread(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432390    00000014    -R      void __cdecl lara_as_dive(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004323B0    00000053    -R      void __cdecl lara_as_uwdeath(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432410    0000000B    -R      void __cdecl lara_as_waterroll(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432420    00000013    -R      void __cdecl lara_col_swim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432440    0000005B    -R      void __cdecl lara_col_uwdeath(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004324A0    00000192    -R      int32_t __cdecl GetWaterDepth(int32_t x, int32_t y, int32_t z, int16_t room_num);
+00432640    000000CE    -R      void __cdecl LaraTestWaterDepth(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432710    0000015C    -R      void __cdecl LaraSwimCollision(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00432870    000001EC    -R      void __cdecl LaraWaterCurrent(struct COLL_INFO *coll);
+
+# game/lot.c
+00432A60    00000053    -R      void __cdecl InitialiseLOTarray(void);
+00432AC0    0000004F    -R      void __cdecl DisableBaddieAI(int16_t item_num);
 00432B10    000001B0    -       int32_t __cdecl LOT_EnableBaddieAI(int16_t item_num, int32_t always);
-00432CC0    00000106    -       sub_432CC0
-00432ED0    000000B8    -       sub_432ED0
-00432F90    00000049    -       sub_432F90
-00432FE0    000002D0    -       sub_432FE0
-004332B0    000000A7    -       sub_4332B0
+00432CC0    00000106    -R      void __cdecl InitialiseSlot(int16_t item_num, int32_t slot);
+00432ED0    000000B8    -R      void __cdecl CreateZone(struct ITEM_INFO *item);
+00432F90    00000049    -R      void __cdecl ClearLOT(LOT_INFO *LOT);
+
+# game/missile.c
+00432FE0    000002D0    -R      void __cdecl ControlMissile(int16_t fx_num);
+004332B0    000000A7    -R      void __cdecl ShootAtLara(FX_INFO *fx);
 00433360    00000386    -       int32_t __cdecl Effect_ExplodingDeath(int16_t item_num, int32_t mesh_bits, int16_t damage);
-004336F0    00000200    -       sub_4336F0
-004338F0    0000002C    -       sub_4338F0
-00433920    00000148    -       sub_433920
-00433A70    00000239    -       sub_433A70
-00433CD0    0000004E    -       sub_433CD0
-00433D20    00000137    -       sub_433D20
-00433E70    00000225    -       sub_433E70
-004340B0    000000BB    -       sub_4340B0
-00434170    00000022    -       sub_434170
-004341A0    0000006B    -       sub_4341A0
-00434210    000000DB    -       sub_434210
-004342F0    0000003C    -       sub_4342F0
-00434330    0000009D    -       sub_434330
-00434400    0000020F    -       sub_434400
-00434610    000000D9    -       sub_434610
-004346F0    0000007C    -       sub_4346F0
-00434800    000000BD    -       sub_434800
-00434980    0000028F    -       sub_434980
-00434C10    000000E3    -       sub_434C10
-00434D00    0000007E    -       sub_434D00
-00434E00    000000C4    -       sub_434E00
-00434ED0    00000096    -       sub_434ED0
-00434F70    000000DC    -       sub_434F70
-00435050    00000042    -       sub_435050
-004350A0    00000032    -       sub_4350A0
-004350E0    000003DC    -       sub_4350E0
-00435590    000000B1    -       sub_435590
-00435650    00000036    -       sub_435650
-00435690    0000003B    -       sub_435690
-004356D0    0000002C    -       sub_4356D0
-00435740    000000D4    -       sub_435740
-00435820    00000179    -       sub_435820
-004359A0    00000035    -       sub_4359A0
-004359E0    00000035    -       sub_4359E0
-00435A20    00000016    -       sub_435A20
-00435A40    0000001B    -       sub_435A40
-00435A60    0000003B    -       sub_435A60
-00435AA0    00000030    -       sub_435AA0
-00435AD0    00000035    -       sub_435AD0
-00435B10    0000002F    -       sub_435B10
-00435B80    0000010C    -       sub_435B80
-00435C90    000000D2    -       sub_435C90
-00435D70    0000008D    -       sub_435D70
-00435E00    00000085    -       sub_435E00
-00435E90    0000003B    -       sub_435E90
-00435ED0    0000004E    -       sub_435ED0
-00435F20    00000066    -       sub_435F20
-00435F90    000000B9    -       sub_435F90
-00436050    000000A7    -       sub_436050
-00436100    000001C4    -       sub_436100
-004362D0    00000043    -       sub_4362D0
-00436320    00000401    -       sub_436320
-00436750    00000050    -       sub_436750
-004367A0    0000053C    -       sub_4367A0
-00436D10    000003CA    -       sub_436D10
-00437110    0000042A    -       sub_437110
-00437570    0000030B    -       sub_437570
-004378B0    00000408    -       sub_4378B0
-00437CF0    00000172    -       sub_437CF0
-00437E70    00000480    -       sub_437E70
-004382F0    0000020A    -       sub_4382F0
-00438500    000000FC    -       sub_438500
-00438840    00000223    -       sub_438840
-00438A80    00000294    -       sub_438A80
-00438D40    00000039    -       sub_438D40
-00438D80    000000BD    -       sub_438D80
-00438E40    0000003D    -       sub_438E40
-00438E80    00000033    -       sub_438E80
-00438EC0    00000023    -       sub_438EC0
-00438EF0    000001DC    -       sub_438EF0
-004390E0    00000062    -       sub_4390E0
-00439150    000000DB    -       sub_439150
-00439230    00000201    -       sub_439230
-00439440    0000052B    -       sub_439440
-00439970    0000085C    -       sub_439970
-0043A1D0    00000015    -       sub_43A1D0
-0043A1F0    0000004C    -       sub_43A1F0
-0043A240    00000035    -       sub_43A240
+004336F0    00000200    -R      void __cdecl ControlBodyPart(int16_t fx_num);
+
+# game/moveblock.c
+004338F0    0000002C    -R      void __cdecl InitialiseMovingBlock(int16_t item_num);
+00433920    00000148    -R      void __cdecl MovableBlock(int16_t item_num);
+00433A70    00000239    -R      void __cdecl MovableBlockCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00433CD0    0000004E    -R      int32_t __cdecl TestBlockMovable(struct ITEM_INFO *item, int32_t blokhite);
+00433D20    00000137    -R      int32_t __cdecl TestBlockPush(struct ITEM_INFO *item, int32_t blokhite, uint16_t quadrant);
+00433E70    00000225    -R      int32_t __cdecl TestBlockPull(struct ITEM_INFO *item, int32_t blokhite, uint16_t quadrant);
+004340B0    000000BB    -R      void __cdecl AlterFloorHeight(struct ITEM_INFO *item, int32_t height);
+00434170    00000022    -R      void __cdecl DrawMovableBlock(struct ITEM_INFO *item);
+004341A0    0000006B    -R      void __cdecl DrawUnclippedItem(struct ITEM_INFO *item);
+
+# game/objects.c
+00434210    000000DB    -R      void __cdecl EarthQuake(int16_t item_num);
+004342F0    0000003C    -R      void __cdecl ControlCutShotgun(int16_t item_num);
+00434330    0000009D    -R      void __cdecl InitialiseFinalLevel(void);
+00434400    0000020F    -R      void __cdecl FinalLevelCounter(int16_t item_num);
+00434610    000000D9    -R      void __cdecl MiniCopterControl(int16_t item_num);
+004346F0    0000007C    -R      void __cdecl InitialiseDyingMonk(int16_t item_num);
+00434800    000000BD    -R      void __cdecl ControlGongBonger(int16_t item_num);
+00434980    0000028F    -R      void __cdecl ControlDeathSlide(int16_t item_num);
+00434C10    000000E3    -R      void __cdecl BigBowlControl(int16_t item_num);
+00434D00    0000007E    -R      void __cdecl BellControl(int16_t item_num);
+00434E00    000000C4    -R      void __cdecl SmashWindow(int16_t item_num);
+00434ED0    00000096    -R      void __cdecl WindowControl(int16_t item_num);
+00434F70    000000DC    -R      void __cdecl SmashIceControl(int16_t item_num);
+00435050    00000042    -R      void __cdecl ShutThatDoor(struct DOORPOS_DATA *d);
+004350A0    00000032    -R      void __cdecl OpenThatDoor(struct DOORPOS_DATA *d);
+004350E0    000003DC    -R      void __cdecl InitialiseDoor(int16_t item_num);
+00435590    000000B1    -R      int32_t __cdecl OnDrawBridge(struct ITEM_INFO *item, int32_t x, int32_t y);
+00435650    00000036    -R      void __cdecl DrawBridgeFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435690    0000003B    -R      void __cdecl DrawBridgeCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+004356D0    0000002C    -R      void __cdecl DrawBridgeCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00435740    000000D4    -R      void __cdecl LiftControl(int16_t item_num);
+00435820    00000179    -R      void __cdecl LiftFloorCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *floor, int32_t *ceiling);
+004359A0    00000035    -R      void __cdecl LiftFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+004359E0    00000035    -R      void __cdecl LiftCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435A20    00000016    -R      void __cdecl BridgeFlatFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435A40    0000001B    -R      void __cdecl BridgeFlatCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435A60    0000003B    -R      int32_t __cdecl GetOffset(struct ITEM_INFO *item, int32_t x, int32_t z);
+00435AA0    00000030    -R      void __cdecl BridgeTilt1Floor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435AD0    00000035    -R      void __cdecl BridgeTilt1Ceiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435B10    0000002F    -R      void __cdecl BridgeTilt2Floor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435B80    0000010C    -R      void __cdecl CopterControl(int16_t item_num);
+00435C90    000000D2    -R      void __cdecl GeneralControl(int16_t item_num);
+00435D70    0000008D    -R      void __cdecl DetonatorControl(int16_t item_num);
+
+# game/people.c
+00435E00    00000085    -R      int32_t __cdecl Targetable(struct ITEM_INFO *item, AI_INFO *info);
+00435E90    0000003B    -R      void __cdecl ControlGlow(int16_t nFX);
+00435ED0    0000004E    -R      void __cdecl ControlGunShot(int16_t fx_num);
+00435F20    00000066    -R      int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
+00435F90    000000B9    -R      int16_t __cdecl GunHit(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
+00436050    000000A7    -R      int16_t __cdecl GunMiss(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
+00436100    000001C4    -R      int32_t __cdecl ShotLara(struct ITEM_INFO *item, AI_INFO *info, struct BITE_INFO *gun, int16_t extra_rotation, int32_t damage);
+004362D0    00000043    -R      void __cdecl InitialiseCult1(int16_t item_num);
+00436320    00000401    -R      void __cdecl Cult1Control(int16_t item_num);
+00436750    00000050    -R      void __cdecl InitialiseCult3(int16_t item_num);
+004367A0    0000053C    -R      void __cdecl Cult3Control(int16_t item_num);
+00436D10    000003CA    -R      void __cdecl Worker1Control(int16_t item_num);
+00437110    0000042A    -R      void __cdecl Worker2Control(int16_t item_num);
+00437570    0000030B    -R      void __cdecl BanditControl(int16_t item_num);
+004378B0    00000408    -R      void __cdecl Bandit2Control(int16_t item_num);
+00437CF0    00000172    -R      void __cdecl WinstonControl(int16_t item_num);
+
+# game/pickup.c
+00437E70    00000480    -R      void __cdecl PickUpCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+004382F0    0000020A    -R      void __cdecl SwitchCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00438500    000000FC    -R      void __cdecl SwitchCollision2(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00438840    00000223    -R      void __cdecl KeyHoleCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00438A80    00000294    -R      void __cdecl PuzzleHoleCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00438D40    00000039    -R      void __cdecl SwitchControl(int16_t item_num);
+00438D80    000000BD    -R      int32_t __cdecl SwitchTrigger(int16_t item_num, int16_t timer);
+00438E40    0000003D    -R      int32_t __cdecl KeyTrigger(int16_t item_num);
+00438E80    00000033    -R      int32_t __cdecl PickupTrigger(int16_t item_num);
+00438EC0    00000023    -R      void __cdecl SecretControl(int16_t item_num);
+
+# game/rat.c
+00438EF0    000001DC    -R      void __cdecl MouseControl(int16_t item_num);
+
+# game/savegame.c
+004390E0    00000062    -R      void __cdecl InitialiseStartInfo(void);
+00439150    000000DB    -R      void __cdecl ModifyStartInfo(int32_t level_num);
+00439230    00000201    -R      void __cdecl CreateStartInfo(int32_t level_num);
+00439440    0000052B    -R      void __cdecl CreateSaveGameInfo(void);
+00439970    0000085C    -R      void __cdecl ExtractSaveGameInfo(void);
+0043A1D0    00000015    -R      void __cdecl ResetSG();
+0043A1F0    0000004C    -R      void __cdecl WriteSG(void *pointer, int32_t size);
+0043A240    00000035    -R      void __cdecl ReadSG(void *pointer, int32_t size);
+
+# game/setup.c
 0043A280    0000015F    -       int32_t __cdecl Level_Initialise(int32_t level_num, int32_t level_type);
-0043A3E0    00000061    -       sub_43A3E0
-0043A450    00000027    -       sub_43A450
-0043A480    0000103B    -       sub_43A480
-0043B4C0    000005FD    -       sub_43B4C0
-0043BAC0    00000C4C    -       sub_43BAC0
-0043C710    00000068    -       sub_43C710
-0043C780    000000CE    -       sub_43C780
-0043C850    00000116    -       sub_43C850
-0043C970    0000021B    -       sub_43C970
-0043CBA0    0000027C    -       sub_43CBA0
-0043CE30    00000040    -       sub_43CE30
-0043CE70    000000E1    -       sub_43CE70
-0043CF60    000000F8    -       sub_43CF60
-0043D060    000001F9    -       sub_43D060
-0043D260    000000B2    -       sub_43D260
-0043D320    0000027C    -       sub_43D320
-0043D5A0    00000054    -       sub_43D5A0
-0043D600    00000090    -       sub_43D600
-0043D690    00000140    -       sub_43D690
-0043D7D0    0000049E    -       sub_43D7D0
-0043DC70    000001B6    -       sub_43DC70
-0043DE30    00000106    -       sub_43DE30
-0043DF40    000002B9    -       sub_43DF40
-0043E220    0000007C    -       sub_43E220
-0043E2A0    00000233    -       sub_43E2A0
-0043E4E0    0000011B    -       sub_43E4E0
-0043E600    00000440    -       sub_43E600
-0043EA60    000002D5    -       sub_43EA60
-0043ED40    0000007F    -       sub_43ED40
-0043EDD0    000003E2    -       sub_43EDD0
-0043F1D0    00000119    -       sub_43F1D0
-0043F2F0    00000081    -       sub_43F2F0
-0043F380    00000031    -       sub_43F380
-0043F3C0    00000484    -       sub_43F3C0
-0043F860    0000005E    -       sub_43F860
-0043F8C0    00000086    -       sub_43F8C0
-0043F950    00000024    -       sub_43F950
-0043F980    0000002A    -       sub_43F980
-0043F9B0    00000128    -       sub_43F9B0
-0043FAE0    000002D8    -       sub_43FAE0
-0043FDC0    0000019A    -       sub_43FDC0
-0043FF60    0000005D    -       sub_43FF60
-0043FFC0    000000AC    -       sub_43FFC0
-00440070    00000206    -       sub_440070
-00440290    000001A5    -       sub_440290
-00440450    0000002C    -       sub_440450
-00440480    00000105    -       sub_440480
-00440590    00000037    -       sub_440590
-004405D0    00000017    -       sub_4405D0
-004405F0    0000002B    -       sub_4405F0
-00440620    0000008C    -       sub_440620
-004406B0    00000010    -       sub_4406B0
-004406C0    00000029    -       sub_4406C0
-004406F0    00000010    -       sub_4406F0
-00440700    0000001E    -       sub_440700
-00440720    0000001E    -       sub_440720
-00440740    0000001E    -       sub_440740
-00440760    0000001E    -       sub_440760
-00440780    00000107    -       sub_440780
-00440890    00000025    -       sub_440890
-004408C0    00000024    -       sub_4408C0
-004408F0    00000027    -       sub_4408F0
-00440920    00000189    -       sub_440920
-00440AB0    000003D2    -       sub_440AB0
-00440E90    00000037    -       sub_440E90
-00440ED0    00000039    -       sub_440ED0
-00440F10    000001F4    -       sub_440F10
-00441110    00000138    -       sub_441110
-00441250    00000115    -       sub_441250
-00441370    00000086    -       sub_441370
-00441400    00000190    -       sub_441400
-00441590    0000017B    -       sub_441590
-00441710    000000FE    -       sub_441710
-004418F0    00000046    -       sub_4418F0
-00441940    00000109    -       sub_441940
-00441A50    000000DB    -       sub_441A50
-00441B30    0000003C    -       sub_441B30
-00441B70    00000347    -       sub_441B70
-00441EC0    0000024A    -       sub_441EC0
-00442110    00000155    -       sub_442110
-00442270    0000004F    -       sub_442270
-00442300    0000003F    -       sub_442300
-00442340    000000A3    -       sub_442340
-004423F0    0000010A    -       sub_4423F0
-00442500    00000105    -       sub_442500
-00442610    0000003E    -       sub_442610
-004426A0    000000BD    -       sub_4426A0
-00442980    00000155    -       sub_442980
-00442AE0    0000004B    -       sub_442AE0
-00442B30    00000090    -       sub_442B30
-00442BC0    00000164    -       sub_442BC0
-00442D30    00000049    -       sub_442D30
-00442D80    000000E6    -       sub_442D80
-00442E70    000000C5    -       sub_442E70
-00442F40    0000010B    -       sub_442F40
-00443050    000002CA    -       sub_443050
-00443350    000005ED    -       sub_443350
+0043A3E0    00000061    -R      void __cdecl InitialiseGameFlags(void);
+0043A450    00000027    -R      void __cdecl InitialiseLevelFlags(void);
+0043A480    0000103B    -R      void __cdecl BaddyObjects(void);
+0043B4C0    000005FD    -R      void __cdecl TrapObjects(void);
+0043BAC0    00000C4C    -R      void __cdecl ObjectObjects(void);
+0043C710    00000068    -R      void __cdecl InitialiseObjects(void);
+0043C780    000000CE    -R      void __cdecl GetCarriedItems(void);
+
+# game/shark.c
+0043C850    00000116    -R      void __cdecl JellyControl(int16_t item_num);
+0043C970    0000021B    -R      void __cdecl BaracuddaControl(int16_t item_num);
+0043CBA0    0000027C    -R      void __cdecl SharkControl(int16_t item_num);
+
+# game/skidoo.c
+0043CE30    00000040    -R      void __cdecl InitialiseSkidoo(int16_t item_num);
+0043CE70    000000E1    -R      int32_t __cdecl SkidooCheckGeton(int16_t item_num, struct COLL_INFO *coll);
+0043CF60    000000F8    -R      void __cdecl SkidooCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
+0043D060    000001F9    -R      void __cdecl SkidooBaddieCollision(struct ITEM_INFO *skidoo);
+0043D260    000000B2    -R      int32_t __cdecl TestHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);
+0043D320    0000027C    -R      int32_t __cdecl DoShift(struct ITEM_INFO *skidoo, struct PHD_VECTOR *pos, struct PHD_VECTOR *old);
+0043D5A0    00000054    -R      int32_t __cdecl DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);
+0043D600    00000090    -R      int32_t __cdecl GetCollisionAnim(struct ITEM_INFO *skidoo, struct PHD_VECTOR *moved);
+0043D690    00000140    -R      void __cdecl DoSnowEffect(struct ITEM_INFO *skidoo);
+0043D7D0    0000049E    -R      int32_t __cdecl SkidooDynamics(struct ITEM_INFO *skidoo);
+0043DC70    000001B6    -R      int32_t __cdecl SkidooUserControl(struct ITEM_INFO *skidoo, int32_t height, int32_t *pitch);
+0043DE30    00000106    -R      int32_t __cdecl SkidooCheckGetOffOK(int32_t direction);
+0043DF40    000002B9    -R      void __cdecl SkidooAnimation(struct ITEM_INFO *skidoo, int32_t collide, int32_t dead);
+0043E220    0000007C    -R      void __cdecl SkidooExplode(struct ITEM_INFO *skidoo);
+0043E2A0    00000233    -R      int32_t __cdecl SkidooCheckGetOff(void);
+0043E4E0    0000011B    -R      void __cdecl SkidooGuns(void);
+0043E600    00000440    -R      int32_t __cdecl SkidooControl(void);
+0043EA60    000002D5    -R      void __cdecl DrawSkidoo(struct ITEM_INFO *item);
+0043ED40    0000007F    -R      void __cdecl InitialiseSkidman(int16_t item_num);
+0043EDD0    000003E2    -R      void __cdecl SkidManControl(int16_t rider_num);
+0043F1D0    00000119    -R      void __cdecl SkidmanPush(struct ITEM_INFO *item, struct ITEM_INFO *laraitem, int32_t radius);
+0043F2F0    00000081    -R      void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+
+# game/sound.c
+0043F380    00000031    -R      int32_t __cdecl GetRealTrack(int32_t track);
+0043F3C0    00000484    -R      void __cdecl PlaySoundEffect(uint32_t, struct PHD_3DPOS *, uint32_t);
+0043F860    0000005E    -R      void __cdecl StopSoundEffect(int32_t);
+0043F8C0    00000086    -R      void __cdecl SOUND_EndScene(void);
+0043F950    00000024    -R      void __cdecl SOUND_Stop(void);
+0043F980    0000002A    -R      void __cdecl SOUND_Init(void);
+
+# game/sphere.c
+0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *laraitem);
+0043FAE0    000002D8    -R      int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);
+0043FDC0    0000019A    -R      void __cdecl GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);
+0043FF60    0000005D    -R      void __cdecl BaddieBiteEffect(struct ITEM_INFO *item, struct BITE_INFO *bite);
+
+# game/spider.c
+0043FFC0    000000AC    -R      void __cdecl SpiderLeap(int16_t item_num, int16_t angle);
+00440070    00000206    -R      void __cdecl SpiderControl(int16_t item_num);
+00440290    000001A5    -R      void __cdecl BigSpiderControl(int16_t item_num);
+
+# game/text.c
+00440450    0000002C    -R      void __cdecl T_InitPrint(void);
+00440480    00000105    -R      TEXTSTRING *__cdecl T_Print(int32_t xpos, int32_t ypos, int32_t zpos, char *string);
+00440590    00000037    -R      void __cdecl T_ChangeText(struct TEXTSTRING *textstring, char *string);
+004405D0    00000017    -R      void __cdecl T_SetScale(struct TEXTSTRING *textstring, int32_t scale_h, int32_t scaleV);
+004405F0    0000002B    -R      void __cdecl T_FlashText(struct TEXTSTRING *textstring, int16_t enable, int16_t rate);
+00440620    0000008C    -R      void __cdecl T_AddBackground(struct TEXTSTRING *textstring, int16_t xsize, int16_t ysize, int16_t xoff, int16_t yoff, int16_t zoff, int16_t colour, uint16_t *gourptr, uint16_t flags);
+004406B0    00000010    -R      void __cdecl T_RemoveBackground(struct TEXTSTRING *textstring);
+004406C0    00000029    -R      void __cdecl T_AddOutline(struct TEXTSTRING *textstring, int16_t enable, int16_t colour, uint16_t *gourptr, uint16_t flags);
+004406F0    00000010    -R      void __cdecl T_RemoveOutline(struct TEXTSTRING *textstring);
+00440700    0000001E    -R      void __cdecl T_CentreH(struct TEXTSTRING *textstring, int16_t enable);
+00440720    0000001E    -R      void __cdecl T_CentreV(struct TEXTSTRING *textstring, int16_t enable);
+00440740    0000001E    -R      void __cdecl T_RightAlign(struct TEXTSTRING *textstring, int16_t enable);
+00440760    0000001E    -R      void __cdecl T_BottomAlign(struct TEXTSTRING *textstring, int16_t enable);
+00440780    00000107    -R      int32_t __cdecl T_GetTextWidth(struct TEXTSTRING *textstring);
+00440890    00000025    -R      int32_t __cdecl T_RemovePrint(struct TEXTSTRING *textstring);
+004408C0    00000024    -R      int16_t __cdecl T_GetStringLen(char *string);
+004408F0    00000027    -R      void __cdecl T_DrawText(void);
+00440920    00000189    -R      void __cdecl T_draw_border(int32_t xpos, int32_t ypos, int32_t zpos, int32_t width, int32_t height);
+00440AB0    000003D2    -R      void __cdecl T_DrawThisText(struct TEXTSTRING *textstring);
+00440E90    00000037    -R      uint32_t __cdecl GetTextScaleH(uint32_t scale_h);
+00440ED0    00000039    -R      uint32_t __cdecl GetTextScaleV(uint32_t scale_v);
+
+# game/traps.c
+00440F10    000001F4    -       void __cdecl MineControl(int16_t mine_num);
+00441110    00000138    -       void __cdecl ControlSpikeWall(int16_t item_num);
+00441250    00000115    -       void __cdecl ControlCeilingSpikes(int16_t item_num);
+00441370    00000086    -       void __cdecl HookControl(int16_t item_num);
+00441400    00000190    -       void __cdecl PropellerControl(int16_t item_num);
+00441590    0000017B    -       void __cdecl SpinningBlade(int16_t item_num);
+00441710    000000FE    -       void __cdecl IcicleControl(int16_t item_num);
+004418F0    00000046    -       void __cdecl InitialiseKillerStatue(int16_t item_num);
+00441940    00000109    -       void __cdecl KillerStatueControl(int16_t item_num);
+00441A50    000000DB    -       void __cdecl SpringBoardControl(int16_t item_num);
+00441B30    0000003C    -       void __cdecl InitialiseRollingBall(int16_t item_num);
+00441B70    00000347    -       void __cdecl RollingBallControl(int16_t item_num);
+00441EC0    0000024A    -       void __cdecl RollingBallCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
+00442110    00000155    -       void __cdecl SpikeCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
+00442270    0000004F    -       void __cdecl TrapDoorControl(int16_t item_num);
+00442300    0000003F    -       void __cdecl TrapDoorCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00442340    000000A3    -       int32_t __cdecl OnTrapDoor(struct ITEM_INFO *item, int32_t x, int32_t z);
+004423F0    0000010A    -       void __cdecl Pendulum(int16_t item_num);
+00442500    00000105    -       void __cdecl FallingBlock(int16_t item_num);
+00442610    0000003E    -       void __cdecl FallingBlockFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+004426A0    000000BD    -       void __cdecl TeethTrap(int16_t item_num);
+00442980    00000155    -       void __cdecl DartsControl(int16_t item_num);
+00442AE0    0000004B    -       void __cdecl DartEffectControl(int16_t fx_num);
+00442B30    00000090    -       void __cdecl FlameEmitterControl(int16_t item_num);
+00442BC0    00000164    -       void __cdecl FlameControl(int16_t fx_num);
+00442D30    00000049    -       void __cdecl LaraBurn(void);
+00442D80    000000E6    -       void __cdecl LavaBurn(struct ITEM_INFO *item);
+00442E70    000000C5    -       void __cdecl LavaSpray(int16_t item_num);
+00442F40    0000010B    -       void __cdecl ControlLavaBlob(int16_t fx_num);
+
+# game/yeti.c
+00443050    000002CA    -       void __cdecl GiantYetiControl(int16_t item_num);
+00443350    000005ED    -       void __cdecl YetiControl(int16_t item_num);
+
 00443990    000001B8    -       sub_443990
 00443B50    000000B9    -       sub_443B50
 00443C10    00000032    -       sub_443C10
