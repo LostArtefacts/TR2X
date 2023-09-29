@@ -466,14 +466,14 @@ class FunctionTreeGrid(Container):
         box = Box(
             x1=ZERO,
             y1=ZERO,
-            x2=GRID_WIDTH,
+            x2=GRID_WIDTH + GRID_SQUARE_MARGIN,
             y2=(
                 (
                     (len(all_functions) + GRID_MAX_SQUARES - 1)
                     // GRID_MAX_SQUARES
                 )
                 * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-            ),
+            ) + GRID_SQUARE_MARGIN,
         )
 
         for result in squarify(
