@@ -4,7 +4,6 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from decimal import Decimal
 from enum import StrEnum, auto
-from fractions import Fraction
 from functools import cache
 from itertools import groupby
 from pathlib import Path
@@ -44,15 +43,21 @@ class FunctionStatus(StrEnum):
     DECOMPILED = auto()
 
 
+@dataclass
+class MyFraction:
+    """Fraction that doesn't normalize (eg 8/12 doesn't become 2/3)"""
+    numerator: int
+    denominator: int
+
 def format_decimal(source: Decimal) -> str:
     return str(source.quantize(Decimal("1.11"))).replace(".00", "")
 
 
-def format_percent(source: Fraction) -> str:
+def format_percent(source: MyFraction) -> str:
     return format_decimal(fraction_to_decimal(source) * 100) + "%"
 
 
-def fraction_to_decimal(source: Fraction) -> Decimal:
+def fraction_to_decimal(source: MyFraction) -> Decimal:
     return Decimal(source.numerator) / Decimal(source.denominator)
 
 
@@ -511,12 +516,12 @@ def get_function_done_percentage(
     chosen_functions: list[Function],
     all_functions: list[Function],
     mode: SumMode,
-) -> Fraction:
+) -> MyFraction:
     match mode:
         case SumMode.COUNT:
-            return Fraction(len(chosen_functions), len(all_functions))
+            return MyFraction(len(chosen_functions), len(all_functions))
         case SumMode.BYTES:
-            return Fraction(
+            return MyFraction(
                 sum(function.size for function in chosen_functions),
                 sum(function.size for function in all_functions),
             )
@@ -557,7 +562,7 @@ class ProgressBar(Container):
 
 def get_progress_parts(
     all_functions: list[Function],
-) -> dict[FunctionStatus, tuple[list[Function], dict[SumMode, Fraction]]]:
+) -> dict[FunctionStatus, tuple[list[Function], dict[SumMode, MyFraction]]]:
     function_groups: dict[FunctionStatus, list[Function]] = {
         status: [] for status in FunctionStatus
     }
@@ -681,9 +686,13 @@ class ProgressSVG(Container):
         super().__post_init__()
 
     def render(self) -> str:
+        x1 = -DOCUMENT_MARGIN
+        y1 = -DOCUMENT_MARGIN
+        x2 = self.box.dx + DOCUMENT_MARGIN * 2
+        y2 = self.box.dy + DOCUMENT_MARGIN * 2
         return (
             f"""<svg version="1.1"
-    viewBox="{format_decimal(-DOCUMENT_MARGIN)} {format_decimal(-DOCUMENT_MARGIN)} {format_decimal(self.box.dx + DOCUMENT_MARGIN * 2)} {format_decimal(self.box.dy + DOCUMENT_MARGIN * 2)}"
+    viewBox="{format_decimal(x1)} {format_decimal(y1)} {format_decimal(x2)} {format_decimal(y2)}"
     xmlns="http://www.w3.org/2000/svg">
     <style>
         .todo {{

@@ -48,7 +48,7 @@
 </g>
 <g transform="translate(0 98)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">38 of 109 / 34.86%</tspan> · <tspan class="named">773 of 1199 / 64.47%</tspan> · <tspan class="decompiled">8 of 1199 / 0.67%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">418 of 1199 / 34.86%</tspan> · <tspan class="named">773 of 1199 / 64.47%</tspan> · <tspan class="decompiled">8 of 1199 / 0.67%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="4.98" height="6" x="0" y="0" class="decompiled"/>
 <rect width="481.59" height="6" x="4.98" y="0" class="named"/>
