@@ -39,7 +39,7 @@ class SumMode(StrEnum):
 
 class FunctionStatus(StrEnum):
     TODO = auto()
-    NAMED = auto()
+    KNOWN = auto()
     DECOMPILED = auto()
 
 
@@ -220,15 +220,15 @@ class Function:
         return "*" in self.flags
 
     @property
-    def is_named(self) -> bool:
+    def is_known(self) -> bool:
         return not re.search(r"(\s|^)sub_", self.signature)
 
     @property
     def status(self) -> FunctionStatus:
         if self.is_decompiled:
             return FunctionStatus.DECOMPILED
-        elif self.is_named:
-            return FunctionStatus.NAMED
+        elif self.is_known:
+            return FunctionStatus.KNOWN
         return FunctionStatus.TODO
 
 
@@ -407,15 +407,15 @@ class LegendSection(Container):
         ready_functions = [
             func for func in all_functions if func.is_decompiled
         ]
-        named_functions = [
+        known_functions = [
             func
             for func in all_functions
-            if func.is_named and func not in ready_functions
+            if func.is_known and func not in ready_functions
         ]
         todo_functions = [
             func
             for func in all_functions
-            if func not in ready_functions and func not in named_functions
+            if func not in ready_functions and func not in known_functions
         ]
 
         self.title = Text(x=ZERO, y=0, text="Legend:")
@@ -429,13 +429,13 @@ class LegendSection(Container):
                 ready_functions,
             ),
             (
-                FunctionStatus.NAMED,
-                "Function not yet decompiled, but with a known name",
-                named_functions,
+                FunctionStatus.KNOWN,
+                "Function not yet decompiled, but with a known signature",
+                known_functions,
             ),
             (
                 FunctionStatus.TODO,
-                "Function not yet decompiled, with an unknown name",
+                "Function not yet decompiled, with an unknown signature",
                 todo_functions,
             ),
         ]:
@@ -570,8 +570,8 @@ def get_progress_parts(
     for func in all_functions:
         if func.is_decompiled:
             function_groups[FunctionStatus.DECOMPILED].append(func)
-        elif func.is_named:
-            function_groups[FunctionStatus.NAMED].append(func)
+        elif func.is_known:
+            function_groups[FunctionStatus.KNOWN].append(func)
         else:
             function_groups[FunctionStatus.TODO].append(func)
 
@@ -698,7 +698,7 @@ class ProgressSVG(Container):
             --bg: rgba(255, 255, 255, 0.25);
             --fg: rgba(100, 100, 100, 0.5);
         }}
-        .named {{
+        .known {{
             --bg: rgba(255, 255, 0, 0.25);
             --fg: rgba(250, 150, 0, 0.85);
         }}
