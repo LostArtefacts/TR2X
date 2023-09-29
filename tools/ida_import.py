@@ -110,6 +110,9 @@ def import_declaration(declaration: Declaration) -> None:
             name = idaapi.parse_decl(
                 ti, til, declaration.declaration, idaapi.PT_VAR
             )
+            if not name:
+                raise RuntimeError('invalid declaration', name)
+
             if name.startswith("_"):
                 name = name[1:]
 
@@ -135,9 +138,14 @@ def import_declaration(declaration: Declaration) -> None:
 
 def import_functions_from_file(declarations: list[Declaration]) -> None:
     print(f"Importing declarations:")
+    error_count = 0
     for declaration in declarations:
-        import_declaration(declaration)
-    print("    done")
+        try:
+            import_declaration(declaration)
+        except Exception as ex:
+            print('  error', ex)
+            error_count += 1
+    print(f"    done ({error_count} errors)")
 
 
 def main():
