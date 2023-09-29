@@ -30,6 +30,7 @@ class ProgressFileSection(Enum):
 class Declaration:
     offset: int
     declaration: str
+    flags: str = ""
 
 
 @dataclass
@@ -76,7 +77,7 @@ def parse_progress_file(path: Path) -> ProgressFile:
         offset, size, flags, declaration = re.split("\s+", line, maxsplit=3)
         offset = to_int(offset)
         declarations.append(
-            Declaration(offset=offset, declaration=declaration)
+            Declaration(offset=offset, declaration=declaration, flags=flags)
         )
 
     return ProgressFile(
@@ -94,28 +95,48 @@ def import_types_from_file(path: Path) -> None:
     print(f"    done ({error_count} errors)")
 
 
-def import_functions_from_file(declarations: list[Declaration]) -> None:
-    print(f"Importing declarations:")
-    for declaration in declarations:
-        if re.match(r"(\s+|^)(dword|sub)_", declaration.declaration):
-            continue
+def import_declaration(declaration: Declaration) -> None:
+    known = not re.match(r"(\s+|^)(dword|sub)_", declaration.declaration)
 
+    if known:
         print(
             f"    renaming 0x{declaration.offset:08x} to {declaration.declaration}"
         )
 
-        if not idaapi:
-            continue
+        if idaapi:
+            til = idaapi.get_idati()
+            ti = idaapi.tinfo_t()
 
-        til = idaapi.get_idati()
-        ti = idaapi.tinfo_t()
+            name = idaapi.parse_decl(
+                ti, til, declaration.declaration, idaapi.PT_VAR
+            )
+            if name.startswith("_"):
+                name = name[1:]
 
-        name = idaapi.parse_decl(ti, til, declaration.declaration, idaapi.PT_VAR)
-        if name.startswith("_"):
-            name = name[1:]
+            idaapi.set_name(declaration.offset, name)
+            idaapi.apply_tinfo(declaration.offset, ti, 0)
 
-        idaapi.set_name(declaration.offset, name)
-        idaapi.apply_tinfo(declaration.offset, ti, 0)
+    if idaapi:
+        func_num = idaapi.get_func_num(declaration.offset)
+        if func_num != -1:
+            func_struct = idaapi.getn_func(func_num)
+            if func_struct:
+                # BGR
+                if "+" in declaration.flags:
+                    func_struct.color = 0xA0FFA0
+                elif "x" in declaration.flags:
+                    func_struct.color = 0xA0A0A0
+                elif known:
+                    func_struct.color = 0xA0FFFF
+                else:
+                    func_struct.color = 0xEEEEEE
+                idaapi.update_func(func_struct)
+
+
+def import_functions_from_file(declarations: list[Declaration]) -> None:
+    print(f"Importing declarations:")
+    for declaration in declarations:
+        import_declaration(declaration)
     print("    done")
 
 
