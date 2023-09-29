@@ -48,11 +48,11 @@
 </g>
 <g transform="translate(0 98)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">1087 of 1196 / 90.89%</tspan> · <tspan class="named">101 of 1196 / 8.44%</tspan> · <tspan class="decompiled">2 of 299 / 0.67%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">531 of 598 / 88.80%</tspan> · <tspan class="named">63 of 598 / 10.54%</tspan> · <tspan class="decompiled">2 of 299 / 0.67%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="5" height="6" x="0" y="0" class="decompiled"/>
-<rect width="63.08" height="6" x="5" y="0" class="named"/>
-<rect width="678.92" height="6" x="68.08" y="0" class="todo"/>
+<rect width="78.70" height="6" x="5" y="0" class="named"/>
+<rect width="663.31" height="6" x="83.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
@@ -154,30 +154,30 @@
 <rect width="12" height="12" x="690" y="15" class="named"><title>void __cdecl Boat_Control(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="705" y="15" class="named"><title>void __cdecl Gondola_Control(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="720" y="15" class="named"><title>void __cdecl Creature_Initialise(int16_t item_num);</title></rect>
-<rect width="12" height="12" x="735" y="15" class="todo"><title>sub_40E1E0</title></rect>
-<rect width="12" height="12" x="0" y="30" class="todo"><title>sub_40E230</title></rect>
-<rect width="12" height="12" x="15" y="30" class="todo"><title>sub_40E490</title></rect>
-<rect width="12" height="12" x="30" y="30" class="todo"><title>sub_40E690</title></rect>
-<rect width="12" height="12" x="45" y="30" class="todo"><title>sub_40E700</title></rect>
-<rect width="12" height="12" x="60" y="30" class="todo"><title>sub_40E7A0</title></rect>
-<rect width="12" height="12" x="75" y="30" class="todo"><title>sub_40E8A0</title></rect>
-<rect width="12" height="12" x="90" y="30" class="todo"><title>sub_40E950</title></rect>
-<rect width="12" height="12" x="105" y="30" class="todo"><title>sub_40EA00</title></rect>
-<rect width="12" height="12" x="120" y="30" class="todo"><title>sub_40EE70</title></rect>
-<rect width="12" height="12" x="135" y="30" class="todo"><title>sub_40F2D0</title></rect>
-<rect width="12" height="12" x="150" y="30" class="todo"><title>sub_40F3D0</title></rect>
-<rect width="12" height="12" x="165" y="30" class="todo"><title>sub_40F460</title></rect>
-<rect width="12" height="12" x="180" y="30" class="todo"><title>sub_40F520</title></rect>
-<rect width="12" height="12" x="195" y="30" class="todo"><title>sub_40FDF0</title></rect>
-<rect width="12" height="12" x="210" y="30" class="todo"><title>sub_40FED0</title></rect>
-<rect width="12" height="12" x="225" y="30" class="todo"><title>sub_40FF10</title></rect>
-<rect width="12" height="12" x="240" y="30" class="todo"><title>sub_40FF60</title></rect>
-<rect width="12" height="12" x="255" y="30" class="todo"><title>sub_40FFB0</title></rect>
-<rect width="12" height="12" x="270" y="30" class="todo"><title>sub_410060</title></rect>
-<rect width="12" height="12" x="285" y="30" class="todo"><title>sub_4100B0</title></rect>
-<rect width="12" height="12" x="300" y="30" class="todo"><title>sub_410110</title></rect>
-<rect width="12" height="12" x="315" y="30" class="todo"><title>sub_410250</title></rect>
-<rect width="12" height="12" x="330" y="30" class="todo"><title>sub_4103C0</title></rect>
+<rect width="12" height="12" x="735" y="15" class="named"><title>int32_t __cdecl Creature_Activate(int16_t item_num);</title></rect>
+<rect width="12" height="12" x="0" y="30" class="named"><title>void __cdecl Creature_AIInfo(struct ITEM_INFO *item, struct AI_INFO *info);</title></rect>
+<rect width="12" height="12" x="15" y="30" class="named"><title>int32_t __cdecl Box_SearchLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
+<rect width="12" height="12" x="30" y="30" class="named"><title>int32_t __cdecl Box_UpdateLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
+<rect width="12" height="12" x="45" y="30" class="named"><title>void __cdecl Box_TargetBox(struct LOT_INFO *lot, int16_t box_num);</title></rect>
+<rect width="12" height="12" x="60" y="30" class="named"><title>int32_t __cdecl Box_StalkBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);</title></rect>
+<rect width="12" height="12" x="75" y="30" class="named"><title>int32_t __cdecl Box_EscapeBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);</title></rect>
+<rect width="12" height="12" x="90" y="30" class="named"><title>int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);</title></rect>
+<rect width="12" height="12" x="105" y="30" class="named"><title>void __cdecl CreatureMood(struct ITEM_INFO *item, struct AI_INFO *info, int32_t violent);</title></rect>
+<rect width="12" height="12" x="120" y="30" class="named"><title>enum TARGET_TYPE __cdecl Box_CalculateTarget(struct PHD_VECTOR *target, struct ITEM_INFO *item, struct LOT_INFO *lot);</title></rect>
+<rect width="12" height="12" x="135" y="30" class="named"><title>int32_t Creature_CheckBaddieOverlap(int16_t item_num);</title></rect>
+<rect width="12" height="12" x="150" y="30" class="named"><title>int32_t Box_BadFloor(int32_t x, int32_t y, int32_t z, int32_t box_height, int32_t next_height, int16_t room_number, struct LOT_INFO *lot);</title></rect>
+<rect width="12" height="12" x="165" y="30" class="named"><title>void Creature_Die(int16_t item_num, int32_t explode);</title></rect>
+<rect width="12" height="12" x="180" y="30" class="named"><title>int32_t Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);</title></rect>
+<rect width="12" height="12" x="195" y="30" class="named"><title>int16_t Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);</title></rect>
+<rect width="12" height="12" x="210" y="30" class="named"><title>void Creature_Tilt(struct ITEM_INFO *item, int16_t angle);</title></rect>
+<rect width="12" height="12" x="225" y="30" class="named"><title>void Creature_Head(struct ITEM_INFO *item, int16_t required);</title></rect>
+<rect width="12" height="12" x="240" y="30" class="named"><title>void Creature_Neck(struct ITEM_INFO *item, int16_t required);</title></rect>
+<rect width="12" height="12" x="255" y="30" class="named"><title>void Creature_Float(int16_t item_number);</title></rect>
+<rect width="12" height="12" x="270" y="30" class="named"><title>void Creature_Underwater(struct ITEM_INFO *item, int32_t depth);</title></rect>
+<rect width="12" height="12" x="285" y="30" class="named"><title>int16_t Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_number));</title></rect>
+<rect width="12" height="12" x="300" y="30" class="named"><title>int32_t Creature_Vault(int16_t item_number, int16_t angle, int32_t vault, int32_t shift);</title></rect>
+<rect width="12" height="12" x="315" y="30" class="named"><title>void Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);</title></rect>
+<rect width="12" height="12" x="330" y="30" class="named"><title>void Creature_GetBaddieTarget(int16_t item_num, int32_t goody);</title></rect>
 <rect width="12" height="12" x="345" y="30" class="todo"><title>sub_4105A0</title></rect>
 <rect width="12" height="12" x="360" y="30" class="todo"><title>sub_410650</title></rect>
 <rect width="12" height="12" x="375" y="30" class="todo"><title>sub_4109D0</title></rect>
@@ -645,7 +645,7 @@
 <rect width="12" height="12" x="555" y="165" class="todo"><title>sub_432870</title></rect>
 <rect width="12" height="12" x="570" y="165" class="todo"><title>sub_432A60</title></rect>
 <rect width="12" height="12" x="585" y="165" class="todo"><title>sub_432AC0</title></rect>
-<rect width="12" height="12" x="600" y="165" class="todo"><title>sub_432B10</title></rect>
+<rect width="12" height="12" x="600" y="165" class="named"><title>int32_t LOT_EnableBaddieAI(int16_t item_num, int32_t always);</title></rect>
 <rect width="12" height="12" x="615" y="165" class="todo"><title>sub_432CC0</title></rect>
 <rect width="12" height="12" x="630" y="165" class="todo"><title>sub_432ED0</title></rect>
 <rect width="12" height="12" x="645" y="165" class="todo"><title>sub_432F90</title></rect>
@@ -1255,11 +1255,11 @@
 </g>
 <g transform="translate(0 513)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">83.20%</tspan> · <tspan class="named">16.14%</tspan> · <tspan class="decompiled">0.66%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="todo">80.42%</tspan> · <tspan class="named">18.92%</tspan> · <tspan class="decompiled">0.66%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="4.93" height="6" x="0" y="0" class="decompiled"/>
-<rect width="120.60" height="6" x="4.93" y="0" class="named"/>
-<rect width="621.47" height="6" x="125.53" y="0" class="todo"/>
+<rect width="141.35" height="6" x="4.93" y="0" class="named"/>
+<rect width="600.73" height="6" x="146.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="51.71" height="74.69" x="0" y="0" class="named"><title>void __cdecl Output_WGTmap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
@@ -1273,7 +1273,7 @@
 <rect width="42.91" height="45.01" x="54.71" y="107.34" class="todo"><title>sub_44DA10</title></rect>
 <rect width="42.91" height="43.20" x="54.71" y="155.34" class="named"><title>int16_t *__cdecl Output_InsertObjectGT4(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);</title></rect>
 <rect width="42.91" height="41.12" x="54.71" y="201.54" class="todo"><title>sub_420F20</title></rect>
-<rect width="42.91" height="36.23" x="54.71" y="245.66" class="todo"><title>sub_40F520</title></rect>
+<rect width="42.91" height="36.23" x="54.71" y="245.66" class="named"><title>int32_t Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);</title></rect>
 <rect width="42.91" height="34.66" x="54.71" y="284.89" class="named"><title>int16_t *__cdecl Output_InsertObjectGT3(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);</title></rect>
 <rect width="42.91" height="34.45" x="54.71" y="322.55" class="todo"><title>sub_4257C0</title></rect>
 <rect width="36.84" height="39.96" x="100.62" y="0" class="todo"><title>sub_439970</title></rect>
@@ -1311,10 +1311,10 @@
 <rect width="26.23" height="28.63" x="205.96" y="0" class="todo"><title>sub_43F3C0</title></rect>
 <rect width="26.23" height="28.52" x="205.96" y="31.63" class="todo"><title>sub_437E70</title></rect>
 <rect width="26.23" height="28.41" x="205.96" y="63.15" class="todo"><title>sub_41FCE0</title></rect>
-<rect width="26.23" height="27.45" x="205.96" y="94.56" class="todo"><title>sub_40EE70</title></rect>
+<rect width="26.23" height="27.45" x="205.96" y="94.56" class="named"><title>enum TARGET_TYPE __cdecl Box_CalculateTarget(struct PHD_VECTOR *target, struct ITEM_INFO *item, struct LOT_INFO *lot);</title></rect>
 <rect width="26.23" height="26.88" x="205.96" y="125.02" class="named"><title>void __cdecl Output_InsertGT4_ZBuffered(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_VBUF *vtx3, PHD_TEXTURE *texture);</title></rect>
 <rect width="26.23" height="26.77" x="205.96" y="154.90" class="todo"><title>sub_43E600</title></rect>
-<rect width="26.23" height="26.74" x="205.96" y="184.67" class="todo"><title>sub_40EA00</title></rect>
+<rect width="26.23" height="26.74" x="205.96" y="184.67" class="named"><title>void __cdecl CreatureMood(struct ITEM_INFO *item, struct AI_INFO *info, int32_t violent);</title></rect>
 <rect width="26.23" height="26.63" x="205.96" y="214.41" class="named"><title>int16_t *__cdecl Output_InsertObjectG4_Sorted(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);</title></rect>
 <rect width="26.23" height="26.17" x="205.96" y="244.04" class="todo"><title>sub_437110</title></rect>
 <rect width="26.23" height="26.03" x="205.96" y="273.21" class="todo"><title>sub_4268C0</title></rect>
@@ -1406,7 +1406,7 @@
 <rect width="18.81" height="18.49" x="365.29" y="295.72" class="todo"><title>sub_441EC0</title></rect>
 <rect width="18.81" height="18.49" x="365.29" y="317.21" class="todo"><title>sub_44B260</title></rect>
 <rect width="18.81" height="18.30" x="365.29" y="338.70" class="todo"><title>sub_4126A0</title></rect>
-<rect width="18.92" height="18.08" x="387.10" y="0" class="todo"><title>sub_40E230</title></rect>
+<rect width="18.92" height="18.08" x="387.10" y="0" class="named"><title>void __cdecl Creature_AIInfo(struct ITEM_INFO *item, struct AI_INFO *info);</title></rect>
 <rect width="18.74" height="18.08" x="409.03" y="0" class="todo"><title>sub_415930</title></rect>
 <rect width="18.62" height="18.08" x="430.76" y="0" class="todo"><title>sub_449610</title></rect>
 <rect width="18.62" height="18.08" x="452.38" y="0" class="todo"><title>sub_456FA0</title></rect>
@@ -1441,7 +1441,7 @@
 <rect width="17.91" height="16.20" x="387.10" y="321.65" class="todo"><title>sub_4519D0</title></rect>
 <rect width="17.91" height="16.16" x="387.10" y="340.84" class="todo"><title>sub_44EBC0</title></rect>
 <rect width="16.30" height="17.72" x="408.01" y="21.08" class="todo"><title>sub_440F10</title></rect>
-<rect width="16.30" height="17.67" x="408.01" y="41.80" class="todo"><title>sub_40E490</title></rect>
+<rect width="16.30" height="17.67" x="408.01" y="41.80" class="named"><title>int32_t __cdecl Box_SearchLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
 <rect width="16.30" height="17.59" x="408.01" y="62.47" class="todo"><title>sub_450F80</title></rect>
 <rect width="16.30" height="17.38" x="408.01" y="83.06" class="todo"><title>sub_432870</title></rect>
 <rect width="16.30" height="17.26" x="408.01" y="103.45" class="todo"><title>sub_41FA60</title></rect>
@@ -1451,7 +1451,7 @@
 <rect width="16.30" height="16.72" x="408.01" y="183.79" class="decompiled"><title>void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);</title></rect>
 <rect width="16.30" height="16.72" x="408.01" y="203.51" class="todo"><title>sub_438EF0</title></rect>
 <rect width="16.30" height="16.72" x="408.01" y="223.23" class="todo"><title>sub_4533F0</title></rect>
-<rect width="16.30" height="16.68" x="408.01" y="242.95" class="todo"><title>sub_4103C0</title></rect>
+<rect width="16.30" height="16.68" x="408.01" y="242.95" class="named"><title>void Creature_GetBaddieTarget(int16_t item_num, int32_t goody);</title></rect>
 <rect width="16.30" height="16.51" x="408.01" y="262.63" class="todo"><title>sub_42FA20</title></rect>
 <rect width="16.30" height="16.47" x="408.01" y="282.15" class="todo"><title>sub_426340</title></rect>
 <rect width="16.30" height="16.47" x="408.01" y="301.62" class="todo"><title>sub_44A5B0</title></rect>
@@ -1472,7 +1472,7 @@
 <rect width="15.47" height="15.97" x="655.72" y="21.08" class="todo"><title>sub_43DC70</title></rect>
 <rect width="15.34" height="15.97" x="674.18" y="21.08" class="todo"><title>sub_426EB0</title></rect>
 <rect width="15.21" height="15.97" x="692.52" y="21.08" class="todo"><title>sub_416970</title></rect>
-<rect width="15.21" height="15.97" x="710.74" y="21.08" class="todo"><title>sub_432B10</title></rect>
+<rect width="15.21" height="15.97" x="710.74" y="21.08" class="named"><title>int32_t LOT_EnableBaddieAI(int16_t item_num, int32_t always);</title></rect>
 <rect width="15.05" height="15.97" x="728.95" y="21.08" class="named"><title>void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);</title></rect>
 <rect width="15.24" height="15.46" x="427.31" y="40.05" class="todo"><title>sub_41BA80</title></rect>
 <rect width="15.24" height="15.46" x="445.55" y="40.05" class="todo"><title>sub_440290</title></rect>
@@ -1512,7 +1512,7 @@
 <rect width="14.30" height="14.20" x="444.72" y="58.50" class="todo"><title>sub_455CC0</title></rect>
 <rect width="14.30" height="14.10" x="444.72" y="75.70" class="todo"><title>sub_437CF0</title></rect>
 <rect width="14.30" height="14.01" x="444.72" y="92.81" class="named"><title>int32_t __cdecl Boat_CheckGeton(int16_t item_num, struct COLL_INFO *coll);</title></rect>
-<rect width="14.30" height="13.97" x="444.72" y="109.82" class="todo"><title>sub_410250</title></rect>
+<rect width="14.30" height="13.97" x="444.72" y="109.82" class="named"><title>void Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);</title></rect>
 <rect width="14.30" height="13.97" x="444.72" y="126.78" class="todo"><title>sub_412120</title></rect>
 <rect width="14.30" height="13.92" x="444.72" y="143.75" class="todo"><title>sub_414220</title></rect>
 <rect width="14.30" height="13.87" x="444.72" y="160.67" class="named"><title>const int16_t *Output_CalcVerticeLight(const int16_t *obj_ptr);</title></rect>
@@ -1566,7 +1566,7 @@
 <rect width="12.03" height="13.33" x="462.02" y="106.85" class="named"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12.03" height="13.28" x="462.02" y="123.19" class="todo"><title>sub_421CF0</title></rect>
 <rect width="12.03" height="13.28" x="462.02" y="139.47" class="todo"><title>sub_4239F0</title></rect>
-<rect width="12.03" height="13.23" x="462.02" y="155.75" class="todo"><title>sub_410110</title></rect>
+<rect width="12.03" height="13.23" x="462.02" y="155.75" class="named"><title>int32_t Creature_Vault(int16_t item_number, int16_t angle, int32_t vault, int32_t shift);</title></rect>
 <rect width="12.03" height="13.17" x="462.02" y="171.97" class="todo"><title>sub_42B2E0</title></rect>
 <rect width="12.03" height="13.01" x="462.02" y="188.15" class="todo"><title>sub_41D650</title></rect>
 <rect width="12.03" height="12.91" x="462.02" y="204.16" class="named"><title>void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
@@ -1622,7 +1622,7 @@
 <rect width="10.98" height="11.30" x="491.79" y="162.93" class="todo"><title>sub_431570</title></rect>
 <rect width="10.98" height="11.30" x="491.79" y="177.22" class="todo"><title>sub_4522A0</title></rect>
 <rect width="10.98" height="11.18" x="491.79" y="191.52" class="named"><title>int32_t __cdecl Boat_TestWaterHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);</title></rect>
-<rect width="10.98" height="11.18" x="491.79" y="205.70" class="todo"><title>sub_40F2D0</title></rect>
+<rect width="10.98" height="11.18" x="491.79" y="205.70" class="named"><title>int32_t Creature_CheckBaddieOverlap(int16_t item_num);</title></rect>
 <rect width="10.98" height="11.18" x="491.79" y="219.89" class="todo"><title>sub_42F920</title></rect>
 <rect width="10.98" height="11.18" x="491.79" y="234.07" class="todo"><title>sub_43CF60</title></rect>
 <rect width="10.98" height="11.13" x="491.79" y="248.25" class="named"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
@@ -1633,7 +1633,7 @@
 <rect width="10.98" height="10.90" x="491.79" y="318.31" class="todo"><title>sub_41C990</title></rect>
 <rect width="10.98" height="10.90" x="491.79" y="332.21" class="todo"><title>sub_431B40</title></rect>
 <rect width="10.98" height="10.90" x="491.79" y="346.10" class="todo"><title>sub_4472A0</title></rect>
-<rect width="10.85" height="10.97" x="505.77" y="105.28" class="todo"><title>sub_40E7A0</title></rect>
+<rect width="10.85" height="10.97" x="505.77" y="105.28" class="named"><title>int32_t __cdecl Box_StalkBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);</title></rect>
 <rect width="10.85" height="10.97" x="519.63" y="105.28" class="todo"><title>sub_42BDE0</title></rect>
 <rect width="10.74" height="10.97" x="533.48" y="105.28" class="todo"><title>sub_41D560</title></rect>
 <rect width="10.74" height="10.97" x="547.22" y="105.28" class="todo"><title>sub_42C440</title></rect>
@@ -1676,7 +1676,7 @@
 <rect width="10.52" height="9.72" x="573.69" y="119.25" class="todo"><title>sub_4109D0</title></rect>
 <rect width="10.52" height="9.72" x="587.21" y="119.25" class="todo"><title>sub_4290D0</title></rect>
 <rect width="10.52" height="9.72" x="600.72" y="119.25" class="todo"><title>sub_4529E0</title></rect>
-<rect width="10.39" height="9.72" x="614.24" y="119.25" class="todo"><title>sub_40FDF0</title></rect>
+<rect width="10.39" height="9.72" x="614.24" y="119.25" class="named"><title>int16_t Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);</title></rect>
 <rect width="10.39" height="9.72" x="627.63" y="119.25" class="todo"><title>sub_4458C0</title></rect>
 <rect width="10.33" height="9.72" x="641.02" y="119.25" class="todo"><title>sub_435740</title></rect>
 <rect width="10.26" height="9.72" x="654.34" y="119.25" class="named"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
@@ -1731,7 +1731,7 @@
 <rect width="9.30" height="9.03" x="531.17" y="229.96" class="todo"><title>sub_435F90</title></rect>
 <rect width="9.30" height="9.03" x="531.17" y="241.99" class="todo"><title>sub_443B50</title></rect>
 <rect width="9.30" height="9.03" x="531.17" y="254.02" class="todo"><title>sub_4446B0</title></rect>
-<rect width="9.30" height="8.96" x="531.17" y="266.05" class="todo"><title>sub_40F460</title></rect>
+<rect width="9.30" height="8.96" x="531.17" y="266.05" class="named"><title>void Creature_Die(int16_t item_num, int32_t explode);</title></rect>
 <rect width="9.30" height="8.96" x="531.17" y="278.01" class="todo"><title>sub_432ED0</title></rect>
 <rect width="9.30" height="8.77" x="531.17" y="289.97" class="named"><title>void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="9.30" height="8.70" x="531.17" y="301.74" class="todo"><title>sub_4195B0</title></rect>
@@ -1766,15 +1766,15 @@
 <rect width="9.06" height="8.27" x="628.03" y="156.29" class="todo"><title>sub_4567F0</title></rect>
 <rect width="8.92" height="8.27" x="640.09" y="156.29" class="decompiled"><title>void __cdecl Matrix_RotY(int16_t ry);</title></rect>
 <rect width="8.92" height="8.27" x="652.01" y="156.29" class="decompiled"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
-<rect width="8.92" height="8.27" x="663.93" y="156.29" class="todo"><title>sub_40FFB0</title></rect>
+<rect width="8.92" height="8.27" x="663.93" y="156.29" class="named"><title>void Creature_Float(int16_t item_number);</title></rect>
 <rect width="8.92" height="8.27" x="675.85" y="156.29" class="todo"><title>sub_41EEE0</title></rect>
 <rect width="8.85" height="8.27" x="687.76" y="156.29" class="named"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
-<rect width="8.85" height="8.27" x="699.61" y="156.29" class="todo"><title>sub_40E950</title></rect>
+<rect width="8.85" height="8.27" x="699.61" y="156.29" class="named"><title>int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);</title></rect>
 <rect width="8.85" height="8.27" x="711.46" y="156.29" class="todo"><title>sub_4332B0</title></rect>
 <rect width="8.85" height="8.27" x="723.31" y="156.29" class="todo"><title>sub_436050</title></rect>
 <rect width="8.85" height="8.27" x="735.15" y="156.29" class="todo"><title>sub_445190</title></rect>
 <rect width="8.36" height="8.62" x="543.47" y="167.56" class="todo"><title>sub_428AA0</title></rect>
-<rect width="8.36" height="8.55" x="543.47" y="179.18" class="todo"><title>sub_40E8A0</title></rect>
+<rect width="8.36" height="8.55" x="543.47" y="179.18" class="named"><title>int32_t __cdecl Box_EscapeBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);</title></rect>
 <rect width="8.36" height="8.55" x="543.47" y="190.72" class="todo"><title>sub_41C630</title></rect>
 <rect width="8.36" height="8.48" x="543.47" y="202.27" class="todo"><title>sub_425630</title></rect>
 <rect width="8.36" height="8.48" x="543.47" y="213.75" class="todo"><title>sub_428B50</title></rect>
@@ -1815,7 +1815,7 @@
 <rect width="8.13" height="7.78" x="554.82" y="232.27" class="todo"><title>sub_44CF40</title></rect>
 <rect width="8.13" height="7.78" x="554.82" y="243.05" class="todo"><title>sub_450A00</title></rect>
 <rect width="8.13" height="7.71" x="554.82" y="253.83" class="named"><title>void __cdecl Output_SetNearZ(int32_t near_z);</title></rect>
-<rect width="8.13" height="7.71" x="554.82" y="264.54" class="todo"><title>sub_40E700</title></rect>
+<rect width="8.13" height="7.71" x="554.82" y="264.54" class="named"><title>void __cdecl Box_TargetBox(struct LOT_INFO *lot, int16_t box_num);</title></rect>
 <rect width="8.13" height="7.71" x="554.82" y="275.25" class="todo"><title>sub_429270</title></rect>
 <rect width="8.13" height="7.71" x="554.82" y="285.96" class="todo"><title>sub_456BF0</title></rect>
 <rect width="8.13" height="7.64" x="554.82" y="296.67" class="todo"><title>sub_448570</title></rect>
@@ -1840,7 +1840,7 @@
 <rect width="7.48" height="7.68" x="705.16" y="178.36" class="todo"><title>sub_440620</title></rect>
 <rect width="7.48" height="7.68" x="715.64" y="178.36" class="todo"><title>sub_444B20</title></rect>
 <rect width="7.48" height="7.68" x="726.12" y="178.36" class="todo"><title>sub_445690</title></rect>
-<rect width="7.40" height="7.68" x="736.60" y="178.36" class="todo"><title>sub_40F3D0</title></rect>
+<rect width="7.40" height="7.68" x="736.60" y="178.36" class="named"><title>int32_t Box_BadFloor(int32_t x, int32_t y, int32_t z, int32_t box_height, int32_t next_height, int16_t room_number, struct LOT_INFO *lot);</title></rect>
 <rect width="7.23" height="7.87" x="565.95" y="189.04" class="todo"><title>sub_4278A0</title></rect>
 <rect width="7.23" height="7.87" x="565.95" y="199.91" class="todo"><title>sub_444210</title></rect>
 <rect width="7.23" height="7.79" x="565.95" y="210.78" class="named"><title>void __cdecl Item_RemoveActive(int16_t item_num);</title></rect>
@@ -1924,7 +1924,7 @@
 <rect width="6.20" height="6.74" x="737.80" y="199.45" class="todo"><title>sub_42BC70</title></rect>
 <rect width="6.25" height="6.69" x="595.85" y="209.19" class="todo"><title>sub_4317D0</title></rect>
 <rect width="6.25" height="6.69" x="595.85" y="218.88" class="todo"><title>sub_4489D0</title></rect>
-<rect width="6.25" height="6.60" x="595.85" y="228.56" class="todo"><title>sub_40E690</title></rect>
+<rect width="6.25" height="6.60" x="595.85" y="228.56" class="named"><title>int32_t __cdecl Box_UpdateLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
 <rect width="6.25" height="6.60" x="595.85" y="238.16" class="todo"><title>sub_427100</title></rect>
 <rect width="6.25" height="6.60" x="595.85" y="247.76" class="todo"><title>sub_455500</title></rect>
 <rect width="6.25" height="6.60" x="595.85" y="257.36" class="todo"><title>sub_456680</title></rect>
@@ -1989,7 +1989,7 @@
 <rect width="5.78" height="5.47" x="614.04" y="235.62" class="todo"><title>sub_42D9B0</title></rect>
 <rect width="5.78" height="5.47" x="614.04" y="244.09" class="todo"><title>sub_43FF60</title></rect>
 <rect width="5.78" height="5.47" x="614.04" y="252.55" class="todo"><title>sub_452CF0</title></rect>
-<rect width="5.78" height="5.38" x="614.04" y="261.02" class="todo"><title>sub_4100B0</title></rect>
+<rect width="5.78" height="5.38" x="614.04" y="261.02" class="named"><title>int16_t Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_number));</title></rect>
 <rect width="5.78" height="5.38" x="614.04" y="269.40" class="todo"><title>sub_4167A0</title></rect>
 <rect width="5.78" height="5.38" x="614.04" y="277.78" class="todo"><title>sub_42D260</title></rect>
 <rect width="5.78" height="5.38" x="614.04" y="286.15" class="todo"><title>sub_44D610</title></rect>
@@ -2034,13 +2034,13 @@
 <rect width="5.16" height="4.94" x="622.82" y="243.60" class="todo"><title>sub_455460</title></rect>
 <rect width="5.16" height="4.94" x="622.82" y="251.54" class="todo"><title>sub_4564D0</title></rect>
 <rect width="5.16" height="4.94" x="622.82" y="259.48" class="todo"><title>sub_456790</title></rect>
-<rect width="5.16" height="4.84" x="622.82" y="267.41" class="todo"><title>sub_410060</title></rect>
+<rect width="5.16" height="4.84" x="622.82" y="267.41" class="named"><title>void Creature_Underwater(struct ITEM_INFO *item, int32_t depth);</title></rect>
 <rect width="5.16" height="4.84" x="622.82" y="275.25" class="todo"><title>sub_410C10</title></rect>
 <rect width="5.16" height="4.84" x="622.82" y="283.09" class="todo"><title>sub_436750</title></rect>
 <rect width="5.16" height="4.74" x="622.82" y="290.93" class="todo"><title>sub_42CF60</title></rect>
 <rect width="5.16" height="4.74" x="622.82" y="298.67" class="todo"><title>sub_432AC0</title></rect>
 <rect width="5.16" height="4.74" x="622.82" y="306.41" class="todo"><title>sub_442270</title></rect>
-<rect width="5.16" height="4.64" x="622.82" y="314.15" class="todo"><title>sub_40FF60</title></rect>
+<rect width="5.16" height="4.64" x="622.82" y="314.15" class="named"><title>void Creature_Neck(struct ITEM_INFO *item, int16_t required);</title></rect>
 <rect width="5.16" height="4.64" x="622.82" y="321.79" class="todo"><title>sub_415B90</title></rect>
 <rect width="5.16" height="4.64" x="622.82" y="329.43" class="todo"><title>sub_42D2C0</title></rect>
 <rect width="5.16" height="4.64" x="622.82" y="337.07" class="todo"><title>sub_433CD0</title></rect>
@@ -2065,7 +2065,7 @@
 <rect width="4.52" height="4.87" x="630.98" y="259.34" class="todo"><title>sub_44D200</title></rect>
 <rect width="4.52" height="4.87" x="630.98" y="267.22" class="todo"><title>sub_44D520</title></rect>
 <rect width="4.52" height="4.87" x="630.98" y="275.09" class="todo"><title>sub_4569C0</title></rect>
-<rect width="4.52" height="4.77" x="630.98" y="282.96" class="todo"><title>sub_40FF10</title></rect>
+<rect width="4.52" height="4.77" x="630.98" y="282.96" class="named"><title>void Creature_Head(struct ITEM_INFO *item, int16_t required);</title></rect>
 <rect width="4.52" height="4.77" x="630.98" y="290.73" class="todo"><title>sub_432F90</title></rect>
 <rect width="4.52" height="4.77" x="630.98" y="298.50" class="todo"><title>sub_442D30</title></rect>
 <rect width="4.52" height="4.77" x="630.98" y="306.27" class="todo"><title>sub_4498D0</title></rect>
@@ -2076,7 +2076,7 @@
 <rect width="4.52" height="4.66" x="630.98" y="344.68" class="todo"><title>sub_447BC0</title></rect>
 <rect width="4.52" height="4.66" x="630.98" y="352.34" class="todo"><title>sub_44C0F0</title></rect>
 <rect width="4.45" height="4.72" x="638.50" y="251.47" class="todo"><title>sub_457C10</title></rect>
-<rect width="4.35" height="4.72" x="645.95" y="251.47" class="todo"><title>sub_40E1E0</title></rect>
+<rect width="4.35" height="4.72" x="645.95" y="251.47" class="named"><title>int32_t __cdecl Creature_Activate(int16_t item_num);</title></rect>
 <rect width="4.35" height="4.72" x="653.30" y="251.47" class="todo"><title>sub_41B8C0</title></rect>
 <rect width="4.35" height="4.72" x="660.66" y="251.47" class="todo"><title>sub_428800</title></rect>
 <rect width="4.25" height="4.72" x="668.01" y="251.47" class="todo"><title>sub_4418F0</title></rect>
@@ -2173,7 +2173,7 @@
 <rect width="3.47" height="3.55" x="659.68" y="346.89" class="named"><title>void __cdecl Output_DrawPolyFlat(int16_t *obj_ptr);</title></rect>
 <rect width="3.47" height="3.55" x="659.68" y="353.45" class="named"><title>void __cdecl Output_DrawPolyTrans(int16_t *obj_ptr);</title></rect>
 <rect width="3.74" height="3.29" x="666.15" y="272.96" class="named"><title>void __cdecl Output_DrawPolyGouraud(int16_t *obj_ptr);</title></rect>
-<rect width="3.74" height="3.29" x="672.89" y="272.96" class="todo"><title>sub_40FED0</title></rect>
+<rect width="3.74" height="3.29" x="672.89" y="272.96" class="named"><title>void Creature_Tilt(struct ITEM_INFO *item, int16_t angle);</title></rect>
 <rect width="3.74" height="3.29" x="679.63" y="272.96" class="todo"><title>sub_41C0B0</title></rect>
 <rect width="3.74" height="3.29" x="686.36" y="272.96" class="todo"><title>sub_428370</title></rect>
 <rect width="3.74" height="3.29" x="693.10" y="272.96" class="todo"><title>sub_4283B0</title></rect>

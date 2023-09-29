@@ -16,6 +16,12 @@ typedef struct MATRIX {
     int32_t _23;
 } MATRIX;
 
+typedef struct PHD_VECTOR {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+} PHD_VECTOR;
+
 typedef struct PHD_3DPOS {
     int32_t x;
     int32_t y;
@@ -139,17 +145,69 @@ typedef struct ITEM_INFO {
     uint16_t looked_at : 1;
     uint16_t dynamic_light : 1;
     uint16_t clear_body : 1;
-    UINT16_t pad : 7;
+    uint16_t pad : 7;
 } ITEM_INFO;
 
 typedef struct FLOOR_INFO {
-    int16_t index;
+    int16_t idx;
     int16_t box;
     int8_t pit_room;
     int8_t floor;
     int8_t sky_room;
     int8_t ceiling;
 } FLOOR_INFO;
+
+typedef struct AI_INFO {
+    int16_t zone_num;
+    int16_t enemy_zone;
+    int32_t distance;
+    int32_t ahead;
+    int32_t bite;
+    int16_t angle;
+    int16_t enemy_facing;
+} AI_INFO;
+
+typedef struct BOX_NODE {
+    int16_t exit_box;
+    uint16_t search_num;
+    int16_t next_expansion;
+    int16_t box_num;
+} BOX_NODE;
+
+typedef struct LOT_INFO {
+    struct BOX_NODE *node;
+    int16_t head;
+    int16_t tail;
+    uint16_t search_num;
+    uint16_t block_mask;
+    int16_t step;
+    int16_t drop;
+    int16_t fly;
+    int16_t zone_count;
+    int16_t target_box;
+    int16_t required_box;
+    struct PHD_VECTOR target;
+} LOT_INFO;
+
+typedef enum MOOD_TYPE {
+    MOOD_BORED = 0,
+    MOOD_ATTACK = 1,
+    MOOD_ESCAPE = 2,
+    MOOD_STALK = 3,
+} MOOD_TYPE;
+
+typedef enum TARGET_TYPE {
+    TARGET_NONE = 0,
+    TARGET_PRIMARY = 1,
+    TARGET_SECONDARY = 2,
+} TARGET_TYPE;
+
+typedef struct BITE_INFO {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int32_t mesh_idx;
+} BITE_INFO;
 
 # FUNCTIONS
 #   Flags:
@@ -270,32 +328,32 @@ typedef struct FLOOR_INFO {
 
 # game/box.cpp
 0040E1B0    0000002F    -       void __cdecl Creature_Initialise(int16_t item_num);
+0040E1E0    00000047    -       int32_t __cdecl Creature_Activate(int16_t item_num);
+0040E230    00000242    -       void __cdecl Creature_AIInfo(struct ITEM_INFO *item, struct AI_INFO *info);
+0040E490    000001F3    -       int32_t __cdecl Box_SearchLOT(struct LOT_INFO *lot, int32_t expansion);
+0040E690    0000006F    -       int32_t __cdecl Box_UpdateLOT(struct LOT_INFO *lot, int32_t expansion);
+0040E700    00000095    -       void __cdecl Box_TargetBox(struct LOT_INFO *lot, int16_t box_num);
+0040E7A0    000000F2    -       int32_t __cdecl Box_StalkBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);
+0040E8A0    000000A4    -       int32_t __cdecl Box_EscapeBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);
+0040E950    000000A7    -       int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);
+0040EA00    0000043F    -       void __cdecl CreatureMood(struct ITEM_INFO *item, struct AI_INFO *info, int32_t violent);
+0040EE70    00000459    -       enum TARGET_TYPE __cdecl Box_CalculateTarget(struct PHD_VECTOR *target, struct ITEM_INFO *item, struct LOT_INFO *lot);
+0040F2D0    000000F8    -       int32_t Creature_CheckBaddieOverlap(int16_t item_num);
+0040F3D0    0000008B    -       int32_t Box_BadFloor(int32_t x, int32_t y, int32_t z, int32_t box_height, int32_t next_height, int16_t room_number, struct LOT_INFO *lot);
+0040F460    000000B8    -       void Creature_Die(int16_t item_num, int32_t explode);
+0040F520    000008CC    -       int32_t Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);
+0040FDF0    000000D5    -       int16_t Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);
+0040FED0    00000035    -       void Creature_Tilt(struct ITEM_INFO *item, int16_t angle);
+0040FF10    00000049    -       void Creature_Head(struct ITEM_INFO *item, int16_t required);
+0040FF60    0000004E    -       void Creature_Neck(struct ITEM_INFO *item, int16_t required);
+0040FFB0    000000A8    -       void Creature_Float(int16_t item_number);
+00410060    00000050    -       void Creature_Underwater(struct ITEM_INFO *item, int32_t depth);
+004100B0    0000005C    -       int16_t Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_number));
+00410110    00000131    -       int32_t Creature_Vault(int16_t item_number, int16_t angle, int32_t vault, int32_t shift);
+00410250    0000016F    -       void Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);
+004103C0    000001DB    -       void Creature_GetBaddieTarget(int16_t item_num, int32_t goody);
 
 # ???
-0040E1E0    00000047    -       sub_40E1E0
-0040E230    00000242    -       sub_40E230
-0040E490    000001F3    -       sub_40E490
-0040E690    0000006F    -       sub_40E690
-0040E700    00000095    -       sub_40E700
-0040E7A0    000000F2    -       sub_40E7A0
-0040E8A0    000000A4    -       sub_40E8A0
-0040E950    000000A7    -       sub_40E950
-0040EA00    0000043F    -       sub_40EA00
-0040EE70    00000459    -       sub_40EE70
-0040F2D0    000000F8    -       sub_40F2D0
-0040F3D0    0000008B    -       sub_40F3D0
-0040F460    000000B8    -       sub_40F460
-0040F520    000008CC    -       sub_40F520
-0040FDF0    000000D5    -       sub_40FDF0
-0040FED0    00000035    -       sub_40FED0
-0040FF10    00000049    -       sub_40FF10
-0040FF60    0000004E    -       sub_40FF60
-0040FFB0    000000A8    -       sub_40FFB0
-00410060    00000050    -       sub_410060
-004100B0    0000005C    -       sub_4100B0
-00410110    00000131    -       sub_410110
-00410250    0000016F    -       sub_410250
-004103C0    000001DB    -       sub_4103C0
 004105A0    000000B0    -       sub_4105A0
 00410650    00000372    -       sub_410650
 004109D0    000000D7    -       sub_4109D0
@@ -763,7 +821,7 @@ typedef struct FLOOR_INFO {
 00432870    000001EC    -       sub_432870
 00432A60    00000053    -       sub_432A60
 00432AC0    0000004F    -       sub_432AC0
-00432B10    000001B0    -       sub_432B10
+00432B10    000001B0    -       int32_t LOT_EnableBaddieAI(int16_t item_num, int32_t always);
 00432CC0    00000106    -       sub_432CC0
 00432ED0    000000B8    -       sub_432ED0
 00432F90    00000049    -       sub_432F90
@@ -1370,8 +1428,8 @@ typedef struct FLOOR_INFO {
 00457C79    0000001A    -       sub_457C79
 00457C93    0000002C    -       sub_457C93
 
-# Offset    Declaration
 # VARIABLES
+# Offset    Declaration
 0046C304    float g_ViewportAspectRatio = 0.0f;
 0046E310    int32_t g_PhdWinTop;
 0047031C    float g_FltWinBottom;
@@ -1387,14 +1445,14 @@ typedef struct FLOOR_INFO {
 004B2A04    float g_FltWinCenterY;
 004B2A10    int16_t g_PhdWinMinX;
 004B2A28    MATRIX *g_MatrixPtr;
+004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, SORT_TYPE);
+004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, SORT_TYPE);
 004B2AC0    MATRIX g_W2VMatrix;
+004B2AF8    void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
+004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, SORT_TYPE);
+004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, SORT_TYPE);
 004BCB58    MATRIX g_MatrixStack[];
 004BF3E0    PHD_VBUF g_PhdVBuf[1500];
 004D6B60    float g_FltWinRight;
 004D6BF8    int32_t PhdWinRight;
-
-004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, SORT_TYPE);
-004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, SORT_TYPE);
-004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, SORT_TYPE);
-004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, SORT_TYPE);
-004B2AF8    void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
+005262F0    ITEM_INFO g_Items[];
