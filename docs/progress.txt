@@ -216,7 +216,7 @@ typedef struct BITE_INFO {
 #   x unused
 #   + fully decompiled
 # Offset    Size        Flags   Declaration
-# 3dsystem/3d_gen.cpp
+# 3dsystem/3d_gen.c
 00401000    000001D0    +       void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);
 004011D0    00000072    +       void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);
 00401250    00000078    -       void __cdecl Math_GetVectorAngles(int32_t x, int32_t y, int32_t z, int16_t * dest);
@@ -245,7 +245,7 @@ typedef struct BITE_INFO {
 004026E0    0000006B    -       void __cdecl Output_SetFarZ(int32_t far_z);
 00402700    00000266    -       void __cdecl Viewport_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);
 
-# 3dsystem/3d_out.cpp
+# 3dsystem/3d_out.c
 00402970    0000019F    -       void __cdecl Output_DrawPolyLine(int16_t *obj_ptr);
 00402B10    00000035    -       void __cdecl Output_DrawPolyFlat(int16_t *obj_ptr);
 00402B50    00000035    -       void __cdecl Output_DrawPolyTrans(int16_t *obj_ptr);
@@ -261,46 +261,46 @@ typedef struct BITE_INFO {
 004057D0    00000037    -       void __cdecl Output_DrawPolyGTMapPersp(int16_t *obj_ptr);
 00405810    00000037    -       void __cdecl Output_DrawPolyWGTMapPersp(int16_t *obj_ptr);
 
-# 3dsystem/3dinsert.cpp
-00405850    0000006C    -       bool __cdecl Output_VisibleZClip(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2);
-004058C0    00000140    -       int32_t __cdecl Output_ZedClipper(int32_t vtx_count, POINT_INFO *pts, VERTEX_INFO *vtx);
-00405A00    00000511    -       int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, VERTEX_INFO *vtx);
-00405F20    00000A5C    -       int16_t *__cdecl Output_InsertObjectGT4(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-00406980    00000872    -       int16_t *__cdecl Output_InsertObjectGT3(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-00407200    00000422    -       int32_t __cdecl Output_XYGClipper(int32_t vtx_count, VERTEX_INFO *vtx);
-00407630    000003D1    -       int16_t *__cdecl Output_InsertObjectG4(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-00407A10    0000031B    -       int16_t *__cdecl Output_InsertObjectG3(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-00407D30    000002D0    -       int32_t __cdecl Output_XYClipper(int32_t vtx_count, VERTEX_INFO *vtx);
-00408000    000004A4    -       void __cdecl Output_InsertTrans8(PHD_VBUF *vbuf, int16_t shade);
+# 3dsystem/3dinsert.c
+00405850    0000006C    -       bool __cdecl Output_VisibleZClip(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);
+004058C0    00000140    -       int32_t __cdecl Output_ZedClipper(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);
+00405A00    00000511    -       int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
+00405F20    00000A5C    -       int16_t *__cdecl Output_InsertObjectGT4(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00406980    00000872    -       int16_t *__cdecl Output_InsertObjectGT3(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00407200    00000422    -       int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
+00407630    000003D1    -       int16_t *__cdecl Output_InsertObjectG4(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00407A10    0000031B    -       int16_t *__cdecl Output_InsertObjectG3(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00407D30    000002D0    -       int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
+00408000    000004A4    -       void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
 004084B0    000000D3    -       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 00408590    000000CB    -       void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
 00408660    000000B5    -       void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_TEXTURE *texture, PHD_UV *uv0, PHD_UV *uv1, PHD_UV *uv2);
+00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2);
 00408D70    00000140    -       void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
-00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_VBUF *vtx3, PHD_TEXTURE *texture);
-00409300    00000091    -       int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-004093A0    000000AA    -       int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-00409450    0000039C    -       int16_t *__cdecl Output_InsertObjectG4_ZBuffered(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
+00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture);
+00409300    00000091    -       int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+004093A0    000000AA    -       int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00409450    0000039C    -       int16_t *__cdecl Output_InsertObjectG4_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
-004098F0    000002D3    -       int16_t *__cdecl Output_InsertObjectG3_ZBuffered(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
+004098F0    000002D3    -       int16_t *__cdecl Output_InsertObjectG3_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
 00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_TEXTURE *texture, PHD_UV *uv0, PHD_UV *uv1, PHD_UV *uv2, SORT_TYPE sort_type);
+00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2, enum SORT_TYPE sort_type);
 0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
-0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(PHD_VBUF *vtx0, PHD_VBUF *vtx1, PHD_VBUF *vtx2, PHD_VBUF *vtx3, PHD_TEXTURE *texture, SORT_TYPE sort_type);
-0040AC80    0000008C    -       int16_t *__cdecl Output_InsertObjectGT4_Sorted(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-0040AD10    0000009F    -       int16_t *__cdecl Output_InsertObjectGT3_Sorted(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
-0040ADB0    0000043B    -       int16_t *__cdecl Output_InsertObjectG4_Sorted(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
+0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
+0040AC80    0000008C    -       int16_t *__cdecl Output_InsertObjectGT4_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+0040AD10    0000009F    -       int16_t *__cdecl Output_InsertObjectGT3_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+0040ADB0    0000043B    -       int16_t *__cdecl Output_InsertObjectG4_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040B1F0    00000175    -       void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);
-0040B370    00000343    -       int16_t *__cdecl Output_InsertObjectG3_Sorted(int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);
+0040B370    00000343    -       int16_t *__cdecl Output_InsertObjectG3_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040B6C0    00000347    -       void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
 0040BA10    0000017F    -       void __cdecl Output_InsertFlatRect_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
 0040BB90    0000012B    -       void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(PHD_VBUF *vbuf, int16_t shade);
+0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(struct PHD_VBUF *vbuf, int16_t shade);
 0040BE60    0000013D    -       void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 0040BFA0    000000A7    -       void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
 
-# 3dsystem/scalespr.cpp
+# 3dsystem/scalespr.c
 0040C050    000002C7    -       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
 0040C320    00000085    -       void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
 0040C3B0    00000152    -       int16_t *__cdecl Output_InsertRoomSprite(int16_t *obj_ptr, int32_t vtx_count);
@@ -308,11 +308,11 @@ typedef struct BITE_INFO {
 0040C5B0    0000009D    -       void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C650    00000223    -       void __cdecl Output_DrawScaledSpriteC(int16_t *obj_ptr);
 
-# game/bird.cpp
+# game/bird.c
 0040C880    00000089    -       void __cdecl Eagle_Initialise(int16_t item_num);
 0040C910    00000200    -       void __cdecl Eagle_Control(int16_t item_num);
 
-# game/boat.cpp
+# game/boat.c
 0040CB30    0000003C    -       void __cdecl Boat_Initialise(int16_t item_num);
 0040CB70    00000170    -       int32_t __cdecl Boat_CheckGeton(int16_t item_num, struct COLL_INFO *coll);
 0040CCE0    0000015E    -       void __cdecl Boat_Collision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
@@ -326,7 +326,7 @@ typedef struct BITE_INFO {
 0040DAC0    0000062A    -       void __cdecl Boat_Control(int16_t item_num);
 0040E0F0    000000B3    -       void __cdecl Gondola_Control(int16_t item_num);
 
-# game/box.cpp
+# game/box.c
 0040E1B0    0000002F    -       void __cdecl Creature_Initialise(int16_t item_num);
 0040E1E0    00000047    -       int32_t __cdecl Creature_Activate(int16_t item_num);
 0040E230    00000242    -       void __cdecl Creature_AIInfo(struct ITEM_INFO *item, struct AI_INFO *info);
@@ -338,44 +338,47 @@ typedef struct BITE_INFO {
 0040E950    000000A7    -       int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);
 0040EA00    0000043F    -       void __cdecl CreatureMood(struct ITEM_INFO *item, struct AI_INFO *info, int32_t violent);
 0040EE70    00000459    -       enum TARGET_TYPE __cdecl Box_CalculateTarget(struct PHD_VECTOR *target, struct ITEM_INFO *item, struct LOT_INFO *lot);
-0040F2D0    000000F8    -       int32_t Creature_CheckBaddieOverlap(int16_t item_num);
-0040F3D0    0000008B    -       int32_t Box_BadFloor(int32_t x, int32_t y, int32_t z, int32_t box_height, int32_t next_height, int16_t room_number, struct LOT_INFO *lot);
-0040F460    000000B8    -       void Creature_Die(int16_t item_num, int32_t explode);
-0040F520    000008CC    -       int32_t Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);
-0040FDF0    000000D5    -       int16_t Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);
-0040FED0    00000035    -       void Creature_Tilt(struct ITEM_INFO *item, int16_t angle);
-0040FF10    00000049    -       void Creature_Head(struct ITEM_INFO *item, int16_t required);
-0040FF60    0000004E    -       void Creature_Neck(struct ITEM_INFO *item, int16_t required);
-0040FFB0    000000A8    -       void Creature_Float(int16_t item_number);
-00410060    00000050    -       void Creature_Underwater(struct ITEM_INFO *item, int32_t depth);
-004100B0    0000005C    -       int16_t Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_number));
-00410110    00000131    -       int32_t Creature_Vault(int16_t item_number, int16_t angle, int32_t vault, int32_t shift);
-00410250    0000016F    -       void Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);
-004103C0    000001DB    -       void Creature_GetBaddieTarget(int16_t item_num, int32_t goody);
+0040F2D0    000000F8    -       int32_t __cdecl Creature_CheckBaddieOverlap(int16_t item_num);
+0040F3D0    0000008B    -       int32_t __cdecl Box_BadFloor(int32_t x, int32_t y, int32_t z, int32_t box_height, int32_t next_height, int16_t room_num, struct LOT_INFO *lot);
+0040F460    000000B8    -       void __cdecl Creature_Die(int16_t item_num, int32_t explode);
+0040F520    000008CC    -       int32_t __cdecl Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);
+0040FDF0    000000D5    -       int16_t __cdecl Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);
+0040FED0    00000035    -       void __cdecl Creature_Tilt(struct ITEM_INFO *item, int16_t angle);
+0040FF10    00000049    -       void __cdecl Creature_Head(struct ITEM_INFO *item, int16_t required);
+0040FF60    0000004E    -       void __cdecl Creature_Neck(struct ITEM_INFO *item, int16_t required);
+0040FFB0    000000A8    -       void __cdecl Creature_Float(int16_t item_num);
+00410060    00000050    -       void __cdecl Creature_Underwater(struct ITEM_INFO *item, int32_t depth);
+004100B0    0000005C    -       int16_t __cdecl Creature_Effect(struct ITEM_INFO *item, struct BITE_INFO *bite, int16_t (*spawn)(int32_t x, int32_t y, int32_t z, int16_t speed, int16_t yrot, int16_t room_num));
+00410110    00000131    -       int32_t __cdecl Creature_Vault(int16_t item_num, int16_t angle, int32_t vault, int32_t shift);
+00410250    0000016F    -       void __cdecl Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);
+004103C0    000001DB    -       void __cdecl Creature_GetBaddieTarget(int16_t item_num, int32_t goody);
+
+# game/camera.c
+004105A0    000000B0    -       void __cdecl Camera_Initialise(void);
+00410650    00000372    -       void __cdecl Camera_Move(struct GAME_VECTOR *ideal, int32_t speed);
+004109D0    000000D7    -       void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
+00410AB0    00000154    -       void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
+00410C10    00000050    -       struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);
+00410C60    00000781    -       void __cdecl Camera_SmartShift(struct GAME_VECTOR *ideal, void (*shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));
+004113F0    000000ED    -       void __cdecl Camera_Chase(struct ITEM_INFO *item);
+004114E0    0000019E    -       int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
+00411680    0000018E    -       void __cdecl Camera_Combat(struct ITEM_INFO *item);
+00411810    000001E2    -       void __cdecl Camera_Look(struct ITEM_INFO *item);
+00411A00    00000099    -       void __cdecl Camera_Fixed(void);
+00411AA0    000004A9    -       void __cdecl Camera_Update(void);
+00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);
+00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
+00412080    00000093    -       void __cdecl Misc_InitCinematicRooms(void);
+00412120    0000016F    -       int32_t __cdecl Game_Cutscene_Control(int32_t nframes);
+00412290    00000138    -       void __cdecl Camera_UpdateCutscene(void);
+004123D0    0000007F    -       int32_t __cdecl Misc_GetCinematicRoom(int32_t x, int32_t y, int32_t z);
+00412450    000000DC    -       void __cdecl CutscenePlayer_Control(int16_t item_num);
+00412530    00000096    -       void __cdecl Lara_Control_Cutscene(int16_t item_num);
+004125D0    0000008F    -       void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
+00412660    00000033    -       void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);
+004126A0    00000245    -       void __cdecl Camera_LoadCutsceneFrame(void);
 
 # ???
-004105A0    000000B0    -       sub_4105A0
-00410650    00000372    -       sub_410650
-004109D0    000000D7    -       sub_4109D0
-00410AB0    00000154    -       sub_410AB0
-00410C10    00000050    -       sub_410C10
-00410C60    00000781    -       sub_410C60
-004113F0    000000ED    -       sub_4113F0
-004114E0    0000019E    -       sub_4114E0
-00411680    0000018E    -       sub_411680
-00411810    000001E2    -       sub_411810
-00411A00    00000099    -       sub_411A00
-00411AA0    000004A9    -       sub_411AA0
-00411F50    0000000A    -       sub_411F50
-00411F60    00000112    -       sub_411F60
-00412080    00000093    -       sub_412080
-00412120    0000016F    -       sub_412120
-00412290    00000138    -       sub_412290
-004123D0    0000007F    -       sub_4123D0
-00412450    000000DC    -       sub_412450
-00412530    00000096    -       sub_412530
-004125D0    0000008F    -       sub_4125D0
-004126A0    00000245    -       sub_4126A0
 004128F0    0000067C    -       sub_4128F0
 00412FB0    0000002F    -       sub_412FB0
 00412FE0    000003D2    -       sub_412FE0
@@ -821,7 +824,7 @@ typedef struct BITE_INFO {
 00432870    000001EC    -       sub_432870
 00432A60    00000053    -       sub_432A60
 00432AC0    0000004F    -       sub_432AC0
-00432B10    000001B0    -       int32_t LOT_EnableBaddieAI(int16_t item_num, int32_t always);
+00432B10    000001B0    -       int32_t __cdecl LOT_EnableBaddieAI(int16_t item_num, int32_t always);
 00432CC0    00000106    -       sub_432CC0
 00432ED0    000000B8    -       sub_432ED0
 00432F90    00000049    -       sub_432F90
@@ -906,7 +909,7 @@ typedef struct BITE_INFO {
 0043A1D0    00000015    -       sub_43A1D0
 0043A1F0    0000004C    -       sub_43A1F0
 0043A240    00000035    -       sub_43A240
-0043A280    0000015F    -       sub_43A280
+0043A280    0000015F    -       int32_t __cdecl Level_Initialise(int32_t level_num, int32_t level_type);
 0043A3E0    00000061    -       sub_43A3E0
 0043A450    00000027    -       sub_43A450
 0043A480    0000103B    -       sub_43A480
@@ -1444,15 +1447,15 @@ typedef struct BITE_INFO {
 004B2A00    float g_FltWinCenterX;
 004B2A04    float g_FltWinCenterY;
 004B2A10    int16_t g_PhdWinMinX;
-004B2A28    MATRIX *g_MatrixPtr;
-004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, SORT_TYPE);
-004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, SORT_TYPE);
-004B2AC0    MATRIX g_W2VMatrix;
+004B2A28    struct MATRIX *g_MatrixPtr;
+004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, enum SORT_TYPE);
+004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, enum SORT_TYPE);
+004B2AC0    struct MATRIX g_W2VMatrix;
 004B2AF8    void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
-004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, SORT_TYPE);
-004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, SORT_TYPE);
-004BCB58    MATRIX g_MatrixStack[];
-004BF3E0    PHD_VBUF g_PhdVBuf[1500];
+004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, enum SORT_TYPE);
+004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, enum SORT_TYPE);
+004BCB58    struct MATRIX g_MatrixStack[];
+004BF3E0    struct PHD_VBUF g_PhdVBuf[1500];
 004D6B60    float g_FltWinRight;
 004D6BF8    int32_t PhdWinRight;
-005262F0    ITEM_INFO g_Items[];
+005262F0    struct ITEM_INFO g_Items[];
