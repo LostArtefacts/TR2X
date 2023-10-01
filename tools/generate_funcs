@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+import re
+from collections.abc import Callable, Iterable
+from dataclasses import dataclass
+from pathlib import Path
+
+REPO_DIR = Path(__file__).parent.parent
+DOCS_DIR = REPO_DIR / "docs"
+PROGRESS_TXT_FILE = DOCS_DIR / "progress.txt"
+FUNCS_H_FILE = REPO_DIR / "src/global/funcs.h"
+
+
+@dataclass
+class Function:
+    signature: str
+    offset: int
+    size: int
+    flags: str
+
+
+def collect_functions() -> Iterable[Function]:
+    in_functions = False
+    for line in PROGRESS_TXT_FILE.open():
+        line = line.strip()
+        if line == "# FUNCTIONS":
+            in_functions = True
+        elif re.match("^# [A-Z]*$", line):
+            in_functions = False
+        if not in_functions:
+            continue
+
+        if line.startswith("#") or not line:
+            continue
+        offset, size, flags, func_signature = re.split(
+            r"\s+", line, maxsplit=3
+        )
+        if not offset.replace("-", ""):
+            continue
+        yield Function(
+            signature=func_signature,
+            offset=int(offset, 16),
+            size=int(size, 16),
+            flags=flags,
+        )
+
+
+def make_pointer_define(function: Function) -> str:
+    if match := re.match(
+        r"(?P<ret_type>.+?)\s+(?P<func_name>\w+)\s*\((?P<args>.+)\);?",
+        function.signature,
+    ):
+        ret_type = match.group("ret_type")
+        func_name = match.group("func_name")
+        args = match.group("args")
+        return f"#define {func_name} (({ret_type} (*)({args}))0x{function.offset:08X})"
+    return ""
+
+
+def main() -> None:
+    functions = list(collect_functions())
+
+    header = [
+        "#pragma once",
+        "",
+        '#include "global/types.h"',
+        "",
+        "// clang-format off",
+    ]
+    footer = ["// clang-format on"]
+
+    defines = []
+    for function in functions:
+        if "+" not in function.flags and (
+            define := make_pointer_define(function)
+        ):
+            defines.append(define)
+
+    FUNCS_H_FILE.write_text("\n".join([*header, *defines, *footer]))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,8 +1,8 @@
 #include "game/matrix.h"
 
 #include "game/math.h"
-#include "game/math_misc.h"
 #include "global/const.h"
+#include "global/funcs.h"
 #include "global/types.h"
 #include "global/vars.h"
 #include "util.h"
