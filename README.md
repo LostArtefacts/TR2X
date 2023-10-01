@@ -58,5 +58,5 @@ information on how to contribute to the project.
 
 ## License
 
-TR2X follows the GPL license. Please refer to the COPYING.md file for further
-details.
+TR2X follows the GPL license. Please refer to the [COPYING.md](COPYING.md) file
+for further details.
