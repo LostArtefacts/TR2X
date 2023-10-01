@@ -445,3 +445,23 @@ int32_t __fastcall Math_Atan(int32_t x, int32_t y)
 
     return ABS(m_AtanBaseTable[base] + m_AtanAngleTable[0x800 * y / x]);
 }
+
+uint32_t __fastcall Math_Sqrt(uint32_t n)
+{
+    uint32_t result = 0;
+    uint32_t base = 0x40000000;
+    while (base) {
+        do {
+            uint32_t based_result = base + result;
+            result >>= 1;
+            if (based_result > n) {
+                break;
+            }
+            n -= based_result;
+            result |= base;
+            base >>= 2;
+        } while (base);
+        base >>= 2;
+    }
+    return result;
+}

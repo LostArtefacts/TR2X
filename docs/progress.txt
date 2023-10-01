@@ -2013,7 +2013,7 @@ typedef struct CREATURE_INFO {
 00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
 00457C5E    0000001B    +       int32_t __fastcall Math_Sin(int16_t angle);
 00457C79    0000001A    +       int32_t __fastcall Math_SinImpl(int16_t angle);
-00457C93    0000002C    -R      DWORD __fastcall phd_sqrt(DWORD n);
+00457C93    0000002C    +       uint32_t  __fastcall Math_Sqrt(uint32_t n);
 
 # VARIABLES
 # Offset    Declaration

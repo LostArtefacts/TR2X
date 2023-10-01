@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1% (12)</tspan> · <tspan class="known">96.58% (1159)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.08% (13)</tspan> · <tspan class="known">96.50% (1158)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="7.47" height="6" x="0" y="0" class="decompiled"/>
-<rect width="721.48" height="6" x="7.47" y="0" class="known"/>
+<rect width="8.09" height="6" x="0" y="0" class="decompiled"/>
+<rect width="720.86" height="6" x="8.09" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1276,15 +1276,15 @@
 <rect width="12" height="12" x="690" y="345" class="decompiled"><title>int32_t __fastcall Math_Cos(int16_t angle);</title></rect>
 <rect width="12" height="12" x="705" y="345" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="12" height="12" x="720" y="345" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
-<rect width="12" height="12" x="735" y="345" class="known"><title>DWORD __fastcall phd_sqrt(DWORD n);</title></rect>
+<rect width="12" height="12" x="735" y="345" class="decompiled"><title>uint32_t  __fastcall Math_Sqrt(uint32_t n);</title></rect>
 </g>
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.69%</tspan> · <tspan class="known">98.98%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.71%</tspan> · <tspan class="known">98.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="5.19" height="6" x="0" y="0" class="decompiled"/>
-<rect width="739.35" height="6" x="5.19" y="0" class="known"/>
+<rect width="5.29" height="6" x="0" y="0" class="decompiled"/>
+<rect width="739.25" height="6" x="5.29" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2281,7 +2281,7 @@
 <rect width="2.75" height="3.16" x="710.11" y="294.35" class="known"><title>void __cdecl T_InitPrint(void);</title></rect>
 <rect width="2.75" height="3.16" x="715.86" y="294.35" class="known"><title>void __cdecl WinSndAdjustVolumeAndPan(int32_t channel, int32_t volume, int32_t pan);</title></rect>
 <rect width="2.75" height="3.16" x="721.62" y="294.35" class="known"><title>LPTSTR __cdecl UT_FindArg(LPCTSTR str);</title></rect>
-<rect width="2.75" height="3.16" x="727.37" y="294.35" class="known"><title>DWORD __fastcall phd_sqrt(DWORD n);</title></rect>
+<rect width="2.75" height="3.16" x="727.37" y="294.35" class="decompiled"><title>uint32_t  __fastcall Math_Sqrt(uint32_t n);</title></rect>
 <rect width="2.62" height="3.16" x="733.13" y="294.35" class="known"><title>void __cdecl lara_as_slide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.62" height="3.16" x="738.75" y="294.35" class="known"><title>void __cdecl undraw_shotgun_meshes(int32_t weapon_type);</title></rect>
 <rect width="2.62" height="3.16" x="744.38" y="294.35" class="known"><title>void __cdecl T_FlashText(struct TEXTSTRING *textstring, int16_t enable, int16_t rate);</title></rect>
