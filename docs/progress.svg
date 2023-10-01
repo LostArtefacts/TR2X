@@ -69,12 +69,12 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.83% (10)</tspan> · <tspan class="known">96.67% (1160)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1% (12)</tspan> · <tspan class="known">96.58% (1159)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="6.22" height="6" x="0" y="0" class="decompiled"/>
-<rect width="722.10" height="6" x="6.22" y="0" class="known"/>
-<rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
-<rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
+<rect width="7.47" height="6" x="0" y="0" class="decompiled"/>
+<rect width="721.48" height="6" x="7.47" y="0" class="known"/>
+<rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
+<rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
@@ -1274,19 +1274,19 @@
 <rect width="12" height="12" x="660" y="345" class="known"><title>void __fastcall wgtmapA(int32_t y0, int32_t y1, BYTE *texPage);</title></rect>
 <rect width="12" height="12" x="675" y="345" class="decompiled"><title>int32_t __fastcall Math_Atan(int32_t x, int32_t y);</title></rect>
 <rect width="12" height="12" x="690" y="345" class="decompiled"><title>int32_t __fastcall Math_Cos(int16_t angle);</title></rect>
-<rect width="12" height="12" x="705" y="345" class="known"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
-<rect width="12" height="12" x="720" y="345" class="unused"><title>sub_457C79</title></rect>
+<rect width="12" height="12" x="705" y="345" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
+<rect width="12" height="12" x="720" y="345" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
 <rect width="12" height="12" x="735" y="345" class="known"><title>DWORD __fastcall phd_sqrt(DWORD n);</title></rect>
 </g>
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.68%</tspan> · <tspan class="known">98.98%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.69%</tspan> · <tspan class="known">98.98%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="5.07" height="6" x="0" y="0" class="decompiled"/>
-<rect width="739.41" height="6" x="5.07" y="0" class="known"/>
-<rect width="0.13" height="6" x="744.48" y="0" class="todo"/>
-<rect width="2.39" height="6" x="744.61" y="0" class="unused"/>
+<rect width="5.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="739.35" height="6" x="5.19" y="0" class="known"/>
+<rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
+<rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="51.63" height="75.34" x="0" y="0" class="known"><title>void __cdecl Output_WGTmap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
@@ -2379,11 +2379,11 @@
 <rect width="1.51" height="1.82" x="736.46" y="321.46" class="known"><title>void __cdecl ReqItemCentreAlign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);</title></rect>
 <rect width="1.51" height="1.82" x="740.98" y="321.46" class="known"><title>void __cdecl ControlLaraExtra(int16_t item_num);</title></rect>
 <rect width="1.51" height="1.82" x="745.49" y="321.46" class="known"><title>void __cdecl BridgeFlatCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
-<rect width="1.49" height="1.84" x="713.23" y="326.28" class="known"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
+<rect width="1.49" height="1.84" x="713.23" y="326.28" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="331.12" class="known"><title>bool __cdecl EnumerateDisplayAdapters(DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="335.77" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="340.43" class="known"><title>bool __cdecl DSoundEnumerate(SOUND_ADAPTER_LIST *adapterList);</title></rect>
-<rect width="1.49" height="1.66" x="713.23" y="345.09" class="unused"><title>sub_457C79</title></rect>
+<rect width="1.49" height="1.66" x="713.23" y="345.09" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
 <rect width="1.49" height="1.48" x="713.23" y="349.74" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>
 <rect width="1.49" height="1.48" x="713.23" y="354.22" class="known"><title>bool __cdecl HWR_VertexBufferFull(void);</title></rect>
 <rect width="1.49" height="1.30" x="713.23" y="358.70" class="known"><title>void __cdecl lara_as_slideback(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

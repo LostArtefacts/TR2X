@@ -22,6 +22,7 @@ static void Inject_Math(void)
 {
     INJECT(0x00457C10, Math_Atan);
     INJECT(0x00457C58, Math_Cos);
+    INJECT(0x00457C5E, Math_Sin);
 }
 
 void Inject_Exec(void)

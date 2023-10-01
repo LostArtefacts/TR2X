@@ -2011,14 +2011,15 @@ typedef struct CREATURE_INFO {
 004578CC    00000341    -R      void __fastcall wgtmapA(int32_t y0, int32_t y1, BYTE *texPage);
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
 00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
-00457C5E    0000001B    -R      int32_t __fastcall Math_Sin(int16_t angle);
-00457C79    0000001A    x       sub_457C79
+00457C5E    0000001B    +       int32_t __fastcall Math_Sin(int16_t angle);
+00457C79    0000001A    +       int32_t __fastcall Math_SinImpl(int16_t angle);
 00457C93    0000002C    -R      DWORD __fastcall phd_sqrt(DWORD n);
 
 # VARIABLES
 # Offset    Declaration
 00467DD0    const int32_t g_AtanBaseTable[8];
 00467DF0    const int16_t g_AtanAngleTable[0x800];
+00468DF4    const int16_t g_SinTable[0x402];
 0046C304    float g_ViewportAspectRatio = 0.0f;
 0046E310    int32_t g_PhdWinTop;
 0047031C    float g_FltWinBottom;
