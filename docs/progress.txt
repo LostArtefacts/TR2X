@@ -107,6 +107,13 @@ typedef struct SOUND_ADAPTER_LIST {
     DWORD dwCount;
 } SOUND_ADAPTER_LIST;
 
+typedef struct JOYSTICK {
+    GUID *lpJoystickGuid;
+    GUID joystickGuid;
+    STRING_FLAGGED productName;
+    STRING_FLAGGED instanceName;
+} JOYSTICK;
+
 typedef struct JOYSTICK_NODE {
     struct JOYSTICK_NODE *next;
     struct JOYSTICK_NODE *previous;
@@ -118,13 +125,6 @@ typedef struct JOYSTICK_LIST {
     struct JOYSTICK_LIST *tail;
     DWORD dwCount;
 } JOYSTICK_LIST;
-
-typedef struct JOYSTICK {
-    GUID *lpJoystickGuid;
-    GUID joystickGuid;
-    STRING_FLAGGED productName;
-    STRING_FLAGGED instanceName;
-} JOYSTICK;
 
 typedef enum RENDER_MODE {
     RM_Unknown,
