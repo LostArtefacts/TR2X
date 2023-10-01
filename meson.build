@@ -74,6 +74,7 @@ exe_sources = [
 
 dll_sources = [
   'src/filesystem.c',
+  'src/game/math.c',
   'src/game/matrix.c',
   'src/inject_exec.c',
   'src/inject_util.c',

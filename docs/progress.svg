@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.67% (8)</tspan> · <tspan class="known">96.83% (1162)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.75% (9)</tspan> · <tspan class="known">96.75% (1161)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="4.98" height="6" x="0" y="0" class="decompiled"/>
-<rect width="723.34" height="6" x="4.98" y="0" class="known"/>
+<rect width="5.60" height="6" x="0" y="0" class="decompiled"/>
+<rect width="722.72" height="6" x="5.60" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -1272,7 +1272,7 @@
 <rect width="12" height="12" x="630" y="345" class="known"><title>void __fastcall gourA(int32_t y0, int32_t y1, BYTE colorIdx);</title></rect>
 <rect width="12" height="12" x="645" y="345" class="known"><title>void __fastcall gtmapA(int32_t y0, int32_t y1, BYTE *texPage);</title></rect>
 <rect width="12" height="12" x="660" y="345" class="known"><title>void __fastcall wgtmapA(int32_t y0, int32_t y1, BYTE *texPage);</title></rect>
-<rect width="12" height="12" x="675" y="345" class="known"><title>int32_t __fastcall phd_atan(int32_t x, int32_t y);</title></rect>
+<rect width="12" height="12" x="675" y="345" class="decompiled"><title>int32_t __fastcall Math_Atan(int32_t x, int32_t y);</title></rect>
 <rect width="12" height="12" x="690" y="345" class="known"><title>int32_t __fastcall Math_Cos(int16_t angle);</title></rect>
 <rect width="12" height="12" x="705" y="345" class="known"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="12" height="12" x="720" y="345" class="unused"><title>sub_457C79</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.66%</tspan> · <tspan class="known">99.01%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.68%</tspan> · <tspan class="known">98.99%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="4.90" height="6" x="0" y="0" class="decompiled"/>
-<rect width="739.58" height="6" x="4.90" y="0" class="known"/>
+<rect width="5.06" height="6" x="0" y="0" class="decompiled"/>
+<rect width="739.42" height="6" x="5.06" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.48" y="0" class="todo"/>
 <rect width="2.39" height="6" x="744.61" y="0" class="unused"/>
 </g>
@@ -2107,7 +2107,7 @@
 <rect width="4.53" height="4.70" x="632.93" y="355.30" class="known"><title>DISPLAY_MODE *__thiscall InsertDisplayModeInListHead(DISPLAY_MODE_LIST *modeList);</title></rect>
 <rect width="4.47" height="4.76" x="640.46" y="253.42" class="known"><title>SOUND_ADAPTER_NODE *__cdecl GetSoundAdapter(GUID *lpGuid);</title></rect>
 <rect width="4.47" height="4.76" x="647.93" y="253.42" class="known"><title>void __cdecl WinStopFMV(bool isPlayback);</title></rect>
-<rect width="4.47" height="4.76" x="655.40" y="253.42" class="known"><title>int32_t __fastcall phd_atan(int32_t x, int32_t y);</title></rect>
+<rect width="4.47" height="4.76" x="655.40" y="253.42" class="decompiled"><title>int32_t __fastcall Math_Atan(int32_t x, int32_t y);</title></rect>
 <rect width="4.36" height="4.76" x="662.87" y="253.42" class="known"><title>int32_t __cdecl Creature_Activate(int16_t item_num);</title></rect>
 <rect width="4.36" height="4.76" x="670.23" y="253.42" class="known"><title>void __cdecl phd_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
 <rect width="4.36" height="4.76" x="677.60" y="253.42" class="known"><title>void __cdecl extra_as_yetikill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

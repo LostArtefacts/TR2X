@@ -1,6 +1,7 @@
 #include "inject_exec.h"
 
 #include "game/matrix.h"
+#include "game/math.h"
 #include "inject_util.h"
 
 static void Inject_Matrix(void);
@@ -17,7 +18,13 @@ static void Inject_Matrix(void)
     INJECT(0x004018B0, Matrix_TranslateRel);
 }
 
+static void Inject_Math(void)
+{
+    INJECT(0x00457C10, Math_Atan);
+}
+
 void Inject_Exec(void)
 {
     Inject_Matrix();
+    Inject_Math();
 }
