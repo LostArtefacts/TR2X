@@ -2010,7 +2010,7 @@ typedef struct CREATURE_INFO {
 004575CF    000002FD    -R      void __fastcall gtmapA(int32_t y0, int32_t y1, BYTE *texPage);
 004578CC    00000341    -R      void __fastcall wgtmapA(int32_t y0, int32_t y1, BYTE *texPage);
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
-00457C58    00000006    -R      int32_t __fastcall Math_Cos(int16_t angle);
+00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
 00457C5E    0000001B    -R      int32_t __fastcall Math_Sin(int16_t angle);
 00457C79    0000001A    x       sub_457C79
 00457C93    0000002C    -R      DWORD __fastcall phd_sqrt(DWORD n);

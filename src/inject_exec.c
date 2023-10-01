@@ -21,6 +21,7 @@ static void Inject_Matrix(void)
 static void Inject_Math(void)
 {
     INJECT(0x00457C10, Math_Atan);
+    INJECT(0x00457C58, Math_Cos);
 }
 
 void Inject_Exec(void)

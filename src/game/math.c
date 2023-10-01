@@ -1,4 +1,5 @@
 #include "game/math.h"
+#include "global/const.h"
 #include "util.h"
 
 static const int32_t m_AtanBaseTable[8] = {
@@ -265,6 +266,11 @@ static const int16_t m_AtanAngleTable[0x800] = {
     0x1FEC, 0x1FEE, 0x1FF1, 0x1FF3, 0x1FF6, 0x1FF8, 0x1FFB, 0x1FFD,
     // clang-format on
 };
+
+int32_t __fastcall Math_Cos(int16_t angle)
+{
+    return Math_Sin(angle + PHD_90);
+}
 
 int32_t __fastcall Math_Atan(int32_t x, int32_t y)
 {
