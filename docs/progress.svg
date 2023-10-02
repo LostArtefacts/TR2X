@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.17% (14)</tspan> · <tspan class="known">96.42% (1157)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.25% (15)</tspan> · <tspan class="known">96.33% (1156)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="8.72" height="6" x="0" y="0" class="decompiled"/>
-<rect width="720.23" height="6" x="8.72" y="0" class="known"/>
+<rect width="9.34" height="6" x="0" y="0" class="decompiled"/>
+<rect width="719.61" height="6" x="9.34" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -200,7 +200,7 @@
 <rect width="12" height="12" x="300" y="30" class="known"><title>int32_t __cdecl Creature_Vault(int16_t item_num, int16_t angle, int32_t vault, int32_t shift);</title></rect>
 <rect width="12" height="12" x="315" y="30" class="known"><title>void __cdecl Creature_Kill(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state);</title></rect>
 <rect width="12" height="12" x="330" y="30" class="known"><title>void __cdecl Creature_GetBaddieTarget(int16_t item_num, int32_t goody);</title></rect>
-<rect width="12" height="12" x="345" y="30" class="known"><title>void __cdecl Camera_Initialise(void);</title></rect>
+<rect width="12" height="12" x="345" y="30" class="decompiled"><title>void __cdecl Camera_Initialise(void);</title></rect>
 <rect width="12" height="12" x="360" y="30" class="known"><title>void __cdecl Camera_Move(struct GAME_VECTOR *ideal, int32_t speed);</title></rect>
 <rect width="12" height="12" x="375" y="30" class="known"><title>void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
 <rect width="12" height="12" x="390" y="30" class="known"><title>void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
@@ -1064,8 +1064,8 @@
 <rect width="12" height="12" x="510" y="285" class="known"><title>void __cdecl GetSavedGamesList(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="525" y="285" class="known"><title>void __cdecl DisplayCredits(void);</title></rect>
 <rect width="12" height="12" x="540" y="285" class="known"><title>BOOL __cdecl S_FrontEndCheck(void);</title></rect>
-<rect width="12" height="12" x="555" y="285" class="known"><title>BOOL __cdecl S_SaveGame(LPCVOID saveData, DWORD saveSize, int32_t slotNumber);</title></rect>
-<rect width="12" height="12" x="570" y="285" class="known"><title>BOOL __cdecl S_LoadGame(LPVOID saveData, DWORD saveSize, int32_t slotNumber);</title></rect>
+<rect width="12" height="12" x="555" y="285" class="known"><title>int32_t __cdecl S_SaveGame(const void *save_data, uint32_t save_size, int32_t slot_num);</title></rect>
+<rect width="12" height="12" x="570" y="285" class="known"><title>int32_t __cdecl S_LoadGame(void *save_data, uint32_t save_size, int32_t slot_num);</title></rect>
 <rect width="12" height="12" x="585" y="285" class="known"><title>void __cdecl HWR_InitState(void);</title></rect>
 <rect width="12" height="12" x="600" y="285" class="known"><title>void __cdecl HWR_ResetTexSource(void);</title></rect>
 <rect width="12" height="12" x="615" y="285" class="known"><title>void __cdecl HWR_ResetColorKey(void);</title></rect>
@@ -1098,7 +1098,7 @@
 <rect width="12" height="12" x="270" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="285" y="300" class="todo"><title>sub_44E860</title></rect>
 <rect width="12" height="12" x="300" y="300" class="todo"><title>sub_44E880</title></rect>
-<rect width="12" height="12" x="315" y="300" class="decompiled"><title>void __cdecl Shell_ExitSystem(LPCTSTR message);</title></rect>
+<rect width="12" height="12" x="315" y="300" class="decompiled"><title>void __cdecl Shell_ExitSystem(const char *message);</title></rect>
 <rect width="12" height="12" x="330" y="300" class="known"><title>void __cdecl ScreenShotPCX(void);</title></rect>
 <rect width="12" height="12" x="345" y="300" class="known"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcxData);</title></rect>
 <rect width="12" height="12" x="360" y="300" class="known"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
@@ -1125,7 +1125,7 @@
 <rect width="12" height="12" x="675" y="300" class="known"><title>int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);</title></rect>
 <rect width="12" height="12" x="690" y="300" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
 <rect width="12" height="12" x="705" y="300" class="known"><title>void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);</title></rect>
-<rect width="12" height="12" x="720" y="300" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t roomNumber);</title></rect>
+<rect width="12" height="12" x="720" y="300" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="735" y="300" class="known"><title>void __cdecl S_CalculateStaticLight(int16_t adder);</title></rect>
 <rect width="12" height="12" x="0" y="315" class="known"><title>void __cdecl S_CalculateStaticMeshLight(int32_t x, int32_t y, int32_t z, int32_t shade1, int32_t shade2, ROOM_INFO *room);</title></rect>
 <rect width="12" height="12" x="15" y="315" class="known"><title>void __cdecl S_LightRoom(ROOM_INFO *room);</title></rect>
@@ -1183,13 +1183,13 @@
 <rect width="12" height="12" x="45" y="330" class="known"><title>void __cdecl SE_AdvancedDlgInit(HWND hwndDlg);</title></rect>
 <rect width="12" height="12" x="60" y="330" class="known"><title>HWND __cdecl SE_FindSetupDialog(void);</title></rect>
 <rect width="12" height="12" x="75" y="330" class="known"><title>BOOL __cdecl GameMain(void);</title></rect>
-<rect width="12" height="12" x="90" y="330" class="known"><title>__int16 __cdecl TitleSequence(void);</title></rect>
+<rect width="12" height="12" x="90" y="330" class="known"><title>int16_t __cdecl TitleSequence(void);</title></rect>
 <rect width="12" height="12" x="105" y="330" class="known"><title>void __cdecl CheckCheatMode(void);</title></rect>
 <rect width="12" height="12" x="120" y="330" class="known"><title>void __cdecl S_SaveSettings(void);</title></rect>
 <rect width="12" height="12" x="135" y="330" class="known"><title>void __cdecl S_LoadSettings(void);</title></rect>
 <rect width="12" height="12" x="150" y="330" class="known"><title>int32_t __cdecl S_SoundPlaySample(int32_t channel, UINT16 volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="12" height="12" x="165" y="330" class="known"><title>int32_t __cdecl S_Sound_CalculateSampleVolume(DWORD volume);</title></rect>
-<rect width="12" height="12" x="180" y="330" class="known"><title>int32_t __cdecl S_Sound_CalculateSamplePan(__int16 pan);</title></rect>
+<rect width="12" height="12" x="180" y="330" class="known"><title>int32_t __cdecl S_Sound_CalculateSamplePan(int16_t pan);</title></rect>
 <rect width="12" height="12" x="195" y="330" class="known"><title>int32_t __cdecl S_SoundPlaySampleLooped(int32_t channel, UINT16 volume, DWORD pitch, int32_t pan);</title></rect>
 <rect width="12" height="12" x="210" y="330" class="known"><title>void __cdecl S_SoundSetPanAndVolume(int32_t channel, int32_t pan, UINT16 volume);</title></rect>
 <rect width="12" height="12" x="225" y="330" class="known"><title>void __cdecl S_SoundSetPitch(int32_t channel, DWORD pitch);</title></rect>
@@ -1199,7 +1199,7 @@
 <rect width="12" height="12" x="285" y="330" class="known"><title>BOOL __cdecl S_SoundSampleIsPlaying(int32_t channel);</title></rect>
 <rect width="12" height="12" x="300" y="330" class="known"><title>bool __cdecl CD_Init(void);</title></rect>
 <rect width="12" height="12" x="315" y="330" class="known"><title>void __cdecl CD_Cleanup(void);</title></rect>
-<rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl S_CDPlay(__int16 trackID, BOOL isLooped);</title></rect>
+<rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl S_CDPlay(int16_t trackID, BOOL isLooped);</title></rect>
 <rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl S_CDStop(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="known"><title>BOOL __cdecl StartSyncedAudio(int32_t trackID);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="known"><title>DWORD __cdecl S_CDGetLoc(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.73%</tspan> · <tspan class="known">98.94%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.78%</tspan> · <tspan class="known">98.89%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="5.42" height="6" x="0" y="0" class="decompiled"/>
-<rect width="739.12" height="6" x="5.42" y="0" class="known"/>
+<rect width="5.81" height="6" x="0" y="0" class="decompiled"/>
+<rect width="738.73" height="6" x="5.81" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1395,7 +1395,7 @@
 <rect width="22.54" height="21.40" x="316.12" y="125.98" class="known"><title>void __cdecl Lara_Push(struct ITEM_INFO *item, struct ITEM_INFO *lara_item, struct COLL_INFO *coll, int32_t spaz_on, int32_t big_push);</title></rect>
 <rect width="22.54" height="21.14" x="316.12" y="150.38" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="22.54" height="21.11" x="316.12" y="174.52" class="known"><title>void __fastcall gtmapA(int32_t y0, int32_t y1, BYTE *texPage);</title></rect>
-<rect width="22.54" height="20.89" x="316.12" y="198.63" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t roomNumber);</title></rect>
+<rect width="22.54" height="20.89" x="316.12" y="198.63" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="22.54" height="20.61" x="316.12" y="222.52" class="known"><title>void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
 <rect width="22.54" height="20.58" x="316.12" y="246.13" class="known"><title>int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="22.54" height="20.54" x="316.12" y="269.70" class="known"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
@@ -1618,11 +1618,11 @@
 <rect width="11.85" height="12.08" x="477.44" y="228.99" class="known"><title>void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE colorIdx, GOURAUD_OUTLINE *gour, uint16_t flags);</title></rect>
 <rect width="11.85" height="12.02" x="477.44" y="244.07" class="known"><title>void __cdecl ControlCeilingSpikes(int16_t item_num);</title></rect>
 <rect width="11.85" height="11.97" x="477.44" y="259.09" class="known"><title>void __cdecl InitialiseBartoli(int16_t item_num);</title></rect>
-<rect width="11.85" height="11.97" x="477.44" y="274.06" class="known"><title>BOOL __cdecl S_SaveGame(LPCVOID saveData, DWORD saveSize, int32_t slotNumber);</title></rect>
+<rect width="11.85" height="11.97" x="477.44" y="274.06" class="known"><title>int32_t __cdecl S_SaveGame(const void *save_data, uint32_t save_size, int32_t slot_num);</title></rect>
 <rect width="11.85" height="11.91" x="477.44" y="289.03" class="known"><title>int32_t __cdecl GameStats(int32_t levelID);</title></rect>
 <rect width="11.85" height="11.86" x="477.44" y="303.94" class="known"><title>int32_t __cdecl Game_Cutscene_Start(int32_t level_num);</title></rect>
 <rect width="11.85" height="11.75" x="477.44" y="318.80" class="known"><title>int32_t __cdecl Inv_RemoveItem(int32_t itemNum);</title></rect>
-<rect width="11.85" height="11.75" x="477.44" y="333.55" class="known"><title>__int16 __cdecl TitleSequence(void);</title></rect>
+<rect width="11.85" height="11.75" x="477.44" y="333.55" class="known"><title>int16_t __cdecl TitleSequence(void);</title></rect>
 <rect width="11.85" height="11.70" x="477.44" y="348.30" class="known"><title>void __cdecl Inv_RingInit(struct RING_INFO *ring, int16_t type, struct INVENTORY_ITEM **list, int16_t qty, int16_t current, struct IMOTION_INFO *imo);</title></rect>
 <rect width="11.66" height="11.88" x="492.29" y="90.80" class="known"><title>void __cdecl ScreenShotPCX(void);</title></rect>
 <rect width="11.61" height="11.88" x="506.95" y="90.80" class="known"><title>bool __cdecl WinSndMakeSample(DWORD sampleIdx, LPWAVEFORMATEX format, const LPVOID data, DWORD dataSize);</title></rect>
@@ -1774,7 +1774,7 @@
 <rect width="9.23" height="8.65" x="581.78" y="146.07" class="known"><title>int32_t __cdecl TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);</title></rect>
 <rect width="9.23" height="8.65" x="594.01" y="146.07" class="known"><title>int32_t __cdecl OnDrawBridge(struct ITEM_INFO *item, int32_t x, int32_t y);</title></rect>
 <rect width="9.23" height="8.65" x="606.24" y="146.07" class="known"><title>void __cdecl S_AnimateTextures(int32_t nTicks);</title></rect>
-<rect width="9.16" height="8.65" x="618.48" y="146.07" class="known"><title>void __cdecl Camera_Initialise(void);</title></rect>
+<rect width="9.16" height="8.65" x="618.48" y="146.07" class="decompiled"><title>void __cdecl Camera_Initialise(void);</title></rect>
 <rect width="9.09" height="8.65" x="630.64" y="146.07" class="known"><title>bool __cdecl WinVidGetDisplayAdapters(void);</title></rect>
 <rect width="9.03" height="8.65" x="642.73" y="146.07" class="known"><title>void __cdecl ControlWaterSprite(int16_t fx_num);</title></rect>
 <rect width="9.03" height="8.65" x="654.76" y="146.07" class="known"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcxData);</title></rect>
@@ -1842,7 +1842,7 @@
 <rect width="7.86" height="8.12" x="588.72" y="169.65" class="known"><title>void __cdecl lara_col_back( ITEM_INFO *item, COLL_INFO *coll );</title></rect>
 <rect width="7.86" height="8.12" x="599.58" y="169.65" class="known"><title>void __cdecl HitTarget(struct ITEM_INFO *item, struct GAME_VECTOR *hitpos, int32_t damage);</title></rect>
 <rect width="7.86" height="8.12" x="610.44" y="169.65" class="known"><title>void __cdecl WindowControl(int16_t item_num);</title></rect>
-<rect width="7.86" height="8.12" x="621.31" y="169.65" class="known"><title>BOOL __cdecl S_LoadGame(LPVOID saveData, DWORD saveSize, int32_t slotNumber);</title></rect>
+<rect width="7.86" height="8.12" x="621.31" y="169.65" class="known"><title>int32_t __cdecl S_LoadGame(void *save_data, uint32_t save_size, int32_t slot_num);</title></rect>
 <rect width="7.86" height="8.12" x="632.17" y="169.65" class="known"><title>void __cdecl S_ChangeCtrlText(void);</title></rect>
 <rect width="7.79" height="8.12" x="643.03" y="169.65" class="known"><title>void __cdecl Output_SetNearZ(int32_t near_z);</title></rect>
 <rect width="7.79" height="8.12" x="653.82" y="169.65" class="known"><title>void __cdecl Box_TargetBox(struct LOT_INFO *lot, int16_t box_num);</title></rect>
@@ -1958,7 +1958,7 @@
 <rect width="6.70" height="6.30" x="627.09" y="210.71" class="known"><title>void __cdecl CreatePictureBuffer(void);</title></rect>
 <rect width="6.61" height="6.30" x="636.79" y="210.71" class="known"><title>int32_t __cdecl Box_UpdateLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
 <rect width="6.61" height="6.30" x="646.41" y="210.71" class="known"><title>void __cdecl RemoveDrawnItem(int16_t item_num);</title></rect>
-<rect width="6.61" height="6.30" x="656.02" y="210.71" class="known"><title>void __cdecl S_CDPlay(__int16 trackID, BOOL isLooped);</title></rect>
+<rect width="6.61" height="6.30" x="656.02" y="210.71" class="known"><title>void __cdecl S_CDPlay(int16_t trackID, BOOL isLooped);</title></rect>
 <rect width="6.61" height="6.30" x="665.64" y="210.71" class="known"><title>BOOL __cdecl UT_CenterWindow(HWND hWnd);</title></rect>
 <rect width="6.53" height="6.30" x="675.25" y="210.71" class="known"><title>void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);</title></rect>
 <rect width="6.35" height="6.30" x="684.78" y="210.71" class="known"><title>bool __cdecl Output_VisibleZClip(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);</title></rect>
@@ -2158,7 +2158,7 @@
 <rect width="3.78" height="4.12" x="702.74" y="261.18" class="known"><title>void __cdecl ControlCutShotgun(int16_t item_num);</title></rect>
 <rect width="3.78" height="4.12" x="709.53" y="261.18" class="known"><title>void __cdecl InitialiseRollingBall(int16_t item_num);</title></rect>
 <rect width="3.78" height="4.12" x="716.31" y="261.18" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t errorCode);</title></rect>
-<rect width="3.78" height="4.12" x="723.09" y="261.18" class="decompiled"><title>void __cdecl Shell_ExitSystem(LPCTSTR message);</title></rect>
+<rect width="3.78" height="4.12" x="723.09" y="261.18" class="decompiled"><title>void __cdecl Shell_ExitSystem(const char *message);</title></rect>
 <rect width="3.78" height="4.12" x="729.88" y="261.18" class="known"><title>void __cdecl S_SoundStopAllSamples(void);</title></rect>
 <rect width="3.67" height="4.12" x="736.66" y="261.18" class="known"><title>int32_t __cdecl CheckForHoldingState(int32_t state);</title></rect>
 <rect width="3.67" height="4.12" x="743.33" y="261.18" class="known"><title>int32_t __cdecl WeaponObject(int32_t weapon_type);</title></rect>
@@ -2306,7 +2306,7 @@
 <rect width="2.57" height="2.50" x="733.30" y="300.51" class="known"><title>void __cdecl Inv_RingMotionRadius(struct RING_INFO *ring, int16_t target);</title></rect>
 <rect width="2.57" height="2.50" x="738.87" y="300.51" class="known"><title>LPCTSTR __cdecl GetFullPath(LPCTSTR fileName);</title></rect>
 <rect width="2.57" height="2.50" x="744.43" y="300.51" class="known"><title>void __cdecl ScreenClear(bool isPhdWinSize);</title></rect>
-<rect width="2.84" height="2.24" x="693.03" y="306.01" class="known"><title>int32_t __cdecl S_Sound_CalculateSamplePan(__int16 pan);</title></rect>
+<rect width="2.84" height="2.24" x="693.03" y="306.01" class="known"><title>int32_t __cdecl S_Sound_CalculateSamplePan(int16_t pan);</title></rect>
 <rect width="2.84" height="2.24" x="698.86" y="306.01" class="known"><title>void __cdecl FreeTexturePages(void);</title></rect>
 <rect width="2.84" height="2.24" x="704.70" y="306.01" class="known"><title>void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);</title></rect>
 <rect width="2.68" height="2.24" x="710.53" y="306.01" class="known"><title>void __cdecl Inv_RingMotionCameraPos(struct RING_INFO *ring, int16_t target);</title></rect>

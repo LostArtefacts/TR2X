@@ -7,6 +7,8 @@
 #include <stdint.h>
 #include <windows.h>
 
+#pragma pack(push, 1)
+
 typedef DDSURFACEDESC DDSDESC, *LPDDSDESC;
 typedef LPDIRECTDRAWSURFACE3 LPDDS;
 typedef D3DTEXTUREHANDLE HWR_TEXHANDLE;
@@ -710,3 +712,121 @@ typedef struct CREATURE_INFO {
     struct PHD_VECTOR target;
     struct ITEM_INFO *enemy;
 } CREATURE_INFO;
+
+typedef enum CAMERA_TYPE {
+    CAM_CHASE = 0,
+    CAM_FIXED = 1,
+    CAM_LOOK = 2,
+    CAM_COMBAT = 3,
+    CAM_CINEMATIC = 4,
+    CAM_HEAVY = 5,
+} CAMERA_TYPE;
+
+typedef struct GAME_VECTOR {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t room_num;
+    int16_t box_num;
+} GAME_VECTOR;
+
+typedef struct CAMERA_INFO {
+    struct GAME_VECTOR pos;
+    struct GAME_VECTOR target;
+    enum CAMERA_TYPE type;
+    int32_t shift;
+    uint32_t flags;
+    int32_t fixed_camera;
+    int32_t num_frames;
+    int32_t bounce;
+    int32_t underwater;
+    int32_t target_distance;
+    int32_t target_square;
+    int16_t target_angle;
+    int16_t actual_angle;
+    int16_t target_elevation;
+    int16_t box;
+    int16_t num;
+    int16_t last;
+    int16_t timer;
+    int16_t speed;
+    struct ITEM_INFO *item;
+    struct ITEM_INFO *last_item;
+    struct OBJECT_VECTOR *fixed;
+    bool is_lara_mic;
+    struct PHD_VECTOR mic_pos;
+} CAMERA_INFO;
+
+typedef struct LARA_ARM {
+    int16_t *frame_base;
+    int16_t frame_num;
+    int16_t anim_num;
+    int16_t lock;
+    int16_t y_rot;
+    int16_t x_rot;
+    int16_t z_rot;
+    int16_t flash_gun;
+} LARA_ARM;
+
+typedef struct AMMO_INFO {
+    int32_t ammo;
+} AMMO_INFO;
+
+typedef struct LARA_INFO {
+    int16_t item_num;
+    int16_t gun_status;
+    int16_t gun_type;
+    int16_t request_gun_type;
+    int16_t last_gun_type;
+    int16_t calc_fallspeed;
+    int16_t water_status;
+    int16_t climb_status;
+    int16_t pose_count;
+    int16_t hit_frame;
+    int16_t hit_direction;
+    int16_t air;
+    int16_t dive_count;
+    int16_t death_count;
+    int16_t current_active;
+    int16_t spaz_effect_count;
+    int16_t flare_age;
+    int16_t skidoo;
+    int16_t weapon_item;
+    int16_t back_gun;
+    int16_t flare_frame;
+    uint16_t flare_control_left : 1;
+    uint16_t flare_control_right : 1;
+    uint16_t extra_anim : 1;
+    uint16_t look : 1;
+    uint16_t burn : 1;
+    uint16_t keep_ducked : 1;
+    uint16_t can_monkey_swing : 1;
+    uint16_t pad : 9;
+    int32_t water_surface_dist;
+    struct PHD_VECTOR last_pos;
+    struct FX_INFO *spaz_effect;
+    uint32_t mesh_effects;
+    int16_t *mesh_ptrs[15];
+    struct ITEM_INFO *target;
+    int16_t target_angles[2];
+    int16_t turn_rate;
+    int16_t move_angle;
+    int16_t head_y_rot;
+    int16_t head_x_rot;
+    int16_t head_z_rot;
+    int16_t torso_y_rot;
+    int16_t torso_x_rot;
+    int16_t torso_z_rot;
+    struct LARA_ARM left_arm;
+    struct LARA_ARM right_arm;
+    struct AMMO_INFO pistol_ammo;
+    struct AMMO_INFO magnum_ammo;
+    struct AMMO_INFO uzi_ammo;
+    struct AMMO_INFO shotgun_ammo;
+    struct AMMO_INFO harpoon_ammo;
+    struct AMMO_INFO grenade_ammo;
+    struct AMMO_INFO m16_ammo;
+    struct CREATURE_INFO *creature;
+} LARA_INFO;
+
+#pragma pack(pop)

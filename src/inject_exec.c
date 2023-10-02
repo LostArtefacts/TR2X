@@ -1,11 +1,20 @@
 #include "inject_exec.h"
 
+#include "game/camera.h"
 #include "game/math.h"
 #include "game/matrix.h"
 #include "game/shell.h"
 #include "inject_util.h"
 
+static void Inject_Camera(void);
+static void Inject_Math(void);
 static void Inject_Matrix(void);
+static void Inject_Shell(void);
+
+static void Inject_Camera(void)
+{
+    INJECT(0x004105A0, Camera_Initialise);
+}
 
 static void Inject_Matrix(void)
 {
@@ -34,6 +43,7 @@ static void Inject_Shell(void)
 
 void Inject_Exec(void)
 {
+    Inject_Camera();
     Inject_Matrix();
     Inject_Math();
     Inject_Shell();

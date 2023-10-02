@@ -31,6 +31,11 @@
 #define g_PhdVBuf ARRAY_(0x004BF3E0, struct PHD_VBUF, [1500])
 #define g_FltWinRight VAR_U_(0x004D6B60, float)
 #define g_PhdWinRight VAR_U_(0x004D6BF8, int32_t)
+#define g_IsChunkyCamera VAR_U_(0x004D778C, int32_t)
 #define g_ErrorMessage ARRAY_(0x0051BD20, char, [128])
+#define g_Lara VAR_U_(0x005206E0, struct LARA_INFO)
+#define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
+#define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
+#define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
 // clang-format on

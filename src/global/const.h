@@ -7,3 +7,5 @@
 #define PHD_135 (PHD_45 * 3) // = 24576 = 0x6000
 
 #define W2V_MATRIX 14
+#define WALL_L 1024
+#define GAME_FOV 80

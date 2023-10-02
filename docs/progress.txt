@@ -705,6 +705,122 @@ typedef struct CREATURE_INFO {
     struct ITEM_INFO *enemy;
 } CREATURE_INFO;
 
+typedef enum CAMERA_TYPE {
+    CAM_CHASE = 0,
+    CAM_FIXED = 1,
+    CAM_LOOK = 2,
+    CAM_COMBAT = 3,
+    CAM_CINEMATIC = 4,
+    CAM_HEAVY = 5,
+} CAMERA_TYPE;
+
+typedef struct GAME_VECTOR {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t room_num;
+    int16_t box_num;
+} GAME_VECTOR;
+
+typedef struct __unaligned CAMERA_INFO {
+    struct GAME_VECTOR pos;
+    struct GAME_VECTOR target;
+    enum CAMERA_TYPE type;
+    int32_t shift;
+    uint32_t flags;
+    int32_t fixed_camera;
+    int32_t num_frames;
+    int32_t bounce;
+    int32_t underwater;
+    int32_t target_distance;
+    int32_t target_square;
+    int16_t target_angle;
+    int16_t actual_angle;
+    int16_t target_elevation;
+    int16_t box;
+    int16_t num;
+    int16_t last;
+    int16_t timer;
+    int16_t speed;
+    struct ITEM_INFO *item;
+    struct ITEM_INFO *last_item;
+    struct OBJECT_VECTOR *fixed;
+    bool is_lara_mic;
+    struct PHD_VECTOR mic_pos;
+} CAMERA_INFO;
+
+typedef struct __unaligned LARA_ARM {
+    int16_t *frame_base;
+    int16_t frame_num;
+    int16_t anim_num;
+    int16_t lock;
+    int16_t y_rot;
+    int16_t x_rot;
+    int16_t z_rot;
+    int16_t flash_gun;
+} LARA_ARM;
+
+typedef struct __unaligned AMMO_INFO {
+    int32_t ammo;
+} AMMO_INFO;
+
+typedef struct __unaligned LARA_INFO {
+    int16_t item_num;
+    int16_t gun_status;
+    int16_t gun_type;
+    int16_t request_gun_type;
+    int16_t last_gun_type;
+    int16_t calc_fallspeed;
+    int16_t water_status;
+    int16_t climb_status;
+    int16_t pose_count;
+    int16_t hit_frame;
+    int16_t hit_direction;
+    int16_t air;
+    int16_t dive_count;
+    int16_t death_count;
+    int16_t current_active;
+    int16_t spaz_effect_count;
+    int16_t flare_age;
+    int16_t skidoo;
+    int16_t weapon_item;
+    int16_t back_gun;
+    int16_t flare_frame;
+    uint16_t flare_control_left : 1;
+    uint16_t flare_control_right : 1;
+    uint16_t extra_anim : 1;
+    uint16_t look : 1;
+    uint16_t burn : 1;
+    uint16_t keep_ducked : 1;
+    uint16_t can_monkey_swing : 1;
+    uint16_t pad : 9;
+    int32_t water_surface_dist;
+    struct PHD_VECTOR last_pos;
+    struct FX_INFO *spaz_effect;
+    uint32_t mesh_effects;
+    int16_t *mesh_ptrs[15];
+    struct ITEM_INFO *target;
+    int16_t target_angles[2];
+    int16_t turn_rate;
+    int16_t move_angle;
+    int16_t head_y_rot;
+    int16_t head_x_rot;
+    int16_t head_z_rot;
+    int16_t torso_y_rot;
+    int16_t torso_x_rot;
+    int16_t torso_z_rot;
+    struct LARA_ARM left_arm;
+    struct LARA_ARM right_arm;
+    struct AMMO_INFO pistol_ammo;
+    struct AMMO_INFO magnum_ammo;
+    struct AMMO_INFO uzi_ammo;
+    struct AMMO_INFO shotgun_ammo;
+    struct AMMO_INFO harpoon_ammo;
+    struct AMMO_INFO grenade_ammo;
+    struct AMMO_INFO m16_ammo;
+    struct CREATURE_INFO *creature;
+} LARA_INFO;
+
 # FUNCTIONS
 #   Flags:
 #   - to do
@@ -737,7 +853,7 @@ typedef struct CREATURE_INFO {
 00402430    00000033    -       void __cdecl Output_SortPolyList(void);
 00402470    000000C5    -       void __cdecl Output_QuickSort(int32_t left, int32_t right);
 00402540    00000036    -       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
-00402580    000000A1    -       void __cdecl Viewport_AlterFOV(int16_t fov);
+00402580    000000A1    *       void __cdecl Viewport_AlterFOV(int16_t fov);
 00402690    00000095    -       void __cdecl Output_SetNearZ(int32_t near_z);
 004026E0    0000006B    -       void __cdecl Output_SetFarZ(int32_t far_z);
 00402700    00000266    -       void __cdecl Viewport_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);
@@ -851,7 +967,7 @@ typedef struct CREATURE_INFO {
 004103C0    000001DB    -       void __cdecl Creature_GetBaddieTarget(int16_t item_num, int32_t goody);
 
 # game/camera.c
-004105A0    000000B0    -       void __cdecl Camera_Initialise(void);
+004105A0    000000B0    +       void __cdecl Camera_Initialise(void);
 00410650    00000372    -       void __cdecl Camera_Move(struct GAME_VECTOR *ideal, int32_t speed);
 004109D0    000000D7    -       void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
 00410AB0    00000154    -       void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
@@ -862,7 +978,7 @@ typedef struct CREATURE_INFO {
 00411680    0000018E    -       void __cdecl Camera_Combat(struct ITEM_INFO *item);
 00411810    000001E2    -       void __cdecl Camera_Look(struct ITEM_INFO *item);
 00411A00    00000099    -       void __cdecl Camera_Fixed(void);
-00411AA0    000004A9    -       void __cdecl Camera_Update(void);
+00411AA0    000004A9    *       void __cdecl Camera_Update(void);
 00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);
 00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
 00412080    00000093    -R      void __cdecl Misc_InitCinematicRooms(void);
@@ -1802,8 +1918,8 @@ typedef struct CREATURE_INFO {
 0044CA20    0000004C    -R      void __cdecl GetSavedGamesList(REQUEST_INFO *req);
 0044CA70    00000233    -R      void __cdecl DisplayCredits(void);
 0044CCB0    00000165    -R      BOOL __cdecl S_FrontEndCheck(void);
-0044CE20    00000114    -R      BOOL __cdecl S_SaveGame(LPCVOID saveData, DWORD saveSize, int32_t slotNumber);
-0044CF40    00000096    -R      BOOL __cdecl S_LoadGame(LPVOID saveData, DWORD saveSize, int32_t slotNumber);
+0044CE20    00000114    -R      int32_t __cdecl S_SaveGame(const void *save_data, uint32_t save_size, int32_t slot_num);
+0044CF40    00000096    -R      int32_t __cdecl S_LoadGame(void *save_data, uint32_t save_size, int32_t slot_num);
 0044CFE0    00000128    -R      void __cdecl HWR_InitState(void);
 0044D110    00000029    -R      void __cdecl HWR_ResetTexSource(void);
 0044D140    0000002B    -R      void __cdecl HWR_ResetColorKey(void);
@@ -1863,7 +1979,7 @@ typedef struct CREATURE_INFO {
 00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);
 00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
 00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);
-00451180    000002F6    -R      void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t roomNumber);
+00451180    000002F6    -R      void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00451480    00000031    -R      void __cdecl S_CalculateStaticLight(int16_t adder);
 004514C0    00000124    -R      void __cdecl S_CalculateStaticMeshLight(int32_t x, int32_t y, int32_t z, int32_t shade1, int32_t shade2, ROOM_INFO *room);
 004515F0    00000206    -R      void __cdecl S_LightRoom(ROOM_INFO *room);
@@ -1921,13 +2037,13 @@ typedef struct CREATURE_INFO {
 00454950    0000000E    -R      void __cdecl SE_AdvancedDlgInit(HWND hwndDlg);
 00454960    00000011    -R      HWND __cdecl SE_FindSetupDialog(void);
 00454980    000002D0    -R      BOOL __cdecl GameMain(void);
-00454C50    00000110    -R      __int16 __cdecl TitleSequence(void);
+00454C50    00000110    -R      int16_t __cdecl TitleSequence(void);
 00454D60    0000032D    -R      void __cdecl CheckCheatMode(void);
 004550C0    0000007D    -R      void __cdecl S_SaveSettings(void);
 00455140    000000DB    -R      void __cdecl S_LoadSettings(void);
 00455220    00000046    -R      int32_t __cdecl S_SoundPlaySample(int32_t channel, UINT16 volume, int32_t pitch, int32_t pan);
 00455270    0000002A    -R      int32_t __cdecl S_Sound_CalculateSampleVolume(DWORD volume);
-004552A0    00000026    -R      int32_t __cdecl S_Sound_CalculateSamplePan(__int16 pan);
+004552A0    00000026    -R      int32_t __cdecl S_Sound_CalculateSamplePan(int16_t pan);
 004552D0    00000046    -R      int32_t __cdecl S_SoundPlaySampleLooped(int32_t channel, UINT16 volume, DWORD pitch, int32_t pan);
 00455320    00000039    -R      void __cdecl S_SoundSetPanAndVolume(int32_t channel, int32_t pan, UINT16 volume);
 00455360    0000001C    -R      void __cdecl S_SoundSetPitch(int32_t channel, DWORD pitch);
@@ -1937,7 +2053,7 @@ typedef struct CREATURE_INFO {
 004553C0    0000001F    -R      BOOL __cdecl S_SoundSampleIsPlaying(int32_t channel);
 004553E0    00000077    -R      bool __cdecl CD_Init(void);
 00455460    00000051    -R      void __cdecl CD_Cleanup(void);
-00455500    0000006F    -R      void __cdecl S_CDPlay(__int16 trackID, BOOL isLooped);
+00455500    0000006F    -R      void __cdecl S_CDPlay(int16_t trackID, BOOL isLooped);
 00455570    00000039    -R      void __cdecl S_CDStop(void);
 004555B0    00000084    -R      BOOL __cdecl StartSyncedAudio(int32_t trackID);
 00455640    00000061    -R      DWORD __cdecl S_CDGetLoc(void);
@@ -2050,5 +2166,10 @@ typedef struct CREATURE_INFO {
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
 004D6B60    -       float g_FltWinRight;
 004D6BF8    -       int32_t g_PhdWinRight;
+004D778C    -       int32_t g_IsChunkyCamera;
 0051BD20    -       char g_ErrorMessage[128];
+005206E0    -       struct LARA_INFO g_Lara;
+005207BC    -       struct ITEM_INFO *g_LaraItem;
 005262F0    -       struct ITEM_INFO g_Items[];
+00526320    -       struct CAMERA_INFO g_Camera;
+005263CC    -       struct BOX_INFO *g_Boxes;
