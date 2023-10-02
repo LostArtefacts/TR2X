@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.25% (27)</tspan> · <tspan class="known">95.33% (1144)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.33% (28)</tspan> · <tspan class="known">95.25% (1143)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="16.81" height="6" x="0" y="0" class="decompiled"/>
-<rect width="712.14" height="6" x="16.81" y="0" class="known"/>
+<rect width="17.43" height="6" x="0" y="0" class="decompiled"/>
+<rect width="711.52" height="6" x="17.43" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -216,8 +216,8 @@
 <rect width="12" height="12" x="540" y="30" class="known"><title>int32_t __cdecl Game_Cutscene_Start(int32_t level_num);</title></rect>
 <rect width="12" height="12" x="555" y="30" class="known"><title>void __cdecl Misc_InitCinematicRooms(void);</title></rect>
 <rect width="12" height="12" x="570" y="30" class="known"><title>int32_t __cdecl Game_Cutscene_Control(int32_t nframes);</title></rect>
-<rect width="12" height="12" x="585" y="30" class="known"><title>void __cdecl Camera_UpdateCutscene(void);</title></rect>
-<rect width="12" height="12" x="600" y="30" class="known"><title>int32_t __cdecl GetCinematicRoom(int32_t x, int32_t y, int32_t z);</title></rect>
+<rect width="12" height="12" x="585" y="30" class="decompiled"><title>void __cdecl Camera_UpdateCutscene(void);</title></rect>
+<rect width="12" height="12" x="600" y="30" class="known"><title>int32_t __cdecl Room_FindByPos(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="615" y="30" class="known"><title>void __cdecl CutscenePlayer_Control(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="630" y="30" class="known"><title>void __cdecl Lara_Control_Cutscene(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="645" y="30" class="known"><title>void __cdecl CutscenePlayer1_Initialise(int16_t item_num);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.82%</tspan> · <tspan class="known">96.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.91%</tspan> · <tspan class="known">96.76%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="21.04" height="6" x="0" y="0" class="decompiled"/>
-<rect width="723.50" height="6" x="21.04" y="0" class="known"/>
+<rect width="21.73" height="6" x="0" y="0" class="decompiled"/>
+<rect width="722.81" height="6" x="21.73" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1585,7 +1585,7 @@
 <rect width="12.85" height="13" x="639.79" y="74.81" class="known"><title>void __cdecl Item_AlignPosition(struct PHD_VECTOR *vec, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);</title></rect>
 <rect width="12.85" height="13" x="655.64" y="74.81" class="known"><title>void __cdecl CreateScreenBuffers(void);</title></rect>
 <rect width="12.80" height="13" x="671.49" y="74.81" class="known"><title>void __fastcall transA(int32_t y0, int32_t y1, BYTE depthQ);</title></rect>
-<rect width="12.70" height="13" x="687.30" y="74.81" class="known"><title>void __cdecl Camera_UpdateCutscene(void);</title></rect>
+<rect width="12.70" height="13" x="687.30" y="74.81" class="decompiled"><title>void __cdecl Camera_UpdateCutscene(void);</title></rect>
 <rect width="12.70" height="13" x="703" y="74.81" class="known"><title>void __cdecl ControlSpikeWall(int16_t item_num);</title></rect>
 <rect width="12.65" height="13" x="718.70" y="74.81" class="known"><title>int32_t __cdecl Item_TestPosition(int16_t *bounds, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);</title></rect>
 <rect width="12.65" height="13" x="734.35" y="74.81" class="known"><title>int32_t __cdecl TestBlockPush(struct ITEM_INFO *item, int32_t blokhite, uint16_t quadrant);</title></rect>
@@ -1905,7 +1905,7 @@
 <rect width="7.43" height="6.96" x="577.68" y="343.08" class="known"><title>void __cdecl lara_col_stop(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="6.96" x="577.68" y="353.04" class="known"><title>void __cdecl lara_col_roll2(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.35" height="7.03" x="588.11" y="191" class="known"><title>void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
-<rect width="7.19" height="7.03" x="598.46" y="191" class="known"><title>int32_t __cdecl GetCinematicRoom(int32_t x, int32_t y, int32_t z);</title></rect>
+<rect width="7.19" height="7.03" x="598.46" y="191" class="known"><title>int32_t __cdecl Room_FindByPos(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="7.19" height="7.03" x="608.65" y="191" class="known"><title>void __cdecl ControlExplosion1(int16_t fx_num);</title></rect>
 <rect width="7.19" height="7.03" x="618.85" y="191" class="known"><title>int32_t __cdecl LaraDeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.19" height="7.03" x="629.04" y="191" class="known"><title>void __cdecl InitialiseSkidman(int16_t item_num);</title></rect>

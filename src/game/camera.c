@@ -812,12 +812,12 @@ void __cdecl Camera_LoadCutsceneFrame(void)
     int32_t c = Math_Cos(g_CinePos.y_rot);
     int32_t s = Math_Sin(g_CinePos.y_rot);
 
-    g_Camera.target.x = g_CinePos.x + ((c * tx + s * tz) >> W2V_SHIFT);
+    g_Camera.target.x = g_CinePos.x + ((tx * c + tz * s) >> W2V_SHIFT);
     g_Camera.target.y = g_CinePos.y + ty;
-    g_Camera.target.z = g_CinePos.z + ((c * tz - s * tx) >> W2V_SHIFT);
-    g_Camera.pos.x = g_CinePos.x + ((s * cz + c * cx) >> W2V_SHIFT);
+    g_Camera.target.z = g_CinePos.z + ((tz * c - tx * s) >> W2V_SHIFT);
+    g_Camera.pos.x = g_CinePos.x + ((cx * c + cz * s) >> W2V_SHIFT);
     g_Camera.pos.y = g_CinePos.y + cy;
-    g_Camera.pos.z = g_CinePos.z + ((c * cz - s * cx) >> W2V_SHIFT);
+    g_Camera.pos.z = g_CinePos.z + ((cz * c - cx * s) >> W2V_SHIFT);
 
     Viewport_AlterFOV(fov);
     Matrix_LookAt(
@@ -843,4 +843,36 @@ void __cdecl Camera_LoadCutsceneFrame(void)
             + ((g_PhdPersp * Math_Cos(g_Camera.actual_angle)) >> W2V_SHIFT);
         g_Camera.mic_pos.y = g_Camera.pos.y;
     }
+}
+
+void __cdecl Camera_UpdateCutscene(void)
+{
+    const struct CINE_FRAME *frame = &g_CineData[g_CineFrame];
+    int32_t tx = frame->tx;
+    int32_t ty = frame->ty;
+    int32_t tz = frame->tz;
+    int32_t cx = frame->cx;
+    int32_t cy = frame->cy;
+    int32_t cz = frame->cz;
+    int32_t fov = frame->fov;
+    int32_t roll = frame->roll;
+    int32_t c = Math_Cos(g_Camera.target_angle);
+    int32_t s = Math_Sin(g_Camera.target_angle);
+    const struct PHD_VECTOR camtar = {
+        .x = g_LaraItem->pos.x + ((tx * c + tz * s) >> W2V_SHIFT),
+        .y = g_LaraItem->pos.y + ty,
+        .z = g_LaraItem->pos.z + ((tz * c - tx * s) >> W2V_SHIFT),
+    };
+    const struct PHD_VECTOR campos = {
+        .x = g_LaraItem->pos.x + ((cx * c + cz * s) >> W2V_SHIFT),
+        .y = g_LaraItem->pos.y + cy,
+        .z = g_LaraItem->pos.z + ((cz * c - cx * s) >> W2V_SHIFT),
+    };
+    int16_t room_num = Room_FindByPos(campos.x, campos.y, campos.z);
+    if (room_num >= 0) {
+        g_Camera.pos.room_num = room_num;
+    }
+    Viewport_AlterFOV(fov);
+    Matrix_LookAt(
+        campos.x, campos.y, campos.z, camtar.x, camtar.y, camtar.z, roll);
 }

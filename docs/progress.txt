@@ -1013,8 +1013,8 @@ typedef struct CINE_FRAME {
 00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
 00412080    00000093    -R      void __cdecl Misc_InitCinematicRooms(void);
 00412120    0000016F    -       int32_t __cdecl Game_Cutscene_Control(int32_t nframes);
-00412290    00000138    -       void __cdecl Camera_UpdateCutscene(void);
-004123D0    0000007F    -R      int32_t __cdecl GetCinematicRoom(int32_t x, int32_t y, int32_t z);
+00412290    00000138    +       void __cdecl Camera_UpdateCutscene(void);
+004123D0    0000007F    -R      int32_t __cdecl Room_FindByPos(int32_t x, int32_t y, int32_t z);
 00412450    000000DC    -       void __cdecl CutscenePlayer_Control(int16_t item_num);
 00412530    00000096    -       void __cdecl Lara_Control_Cutscene(int16_t item_num);
 004125D0    0000008F    -R      void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
