@@ -96,12 +96,12 @@ def parse_progress_file(path: Path) -> ProgressFile:
 
 def make_func_pointer_define(function: Symbol) -> str:
     if match := re.match(
-        r"(?P<ret_type>.+?)\s+(?P<func_name>\w+)\s*\((?P<args>.+)\);?",
+        r"(?P<ret_type>.+?\W)(?P<func_name>\b\w+)\s*\((?P<args>.+)\);?",
         function.signature,
     ):
-        ret_type = match.group("ret_type")
-        func_name = match.group("func_name")
-        args = match.group("args")
+        ret_type = match.group("ret_type").strip()
+        func_name = match.group("func_name").strip()
+        args = match.group("args").strip()
         return f"#define {func_name} (({ret_type} (*)({args}))0x{function.offset:08X})"
     return ""
 
