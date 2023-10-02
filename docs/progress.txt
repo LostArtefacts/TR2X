@@ -712,6 +712,7 @@ typedef struct CREATURE_INFO {
 #   x unused
 #   + fully decompiled
 # Offset    Size        Flags   Declaration
+
 # 3dsystem/3d_gen.c
 00401000    000001D0    +       void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);
 004011D0    00000072    +       void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);
@@ -2016,33 +2017,38 @@ typedef struct CREATURE_INFO {
 00457C93    0000002C    +       uint32_t  __fastcall Math_Sqrt(uint32_t n);
 
 # VARIABLES
-# Offset    Declaration
-00467DD0    const int32_t g_AtanBaseTable[8];
-00467DF0    const int16_t g_AtanAngleTable[0x800];
-00468DF4    const int16_t g_SinTable[0x402];
-0046C304    float g_ViewportAspectRatio = 0.0f;
-0046E310    int32_t g_PhdWinTop;
-0047031C    float g_FltWinBottom;
-00470330    int32_t g_PhdWinCenterX;
-00470334    int32_t g_PhdWinCenterY;
-00470340    float g_FltWinTop;
-00478048    float g_FltWinLeft;
-0047804C    int16_t g_PhdWinMinY;
-00478058    int32_t g_PhdFarZ;
-00478060    int32_t g_PhdWinBottom;
-00478068    int32_t g_PhdWinLeft;
-004B2A00    float g_FltWinCenterX;
-004B2A04    float g_FltWinCenterY;
-004B2A10    int16_t g_PhdWinMinX;
-004B2A28    struct MATRIX *g_MatrixPtr;
-004B2A2C    int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, enum SORT_TYPE);
-004B2A30    int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, enum SORT_TYPE);
-004B2AC0    struct MATRIX g_W2VMatrix;
-004B2AF8    void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
-004BCB08    int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, enum SORT_TYPE);
-004BCB50    int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, enum SORT_TYPE);
-004BCB58    struct MATRIX g_MatrixStack[];
-004BF3E0    struct PHD_VBUF g_PhdVBuf[1500];
-004D6B60    float g_FltWinRight;
-004D6BF8    int32_t PhdWinRight;
-005262F0    struct ITEM_INFO g_Items[];
+#   Flags:
+#   - to do
+#   + decompiled
+# Offset    Flags   Declaration
+
+00467DD0    +       const int32_t g_AtanBaseTable[8];
+00467DF0    +       const int16_t g_AtanAngleTable[0x800];
+00468DF4    +       const int16_t g_SinTable[0x402];
+0046C304    -       float g_ViewportAspectRatio = 0.0f;
+0046E310    -       int32_t g_PhdWinTop;
+0047031C    -       float g_FltWinBottom;
+00470330    -       int32_t g_PhdWinCenterX;
+00470334    -       int32_t g_PhdWinCenterY;
+00470340    -       float g_FltWinTop;
+00478048    -       float g_FltWinLeft;
+0047804C    -       int16_t g_PhdWinMinY;
+00478058    -       int32_t g_PhdFarZ;
+00478060    -       int32_t g_PhdWinBottom;
+00478068    -       int32_t g_PhdWinLeft;
+004B2A00    -       float g_FltWinCenterX;
+004B2A04    -       float g_FltWinCenterY;
+004B2A10    -       int16_t g_PhdWinMinX;
+004B2A28    -       struct MATRIX *g_MatrixPtr;
+004B2A2C    -       int16_t *(__cdecl *g_Output_DrawObjectGT3)(int16_t*, int32_t, enum SORT_TYPE);
+004B2A30    -       int16_t *(__cdecl *g_Output_DrawObjectGT4)(int16_t*, int32_t, enum SORT_TYPE);
+004B2AC0    -       struct MATRIX g_W2VMatrix;
+004B2AF8    -       void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
+004BCB08    -       int16_t *(__cdecl *g_Output_DrawObjectG4)(int16_t*,int32_t, enum SORT_TYPE);
+004BCB50    -       int16_t *(__cdecl *g_Output_DrawObjectG3)(int16_t*,int32_t, enum SORT_TYPE);
+004BCB58    -       struct MATRIX g_MatrixStack[];
+004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
+004D6B60    -       float g_FltWinRight;
+004D6BF8    -       int32_t g_PhdWinRight;
+0051BD20    -       char g_ErrorMessage[128];
+005262F0    -       struct ITEM_INFO g_Items[];

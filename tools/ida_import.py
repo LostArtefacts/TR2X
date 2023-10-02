@@ -67,10 +67,10 @@ def parse_progress_file(path: Path) -> ProgressFile:
 
     declarations: list[Declaration] = []
     for line in section_map[ProgressFileSection.VARIABLES]:
-        offset, declaration = re.split("\s+", line, maxsplit=1)
+        offset, flags, declaration = re.split("\s+", line, maxsplit=2)
         offset = to_int(offset)
         declarations.append(
-            Declaration(offset=offset, declaration=declaration)
+            Declaration(offset=offset, declaration=declaration, flags=flags)
         )
 
     for line in section_map[ProgressFileSection.FUNCTIONS]:
