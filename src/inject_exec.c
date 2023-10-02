@@ -20,6 +20,7 @@ static void Inject_Camera(void)
     INJECT(0x00410C10, Camera_GoodPosition);
     INJECT(0x00410C60, Camera_SmartShift);
     INJECT(0x004113F0, Camera_Chase);
+    INJECT(0x004114E0, Camera_ShiftClamp);
 }
 
 static void Inject_Matrix(void)

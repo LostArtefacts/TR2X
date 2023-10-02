@@ -455,3 +455,44 @@ void __cdecl Camera_Chase(const struct ITEM_INFO *item)
     Camera_SmartShift(&target, Camera_Shift);
     Camera_Move(&target, g_Camera.speed);
 }
+
+int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp)
+{
+    int32_t x = pos->x;
+    int32_t y = pos->y;
+    int32_t z = pos->z;
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &pos->room_num);
+    const struct BOX_INFO *box = &g_Boxes[floor->box];
+
+    int32_t left = ((int32_t)box->left << W2V_SHIFT) + clamp;
+    int32_t right = ((int32_t)box->right << W2V_SHIFT) - clamp - 1;
+    if (z < left && !Camera_GoodPosition(x, y, z - clamp, pos->room_num)) {
+        pos->z = left;
+    } else if (
+        z > right && !Camera_GoodPosition(x, y, z + clamp, pos->room_num)) {
+        pos->z = clamp;
+    }
+
+    int32_t top = ((int32_t)box->top << W2V_SHIFT) + clamp;
+    int32_t bottom = ((int32_t)box->bottom << W2V_SHIFT) - clamp - 1;
+    if (x < top && !Camera_GoodPosition(x - clamp, y, z, pos->room_num)) {
+        pos->x = top;
+    } else if (
+        x > bottom && !Camera_GoodPosition(x + clamp, y, z, pos->room_num)) {
+        pos->x = bottom;
+    }
+
+    int32_t height = Room_GetHeight(floor, x, y, z) - clamp;
+    int32_t ceiling = clamp + Room_GetCeiling(floor, x, y, z);
+    if (height < ceiling) {
+        ceiling = height = (height + ceiling) / 2;
+    }
+
+    if (y > height) {
+        return height - y;
+    }
+    if (y < ceiling) {
+        return ceiling - y;
+    }
+    return 0;
+}
