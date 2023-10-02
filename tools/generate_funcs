@@ -2,7 +2,7 @@
 import re
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
-from enum import StrEnum, auto
+from enum import StrEnum
 from pathlib import Path
 
 REPO_DIR = Path(__file__).parent.parent
@@ -20,32 +20,45 @@ COMMON_HEADER = [
 ]
 
 
+class ProgressFileSection(StrEnum):
+    TYPES = "types"
+    FUNCTIONS = "functions"
+    VARIABLES = "variables"
+
+
 @dataclass
 class Symbol:
-    signature: str
     offset: int
-    flags: str
+    signature: str
+    flags: str = ""
 
 
 @dataclass
-class Function(Symbol):
-    size: int
+class ProgressFile:
+    type_definitions: str
+    functions: list[Symbol]
+    variables: list[Symbol]
 
 
-@dataclass
-class Variable(Symbol):
-    pass
+def to_int(source: str) -> int | None:
+    source = source.strip()
+    if source.startswith("/*"):
+        source = source[2:]
+    if source.endswith("*/"):
+        source = source[:-2]
+    source = source.strip()
+    if not source.replace("-", ""):
+        return None
+    if source.startswith(("0x", "0X")):
+        source = source[2:]
+    return int(source, 16)
 
 
-class ProgressFileSection(StrEnum):
-    FUNCTIONS = auto()
-    VARIABLES = auto()
+def parse_progress_file(path: Path) -> ProgressFile:
+    result = ProgressFile(type_definitions="", functions=[], variables=[])
 
-
-def collect_symbols() -> Iterable[Function]:
     section: ProgressFileSection | None = None
-
-    for line in PROGRESS_TXT_FILE.open():
+    for line in path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if match := re.match("^# ([A-Z]+)$", line):
             section_name = match.group(1).lower()
@@ -55,29 +68,33 @@ def collect_symbols() -> Iterable[Function]:
         if line.startswith("#") or not line:
             continue
 
+        if section == ProgressFileSection.TYPES:
+            result.type_definitions += line + "\n"
+
         if section == ProgressFileSection.FUNCTIONS:
             offset, size, flags, signature = re.split(r"\s+", line, maxsplit=3)
-            if not offset.replace("-", ""):
-                continue
-            yield Function(
-                signature=signature,
-                offset=int(offset, 16),
-                size=int(size, 16),
-                flags=flags,
+            result.functions.append(
+                Symbol(
+                    signature=signature,
+                    offset=to_int(offset),
+                    flags=flags,
+                )
             )
 
         if section == ProgressFileSection.VARIABLES:
             offset, flags, signature = re.split(r"\s+", line, maxsplit=2)
-            if not offset.replace("-", ""):
-                continue
-            yield Variable(
-                signature=signature,
-                offset=int(offset, 16),
-                flags=flags,
+            result.variables.append(
+                Symbol(
+                    signature=signature,
+                    offset=to_int(offset),
+                    flags=flags,
+                )
             )
 
+    return result
 
-def make_func_pointer_define(function: Function) -> str:
+
+def make_func_pointer_define(function: Symbol) -> str:
     if match := re.match(
         r"(?P<ret_type>.+?)\s+(?P<func_name>\w+)\s*\((?P<args>.+)\);?",
         function.signature,
@@ -89,7 +106,7 @@ def make_func_pointer_define(function: Function) -> str:
     return ""
 
 
-def make_var_pointer_define(variable: Variable) -> str:
+def make_var_pointer_define(variable: Symbol) -> str:
     if match := re.match(
         r"^(?P<ret_type>.+?)\s*\((?P<call_type>.*?\s)\s*\*\s*(?P<func_name>\w+)\)\s*\((?P<args>.+)\);?$",
         variable.signature,
@@ -118,7 +135,7 @@ def make_var_pointer_define(variable: Variable) -> str:
     return ""
 
 
-def make_funcs_h(functions: list[Function]) -> None:
+def make_funcs_h(functions: list[Symbol]) -> None:
     header = [
         *COMMON_HEADER,
         '#include "global/types.h"',
@@ -137,7 +154,7 @@ def make_funcs_h(functions: list[Function]) -> None:
     FUNCS_H_FILE.write_text("\n".join([*header, *defines, *footer]))
 
 
-def make_vars_h(variables: list[Variable]) -> None:
+def make_vars_h(variables: list[Symbol]) -> None:
     header = [
         *COMMON_HEADER,
         '#include "global/types.h"',
@@ -158,13 +175,10 @@ def make_vars_h(variables: list[Variable]) -> None:
 
 
 def main() -> None:
-    symbols = list(collect_symbols())
+    progress_file = parse_progress_file(PROGRESS_TXT_FILE)
 
-    functions = [symbol for symbol in symbols if isinstance(symbol, Function)]
-    variables = [symbol for symbol in symbols if isinstance(symbol, Variable)]
-
-    make_funcs_h(functions)
-    make_vars_h(variables)
+    make_funcs_h(progress_file.functions)
+    make_vars_h(progress_file.variables)
 
 
 if __name__ == "__main__":
