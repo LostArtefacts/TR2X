@@ -10,3 +10,4 @@
 #define WALL_L 1024
 #define STEP_L (WALL_L / 4)
 #define GAME_FOV 80
+#define MIN_SQUARE SQUARE(WALL_L / 3)

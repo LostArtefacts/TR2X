@@ -5,6 +5,7 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "util.h"
 
 void __cdecl Camera_Initialise(void)
 {
@@ -139,5 +140,52 @@ void __cdecl Camera_Clip(
         *x = target_x + (top - target_y) * (*x - target_x) / (*y - target_y);
         *h = target_h + (top - target_y) * (*h - target_h) / (*y - target_y);
         *y = top;
+    }
+}
+
+void __cdecl Camera_Shift(
+    int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y,
+    int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom)
+{
+    int32_t shift;
+
+    int32_t l_square = SQUARE(target_x - left);
+    int32_t r_square = SQUARE(target_x - right);
+    int32_t t_square = SQUARE(target_y - top);
+    int32_t b_square = SQUARE(target_y - bottom);
+    int32_t tl_square = t_square + l_square;
+    int32_t tr_square = t_square + r_square;
+    int32_t bl_square = b_square + l_square;
+
+    if (g_Camera.target_square < tl_square) {
+        *x = left;
+        shift = g_Camera.target_square - l_square;
+        if (shift >= 0) {
+            shift = Math_Sqrt(shift);
+            *y = target_y + (top >= bottom ? shift : -shift);
+        }
+    } else if (tl_square > 116281) {
+        *x = left;
+        *y = top;
+    } else if (g_Camera.target_square < bl_square) {
+        *x = left;
+        shift = g_Camera.target_square - l_square;
+        if (shift >= 0) {
+            shift = Math_Sqrt(shift);
+            *y = target_y + (top < bottom ? shift : -shift);
+        }
+    } else if (2 * g_Camera.target_square < tr_square) {
+        shift = 2 * g_Camera.target_square - t_square;
+        if (shift >= 0) {
+            shift = Math_Sqrt(shift);
+            *x = target_x + (left < right ? shift : -shift);
+            *y = top;
+        }
+    } else if (bl_square <= tr_square) {
+        *x = right;
+        *y = top;
+    } else {
+        *x = left;
+        *y = bottom;
     }
 }

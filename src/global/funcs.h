@@ -120,7 +120,6 @@
 #define Creature_Vault ((int32_t __cdecl (*)(int16_t item_num, int16_t angle, int32_t vault, int32_t shift))0x00410110)
 #define Creature_Kill ((void __cdecl (*)(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state))0x00410250)
 #define Creature_GetBaddieTarget ((void __cdecl (*)(int16_t item_num, int32_t goody))0x004103C0)
-#define Camera_Shift ((void __cdecl (*)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom))0x00410AB0)
 #define Camera_GoodPosition ((struct FLOOR_INFO __cdecl * (*)(int32_t x, int32_t y, int32_t z, int16_t room_num))0x00410C10)
 #define Camera_SmartShift ((void __cdecl (*)(struct GAME_VECTOR *ideal, void (*shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom)))0x00410C60)
 #define Camera_Chase ((void __cdecl (*)(struct ITEM_INFO *item))0x004113F0)
