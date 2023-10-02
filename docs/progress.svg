@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.17% (26)</tspan> · <tspan class="known">95.42% (1145)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.25% (27)</tspan> · <tspan class="known">95.33% (1144)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="16.18" height="6" x="0" y="0" class="decompiled"/>
-<rect width="712.76" height="6" x="16.18" y="0" class="known"/>
+<rect width="16.81" height="6" x="0" y="0" class="decompiled"/>
+<rect width="712.14" height="6" x="16.81" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -212,7 +212,7 @@
 <rect width="12" height="12" x="480" y="30" class="decompiled"><title>void __cdecl Camera_Look(const struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="495" y="30" class="decompiled"><title>void __cdecl Camera_Fixed(void);</title></rect>
 <rect width="12" height="12" x="510" y="30" class="decompiled"><title>void __cdecl Camera_Update(void);</title></rect>
-<rect width="12" height="12" x="525" y="30" class="known"><title>void __cdecl Camera_SetCutsceneTrack(int32_t track);</title></rect>
+<rect width="12" height="12" x="525" y="30" class="known"><title>void __cdecl Game_SetCutsceneTrack(int32_t track);</title></rect>
 <rect width="12" height="12" x="540" y="30" class="known"><title>int32_t __cdecl Game_Cutscene_Start(int32_t level_num);</title></rect>
 <rect width="12" height="12" x="555" y="30" class="known"><title>void __cdecl Misc_InitCinematicRooms(void);</title></rect>
 <rect width="12" height="12" x="570" y="30" class="known"><title>int32_t __cdecl Game_Cutscene_Control(int32_t nframes);</title></rect>
@@ -222,7 +222,7 @@
 <rect width="12" height="12" x="630" y="30" class="known"><title>void __cdecl Lara_Control_Cutscene(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="645" y="30" class="known"><title>void __cdecl CutscenePlayer1_Initialise(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="660" y="30" class="known"><title>void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);</title></rect>
-<rect width="12" height="12" x="675" y="30" class="known"><title>void __cdecl Camera_LoadCutsceneFrame(void);</title></rect>
+<rect width="12" height="12" x="675" y="30" class="decompiled"><title>void __cdecl Camera_LoadCutsceneFrame(void);</title></rect>
 <rect width="12" height="12" x="690" y="30" class="known"><title>void __cdecl Collide_GetCollisionInfo(struct COLL_INFO *coll, int32_t xpos, int32_t ypos, int32_t zpos, int16_t room_num, int32_t obj_height);</title></rect>
 <rect width="12" height="12" x="705" y="30" class="known"><title>int32_t __cdecl Room_FindGridShift(int32_t src, int32_t dst);</title></rect>
 <rect width="12" height="12" x="720" y="30" class="known"><title>int32_t __cdecl Collide_CollideStaticObjects(struct COLL_INFO *coll, int32_t x, int32_t y, int32_t z, int16_t room_num, int32_t hite);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.64%</tspan> · <tspan class="known">97.03%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.82%</tspan> · <tspan class="known">96.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="19.76" height="6" x="0" y="0" class="decompiled"/>
-<rect width="724.78" height="6" x="19.76" y="0" class="known"/>
+<rect width="21.04" height="6" x="0" y="0" class="decompiled"/>
+<rect width="723.50" height="6" x="21.04" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1433,7 +1433,7 @@
 <rect width="18.92" height="18.78" x="365.19" y="298.18" class="known"><title>void __cdecl DrawTextureTile(int32_t sx, int32_t sy, int32_t width, int32_t height, HWR_TEXHANDLE texSource, int32_t tu, int32_t tv, int32_t t_width, int32_t t_height, D3DCOLOR color0, D3DCOLOR color1, D3DCOLOR color2, D3DCOLOR color3);</title></rect>
 <rect width="18.92" height="18.52" x="365.19" y="319.96" class="known"><title>void __cdecl RollingBallCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);</title></rect>
 <rect width="18.92" height="18.52" x="365.19" y="341.48" class="known"><title>BOOL __cdecl LoadLevel(LPCTSTR fileName, int32_t levelID);</title></rect>
-<rect width="19.14" height="18.13" x="387.11" y="0" class="known"><title>void __cdecl Camera_LoadCutsceneFrame(void);</title></rect>
+<rect width="19.14" height="18.13" x="387.11" y="0" class="decompiled"><title>void __cdecl Camera_LoadCutsceneFrame(void);</title></rect>
 <rect width="19.02" height="18.13" x="409.25" y="0" class="known"><title>void __cdecl Creature_AIInfo(struct ITEM_INFO *item, struct AI_INFO *info);</title></rect>
 <rect width="18.83" height="18.13" x="431.27" y="0" class="known"><title>int32_t __cdecl Room_GetCeiling(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="18.72" height="18.13" x="453.10" y="0" class="known"><title>void __cdecl GameApplySettings(struct APP_SETTINGS *newSettings);</title></rect>
@@ -2454,7 +2454,7 @@
 <rect width="0.10" height="0.34" x="744.69" y="346.44" class="known"><title>void __cdecl lara_as_null(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="0.10" height="0.34" x="747.35" y="346.44" class="known"><title>void __cdecl lara_as_waterroll(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="349.77" class="known"><title>void __cdecl S_ClearScreen(void);</title></rect>
-<rect width="0.10" height="0.10" x="736.49" y="352.63" class="known"><title>void __cdecl Camera_SetCutsceneTrack(int32_t track);</title></rect>
+<rect width="0.10" height="0.10" x="736.49" y="352.63" class="known"><title>void __cdecl Game_SetCutsceneTrack(int32_t track);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="355.22" class="known"><title>void __cdecl lara_hands_free(struct ITEM_INFO *item);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="357.81" class="known"><title>void __cdecl lara_as_splat(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="360.41" class="known"><title>void __cdecl SeedRandomControl(int32_t seed);</title></rect>

@@ -888,3 +888,14 @@ typedef enum FRAME_BBOX_INFO {
     FBBOX_Y = 7,
     FBBOX_Z = 8,
 } FRAME_BBOX_INFO;
+
+typedef struct CINE_FRAME {
+    int16_t tx;
+    int16_t ty;
+    int16_t tz;
+    int16_t cx;
+    int16_t cy;
+    int16_t cz;
+    int16_t fov;
+    int16_t roll;
+} CINE_FRAME;

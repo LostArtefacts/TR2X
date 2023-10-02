@@ -39,6 +39,10 @@
 #define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
+#define g_NumCineFrames VAR_U_(0x005262F6, int16_t)
+#define g_CineData VAR_I_(0x005262F8, CINE_FRAME *, NULL)
+#define g_CinePos VAR_U_(0x00526300, struct PHD_3DPOS)
+#define g_CineFrame VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
 // clang-format on

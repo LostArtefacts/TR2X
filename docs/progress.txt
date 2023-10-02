@@ -838,6 +838,17 @@ typedef struct __unaligned LARA_INFO {
     struct CREATURE_INFO *creature;
 } LARA_INFO;
 
+typedef struct CINE_FRAME {
+    int16_t tx;
+    int16_t ty;
+    int16_t tz;
+    int16_t cx;
+    int16_t cy;
+    int16_t cz;
+    int16_t fov;
+    int16_t roll;
+} CINE_FRAME;
+
 # FUNCTIONS
 #   Flags:
 #   - to do
@@ -996,7 +1007,9 @@ typedef struct __unaligned LARA_INFO {
 00411810    000001E2    +       void __cdecl Camera_Look(const struct ITEM_INFO *item);
 00411A00    00000099    +       void __cdecl Camera_Fixed(void);
 00411AA0    000004A9    +       void __cdecl Camera_Update(void);
-00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);
+
+# game/cinema.c
+00411F50    0000000A    -       void __cdecl Game_SetCutsceneTrack(int32_t track);
 00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
 00412080    00000093    -R      void __cdecl Misc_InitCinematicRooms(void);
 00412120    0000016F    -       int32_t __cdecl Game_Cutscene_Control(int32_t nframes);
@@ -1006,7 +1019,7 @@ typedef struct __unaligned LARA_INFO {
 00412530    00000096    -       void __cdecl Lara_Control_Cutscene(int16_t item_num);
 004125D0    0000008F    -R      void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
 00412660    00000033    -R      void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);
-004126A0    00000245    *       void __cdecl Camera_LoadCutsceneFrame(void);
+004126A0    00000245    +       void __cdecl Camera_LoadCutsceneFrame(void);
 
 # game/collide.c
 004128F0    0000067C    -       void __cdecl Collide_GetCollisionInfo(struct COLL_INFO *coll, int32_t xpos, int32_t ypos, int32_t zpos, int16_t room_num, int32_t obj_height);
@@ -2191,5 +2204,9 @@ typedef struct __unaligned LARA_INFO {
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 0052618C    -       struct ROOM_INFO *g_Rooms;
 005262F0    -       struct ITEM_INFO g_Items[];
+005262F6    -       int16_t g_NumCineFrames;
+005262F8    -       CINE_FRAME *g_CineData = NULL;
+00526300    -       struct PHD_3DPOS g_CinePos;
+00526314    -       int16_t g_CineFrame;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;

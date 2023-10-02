@@ -678,20 +678,16 @@ void __cdecl Camera_Update(void)
         y += (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2;
     } else {
         y += bounds[FBBOX_MAX_Y]
-            + ((3 * (bounds[FBBOX_MIN_Y] - bounds[FBBOX_MAX_Y])) / 4);
+            + ((bounds[FBBOX_MIN_Y] - bounds[FBBOX_MAX_Y]) * 3 / 4);
     }
 
     if (g_Camera.item && !fixed_camera) {
         bounds = Item_GetBoundsAccurate(g_Camera.item);
 
-        int32_t shift = Math_Sqrt(
-            SQUARE(g_Camera.item->pos.x - item->pos.x)
-            + SQUARE(g_Camera.item->pos.z - item->pos.z));
-
-        int16_t angle = Math_Atan(
-                            g_Camera.item->pos.z - item->pos.z,
-                            g_Camera.item->pos.x - item->pos.x)
-            - item->pos.y_rot;
+        int32_t dz = g_Camera.item->pos.z - item->pos.z;
+        int32_t dx = g_Camera.item->pos.x - item->pos.x;
+        int32_t shift = Math_Sqrt(SQUARE(dx) + SQUARE(dz));
+        int16_t angle = Math_Atan(dz, dx) - item->pos.y_rot;
         int16_t tilt = Math_Atan(
             shift,
             y - (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2
@@ -795,4 +791,56 @@ void __cdecl Camera_Update(void)
         g_Camera.flags = CF_NORMAL;
     }
     g_IsChunkyCamera = 0;
+}
+
+void __cdecl Camera_LoadCutsceneFrame(void)
+{
+    g_CineFrame++;
+    if (g_CineFrame >= g_NumCineFrames) {
+        g_CineFrame = g_NumCineFrames - 1;
+    }
+
+    const struct CINE_FRAME *frame = &g_CineData[g_CineFrame];
+    int32_t tx = frame->tx;
+    int32_t ty = frame->ty;
+    int32_t tz = frame->tz;
+    int32_t cx = frame->cx;
+    int32_t cy = frame->cy;
+    int32_t cz = frame->cz;
+    int32_t fov = frame->fov;
+    int32_t roll = frame->roll;
+    int32_t c = Math_Cos(g_CinePos.y_rot);
+    int32_t s = Math_Sin(g_CinePos.y_rot);
+
+    g_Camera.target.x = g_CinePos.x + ((c * tx + s * tz) >> W2V_SHIFT);
+    g_Camera.target.y = g_CinePos.y + ty;
+    g_Camera.target.z = g_CinePos.z + ((c * tz - s * tx) >> W2V_SHIFT);
+    g_Camera.pos.x = g_CinePos.x + ((s * cz + c * cx) >> W2V_SHIFT);
+    g_Camera.pos.y = g_CinePos.y + cy;
+    g_Camera.pos.z = g_CinePos.z + ((c * cz - s * cx) >> W2V_SHIFT);
+
+    Viewport_AlterFOV(fov);
+    Matrix_LookAt(
+        g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z, g_Camera.target.x,
+        g_Camera.target.y, g_Camera.target.z, roll);
+
+    Room_GetFloor(
+        g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z, &g_Camera.pos.room_num);
+
+    if (g_Camera.is_lara_mic) {
+        g_Camera.actual_angle =
+            g_Lara.torso_y_rot + g_Lara.head_y_rot + g_LaraItem->pos.y_rot;
+        g_Camera.mic_pos.x = g_LaraItem->pos.x;
+        g_Camera.mic_pos.y = g_LaraItem->pos.y;
+        g_Camera.mic_pos.z = g_LaraItem->pos.z;
+    } else {
+        g_Camera.actual_angle = Math_Atan(
+            g_Camera.target.z - g_Camera.pos.z,
+            g_Camera.target.x - g_Camera.pos.x);
+        g_Camera.mic_pos.x = g_Camera.pos.x
+            + ((g_PhdPersp * Math_Sin(g_Camera.actual_angle)) >> W2V_SHIFT);
+        g_Camera.mic_pos.z = g_Camera.pos.z
+            + ((g_PhdPersp * Math_Cos(g_Camera.actual_angle)) >> W2V_SHIFT);
+        g_Camera.mic_pos.y = g_Camera.pos.y;
+    }
 }

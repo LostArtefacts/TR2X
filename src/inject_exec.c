@@ -25,6 +25,7 @@ static void Inject_Camera(void)
     INJECT(0x00411810, Camera_Look);
     INJECT(0x00411A00, Camera_Fixed);
     INJECT(0x00411AA0, Camera_Update);
+    INJECT(0x004126A0, Camera_LoadCutsceneFrame);
 }
 
 static void Inject_Matrix(void)

@@ -24,3 +24,4 @@ void __cdecl Camera_Combat(const struct ITEM_INFO *item);
 void __cdecl Camera_Look(const struct ITEM_INFO *item);
 void __cdecl Camera_Fixed(void);
 void __cdecl Camera_Update(void);
+void __cdecl Camera_LoadCutsceneFrame(void);
