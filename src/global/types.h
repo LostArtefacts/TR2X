@@ -1,11 +1,11 @@
 #pragma once
 
-#include <stdint.h>
-#include <windows.h>
-#include <stdbool.h>
+#include <d3dhal.h>
 #include <ddraw.h>
 #include <ddrawi.h>
-#include <d3dhal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <windows.h>
 
 typedef DDSURFACEDESC DDSDESC, *LPDDSDESC;
 typedef LPDIRECTDRAWSURFACE3 LPDDS;

@@ -1,4 +1,5 @@
 #include "game/math.h"
+
 #include "global/const.h"
 #include "util.h"
 

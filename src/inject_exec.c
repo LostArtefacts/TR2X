@@ -1,7 +1,7 @@
 #include "inject_exec.h"
 
-#include "game/matrix.h"
 #include "game/math.h"
+#include "game/matrix.h"
 #include "inject_util.h"
 
 static void Inject_Matrix(void);
