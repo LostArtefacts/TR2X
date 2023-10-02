@@ -123,3 +123,21 @@ void __cdecl Camera_Move(struct GAME_VECTOR *target, int32_t speed)
         g_Camera.mic_pos.y = g_Camera.pos.y;
     }
 }
+
+void __cdecl Camera_Clip(
+    int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y,
+    int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom)
+{
+    if ((right > left) != (target_x < left)) {
+        *y = target_y + (left - target_x) * (*y - target_y) / (*x - target_x);
+        *h = target_h + (left - target_x) * (*h - target_h) / (*x - target_x);
+        *x = left;
+    }
+
+    if ((bottom > top && target_y > top && (*y) < top)
+        || (bottom < top && target_y < top && (*y) > top)) {
+        *x = target_x + (top - target_y) * (*x - target_x) / (*y - target_y);
+        *h = target_h + (top - target_y) * (*h - target_h) / (*y - target_y);
+        *y = top;
+    }
+}
