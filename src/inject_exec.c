@@ -2,6 +2,7 @@
 
 #include "game/math.h"
 #include "game/matrix.h"
+#include "game/shell.h"
 #include "inject_util.h"
 
 static void Inject_Matrix(void);
@@ -26,8 +27,14 @@ static void Inject_Math(void)
     INJECT(0x00457C93, Math_Sqrt);
 }
 
+static void Inject_Shell(void)
+{
+    INJECT(0x0044E890, Shell_ExitSystem);
+}
+
 void Inject_Exec(void)
 {
     Inject_Matrix();
     Inject_Math();
+    Inject_Shell();
 }

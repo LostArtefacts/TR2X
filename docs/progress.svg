@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.08% (13)</tspan> · <tspan class="known">96.50% (1158)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.17% (14)</tspan> · <tspan class="known">96.42% (1157)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="8.09" height="6" x="0" y="0" class="decompiled"/>
-<rect width="720.86" height="6" x="8.09" y="0" class="known"/>
+<rect width="8.72" height="6" x="0" y="0" class="decompiled"/>
+<rect width="720.23" height="6" x="8.72" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1081,7 +1081,7 @@
 <rect width="12" height="12" x="15" y="300" class="known"><title>bool __cdecl HWR_VertexBufferFull(void);</title></rect>
 <rect width="12" height="12" x="30" y="300" class="known"><title>bool __cdecl HWR_Init(void);</title></rect>
 <rect width="12" height="12" x="45" y="300" class="known"><title>BOOL __cdecl S_InitialiseSystem(void);</title></rect>
-<rect width="12" height="12" x="60" y="300" class="known"><title>void __cdecl ShutdownGame(void);</title></rect>
+<rect width="12" height="12" x="60" y="300" class="known"><title>void __cdecl GameBuf_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="75" y="300" class="known"><title>void __cdecl init_game_malloc(void);</title></rect>
 <rect width="12" height="12" x="90" y="300" class="known"><title>void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);</title></rect>
 <rect width="12" height="12" x="105" y="300" class="known"><title>void __cdecl game_free(DWORD freeSize);</title></rect>
@@ -1093,12 +1093,12 @@
 <rect width="12" height="12" x="195" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="210" y="300" class="unused"><title>sub_44E6F0</title></rect>
 <rect width="12" height="12" x="225" y="300" class="known"><title>int32_t __cdecl Init(bool skipCDInit);</title></rect>
-<rect width="12" height="12" x="240" y="300" class="known"><title>void __cdecl WinCleanup(void);</title></rect>
+<rect width="12" height="12" x="240" y="300" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="12" height="12" x="255" y="300" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
-<rect width="12" height="12" x="270" y="300" class="known"><title>void __cdecl WinGameFinish(void);</title></rect>
+<rect width="12" height="12" x="270" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="285" y="300" class="todo"><title>sub_44E860</title></rect>
 <rect width="12" height="12" x="300" y="300" class="todo"><title>sub_44E880</title></rect>
-<rect width="12" height="12" x="315" y="300" class="known"><title>void __cdecl S_ExitSystem(LPCTSTR message);</title></rect>
+<rect width="12" height="12" x="315" y="300" class="decompiled"><title>void __cdecl Shell_ExitSystem(LPCTSTR message);</title></rect>
 <rect width="12" height="12" x="330" y="300" class="known"><title>void __cdecl ScreenShotPCX(void);</title></rect>
 <rect width="12" height="12" x="345" y="300" class="known"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcxData);</title></rect>
 <rect width="12" height="12" x="360" y="300" class="known"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.71%</tspan> · <tspan class="known">98.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">0.73%</tspan> · <tspan class="known">98.94%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="5.29" height="6" x="0" y="0" class="decompiled"/>
-<rect width="739.25" height="6" x="5.29" y="0" class="known"/>
+<rect width="5.42" height="6" x="0" y="0" class="decompiled"/>
+<rect width="739.12" height="6" x="5.42" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2050,7 +2050,7 @@
 <rect width="5.49" height="5.06" x="633.24" y="237.46" class="known"><title>void __cdecl Object_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.49" height="5.06" x="641.73" y="237.46" class="known"><title>int32_t __cdecl Item_IsTriggerActive(struct ITEM_INFO *item);</title></rect>
 <rect width="5.49" height="5.06" x="650.22" y="237.46" class="known"><title>BOOL __cdecl LoadAnimatedTextures(HANDLE hFile);</title></rect>
-<rect width="5.49" height="5.06" x="658.71" y="237.46" class="known"><title>void __cdecl WinCleanup(void);</title></rect>
+<rect width="5.49" height="5.06" x="658.71" y="237.46" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="5.39" height="5.06" x="667.20" y="237.46" class="known"><title>void __cdecl ReqItemLeftalign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);</title></rect>
 <rect width="5.39" height="5.06" x="675.59" y="237.46" class="known"><title>void __cdecl lara_as_fastdive(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.39" height="5.06" x="683.98" y="237.46" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);</title></rect>
@@ -2158,7 +2158,7 @@
 <rect width="3.78" height="4.12" x="702.74" y="261.18" class="known"><title>void __cdecl ControlCutShotgun(int16_t item_num);</title></rect>
 <rect width="3.78" height="4.12" x="709.53" y="261.18" class="known"><title>void __cdecl InitialiseRollingBall(int16_t item_num);</title></rect>
 <rect width="3.78" height="4.12" x="716.31" y="261.18" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t errorCode);</title></rect>
-<rect width="3.78" height="4.12" x="723.09" y="261.18" class="known"><title>void __cdecl S_ExitSystem(LPCTSTR message);</title></rect>
+<rect width="3.78" height="4.12" x="723.09" y="261.18" class="decompiled"><title>void __cdecl Shell_ExitSystem(LPCTSTR message);</title></rect>
 <rect width="3.78" height="4.12" x="729.88" y="261.18" class="known"><title>void __cdecl S_SoundStopAllSamples(void);</title></rect>
 <rect width="3.67" height="4.12" x="736.66" y="261.18" class="known"><title>int32_t __cdecl CheckForHoldingState(int32_t state);</title></rect>
 <rect width="3.67" height="4.12" x="743.33" y="261.18" class="known"><title>int32_t __cdecl WeaponObject(int32_t weapon_type);</title></rect>
@@ -2181,7 +2181,7 @@
 <rect width="3.88" height="3.67" x="675.49" y="268.30" class="known"><title>void __cdecl TempVideoRemove(void);</title></rect>
 <rect width="3.88" height="3.67" x="682.37" y="268.30" class="unused"><title>sub_447B40</title></rect>
 <rect width="3.88" height="3.67" x="689.25" y="268.30" class="known"><title>int32_t __cdecl WinSndGetFreeChannelIndex(void);</title></rect>
-<rect width="3.88" height="3.67" x="696.14" y="268.30" class="known"><title>void __cdecl WinGameFinish(void);</title></rect>
+<rect width="3.88" height="3.67" x="696.14" y="268.30" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="3.88" height="3.67" x="703.02" y="268.30" class="known"><title>void __cdecl S_SoundSetPanAndVolume(int32_t channel, int32_t pan, UINT16 volume);</title></rect>
 <rect width="3.88" height="3.67" x="709.91" y="268.30" class="known"><title>void __cdecl S_CDStop(void);</title></rect>
 <rect width="3.64" height="3.67" x="716.79" y="268.30" class="known"><title>void __cdecl Output_DrawPolyGTMapPersp(int16_t *obj_ptr);</title></rect>
@@ -2434,7 +2434,7 @@
 <rect width="0.57" height="1.06" x="725.92" y="358.94" class="unused"><title>sub_447A90</title></rect>
 <rect width="0.66" height="0.96" x="729.49" y="342.47" class="known"><title>void __cdecl SafeFreePalette(int32_t paletteIndex);</title></rect>
 <rect width="0.45" height="0.96" x="733.14" y="342.47" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
-<rect width="0.45" height="0.96" x="736.60" y="342.47" class="known"><title>void __cdecl ShutdownGame(void);</title></rect>
+<rect width="0.45" height="0.96" x="736.60" y="342.47" class="known"><title>void __cdecl GameBuf_Shutdown(void);</title></rect>
 <rect width="0.45" height="0.96" x="740.05" y="342.47" class="known"><title>HWND __cdecl SE_FindSetupDialog(void);</title></rect>
 <rect width="0.25" height="0.96" x="743.50" y="342.47" class="known"><title>void __cdecl T_RemoveBackground(struct TEXTSTRING *textstring);</title></rect>
 <rect width="0.25" height="0.96" x="746.75" y="342.47" class="known"><title>void __cdecl T_RemoveOutline(struct TEXTSTRING *textstring);</title></rect>
