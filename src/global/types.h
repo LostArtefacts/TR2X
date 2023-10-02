@@ -781,6 +781,14 @@ typedef struct AMMO_INFO {
     int32_t ammo;
 } AMMO_INFO;
 
+typedef enum LARA_WATER_STATE {
+    LWS_ABOVE_WATER = 0,
+    LWS_UNDERWATER = 1,
+    LWS_SURFACE = 2,
+    LWS_CHEAT = 3,
+    LWS_WADE = 4,
+} LARA_WATER_STATE;
+
 typedef struct LARA_INFO {
     int16_t item_num;
     int16_t gun_status;
