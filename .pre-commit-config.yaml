@@ -7,4 +7,8 @@ repos:
     args: ["-style=file", "-i"]
     language: system
     files: \.[ch](pp)?$
-
+  - id: imports
+    name: imports
+    entry: tools/sort_imports
+    language: system
+    files: \.[ch](pp)?$
