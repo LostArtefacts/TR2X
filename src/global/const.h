@@ -8,6 +8,10 @@
 
 #define W2V_SHIFT 14
 #define WALL_L 1024
+#define WALL_SHIFT 10
 #define STEP_L (WALL_L / 4)
 #define GAME_FOV 80
 #define MIN_SQUARE SQUARE(WALL_L / 3)
+#define NO_BOX (-1)
+#define NO_ITEM (-1)
+#define NO_CAMERA (-1)

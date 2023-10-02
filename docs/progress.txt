@@ -722,6 +722,15 @@ typedef struct GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
+typedef struct BOX_INFO {
+    uint8_t left;
+    uint8_t right;
+    uint8_t top;
+    uint8_t bottom;
+    uint16_t height;
+    uint16_t overlap_index;
+} BOX_INFO;
+
 typedef struct __unaligned CAMERA_INFO {
     struct GAME_VECTOR pos;
     struct GAME_VECTOR target;
@@ -972,7 +981,7 @@ typedef struct __unaligned LARA_INFO {
 004109D0    000000D7    +       void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
 00410AB0    00000154    +       void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
 00410C10    00000050    +       const struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);
-00410C60    00000781    -       void __cdecl Camera_SmartShift(struct GAME_VECTOR *ideal, void (*shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));
+00410C60    00000781    +       void __cdecl Camera_SmartShift(struct GAME_VECTOR *target, void (*__cdecl shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));
 004113F0    000000ED    -       void __cdecl Camera_Chase(struct ITEM_INFO *item);
 004114E0    0000019E    -       int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
 00411680    0000018E    -       void __cdecl Camera_Combat(struct ITEM_INFO *item);
@@ -2174,3 +2183,4 @@ typedef struct __unaligned LARA_INFO {
 005262F0    -       struct ITEM_INFO g_Items[];
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
+0052618C    -       struct ROOM_INFO *g_Rooms;

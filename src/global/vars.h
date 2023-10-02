@@ -39,4 +39,5 @@
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
+#define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 // clang-format on

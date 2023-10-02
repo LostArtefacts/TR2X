@@ -730,6 +730,15 @@ typedef struct GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
+typedef struct BOX_INFO {
+    uint8_t left;
+    uint8_t right;
+    uint8_t top;
+    uint8_t bottom;
+    uint16_t height;
+    uint16_t overlap_index;
+} BOX_INFO;
+
 typedef struct CAMERA_INFO {
     struct GAME_VECTOR pos;
     struct GAME_VECTOR target;

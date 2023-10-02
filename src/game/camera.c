@@ -32,7 +32,7 @@ void __cdecl Camera_Initialise(void)
     g_Camera.speed = 1;
     g_Camera.flags = 0;
     g_Camera.bounce = 0;
-    g_Camera.num = -1;
+    g_Camera.num = NO_CAMERA;
     g_Camera.fixed_camera = 0;
 
     Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
@@ -201,4 +201,226 @@ const struct FLOOR_INFO *__cdecl Camera_GoodPosition(
     }
 
     return floor;
+}
+
+void __cdecl Camera_SmartShift(
+    struct GAME_VECTOR *target,
+    void(__cdecl *shift)(
+        int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y,
+        int32_t target_h, int32_t left, int32_t top, int32_t right,
+        int32_t bottom))
+{
+    LOS_Check(&g_Camera.target, target);
+
+    const struct ROOM_INFO *r = &g_Rooms[g_Camera.target.room_num];
+    int32_t x_floor = (g_Camera.target.z - r->z) >> WALL_SHIFT;
+    int32_t y_floor = (g_Camera.target.x - r->x) >> WALL_SHIFT;
+    int16_t item_box = r->floor[x_floor + y_floor * r->x_size].box;
+    const struct BOX_INFO *box = &g_Boxes[item_box];
+
+    int32_t left = (int32_t)box->left << WALL_SHIFT;
+    int32_t top = (int32_t)box->top << WALL_SHIFT;
+    int32_t right = ((int32_t)box->right << WALL_SHIFT) - 1;
+    int32_t bottom = ((int32_t)box->bottom << WALL_SHIFT) - 1;
+
+    r = &g_Rooms[target->room_num];
+    x_floor = (target->z - r->z) >> WALL_SHIFT;
+    y_floor = (target->x - r->x) >> WALL_SHIFT;
+    int16_t camera_box = r->floor[x_floor + y_floor * r->x_size].box;
+
+    if (camera_box != NO_BOX
+        && (target->z < left || target->z > right || target->x < top
+            || target->x > bottom)) {
+        box = &g_Boxes[camera_box];
+        left = (int32_t)box->left << WALL_SHIFT;
+        top = (int32_t)box->top << WALL_SHIFT;
+        right = ((int32_t)box->right << WALL_SHIFT) - 1;
+        bottom = ((int32_t)box->bottom << WALL_SHIFT) - 1;
+    }
+
+    int32_t test;
+    int32_t edge;
+
+    test = (target->z - WALL_L) | (WALL_L - 1);
+    const struct FLOOR_INFO *good_left =
+        Camera_GoodPosition(target->x, target->y, test, target->room_num);
+    if (good_left) {
+        camera_box = good_left->box;
+        edge = (int32_t)g_Boxes[camera_box].left << WALL_SHIFT;
+        if (camera_box != NO_ITEM && edge < left) {
+            left = edge;
+        }
+    } else {
+        left = test;
+    }
+
+    test = (target->z + WALL_L) & (~(WALL_L - 1));
+    const struct FLOOR_INFO *good_right =
+        Camera_GoodPosition(target->x, target->y, test, target->room_num);
+    if (good_right) {
+        camera_box = good_right->box;
+        edge = ((int32_t)g_Boxes[camera_box].right << WALL_SHIFT) - 1;
+        if (camera_box != NO_ITEM && edge > right) {
+            right = edge;
+        }
+    } else {
+        right = test;
+    }
+
+    test = (target->x - WALL_L) | (WALL_L - 1);
+    const struct FLOOR_INFO *good_top =
+        Camera_GoodPosition(test, target->y, target->z, target->room_num);
+    if (good_top) {
+        camera_box = good_top->box;
+        edge = (int32_t)g_Boxes[camera_box].top << WALL_SHIFT;
+        if (camera_box != NO_ITEM && edge < top) {
+            top = edge;
+        }
+    } else {
+        top = test;
+    }
+
+    test = (target->x + WALL_L) & (~(WALL_L - 1));
+    const struct FLOOR_INFO *good_bottom =
+        Camera_GoodPosition(test, target->y, target->z, target->room_num);
+    if (good_bottom) {
+        camera_box = good_bottom->box;
+        edge = ((int32_t)g_Boxes[camera_box].bottom << WALL_SHIFT) - 1;
+        if (camera_box != NO_ITEM && edge > bottom) {
+            bottom = edge;
+        }
+    } else {
+        bottom = test;
+    }
+
+    left += STEP_L;
+    right -= STEP_L;
+    top += STEP_L;
+    bottom -= STEP_L;
+
+    struct GAME_VECTOR a = {
+        .x = target->x,
+        .y = target->y,
+        .z = target->z,
+        .room_num = target->room_num,
+    };
+
+    struct GAME_VECTOR b = {
+        .x = target->x,
+        .y = target->y,
+        .z = target->z,
+        .room_num = target->room_num,
+    };
+
+    int32_t noclip = 1;
+    int32_t prefer_a;
+
+    if (ABS(target->z - g_Camera.target.z)
+        > ABS(target->x - g_Camera.target.x)) {
+        if (target->z < left && !good_left) {
+            noclip = 0;
+            prefer_a = g_Camera.pos.x < g_Camera.target.x;
+            shift(
+                &a.z, &a.x, &a.y, g_Camera.target.z, g_Camera.target.x,
+                g_Camera.target.y, left, top, right, bottom);
+            shift(
+                &b.z, &b.x, &b.y, g_Camera.target.z, g_Camera.target.x,
+                g_Camera.target.y, left, bottom, right, top);
+        } else if (target->z > right && !good_right) {
+            noclip = 0;
+            prefer_a = g_Camera.pos.x < g_Camera.target.x;
+            shift(
+                &a.z, &a.x, &a.y, g_Camera.target.z, g_Camera.target.x,
+                g_Camera.target.y, right, top, left, bottom);
+            shift(
+                &b.z, &b.x, &b.y, g_Camera.target.z, g_Camera.target.x,
+                g_Camera.target.y, right, bottom, left, top);
+        }
+
+        if (noclip) {
+            if (target->x < top && !good_top) {
+                noclip = 0;
+                prefer_a = target->z < g_Camera.target.z;
+                shift(
+                    &a.x, &a.z, &a.y, g_Camera.target.x, g_Camera.target.z,
+                    g_Camera.target.y, top, left, bottom, right);
+                shift(
+                    &b.x, &b.z, &b.y, g_Camera.target.x, g_Camera.target.z,
+                    g_Camera.target.y, top, right, bottom, left);
+            } else if (target->x > bottom && !good_bottom) {
+                noclip = 0;
+                prefer_a = target->z < g_Camera.target.z;
+                shift(
+                    &a.x, &a.z, &a.y, g_Camera.target.x, g_Camera.target.z,
+                    g_Camera.target.y, bottom, left, top, right);
+                shift(
+                    &b.x, &b.z, &b.y, g_Camera.target.x, g_Camera.target.z,
+                    g_Camera.target.y, bottom, right, top, left);
+            }
+        }
+    } else {
+        if (target->x < top && !good_top) {
+            noclip = 0;
+            prefer_a = g_Camera.pos.z < g_Camera.target.z;
+            shift(
+                &a.x, &a.z, &a.y, g_Camera.target.x, g_Camera.target.z,
+                g_Camera.target.y, top, left, bottom, right);
+            shift(
+                &b.x, &b.z, &b.y, g_Camera.target.x, g_Camera.target.z,
+                g_Camera.target.y, top, right, bottom, left);
+        } else if (target->x > bottom && !good_bottom) {
+            noclip = 0;
+            prefer_a = g_Camera.pos.z < g_Camera.target.z;
+            shift(
+                &a.x, &a.z, &a.y, g_Camera.target.x, g_Camera.target.z,
+                g_Camera.target.y, bottom, left, top, right);
+            shift(
+                &b.x, &b.z, &b.y, g_Camera.target.x, g_Camera.target.z,
+                g_Camera.target.y, bottom, right, top, left);
+        }
+
+        if (noclip) {
+            if (target->z < left && !good_left) {
+                noclip = 0;
+                prefer_a = target->x < g_Camera.target.x;
+                shift(
+                    &a.z, &a.x, &a.y, g_Camera.target.z, g_Camera.target.x,
+                    g_Camera.target.y, left, top, right, bottom);
+                shift(
+                    &b.z, &b.x, &b.y, g_Camera.target.z, g_Camera.target.x,
+                    g_Camera.target.y, left, bottom, right, top);
+            } else if (target->z > right && !good_right) {
+                noclip = 0;
+                prefer_a = target->x < g_Camera.target.x;
+                shift(
+                    &a.z, &a.x, &a.y, g_Camera.target.z, g_Camera.target.x,
+                    g_Camera.target.y, right, top, left, bottom);
+                shift(
+                    &b.z, &b.x, &b.y, g_Camera.target.z, g_Camera.target.x,
+                    g_Camera.target.y, right, bottom, left, top);
+            }
+        }
+    }
+
+    if (noclip) {
+        return;
+    }
+
+    if (prefer_a) {
+        prefer_a = LOS_Check(&g_Camera.target, &a) != 0;
+    } else {
+        prefer_a = LOS_Check(&g_Camera.target, &b) == 0;
+    }
+
+    if (prefer_a) {
+        target->x = a.x;
+        target->y = a.y;
+        target->z = a.z;
+    } else {
+        target->x = b.x;
+        target->y = b.y;
+        target->z = b.z;
+    }
+
+    Room_GetFloor(target->x, target->y, target->z, &target->room_num);
 }
