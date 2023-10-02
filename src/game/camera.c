@@ -7,6 +7,18 @@
 #include "global/vars.h"
 #include "util.h"
 
+#define CHASE_SPEED 10
+#define CHASE_ELEVATION (WALL_L * 3 / 2) // = 1536
+
+#define COMBAT_SPEED 8
+#define COMBAT_DISTANCE (WALL_L * 5 / 2) // = 2560
+
+#define LOOK_DISTANCE (WALL_L * 3 / 2) // = 1536
+#define LOOK_CLAMP (STEP_L + 50) // = 296
+#define LOOK_SPEED 4
+
+#define MAX_ELEVATION (85 * PHD_DEGREE) // = 15470
+
 void __cdecl Camera_Initialise(void)
 {
     g_Camera.shift = g_LaraItem->pos.y - WALL_L;
@@ -30,7 +42,7 @@ void __cdecl Camera_Initialise(void)
     }
 
     g_Camera.speed = 1;
-    g_Camera.flags = 0;
+    g_Camera.flags = CF_NORMAL;
     g_Camera.bounce = 0;
     g_Camera.num = NO_CAMERA;
     g_Camera.fixed_camera = 0;
@@ -584,7 +596,7 @@ void __cdecl Camera_Look(const struct ITEM_INFO *item)
         g_Camera.target.z = item->pos.z;
     }
 
-    g_Camera.target.y += Camera_ShiftClamp(&g_Camera.target, STEP_L + 50);
+    g_Camera.target.y += Camera_ShiftClamp(&g_Camera.target, LOOK_CLAMP);
 
     const struct PHD_VECTOR offset = {
         .y =
@@ -629,4 +641,158 @@ void __cdecl Camera_Fixed(void)
             g_Camera.timer = -1;
         }
     }
+}
+
+void __cdecl Camera_Update(void)
+{
+    if (g_Rooms[g_Camera.pos.room_num].flags & RF_UNDERWATER) {
+        Sound_Effect(SFX_UNDERWATER, NULL, SPM_ALWAYS);
+        if (!g_Camera.underwater) {
+            Music_SetVolume(0);
+            g_Camera.underwater = 1;
+        }
+    } else if (g_Camera.underwater) {
+        if (g_OptionMusicVolume) {
+            Music_SetVolume(25 * g_OptionMusicVolume + 5);
+        }
+        g_Camera.underwater = 0;
+    }
+
+    if (g_Camera.type == CAM_CINEMATIC) {
+        Camera_LoadCutsceneFrame();
+        return;
+    }
+
+    if (g_Camera.flags != CF_NO_CHUNKY) {
+        g_IsChunkyCamera = 1;
+    }
+
+    int32_t fixed_camera = g_Camera.item
+        && (g_Camera.type == CAM_FIXED || g_Camera.type == CAM_HEAVY);
+    const struct ITEM_INFO *item = fixed_camera ? g_Camera.item : g_LaraItem;
+
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
+
+    int32_t y = item->pos.y;
+    if (fixed_camera) {
+        y += (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2;
+    } else {
+        y += bounds[FBBOX_MAX_Y]
+            + ((3 * (bounds[FBBOX_MIN_Y] - bounds[FBBOX_MAX_Y])) / 4);
+    }
+
+    if (g_Camera.item && !fixed_camera) {
+        bounds = Item_GetBoundsAccurate(g_Camera.item);
+
+        int32_t shift = Math_Sqrt(
+            SQUARE(g_Camera.item->pos.x - item->pos.x)
+            + SQUARE(g_Camera.item->pos.z - item->pos.z));
+
+        int16_t angle = Math_Atan(
+                            g_Camera.item->pos.z - item->pos.z,
+                            g_Camera.item->pos.x - item->pos.x)
+            - item->pos.y_rot;
+        int16_t tilt = Math_Atan(
+            shift,
+            y - (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2
+                - g_Camera.item->pos.y);
+        tilt /= 2;
+        angle /= 2;
+
+        if (angle > MIN_HEAD_ROTATION && angle < MAX_HEAD_ROTATION
+            && tilt > MIN_HEAD_TILT_CAM && tilt < MAX_HEAD_TILT_CAM) {
+            int16_t change = angle - g_Lara.head_y_rot;
+            if (change > HEAD_TURN) {
+                g_Lara.head_y_rot += HEAD_TURN;
+            } else if (change >= -HEAD_TURN) {
+                g_Lara.head_y_rot = angle;
+            } else {
+                g_Lara.head_y_rot -= HEAD_TURN;
+            }
+
+            change = tilt - g_Lara.head_x_rot;
+            if (change > HEAD_TURN) {
+                g_Lara.head_x_rot = g_Lara.head_x_rot + HEAD_TURN;
+            } else if (change >= -HEAD_TURN) {
+                g_Lara.head_x_rot = change + g_Lara.head_x_rot;
+            } else {
+                g_Lara.head_x_rot = g_Lara.head_x_rot - HEAD_TURN;
+            }
+
+            g_Lara.torso_y_rot = g_Lara.head_y_rot;
+            g_Lara.torso_x_rot = g_Lara.head_x_rot;
+            g_Camera.type = CAM_LOOK;
+            g_Camera.item->looked_at = 1;
+        }
+    }
+
+    if (g_Camera.type == CAM_LOOK || g_Camera.type == CAM_COMBAT) {
+        y -= STEP_L;
+
+        g_Camera.target.room_num = item->room_num;
+        if (g_Camera.fixed_camera) {
+            g_Camera.target.y = y;
+            g_Camera.speed = 1;
+        } else {
+            g_Camera.target.y += (y - g_Camera.target.y) / 4;
+            g_Camera.speed =
+                g_Camera.type == CAM_LOOK ? LOOK_SPEED : COMBAT_SPEED;
+        }
+
+        g_Camera.fixed_camera = 0;
+        if (g_Camera.type == CAM_LOOK) {
+            Camera_Look(item);
+        } else {
+            Camera_Combat(item);
+        }
+    } else {
+        g_Camera.target.x = item->pos.x;
+        g_Camera.target.z = item->pos.z;
+        if (g_Camera.flags == CF_FOLLOW_CENTRE) {
+            int32_t shift = (bounds[FBBOX_MIN_Z] + bounds[FBBOX_MAX_Z]) / 2;
+            g_Camera.target.z +=
+                (shift * Math_Cos(item->pos.y_rot)) >> W2V_SHIFT;
+            g_Camera.target.x +=
+                (shift * Math_Sin(item->pos.y_rot)) >> W2V_SHIFT;
+        }
+        g_Camera.target.room_num = item->room_num;
+
+        if (g_Camera.fixed_camera != fixed_camera) {
+            g_Camera.target.y = y;
+            g_Camera.fixed_camera = 1;
+            g_Camera.speed = 1;
+        } else {
+            g_Camera.target.y += (y - g_Camera.target.y) / 4;
+            g_Camera.fixed_camera = 0;
+        }
+
+        const struct FLOOR_INFO *floor = Room_GetFloor(
+            g_Camera.target.x, y, g_Camera.target.z, &g_Camera.target.room_num);
+        int32_t height = Room_GetHeight(
+            floor, g_Camera.target.x, g_Camera.target.y, g_Camera.target.z);
+        if (g_Camera.target.y > height) {
+            g_IsChunkyCamera = 0;
+        }
+
+        if (g_Camera.type == CAM_CHASE || g_Camera.flags == CF_CHASE_OBJECT) {
+            Camera_Chase(item);
+        } else {
+            Camera_Fixed();
+        }
+    }
+
+    g_Camera.last = g_Camera.num;
+    g_Camera.fixed_camera = fixed_camera;
+    if (g_Camera.type != CAM_HEAVY || g_Camera.timer == -1) {
+        g_Camera.type = CAM_CHASE;
+        g_Camera.speed = CHASE_SPEED;
+        g_Camera.num = NO_CAMERA;
+        g_Camera.last_item = g_Camera.item;
+        g_Camera.item = NULL;
+        g_Camera.target_elevation = 0;
+        g_Camera.target_angle = 0;
+        g_Camera.target_distance = CHASE_ELEVATION;
+        g_Camera.flags = CF_NORMAL;
+    }
+    g_IsChunkyCamera = 0;
 }

@@ -668,6 +668,12 @@ typedef struct MESH_INFO {
     int16_t static_num;
 } MESH_INFO;
 
+typedef enum ROOM_FLAG {
+    RF_UNDERWATER = 0x01,
+    RF_OUTSIDE = 0x08,
+    RF_INSIDE = 0x40,
+} ROOM_FLAG;
+
 typedef struct ROOM_INFO {
     int16_t *data;
     struct DOOR_INFOS *doors;
@@ -854,4 +860,31 @@ typedef struct LARA_INFO {
     struct CREATURE_INFO *creature;
 } LARA_INFO;
 
-#pragma pack(pop)
+typedef enum SOUND_EFFECT_ID {
+    SFX_UNDERWATER = 60,
+} SOUND_EFFECT_ID;
+
+typedef enum SOUND_PLAY_MODE {
+    SPM_NORMAL = 0,
+    SPM_UNDERWATER = 1,
+    SPM_ALWAYS = 2,
+} SOUND_PLAY_MODE;
+
+typedef enum CAMERA_FLAGS {
+    CF_NORMAL = 0,
+    CF_FOLLOW_CENTRE = 1,
+    CF_NO_CHUNKY = 2,
+    CF_CHASE_OBJECT = 3,
+} CAMERA_FLAGS;
+
+typedef enum FRAME_BBOX_INFO {
+    FBBOX_MIN_X = 0,
+    FBBOX_MAX_X = 1,
+    FBBOX_MIN_Y = 2,
+    FBBOX_MAX_Y = 3,
+    FBBOX_MIN_Z = 4,
+    FBBOX_MAX_Z = 5,
+    FBBOX_X = 6,
+    FBBOX_Y = 7,
+    FBBOX_Z = 8,
+} FRAME_BBOX_INFO;

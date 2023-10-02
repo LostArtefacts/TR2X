@@ -15,6 +15,8 @@
 #define NO_BOX (-1)
 #define NO_ITEM (-1)
 #define NO_CAMERA (-1)
-#define MAX_ELEVATION (85 * PHD_DEGREE) // = 15470
-#define COMBAT_DISTANCE (WALL_L * 5 / 2) // = 2560
-#define LOOK_DISTANCE (WALL_L * 3 / 2) // = 1536
+#define HEAD_TURN (4 * PHD_DEGREE) // = 728
+#define MAX_HEAD_ROTATION (50 * PHD_DEGREE) // = 9100
+#define MIN_HEAD_ROTATION (-MAX_HEAD_ROTATION) // = -9100
+#define MAX_HEAD_TILT_CAM (85 * PHD_DEGREE) // = 15470
+#define MIN_HEAD_TILT_CAM (-MAX_HEAD_TILT_CAM) // = -15470

@@ -6,6 +6,7 @@
 #include "inject_util.h"
 
 // clang-format off
+#define g_OptionMusicVolume VAR_U_(0x00465A60, int16_t)
 #define g_ViewportAspectRatio VAR_I_(0x0046C304, float, 0.0f)
 #define g_PhdWinTop VAR_U_(0x0046E310, int32_t)
 #define g_FltWinBottom VAR_U_(0x0047031C, float)
@@ -36,8 +37,8 @@
 #define g_ErrorMessage ARRAY_(0x0051BD20, char, [128])
 #define g_Lara VAR_U_(0x005206E0, struct LARA_INFO)
 #define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
+#define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
-#define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 // clang-format on
