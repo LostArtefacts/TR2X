@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.67% (20)</tspan> · <tspan class="known">95.92% (1151)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.75% (21)</tspan> · <tspan class="known">95.83% (1150)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="12.45" height="6" x="0" y="0" class="decompiled"/>
-<rect width="716.50" height="6" x="12.45" y="0" class="known"/>
+<rect width="13.07" height="6" x="0" y="0" class="decompiled"/>
+<rect width="715.88" height="6" x="13.07" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -206,7 +206,7 @@
 <rect width="12" height="12" x="390" y="30" class="decompiled"><title>void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
 <rect width="12" height="12" x="405" y="30" class="decompiled"><title>const struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="420" y="30" class="decompiled"><title>void __cdecl Camera_SmartShift(struct GAME_VECTOR *target, void (*__cdecl shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));</title></rect>
-<rect width="12" height="12" x="435" y="30" class="known"><title>void __cdecl Camera_Chase(struct ITEM_INFO *item);</title></rect>
+<rect width="12" height="12" x="435" y="30" class="decompiled"><title>void __cdecl Camera_Chase(const struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="450" y="30" class="known"><title>int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);</title></rect>
 <rect width="12" height="12" x="465" y="30" class="known"><title>void __cdecl Camera_Combat(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="480" y="30" class="known"><title>void __cdecl Camera_Look(struct ITEM_INFO *item);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.79%</tspan> · <tspan class="known">97.88%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">1.86%</tspan> · <tspan class="known">97.81%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="13.40" height="6" x="0" y="0" class="decompiled"/>
-<rect width="731.13" height="6" x="13.40" y="0" class="known"/>
+<rect width="13.93" height="6" x="0" y="0" class="decompiled"/>
+<rect width="730.61" height="6" x="13.93" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1668,7 +1668,7 @@
 <rect width="10.74" height="11.07" x="575.79" y="105.68" class="known"><title>void __cdecl SphereOfDoom(int16_t item_num);</title></rect>
 <rect width="10.74" height="11.07" x="589.52" y="105.68" class="known"><title>void __cdecl FireRocket(void);</title></rect>
 <rect width="10.68" height="11.07" x="603.26" y="105.68" class="known"><title>void __cdecl LaraDoClimbLeftRight(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t result, int32_t shift);</title></rect>
-<rect width="10.56" height="11.07" x="616.94" y="105.68" class="known"><title>void __cdecl Camera_Chase(struct ITEM_INFO *item);</title></rect>
+<rect width="10.56" height="11.07" x="616.94" y="105.68" class="decompiled"><title>void __cdecl Camera_Chase(const struct ITEM_INFO *item);</title></rect>
 <rect width="10.45" height="11.07" x="630.50" y="105.68" class="known"><title>void __cdecl lara_as_surftread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="10.39" height="11.07" x="643.95" y="105.68" class="known"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
 <rect width="10.28" height="11.07" x="657.34" y="105.68" class="known"><title>void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);</title></rect>

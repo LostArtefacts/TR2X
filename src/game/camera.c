@@ -424,3 +424,34 @@ void __cdecl Camera_SmartShift(
 
     Room_GetFloor(target->x, target->y, target->z, &target->room_num);
 }
+
+void __cdecl Camera_Chase(const struct ITEM_INFO *item)
+{
+    g_Camera.target_elevation += item->pos.x_rot;
+    g_Camera.target_elevation = MIN(g_Camera.target_elevation, MAX_ELEVATION);
+    g_Camera.target_elevation = MAX(g_Camera.target_elevation, -MAX_ELEVATION);
+
+    int32_t distance =
+        (g_Camera.target_distance * Math_Cos(g_Camera.target_elevation))
+        >> W2V_SHIFT;
+    int16_t angle = g_Camera.target_angle + item->pos.y_rot;
+
+    g_Camera.target_square = SQUARE(distance);
+
+    struct PHD_VECTOR offset = {
+        .y = (g_Camera.target_distance * Math_Sin(g_Camera.target_elevation))
+            >> W2V_SHIFT,
+        .x = -((distance * Math_Sin(angle)) >> W2V_SHIFT),
+        .z = -((distance * Math_Cos(angle)) >> W2V_SHIFT),
+    };
+
+    struct GAME_VECTOR target = {
+        .x = g_Camera.target.x + offset.x,
+        .y = g_Camera.target.y + offset.y,
+        .z = g_Camera.target.z + offset.z,
+        .room_num = g_Camera.pos.room_num,
+    };
+
+    Camera_SmartShift(&target, Camera_Shift);
+    Camera_Move(&target, g_Camera.speed);
+}

@@ -15,3 +15,4 @@
 #define NO_BOX (-1)
 #define NO_ITEM (-1)
 #define NO_CAMERA (-1)
+#define MAX_ELEVATION (85 * PHD_DEGREE) // = 15470

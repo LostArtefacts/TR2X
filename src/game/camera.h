@@ -18,3 +18,4 @@ void __cdecl Camera_SmartShift(
         int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y,
         int32_t target_h, int32_t left, int32_t top, int32_t right,
         int32_t bottom));
+void __cdecl Camera_Chase(const struct ITEM_INFO *item);
