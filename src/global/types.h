@@ -753,7 +753,7 @@ typedef struct CAMERA_INFO {
     struct ITEM_INFO *item;
     struct ITEM_INFO *last_item;
     struct OBJECT_VECTOR *fixed;
-    bool is_lara_mic;
+    int32_t is_lara_mic;
     struct PHD_VECTOR mic_pos;
 } CAMERA_INFO;
 

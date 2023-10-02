@@ -14,6 +14,7 @@ static void Inject_Shell(void);
 static void Inject_Camera(void)
 {
     INJECT(0x004105A0, Camera_Initialise);
+    INJECT(0x00410650, Camera_Move);
 }
 
 static void Inject_Matrix(void)

@@ -16,6 +16,7 @@
 #define g_PhdWinMinY VAR_U_(0x0047804C, int16_t)
 #define g_PhdFarZ VAR_U_(0x00478058, int32_t)
 #define g_PhdWinBottom VAR_U_(0x00478060, int32_t)
+#define g_PhdPersp VAR_U_(0x00478064, int32_t)
 #define g_PhdWinLeft VAR_U_(0x00478068, int32_t)
 #define g_FltWinCenterX VAR_U_(0x004B2A00, float)
 #define g_FltWinCenterY VAR_U_(0x004B2A04, float)

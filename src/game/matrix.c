@@ -19,19 +19,19 @@ void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos)
     int32_t sz = Math_Sin(viewpos->z_rot);
     int32_t cz = Math_Cos(viewpos->z_rot);
 
-    g_MatrixPtr->_00 = ((cy * cz) >> W2V_MATRIX)
-        + ((((sx * sy) >> W2V_MATRIX) * sz) >> W2V_MATRIX);
-    g_MatrixPtr->_01 = (sz * cx) >> W2V_MATRIX;
-    g_MatrixPtr->_02 = ((((sx * cy) >> W2V_MATRIX) * sz) >> W2V_MATRIX)
-        - ((sy * cz) >> W2V_MATRIX);
-    g_MatrixPtr->_10 = ((((sx * sy) >> W2V_MATRIX) * cz) >> W2V_MATRIX)
-        - ((sz * cy) >> W2V_MATRIX);
-    g_MatrixPtr->_11 = (cx * cz) >> W2V_MATRIX;
-    g_MatrixPtr->_12 = ((sy * sz) >> W2V_MATRIX)
-        + ((((sx * cy) >> W2V_MATRIX) * cz) >> W2V_MATRIX);
-    g_MatrixPtr->_20 = (sy * cx) >> W2V_MATRIX;
+    g_MatrixPtr->_00 = ((cy * cz) >> W2V_SHIFT)
+        + ((((sx * sy) >> W2V_SHIFT) * sz) >> W2V_SHIFT);
+    g_MatrixPtr->_01 = (sz * cx) >> W2V_SHIFT;
+    g_MatrixPtr->_02 = ((((sx * cy) >> W2V_SHIFT) * sz) >> W2V_SHIFT)
+        - ((sy * cz) >> W2V_SHIFT);
+    g_MatrixPtr->_10 = ((((sx * sy) >> W2V_SHIFT) * cz) >> W2V_SHIFT)
+        - ((sz * cy) >> W2V_SHIFT);
+    g_MatrixPtr->_11 = (cx * cz) >> W2V_SHIFT;
+    g_MatrixPtr->_12 = ((sy * sz) >> W2V_SHIFT)
+        + ((((sx * cy) >> W2V_SHIFT) * cz) >> W2V_SHIFT);
+    g_MatrixPtr->_20 = (sy * cx) >> W2V_SHIFT;
     g_MatrixPtr->_21 = -sx;
-    g_MatrixPtr->_22 = (cx * cy) >> W2V_MATRIX;
+    g_MatrixPtr->_22 = (cx * cy) >> W2V_SHIFT;
     g_MatrixPtr->_03 = viewpos->x;
     g_MatrixPtr->_13 = viewpos->y;
     g_MatrixPtr->_23 = viewpos->z;
@@ -73,18 +73,18 @@ void __cdecl Matrix_RotX(PHD_ANGLE rx)
     int32_t r0, r1;
     r0 = mptr->_01 * cx + mptr->_02 * sx;
     r1 = mptr->_02 * cx - mptr->_01 * sx;
-    mptr->_01 = r0 >> W2V_MATRIX;
-    mptr->_02 = r1 >> W2V_MATRIX;
+    mptr->_01 = r0 >> W2V_SHIFT;
+    mptr->_02 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_11 * cx + mptr->_12 * sx;
     r1 = mptr->_12 * cx - mptr->_11 * sx;
-    mptr->_11 = r0 >> W2V_MATRIX;
-    mptr->_12 = r1 >> W2V_MATRIX;
+    mptr->_11 = r0 >> W2V_SHIFT;
+    mptr->_12 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_21 * cx + mptr->_22 * sx;
     r1 = mptr->_22 * cx - mptr->_21 * sx;
-    mptr->_21 = r0 >> W2V_MATRIX;
-    mptr->_22 = r1 >> W2V_MATRIX;
+    mptr->_21 = r0 >> W2V_SHIFT;
+    mptr->_22 = r1 >> W2V_SHIFT;
 }
 
 void __cdecl Matrix_RotY(PHD_ANGLE ry)
@@ -100,18 +100,18 @@ void __cdecl Matrix_RotY(PHD_ANGLE ry)
     int32_t r0, r1;
     r0 = mptr->_00 * cy - mptr->_02 * sy;
     r1 = mptr->_02 * cy + mptr->_00 * sy;
-    mptr->_00 = r0 >> W2V_MATRIX;
-    mptr->_02 = r1 >> W2V_MATRIX;
+    mptr->_00 = r0 >> W2V_SHIFT;
+    mptr->_02 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_10 * cy - mptr->_12 * sy;
     r1 = mptr->_12 * cy + mptr->_10 * sy;
-    mptr->_10 = r0 >> W2V_MATRIX;
-    mptr->_12 = r1 >> W2V_MATRIX;
+    mptr->_10 = r0 >> W2V_SHIFT;
+    mptr->_12 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_20 * cy - mptr->_22 * sy;
     r1 = mptr->_22 * cy + mptr->_20 * sy;
-    mptr->_20 = r0 >> W2V_MATRIX;
-    mptr->_22 = r1 >> W2V_MATRIX;
+    mptr->_20 = r0 >> W2V_SHIFT;
+    mptr->_22 = r1 >> W2V_SHIFT;
 }
 
 void __cdecl Matrix_RotZ(PHD_ANGLE rz)
@@ -127,18 +127,18 @@ void __cdecl Matrix_RotZ(PHD_ANGLE rz)
     int32_t r0, r1;
     r0 = mptr->_00 * cz + mptr->_01 * sz;
     r1 = mptr->_01 * cz - mptr->_00 * sz;
-    mptr->_00 = r0 >> W2V_MATRIX;
-    mptr->_01 = r1 >> W2V_MATRIX;
+    mptr->_00 = r0 >> W2V_SHIFT;
+    mptr->_01 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_10 * cz + mptr->_11 * sz;
     r1 = mptr->_11 * cz - mptr->_10 * sz;
-    mptr->_10 = r0 >> W2V_MATRIX;
-    mptr->_11 = r1 >> W2V_MATRIX;
+    mptr->_10 = r0 >> W2V_SHIFT;
+    mptr->_11 = r1 >> W2V_SHIFT;
 
     r0 = mptr->_20 * cz + mptr->_21 * sz;
     r1 = mptr->_21 * cz - mptr->_20 * sz;
-    mptr->_20 = r0 >> W2V_MATRIX;
-    mptr->_21 = r1 >> W2V_MATRIX;
+    mptr->_20 = r0 >> W2V_SHIFT;
+    mptr->_21 = r1 >> W2V_SHIFT;
 }
 
 void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz)
@@ -151,18 +151,18 @@ void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz)
         int32_t cy = Math_Cos(ry);
         r0 = mptr->_00 * cy - mptr->_02 * sy;
         r1 = mptr->_02 * cy + mptr->_00 * sy;
-        mptr->_00 = r0 >> W2V_MATRIX;
-        mptr->_02 = r1 >> W2V_MATRIX;
+        mptr->_00 = r0 >> W2V_SHIFT;
+        mptr->_02 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_10 * cy - mptr->_12 * sy;
         r1 = mptr->_12 * cy + mptr->_10 * sy;
-        mptr->_10 = r0 >> W2V_MATRIX;
-        mptr->_12 = r1 >> W2V_MATRIX;
+        mptr->_10 = r0 >> W2V_SHIFT;
+        mptr->_12 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_20 * cy - mptr->_22 * sy;
         r1 = mptr->_22 * cy + mptr->_20 * sy;
-        mptr->_20 = r0 >> W2V_MATRIX;
-        mptr->_22 = r1 >> W2V_MATRIX;
+        mptr->_20 = r0 >> W2V_SHIFT;
+        mptr->_22 = r1 >> W2V_SHIFT;
     }
 
     if (rx) {
@@ -171,18 +171,18 @@ void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz)
 
         r0 = mptr->_01 * cx + mptr->_02 * sx;
         r1 = mptr->_02 * cx - mptr->_01 * sx;
-        mptr->_01 = r0 >> W2V_MATRIX;
-        mptr->_02 = r1 >> W2V_MATRIX;
+        mptr->_01 = r0 >> W2V_SHIFT;
+        mptr->_02 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_11 * cx + mptr->_12 * sx;
         r1 = mptr->_12 * cx - mptr->_11 * sx;
-        mptr->_11 = r0 >> W2V_MATRIX;
-        mptr->_12 = r1 >> W2V_MATRIX;
+        mptr->_11 = r0 >> W2V_SHIFT;
+        mptr->_12 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_21 * cx + mptr->_22 * sx;
         r1 = mptr->_22 * cx - mptr->_21 * sx;
-        mptr->_21 = r0 >> W2V_MATRIX;
-        mptr->_22 = r1 >> W2V_MATRIX;
+        mptr->_21 = r0 >> W2V_SHIFT;
+        mptr->_22 = r1 >> W2V_SHIFT;
     }
 
     if (rz) {
@@ -190,18 +190,18 @@ void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz)
         int32_t cz = Math_Cos(rz);
         r0 = mptr->_00 * cz + mptr->_01 * sz;
         r1 = mptr->_01 * cz - mptr->_00 * sz;
-        mptr->_00 = r0 >> W2V_MATRIX;
-        mptr->_01 = r1 >> W2V_MATRIX;
+        mptr->_00 = r0 >> W2V_SHIFT;
+        mptr->_01 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_10 * cz + mptr->_11 * sz;
         r1 = mptr->_11 * cz - mptr->_10 * sz;
-        mptr->_10 = r0 >> W2V_MATRIX;
-        mptr->_11 = r1 >> W2V_MATRIX;
+        mptr->_10 = r0 >> W2V_SHIFT;
+        mptr->_11 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_20 * cz + mptr->_21 * sz;
         r1 = mptr->_21 * cz - mptr->_20 * sz;
-        mptr->_20 = r0 >> W2V_MATRIX;
-        mptr->_21 = r1 >> W2V_MATRIX;
+        mptr->_20 = r0 >> W2V_SHIFT;
+        mptr->_21 = r1 >> W2V_SHIFT;
     }
 }
 
@@ -219,18 +219,18 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack)
         int32_t cy = Math_Cos(ry);
         r0 = mptr->_00 * cy - mptr->_02 * sy;
         r1 = mptr->_00 * sy + mptr->_02 * cy;
-        mptr->_00 = r0 >> W2V_MATRIX;
-        mptr->_02 = r1 >> W2V_MATRIX;
+        mptr->_00 = r0 >> W2V_SHIFT;
+        mptr->_02 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_10 * cy - mptr->_12 * sy;
         r1 = mptr->_12 * cy + mptr->_10 * sy;
-        mptr->_10 = r0 >> W2V_MATRIX;
-        mptr->_12 = r1 >> W2V_MATRIX;
+        mptr->_10 = r0 >> W2V_SHIFT;
+        mptr->_12 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_20 * cy - mptr->_22 * sy;
         r1 = mptr->_22 * cy + mptr->_20 * sy;
-        mptr->_20 = r0 >> W2V_MATRIX;
-        mptr->_22 = r1 >> W2V_MATRIX;
+        mptr->_20 = r0 >> W2V_SHIFT;
+        mptr->_22 = r1 >> W2V_SHIFT;
     }
 
     if (rx) {
@@ -238,18 +238,18 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack)
         int32_t cx = Math_Cos(rx);
         r0 = mptr->_01 * cx + mptr->_02 * sx;
         r1 = mptr->_02 * cx - mptr->_01 * sx;
-        mptr->_01 = r0 >> W2V_MATRIX;
-        mptr->_02 = r1 >> W2V_MATRIX;
+        mptr->_01 = r0 >> W2V_SHIFT;
+        mptr->_02 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_11 * cx + mptr->_12 * sx;
         r1 = mptr->_12 * cx - mptr->_11 * sx;
-        mptr->_11 = r0 >> W2V_MATRIX;
-        mptr->_12 = r1 >> W2V_MATRIX;
+        mptr->_11 = r0 >> W2V_SHIFT;
+        mptr->_12 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_21 * cx + mptr->_22 * sx;
         r1 = mptr->_22 * cx - mptr->_21 * sx;
-        mptr->_21 = r0 >> W2V_MATRIX;
-        mptr->_22 = r1 >> W2V_MATRIX;
+        mptr->_21 = r0 >> W2V_SHIFT;
+        mptr->_22 = r1 >> W2V_SHIFT;
     }
 
     if (rz) {
@@ -257,18 +257,18 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack)
         int32_t cz = Math_Cos(rz);
         r0 = mptr->_00 * cz + mptr->_01 * sz;
         r1 = mptr->_01 * cz - mptr->_00 * sz;
-        mptr->_00 = r0 >> W2V_MATRIX;
-        mptr->_01 = r1 >> W2V_MATRIX;
+        mptr->_00 = r0 >> W2V_SHIFT;
+        mptr->_01 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_10 * cz + mptr->_11 * sz;
         r1 = mptr->_11 * cz - mptr->_10 * sz;
-        mptr->_10 = r0 >> W2V_MATRIX;
-        mptr->_11 = r1 >> W2V_MATRIX;
+        mptr->_10 = r0 >> W2V_SHIFT;
+        mptr->_11 = r1 >> W2V_SHIFT;
 
         r0 = mptr->_20 * cz + mptr->_21 * sz;
         r1 = mptr->_21 * cz - mptr->_20 * sz;
-        mptr->_20 = r0 >> W2V_MATRIX;
-        mptr->_21 = r1 >> W2V_MATRIX;
+        mptr->_20 = r0 >> W2V_SHIFT;
+        mptr->_21 = r1 >> W2V_SHIFT;
     }
 }
 
