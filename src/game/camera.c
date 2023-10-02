@@ -39,7 +39,7 @@ void __cdecl Camera_Initialise(void)
     Camera_Update();
 }
 
-void __cdecl Camera_Move(struct GAME_VECTOR *target, int32_t speed)
+void __cdecl Camera_Move(const struct GAME_VECTOR *target, int32_t speed)
 {
     g_Camera.pos.x += (target->x - g_Camera.pos.x) / speed;
     g_Camera.pos.z += (target->z - g_Camera.pos.z) / speed;
@@ -164,7 +164,7 @@ void __cdecl Camera_Shift(
             shift = Math_Sqrt(shift);
             *y = target_y + (top >= bottom ? shift : -shift);
         }
-    } else if (tl_square > 116281) {
+    } else if (tl_square > MIN_SQUARE) {
         *x = left;
         *y = top;
     } else if (g_Camera.target_square < bl_square) {
@@ -188,4 +188,17 @@ void __cdecl Camera_Shift(
         *x = left;
         *y = bottom;
     }
+}
+
+const struct FLOOR_INFO *__cdecl Camera_GoodPosition(
+    int32_t x, int32_t y, int32_t z, int16_t room_num)
+{
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    int32_t height = Room_GetHeight(floor, x, y, z);
+    int32_t ceiling = Room_GetCeiling(floor, x, y, z);
+    if (y > height || y < ceiling) {
+        return NULL;
+    }
+
+    return floor;
 }
