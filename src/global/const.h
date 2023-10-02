@@ -17,3 +17,4 @@
 #define NO_CAMERA (-1)
 #define MAX_ELEVATION (85 * PHD_DEGREE) // = 15470
 #define COMBAT_DISTANCE (WALL_L * 5 / 2) // = 2560
+#define LOOK_DISTANCE (WALL_L * 3 / 2) // = 1536

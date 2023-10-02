@@ -550,3 +550,59 @@ void __cdecl Camera_Combat(const struct ITEM_INFO *item)
     Camera_SmartShift(&target, Camera_Shift);
     Camera_Move(&target, g_Camera.speed);
 }
+
+void __cdecl Camera_Look(const struct ITEM_INFO *item)
+{
+    struct PHD_VECTOR old = {
+        .x = g_Camera.target.x,
+        .y = g_Camera.target.y,
+        .z = g_Camera.target.z,
+    };
+
+    g_Camera.target.z = item->pos.z;
+    g_Camera.target.x = item->pos.x;
+    g_Camera.target_angle =
+        item->pos.y_rot + g_Lara.torso_y_rot + g_Lara.head_y_rot;
+    g_Camera.target_distance = LOOK_DISTANCE;
+    g_Camera.target_elevation =
+        g_Lara.torso_x_rot + g_Lara.head_x_rot + item->pos.x_rot;
+
+    int32_t distance =
+        (LOOK_DISTANCE * Math_Cos(g_Camera.target_elevation)) >> W2V_SHIFT;
+
+    g_Camera.shift =
+        (-STEP_L * 2 * Math_Sin(g_Camera.target_elevation)) >> W2V_SHIFT;
+    g_Camera.target.z +=
+        (g_Camera.shift * Math_Cos(item->pos.y_rot)) >> W2V_SHIFT;
+    g_Camera.target.x +=
+        (g_Camera.shift * Math_Sin(item->pos.y_rot)) >> W2V_SHIFT;
+
+    if (!Camera_GoodPosition(
+            g_Camera.target.x, g_Camera.target.y, g_Camera.target.z,
+            g_Camera.target.room_num)) {
+        g_Camera.target.x = item->pos.x;
+        g_Camera.target.z = item->pos.z;
+    }
+
+    g_Camera.target.y += Camera_ShiftClamp(&g_Camera.target, STEP_L + 50);
+
+    const struct PHD_VECTOR offset = {
+        .y =
+            +((g_Camera.target_distance * Math_Sin(g_Camera.target_elevation))
+              >> W2V_SHIFT),
+        .x = -((distance * Math_Sin(g_Camera.target_angle)) >> W2V_SHIFT),
+        .z = -((distance * Math_Cos(g_Camera.target_angle)) >> W2V_SHIFT),
+    };
+
+    struct GAME_VECTOR target = {
+        .x = g_Camera.target.x + offset.x,
+        .y = g_Camera.target.y + offset.y,
+        .z = g_Camera.target.z + offset.z,
+        .room_num = g_Camera.pos.room_num,
+    };
+
+    Camera_SmartShift(&target, Camera_Clip);
+    g_Camera.target.z = old.z + (g_Camera.target.z - old.z) / g_Camera.speed;
+    g_Camera.target.x = old.x + (g_Camera.target.x - old.x) / g_Camera.speed;
+    Camera_Move(&target, g_Camera.speed);
+}

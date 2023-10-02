@@ -985,7 +985,7 @@ typedef struct __unaligned LARA_INFO {
 004113F0    000000ED    +       void __cdecl Camera_Chase(const struct ITEM_INFO *item);
 004114E0    0000019E    +       int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
 00411680    0000018E    +       void __cdecl Camera_Combat(const struct ITEM_INFO *item);
-00411810    000001E2    -       void __cdecl Camera_Look(struct ITEM_INFO *item);
+00411810    000001E2    +       void __cdecl Camera_Look(const struct ITEM_INFO *item);
 00411A00    00000099    -       void __cdecl Camera_Fixed(void);
 00411AA0    000004A9    *       void __cdecl Camera_Update(void);
 00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);

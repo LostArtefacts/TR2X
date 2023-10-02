@@ -120,7 +120,6 @@
 #define Creature_Vault ((int32_t __cdecl (*)(int16_t item_num, int16_t angle, int32_t vault, int32_t shift))0x00410110)
 #define Creature_Kill ((void __cdecl (*)(struct ITEM_INFO *item, int32_t kill_anim, int32_t kill_state, int32_t lara_kill_state))0x00410250)
 #define Creature_GetBaddieTarget ((void __cdecl (*)(int16_t item_num, int32_t goody))0x004103C0)
-#define Camera_Look ((void __cdecl (*)(struct ITEM_INFO *item))0x00411810)
 #define Camera_Fixed ((void __cdecl (*)(void))0x00411A00)
 #define Camera_Update ((void __cdecl (*)(void))0x00411AA0)
 #define Camera_SetCutsceneTrack ((void __cdecl (*)(int32_t track))0x00411F50)

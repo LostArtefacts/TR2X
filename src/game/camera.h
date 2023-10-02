@@ -21,3 +21,4 @@ void __cdecl Camera_SmartShift(
 void __cdecl Camera_Chase(const struct ITEM_INFO *item);
 int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
 void __cdecl Camera_Combat(const struct ITEM_INFO *item);
+void __cdecl Camera_Look(const struct ITEM_INFO *item);
