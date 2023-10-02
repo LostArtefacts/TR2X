@@ -1,8 +1,8 @@
 #pragma once
 
-#include <d3dhal.h>
 #include <ddraw.h>
 #include <ddrawi.h>
+#include <d3dhal.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <windows.h>

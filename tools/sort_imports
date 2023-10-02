@@ -23,6 +23,18 @@ def fix_imports(path: Path) -> None:
     )
 
 
+def sort_import_group(includes: list[str]) -> list[str]:
+    group = sorted(includes)
+    FIXED_PAIRS = [
+        ("<ddrawi.h>", "<d3dhal.h>"),
+    ]
+    for before, after in FIXED_PAIRS:
+        if before in group and after in group:
+            group.remove(after)
+            group.insert(group.index(before) + 1, after)
+    return group
+
+
 def sort_imports(path: Path) -> None:
     source = path.read_text()
     rel_path = path.relative_to(SRC_PATH)
@@ -63,7 +75,9 @@ def sort_imports(path: Path) -> None:
         groups = {key: value for key, value in groups.items() if value}
 
         ret = "\n\n".join(
-            "\n".join(f"#include {include}" for include in sorted(group))
+            "\n".join(
+                f"#include {include}" for include in sort_import_group(group)
+            )
             for group in groups.values()
         ).strip()
         return ret
@@ -80,7 +94,7 @@ def sort_imports(path: Path) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument(metavar="path", type=Path, nargs="*", dest='paths')
+    parser.add_argument(metavar="path", type=Path, nargs="*", dest="paths")
     return parser.parse_args()
 
 
