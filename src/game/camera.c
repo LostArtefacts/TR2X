@@ -606,3 +606,27 @@ void __cdecl Camera_Look(const struct ITEM_INFO *item)
     g_Camera.target.x = old.x + (g_Camera.target.x - old.x) / g_Camera.speed;
     Camera_Move(&target, g_Camera.speed);
 }
+
+void __cdecl Camera_Fixed(void)
+{
+    const struct OBJECT_VECTOR *fixed = &g_Camera.fixed[g_Camera.num];
+    struct GAME_VECTOR target = {
+        .x = fixed->x,
+        .y = fixed->y,
+        .z = fixed->z,
+        .room_num = fixed->data,
+    };
+    if (!LOS_Check(&g_Camera.target, &target)) {
+        Camera_ShiftClamp(&target, STEP_L);
+    }
+
+    g_Camera.fixed_camera = 1;
+    Camera_Move(&target, g_Camera.speed);
+
+    if (g_Camera.timer) {
+        g_Camera.timer--;
+        if (!g_Camera.timer) {
+            g_Camera.timer = -1;
+        }
+    }
+}

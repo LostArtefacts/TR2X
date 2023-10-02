@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2% (24)</tspan> · <tspan class="known">95.58% (1147)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.08% (25)</tspan> · <tspan class="known">95.50% (1146)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="14.94" height="6" x="0" y="0" class="decompiled"/>
-<rect width="714.01" height="6" x="14.94" y="0" class="known"/>
+<rect width="15.56" height="6" x="0" y="0" class="decompiled"/>
+<rect width="713.38" height="6" x="15.56" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -210,7 +210,7 @@
 <rect width="12" height="12" x="450" y="30" class="decompiled"><title>int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);</title></rect>
 <rect width="12" height="12" x="465" y="30" class="decompiled"><title>void __cdecl Camera_Combat(const struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="480" y="30" class="decompiled"><title>void __cdecl Camera_Look(const struct ITEM_INFO *item);</title></rect>
-<rect width="12" height="12" x="495" y="30" class="known"><title>void __cdecl Camera_Fixed(void);</title></rect>
+<rect width="12" height="12" x="495" y="30" class="decompiled"><title>void __cdecl Camera_Fixed(void);</title></rect>
 <rect width="12" height="12" x="510" y="30" class="known"><title>void __cdecl Camera_Update(void);</title></rect>
 <rect width="12" height="12" x="525" y="30" class="known"><title>void __cdecl Camera_SetCutsceneTrack(int32_t track);</title></rect>
 <rect width="12" height="12" x="540" y="30" class="known"><title>int32_t __cdecl Game_Cutscene_Start(int32_t level_num);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.25%</tspan> · <tspan class="known">97.42%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.29%</tspan> · <tspan class="known">97.38%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="16.78" height="6" x="0" y="0" class="decompiled"/>
-<rect width="727.75" height="6" x="16.78" y="0" class="known"/>
+<rect width="17.12" height="6" x="0" y="0" class="decompiled"/>
+<rect width="727.41" height="6" x="17.12" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1826,7 +1826,7 @@
 <rect width="7.81" height="8.47" x="556.18" y="204.43" class="known"><title>void __cdecl swap_meshes_with_meshswap3(struct ITEM_INFO *item);</title></rect>
 <rect width="7.81" height="8.47" x="556.18" y="215.90" class="known"><title>void __cdecl LoadDemoExternal(LPCTSTR levelName);</title></rect>
 <rect width="7.81" height="8.47" x="556.18" y="227.37" class="known"><title>int32_t __cdecl GameLoop(BOOL demoMode);</title></rect>
-<rect width="7.81" height="8.40" x="556.18" y="238.84" class="known"><title>void __cdecl Camera_Fixed(void);</title></rect>
+<rect width="7.81" height="8.40" x="556.18" y="238.84" class="decompiled"><title>void __cdecl Camera_Fixed(void);</title></rect>
 <rect width="7.81" height="8.40" x="556.18" y="250.24" class="known"><title>int16_t __cdecl Room_GetTiltType(struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="7.81" height="8.40" x="556.18" y="261.63" class="known"><title>void __cdecl lara_col_fastfall(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.81" height="8.32" x="556.18" y="273.03" class="known"><title>void __cdecl WarriorSparkleTrail(struct ITEM_INFO *item);</title></rect>

@@ -730,6 +730,14 @@ typedef struct GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
+typedef struct OBJECT_VECTOR {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t data;
+    int16_t flags;
+} OBJECT_VECTOR;
+
 typedef struct BOX_INFO {
     uint8_t left;
     uint8_t right;

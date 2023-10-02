@@ -722,6 +722,14 @@ typedef struct GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
+typedef struct OBJECT_VECTOR {
+    int32_t x;
+    int32_t y;
+    int32_t z;
+    int16_t data;
+    int16_t flags;
+} OBJECT_VECTOR;
+
 typedef struct BOX_INFO {
     uint8_t left;
     uint8_t right;
@@ -986,7 +994,7 @@ typedef struct __unaligned LARA_INFO {
 004114E0    0000019E    +       int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
 00411680    0000018E    +       void __cdecl Camera_Combat(const struct ITEM_INFO *item);
 00411810    000001E2    +       void __cdecl Camera_Look(const struct ITEM_INFO *item);
-00411A00    00000099    -       void __cdecl Camera_Fixed(void);
+00411A00    00000099    +       void __cdecl Camera_Fixed(void);
 00411AA0    000004A9    *       void __cdecl Camera_Update(void);
 00411F50    0000000A    -       void __cdecl Camera_SetCutsceneTrack(int32_t track);
 00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
