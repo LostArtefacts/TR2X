@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.33% (28)</tspan> · <tspan class="known">95.25% (1143)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.42% (29)</tspan> · <tspan class="known">95.17% (1142)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="17.43" height="6" x="0" y="0" class="decompiled"/>
-<rect width="711.52" height="6" x="17.43" y="0" class="known"/>
+<rect width="18.05" height="6" x="0" y="0" class="decompiled"/>
+<rect width="710.90" height="6" x="18.05" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1193,7 +1193,7 @@
 <rect width="12" height="12" x="195" y="330" class="known"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="12" height="12" x="210" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);</title></rect>
 <rect width="12" height="12" x="225" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
-<rect width="12" height="12" x="240" y="330" class="known"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
+<rect width="12" height="12" x="240" y="330" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="255" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="270" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseAllTracks(void);</title></rect>
 <rect width="12" height="12" x="285" y="330" class="known"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
@@ -1283,8 +1283,8 @@
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">2.91%</tspan> · <tspan class="known">96.76%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="21.73" height="6" x="0" y="0" class="decompiled"/>
-<rect width="722.81" height="6" x="21.73" y="0" class="known"/>
+<rect width="21.75" height="6" x="0" y="0" class="decompiled"/>
+<rect width="722.78" height="6" x="21.75" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2461,7 +2461,7 @@
 <rect width="0.10" height="0.10" x="739.59" y="349.77" class="known"><title>void __cdecl SeedRandomDraw(int32_t seed);</title></rect>
 <rect width="0.10" height="0.10" x="742.19" y="349.77" class="known"><title>void __cdecl SE_SoundAdapterSet(HWND hwndDlg, SOUND_ADAPTER_NODE *adapter);</title></rect>
 <rect width="0.10" height="0.10" x="744.80" y="349.77" class="known"><title>void __cdecl SE_ControlsJoystickSet(HWND hwndDlg, JOYSTICK_NODE *joystick);</title></rect>
-<rect width="0.10" height="0.10" x="747.40" y="349.77" class="known"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
+<rect width="0.10" height="0.10" x="747.40" y="349.77" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
 <rect width="0.10" height="0.10" x="739.59" y="352.87" class="known"><title>void __cdecl invisibility_on(struct ITEM_INFO *item);</title></rect>
 <rect width="0.10" height="0.10" x="739.59" y="355.55" class="known"><title>void __cdecl dynamic_light_on(struct ITEM_INFO *item);</title></rect>
 <rect width="0.10" height="0.10" x="739.59" y="358.23" class="known"><title>void __cdecl WinVidClearMinWindowSize(void);</title></rect>
