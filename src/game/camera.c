@@ -795,12 +795,12 @@ void __cdecl Camera_Update(void)
 
 void __cdecl Camera_LoadCutsceneFrame(void)
 {
-    g_CineFrame++;
-    if (g_CineFrame >= g_NumCineFrames) {
-        g_CineFrame = g_NumCineFrames - 1;
+    g_CineFrameIdx++;
+    if (g_CineFrameIdx >= g_NumCineFrames) {
+        g_CineFrameIdx = g_NumCineFrames - 1;
     }
 
-    const struct CINE_FRAME *frame = &g_CineData[g_CineFrame];
+    const struct CINE_FRAME *frame = &g_CineData[g_CineFrameIdx];
     int32_t tx = frame->tx;
     int32_t ty = frame->ty;
     int32_t tz = frame->tz;
@@ -847,7 +847,7 @@ void __cdecl Camera_LoadCutsceneFrame(void)
 
 void __cdecl Camera_UpdateCutscene(void)
 {
-    const struct CINE_FRAME *frame = &g_CineData[g_CineFrame];
+    const struct CINE_FRAME *frame = &g_CineData[g_CineFrameIdx];
     int32_t tx = frame->tx;
     int32_t ty = frame->ty;
     int32_t tz = frame->tz;

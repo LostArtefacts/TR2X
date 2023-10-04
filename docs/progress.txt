@@ -1134,7 +1134,7 @@ typedef struct CINE_FRAME {
 
 # game/effects.c
 0041C4D0    0000008C    -R      int32_t __cdecl ItemNearLara(struct PHD_3DPOS *pos, int32_t distance);
-0041C560    00000068    -R      void __cdecl SoundEffects(void);
+0041C560    00000068    -       void __cdecl Sound_Update(void);
 0041C5D0    00000059    -R      int16_t __cdecl DoBloodSplat(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num);
 0041C630    000000A4    -R      void __cdecl DoLotsOfBlood(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num, int32_t num);
 0041C6E0    00000082    -R      void __cdecl ControlBlood1(int16_t fx_num);
@@ -1662,11 +1662,11 @@ typedef struct CINE_FRAME {
 
 # game/sound.c
 0043F380    00000031    -R      int32_t __cdecl GetRealTrack(int32_t track);
-0043F3C0    00000484    -       void __cdecl Sound_Effect(uint32_t sfx_num, const struct PHD_3DPOS *pos, uint32_t flags);
-0043F860    0000005E    -       void __cdecl Sound_StopEffect(int32_t sfx_num);
-0043F8C0    00000086    -R      void __cdecl SOUND_EndScene(void);
-0043F950    00000024    -R      void __cdecl SOUND_Stop(void);
-0043F980    0000002A    -R      void __cdecl SOUND_Init(void);
+0043F3C0    00000484    -       void __cdecl Sound_Effect(int32_t sample_id, const struct PHD_3DPOS *pos, uint32_t flags);
+0043F860    0000005E    -       void __cdecl Sound_StopEffect(int32_t sample_id);
+0043F8C0    00000086    -       void __cdecl Sound_UpdateContinued(void);
+0043F950    00000024    -       void __cdecl Sound_Shutdown(void);
+0043F980    0000002A    -       void __cdecl Sound_Init(void);
 
 # game/sphere.c
 0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *laraitem);
@@ -1854,24 +1854,24 @@ typedef struct CINE_FRAME {
 00447B30    00000018    x       sub_447B30
 00447B40    00000039    x       sub_447B40
 00447B90    0000002F    x       sub_447B90
-00447BC0    00000048    -R      SOUND_ADAPTER_NODE *__cdecl GetSoundAdapter(GUID *lpGuid);
-00447C10    0000002E    -R      void __cdecl WinSndFreeAllSamples(void);
-00447C40    0000010E    -R      bool __cdecl WinSndMakeSample(DWORD sampleIdx, LPWAVEFORMATEX format, const LPVOID data, DWORD dataSize);
-00447D50    00000045    -R      bool __cdecl WinSndIsChannelPlaying(DWORD channel);
-00447DA0    000000E7    -R      int32_t __cdecl WinSndPlaySample(DWORD sampleIdx, int32_t volume, DWORD pitch, int32_t pan, DWORD flags);
-00447E90    00000039    -R      int32_t __cdecl WinSndGetFreeChannelIndex(void);
-00447ED0    0000002C    -R      void __cdecl WinSndAdjustVolumeAndPan(int32_t channel, int32_t volume, int32_t pan);
-00447F00    00000031    -R      void __cdecl WinSndAdjustPitch(int32_t channel, DWORD pitch);
-00447F40    0000002F    -R      void __cdecl WinSndStopSample(int32_t channel);
+00447BC0    00000048    -       struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid);
+00447C10    0000002E    -       void __cdecl S_Audio_Sample_CloseAllTracks(void);
+00447C40    0000010E    -       bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);
+00447D50    00000045    -       bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);
+00447DA0    000000E7    -       int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);
+00447E90    00000039    -       int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);
+00447ED0    0000002C    -       void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(int32_t track_id, int32_t volume, int32_t pan);
+00447F00    00000031    -       void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);
+00447F40    0000002F    -       void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);
 00447FA0    00000005    -R      sub_447FA0
-00447FB0    0000009C    -R      bool __cdecl WinSndInit(void);
-00448050    0000001A    -R      bool __cdecl DSoundEnumerate(SOUND_ADAPTER_LIST *adapterList);
-00448070    000000E2    -R      BOOL __stdcall DSoundEnumCallback(LPGUID lpGuid, LPCTSTR lpcstrDescription, LPCTSTR lpcstrModule, LPVOID lpContext);
-00448160    0000017C    -R      void __cdecl WinSndStart(HWND hWnd);
-004482E0    0000001C    -R      bool __cdecl DSoundCreate(GUID *lpGuid);
-00448300    000000C4    -R      bool __cdecl DSoundBufferTest(void);
-004483D0    0000002A    -R      void __cdecl WinSndFinish(void);
-00448400    00000006    -R      bool __cdecl WinSndIsSoundEnabled(void);
+00447FB0    0000009C    -       bool __cdecl S_Audio_Sample_Init(void);
+00448050    0000001A    -       bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);
+00448070    000000E2    -       BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);
+00448160    0000017C    -       void __cdecl S_Audio_Sample_Init2(HWND hwnd);
+004482E0    0000001C    -       bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);
+00448300    000000C4    -       bool __cdecl S_Audio_Sample_DSoundBufferTest(void);
+004483D0    0000002A    -       void __cdecl S_Audio_Sample_Shutdown(void);
+00448400    00000006    -       bool __cdecl S_Audio_Sample_IsEnabled(void);
 00448410    00000005    -R      sub_448410
 00448420    00000001    -R      sub_448420
 00448430    0000013B    -R      void __cdecl CreateScreenBuffers(void);
@@ -2071,22 +2071,22 @@ typedef struct CINE_FRAME {
 00454D60    0000032D    -R      void __cdecl CheckCheatMode(void);
 004550C0    0000007D    -R      void __cdecl S_SaveSettings(void);
 00455140    000000DB    -R      void __cdecl S_LoadSettings(void);
-00455220    00000046    -R      int32_t __cdecl S_SoundPlaySample(int32_t channel, UINT16 volume, int32_t pitch, int32_t pan);
-00455270    0000002A    -R      int32_t __cdecl S_Sound_CalculateSampleVolume(DWORD volume);
-004552A0    00000026    -R      int32_t __cdecl S_Sound_CalculateSamplePan(int16_t pan);
-004552D0    00000046    -R      int32_t __cdecl S_SoundPlaySampleLooped(int32_t channel, UINT16 volume, DWORD pitch, int32_t pan);
-00455320    00000039    -R      void __cdecl S_SoundSetPanAndVolume(int32_t channel, int32_t pan, UINT16 volume);
-00455360    0000001C    -R      void __cdecl S_SoundSetPitch(int32_t channel, DWORD pitch);
-00455380    0000000A    -R      void __cdecl S_SoundSetMasterVolume(DWORD volume);
-00455390    00000017    -R      void __cdecl S_SoundStopSample(int32_t channel);
-004553B0    0000003C    -R      void __cdecl S_SoundStopAllSamples(void);
-004553C0    0000001F    -R      BOOL __cdecl S_SoundSampleIsPlaying(int32_t channel);
-004553E0    00000077    -R      bool __cdecl CD_Init(void);
-00455460    00000051    -R      void __cdecl CD_Cleanup(void);
-00455500    0000006F    -R      void __cdecl S_CDPlay(int16_t trackID, BOOL isLooped);
-00455570    00000039    -R      void __cdecl S_CDStop(void);
-004555B0    00000084    -R      BOOL __cdecl StartSyncedAudio(int32_t trackID);
-00455640    00000061    -R      DWORD __cdecl S_CDGetLoc(void);
+00455220    00000046    -       int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);
+00455270    0000002A    -       int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);
+004552A0    00000026    -       int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);
+004552D0    00000046    -       int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);
+00455320    00000039    -       void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);
+00455360    0000001C    -       void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);
+00455380    0000000A    -       void __cdecl Sound_SetMasterVolume(int32_t volume);
+00455390    00000017    -       void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);
+004553B0    0000003C    -       void __cdecl S_Audio_Sample_OutCloseAllTracks(void);
+004553C0    0000001F    -       BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);
+004553E0    00000077    -       bool __cdecl Music_Init(void);
+00455460    00000051    -       void __cdecl Music_Shutdown(void);
+00455500    0000006F    -       void __cdecl Music_Play(int16_t track_id, bool is_looped);
+00455570    00000039    -       void __cdecl Music_Stop(void);
+004555B0    00000084    -       bool __cdecl Music_PlaySynced(int32_t trackID);
+00455640    00000061    -       int32_t __cdecl Music_GetFrames(void);
 004556B0    00000092    *       void __cdecl Music_SetVolume(int32_t volume);
 004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);
 004558E0    000000C8    -R      BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);
@@ -2169,6 +2169,8 @@ typedef struct CINE_FRAME {
 # Offset    Flags   Declaration
 
 004640BC    -       int16_t g_CD_TrackID;
+004640C4    -       int32_t g_FlipEffect;
+004641F8    -       void (__cdecl *g_EffectRoutines[32])(struct ITEM_INFO *item);
 00465A60    -       int16_t g_OptionMusicVolume;
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
@@ -2199,7 +2201,9 @@ typedef struct CINE_FRAME {
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
 004D6B60    -       float g_FltWinRight;
 004D6BF8    -       int32_t g_PhdWinRight;
+004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
+004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7F10    -       HWND g_GameWindowHandle;
 004D8570    -       DWORD g_SampleFreqs[256];
 004D8970    -       struct SOUND_ADAPTER_LIST g_SoundAdapterList;
@@ -2218,11 +2222,13 @@ typedef struct CINE_FRAME {
 0051E6C4    -       int32_t g_SoundIsActive;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
+00521FDC    -       int32_t g_SoundFxCount;
 0052618C    -       struct ROOM_INFO *g_Rooms;
+00526240    -       int32_t g_FlipStatus;
 005262F0    -       struct ITEM_INFO g_Items[];
 005262F6    -       int16_t g_NumCineFrames;
 005262F8    -       CINE_FRAME *g_CineData = NULL;
 00526300    -       struct PHD_3DPOS g_CinePos;
-00526314    -       int16_t g_CineFrame;
+00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;

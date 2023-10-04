@@ -7,6 +7,7 @@
 
 // clang-format off
 #define g_CD_TrackID VAR_U_(0x004640BC, int16_t)
+#define g_FlipEffect VAR_U_(0x004640C4, int32_t)
 #define g_OptionMusicVolume VAR_U_(0x00465A60, int16_t)
 #define g_ViewportAspectRatio VAR_I_(0x0046C304, float, 0.0f)
 #define g_PhdWinTop VAR_U_(0x0046E310, int32_t)
@@ -34,7 +35,9 @@
 #define g_PhdVBuf ARRAY_(0x004BF3E0, struct PHD_VBUF, [1500])
 #define g_FltWinRight VAR_U_(0x004D6B60, float)
 #define g_PhdWinRight VAR_U_(0x004D6BF8, int32_t)
+#define g_CineFrameCurrent VAR_U_(0x004D7780, int32_t)
 #define g_IsChunkyCamera VAR_U_(0x004D778C, int32_t)
+#define g_SoundTrackIds ARRAY_(0x004D7C80, int32_t, [128])
 #define g_GameWindowHandle VAR_U_(0x004D7F10, HWND)
 #define g_SampleFreqs ARRAY_(0x004D8570, DWORD, [256])
 #define g_SoundAdapterList VAR_U_(0x004D8970, struct SOUND_ADAPTER_LIST)
@@ -53,12 +56,14 @@
 #define g_SoundIsActive VAR_U_(0x0051E6C4, int32_t)
 #define g_Lara VAR_U_(0x005206E0, struct LARA_INFO)
 #define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
+#define g_SoundFxCount VAR_U_(0x00521FDC, int32_t)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
+#define g_FlipStatus VAR_U_(0x00526240, int32_t)
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
 #define g_NumCineFrames VAR_U_(0x005262F6, int16_t)
 #define g_CineData VAR_I_(0x005262F8, CINE_FRAME *, NULL)
 #define g_CinePos VAR_U_(0x00526300, struct PHD_3DPOS)
-#define g_CineFrame VAR_U_(0x00526314, int16_t)
+#define g_CineFrameIdx VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
 // clang-format on
