@@ -5,16 +5,60 @@
 // The path to the legitimate host process
 const char *hostProcessPath = "Tomb2.exe";
 
-bool fileExists(const char *filePath)
+static bool FileExists(const char *path)
 {
-    DWORD fileAttributes = GetFileAttributes(filePath);
-
+    DWORD fileAttributes = GetFileAttributes(path);
     if (fileAttributes != INVALID_FILE_ATTRIBUTES
         && !(fileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
         return true;
     }
-
     return false;
+}
+
+static bool InjectDLL(HANDLE process_handle, const char *dll_path)
+{
+    bool status = false;
+    LPVOID load_library_addr =
+        (LPVOID)GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
+
+    fprintf(stderr, "Injecting %s\n", dll_path);
+
+    if (!FileExists(dll_path)) {
+        fprintf(stderr, "DLL does not exist.\n");
+        goto finish;
+    }
+
+    LPVOID dll_path_adr = VirtualAllocEx(
+        process_handle, NULL, strlen(dll_path) + 1, MEM_RESERVE | MEM_COMMIT,
+        PAGE_READWRITE);
+    if (!dll_path_adr) {
+        fprintf(stderr, "Failed to allocate remote memory.\n");
+        goto finish;
+    }
+
+    if (!WriteProcessMemory(
+            process_handle, dll_path_adr, dll_path, strlen(dll_path) + 1,
+            NULL)) {
+        fprintf(stderr, "Failed to write remote memory.\n");
+        goto finish;
+    }
+
+    HANDLE remote_thread_handle = CreateRemoteThread(
+        process_handle, NULL, 0, (LPTHREAD_START_ROUTINE)load_library_addr,
+        dll_path_adr, 0, NULL);
+    if (remote_thread_handle == INVALID_HANDLE_VALUE) {
+        fprintf(stderr, "Failed to create remote thread.\n");
+        goto finish;
+    }
+    WaitForSingleObject(remote_thread_handle, INFINITE);
+
+    VirtualFreeEx(
+        process_handle, dll_path_adr, strlen(dll_path) + 1, MEM_RELEASE);
+    CloseHandle(remote_thread_handle);
+
+    status = true;
+finish:
+    return status;
 }
 
 int main()
@@ -22,7 +66,6 @@ int main()
     char dll_path[MAX_PATH];
     GetModuleFileNameA(NULL, dll_path, MAX_PATH);
     strcpy(strstr(dll_path, ".exe"), ".dll");
-    fprintf(stderr, "injecting %s\n", dll_path);
 
     STARTUPINFO si;
     ZeroMemory(&si, sizeof(si));
@@ -38,39 +81,9 @@ int main()
         return 1;
     }
 
-    LPVOID loadLibraryAddr =
-        (LPVOID)GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
-
-    if (!fileExists(dll_path)) {
-        fprintf(stderr, "DLL does not exist.\n");
+    if (!InjectDLL(pi.hProcess, dll_path)) {
         return 1;
     }
-
-    LPVOID dllPathAddr = VirtualAllocEx(
-        pi.hProcess, NULL, strlen(dll_path) + 1, MEM_RESERVE | MEM_COMMIT,
-        PAGE_READWRITE);
-    if (!dllPathAddr) {
-        fprintf(stderr, "Failed to allocate remote memory.\n");
-        return 1;
-    }
-
-    if (!WriteProcessMemory(
-            pi.hProcess, dllPathAddr, dll_path, strlen(dll_path) + 1, NULL)) {
-        fprintf(stderr, "Failed to write remote memory.\n");
-        return 1;
-    }
-
-    HANDLE hRemoteThread = CreateRemoteThread(
-        pi.hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)loadLibraryAddr,
-        dllPathAddr, 0, NULL);
-    if (hRemoteThread == INVALID_HANDLE_VALUE) {
-        fprintf(stderr, "Failed to create remote thread.\n");
-        return 1;
-    }
-    WaitForSingleObject(hRemoteThread, INFINITE);
-
-    VirtualFreeEx(pi.hProcess, dllPathAddr, strlen(dll_path) + 1, MEM_RELEASE);
-    CloseHandle(hRemoteThread);
 
     if (ResumeThread(pi.hThread) == (DWORD)-1) {
         fprintf(stderr, "Failed to resume the execution of the process.\n");
