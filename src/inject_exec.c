@@ -6,12 +6,14 @@
 #include "game/shell.h"
 #include "game/sound.h"
 #include "inject_util.h"
+#include "specific/s_flagged_string.h"
 
 static void Inject_Camera(void);
 static void Inject_Math(void);
 static void Inject_Matrix(void);
 static void Inject_Shell(void);
 static void Inject_Sound(void);
+static void Inject_S_FlaggedString(void);
 
 static void Inject_Camera(void)
 {
@@ -61,6 +63,13 @@ static void Inject_Sound(void)
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
 }
 
+static void Inject_S_FlaggedString(void)
+{
+    INJECT(1, 0x00447550, S_FlaggedString_Create);
+    INJECT(1, 0x00445F00, S_FlaggedString_Delete);
+    INJECT(1, 0x00446100, S_FlaggedString_InitAdapter);
+}
+
 void Inject_Exec(void)
 {
     Inject_Camera();
@@ -68,4 +77,6 @@ void Inject_Exec(void)
     Inject_Matrix();
     Inject_Shell();
     Inject_Sound();
+
+    Inject_S_FlaggedString();
 }

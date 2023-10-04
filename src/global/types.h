@@ -79,34 +79,34 @@ typedef struct DISPLAY_MODE_LIST {
 } DISPLAY_MODE_LIST;
 
 typedef struct STRING_FLAGGED {
-    LPTSTR lpString;
-    bool isPresented;
+    char *content;
+    bool is_valid;
 } STRING_FLAGGED;
 
 typedef struct DISPLAY_ADAPTER {
-    LPGUID lpAdapterGuid;
-    GUID adapterGuid;
-    STRING_FLAGGED driverDescription;
-    STRING_FLAGGED driverName;
-    DDCAPS driverCaps;
-    DDCAPS helCaps;
-    GUID deviceGuid;
-    D3DDEVICEDESC D3DHWDeviceDesc;
-    DISPLAY_MODE_LIST hwDispModeList;
-    DISPLAY_MODE_LIST swDispModeList;
-    DISPLAY_MODE vgaMode1;
-    DISPLAY_MODE vgaMode2;
-    DWORD screenWidth;
-    bool hwRenderSupported;
-    bool swWindowedSupported;
-    bool hwWindowedSupported;
-    bool isVgaMode1Presented;
-    bool isVgaMode2Presented;
-    bool perspectiveCorrectSupported;
-    bool ditherSupported;
-    bool zBufferSupported;
-    bool linearFilterSupported;
-    bool shadeRestricted;
+    LPGUID adapter_guid_ptr;
+    GUID adapter_guid;
+    STRING_FLAGGED driver_description;
+    STRING_FLAGGED driver_name;
+    DDCAPS driver_caps;
+    DDCAPS hel_caps;
+    GUID device_guid;
+    D3DDEVICEDESC device_desc;
+    DISPLAY_MODE_LIST hw_disp_mode_list;
+    DISPLAY_MODE_LIST sw_disp_mode_list;
+    DISPLAY_MODE vga_mode1;
+    DISPLAY_MODE vga_mode2;
+    DWORD screen_width;
+    bool hw_render_supported;
+    bool sw_windowed_supported;
+    bool hw_windowed_supported;
+    bool is_vga_mode1_presented;
+    bool is_vga_mode2_presented;
+    bool perspective_correct_supported;
+    bool dither_supported;
+    bool zbuffer_supported;
+    bool linear_filter_supported;
+    bool shade_restricted;
 } DISPLAY_ADAPTER;
 
 typedef struct DISPLAY_ADAPTER_NODE {

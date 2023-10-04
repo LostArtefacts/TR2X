@@ -85,6 +85,7 @@ dll_sources = [
   'src/main_dll.c',
   'src/memory.c',
   'src/specific/s_filesystem.c',
+  'src/specific/s_flagged_string.c',
 ]
 
 executable(

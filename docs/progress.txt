@@ -46,34 +46,34 @@ typedef struct DISPLAY_MODE_LIST {
 } DISPLAY_MODE_LIST;
 
 typedef struct STRING_FLAGGED {
-    LPTSTR lpString;
-    bool isPresented;
+    char *content;
+    bool is_valid;
 } STRING_FLAGGED;
 
 typedef struct DISPLAY_ADAPTER {
-    LPGUID lpAdapterGuid;
-    GUID adapterGuid;
-    STRING_FLAGGED driverDescription;
-    STRING_FLAGGED driverName;
-    DDCAPS driverCaps;
-    DDCAPS helCaps;
-    GUID deviceGuid;
-    D3DDEVICEDESC D3DHWDeviceDesc;
-    DISPLAY_MODE_LIST hwDispModeList;
-    DISPLAY_MODE_LIST swDispModeList;
-    DISPLAY_MODE vgaMode1;
-    DISPLAY_MODE vgaMode2;
-    DWORD screenWidth;
-    bool hwRenderSupported;
-    bool swWindowedSupported;
-    bool hwWindowedSupported;
-    bool isVgaMode1Presented;
-    bool isVgaMode2Presented;
-    bool perspectiveCorrectSupported;
-    bool ditherSupported;
-    bool zBufferSupported;
-    bool linearFilterSupported;
-    bool shadeRestricted;
+    LPGUID adapter_guid_ptr;
+    GUID adapter_guid;
+    STRING_FLAGGED driver_description;
+    STRING_FLAGGED driver_name;
+    DDCAPS driver_caps;
+    DDCAPS hel_caps;
+    GUID device_guid;
+    D3DDEVICEDESC device_desc;
+    DISPLAY_MODE_LIST hw_disp_mode_list;
+    DISPLAY_MODE_LIST sw_disp_mode_list;
+    DISPLAY_MODE vga_mode1;
+    DISPLAY_MODE vga_mode2;
+    DWORD screen_width;
+    bool hw_render_supported;
+    bool sw_windowed_supported;
+    bool hw_windowed_supported;
+    bool is_vga_mode1_presented;
+    bool is_vga_mode2_presented;
+    bool perspective_correct_supported;
+    bool dither_supported;
+    bool zbuffer_supported;
+    bool linear_filter_supported;
+    bool shade_restricted;
 } DISPLAY_ADAPTER;
 
 typedef struct DISPLAY_ADAPTER_NODE {
@@ -1800,10 +1800,10 @@ typedef struct CINE_FRAME {
 00445A50    000003B1    -R      HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);
 00445E10    00000040    -R      bool __cdecl WinVidInit(void);
 00445E50    000000AF    -R      bool __cdecl WinVidGetDisplayAdapters(void);
-00445F00    00000013    -R      void __thiscall FlaggedStringDelete(struct STRING_FLAGGED *item);
+00445F00    00000013    +       void __thiscall S_FlaggedString_Delete(struct STRING_FLAGGED *string);
 00445F20    0000001A    -R      bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);
 00445F40    000001BE    -R      BOOL __stdcall EnumDisplayAdaptersCallback(GUID *lpGUID, LPTSTR lpDriverDescription, LPTSTR lpDriverName, LPVOID lpContext);
-00446100    00000035    -R      void __thiscall FlaggedStringsCreate(struct DISPLAY_ADAPTER *adapter);
+00446100    00000035    +       void __thiscall S_FlaggedString_InitAdapter(struct DISPLAY_ADAPTER *adapter);
 00446140    0000006A    -R      bool __cdecl WinVidRegisterGameWindowClass(void);
 004461B0    0000049F    -R      LRESULT __stdcall WinVidGameWindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 004467C0    000001C0    -R      void __cdecl WinVidResizeGameWindow(HWND hWnd, int32_t edge, LPRECT rect);
@@ -1833,7 +1833,7 @@ typedef struct CINE_FRAME {
 004473B0    0000007F    -R      bool __cdecl WinInputInit(void);
 00447430    00000024    -R      bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);
 00447460    000000E8    -R      BOOL __stdcall DInputEnumDevicesCallback(LPCDIDEVICEINSTANCE lpddi, LPVOID pvRef);
-00447550    0000001F    -R      void __thiscall FlaggedStringCreate(struct STRING_FLAGGED *item, DWORD dwSize);
+00447550    0000001F    +       void __thiscall S_FlaggedString_Create(struct STRING_FLAGGED *string, DWORD size);
 00447570    0000004E    -R      JOYSTICK_NODE *__cdecl GetJoystick(GUID *lpGuid);
 004475C0    000000C9    -R      void __cdecl DInputKeyboardCreate(void);
 00447690    00000029    -R      void __cdecl DInputKeyboardRelease(void);
