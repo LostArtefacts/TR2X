@@ -916,10 +916,10 @@
 <rect width="12" height="12" x="540" y="240" class="known"><title>HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);</title></rect>
 <rect width="12" height="12" x="555" y="240" class="known"><title>bool __cdecl WinVidInit(void);</title></rect>
 <rect width="12" height="12" x="570" y="240" class="known"><title>bool __cdecl WinVidGetDisplayAdapters(void);</title></rect>
-<rect width="12" height="12" x="585" y="240" class="known"><title>void __thiscall FlaggedStringDelete(STRING_FLAGGED *item);</title></rect>
-<rect width="12" height="12" x="600" y="240" class="known"><title>bool __cdecl EnumerateDisplayAdapters(DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
+<rect width="12" height="12" x="585" y="240" class="known"><title>void __thiscall FlaggedStringDelete(struct STRING_FLAGGED *item);</title></rect>
+<rect width="12" height="12" x="600" y="240" class="known"><title>bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
 <rect width="12" height="12" x="615" y="240" class="known"><title>BOOL __stdcall EnumDisplayAdaptersCallback(GUID *lpGUID, LPTSTR lpDriverDescription, LPTSTR lpDriverName, LPVOID lpContext);</title></rect>
-<rect width="12" height="12" x="630" y="240" class="known"><title>void __thiscall FlaggedStringsCreate(DISPLAY_ADAPTER *adapter);</title></rect>
+<rect width="12" height="12" x="630" y="240" class="known"><title>void __thiscall FlaggedStringsCreate(struct DISPLAY_ADAPTER *adapter);</title></rect>
 <rect width="12" height="12" x="645" y="240" class="known"><title>bool __cdecl WinVidRegisterGameWindowClass(void);</title></rect>
 <rect width="12" height="12" x="660" y="240" class="known"><title>LRESULT __stdcall WinVidGameWindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);</title></rect>
 <rect width="12" height="12" x="675" y="240" class="known"><title>void __cdecl WinVidResizeGameWindow(HWND hWnd, int32_t edge, LPRECT rect);</title></rect>
@@ -949,7 +949,7 @@
 <rect width="12" height="12" x="285" y="255" class="known"><title>bool __cdecl WinInputInit(void);</title></rect>
 <rect width="12" height="12" x="300" y="255" class="known"><title>bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);</title></rect>
 <rect width="12" height="12" x="315" y="255" class="known"><title>BOOL __stdcall DInputEnumDevicesCallback(LPCDIDEVICEINSTANCE lpddi, LPVOID pvRef);</title></rect>
-<rect width="12" height="12" x="330" y="255" class="known"><title>void __thiscall FlaggedStringCreate(STRING_FLAGGED *item, DWORD dwSize);</title></rect>
+<rect width="12" height="12" x="330" y="255" class="known"><title>void __thiscall FlaggedStringCreate(struct STRING_FLAGGED *item, DWORD dwSize);</title></rect>
 <rect width="12" height="12" x="345" y="255" class="known"><title>JOYSTICK_NODE *__cdecl GetJoystick(GUID *lpGuid);</title></rect>
 <rect width="12" height="12" x="360" y="255" class="known"><title>void __cdecl DInputKeyboardCreate(void);</title></rect>
 <rect width="12" height="12" x="375" y="255" class="known"><title>void __cdecl DInputKeyboardRelease(void);</title></rect>
@@ -1203,7 +1203,7 @@
 <rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl S_CDStop(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="known"><title>BOOL __cdecl StartSyncedAudio(int32_t trackID);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="known"><title>DWORD __cdecl S_CDGetLoc(void);</title></rect>
-<rect width="12" height="12" x="390" y="330" class="known"><title>void __cdecl Music_SetVolume(uint32_t volume);</title></rect>
+<rect width="12" height="12" x="390" y="330" class="known"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="405" y="330" class="known"><title>void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);</title></rect>
 <rect width="12" height="12" x="420" y="330" class="known"><title>BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);</title></rect>
 <rect width="12" height="12" x="435" y="330" class="known"><title>void __cdecl SyncSurfacePalettes(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette);</title></rect>
@@ -1853,7 +1853,7 @@
 <rect width="7.65" height="8.12" x="707.56" y="169.65" class="known"><title>void __cdecl EffectNewRoom(int16_t fx_num, int16_t room_num);</title></rect>
 <rect width="7.65" height="8.12" x="718.21" y="169.65" class="known"><title>void __cdecl SE_AdvancedDlgUpdate(HWND hwndDlg);</title></rect>
 <rect width="7.57" height="8.12" x="728.85" y="169.65" class="known"><title>int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
-<rect width="7.57" height="8.12" x="739.43" y="169.65" class="known"><title>void __cdecl Music_SetVolume(uint32_t volume);</title></rect>
+<rect width="7.57" height="8.12" x="739.43" y="169.65" class="known"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="180.76" class="known"><title>int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="191.69" class="known"><title>void __cdecl extra_as_sharkkill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="202.61" class="known"><title>bool __cdecl GetRegistryGuidValue(LPCTSTR lpValueName, GUID *value, GUID *defaultValue);</title></rect>
@@ -2216,7 +2216,7 @@
 <rect width="3.29" height="3.78" x="737.41" y="274.97" class="known"><title>void __cdecl BridgeTilt1Ceiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="3.29" height="3.78" x="743.71" y="274.97" class="known"><title>void __cdecl ReadSG(void *pointer, int32_t size);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="281.75" class="known"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
-<rect width="3.72" height="3.35" x="668.19" y="288.10" class="known"><title>void __thiscall FlaggedStringsCreate(DISPLAY_ADAPTER *adapter);</title></rect>
+<rect width="3.72" height="3.35" x="668.19" y="288.10" class="known"><title>void __thiscall FlaggedStringsCreate(struct DISPLAY_ADAPTER *adapter);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="294.45" class="known"><title>void __cdecl S_FadeInInventory(BOOL isFade);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="300.80" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE colorIdx, D3DCOLOR *gour, uint16_t flags);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="307.15" class="known"><title>void __cdecl HWR_GetPageHandles(void);</title></rect>
@@ -2347,7 +2347,7 @@
 <rect width="2.14" height="1.85" x="698.55" y="358.15" class="known"><title>void __cdecl AssaultStop(struct ITEM_INFO *item);</title></rect>
 <rect width="2.22" height="1.78" x="703.70" y="316.68" class="known"><title>int32_t __cdecl GF_DoFrontEndSequence(void);</title></rect>
 <rect width="2.22" height="1.78" x="708.92" y="316.68" class="known"><title>bool __cdecl D3DCreate(void);</title></rect>
-<rect width="2.22" height="1.78" x="714.13" y="316.68" class="known"><title>void __thiscall FlaggedStringCreate(STRING_FLAGGED *item, DWORD dwSize);</title></rect>
+<rect width="2.22" height="1.78" x="714.13" y="316.68" class="known"><title>void __thiscall FlaggedStringCreate(struct STRING_FLAGGED *item, DWORD dwSize);</title></rect>
 <rect width="2.22" height="1.78" x="719.35" y="316.68" class="known"><title>BOOL __cdecl S_SoundSampleIsPlaying(int32_t channel);</title></rect>
 <rect width="2.22" height="1.78" x="724.57" y="316.68" class="known"><title>bool __cdecl InitTextures(void);</title></rect>
 <rect width="2.05" height="1.78" x="729.79" y="316.68" class="known"><title>void __cdecl lara_col_slide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -2380,7 +2380,7 @@
 <rect width="1.51" height="1.82" x="740.98" y="321.46" class="known"><title>void __cdecl ControlLaraExtra(int16_t item_num);</title></rect>
 <rect width="1.51" height="1.82" x="745.49" y="321.46" class="known"><title>void __cdecl BridgeFlatCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="1.49" height="1.84" x="713.23" y="326.28" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
-<rect width="1.49" height="1.66" x="713.23" y="331.12" class="known"><title>bool __cdecl EnumerateDisplayAdapters(DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
+<rect width="1.49" height="1.66" x="713.23" y="331.12" class="known"><title>bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="335.77" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="340.43" class="known"><title>bool __cdecl DSoundEnumerate(SOUND_ADAPTER_LIST *adapterList);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="345.09" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
@@ -2424,7 +2424,7 @@
 <rect width="1.01" height="0.81" x="725.92" y="338.66" class="known"><title>void __cdecl lara_col_stepleft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="1.01" height="0.81" x="729.93" y="338.66" class="known"><title>void __cdecl lara_col_roll(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="1.01" height="0.81" x="733.95" y="338.66" class="known"><title>void __cdecl lara_col_swim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="1.01" height="0.81" x="737.96" y="338.66" class="known"><title>void __thiscall FlaggedStringDelete(STRING_FLAGGED *item);</title></rect>
+<rect width="1.01" height="0.81" x="737.96" y="338.66" class="known"><title>void __thiscall FlaggedStringDelete(struct STRING_FLAGGED *item);</title></rect>
 <rect width="1.01" height="0.81" x="741.97" y="338.66" class="known"><title>void __cdecl WinVidFinish(void);</title></rect>
 <rect width="1.01" height="0.81" x="745.99" y="338.66" class="known"><title>bool __cdecl S_IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);</title></rect>
 <rect width="0.57" height="1.29" x="725.92" y="342.47" class="known"><title>LONG __cdecl DeleteRegistryValue(LPCTSTR lpValueName);</title></rect>

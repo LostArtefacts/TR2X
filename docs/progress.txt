@@ -83,8 +83,8 @@ typedef struct DISPLAY_ADAPTER_NODE {
 } DISPLAY_ADAPTER_NODE;
 
 typedef struct DISPLAY_ADAPTER_LIST {
-    struct DisplayAdapterNode_t *head;
-    struct DisplayAdapterNode_t *tail;
+    struct DISPLAY_ADAPTER_NODE *head;
+    struct DISPLAY_ADAPTER_NODE *tail;
     DWORD dwCount;
 } DISPLAY_ADAPTER_LIST;
 
@@ -96,14 +96,14 @@ typedef struct SOUND_ADAPTER {
 } SOUND_ADAPTER;
 
 typedef struct SOUND_ADAPTER_NODE {
-    struct SoundAdapterNode_t *next;
-    struct SoundAdapterNode_t *previous;
+    struct SOUND_ADAPTER_NODE *next;
+    struct SOUND_ADAPTER_NODE *previous;
     SOUND_ADAPTER body;
 } SOUND_ADAPTER_NODE;
 
 typedef struct SOUND_ADAPTER_LIST {
-    struct SoundAdapterNode_t *head;
-    struct SoundAdapterNode_t *tail;
+    struct SOUND_ADAPTER_NODE *head;
+    struct SOUND_ADAPTER_NODE *tail;
     DWORD dwCount;
 } SOUND_ADAPTER_LIST;
 
@@ -1800,10 +1800,10 @@ typedef struct CINE_FRAME {
 00445A50    000003B1    -R      HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);
 00445E10    00000040    -R      bool __cdecl WinVidInit(void);
 00445E50    000000AF    -R      bool __cdecl WinVidGetDisplayAdapters(void);
-00445F00    00000013    -R      void __thiscall FlaggedStringDelete(STRING_FLAGGED *item);
-00445F20    0000001A    -R      bool __cdecl EnumerateDisplayAdapters(DISPLAY_ADAPTER_LIST *displayAdapterList);
+00445F00    00000013    -R      void __thiscall FlaggedStringDelete(struct STRING_FLAGGED *item);
+00445F20    0000001A    -R      bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);
 00445F40    000001BE    -R      BOOL __stdcall EnumDisplayAdaptersCallback(GUID *lpGUID, LPTSTR lpDriverDescription, LPTSTR lpDriverName, LPVOID lpContext);
-00446100    00000035    -R      void __thiscall FlaggedStringsCreate(DISPLAY_ADAPTER *adapter);
+00446100    00000035    -R      void __thiscall FlaggedStringsCreate(struct DISPLAY_ADAPTER *adapter);
 00446140    0000006A    -R      bool __cdecl WinVidRegisterGameWindowClass(void);
 004461B0    0000049F    -R      LRESULT __stdcall WinVidGameWindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 004467C0    000001C0    -R      void __cdecl WinVidResizeGameWindow(HWND hWnd, int32_t edge, LPRECT rect);
@@ -1833,7 +1833,7 @@ typedef struct CINE_FRAME {
 004473B0    0000007F    -R      bool __cdecl WinInputInit(void);
 00447430    00000024    -R      bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);
 00447460    000000E8    -R      BOOL __stdcall DInputEnumDevicesCallback(LPCDIDEVICEINSTANCE lpddi, LPVOID pvRef);
-00447550    0000001F    -R      void __thiscall FlaggedStringCreate(STRING_FLAGGED *item, DWORD dwSize);
+00447550    0000001F    -R      void __thiscall FlaggedStringCreate(struct STRING_FLAGGED *item, DWORD dwSize);
 00447570    0000004E    -R      JOYSTICK_NODE *__cdecl GetJoystick(GUID *lpGuid);
 004475C0    000000C9    -R      void __cdecl DInputKeyboardCreate(void);
 00447690    00000029    -R      void __cdecl DInputKeyboardRelease(void);
@@ -2087,7 +2087,7 @@ typedef struct CINE_FRAME {
 00455570    00000039    -R      void __cdecl S_CDStop(void);
 004555B0    00000084    -R      BOOL __cdecl StartSyncedAudio(int32_t trackID);
 00455640    00000061    -R      DWORD __cdecl S_CDGetLoc(void);
-004556B0    00000092    *       void __cdecl Music_SetVolume(uint32_t volume);
+004556B0    00000092    *       void __cdecl Music_SetVolume(int32_t volume);
 004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);
 004558E0    000000C8    -R      BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);
 004559B0    000000AE    -R      void __cdecl SyncSurfacePalettes(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette);
@@ -2168,6 +2168,7 @@ typedef struct CINE_FRAME {
 #   + decompiled
 # Offset    Flags   Declaration
 
+004640BC    -       int16_t g_CD_TrackID;
 00465A60    -       int16_t g_OptionMusicVolume;
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
@@ -2199,7 +2200,22 @@ typedef struct CINE_FRAME {
 004D6B60    -       float g_FltWinRight;
 004D6BF8    -       int32_t g_PhdWinRight;
 004D778C    -       int32_t g_IsChunkyCamera;
+004D7F10    -       HWND g_GameWindowHandle;
+004D8570    -       DWORD g_SampleFreqs[256];
+004D8970    -       struct SOUND_ADAPTER_LIST g_SoundAdapterList;
+004D8980    -       LPDIRECTSOUNDBUFFER g_SampleBuffers[256];
+004D8D80    -       uint8_t g_IsSoundEnabled;
+004D8D84    -       LPDIRECTSOUND g_DSound;
+004D8D88    -       int32_t g_ChannelSamples[32];
+004D8E08    -       LPDIRECTSOUNDBUFFER g_ChannelBuffers[32];
+004D8E8C    -       struct SOUND_ADAPTER g_CurrentSoundAdapter;
+004D8EAC    -       struct SOUND_ADAPTER_NODE *g_PrimarySoundAdapter;
+0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
+0051BDA8    -       int32_t g_MasterVolume;
+0051BDAC    -       MCIDEVICEID g_MciDeviceID;
+0051BDB0    -       int32_t g_CD_LoopTrack;
+0051E6C4    -       int32_t g_SoundIsActive;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 0052618C    -       struct ROOM_INFO *g_Rooms;
