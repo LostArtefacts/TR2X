@@ -75,7 +75,7 @@ typedef struct DISPLAY_MODE_NODE {
 typedef struct DISPLAY_MODE_LIST {
     struct DISPLAY_MODE_NODE *head;
     struct DISPLAY_MODE_NODE *tail;
-    DWORD dwCount;
+    DWORD count;
 } DISPLAY_MODE_LIST;
 
 typedef struct STRING_FLAGGED {
@@ -116,28 +116,28 @@ typedef struct DISPLAY_ADAPTER_NODE {
 } DISPLAY_ADAPTER_NODE;
 
 typedef struct DISPLAY_ADAPTER_LIST {
-    struct DisplayAdapterNode_t *head;
-    struct DisplayAdapterNode_t *tail;
-    DWORD dwCount;
+    struct DISPLAY_ADAPTER_NODE *head;
+    struct DISPLAY_ADAPTER_NODE *tail;
+    DWORD count;
 } DISPLAY_ADAPTER_LIST;
 
 typedef struct SOUND_ADAPTER {
-    GUID *lpAdapterGuid;
-    GUID adapterGuid;
+    GUID *adapter_guid_ptr;
+    GUID adapter_guid;
     STRING_FLAGGED description;
     STRING_FLAGGED module;
 } SOUND_ADAPTER;
 
 typedef struct SOUND_ADAPTER_NODE {
-    struct SoundAdapterNode_t *next;
-    struct SoundAdapterNode_t *previous;
+    struct SOUND_ADAPTER_NODE *next;
+    struct SOUND_ADAPTER_NODE *previous;
     SOUND_ADAPTER body;
 } SOUND_ADAPTER_NODE;
 
 typedef struct SOUND_ADAPTER_LIST {
-    struct SoundAdapterNode_t *head;
-    struct SoundAdapterNode_t *tail;
-    DWORD dwCount;
+    struct SOUND_ADAPTER_NODE *head;
+    struct SOUND_ADAPTER_NODE *tail;
+    DWORD count;
 } SOUND_ADAPTER_LIST;
 
 typedef struct JOYSTICK {
@@ -156,7 +156,7 @@ typedef struct JOYSTICK_NODE {
 typedef struct JOYSTICK_LIST {
     struct JOYSTICK_LIST *head;
     struct JOYSTICK_LIST *tail;
-    DWORD dwCount;
+    DWORD count;
 } JOYSTICK_LIST;
 
 typedef enum RENDER_MODE {

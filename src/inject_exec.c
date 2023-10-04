@@ -6,6 +6,7 @@
 #include "game/shell.h"
 #include "game/sound.h"
 #include "inject_util.h"
+#include "specific/s_audio_sample.h"
 #include "specific/s_flagged_string.h"
 
 static void Inject_Camera(void);
@@ -13,6 +14,7 @@ static void Inject_Math(void);
 static void Inject_Matrix(void);
 static void Inject_Shell(void);
 static void Inject_Sound(void);
+static void Inject_S_Audio_Sample(void);
 static void Inject_S_FlaggedString(void);
 
 static void Inject_Camera(void)
@@ -70,6 +72,11 @@ static void Inject_S_FlaggedString(void)
     INJECT(1, 0x00446100, S_FlaggedString_InitAdapter);
 }
 
+static void Inject_S_Audio_Sample(void)
+{
+    INJECT(1, 0x00447BC0, S_Audio_Sample_GetAdapter);
+}
+
 void Inject_Exec(void)
 {
     Inject_Camera();
@@ -78,5 +85,6 @@ void Inject_Exec(void)
     Inject_Shell();
     Inject_Sound();
 
+    Inject_S_Audio_Sample();
     Inject_S_FlaggedString();
 }

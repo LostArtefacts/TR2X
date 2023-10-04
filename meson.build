@@ -84,6 +84,7 @@ dll_sources = [
   'src/log.c',
   'src/main_dll.c',
   'src/memory.c',
+  'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',
   'src/specific/s_flagged_string.c',
 ]

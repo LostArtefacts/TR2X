@@ -42,7 +42,7 @@ typedef struct DISPLAY_MODE_NODE {
 typedef struct DISPLAY_MODE_LIST {
     struct DISPLAY_MODE_NODE *head;
     struct DISPLAY_MODE_NODE *tail;
-    DWORD dwCount;
+    DWORD count;
 } DISPLAY_MODE_LIST;
 
 typedef struct STRING_FLAGGED {
@@ -85,12 +85,12 @@ typedef struct DISPLAY_ADAPTER_NODE {
 typedef struct DISPLAY_ADAPTER_LIST {
     struct DISPLAY_ADAPTER_NODE *head;
     struct DISPLAY_ADAPTER_NODE *tail;
-    DWORD dwCount;
+    DWORD count;
 } DISPLAY_ADAPTER_LIST;
 
 typedef struct SOUND_ADAPTER {
-    GUID *lpAdapterGuid;
-    GUID adapterGuid;
+    GUID *adapter_guid_ptr;
+    GUID adapter_guid;
     STRING_FLAGGED description;
     STRING_FLAGGED module;
 } SOUND_ADAPTER;
@@ -104,7 +104,7 @@ typedef struct SOUND_ADAPTER_NODE {
 typedef struct SOUND_ADAPTER_LIST {
     struct SOUND_ADAPTER_NODE *head;
     struct SOUND_ADAPTER_NODE *tail;
-    DWORD dwCount;
+    DWORD count;
 } SOUND_ADAPTER_LIST;
 
 typedef struct JOYSTICK {
@@ -123,7 +123,7 @@ typedef struct JOYSTICK_NODE {
 typedef struct JOYSTICK_LIST {
     struct JOYSTICK_LIST *head;
     struct JOYSTICK_LIST *tail;
-    DWORD dwCount;
+    DWORD count;
 } JOYSTICK_LIST;
 
 typedef enum RENDER_MODE {
@@ -1854,7 +1854,7 @@ typedef struct CINE_FRAME {
 00447B30    00000018    x       sub_447B30
 00447B40    00000039    x       sub_447B40
 00447B90    0000002F    x       sub_447B90
-00447BC0    00000048    -       struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid);
+00447BC0    00000048    +       const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid);
 00447C10    0000002E    -       void __cdecl S_Audio_Sample_CloseAllTracks(void);
 00447C40    0000010E    -       bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);
 00447D50    00000045    -       bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);
