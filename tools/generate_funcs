@@ -151,7 +151,7 @@ def make_funcs_h(functions: list[Symbol]) -> None:
         ):
             defines.append(define)
 
-    FUNCS_H_FILE.write_text("\n".join([*header, *defines, *footer]))
+    FUNCS_H_FILE.write_text("\n".join([*header, *defines, *footer]) + "\n")
 
 
 def make_vars_h(variables: list[Symbol]) -> None:
@@ -171,7 +171,7 @@ def make_vars_h(variables: list[Symbol]) -> None:
         ):
             defines.append(define)
 
-    VARS_H_FILE.write_text("\n".join([*header, *defines, *footer]))
+    VARS_H_FILE.write_text("\n".join([*header, *defines, *footer]) + "\n")
 
 
 def main() -> None:
