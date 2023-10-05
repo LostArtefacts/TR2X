@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.83% (58)</tspan> · <tspan class="known">92.75% (1113)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.92% (59)</tspan> · <tspan class="known">92.67% (1112)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.10" height="6" x="0" y="0" class="decompiled"/>
-<rect width="692.84" height="6" x="36.10" y="0" class="known"/>
+<rect width="36.73" height="6" x="0" y="0" class="decompiled"/>
+<rect width="692.22" height="6" x="36.73" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1203,7 +1203,7 @@
 <rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl Music_Stop(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="known"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="known"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
-<rect width="12" height="12" x="390" y="330" class="known"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
+<rect width="12" height="12" x="390" y="330" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="405" y="330" class="known"><title>void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);</title></rect>
 <rect width="12" height="12" x="420" y="330" class="known"><title>BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);</title></rect>
 <rect width="12" height="12" x="435" y="330" class="known"><title>void __cdecl SyncSurfacePalettes(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.64%</tspan> · <tspan class="known">96.03%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.68%</tspan> · <tspan class="known">95.99%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="27.20" height="6" x="0" y="0" class="decompiled"/>
-<rect width="717.33" height="6" x="27.20" y="0" class="known"/>
+<rect width="27.52" height="6" x="0" y="0" class="decompiled"/>
+<rect width="717.01" height="6" x="27.52" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1853,7 +1853,7 @@
 <rect width="7.65" height="8.12" x="707.56" y="169.65" class="known"><title>void __cdecl EffectNewRoom(int16_t fx_num, int16_t room_num);</title></rect>
 <rect width="7.65" height="8.12" x="718.21" y="169.65" class="known"><title>void __cdecl SE_AdvancedDlgUpdate(HWND hwndDlg);</title></rect>
 <rect width="7.57" height="8.12" x="728.85" y="169.65" class="known"><title>int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
-<rect width="7.57" height="8.12" x="739.43" y="169.65" class="known"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
+<rect width="7.57" height="8.12" x="739.43" y="169.65" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="180.76" class="known"><title>int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="191.69" class="known"><title>void __cdecl extra_as_sharkkill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="202.61" class="known"><title>bool __cdecl GetRegistryGuidValue(LPCTSTR lpValueName, GUID *value, GUID *defaultValue);</title></rect>

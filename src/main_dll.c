@@ -1,4 +1,5 @@
 #include "inject_exec.h"
+#include "lib/winmm.h"
 #include "log.h"
 
 #include <stdio.h>
@@ -12,6 +13,7 @@ DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
         Log_Init();
         LOG_DEBUG("Injected\n");
 
+        WinMM_Load();
         Inject_Exec();
 
         break;

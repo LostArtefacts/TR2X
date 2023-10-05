@@ -77,16 +77,19 @@ dll_sources = [
   'src/game/camera.c',
   'src/game/math.c',
   'src/game/matrix.c',
+  'src/game/music.c',
   'src/game/shell.c',
   'src/game/sound.c',
   'src/inject_exec.c',
   'src/inject_util.c',
+  'src/lib/winmm.c',
   'src/log.c',
   'src/main_dll.c',
   'src/memory.c',
   'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',
   'src/specific/s_flagged_string.c',
+  'src/specific/s_music.c',
 ]
 
 executable(

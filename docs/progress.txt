@@ -2087,7 +2087,7 @@ typedef struct CINE_FRAME {
 00455570    00000039    -       void __cdecl Music_Stop(void);
 004555B0    00000084    -       bool __cdecl Music_PlaySynced(int32_t trackID);
 00455640    00000061    -       int32_t __cdecl Music_GetFrames(void);
-004556B0    00000092    *       void __cdecl Music_SetVolume(int32_t volume);
+004556B0    00000092    +       void __cdecl Music_SetVolume(int32_t volume);
 004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);
 004558E0    000000C8    -R      BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);
 004559B0    000000AE    -R      void __cdecl SyncSurfacePalettes(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette);

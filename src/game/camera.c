@@ -2,6 +2,7 @@
 
 #include "game/math.h"
 #include "game/matrix.h"
+#include "game/music.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
