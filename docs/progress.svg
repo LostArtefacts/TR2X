@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.92% (59)</tspan> · <tspan class="known">92.67% (1112)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5% (60)</tspan> · <tspan class="known">92.58% (1111)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.73" height="6" x="0" y="0" class="decompiled"/>
-<rect width="692.22" height="6" x="36.73" y="0" class="known"/>
+<rect width="37.35" height="6" x="0" y="0" class="decompiled"/>
+<rect width="691.60" height="6" x="37.35" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1202,7 +1202,7 @@
 <rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl Music_Play(int16_t track_id, bool is_looped);</title></rect>
 <rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl Music_Stop(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="known"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
-<rect width="12" height="12" x="375" y="330" class="known"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
+<rect width="12" height="12" x="375" y="330" class="decompiled"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
 <rect width="12" height="12" x="390" y="330" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="405" y="330" class="known"><title>void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);</title></rect>
 <rect width="12" height="12" x="420" y="330" class="known"><title>BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.68%</tspan> · <tspan class="known">95.99%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.71%</tspan> · <tspan class="known">95.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="27.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="717.01" height="6" x="27.52" y="0" class="known"/>
+<rect width="27.74" height="6" x="0" y="0" class="decompiled"/>
+<rect width="716.80" height="6" x="27.74" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2000,7 +2000,7 @@
 <rect width="5.78" height="5.99" x="723.85" y="220" class="known"><title>void __cdecl DecreaseScreenSize(void);</title></rect>
 <rect width="5.69" height="5.99" x="732.62" y="220" class="known"><title>void __cdecl InitialiseGameFlags(void);</title></rect>
 <rect width="5.69" height="5.99" x="741.31" y="220" class="known"><title>DWORD __cdecl CalculateCompatibleColor(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha);</title></rect>
-<rect width="5.62" height="6.06" x="607.32" y="228.99" class="known"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
+<rect width="5.62" height="6.06" x="607.32" y="228.99" class="decompiled"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
 <rect width="5.62" height="6.06" x="607.32" y="238.06" class="known"><title>bool __cdecl SE_RegisterSetupWindowClass(void);</title></rect>
 <rect width="5.62" height="6.06" x="607.32" y="247.12" class="known"><title>void __fastcall flatA(int32_t y0, int32_t y1, BYTE colorIdx);</title></rect>
 <rect width="5.62" height="5.97" x="607.32" y="256.19" class="known"><title>void __cdecl Inv_RingGetView(struct RING_INFO *ring, struct PHD_3DPOS *viewer);</title></rect>

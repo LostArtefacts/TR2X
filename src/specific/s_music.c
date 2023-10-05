@@ -1,6 +1,24 @@
 #include "specific/s_music.h"
 
+#include "global/vars.h"
 #include "lib/winmm.h"
+
+uint32_t __cdecl S_Music_GetFrames(void)
+{
+    MCI_STATUS_PARMS status_params;
+    status_params.dwItem = MCI_STATUS_POSITION;
+    if (mciSendCommand(
+            g_MciDeviceID, MCI_STATUS, MCI_STATUS_ITEM,
+            (DWORD_PTR)&status_params)) {
+        return 0;
+    }
+
+    uint32_t pos = status_params.dwReturn;
+    int32_t min = MCI_TMSF_MINUTE(pos);
+    int32_t sec = MCI_TMSF_SECOND(pos);
+    int32_t frame = MCI_TMSF_FRAME(pos);
+    return (min * 60 + sec) * 75 + frame;
+}
 
 void __cdecl S_Music_SetVolume(int32_t volume)
 {
