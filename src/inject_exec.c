@@ -64,6 +64,7 @@ static void Inject_Shell(void)
 
 static void Inject_Music(void)
 {
+    INJECT(1, 0x00455570, Music_Stop);
     INJECT(1, 0x004555B0, Music_PlaySynced);
     INJECT(1, 0x00455640, Music_GetFrames);
     INJECT(1, 0x004556B0, Music_SetVolume);

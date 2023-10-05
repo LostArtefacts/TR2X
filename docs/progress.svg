@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.08% (61)</tspan> · <tspan class="known">92.50% (1110)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.17% (62)</tspan> · <tspan class="known">92.42% (1109)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="37.97" height="6" x="0" y="0" class="decompiled"/>
-<rect width="690.98" height="6" x="37.97" y="0" class="known"/>
+<rect width="38.60" height="6" x="0" y="0" class="decompiled"/>
+<rect width="690.35" height="6" x="38.60" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1200,7 +1200,7 @@
 <rect width="12" height="12" x="300" y="330" class="known"><title>bool __cdecl Music_Init(void);</title></rect>
 <rect width="12" height="12" x="315" y="330" class="known"><title>void __cdecl Music_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl Music_Play(int16_t track_id, bool is_looped);</title></rect>
-<rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl Music_Stop(void);</title></rect>
+<rect width="12" height="12" x="345" y="330" class="decompiled"><title>void __cdecl Music_Stop(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="decompiled"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="decompiled"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
 <rect width="12" height="12" x="390" y="330" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.75%</tspan> · <tspan class="known">95.92%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.77%</tspan> · <tspan class="known">95.90%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="28.03" height="6" x="0" y="0" class="decompiled"/>
-<rect width="716.51" height="6" x="28.03" y="0" class="known"/>
+<rect width="28.16" height="6" x="0" y="0" class="decompiled"/>
+<rect width="716.38" height="6" x="28.16" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2183,7 +2183,7 @@
 <rect width="3.88" height="3.67" x="689.25" y="268.30" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);</title></rect>
 <rect width="3.88" height="3.67" x="696.14" y="268.30" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="3.88" height="3.67" x="703.02" y="268.30" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);</title></rect>
-<rect width="3.88" height="3.67" x="709.91" y="268.30" class="known"><title>void __cdecl Music_Stop(void);</title></rect>
+<rect width="3.88" height="3.67" x="709.91" y="268.30" class="decompiled"><title>void __cdecl Music_Stop(void);</title></rect>
 <rect width="3.64" height="3.67" x="716.79" y="268.30" class="known"><title>void __cdecl Output_DrawPolyGTMapPersp(int16_t *obj_ptr);</title></rect>
 <rect width="3.64" height="3.67" x="723.43" y="268.30" class="known"><title>void __cdecl Output_DrawPolyWGTMapPersp(int16_t *obj_ptr);</title></rect>
 <rect width="3.64" height="3.67" x="730.07" y="268.30" class="known"><title>void __cdecl Item_ShiftCol(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

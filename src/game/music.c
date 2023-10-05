@@ -2,6 +2,11 @@
 
 #include "specific/s_music.h"
 
+void __cdecl Music_Stop(void)
+{
+    S_Music_Stop();
+}
+
 bool __cdecl Music_PlaySynced(int32_t track_id)
 {
     return S_Music_PlaySynced(track_id);

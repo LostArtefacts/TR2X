@@ -4,6 +4,18 @@
 #include "global/vars.h"
 #include "lib/winmm.h"
 
+void __cdecl S_Music_Stop(void)
+{
+    if (g_CD_TrackID <= 0) {
+        return;
+    }
+
+    MCI_GENERIC_PARMS params;
+    mciSendCommand(g_MciDeviceID, MCI_STOP, 0, (DWORD_PTR)&params);
+    g_CD_TrackID = 0;
+    g_CD_LoopTrack = 0;
+}
+
 bool __cdecl S_Music_PlaySynced(int32_t track_id)
 {
     g_CD_TrackID = track_id;
