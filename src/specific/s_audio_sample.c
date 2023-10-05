@@ -406,3 +406,11 @@ void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch)
     }
     S_Audio_Sample_AdjustTrackPitch(track_id, pitch);
 }
+
+void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id)
+{
+    if (!g_SoundIsActive) {
+        return;
+    }
+    S_Audio_Sample_CloseTrack(track_id);
+}

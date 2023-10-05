@@ -35,3 +35,4 @@ int32_t __cdecl S_Audio_Sample_OutPlayLooped(
 void __cdecl S_Audio_Sample_OutSetPanAndVolume(
     int32_t track_id, int32_t pan, int32_t volume);
 void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);
+void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.58% (55)</tspan> · <tspan class="known">93% (1116)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.67% (56)</tspan> · <tspan class="known">92.92% (1115)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="34.24" height="6" x="0" y="0" class="decompiled"/>
-<rect width="694.71" height="6" x="34.24" y="0" class="known"/>
+<rect width="34.86" height="6" x="0" y="0" class="decompiled"/>
+<rect width="694.09" height="6" x="34.86" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1194,7 +1194,7 @@
 <rect width="12" height="12" x="210" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);</title></rect>
 <rect width="12" height="12" x="225" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="12" height="12" x="240" y="330" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
-<rect width="12" height="12" x="255" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
+<rect width="12" height="12" x="255" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="270" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseAllTracks(void);</title></rect>
 <rect width="12" height="12" x="285" y="330" class="known"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="300" y="330" class="known"><title>bool __cdecl Music_Init(void);</title></rect>
@@ -1283,8 +1283,8 @@
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.61%</tspan> · <tspan class="known">96.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.95" height="6" x="0" y="0" class="decompiled"/>
-<rect width="717.59" height="6" x="26.95" y="0" class="known"/>
+<rect width="27" height="6" x="0" y="0" class="decompiled"/>
+<rect width="717.54" height="6" x="27" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2402,7 +2402,7 @@
 <rect width="1.53" height="1.09" x="740.95" y="330.47" class="known"><title>void __cdecl WinInRunControlPanel(HWND hWnd);</title></rect>
 <rect width="1.53" height="1.09" x="745.47" y="330.47" class="todo"><title>sub_44E860</title></rect>
 <rect width="1.39" height="1.22" x="717.73" y="334.56" class="known"><title>void __cdecl SE_GraphicsAdapterSet(HWND hwndDlg, DISPLAY_ADAPTER_NODE *adapter);</title></rect>
-<rect width="1.39" height="1.22" x="717.73" y="338.78" class="known"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
+<rect width="1.39" height="1.22" x="717.73" y="338.78" class="decompiled"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
 <rect width="1.39" height="1.04" x="717.73" y="343" class="known"><title>void __cdecl turn180_effect(struct ITEM_INFO *item);</title></rect>
 <rect width="1.39" height="1.04" x="717.73" y="347.04" class="known"><title>void __cdecl invisibility_off(struct ITEM_INFO *item);</title></rect>
 <rect width="1.39" height="1.04" x="717.73" y="351.07" class="known"><title>void __cdecl BridgeFlatFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
