@@ -4,6 +4,13 @@
 #include "global/vars.h"
 #include "lib/winmm.h"
 
+void __cdecl S_Music_Shutdown(void)
+{
+    MCI_GENERIC_PARMS params;
+    mciSendCommand(g_MciDeviceID, MCI_STOP, 0, (DWORD_PTR)&params);
+    mciSendCommand(g_MciDeviceID, MCI_CLOSE, 0, (DWORD_PTR)&params);
+}
+
 void __cdecl S_Music_Play(int16_t track_id, bool is_looped)
 {
     if (g_OptionMusicVolume == 0) {
