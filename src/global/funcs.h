@@ -1043,7 +1043,6 @@
 #define CheckCheatMode ((void __cdecl (*)(void))0x00454D60)
 #define S_SaveSettings ((void __cdecl (*)(void))0x004550C0)
 #define S_LoadSettings ((void __cdecl (*)(void))0x00455140)
-#define S_Audio_Sample_OutPlayLooped ((int32_t __cdecl (*)(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan))0x004552D0)
 #define S_Audio_Sample_OutSetPanAndVolume ((void __cdecl (*)(int32_t track_id, int32_t pan, uint16_t volume))0x00455320)
 #define S_Audio_Sample_OutSetPitch ((void __cdecl (*)(int32_t track_id, int32_t pitch))0x00455360)
 #define S_Audio_Sample_OutCloseTrack ((void __cdecl (*)(int32_t track_id))0x00455390)

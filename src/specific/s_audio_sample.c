@@ -374,3 +374,16 @@ int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan)
 {
     return pan / 16;
 }
+
+int32_t __cdecl S_Audio_Sample_OutPlayLooped(
+    int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan)
+{
+    if (!g_SoundIsActive) {
+        return -3;
+    }
+
+    int32_t calc_pan = S_Audio_Sample_CalculateSamplePan(pan);
+    int32_t calc_volume = S_Audio_Sample_CalculateSampleVolume(volume);
+    return S_Audio_Sample_Play(
+        sample_id, calc_volume, pitch, calc_pan, DSBPLAY_LOOPING);
+}
