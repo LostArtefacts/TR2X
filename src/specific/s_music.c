@@ -4,6 +4,27 @@
 #include "global/vars.h"
 #include "lib/winmm.h"
 
+void __cdecl S_Music_Play(int16_t track_id, bool is_looped)
+{
+    if (g_OptionMusicVolume == 0) {
+        return;
+    }
+
+    g_CD_TrackID = track_id;
+
+    track_id = Music_GetRealTrack(track_id);
+    MCI_PLAY_PARMS play_params;
+    play_params.dwFrom = track_id;
+    play_params.dwTo = track_id + 1;
+    mciSendCommand(
+        g_MciDeviceID, MCI_PLAY, MCI_NOTIFY_FAILURE | MCI_NOTIFY_ABORTED,
+        (DWORD_PTR)&play_params);
+
+    if (is_looped) {
+        g_CD_LoopTrack = track_id;
+    }
+}
+
 void __cdecl S_Music_Stop(void)
 {
     if (g_CD_TrackID <= 0) {

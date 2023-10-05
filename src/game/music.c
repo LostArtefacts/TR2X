@@ -2,6 +2,11 @@
 
 #include "specific/s_music.h"
 
+void __cdecl Music_Play(int16_t track_id, bool is_looped)
+{
+    S_Music_Play(track_id, is_looped);
+}
+
 void __cdecl Music_Stop(void)
 {
     S_Music_Stop();

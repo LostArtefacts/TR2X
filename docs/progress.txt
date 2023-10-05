@@ -2083,7 +2083,7 @@ typedef struct CINE_FRAME {
 004553C0    0000001F    +       BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);
 004553E0    00000077    -       bool __cdecl Music_Init(void);
 00455460    00000051    -       void __cdecl Music_Shutdown(void);
-00455500    0000006F    -       void __cdecl Music_Play(int16_t track_id, bool is_looped);
+00455500    0000006F    +       void __cdecl Music_Play(int16_t track_id, bool is_looped);
 00455570    00000039    +       void __cdecl Music_Stop(void);
 004555B0    00000084    +       bool __cdecl Music_PlaySynced(int32_t trackID);
 00455640    00000061    +       int32_t __cdecl Music_GetFrames(void);
