@@ -26,3 +26,5 @@ bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);
 bool __cdecl S_Audio_Sample_DSoundBufferTest(void);
 void __cdecl S_Audio_Sample_Shutdown(void);
 bool __cdecl S_Audio_Sample_IsEnabled(void);
+int32_t __cdecl S_Audio_Sample_OutPlay(
+    int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan);

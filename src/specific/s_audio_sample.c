@@ -350,3 +350,15 @@ bool __cdecl S_Audio_Sample_IsEnabled(void)
 {
     return g_IsSoundEnabled;
 }
+
+int32_t __cdecl S_Audio_Sample_OutPlay(
+    int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan)
+{
+    if (!g_SoundIsActive) {
+        return -3;
+    }
+
+    int32_t calc_pan = S_Audio_Sample_CalculateSamplePan(pan);
+    int32_t calc_volume = S_Audio_Sample_CalculateSampleVolume(volume);
+    return S_Audio_Sample_Play(sample_id, calc_volume, pitch, calc_pan, 0);
+}

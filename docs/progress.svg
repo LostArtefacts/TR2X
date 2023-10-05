@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.08% (49)</tspan> · <tspan class="known">93.50% (1122)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.17% (50)</tspan> · <tspan class="known">93.42% (1121)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="30.50" height="6" x="0" y="0" class="decompiled"/>
-<rect width="698.44" height="6" x="30.50" y="0" class="known"/>
+<rect width="31.12" height="6" x="0" y="0" class="decompiled"/>
+<rect width="697.82" height="6" x="31.12" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1187,7 +1187,7 @@
 <rect width="12" height="12" x="105" y="330" class="known"><title>void __cdecl CheckCheatMode(void);</title></rect>
 <rect width="12" height="12" x="120" y="330" class="known"><title>void __cdecl S_SaveSettings(void);</title></rect>
 <rect width="12" height="12" x="135" y="330" class="known"><title>void __cdecl S_LoadSettings(void);</title></rect>
-<rect width="12" height="12" x="150" y="330" class="known"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
+<rect width="12" height="12" x="150" y="330" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="12" height="12" x="165" y="330" class="known"><title>int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="180" y="330" class="known"><title>int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);</title></rect>
 <rect width="12" height="12" x="195" y="330" class="known"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.52%</tspan> · <tspan class="known">96.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.54%</tspan> · <tspan class="known">96.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.28" height="6" x="0" y="0" class="decompiled"/>
-<rect width="718.26" height="6" x="26.28" y="0" class="known"/>
+<rect width="26.43" height="6" x="0" y="0" class="decompiled"/>
+<rect width="718.11" height="6" x="26.43" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2115,7 +2115,7 @@
 <rect width="4.26" height="4.76" x="692.22" y="253.42" class="known"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
 <rect width="4.26" height="4.76" x="699.48" y="253.42" class="known"><title>DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);</title></rect>
 <rect width="4.26" height="4.76" x="706.75" y="253.42" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
-<rect width="4.26" height="4.76" x="714.01" y="253.42" class="known"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
+<rect width="4.26" height="4.76" x="714.01" y="253.42" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.26" height="4.76" x="721.27" y="253.42" class="known"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.16" height="4.76" x="728.53" y="253.42" class="known"><title>void __cdecl DrawGameInfo(int32_t timed);</title></rect>
 <rect width="4.16" height="4.76" x="735.69" y="253.42" class="known"><title>bool __thiscall CompareVideoModes(DISPLAY_MODE *mode1, DISPLAY_MODE *mode2);</title></rect>
