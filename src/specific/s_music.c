@@ -4,6 +4,25 @@
 #include "global/vars.h"
 #include "lib/winmm.h"
 
+bool __cdecl S_Music_Init(void)
+{
+    MCI_OPEN_PARMS open_params;
+    open_params.lpstrDeviceType = "cdaudio";
+
+    if (mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE, (DWORD_PTR)&open_params)) {
+        return false;
+    }
+
+    g_MciDeviceID = open_params.wDeviceID;
+
+    MCI_SET_PARMS set_params;
+    set_params.dwTimeFormat = MCI_FORMAT_TMSF;
+    mciSendCommand(
+        g_MciDeviceID, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD_PTR)&set_params);
+
+    return true;
+}
+
 void __cdecl S_Music_Shutdown(void)
 {
     MCI_GENERIC_PARMS params;

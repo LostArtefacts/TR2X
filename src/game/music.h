@@ -2,6 +2,7 @@
 
 #include "global/types.h"
 
+bool __cdecl Music_Init(void);
 void __cdecl Music_Shutdown(void);
 void __cdecl Music_Play(int16_t track_id, bool is_looped);
 void __cdecl Music_Stop(void);

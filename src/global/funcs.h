@@ -1043,7 +1043,6 @@
 #define CheckCheatMode ((void __cdecl (*)(void))0x00454D60)
 #define S_SaveSettings ((void __cdecl (*)(void))0x004550C0)
 #define S_LoadSettings ((void __cdecl (*)(void))0x00455140)
-#define Music_Init ((bool __cdecl (*)(void))0x004553E0)
 #define CopyBitmapPalette ((void __cdecl (*)(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal))0x004557A0)
 #define FindNearestPaletteEntry ((BYTE __cdecl (*)(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette))0x004558E0)
 #define SyncSurfacePalettes ((void __cdecl (*)(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette))0x004559B0)

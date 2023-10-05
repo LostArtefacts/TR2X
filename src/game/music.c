@@ -2,6 +2,11 @@
 
 #include "specific/s_music.h"
 
+bool __cdecl Music_Init(void)
+{
+    return S_Music_Init();
+}
+
 void __cdecl Music_Shutdown(void)
 {
     S_Music_Shutdown();
