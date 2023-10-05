@@ -414,3 +414,13 @@ void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id)
     }
     S_Audio_Sample_CloseTrack(track_id);
 }
+
+void __cdecl S_Audio_Sample_OutCloseAllTracks(void)
+{
+    if (!g_SoundIsActive) {
+        return;
+    }
+    for (int32_t i = 0; i < MAX_AUDIO_SAMPLE_TRACKS; ++i) {
+        S_Audio_Sample_CloseTrack(i);
+    }
+}
