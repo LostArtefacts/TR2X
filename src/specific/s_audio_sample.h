@@ -29,3 +29,4 @@ bool __cdecl S_Audio_Sample_IsEnabled(void);
 int32_t __cdecl S_Audio_Sample_OutPlay(
     int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan);
 int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);
+int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);

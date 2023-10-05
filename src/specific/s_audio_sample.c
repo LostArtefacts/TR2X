@@ -369,3 +369,8 @@ int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume)
     double scaler = 0x1.p-21; // 2.0e-21
     return (adjusted_volume * scaler - 1.0) * 5000.0;
 }
+
+int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan)
+{
+    return pan / 16;
+}
