@@ -849,6 +849,122 @@ typedef struct CINE_FRAME {
     int16_t roll;
 } CINE_FRAME;
 
+typedef enum INPUT_STATE {
+    IN_FORWARD = 0x00000001,
+    IN_BACK = 0x00000002,
+    IN_LEFT = 0x00000004,
+    IN_RIGHT = 0x00000008,
+    IN_JUMP = 0x00000010,
+    IN_DRAW = 0x00000020,
+    IN_ACTION = 0x00000040,
+    IN_SLOW = 0x00000080,
+    IN_OPTION = 0x00000100,
+    IN_LOOK = 0x00000200,
+    IN_STEPL = 0x00000400,
+    IN_STEPR = 0x00000800,
+    IN_ROLL = 0x00001000,
+    IN_PAUSE = 0x00002000,
+    IN_RESERVED1 = 0x00004000,
+    IN_RESERVED2 = 0x00008000,
+    IN_DOZYCHEAT = 0x00010000,
+    IN_STUFFCHEAT = 0x00020000,
+    IN_DEBUGINFO = 0x00040000,
+    IN_FLARE = 0x00080000,
+    IN_SELECT = 0x00100000,
+    IN_DESELECT = 0x00200000,
+    IN_SAVE = 0x00400000,
+    IN_LOAD = 0x00800000,
+} INPUT_STATE;
+
+typedef enum LARA_WATER_STATE {
+    LWS_ABOVE_WATER = 0,
+    LWS_UNDERWATER = 1,
+    LWS_SURFACE = 2,
+    LWS_CHEAT = 3,
+    LWS_WADE = 4,
+} LARA_WATER_STATE;
+
+typedef enum LARA_STATE {
+    LS_WALK         = 0,
+    LS_RUN          = 1,
+    LS_STOP         = 2,
+    LS_FORWARD_JUMP = 3,
+    LS_POSE         = 4,
+    LS_FAST_BACK    = 5,
+    LS_TURN_RIGHT   = 6,
+    LS_TURN_LEFT    = 7,
+    LS_DEATH        = 8,
+    LS_FAST_FALL    = 9,
+    LS_HANG         = 10,
+    LS_REACH        = 11,
+    LS_SPLAT        = 12,
+    LS_TREAD        = 13,
+    LS_LAND         = 14,
+    LS_COMPRESS     = 15,
+    LS_BACK         = 16,
+    LS_SWIM         = 17,
+    LS_GLIDE        = 18,
+    LS_NULL         = 19,
+    LS_FAST_TURN    = 20,
+    LS_STEP_RIGHT   = 21,
+    LS_STEP_LEFT    = 22,
+    LS_HIT          = 23,
+    LS_SLIDE        = 24,
+    LS_BACK_JUMP    = 25,
+    LS_RIGHT_JUMP   = 26,
+    LS_LEFT_JUMP    = 27,
+    LS_UP_JUMP      = 28,
+    LS_FALL_BACK    = 29,
+    LS_HANG_LEFT    = 30,
+    LS_HANG_RIGHT   = 31,
+    LS_SLIDE_BACK   = 32,
+    LS_SURF_TREAD   = 33,
+    LS_SURF_SWIM    = 34,
+    LS_DIVE         = 35,
+    LS_PUSH_BLOCK   = 36,
+    LS_PULL_BLOCK   = 37,
+    LS_PP_READY     = 38,
+    LS_PICKUP       = 39,
+    LS_SWITCH_ON    = 40,
+    LS_SWITCH_OFF   = 41,
+    LS_USE_KEY      = 42,
+    LS_USE_PUZZLE   = 43,
+    LS_UW_DEATH     = 44,
+    LS_ROLL         = 45,
+    LS_SPECIAL      = 46,
+    LS_SURF_BACK    = 47,
+    LS_SURF_LEFT    = 48,
+    LS_SURF_RIGHT   = 49,
+    LS_USE_MIDAS    = 50,
+    LS_DIE_MIDAS    = 51,
+    LS_SWAN_DIVE    = 52,
+    LS_FAST_DIVE    = 53,
+    LS_GYMNAST      = 54,
+    LS_WATER_OUT    = 55,
+    LS_CLIMB_STANCE = 56,
+    LS_CLIMBING     = 57,
+    LS_CLIMB_LEFT   = 58,
+    LS_CLIMB_END    = 59,
+    LS_CLIMB_RIGHT  = 60,
+    LS_CLIMB_DOWN   = 61,
+    LS_LARA_TEST1   = 62,
+    LS_LARA_TEST2   = 63,
+    LS_LARA_TEST3   = 64,
+    LS_WADE         = 65,
+    LS_WATER_ROLL   = 66,
+    LS_FLARE_PICKUP = 67,
+    LS_TWIST        = 68,
+    LS_KICK         = 69,
+    LS_DEATH_SLIDE  = 70,
+    LS_DUCK         = 71,
+    LS_DUCK_ROLL    = 72,
+    LS_DASH         = 73,
+    LS_DASH_DIVE    = 74,
+    LS_MONKEY_SWING = 75,
+    LS_MONKEYF      = 76,
+    LS_LAST         = 77,
+} LARA_STATE;
+
 # FUNCTIONS
 #   Flags:
 #   - to do
@@ -1300,7 +1416,7 @@ typedef struct CINE_FRAME {
 00427720    00000066    -       void __cdecl Lara_LookUpDown(void);
 00427790    00000072    -       void __cdecl Lara_LookLeftRight(void);
 00427810    00000089    -       void __cdecl Lara_ResetLook(void);
-004278A0    0000008B    -       void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004278A0    0000008B    +       void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427930    00000143    -       void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427A80    00000148    -       void __cdecl Lara_State_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427BD0    000000D3    -       void __cdecl Lara_State_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2214,6 +2330,7 @@ typedef struct CINE_FRAME {
 004D8E08    -       LPDIRECTSOUNDBUFFER g_ChannelBuffers[32];
 004D8E8C    -       struct SOUND_ADAPTER g_CurrentSoundAdapter;
 004D8EAC    -       struct SOUND_ADAPTER_NODE *g_PrimarySoundAdapter;
+0051A208    -       int32_t g_Input;
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
 0051BDA8    -       int32_t g_MasterVolume;

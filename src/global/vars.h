@@ -48,6 +48,7 @@
 #define g_ChannelBuffers ARRAY_(0x004D8E08, LPDIRECTSOUNDBUFFER, [32])
 #define g_CurrentSoundAdapter VAR_U_(0x004D8E8C, struct SOUND_ADAPTER)
 #define g_PrimarySoundAdapter VAR_U_(0x004D8EAC, struct SOUND_ADAPTER_NODE *)
+#define g_Input VAR_U_(0x0051A208, int32_t)
 #define g_SavedAppSettings VAR_U_(0x0051BCC0, struct APP_SETTINGS)
 #define g_ErrorMessage ARRAY_(0x0051BD20, char, [128])
 #define g_MasterVolume VAR_U_(0x0051BDA8, int32_t)
