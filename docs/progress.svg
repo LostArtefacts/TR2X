@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.83% (46)</tspan> · <tspan class="known">93.75% (1125)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.92% (47)</tspan> · <tspan class="known">93.67% (1124)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="28.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="700.31" height="6" x="28.64" y="0" class="known"/>
+<rect width="29.26" height="6" x="0" y="0" class="decompiled"/>
+<rect width="699.69" height="6" x="29.26" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -985,7 +985,7 @@
 <rect width="12" height="12" x="75" y="270" class="decompiled"><title>BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);</title></rect>
 <rect width="12" height="12" x="90" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_Init2(HWND hwnd);</title></rect>
 <rect width="12" height="12" x="105" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);</title></rect>
-<rect width="12" height="12" x="120" y="270" class="known"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
+<rect width="12" height="12" x="120" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
 <rect width="12" height="12" x="135" y="270" class="known"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="150" y="270" class="known"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
 <rect width="12" height="12" x="165" y="270" class="todo"><title>sub_448410</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.45%</tspan> · <tspan class="known">96.22%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.50%</tspan> · <tspan class="known">96.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="25.74" height="6" x="0" y="0" class="decompiled"/>
-<rect width="718.80" height="6" x="25.74" y="0" class="known"/>
+<rect width="26.17" height="6" x="0" y="0" class="decompiled"/>
+<rect width="718.37" height="6" x="26.17" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1734,7 +1734,7 @@
 <rect width="9.76" height="9.43" x="519.71" y="350.57" class="known"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
 <rect width="9.37" height="9.82" x="532.47" y="133.25" class="known"><title>void __cdecl LavaSpray(int16_t item_num);</title></rect>
 <rect width="9.31" height="9.82" x="544.85" y="133.25" class="known"><title>void __cdecl SmashWindow(int16_t item_num);</title></rect>
-<rect width="9.31" height="9.82" x="557.16" y="133.25" class="known"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
+<rect width="9.31" height="9.82" x="557.16" y="133.25" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
 <rect width="9.31" height="9.82" x="569.47" y="133.25" class="known"><title>BOOL __cdecl S_ReloadLevelGraphics(BOOL reloadPalettes, BOOL reloadTexPages);</title></rect>
 <rect width="9.31" height="9.82" x="581.78" y="133.25" class="known"><title>void __thiscall SE_LoadBitmapResource(BITMAP_RESOURCE *bmpRsrc, LPCTSTR lpName);</title></rect>
 <rect width="9.19" height="9.82" x="594.09" y="133.25" class="known"><title>void __cdecl Splash(struct ITEM_INFO *item);</title></rect>

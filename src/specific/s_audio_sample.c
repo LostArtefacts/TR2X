@@ -306,3 +306,33 @@ bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid)
 {
     return DirectSoundCreate(guid, &g_DSound, NULL) >= 0;
 }
+
+bool __cdecl S_Audio_Sample_DSoundBufferTest(void)
+{
+    DSBUFFERDESC desc;
+    memset(&desc, 0, sizeof(desc));
+    desc.dwSize = sizeof(DSBUFFERDESC);
+    desc.dwFlags = DSBCAPS_PRIMARYBUFFER;
+    desc.dwBufferBytes = 0;
+    desc.dwReserved = 0;
+    desc.lpwfxFormat = NULL;
+
+    LPDIRECTSOUNDBUFFER dsBuffer;
+    if (IDirectSound_CreateSoundBuffer(g_DSound, &desc, &dsBuffer, NULL) < 0) {
+        return false;
+    }
+
+    WAVEFORMATEX format;
+    memset(&format, 0, sizeof(format));
+    format.wFormatTag = WAVE_FORMAT_PCM;
+    format.nChannels = 2;
+    format.nSamplesPerSec = 11025;
+    format.nAvgBytesPerSec = 44100;
+    format.nBlockAlign = 4;
+    format.wBitsPerSample = 16;
+    format.cbSize = 0;
+
+    bool result = IDirectSoundBuffer_SetFormat(dsBuffer, &format) >= 0;
+    IDirectSoundBuffer_Release(dsBuffer);
+    return result;
+}

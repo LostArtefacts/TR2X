@@ -23,3 +23,4 @@ BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
     LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);
 void __cdecl S_Audio_Sample_Init2(HWND hwnd);
 bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);
+bool __cdecl S_Audio_Sample_DSoundBufferTest(void);
