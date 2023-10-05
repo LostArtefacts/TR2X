@@ -80,6 +80,7 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x00447D50, S_Audio_Sample_IsTrackPlaying);
     INJECT(1, 0x00447DA0, S_Audio_Sample_Play);
     INJECT(1, 0x00447E90, S_Audio_Sample_GetFreeTrackIndex);
+    INJECT(1, 0x00447ED0, S_Audio_Sample_AdjustTrackVolumeAndPan);
 }
 
 void Inject_Exec(void)

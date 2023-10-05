@@ -1860,7 +1860,7 @@ typedef struct CINE_FRAME {
 00447D50    00000045    +       bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);
 00447DA0    000000E7    +       int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);
 00447E90    00000039    +       int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);
-00447ED0    0000002C    -       void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(int32_t track_id, int32_t volume, int32_t pan);
+00447ED0    0000002C    +       void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(int32_t track_id, int32_t volume, int32_t pan);
 00447F00    00000031    -       void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);
 00447F40    0000002F    -       void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);
 00447FA0    00000005    -R      sub_447FA0

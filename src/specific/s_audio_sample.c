@@ -83,7 +83,7 @@ bool __cdecl S_Audio_Sample_Load(
 
 bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id)
 {
-    if (!g_ChannelBuffers[track_id]) {
+    if (track_id < 0 || !g_ChannelBuffers[track_id]) {
         return false;
     }
 
@@ -145,4 +145,15 @@ int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void)
     }
 
     return -1;
+}
+
+void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(
+    int32_t track_id, int32_t volume, int32_t pan)
+{
+    if (track_id < 0 || !g_ChannelBuffers[track_id]) {
+        return;
+    }
+
+    IDirectSoundBuffer_SetVolume(g_ChannelBuffers[track_id], volume);
+    IDirectSoundBuffer_SetPan(g_ChannelBuffers[track_id], pan);
 }
