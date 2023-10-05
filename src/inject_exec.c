@@ -87,6 +87,7 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x00448050, S_Audio_Sample_DSoundEnumerate);
     INJECT(1, 0x00448070, S_Audio_Sample_DSoundEnumCallback);
     INJECT(1, 0x00448160, S_Audio_Sample_Init2);
+    INJECT(1, 0x004482E0, S_Audio_Sample_DSoundCreate);
 }
 
 void Inject_Exec(void)

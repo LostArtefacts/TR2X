@@ -301,3 +301,8 @@ void __cdecl S_Audio_Sample_Init2(HWND hwnd)
 
     g_IsSoundEnabled = S_Audio_Sample_DSoundBufferTest();
 }
+
+bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid)
+{
+    return DirectSoundCreate(guid, &g_DSound, NULL) >= 0;
+}
