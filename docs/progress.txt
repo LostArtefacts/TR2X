@@ -1123,7 +1123,7 @@ typedef struct CINE_FRAME {
 0041BC30    000000FC    -R      void __cdecl InterpolateArmMatrix(void);
 0041BD30    0000014B    -R      void __cdecl DrawGunFlash(int32_t weapon_type, int32_t clip);
 0041BEA0    000000E8    -R      void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);
-0041BF90    00000092    -R      int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
+0041BF90    00000092    -       int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
 0041C030    0000007C    *       int16_t *__cdecl Item_GetBoundsAccurate(const struct ITEM_INFO *item);
 0041C0B0    00000035    -R      int16_t *__cdecl GetBestFrame(struct ITEM_INFO *item);
 0041C0F0    00000048    -R      void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);
@@ -1976,7 +1976,7 @@ typedef struct CINE_FRAME {
 0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
-0044E700    00000064    -R      int32_t __cdecl Init(bool skipCDInit);
+0044E700    00000064    -R      int32_t __cdecl GameInit(bool skipCDInit);
 0044E770    00000055    *       void __cdecl Shell_Cleanup(void);
 0044E7A0    0000007C    -R      int32_t __cdecl WinGameStart(void);
 0044E820    00000039    *       void __cdecl Shell_Shutdown(void);

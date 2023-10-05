@@ -312,7 +312,7 @@
 <rect width="12" height="12" x="480" y="60" class="known"><title>void __cdecl InterpolateArmMatrix(void);</title></rect>
 <rect width="12" height="12" x="495" y="60" class="known"><title>void __cdecl DrawGunFlash(int32_t weapon_type, int32_t clip);</title></rect>
 <rect width="12" height="12" x="510" y="60" class="known"><title>void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);</title></rect>
-<rect width="12" height="12" x="525" y="60" class="known"><title>int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
+<rect width="12" height="12" x="525" y="60" class="known"><title>int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
 <rect width="12" height="12" x="540" y="60" class="known"><title>int16_t *__cdecl Item_GetBoundsAccurate(const struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="555" y="60" class="known"><title>int16_t *__cdecl GetBestFrame(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="570" y="60" class="known"><title>void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);</title></rect>
@@ -1092,7 +1092,7 @@
 <rect width="12" height="12" x="180" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t errorCode);</title></rect>
 <rect width="12" height="12" x="195" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="210" y="300" class="unused"><title>sub_44E6F0</title></rect>
-<rect width="12" height="12" x="225" y="300" class="known"><title>int32_t __cdecl Init(bool skipCDInit);</title></rect>
+<rect width="12" height="12" x="225" y="300" class="known"><title>int32_t __cdecl GameInit(bool skipCDInit);</title></rect>
 <rect width="12" height="12" x="240" y="300" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="12" height="12" x="255" y="300" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="12" height="12" x="270" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
@@ -1852,7 +1852,7 @@
 <rect width="7.65" height="8.12" x="696.91" y="169.65" class="known"><title>void __cdecl Misc_InitCinematicRooms(void);</title></rect>
 <rect width="7.65" height="8.12" x="707.56" y="169.65" class="known"><title>void __cdecl EffectNewRoom(int16_t fx_num, int16_t room_num);</title></rect>
 <rect width="7.65" height="8.12" x="718.21" y="169.65" class="known"><title>void __cdecl SE_AdvancedDlgUpdate(HWND hwndDlg);</title></rect>
-<rect width="7.57" height="8.12" x="728.85" y="169.65" class="known"><title>int32_t __cdecl GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
+<rect width="7.57" height="8.12" x="728.85" y="169.65" class="known"><title>int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);</title></rect>
 <rect width="7.57" height="8.12" x="739.43" y="169.65" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="180.76" class="known"><title>int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="7.69" height="7.92" x="566.99" y="191.69" class="known"><title>void __cdecl extra_as_sharkkill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1989,7 +1989,7 @@
 <rect width="6.14" height="5.99" x="625.68" y="220" class="known"><title>void __cdecl LookUpDown(void);</title></rect>
 <rect width="6.14" height="5.99" x="634.82" y="220" class="known"><title>int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="5.96" height="5.99" x="643.95" y="220" class="known"><title>void __cdecl CreateBubble(struct PHD_3DPOS *pos, int16_t room_num);</title></rect>
-<rect width="5.96" height="5.99" x="652.91" y="220" class="known"><title>int32_t __cdecl Init(bool skipCDInit);</title></rect>
+<rect width="5.96" height="5.99" x="652.91" y="220" class="known"><title>int32_t __cdecl GameInit(bool skipCDInit);</title></rect>
 <rect width="5.96" height="5.99" x="661.87" y="220" class="known"><title>void __thiscall SE_DrawBitmap(BITMAP_RESOURCE *bmpRsrc, HDC hdc, int32_t x, int32_t y);</title></rect>
 <rect width="5.87" height="5.99" x="670.82" y="220" class="known"><title>void __cdecl swap_meshes_with_meshswap1(struct ITEM_INFO *item);</title></rect>
 <rect width="5.87" height="5.99" x="679.69" y="220" class="known"><title>void __cdecl swap_meshes_with_meshswap2(struct ITEM_INFO *item);</title></rect>

@@ -1,6 +1,6 @@
 project('TR2X', ['c'],
   default_options: [
-    'c_std=c11',
+    'c_std=c17',
     'warning_level=2',
   ],
 )
@@ -89,7 +89,8 @@ dll_sources = [
   'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',
   'src/specific/s_flagged_string.c',
-  'src/specific/s_music.c',
+  'src/specific/s_music_mm.c',
+  'src/specific/s_music_pauld.c',
 ]
 
 executable(
