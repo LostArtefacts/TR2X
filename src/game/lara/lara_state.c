@@ -185,3 +185,36 @@ void __cdecl Lara_State_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
         CLAMPG(g_Lara.turn_rate, LARA_MED_TURN);
     }
 }
+
+void __cdecl Lara_State_TurnRight(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_STOP;
+        return;
+    }
+
+    g_Lara.turn_rate += LARA_TURN_RATE;
+
+    if (g_Lara.gun_status == LWS_WADE) {
+        item->goal_anim_state = LS_FAST_TURN;
+    } else if (g_Lara.turn_rate > LARA_SLOW_TURN) {
+        if (g_Input & IN_SLOW) {
+            g_Lara.turn_rate = LARA_SLOW_TURN;
+        } else {
+            item->goal_anim_state = LS_FAST_TURN;
+        }
+    }
+
+    if (g_Input & IN_FORWARD) {
+        if (g_Lara.water_status == LWS_WADE) {
+            item->goal_anim_state = LS_WADE;
+        } else if (g_Input & IN_SLOW) {
+            item->goal_anim_state = LS_WALK;
+        } else {
+            item->goal_anim_state = LS_RUN;
+        }
+    } else if (!(g_Input & IN_RIGHT)) {
+        item->goal_anim_state = LS_STOP;
+    }
+}
