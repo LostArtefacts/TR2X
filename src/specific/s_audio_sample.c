@@ -345,3 +345,8 @@ void __cdecl S_Audio_Sample_Shutdown(void)
         g_DSound = NULL;
     }
 }
+
+bool __cdecl S_Audio_Sample_IsEnabled(void)
+{
+    return g_IsSoundEnabled;
+}

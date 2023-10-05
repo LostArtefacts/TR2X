@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4% (48)</tspan> · <tspan class="known">93.58% (1123)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.08% (49)</tspan> · <tspan class="known">93.50% (1122)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="29.88" height="6" x="0" y="0" class="decompiled"/>
-<rect width="699.07" height="6" x="29.88" y="0" class="known"/>
+<rect width="30.50" height="6" x="0" y="0" class="decompiled"/>
+<rect width="698.44" height="6" x="30.50" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -987,7 +987,7 @@
 <rect width="12" height="12" x="105" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);</title></rect>
 <rect width="12" height="12" x="120" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
 <rect width="12" height="12" x="135" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
-<rect width="12" height="12" x="150" y="270" class="known"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
+<rect width="12" height="12" x="150" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
 <rect width="12" height="12" x="165" y="270" class="todo"><title>sub_448410</title></rect>
 <rect width="12" height="12" x="180" y="270" class="todo"><title>sub_448420</title></rect>
 <rect width="12" height="12" x="195" y="270" class="known"><title>void __cdecl CreateScreenBuffers(void);</title></rect>
@@ -1283,8 +1283,8 @@
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.52%</tspan> · <tspan class="known">96.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="718.27" height="6" x="26.26" y="0" class="known"/>
+<rect width="26.28" height="6" x="0" y="0" class="decompiled"/>
+<rect width="718.26" height="6" x="26.28" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2467,7 +2467,7 @@
 <rect width="0.10" height="0.10" x="739.59" y="358.23" class="known"><title>void __cdecl WinVidClearMinWindowSize(void);</title></rect>
 <rect width="0.10" height="0.10" x="739.59" y="360.62" class="known"><title>void __cdecl WinVidClearMaxWindowSize(void);</title></rect>
 <rect width="0.10" height="0.10" x="742.29" y="352.87" class="known"><title>bool __cdecl Direct3DInit(void);</title></rect>
-<rect width="0.10" height="0.10" x="744.22" y="352.87" class="known"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
+<rect width="0.10" height="0.10" x="744.22" y="352.87" class="decompiled"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
 <rect width="0.10" height="0.10" x="746.15" y="352.87" class="known"><title>int32_t __cdecl LevelCompleteSequence(void);</title></rect>
 <rect width="0.10" height="0.10" x="748.07" y="352.87" class="known"><title>int32_t __cdecl GetRenderHeight(void);</title></rect>
 <rect width="0.10" height="0.10" x="742.29" y="355.37" class="known"><title>int32_t __cdecl GetRenderWidth(void);</title></rect>
