@@ -1855,7 +1855,7 @@ typedef struct CINE_FRAME {
 00447B40    00000039    x       sub_447B40
 00447B90    0000002F    x       sub_447B90
 00447BC0    00000048    +       const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid);
-00447C10    0000002E    -       void __cdecl S_Audio_Sample_CloseAllTracks(void);
+00447C10    0000002E    +       void __cdecl S_Audio_Sample_CloseAllTracks(void);
 00447C40    0000010E    -       bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);
 00447D50    00000045    -       bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);
 00447DA0    000000E7    -       int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);

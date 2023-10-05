@@ -3,6 +3,7 @@
 #include <ddraw.h>
 #include <ddrawi.h>
 #include <d3dhal.h>
+#include <dsound.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <windows.h>
