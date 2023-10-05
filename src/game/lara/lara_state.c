@@ -1,6 +1,7 @@
 #include "game/lara/lara_state.h"
 
 #include "global/const.h"
+#include "global/funcs.h"
 #include "global/vars.h"
 #include "util.h"
 
@@ -76,5 +77,66 @@ void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
         }
     } else {
         item->goal_anim_state = LS_STOP;
+    }
+}
+
+void __cdecl Lara_State_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_DEATH;
+        return;
+    }
+
+    if ((g_Input & IN_ROLL) && g_Lara.water_status != LWS_WADE) {
+        item->anim_num = LA_ROLL;
+        item->current_anim_state = LS_ROLL;
+        item->goal_anim_state = LS_STOP;
+        item->frame_num = g_Anims[LA_ROLL].frame_base + 2;
+        return;
+    }
+
+    item->goal_anim_state = LS_STOP;
+    if (g_Input & IN_LOOK) {
+        Lara_LookUpDown();
+    }
+
+    if (g_Input & IN_STEP_LEFT) {
+        item->goal_anim_state = LS_STEP_LEFT;
+    } else if (g_Input & IN_STEP_RIGHT) {
+        item->goal_anim_state = LS_STEP_RIGHT;
+    } else if (g_Input & IN_LEFT) {
+        item->goal_anim_state = LS_TURN_LEFT;
+    } else if (g_Input & IN_RIGHT) {
+        item->goal_anim_state = LS_TURN_RIGHT;
+    }
+
+    if (g_Lara.water_status == LWS_WADE) {
+        if (g_Input & IN_JUMP) {
+            item->goal_anim_state = LS_COMPRESS;
+        }
+
+        if (g_Input & IN_FORWARD) {
+            if (g_Input & IN_SLOW) {
+                Lara_State_Wade(item, coll);
+            } else {
+                Lara_State_Walk(item, coll);
+            }
+        } else if (g_Input & IN_BACK) {
+            Lara_State_Back(item, coll);
+        }
+    } else if (g_Input & IN_JUMP) {
+        item->goal_anim_state = LS_COMPRESS;
+    } else if (g_Input & IN_FORWARD) {
+        if (g_Input & IN_SLOW) {
+            Lara_State_Walk(item, coll);
+        } else {
+            Lara_State_Run(item, coll);
+        }
+    } else if (g_Input & IN_BACK) {
+        if (g_Input & IN_SLOW) {
+            Lara_State_Back(item, coll);
+        } else {
+            item->goal_anim_state = LS_FAST_BACK;
+        }
     }
 }
