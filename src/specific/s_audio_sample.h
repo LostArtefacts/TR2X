@@ -11,3 +11,4 @@ bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);
 int32_t __cdecl S_Audio_Sample_Play(
     int32_t sample_idx, int32_t volume, int32_t pitch, int32_t pan,
     uint32_t flags);
+int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);

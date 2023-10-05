@@ -1,7 +1,6 @@
 #include "specific/s_audio_sample.h"
 
 #include "global/const.h"
-#include "global/funcs.h"
 #include "global/vars.h"
 
 const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid)
@@ -129,4 +128,21 @@ int32_t __cdecl S_Audio_Sample_Play(
     g_ChannelBuffers[track_id] = buffer;
 
     return track_id;
+}
+
+int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void)
+{
+    for (int32_t i = 0; i < MAX_AUDIO_SAMPLE_TRACKS; ++i) {
+        if (!g_ChannelBuffers[i]) {
+            return i;
+        }
+    }
+
+    for (int32_t i = 0; i < MAX_AUDIO_SAMPLE_TRACKS; ++i) {
+        if (!S_Audio_Sample_IsTrackPlaying(i)) {
+            return i;
+        }
+    }
+
+    return -1;
 }
