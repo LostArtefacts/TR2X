@@ -15,3 +15,4 @@ int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);
 void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(
     int32_t track_id, int32_t volume, int32_t pan);
 void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);
+void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);

@@ -168,3 +168,14 @@ void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch)
         g_ChannelBuffers[track_id],
         g_SampleFreqs[g_ChannelSamples[track_id]] * pitch / PHD_ONE);
 }
+
+void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id)
+{
+    if (track_id < 0 || !g_ChannelBuffers[track_id]) {
+        return;
+    }
+
+    IDirectSoundBuffer_Stop(g_ChannelBuffers[track_id]);
+    IDirectSoundBuffer_Release(g_ChannelBuffers[track_id]);
+    g_ChannelBuffers[track_id] = NULL;
+}
