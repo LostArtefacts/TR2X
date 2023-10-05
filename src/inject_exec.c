@@ -95,6 +95,7 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x00455270, S_Audio_Sample_CalculateSampleVolume);
     INJECT(1, 0x004552A0, S_Audio_Sample_CalculateSamplePan);
     INJECT(1, 0x004552D0, S_Audio_Sample_OutPlayLooped);
+    INJECT(1, 0x00455320, S_Audio_Sample_OutSetPanAndVolume);
 }
 
 void Inject_Exec(void)
