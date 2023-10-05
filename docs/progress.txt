@@ -1833,7 +1833,7 @@ typedef struct CINE_FRAME {
 004473B0    0000007F    -R      bool __cdecl WinInputInit(void);
 00447430    00000024    -R      bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);
 00447460    000000E8    -R      BOOL __stdcall DInputEnumDevicesCallback(LPCDIDEVICEINSTANCE lpddi, LPVOID pvRef);
-00447550    0000001F    +       void __thiscall S_FlaggedString_Create(struct STRING_FLAGGED *string, DWORD size);
+00447550    0000001F    +       void __thiscall S_FlaggedString_Create(struct STRING_FLAGGED *string, int32_t size);
 00447570    0000004E    -R      JOYSTICK_NODE *__cdecl GetJoystick(GUID *lpGuid);
 004475C0    000000C9    -R      void __cdecl DInputKeyboardCreate(void);
 00447690    00000029    -R      void __cdecl DInputKeyboardRelease(void);

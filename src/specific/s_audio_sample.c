@@ -36,17 +36,17 @@ void __cdecl S_Audio_Sample_CloseAllTracks(void)
 }
 
 bool __cdecl S_Audio_Sample_Load(
-    int32_t sample_idx, LPWAVEFORMATEX format, const void *data,
+    int32_t sample_id, LPWAVEFORMATEX format, const void *data,
     uint32_t data_size)
 {
     if (!g_DSound || !g_IsSoundEnabled
-        || sample_idx >= MAX_AUDIO_SAMPLE_BUFFERS) {
+        || sample_id >= MAX_AUDIO_SAMPLE_BUFFERS) {
         return false;
     }
 
-    if (g_SampleBuffers[sample_idx] != NULL) {
-        IDirectSound_Release(g_SampleBuffers[sample_idx]);
-        g_SampleBuffers[sample_idx] = NULL;
+    if (g_SampleBuffers[sample_id] != NULL) {
+        IDirectSound_Release(g_SampleBuffers[sample_id]);
+        g_SampleBuffers[sample_id] = NULL;
     }
 
     DSBUFFERDESC desc;
@@ -59,7 +59,7 @@ bool __cdecl S_Audio_Sample_Load(
     desc.lpwfxFormat = format;
 
     if (IDirectSound_CreateSoundBuffer(
-            g_DSound, &desc, &g_SampleBuffers[sample_idx], NULL)
+            g_DSound, &desc, &g_SampleBuffers[sample_id], NULL)
         < 0) {
         return false;
     }
@@ -67,7 +67,7 @@ bool __cdecl S_Audio_Sample_Load(
     LPVOID audio_ptr;
     DWORD audio_bytes;
     if (IDirectSoundBuffer_Lock(
-            g_SampleBuffers[sample_idx], 0, data_size, &audio_ptr, &audio_bytes,
+            g_SampleBuffers[sample_id], 0, data_size, &audio_ptr, &audio_bytes,
             NULL, NULL, 0)
         < 0) {
         return false;
@@ -76,12 +76,12 @@ bool __cdecl S_Audio_Sample_Load(
     memcpy(audio_ptr, data, audio_bytes);
 
     if (IDirectSoundBuffer_Unlock(
-            g_SampleBuffers[sample_idx], audio_ptr, audio_bytes, NULL, 0)
+            g_SampleBuffers[sample_id], audio_ptr, audio_bytes, NULL, 0)
         < 0) {
         return false;
     }
 
-    g_SampleFreqs[sample_idx] = format->nSamplesPerSec;
+    g_SampleFreqs[sample_id] = format->nSamplesPerSec;
     return true;
 }
 
@@ -106,7 +106,7 @@ bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id)
 }
 
 int32_t __cdecl S_Audio_Sample_Play(
-    int32_t sample_idx, int32_t volume, int32_t pitch, int32_t pan,
+    int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan,
     uint32_t flags)
 {
     int32_t track_id = S_Audio_Sample_GetFreeTrackIndex();
@@ -116,11 +116,11 @@ int32_t __cdecl S_Audio_Sample_Play(
 
     LPDIRECTSOUNDBUFFER buffer = NULL;
     if ((IDirectSound_DuplicateSoundBuffer(
-             g_DSound, g_SampleBuffers[sample_idx], &buffer)
+             g_DSound, g_SampleBuffers[sample_id], &buffer)
          < 0)
         || (IDirectSoundBuffer_SetVolume(buffer, volume) < 0)
         || (IDirectSoundBuffer_SetFrequency(
-                buffer, g_SampleFreqs[sample_idx] * pitch / PHD_ONE)
+                buffer, g_SampleFreqs[sample_id] * pitch / PHD_ONE)
             < 0)
         || (IDirectSoundBuffer_SetPan(buffer, pan) < 0)
         || (IDirectSoundBuffer_SetCurrentPosition(buffer, 0) < 0)
@@ -128,7 +128,7 @@ int32_t __cdecl S_Audio_Sample_Play(
         return -2;
     }
 
-    g_ChannelSamples[track_id] = sample_idx;
+    g_ChannelSamples[track_id] = sample_id;
     g_ChannelBuffers[track_id] = buffer;
 
     return track_id;

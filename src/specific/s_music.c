@@ -39,6 +39,7 @@ void __cdecl S_Music_Play(int16_t track_id, bool is_looped)
     g_CD_TrackID = track_id;
 
     track_id = Music_GetRealTrack(track_id);
+
     MCI_PLAY_PARMS play_params;
     play_params.dwFrom = track_id;
     play_params.dwTo = track_id + 1;

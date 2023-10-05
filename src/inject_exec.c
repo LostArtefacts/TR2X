@@ -110,9 +110,9 @@ static void Inject_S_Audio_Sample(void)
 
 static void Inject_S_FlaggedString(void)
 {
-    INJECT(1, 0x00447550, S_FlaggedString_Create);
     INJECT(1, 0x00445F00, S_FlaggedString_Delete);
     INJECT(1, 0x00446100, S_FlaggedString_InitAdapter);
+    INJECT(1, 0x00447550, S_FlaggedString_Create);
 }
 
 void Inject_Exec(void)
