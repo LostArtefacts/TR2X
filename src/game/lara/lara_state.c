@@ -173,3 +173,15 @@ void __cdecl Lara_State_ForwardJump(
         CLAMPG(g_Lara.turn_rate, +LARA_JUMP_TURN);
     }
 }
+
+void __cdecl Lara_State_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->goal_anim_state = LS_STOP;
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_MED_TURN);
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, LARA_MED_TURN);
+    }
+}
