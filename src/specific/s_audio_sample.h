@@ -19,3 +19,5 @@ void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);
 bool __cdecl S_Audio_Sample_Init(void);
 bool __cdecl S_Audio_Sample_DSoundEnumerate(
     struct SOUND_ADAPTER_LIST *adapter_list);
+BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
+    LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);

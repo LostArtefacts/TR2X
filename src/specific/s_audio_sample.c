@@ -222,3 +222,45 @@ bool __cdecl S_Audio_Sample_DSoundEnumerate(
                S_Audio_Sample_DSoundEnumCallback, (LPVOID)adapter_list)
         >= 0;
 }
+
+BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
+    LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context)
+{
+    struct SOUND_ADAPTER_LIST *adapter_list =
+        (struct SOUND_ADAPTER_LIST *)context;
+    struct SOUND_ADAPTER_NODE *adapter_node =
+        malloc(sizeof(struct SOUND_ADAPTER_NODE));
+
+    if (!adapter_node) {
+        return TRUE;
+    }
+
+    adapter_node->next = NULL;
+    adapter_node->previous = adapter_list->tail;
+
+    if (!adapter_list->head) {
+        adapter_list->head = adapter_node;
+    }
+
+    if (adapter_list->tail) {
+        adapter_list->tail->next = adapter_node;
+    }
+
+    adapter_list->tail = adapter_node;
+    adapter_list->count++;
+
+    if (guid) {
+        adapter_node->body.adapter_guid = *guid;
+        adapter_node->body.adapter_guid_ptr = &adapter_node->body.adapter_guid;
+    } else {
+        memset(&adapter_node->body.adapter_guid, 0, sizeof(GUID));
+        adapter_node->body.adapter_guid_ptr = NULL;
+    }
+
+    S_FlaggedString_Create(&adapter_node->body.description, 256);
+    S_FlaggedString_Create(&adapter_node->body.module, 256);
+    strcpy(adapter_node->body.description.content, description);
+    strcpy(adapter_node->body.module.content, module);
+
+    return TRUE;
+}
