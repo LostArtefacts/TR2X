@@ -1,7 +1,10 @@
 #include "specific/s_audio_sample.h"
 
 #include "global/const.h"
+#include "global/funcs.h"
 #include "global/vars.h"
+#include "log.h"
+#include "specific/s_flagged_string.h"
 
 const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid)
 {
@@ -178,4 +181,35 @@ void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id)
     IDirectSoundBuffer_Stop(g_ChannelBuffers[track_id]);
     IDirectSoundBuffer_Release(g_ChannelBuffers[track_id]);
     g_ChannelBuffers[track_id] = NULL;
+}
+
+bool __cdecl S_Audio_Sample_Init(void)
+{
+    struct SOUND_ADAPTER_NODE *node = g_SoundAdapterList.head;
+    while (node) {
+        struct SOUND_ADAPTER_NODE *next_node = node->next;
+        S_FlaggedString_Delete(&node->body.module);
+        S_FlaggedString_Delete(&node->body.description);
+        free(node);
+        node = next_node;
+    }
+
+    g_SoundAdapterList.head = NULL;
+    g_SoundAdapterList.tail = NULL;
+    g_SoundAdapterList.count = 0;
+    g_PrimarySoundAdapter = NULL;
+
+    if (!S_Audio_Sample_DSoundEnumerate(&g_SoundAdapterList)) {
+        LOG_ERROR("Failed to enumerate sound devices");
+        return false;
+    }
+
+    for (node = g_SoundAdapterList.head; node; node = node->next) {
+        if (!node->body.adapter_guid_ptr) {
+            g_PrimarySoundAdapter = node;
+            break;
+        }
+    }
+
+    return true;
 }

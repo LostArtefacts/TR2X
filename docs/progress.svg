@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.42% (41)</tspan> · <tspan class="known">94.17% (1130)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.50% (42)</tspan> · <tspan class="known">94.08% (1129)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="25.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="703.42" height="6" x="25.52" y="0" class="known"/>
+<rect width="26.14" height="6" x="0" y="0" class="decompiled"/>
+<rect width="702.80" height="6" x="26.14" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -980,7 +980,7 @@
 <rect width="12" height="12" x="0" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="12" height="12" x="15" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="30" y="270" class="todo"><title>sub_447FA0</title></rect>
-<rect width="12" height="12" x="45" y="270" class="known"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
+<rect width="12" height="12" x="45" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
 <rect width="12" height="12" x="60" y="270" class="known"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="12" height="12" x="75" y="270" class="known"><title>BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);</title></rect>
 <rect width="12" height="12" x="90" y="270" class="known"><title>void __cdecl S_Audio_Sample_Init2(HWND hwnd);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.20%</tspan> · <tspan class="known">96.47%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.25%</tspan> · <tspan class="known">96.42%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="23.94" height="6" x="0" y="0" class="decompiled"/>
-<rect width="720.60" height="6" x="23.94" y="0" class="known"/>
+<rect width="24.28" height="6" x="0" y="0" class="decompiled"/>
+<rect width="720.26" height="6" x="24.28" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1821,7 +1821,7 @@
 <rect width="8.38" height="8.11" x="544.80" y="340.79" class="known"><title>void __cdecl InitialiseFinalLevel(void);</title></rect>
 <rect width="8.38" height="8.11" x="544.80" y="351.89" class="known"><title>void __cdecl CreateClipper(void);</title></rect>
 <rect width="7.81" height="8.62" x="556.18" y="169.65" class="known"><title>void __cdecl ItemNewRoom(int16_t item_num, int16_t room_num);</title></rect>
-<rect width="7.81" height="8.62" x="556.18" y="181.27" class="known"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
+<rect width="7.81" height="8.62" x="556.18" y="181.27" class="decompiled"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
 <rect width="7.81" height="8.54" x="556.18" y="192.89" class="known"><title>void __cdecl LaraCollideStop(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.81" height="8.47" x="556.18" y="204.43" class="known"><title>void __cdecl swap_meshes_with_meshswap3(struct ITEM_INFO *item);</title></rect>
 <rect width="7.81" height="8.47" x="556.18" y="215.90" class="known"><title>void __cdecl LoadDemoExternal(LPCTSTR levelName);</title></rect>

@@ -83,6 +83,7 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x00447ED0, S_Audio_Sample_AdjustTrackVolumeAndPan);
     INJECT(1, 0x00447F00, S_Audio_Sample_AdjustTrackPitch);
     INJECT(1, 0x00447F40, S_Audio_Sample_CloseTrack);
+    INJECT(1, 0x00447FB0, S_Audio_Sample_Init);
 }
 
 void Inject_Exec(void)
