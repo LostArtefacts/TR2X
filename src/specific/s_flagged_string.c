@@ -26,3 +26,26 @@ void __thiscall S_FlaggedString_Delete(struct STRING_FLAGGED *string)
         string->is_valid = false;
     }
 }
+
+bool S_FlaggedString_Copy(
+    struct STRING_FLAGGED *dst, struct STRING_FLAGGED *src)
+{
+    if (dst == NULL || src == NULL || dst == src || !src->is_valid) {
+        return false;
+    }
+
+    size_t src_len = lstrlen(src->content);
+    dst->is_valid = false;
+    dst->content = malloc(src_len + 1);
+    if (dst->content == NULL) {
+        return false;
+    }
+
+    if (src_len > 0) {
+        lstrcpy(dst->content, src->content);
+    } else {
+        *dst->content = 0;
+    }
+    dst->is_valid = true;
+    return true;
+}

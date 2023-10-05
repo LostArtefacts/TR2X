@@ -21,3 +21,4 @@ bool __cdecl S_Audio_Sample_DSoundEnumerate(
     struct SOUND_ADAPTER_LIST *adapter_list);
 BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
     LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);
+void __cdecl S_Audio_Sample_Init2(HWND hwnd);

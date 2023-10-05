@@ -264,3 +264,40 @@ BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
 
     return TRUE;
 }
+
+void __cdecl S_Audio_Sample_Init2(HWND hwnd)
+{
+    memset(g_SampleBuffers, 0, sizeof(g_SampleBuffers));
+    memset(g_ChannelBuffers, 0, sizeof(g_ChannelBuffers));
+
+    g_Camera.is_lara_mic = g_SavedAppSettings.LaraMic;
+    g_IsSoundEnabled = false;
+
+    if (!g_SavedAppSettings.SoundEnabled
+        || !g_SavedAppSettings.PreferredSoundAdapter) {
+        return;
+    }
+
+    struct SOUND_ADAPTER *preferred =
+        &g_SavedAppSettings.PreferredSoundAdapter->body;
+    g_CurrentSoundAdapter = *preferred;
+
+    S_FlaggedString_Copy(
+        &g_CurrentSoundAdapter.description, &preferred->description);
+    S_FlaggedString_Copy(&g_CurrentSoundAdapter.module, &preferred->module);
+
+    if (!S_Audio_Sample_DSoundCreate(g_CurrentSoundAdapter.adapter_guid_ptr)) {
+        return;
+    }
+
+    if (!hwnd) {
+        hwnd = g_GameWindowHandle;
+    }
+
+    if (IDirectSound_SetCooperativeLevel(g_DSound, hwnd, DSSCL_EXCLUSIVE) < 0) {
+        LOG_ERROR("Error: Can't set DSound cooperative level");
+        return;
+    }
+
+    g_IsSoundEnabled = S_Audio_Sample_DSoundBufferTest();
+}
