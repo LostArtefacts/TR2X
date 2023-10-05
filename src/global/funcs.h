@@ -852,7 +852,6 @@
 #define TempVideoRemove ((void __cdecl (*)(void))0x004479D0)
 #define S_FadeInInventory ((void __cdecl (*)(BOOL isFade))0x00447A10)
 #define S_FadeOutInventory ((void __cdecl (*)(BOOL isFade))0x00447A50)
-#define S_Audio_Sample_AdjustTrackPitch ((void __cdecl (*)(int32_t track_id, int32_t pitch))0x00447F00)
 #define S_Audio_Sample_CloseTrack ((void __cdecl (*)(int32_t track_id))0x00447F40)
 #define S_Audio_Sample_Init ((bool __cdecl (*)(void))0x00447FB0)
 #define S_Audio_Sample_DSoundEnumerate ((bool __cdecl (*)(struct SOUND_ADAPTER_LIST *adapter_list))0x00448050)

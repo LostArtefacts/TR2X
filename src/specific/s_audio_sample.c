@@ -157,3 +157,14 @@ void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(
     IDirectSoundBuffer_SetVolume(g_ChannelBuffers[track_id], volume);
     IDirectSoundBuffer_SetPan(g_ChannelBuffers[track_id], pan);
 }
+
+void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch)
+{
+    if (track_id < 0 || !g_ChannelBuffers[track_id]) {
+        return;
+    }
+
+    IDirectSoundBuffer_SetFrequency(
+        g_ChannelBuffers[track_id],
+        g_SampleFreqs[g_ChannelSamples[track_id]] * pitch / PHD_ONE);
+}
