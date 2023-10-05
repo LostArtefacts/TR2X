@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3% (36)</tspan> · <tspan class="known">94.58% (1135)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.08% (37)</tspan> · <tspan class="known">94.50% (1134)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="22.41" height="6" x="0" y="0" class="decompiled"/>
-<rect width="706.54" height="6" x="22.41" y="0" class="known"/>
+<rect width="23.03" height="6" x="0" y="0" class="decompiled"/>
+<rect width="705.92" height="6" x="23.03" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -974,7 +974,7 @@
 <rect width="12" height="12" x="660" y="255" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseAllTracks(void);</title></rect>
 <rect width="12" height="12" x="675" y="255" class="decompiled"><title>bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);</title></rect>
 <rect width="12" height="12" x="690" y="255" class="decompiled"><title>bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);</title></rect>
-<rect width="12" height="12" x="705" y="255" class="known"><title>int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);</title></rect>
+<rect width="12" height="12" x="705" y="255" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);</title></rect>
 <rect width="12" height="12" x="720" y="255" class="known"><title>int32_t __cdecl S_Audio_Sample_GetFreeTrackIndex(void);</title></rect>
 <rect width="12" height="12" x="735" y="255" class="known"><title>void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(int32_t track_id, int32_t volume, int32_t pan);</title></rect>
 <rect width="12" height="12" x="0" y="270" class="known"><title>void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.08%</tspan> · <tspan class="known">96.59%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.15%</tspan> · <tspan class="known">96.52%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="22.99" height="6" x="0" y="0" class="decompiled"/>
-<rect width="721.55" height="6" x="22.99" y="0" class="known"/>
+<rect width="23.50" height="6" x="0" y="0" class="decompiled"/>
+<rect width="721.04" height="6" x="23.50" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1676,7 +1676,7 @@
 <rect width="10.28" height="11.07" x="683.90" y="105.68" class="known"><title>void __cdecl CalculateWibbleTable(void);</title></rect>
 <rect width="10.22" height="11.07" x="697.17" y="105.68" class="known"><title>void __cdecl Camera_RefreshFromTrigger(int16_t type, int16_t *data);</title></rect>
 <rect width="10.22" height="11.07" x="710.40" y="105.68" class="known"><title>int32_t __cdecl LaraTestWaterStepOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="10.22" height="11.07" x="723.62" y="105.68" class="known"><title>int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);</title></rect>
+<rect width="10.22" height="11.07" x="723.62" y="105.68" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_Play(int32_t sample_id, int32_t volume, int32_t pitch, int32_t pan, int32_t flags);</title></rect>
 <rect width="10.16" height="11.07" x="736.84" y="105.68" class="known"><title>void __cdecl LavaBurn(struct ITEM_INFO *item);</title></rect>
 <rect width="10.35" height="10.88" x="506.36" y="119.75" class="known"><title>void __cdecl RenderFinish(bool needToClearTextures);</title></rect>
 <rect width="10.35" height="10.76" x="506.36" y="133.63" class="known"><title>bool __cdecl DInputJoystickCreate(void);</title></rect>

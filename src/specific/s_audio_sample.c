@@ -1,6 +1,7 @@
 #include "specific/s_audio_sample.h"
 
 #include "global/const.h"
+#include "global/funcs.h"
 #include "global/vars.h"
 
 const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid)
@@ -99,4 +100,33 @@ bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id)
     }
 
     return true;
+}
+
+int32_t __cdecl S_Audio_Sample_Play(
+    int32_t sample_idx, int32_t volume, int32_t pitch, int32_t pan,
+    uint32_t flags)
+{
+    int32_t track_id = S_Audio_Sample_GetFreeTrackIndex();
+    if (track_id < 0) {
+        return -1;
+    }
+
+    LPDIRECTSOUNDBUFFER buffer = NULL;
+    if ((IDirectSound_DuplicateSoundBuffer(
+             g_DSound, g_SampleBuffers[sample_idx], &buffer)
+         < 0)
+        || (IDirectSoundBuffer_SetVolume(buffer, volume) < 0)
+        || (IDirectSoundBuffer_SetFrequency(
+                buffer, g_SampleFreqs[sample_idx] * pitch / PHD_ONE)
+            < 0)
+        || (IDirectSoundBuffer_SetPan(buffer, pan) < 0)
+        || (IDirectSoundBuffer_SetCurrentPosition(buffer, 0) < 0)
+        || (IDirectSoundBuffer_Play(buffer, 0, 0, flags) < 0)) {
+        return -2;
+    }
+
+    g_ChannelSamples[track_id] = sample_idx;
+    g_ChannelBuffers[track_id] = buffer;
+
+    return track_id;
 }
