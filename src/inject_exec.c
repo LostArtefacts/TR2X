@@ -83,6 +83,7 @@ static void Inject_Sound(void)
 static void Inject_Lara_State(void)
 {
     INJECT(1, 0x004278A0, Lara_State_Walk);
+    INJECT(1, 0x00427930, Lara_State_Run);
 }
 
 static void Inject_S_Audio_Sample(void)

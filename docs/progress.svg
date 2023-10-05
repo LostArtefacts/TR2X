@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.50% (66)</tspan> · <tspan class="known">92.08% (1105)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.58% (67)</tspan> · <tspan class="known">92% (1104)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="41.08" height="6" x="0" y="0" class="decompiled"/>
-<rect width="687.86" height="6" x="41.08" y="0" class="known"/>
+<rect width="41.71" height="6" x="0" y="0" class="decompiled"/>
+<rect width="687.24" height="6" x="41.71" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -245,7 +245,7 @@
 <rect width="12" height="12" x="225" y="45" class="known"><title>int32_t __cdecl Misc_Move3DPosTo3DPos(struct PHD_3DPOS *src_pos, struct PHD_3DPOS *dest_pos, int32_t velocity, PHD_ANGLE ang_add);</title></rect>
 <rect width="12" height="12" x="240" y="45" class="known"><title>int32_t __cdecl Game_Control(int32_t nframes, int32_t demo_mode);</title></rect>
 <rect width="12" height="12" x="255" y="45" class="known"><title>void __cdecl Item_Animate(struct ITEM_INFO *item);</title></rect>
-<rect width="12" height="12" x="270" y="45" class="known"><title>int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, ANIM_STRUCT *anim);</title></rect>
+<rect width="12" height="12" x="270" y="45" class="known"><title>int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, struct ANIM_STRUCT *anim);</title></rect>
 <rect width="12" height="12" x="285" y="45" class="known"><title>void __cdecl Item_Translate(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="300" y="45" class="known"><title>struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
 <rect width="12" height="12" x="315" y="45" class="known"><title>int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
@@ -468,7 +468,7 @@
 <rect width="12" height="12" x="570" y="105" class="known"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
 <rect width="12" height="12" x="585" y="105" class="known"><title>void __cdecl Lara_ResetLook(void);</title></rect>
 <rect width="12" height="12" x="600" y="105" class="decompiled"><title>void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="615" y="105" class="known"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="615" y="105" class="decompiled"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="630" y="105" class="known"><title>void __cdecl Lara_State_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="645" y="105" class="known"><title>void __cdecl Lara_State_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="660" y="105" class="known"><title>void __cdecl Lara_State_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.90%</tspan> · <tspan class="known">95.77%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4%</tspan> · <tspan class="known">95.67%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="29.15" height="6" x="0" y="0" class="decompiled"/>
-<rect width="715.39" height="6" x="29.15" y="0" class="known"/>
+<rect width="29.86" height="6" x="0" y="0" class="decompiled"/>
+<rect width="714.67" height="6" x="29.86" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1574,7 +1574,7 @@
 <rect width="13.41" height="13" x="462.24" y="74.81" class="known"><title>bool __cdecl Output_XGenXG(int16_t *obj_ptr);</title></rect>
 <rect width="13.36" height="13" x="478.65" y="74.81" class="known"><title>void __cdecl DrawAssaultTimer(void);</title></rect>
 <rect width="13.31" height="13" x="495" y="74.81" class="known"><title>int16_t __cdecl StartGame(int32_t levelID, GF_LEVEL_TYPE levelType);</title></rect>
-<rect width="13.25" height="13" x="511.31" y="74.81" class="known"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="13.25" height="13" x="511.31" y="74.81" class="decompiled"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.10" height="13" x="527.56" y="74.81" class="known"><title>int32_t __cdecl Output_ZedClipper(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="13.10" height="13" x="543.67" y="74.81" class="known"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
 <rect width="13.10" height="13" x="559.77" y="74.81" class="known"><title>void __cdecl DoSnowEffect(struct ITEM_INFO *skidoo);</title></rect>
@@ -1783,7 +1783,7 @@
 <rect width="8.89" height="8.65" x="690.77" y="146.07" class="known"><title>void __cdecl AddRequesterItem(struct REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);</title></rect>
 <rect width="8.89" height="8.65" x="702.66" y="146.07" class="known"><title>void __cdecl SpiderLeap(int16_t item_num, int16_t angle);</title></rect>
 <rect width="8.82" height="8.65" x="714.54" y="146.07" class="decompiled"><title>bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);</title></rect>
-<rect width="8.82" height="8.65" x="726.36" y="146.07" class="known"><title>int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, ANIM_STRUCT *anim);</title></rect>
+<rect width="8.82" height="8.65" x="726.36" y="146.07" class="known"><title>int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, struct ANIM_STRUCT *anim);</title></rect>
 <rect width="8.82" height="8.65" x="738.18" y="146.07" class="known"><title>int16_t __cdecl DragonFire(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="8.54" height="8.93" x="544.80" y="157.72" class="known"><title>void __cdecl DrawHealthBar(int32_t flash_state);</title></rect>
 <rect width="8.54" height="8.93" x="556.34" y="157.72" class="known"><title>void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

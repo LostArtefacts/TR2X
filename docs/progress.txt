@@ -884,6 +884,57 @@ typedef enum LARA_WATER_STATE {
     LWS_WADE = 4,
 } LARA_WATER_STATE;
 
+typedef enum LARA_ANIMATION {
+    LA_RUN = 0,
+    LA_WALK_FORWARD = 1,
+    LA_RUN_START = 6,
+    LA_WALK_BACK = 40,
+    LA_VAULT_12 = 50,
+    LA_VAULT_34 = 42,
+    LA_FAST_FALL = 32,
+    LA_STOP = 11,
+    LA_FALL_DOWN = 34,
+    LA_STOP_LEFT = 2,
+    LA_STOP_RIGHT = 3,
+    LA_HIT_WALL_LEFT = 53,
+    LA_HIT_WALL_RIGHT = 54,
+    LA_RUN_STEP_UP_LEFT = 56,
+    LA_RUN_STEP_UP_RIGHT = 55,
+    LA_WALK_STEP_UP_LEFT = 57,
+    LA_WALK_STEP_UP_RIGHT = 58,
+    LA_WALK_STEP_DOWN_LEFT = 60,
+    LA_WALK_STEP_DOWN_RIGHT = 59,
+    LA_BACK_STEP_DOWN_LEFT = 61,
+    LA_BACK_STEP_DOWN_RIGHT = 62,
+    LA_WALL_SWITCH_DOWN = 63,
+    LA_WALL_SWITCH_UP = 64,
+    LA_SIDE_STEP_LEFT = 65,
+    LA_SIDE_STEP_RIGHT = 67,
+    LA_LAND_FAR = 24,
+    LA_GRAB_LEDGE = 96,
+    LA_SWIM_GLIDE = 87,
+    LA_FALL_BACK = 93,
+    LA_HANG = 96,
+    LA_STOP_HANG = 28,
+    LA_SLIDE = 70,
+    LA_SLIDE_BACK = 104,
+    LA_TREAD = 108,
+    LA_SURF_TREAD = 114,
+    LA_SURF_DIVE = 119,
+    LA_SURF_CLIMB = 111,
+    LA_JUMP_IN = 112,
+    LA_ROLL = 146,
+    LA_PICKUP_UW = 130,
+    LA_PICKUP = 135,
+    LA_ROLLING_BALL_DEATH = 139,
+    LA_SPIKE_DEATH = 149,
+    LA_GRAB_LEDGE_IN = 150,
+    LA_SPAZ_FORWARD = 125,
+    LA_SPAZ_BACK = 126,
+    LA_SPAZ_RIGHT = 127,
+    LA_SPAZ_LEFT = 128,
+} LARA_ANIMATION;
+
 typedef enum LARA_STATE {
     LS_WALK         = 0,
     LS_RUN          = 1,
@@ -1162,7 +1213,7 @@ typedef enum LARA_STATE {
 # game/control.c
 00414390    00000356    -       int32_t __cdecl Game_Control(int32_t nframes, int32_t demo_mode);
 004146F0    00000338    -       void __cdecl Item_Animate(struct ITEM_INFO *item);
-00414A60    000000AB    -       int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, ANIM_STRUCT *anim);
+00414A60    000000AB    -       int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, struct ANIM_STRUCT *anim);
 00414B10    0000005F    -       void __cdecl Item_Translate(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z);
 00414B70    00000198    *       struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);
 00414D10    00000168    -       int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);
@@ -1417,7 +1468,7 @@ typedef enum LARA_STATE {
 00427790    00000072    -       void __cdecl Lara_LookLeftRight(void);
 00427810    00000089    -       void __cdecl Lara_ResetLook(void);
 004278A0    0000008B    +       void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00427930    00000143    -       void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427930    00000143    +       void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427A80    00000148    -       void __cdecl Lara_State_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427BD0    000000D3    -       void __cdecl Lara_State_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427CB0    00000057    -       void __cdecl Lara_State_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2288,6 +2339,7 @@ typedef enum LARA_STATE {
 004640C4    -       int32_t g_FlipEffect;
 004641F8    -       void (__cdecl *g_EffectRoutines[32])(struct ITEM_INFO *item);
 00465A60    -       int16_t g_OptionMusicVolume;
+00465AD4    -       int32_t g_JumpPermitted = 1;
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
 00468DF4    +       const int16_t g_SinTable[0x402];
@@ -2340,6 +2392,7 @@ typedef enum LARA_STATE {
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 00521FDC    -       int32_t g_SoundFxCount;
+005258F4    -       struct ANIM_STRUCT *g_Anims;
 0052618C    -       struct ROOM_INFO *g_Rooms;
 00526240    -       int32_t g_FlipStatus;
 005262F0    -       struct ITEM_INFO g_Items[];

@@ -5,3 +5,4 @@
 #include "global/types.h"
 
 void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);
