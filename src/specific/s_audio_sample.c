@@ -30,3 +30,53 @@ void __cdecl S_Audio_Sample_CloseAllTracks(void)
         }
     }
 }
+
+bool __cdecl S_Audio_Sample_Load(
+    int32_t sample_idx, LPWAVEFORMATEX format, const void *data,
+    uint32_t data_size)
+{
+    if (!g_DSound || !g_IsSoundEnabled
+        || sample_idx >= MAX_AUDIO_SAMPLE_BUFFERS) {
+        return false;
+    }
+
+    if (g_SampleBuffers[sample_idx] != NULL) {
+        IDirectSound_Release(g_SampleBuffers[sample_idx]);
+        g_SampleBuffers[sample_idx] = NULL;
+    }
+
+    DSBUFFERDESC desc;
+    memset(&desc, 0, sizeof(desc));
+    desc.dwSize = sizeof(DSBUFFERDESC);
+    desc.dwFlags = DSBCAPS_CTRLVOLUME | DSBCAPS_CTRLPAN | DSBCAPS_CTRLFREQUENCY
+        | DSBCAPS_LOCSOFTWARE;
+    desc.dwBufferBytes = data_size;
+    desc.dwReserved = 0;
+    desc.lpwfxFormat = format;
+
+    if (IDirectSound_CreateSoundBuffer(
+            g_DSound, &desc, &g_SampleBuffers[sample_idx], NULL)
+        < 0) {
+        return false;
+    }
+
+    LPVOID audio_ptr;
+    DWORD audio_bytes;
+    if (IDirectSoundBuffer_Lock(
+            g_SampleBuffers[sample_idx], 0, data_size, &audio_ptr, &audio_bytes,
+            NULL, NULL, 0)
+        < 0) {
+        return false;
+    }
+
+    memcpy(audio_ptr, data, audio_bytes);
+
+    if (IDirectSoundBuffer_Unlock(
+            g_SampleBuffers[sample_idx], audio_ptr, audio_bytes, NULL, 0)
+        < 0) {
+        return false;
+    }
+
+    g_SampleFreqs[sample_idx] = format->nSamplesPerSec;
+    return true;
+}
