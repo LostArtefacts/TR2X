@@ -398,3 +398,11 @@ void __cdecl S_Audio_Sample_OutSetPanAndVolume(
     int32_t calc_volume = S_Audio_Sample_CalculateSampleVolume(volume);
     S_Audio_Sample_AdjustTrackVolumeAndPan(track_id, calc_volume, calc_pan);
 }
+
+void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch)
+{
+    if (!g_SoundIsActive) {
+        return;
+    }
+    S_Audio_Sample_AdjustTrackPitch(track_id, pitch);
+}

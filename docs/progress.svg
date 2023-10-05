@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.50% (54)</tspan> · <tspan class="known">93.08% (1117)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.58% (55)</tspan> · <tspan class="known">93% (1116)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="33.62" height="6" x="0" y="0" class="decompiled"/>
-<rect width="695.33" height="6" x="33.62" y="0" class="known"/>
+<rect width="34.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="694.71" height="6" x="34.24" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1192,7 +1192,7 @@
 <rect width="12" height="12" x="180" y="330" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);</title></rect>
 <rect width="12" height="12" x="195" y="330" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="12" height="12" x="210" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);</title></rect>
-<rect width="12" height="12" x="225" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
+<rect width="12" height="12" x="225" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="12" height="12" x="240" y="330" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="255" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="270" y="330" class="known"><title>void __cdecl S_Audio_Sample_OutCloseAllTracks(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.60%</tspan> · <tspan class="known">96.07%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.61%</tspan> · <tspan class="known">96.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.89" height="6" x="0" y="0" class="decompiled"/>
-<rect width="717.65" height="6" x="26.89" y="0" class="known"/>
+<rect width="26.95" height="6" x="0" y="0" class="decompiled"/>
+<rect width="717.59" height="6" x="26.95" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2371,7 +2371,7 @@
 <rect width="1.90" height="1.60" x="708.33" y="349.21" class="known"><title>void __cdecl lara_as_reach(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="1.90" height="1.60" x="708.33" y="353.81" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);</title></rect>
 <rect width="1.90" height="1.60" x="708.33" y="358.40" class="known"><title>void __cdecl S_DontDisplayPicture(void);</title></rect>
-<rect width="1.68" height="1.82" x="713.23" y="321.46" class="known"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
+<rect width="1.68" height="1.82" x="713.23" y="321.46" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="1.68" height="1.82" x="717.91" y="321.46" class="known"><title>int32_t __cdecl GetFreePaletteIndex(void);</title></rect>
 <rect width="1.68" height="1.82" x="722.59" y="321.46" class="known"><title>int32_t __cdecl GetFreeTexturePageIndex(void);</title></rect>
 <rect width="1.68" height="1.82" x="727.27" y="321.46" class="known"><title>void __thiscall SE_UpdateBitmapPalette(BITMAP_RESOURCE *bmpRsrc, HWND hWnd, HWND hSender);</title></rect>
