@@ -1,7 +1,35 @@
 #include "specific/s_music.h"
 
+#include "global/funcs.h"
 #include "global/vars.h"
 #include "lib/winmm.h"
+
+bool __cdecl S_Music_PlaySynced(int32_t track_id)
+{
+    g_CD_TrackID = track_id;
+
+    track_id = Music_GetRealTrack(track_id);
+
+    MCI_SET_PARMS set_params;
+    set_params.dwTimeFormat = MCI_FORMAT_TMSF;
+    if (mciSendCommand(
+            g_MciDeviceID, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD_PTR)&set_params)
+        != 0) {
+        return false;
+    }
+
+    MCI_PLAY_PARMS play_params;
+    play_params.dwFrom = track_id;
+    play_params.dwTo = track_id + 1;
+    if (mciSendCommand(
+            g_MciDeviceID, MCI_PLAY, MCI_NOTIFY_FAILURE | MCI_NOTIFY_ABORTED,
+            (DWORD_PTR)&play_params)
+        != 0) {
+        return false;
+    }
+
+    return true;
+}
 
 uint32_t __cdecl S_Music_GetFrames(void)
 {
@@ -9,7 +37,8 @@ uint32_t __cdecl S_Music_GetFrames(void)
     status_params.dwItem = MCI_STATUS_POSITION;
     if (mciSendCommand(
             g_MciDeviceID, MCI_STATUS, MCI_STATUS_ITEM,
-            (DWORD_PTR)&status_params)) {
+            (DWORD_PTR)&status_params)
+        != 0) {
         return 0;
     }
 

@@ -1661,7 +1661,7 @@ typedef struct CINE_FRAME {
 0043F2F0    00000081    -R      void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
 
 # game/sound.c
-0043F380    00000031    -R      int32_t __cdecl GetRealTrack(int32_t track);
+0043F380    00000031    *       int32_t __cdecl Music_GetRealTrack(int32_t track);
 0043F3C0    00000484    -       void __cdecl Sound_Effect(int32_t sample_id, const struct PHD_3DPOS *pos, uint32_t flags);
 0043F860    0000005E    -       void __cdecl Sound_StopEffect(int32_t sample_id);
 0043F8C0    00000086    -       void __cdecl Sound_UpdateContinued(void);
@@ -2085,7 +2085,7 @@ typedef struct CINE_FRAME {
 00455460    00000051    -       void __cdecl Music_Shutdown(void);
 00455500    0000006F    -       void __cdecl Music_Play(int16_t track_id, bool is_looped);
 00455570    00000039    -       void __cdecl Music_Stop(void);
-004555B0    00000084    -       bool __cdecl Music_PlaySynced(int32_t trackID);
+004555B0    00000084    +       bool __cdecl Music_PlaySynced(int32_t trackID);
 00455640    00000061    +       int32_t __cdecl Music_GetFrames(void);
 004556B0    00000092    +       void __cdecl Music_SetVolume(int32_t volume);
 004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);

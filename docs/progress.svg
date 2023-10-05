@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5% (60)</tspan> · <tspan class="known">92.58% (1111)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.08% (61)</tspan> · <tspan class="known">92.50% (1110)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="37.35" height="6" x="0" y="0" class="decompiled"/>
-<rect width="691.60" height="6" x="37.35" y="0" class="known"/>
+<rect width="37.97" height="6" x="0" y="0" class="decompiled"/>
+<rect width="690.98" height="6" x="37.97" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -788,7 +788,7 @@
 <rect width="12" height="12" x="120" y="210" class="known"><title>void __cdecl SkidManControl(int16_t rider_num);</title></rect>
 <rect width="12" height="12" x="135" y="210" class="known"><title>void __cdecl SkidmanPush(struct ITEM_INFO *item, struct ITEM_INFO *laraitem, int32_t radius);</title></rect>
 <rect width="12" height="12" x="150" y="210" class="known"><title>void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="165" y="210" class="known"><title>int32_t __cdecl GetRealTrack(int32_t track);</title></rect>
+<rect width="12" height="12" x="165" y="210" class="known"><title>int32_t __cdecl Music_GetRealTrack(int32_t track);</title></rect>
 <rect width="12" height="12" x="180" y="210" class="known"><title>void __cdecl Sound_Effect(int32_t sample_id, const struct PHD_3DPOS *pos, uint32_t flags);</title></rect>
 <rect width="12" height="12" x="195" y="210" class="known"><title>void __cdecl Sound_StopEffect(int32_t sample_id);</title></rect>
 <rect width="12" height="12" x="210" y="210" class="known"><title>void __cdecl Sound_UpdateContinued(void);</title></rect>
@@ -1201,7 +1201,7 @@
 <rect width="12" height="12" x="315" y="330" class="known"><title>void __cdecl Music_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl Music_Play(int16_t track_id, bool is_looped);</title></rect>
 <rect width="12" height="12" x="345" y="330" class="known"><title>void __cdecl Music_Stop(void);</title></rect>
-<rect width="12" height="12" x="360" y="330" class="known"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
+<rect width="12" height="12" x="360" y="330" class="decompiled"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="decompiled"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
 <rect width="12" height="12" x="390" y="330" class="decompiled"><title>void __cdecl Music_SetVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="405" y="330" class="known"><title>void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.71%</tspan> · <tspan class="known">95.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.75%</tspan> · <tspan class="known">95.92%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="27.74" height="6" x="0" y="0" class="decompiled"/>
-<rect width="716.80" height="6" x="27.74" y="0" class="known"/>
+<rect width="28.03" height="6" x="0" y="0" class="decompiled"/>
+<rect width="716.51" height="6" x="28.03" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1893,7 +1893,7 @@
 <rect width="7.43" height="7.27" x="577.68" y="221.96" class="known"><title>void __cdecl lara_as_tread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.27" x="577.68" y="232.23" class="known"><title>int32_t __cdecl Targetable(struct ITEM_INFO *item, AI_INFO *info);</title></rect>
 <rect width="7.43" height="7.19" x="577.68" y="242.49" class="known"><title>void __cdecl lara_as_back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="7.43" height="7.19" x="577.68" y="252.68" class="known"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
+<rect width="7.43" height="7.19" x="577.68" y="252.68" class="decompiled"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
 <rect width="7.43" height="7.11" x="577.68" y="262.87" class="known"><title>void __cdecl DrawSpriteItem(struct ITEM_INFO *item);</title></rect>
 <rect width="7.43" height="7.11" x="577.68" y="272.99" class="known"><title>void __cdecl lara_col_fallback(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.04" x="577.68" y="283.10" class="known"><title>void __cdecl ControlBlood1(int16_t fx_num);</title></rect>
@@ -2245,7 +2245,7 @@
 <rect width="3.31" height="3.25" x="674.91" y="301" class="known"><title>void __cdecl phd_RotY_I(int16_t ang);</title></rect>
 <rect width="3.31" height="3.25" x="674.91" y="307.25" class="known"><title>void __cdecl phd_RotX_I(int16_t ang);</title></rect>
 <rect width="3.31" height="3.25" x="674.91" y="313.50" class="known"><title>void __cdecl phd_RotZ_I(int16_t ang);</title></rect>
-<rect width="3.31" height="3.25" x="674.91" y="319.75" class="known"><title>int32_t __cdecl GetRealTrack(int32_t track);</title></rect>
+<rect width="3.31" height="3.25" x="674.91" y="319.75" class="known"><title>int32_t __cdecl Music_GetRealTrack(int32_t track);</title></rect>
 <rect width="3.31" height="3.25" x="674.91" y="326" class="decompiled"><title>void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="3.31" height="3.25" x="674.91" y="332.26" class="known"><title>void __cdecl S_CalculateStaticLight(int16_t adder);</title></rect>
 <rect width="3.31" height="3.12" x="674.91" y="338.51" class="known"><title>void __cdecl ControlRichochet1(int16_t fx_num);</title></rect>
