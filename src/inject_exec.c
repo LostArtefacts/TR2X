@@ -65,13 +65,6 @@ static void Inject_Sound(void)
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
 }
 
-static void Inject_S_FlaggedString(void)
-{
-    INJECT(1, 0x00447550, S_FlaggedString_Create);
-    INJECT(1, 0x00445F00, S_FlaggedString_Delete);
-    INJECT(1, 0x00446100, S_FlaggedString_InitAdapter);
-}
-
 static void Inject_S_Audio_Sample(void)
 {
     INJECT(1, 0x00447BC0, S_Audio_Sample_GetAdapter);
@@ -100,6 +93,13 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x00455390, S_Audio_Sample_OutCloseTrack);
     INJECT(1, 0x004553B0, S_Audio_Sample_OutCloseAllTracks);
     INJECT(1, 0x004553C0, S_Audio_Sample_OutIsTrackPlaying);
+}
+
+static void Inject_S_FlaggedString(void)
+{
+    INJECT(1, 0x00447550, S_FlaggedString_Create);
+    INJECT(1, 0x00445F00, S_FlaggedString_Delete);
+    INJECT(1, 0x00446100, S_FlaggedString_InitAdapter);
 }
 
 void Inject_Exec(void)
