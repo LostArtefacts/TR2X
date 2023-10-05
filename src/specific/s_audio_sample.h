@@ -37,3 +37,4 @@ void __cdecl S_Audio_Sample_OutSetPanAndVolume(
 void __cdecl S_Audio_Sample_OutSetPitch(int32_t track_id, int32_t pitch);
 void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);
 void __cdecl S_Audio_Sample_OutCloseAllTracks(void);
+bool __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);

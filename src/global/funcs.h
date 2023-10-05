@@ -1043,7 +1043,6 @@
 #define CheckCheatMode ((void __cdecl (*)(void))0x00454D60)
 #define S_SaveSettings ((void __cdecl (*)(void))0x004550C0)
 #define S_LoadSettings ((void __cdecl (*)(void))0x00455140)
-#define S_Audio_Sample_OutIsTrackPlaying ((BOOL __cdecl (*)(int32_t track_id))0x004553C0)
 #define Music_Init ((bool __cdecl (*)(void))0x004553E0)
 #define Music_Shutdown ((void __cdecl (*)(void))0x00455460)
 #define Music_Play ((void __cdecl (*)(int16_t track_id, bool is_looped))0x00455500)

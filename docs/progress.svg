@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.75% (57)</tspan> · <tspan class="known">92.83% (1114)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.83% (58)</tspan> · <tspan class="known">92.75% (1113)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="35.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="693.46" height="6" x="35.48" y="0" class="known"/>
+<rect width="36.10" height="6" x="0" y="0" class="decompiled"/>
+<rect width="692.84" height="6" x="36.10" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1196,7 +1196,7 @@
 <rect width="12" height="12" x="240" y="330" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>
 <rect width="12" height="12" x="255" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutCloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="270" y="330" class="decompiled"><title>void __cdecl S_Audio_Sample_OutCloseAllTracks(void);</title></rect>
-<rect width="12" height="12" x="285" y="330" class="known"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
+<rect width="12" height="12" x="285" y="330" class="decompiled"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="300" y="330" class="known"><title>bool __cdecl Music_Init(void);</title></rect>
 <rect width="12" height="12" x="315" y="330" class="known"><title>void __cdecl Music_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="330" y="330" class="known"><title>void __cdecl Music_Play(int16_t track_id, bool is_looped);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.63%</tspan> · <tspan class="known">96.04%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.64%</tspan> · <tspan class="known">96.03%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="27.13" height="6" x="0" y="0" class="decompiled"/>
-<rect width="717.40" height="6" x="27.13" y="0" class="known"/>
+<rect width="27.20" height="6" x="0" y="0" class="decompiled"/>
+<rect width="717.33" height="6" x="27.20" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2348,7 +2348,7 @@
 <rect width="2.22" height="1.78" x="703.70" y="316.68" class="known"><title>int32_t __cdecl GF_DoFrontEndSequence(void);</title></rect>
 <rect width="2.22" height="1.78" x="708.92" y="316.68" class="known"><title>bool __cdecl D3DCreate(void);</title></rect>
 <rect width="2.22" height="1.78" x="714.13" y="316.68" class="decompiled"><title>void __thiscall S_FlaggedString_Create(struct STRING_FLAGGED *string, DWORD size);</title></rect>
-<rect width="2.22" height="1.78" x="719.35" y="316.68" class="known"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
+<rect width="2.22" height="1.78" x="719.35" y="316.68" class="decompiled"><title>BOOL __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id);</title></rect>
 <rect width="2.22" height="1.78" x="724.57" y="316.68" class="known"><title>bool __cdecl InitTextures(void);</title></rect>
 <rect width="2.05" height="1.78" x="729.79" y="316.68" class="known"><title>void __cdecl lara_col_slide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.05" height="1.78" x="734.85" y="316.68" class="known"><title>void __cdecl lara_as_climbend(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

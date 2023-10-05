@@ -424,3 +424,11 @@ void __cdecl S_Audio_Sample_OutCloseAllTracks(void)
         S_Audio_Sample_CloseTrack(i);
     }
 }
+
+bool __cdecl S_Audio_Sample_OutIsTrackPlaying(int32_t track_id)
+{
+    if (!g_SoundIsActive) {
+        return FALSE;
+    }
+    return S_Audio_Sample_IsTrackPlaying(track_id);
+}
