@@ -1059,3 +1059,11 @@ typedef enum LARA_STATE {
     LS_MONKEYF = 76,
     LS_LAST = 77,
 } LARA_STATE;
+
+typedef enum LARA_GUN_STATE {
+    LGS_ARMLESS = 0,
+    LGS_HANDS_BUSY = 1,
+    LGS_DRAW = 2,
+    LGS_UNDRAW = 3,
+    LGS_READY = 4,
+} LARA_GUN_STATE;

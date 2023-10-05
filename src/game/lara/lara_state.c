@@ -140,3 +140,36 @@ void __cdecl Lara_State_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll)
         }
     }
 }
+
+void __cdecl Lara_State_ForwardJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->goal_anim_state == LS_SWAN_DIVE
+        || item->goal_anim_state == LS_REACH) {
+        item->goal_anim_state = LS_FORWARD_JUMP;
+    }
+
+    if (item->goal_anim_state != LS_DEATH && item->goal_anim_state != LS_STOP
+        && item->goal_anim_state != LS_RUN) {
+        if ((g_Input & IN_ACTION) && g_Lara.gun_status == LGS_ARMLESS) {
+            item->goal_anim_state = LS_REACH;
+        }
+        if ((g_Input & IN_ROLL) || (g_Input & IN_BACK)) {
+            item->goal_anim_state = LS_TWIST;
+        }
+        if ((g_Input & IN_SLOW) && g_Lara.gun_status == LGS_ARMLESS) {
+            item->goal_anim_state = LS_SWAN_DIVE;
+        }
+        if (item->fall_speed > LARA_FAST_FALL_SPEED) {
+            item->goal_anim_state = LS_FAST_FALL;
+        }
+    }
+
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_JUMP_TURN);
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, +LARA_JUMP_TURN);
+    }
+}
