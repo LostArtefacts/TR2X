@@ -80,3 +80,23 @@ bool __cdecl S_Audio_Sample_Load(
     g_SampleFreqs[sample_idx] = format->nSamplesPerSec;
     return true;
 }
+
+bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id)
+{
+    if (!g_ChannelBuffers[track_id]) {
+        return false;
+    }
+
+    DWORD status;
+    if (IDirectSoundBuffer_GetStatus(g_ChannelBuffers[track_id], &status) < 0) {
+        return false;
+    }
+
+    if (!(status & DSBSTATUS_PLAYING)) {
+        IDirectSoundBuffer_Release(g_ChannelBuffers[track_id]);
+        g_ChannelBuffers[track_id] = NULL;
+        return false;
+    }
+
+    return true;
+}
