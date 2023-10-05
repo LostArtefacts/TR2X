@@ -15,3 +15,4 @@ void __cdecl Lara_State_TurnRight(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_TurnLeft(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Death(struct ITEM_INFO *item, struct COLL_INFO *coll);

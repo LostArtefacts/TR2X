@@ -425,7 +425,12 @@ typedef struct COLL_INFO {
     int8_t z_tilt;
     int8_t hit_by_baddie;
     int8_t hit_static;
-    uint16_t flags;
+    uint16_t slopes_are_walls : 2;
+    uint16_t slopes_are_pits : 1;
+    uint16_t lava_is_pit : 1;
+    uint16_t enable_baddie_push : 1;
+    uint16_t enable_spaz : 1;
+    uint16_t hit_ceiling : 1;
 } COLL_INFO;
 
 typedef struct ITEM_INFO {
