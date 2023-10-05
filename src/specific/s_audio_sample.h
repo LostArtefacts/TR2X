@@ -24,3 +24,4 @@ BOOL CALLBACK S_Audio_Sample_DSoundEnumCallback(
 void __cdecl S_Audio_Sample_Init2(HWND hwnd);
 bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);
 bool __cdecl S_Audio_Sample_DSoundBufferTest(void);
+void __cdecl S_Audio_Sample_Shutdown(void);

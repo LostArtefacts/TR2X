@@ -1870,7 +1870,7 @@ typedef struct CINE_FRAME {
 00448160    0000017C    +       void __cdecl S_Audio_Sample_Init2(HWND hwnd);
 004482E0    0000001C    +       bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);
 00448300    000000C4    +       bool __cdecl S_Audio_Sample_DSoundBufferTest(void);
-004483D0    0000002A    -       void __cdecl S_Audio_Sample_Shutdown(void);
+004483D0    0000002A    +       void __cdecl S_Audio_Sample_Shutdown(void);
 00448400    00000006    -       bool __cdecl S_Audio_Sample_IsEnabled(void);
 00448410    00000005    -R      sub_448410
 00448420    00000001    -R      sub_448420

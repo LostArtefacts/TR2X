@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.92% (47)</tspan> · <tspan class="known">93.67% (1124)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4% (48)</tspan> · <tspan class="known">93.58% (1123)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="29.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="699.69" height="6" x="29.26" y="0" class="known"/>
+<rect width="29.88" height="6" x="0" y="0" class="decompiled"/>
+<rect width="699.07" height="6" x="29.88" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -986,7 +986,7 @@
 <rect width="12" height="12" x="90" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_Init2(HWND hwnd);</title></rect>
 <rect width="12" height="12" x="105" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);</title></rect>
 <rect width="12" height="12" x="120" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>
-<rect width="12" height="12" x="135" y="270" class="known"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
+<rect width="12" height="12" x="135" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="150" y="270" class="known"><title>bool __cdecl S_Audio_Sample_IsEnabled(void);</title></rect>
 <rect width="12" height="12" x="165" y="270" class="todo"><title>sub_448410</title></rect>
 <rect width="12" height="12" x="180" y="270" class="todo"><title>sub_448420</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.50%</tspan> · <tspan class="known">96.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.52%</tspan> · <tspan class="known">96.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.17" height="6" x="0" y="0" class="decompiled"/>
-<rect width="718.37" height="6" x="26.17" y="0" class="known"/>
+<rect width="26.26" height="6" x="0" y="0" class="decompiled"/>
+<rect width="718.27" height="6" x="26.26" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2289,7 +2289,7 @@
 <rect width="2.94" height="2.83" x="687.09" y="306.34" class="known"><title>void __cdecl HWR_ResetColorKey(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="312.17" class="known"><title>void __cdecl phd_PutPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="317.86" class="known"><title>void __cdecl Sound_Init(void);</title></rect>
-<rect width="2.94" height="2.69" x="687.09" y="323.55" class="known"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
+<rect width="2.94" height="2.69" x="687.09" y="323.55" class="decompiled"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="329.25" class="known"><title>void __cdecl S_UnloadLevelFile(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="334.94" class="known"><title>int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="340.63" class="known"><title>LONG __cdecl SetRegistryBoolValue(LPCTSTR lpValueName, bool value);</title></rect>

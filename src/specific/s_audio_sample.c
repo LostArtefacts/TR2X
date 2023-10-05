@@ -336,3 +336,12 @@ bool __cdecl S_Audio_Sample_DSoundBufferTest(void)
     IDirectSoundBuffer_Release(dsBuffer);
     return result;
 }
+
+void __cdecl S_Audio_Sample_Shutdown(void)
+{
+    S_Audio_Sample_CloseAllTracks();
+    if (g_DSound != NULL) {
+        IDirectSound_Release(g_DSound);
+        g_DSound = NULL;
+    }
+}
