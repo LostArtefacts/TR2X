@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.50% (42)</tspan> · <tspan class="known">94.08% (1129)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.58% (43)</tspan> · <tspan class="known">94% (1128)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.14" height="6" x="0" y="0" class="decompiled"/>
-<rect width="702.80" height="6" x="26.14" y="0" class="known"/>
+<rect width="26.77" height="6" x="0" y="0" class="decompiled"/>
+<rect width="702.18" height="6" x="26.77" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -981,7 +981,7 @@
 <rect width="12" height="12" x="15" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);</title></rect>
 <rect width="12" height="12" x="30" y="270" class="todo"><title>sub_447FA0</title></rect>
 <rect width="12" height="12" x="45" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
-<rect width="12" height="12" x="60" y="270" class="known"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
+<rect width="12" height="12" x="60" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="12" height="12" x="75" y="270" class="known"><title>BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);</title></rect>
 <rect width="12" height="12" x="90" y="270" class="known"><title>void __cdecl S_Audio_Sample_Init2(HWND hwnd);</title></rect>
 <rect width="12" height="12" x="105" y="270" class="known"><title>bool __cdecl S_Audio_Sample_DSoundCreate(GUID *guid);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.25%</tspan> · <tspan class="known">96.42%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">3.26%</tspan> · <tspan class="known">96.41%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="24.28" height="6" x="0" y="0" class="decompiled"/>
-<rect width="720.26" height="6" x="24.28" y="0" class="known"/>
+<rect width="24.34" height="6" x="0" y="0" class="decompiled"/>
+<rect width="720.20" height="6" x="24.34" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2382,7 +2382,7 @@
 <rect width="1.49" height="1.84" x="713.23" y="326.28" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="331.12" class="known"><title>bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="335.77" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
-<rect width="1.49" height="1.66" x="713.23" y="340.43" class="known"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
+<rect width="1.49" height="1.66" x="713.23" y="340.43" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="1.49" height="1.66" x="713.23" y="345.09" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
 <rect width="1.49" height="1.48" x="713.23" y="349.74" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>
 <rect width="1.49" height="1.48" x="713.23" y="354.22" class="known"><title>bool __cdecl HWR_VertexBufferFull(void);</title></rect>

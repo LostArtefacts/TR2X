@@ -3,6 +3,7 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "lib/dsound.h"
 #include "log.h"
 #include "specific/s_flagged_string.h"
 
@@ -212,4 +213,12 @@ bool __cdecl S_Audio_Sample_Init(void)
     }
 
     return true;
+}
+
+bool __cdecl S_Audio_Sample_DSoundEnumerate(
+    struct SOUND_ADAPTER_LIST *adapter_list)
+{
+    return DirectSoundEnumerateA(
+               S_Audio_Sample_DSoundEnumCallback, (LPVOID)adapter_list)
+        >= 0;
 }

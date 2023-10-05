@@ -17,3 +17,5 @@ void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(
 void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);
 void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);
 bool __cdecl S_Audio_Sample_Init(void);
+bool __cdecl S_Audio_Sample_DSoundEnumerate(
+    struct SOUND_ADAPTER_LIST *adapter_list);
