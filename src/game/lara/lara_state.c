@@ -282,3 +282,11 @@ void __cdecl Lara_State_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_HANG_RIGHT;
     }
 }
+
+void __cdecl Lara_State_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_REACH_ANGLE;
+    if (item->fall_speed > LARA_FAST_FALL_SPEED) {
+        item->goal_anim_state = LS_FAST_FALL;
+    }
+}
