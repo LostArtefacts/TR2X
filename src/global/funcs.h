@@ -375,7 +375,6 @@
 #define Lara_ResetLook ((void __cdecl (*)(void))0x00427810)
 #define Lara_Fallen ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C00)
 #define Lara_CollideStop ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C60)
-#define Lara_Col_Slide ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429900)
 #define Lara_Col_BackJump ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429920)
 #define Lara_Col_RightJump ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429950)
 #define Lara_Col_LeftJump ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429980)
