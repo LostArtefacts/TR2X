@@ -19,3 +19,4 @@ void __cdecl Lara_Col_Land(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Compress(ITEM_INFO *item, COLL_INFO *coll);
 void __cdecl Lara_Col_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_StepLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
