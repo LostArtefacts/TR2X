@@ -375,7 +375,6 @@
 #define Lara_ResetLook ((void __cdecl (*)(void))0x00427810)
 #define Lara_Fallen ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C00)
 #define Lara_CollideStop ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C60)
-#define Lara_Col_Special ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429CC0)
 #define Lara_Col_SwanDive ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429D80)
 #define Lara_Col_FastDive ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429DF0)
 #define Lara_Col_Wade ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00429E70)

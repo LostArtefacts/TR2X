@@ -321,7 +321,7 @@ void __cdecl Lara_Col_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll)
                 item->goal_anim_state = LS_HANG;
                 item->current_anim_state = LS_HANG;
                 item->anim_num = LA_HANG_UP;
-                item->frame_num = g_Anims[LA_HANG_UP].frame_base;
+                item->frame_num = g_Anims[item->anim_num].frame_base;
             }
         } else if (g_Input & IN_SLOW) {
             item->goal_anim_state = LS_GYMNAST;
@@ -335,7 +335,7 @@ void __cdecl Lara_Col_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_HANG;
         item->current_anim_state = LS_HANG;
         item->anim_num = LA_HANG_DOWN;
-        item->frame_num = g_Anims[LA_HANG_DOWN].frame_base;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
     }
 }
 
@@ -449,10 +449,10 @@ void __cdecl Lara_Col_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
         && coll->side_mid.floor < STEPUP_HEIGHT) {
         if (item->frame_num >= 964 && item->frame_num <= 993) {
             item->anim_num = LA_BACK_STEP_DOWN_RIGHT;
-            item->frame_num = g_Anims[LA_BACK_STEP_DOWN_RIGHT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             item->anim_num = LA_BACK_STEP_DOWN_LEFT;
-            item->frame_num = g_Anims[LA_BACK_STEP_DOWN_LEFT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
 
@@ -635,4 +635,32 @@ void __cdecl Lara_Col_Roll(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     Item_ShiftCol(item, coll);
     item->pos.y += coll->side_mid.floor;
+}
+
+void __cdecl Lara_Col_Roll2(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    if (Lara_HitCeiling(item, coll) || Lara_TestSlide(item, coll)) {
+        return;
+    }
+
+    if (coll->side_mid.floor > 200) {
+        item->anim_num = LA_FALL_BACK;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        item->current_anim_state = LS_FALL_BACK;
+        item->goal_anim_state = LS_FALL_BACK;
+        item->gravity = 1;
+        item->fall_speed = 0;
+    } else {
+        Item_ShiftCol(item, coll);
+        item->pos.y += coll->side_mid.floor;
+    }
 }
