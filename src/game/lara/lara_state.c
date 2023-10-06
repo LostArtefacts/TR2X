@@ -265,3 +265,20 @@ void __cdecl Lara_State_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll)
         Sound_Effect(SFX_LARA_FALL, &item->pos, 0);
     }
 }
+
+void __cdecl Lara_State_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (g_Input & IN_LOOK) {
+        Lara_LookUpDown();
+    }
+
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_angle = CAM_HANG_ANGLE;
+    g_Camera.target_elevation = CAM_HANG_ELEVATION;
+    if ((g_Input & IN_LEFT) || (g_Input & IN_STEP_LEFT)) {
+        item->goal_anim_state = LS_HANG_LEFT;
+    } else if ((g_Input & IN_RIGHT) || (g_Input & IN_STEP_RIGHT)) {
+        item->goal_anim_state = LS_HANG_RIGHT;
+    }
+}

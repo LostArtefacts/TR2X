@@ -38,3 +38,6 @@
 
 #define DAMAGE_START 140
 #define DAMAGE_LENGTH 14
+
+#define CAM_HANG_ANGLE 0
+#define CAM_HANG_ELEVATION (-60 * PHD_DEGREE) // = -10920
