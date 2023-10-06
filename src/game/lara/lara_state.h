@@ -39,3 +39,5 @@ void __cdecl Lara_State_RightJump(
 void __cdecl Lara_State_LeftJump(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_UpJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Fallback(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

@@ -481,3 +481,15 @@ void __cdecl Lara_State_UpJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_FAST_FALL;
     }
 }
+
+void __cdecl Lara_State_Fallback(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->fall_speed > LARA_FAST_FALL_SPEED) {
+        item->goal_anim_state = LS_FAST_FALL;
+        return;
+    }
+
+    if ((g_Input & IN_ACTION) && g_Lara.gun_status == LGS_ARMLESS) {
+        item->goal_anim_state = LS_REACH;
+    }
+}
