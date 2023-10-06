@@ -22,3 +22,4 @@ void __cdecl Lara_Col_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_StepLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_RightJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
