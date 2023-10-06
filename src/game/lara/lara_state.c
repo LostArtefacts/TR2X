@@ -555,3 +555,12 @@ void __cdecl Lara_State_Pickup(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Camera.target_elevation = CAM_PICKUP_ELEVATION;
     g_Camera.target_distance = CAM_PICKUP_DISTANCE;
 }
+
+void __cdecl Lara_State_PickupFlare(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_State_Pickup(item, coll);
+    if (item->frame_num == g_Anims[item->anim_num].frame_end - 1) {
+        g_Lara.gun_status = LGS_ARMLESS;
+    }
+}

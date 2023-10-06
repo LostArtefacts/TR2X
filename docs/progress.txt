@@ -1510,7 +1510,7 @@ typedef enum LARA_GUN_STATE {
 00428410    00000030    +       void __cdecl Lara_State_PushBlock(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428440    00000027    +       void __cdecl Lara_State_PPReady(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428470    00000030    +       void __cdecl Lara_State_Pickup(struct ITEM_INFO *item, struct COLL_INFO *coll);
-004284A0    00000058    -       void __cdecl Lara_State_PickupFlare(struct ITEM_INFO *item, struct COLL_INFO *coll);
+004284A0    00000058    +       void __cdecl Lara_State_PickupFlare(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428500    00000039    -       void __cdecl Lara_State_SwitchOn(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428540    00000030    -       void __cdecl Lara_State_UseKey(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428570    0000001D    -       void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll);
