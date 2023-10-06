@@ -564,3 +564,14 @@ void __cdecl Lara_State_PickupFlare(
         g_Lara.gun_status = LGS_ARMLESS;
     }
 }
+
+void __cdecl Lara_State_SwitchOn(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.look = 0;
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_angle = CAM_SWITCH_ON_ANGLE;
+    g_Camera.target_elevation = CAM_SWITCH_ON_ELEVATION;
+    g_Camera.target_distance = CAM_SWITCH_ON_DISTANCE;
+    g_Camera.speed = CAM_SWITCH_ON_SPEED;
+}

@@ -113,6 +113,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x00428440, Lara_State_PPReady);
     INJECT(1, 0x00428470, Lara_State_Pickup);
     INJECT(1, 0x004284A0, Lara_State_PickupFlare);
+    INJECT(1, 0x00428500, Lara_State_SwitchOn);
 }
 
 static void Inject_S_Audio_Sample(void)
