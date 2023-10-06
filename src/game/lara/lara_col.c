@@ -153,3 +153,44 @@ void __cdecl Lara_Col_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll)
     Item_ShiftCol(item, coll);
     item->pos.y += coll->side_mid.floor;
 }
+
+void __cdecl Lara_Col_ForwardJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->speed < 0) {
+        g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    } else {
+        g_Lara.move_angle = item->pos.y_rot;
+    }
+
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = BAD_JUMP_CEILING;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_DeflectEdgeJump(item, coll);
+
+    if (item->speed < 0) {
+        g_Lara.move_angle = item->pos.y_rot;
+    }
+
+    if (coll->side_mid.floor > 0 || item->fall_speed <= 0) {
+        return;
+    }
+
+    if (Lara_LandedBad(item, coll)) {
+        item->goal_anim_state = LS_DEATH;
+    } else if (
+        g_Lara.water_status != LWS_WADE && (g_Input & IN_FORWARD)
+        && !(g_Input & IN_SLOW)) {
+        item->goal_anim_state = LS_RUN;
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+
+    item->gravity = 0;
+    item->fall_speed = 0;
+    item->pos.y += coll->side_mid.floor;
+    item->speed = 0;
+    Lara_Animate(item);
+}
