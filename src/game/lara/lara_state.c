@@ -257,3 +257,11 @@ void __cdecl Lara_State_Death(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->enable_spaz = 0;
     coll->enable_baddie_push = 0;
 }
+
+void __cdecl Lara_State_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->speed = item->speed * 95 / 100;
+    if (item->fall_speed == DAMAGE_START + DAMAGE_LENGTH) {
+        Sound_Effect(SFX_LARA_FALL, &item->pos, 0);
+    }
+}

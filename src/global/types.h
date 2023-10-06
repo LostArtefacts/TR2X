@@ -867,6 +867,7 @@ typedef struct LARA_INFO {
 } LARA_INFO;
 
 typedef enum SOUND_EFFECT_ID {
+    SFX_LARA_FALL = 30,
     SFX_UNDERWATER = 60,
 } SOUND_EFFECT_ID;
 
