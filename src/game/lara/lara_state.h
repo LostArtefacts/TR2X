@@ -20,3 +20,4 @@ void __cdecl Lara_State_FastFall(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll);
