@@ -35,3 +35,4 @@ void __cdecl Lara_Col_Roll2(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SwanDive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll);

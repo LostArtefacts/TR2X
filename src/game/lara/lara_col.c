@@ -750,3 +750,14 @@ void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     item->pos.y += MIN(coll->side_mid.floor, 50);
 }
+
+void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->slopes_are_walls = 1;
+    coll->slopes_are_pits = 1;
+    coll->bad_pos = STEPUP_HEIGHT;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+    Lara_GetLaraCollisionInfo(item, coll);
+}
