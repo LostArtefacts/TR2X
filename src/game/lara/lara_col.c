@@ -383,3 +383,8 @@ void __cdecl Lara_Col_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->pos.y += coll->side_mid.floor;
     }
 }
+
+void __cdecl Lara_Col_Land(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_Col_Stop(item, coll);
+}
