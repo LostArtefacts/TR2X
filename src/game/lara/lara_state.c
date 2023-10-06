@@ -352,3 +352,9 @@ void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
         CLAMPG(g_Lara.turn_rate, LARA_SLOW_TURN);
     }
 }
+
+void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+}
