@@ -5,6 +5,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <time.h>
 
 FILE *m_LogHandle = NULL;
 
@@ -23,10 +24,20 @@ void Log_Message(
 
     // print to log file
     if (m_LogHandle) {
+        time_t rawtime;
+        struct tm *timeinfo;
+        char time_buffer[20];
+
+        time(&rawtime);
+        timeinfo = localtime(&rawtime);
+        strftime(
+            time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", timeinfo);
+
         va_list vb;
 
         va_copy(vb, va);
-        fprintf(m_LogHandle, "%s %d %s ", file, line, func);
+        fprintf(m_LogHandle, "%s [%s @ %s:%d] ", time_buffer, func, file, line);
+
         vfprintf(m_LogHandle, fmt, vb);
         fprintf(m_LogHandle, "\n");
         fflush(m_LogHandle);
