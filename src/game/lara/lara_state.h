@@ -34,3 +34,5 @@ void __cdecl Lara_State_StepLeft(
 void __cdecl Lara_State_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_BackJump(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_RightJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
