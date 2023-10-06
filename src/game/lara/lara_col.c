@@ -611,3 +611,8 @@ void __cdecl Lara_Col_SlideBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Lara.move_angle = item->pos.y_rot + PHD_180;
     Lara_Slide_Slope(item, coll);
 }
+
+void __cdecl Lara_Col_Null(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_Col_Default(item, coll);
+}
