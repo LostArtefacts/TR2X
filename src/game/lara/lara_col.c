@@ -616,3 +616,23 @@ void __cdecl Lara_Col_Null(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     Lara_Col_Default(item, coll);
 }
+
+void __cdecl Lara_Col_Roll(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    if (Lara_HitCeiling(item, coll) || Lara_TestSlide(item, coll)
+        || Lara_Fallen(item, coll)) {
+        return;
+    }
+
+    Item_ShiftCol(item, coll);
+    item->pos.y += coll->side_mid.floor;
+}

@@ -30,3 +30,4 @@ void __cdecl Lara_Col_HangLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_HangRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SlideBack(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Null(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_Roll(struct ITEM_INFO *item, struct COLL_INFO *coll);
