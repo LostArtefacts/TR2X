@@ -194,3 +194,33 @@ void __cdecl Lara_Col_ForwardJump(
     item->speed = 0;
     Lara_Animate(item);
 }
+
+void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    coll->slopes_are_pits = 1;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+    Lara_GetLaraCollisionInfo(item, coll);
+    if (Lara_HitCeiling(item, coll)) {
+        return;
+    }
+
+    if (coll->side_mid.floor <= 200) {
+        if (Lara_DeflectEdge(item, coll)) {
+            Lara_CollideStop(item, coll);
+        }
+        item->pos.y += coll->side_mid.floor;
+    } else {
+        item->anim_num = LA_FALL_BACK;
+        item->frame_num = g_Anims[LA_FALL_BACK].frame_base;
+        item->current_anim_state = LS_FALL_BACK;
+        item->goal_anim_state = LS_FALL_BACK;
+        item->gravity = 1;
+        item->fall_speed = 0;
+    }
+}
