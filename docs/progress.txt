@@ -1517,7 +1517,7 @@ typedef enum LARA_GUN_STATE {
 00428590    0000002F    +       void __cdecl Lara_State_SwanDive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 004285C0    00000054    +       void __cdecl Lara_State_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428620    00000015    +       void __cdecl Lara_State_WaterOut(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00428640    000000CA    *       void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428640    000000CA    +       void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428710    00000096    -       void __cdecl Lara_State_DeathSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 004287B0    0000004C    -       void __cdecl Lara_StateExtra_Breath(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428800    00000047    -       void __cdecl Lara_StateExtra_YetiKill(struct ITEM_INFO *item, struct COLL_INFO *coll);

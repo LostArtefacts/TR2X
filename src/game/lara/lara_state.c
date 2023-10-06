@@ -619,3 +619,34 @@ void __cdecl Lara_State_WaterOut(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->enable_baddie_push = 0;
     g_Camera.flags = CF_FOLLOW_CENTRE;
 }
+
+void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_STOP;
+        return;
+    }
+
+    g_Camera.target_elevation = CAM_WADE_ELEVATION;
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_FAST_TURN);
+        item->pos.z_rot -= LARA_LEAN_RATE;
+        CLAMPL(item->pos.z_rot, -LARA_LEAN_MAX);
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, LARA_FAST_TURN);
+        item->pos.z_rot += LARA_LEAN_RATE;
+        CLAMPG(item->pos.z_rot, LARA_LEAN_MAX);
+    }
+
+    if (g_Input & IN_FORWARD) {
+        if (g_Lara.water_status != LWS_ABOVE_WATER) {
+            item->goal_anim_state = LS_WADE;
+        } else {
+            item->goal_anim_state = IN_FORWARD;
+        }
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+}
