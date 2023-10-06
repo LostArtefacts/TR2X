@@ -517,3 +517,9 @@ void __cdecl Lara_Col_RightJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Lara.move_angle = item->pos.y_rot + PHD_90;
     Lara_Col_Jumper(item, coll);
 }
+
+void __cdecl Lara_Col_LeftJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot - PHD_90;
+    Lara_Col_Jumper(item, coll);
+}
