@@ -523,3 +523,46 @@ void __cdecl Lara_Col_LeftJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Lara.move_angle = item->pos.y_rot - PHD_90;
     Lara_Col_Jumper(item, coll);
 }
+
+void __cdecl Lara_Col_UpJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = BAD_JUMP_CEILING;
+    if (item->speed < 0) {
+        coll->facing = g_Lara.move_angle + PHD_180;
+    } else {
+        coll->facing = g_Lara.move_angle;
+    }
+
+    Collide_GetCollisionInfo(
+        coll, item->pos.x, item->pos.y, item->pos.z, item->room_num, 870);
+    if (Lara_TestHangJumpUp(item, coll)) {
+        return;
+    }
+
+    Lara_SlideEdgeJump(item, coll);
+    if (coll->coll_type != COLL_NONE) {
+        item->speed = item->speed > 0 ? 2 : -2;
+    } else if (item->fall_speed < -70) {
+        if (g_Input & IN_FORWARD && item->speed < 5) {
+            item->speed++;
+        } else if (g_Input & IN_BACK && item->speed > -5) {
+            item->speed -= 2;
+        }
+    }
+
+    if (item->fall_speed <= 0 || coll->side_mid.floor > 0) {
+        return;
+    }
+
+    if (Lara_LandedBad(item, coll)) {
+        item->goal_anim_state = LS_DEATH;
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+    item->gravity = 0;
+    item->fall_speed = 0;
+    item->pos.y += coll->side_mid.floor;
+}

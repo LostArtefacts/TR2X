@@ -1475,4 +1475,16 @@ typedef enum MUSIC_TRACK_ID {
 } MUSIC_TRACK_ID;
 // clang-format on
 
+// clang-format off
+typedef enum COLL_TYPE {
+    COLL_NONE     = 0x00,
+    COLL_FRONT    = 0x01,
+    COLL_LEFT     = 0x02,
+    COLL_RIGHT    = 0x04,
+    COLL_TOP      = 0x08,
+    COLL_TOPFRONT = 0x10,
+    COLL_CLAMP    = 0x20,
+} COLL_TYPE;
+// clang-format on
+
 #pragma pack(pop)
