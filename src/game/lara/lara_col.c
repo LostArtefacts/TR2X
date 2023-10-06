@@ -224,3 +224,29 @@ void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->fall_speed = 0;
     }
 }
+
+void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->slopes_are_pits = 1;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = STEPUP_HEIGHT;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+    Lara_GetLaraCollisionInfo(item, coll);
+
+    if (coll->side_mid.floor <= 100) {
+        if (!Lara_TestSlide(item, coll)) {
+            item->pos.y += coll->side_mid.floor;
+        }
+    } else {
+        item->anim_num = LA_FALL_DOWN;
+        item->frame_num = g_Anims[LA_FALL_DOWN].frame_base;
+        item->current_anim_state = LS_FORWARD_JUMP;
+        item->goal_anim_state = LS_FORWARD_JUMP;
+        item->gravity = 1;
+        item->fall_speed = 0;
+    }
+}

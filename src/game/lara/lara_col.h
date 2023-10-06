@@ -8,3 +8,4 @@ void __cdecl Lara_Col_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_ForwardJump(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
