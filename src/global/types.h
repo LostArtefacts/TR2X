@@ -983,6 +983,7 @@ typedef enum LARA_ANIMATION {
     LA_SPAZ_BACK = 126,
     LA_SPAZ_RIGHT = 127,
     LA_SPAZ_LEFT = 128,
+    LA_BREATH = 103,
 } LARA_ANIMATION;
 
 typedef enum LARA_STATE {

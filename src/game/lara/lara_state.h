@@ -66,3 +66,5 @@ void __cdecl Lara_State_WaterOut(
 void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_DeathSlide(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_StateExtra_Breath(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
