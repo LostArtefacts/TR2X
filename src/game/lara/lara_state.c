@@ -378,3 +378,25 @@ void __cdecl Lara_State_FastTurn(struct ITEM_INFO *item, struct COLL_INFO *coll)
         }
     }
 }
+
+void __cdecl Lara_State_StepRight(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.look = 0;
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_STOP;
+        return;
+    }
+
+    if (!(g_Input & IN_STEP_RIGHT)) {
+        item->goal_anim_state = LS_STOP;
+    }
+
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_SLOW_TURN);
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, LARA_SLOW_TURN);
+    }
+}
