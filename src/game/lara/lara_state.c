@@ -731,3 +731,15 @@ void __cdecl Lara_State_Extra_GongBong(
     g_Camera.target_elevation = CAM_GONG_BONG_ELEVATION;
     g_Camera.target_distance = CAM_GONG_BONG_DISTANCE;
 }
+
+void __cdecl Lara_State_Extra_DinoKill(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.flags = CF_FOLLOW_CENTRE;
+    g_Camera.target_angle = CAM_DINO_KILL_ANGLE;
+    g_Camera.target_elevation = CAM_DINO_KILL_ELEVATION;
+    g_Lara.hit_direction = -1;
+    if (item->frame_num < g_Anims[item->anim_num].frame_end - 30) {
+        g_Lara.death_count = 1;
+    }
+}

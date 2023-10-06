@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.08% (109)</tspan> · <tspan class="known">88.50% (1062)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.17% (110)</tspan> · <tspan class="known">88.42% (1061)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="67.85" height="6" x="0" y="0" class="decompiled"/>
-<rect width="661.10" height="6" x="67.85" y="0" class="known"/>
+<rect width="68.48" height="6" x="0" y="0" class="decompiled"/>
+<rect width="660.47" height="6" x="68.48" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -511,7 +511,7 @@
 <rect width="12" height="12" x="465" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_SharkKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="480" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_Airlock(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="495" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_GongBong(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="510" y="120" class="known"><title>void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="510" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="120" class="known"><title>void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="540" y="120" class="known"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="120" class="known"><title>void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.02%</tspan> · <tspan class="known">94.65%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.04%</tspan> · <tspan class="known">94.63%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="37.50" height="6" x="0" y="0" class="decompiled"/>
-<rect width="707.03" height="6" x="37.50" y="0" class="known"/>
+<rect width="37.68" height="6" x="0" y="0" class="decompiled"/>
+<rect width="706.85" height="6" x="37.68" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2059,7 +2059,7 @@
 <rect width="5.29" height="5.06" x="709.05" y="237.46" class="known"><title>void __cdecl InitialiseLOTarray(void);</title></rect>
 <rect width="5.29" height="5.06" x="717.34" y="237.46" class="known"><title>bool __cdecl WinVidGetDisplayModes(void);</title></rect>
 <rect width="5.19" height="5.06" x="725.63" y="237.46" class="known"><title>void __cdecl InitialiseItemArray(int32_t numitems);</title></rect>
-<rect width="5.09" height="5.06" x="733.82" y="237.46" class="known"><title>void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="5.09" height="5.06" x="733.82" y="237.46" class="decompiled"><title>void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.09" height="5.06" x="741.91" y="237.46" class="known"><title>int32_t __cdecl Lara_Fallen(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.18" height="4.97" x="624.75" y="245.52" class="known"><title>void __cdecl SmashItem(int16_t item_num, int32_t weapon_type);</title></rect>
 <rect width="5.18" height="4.97" x="624.75" y="253.49" class="known"><title>void __cdecl S_SetupBelowWater(BOOL underwater);</title></rect>
