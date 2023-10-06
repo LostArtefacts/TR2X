@@ -673,7 +673,7 @@ void __cdecl Lara_State_DeathSlide(
     }
 }
 
-void __cdecl Lara_StateExtra_Breath(
+void __cdecl Lara_State_Extra_Breath(
     struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     item->anim_num = LA_BREATH;
@@ -684,4 +684,15 @@ void __cdecl Lara_StateExtra_Breath(
     g_Lara.gun_status = LGS_ARMLESS;
     g_Camera.type = CAM_CHASE;
     Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
+}
+
+void __cdecl Lara_State_Extra_YetiKill(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_YETI_ANGLE;
+    g_Camera.target_distance = CAM_YETI_DISTANCE;
+    g_Lara.hit_direction = -1;
+    if (item->frame_num < g_Anims[item->anim_num].frame_end - 30) {
+        g_Lara.death_count = 1;
+    }
 }
