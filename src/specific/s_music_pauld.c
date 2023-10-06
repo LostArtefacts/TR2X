@@ -27,6 +27,7 @@ typedef struct CDAUDIO_SPEC {
 const int32_t m_CDAudioSpecCount = 2;
 static struct CDAUDIO_SPEC m_CDAudioSpecs[] = {
     {
+        // NOTE: volume control doesn't seem to work with WAV
         .path = "audio/cdaudio.wav",
         .audio_type = "waveaudio",
     },
@@ -254,7 +255,7 @@ static void S_Music_PaulD_SetVolume(int32_t volume)
     }
 
     S_Music_PaulD_Command(
-        NULL, 0, "setaudio " CD_ALIAS " volume to %llu", volume);
+        NULL, 0, "setaudio " CD_ALIAS " volume to %lu", volume);
 
     char status_string[32];
     if (!S_Music_PaulD_Command(
