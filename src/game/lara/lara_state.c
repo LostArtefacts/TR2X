@@ -658,7 +658,7 @@ void __cdecl Lara_State_DeathSlide(
     g_Camera.target_angle = CAM_DEATH_SLIDE_ANGLE;
 
     int16_t room_num = item->room_num;
-    struct FLOOR_INFO *floor =
+    const struct FLOOR_INFO *floor =
         Room_GetFloor(item->pos.x, item->pos.y, item->pos.z, &room_num);
     Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
 
@@ -761,9 +761,19 @@ void __cdecl Lara_State_Extra_PullDagger(
     if (item->frame_num == g_Anims[item->anim_num].frame_end) {
         item->pos.y_rot += PHD_90;
         int16_t room_num;
-        struct FLOOR_INFO *floor = Room_GetFloor(
+        const struct FLOOR_INFO *floor = Room_GetFloor(
             item->pos.x, item->pos.y, item->pos.z, (int16_t *)&room_num);
         Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
         Room_TestTriggers(g_TriggerIndex, 1);
     }
+}
+
+void __cdecl Lara_State_Extra_StartAnim(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    int16_t room_num;
+    const struct FLOOR_INFO *floor =
+        Room_GetFloor(item->pos.x, item->pos.y, item->pos.z, &room_num);
+    Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
+    Room_TestTriggers(g_TriggerIndex, 0);
 }

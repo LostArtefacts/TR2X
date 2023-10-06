@@ -1566,7 +1566,7 @@ typedef enum LARA_GUN_STATE {
 00428910    0000001D    +       void __cdecl Lara_State_Extra_GongBong(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428930    00000051    +       void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428990    000000BC    +       void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00428A50    0000004D    -       void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428A50    0000004D    +       void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428AA0    000000A5    -       void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428B50    000000A3    -       void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428C00    00000051    -       int32_t __cdecl Lara_Fallen(struct ITEM_INFO *item, struct COLL_INFO *coll);

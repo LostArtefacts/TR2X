@@ -80,3 +80,5 @@ void __cdecl Lara_State_Extra_DinoKill(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Extra_PullDagger(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Extra_StartAnim(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.25% (111)</tspan> · <tspan class="known">88.33% (1060)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.33% (112)</tspan> · <tspan class="known">88.25% (1059)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="69.10" height="6" x="0" y="0" class="decompiled"/>
-<rect width="659.85" height="6" x="69.10" y="0" class="known"/>
+<rect width="69.72" height="6" x="0" y="0" class="decompiled"/>
+<rect width="659.23" height="6" x="69.72" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -513,7 +513,7 @@
 <rect width="12" height="12" x="495" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_GongBong(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="510" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="540" y="120" class="known"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="540" y="120" class="decompiled"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="120" class="known"><title>void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="570" y="120" class="known"><title>void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="585" y="120" class="known"><title>int32_t __cdecl Lara_Fallen(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.10%</tspan> · <tspan class="known">94.57%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">5.12%</tspan> · <tspan class="known">94.55%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="38.10" height="6" x="0" y="0" class="decompiled"/>
-<rect width="706.44" height="6" x="38.10" y="0" class="known"/>
+<rect width="38.27" height="6" x="0" y="0" class="decompiled"/>
+<rect width="706.27" height="6" x="38.27" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2080,7 +2080,7 @@
 <rect width="4.95" height="4.90" x="640.89" y="245.52" class="known"><title>JOYSTICK_NODE *__cdecl GetJoystick(GUID *lpGuid);</title></rect>
 <rect width="4.95" height="4.90" x="648.84" y="245.52" class="known"><title>bool __cdecl OpenGameRegistryKey(LPCTSTR key);</title></rect>
 <rect width="4.95" height="4.90" x="656.80" y="245.52" class="known"><title>double __cdecl UT_Microseconds(void);</title></rect>
-<rect width="4.85" height="4.90" x="664.75" y="245.52" class="known"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="4.85" height="4.90" x="664.75" y="245.52" class="decompiled"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.85" height="4.90" x="672.60" y="245.52" class="known"><title>void __cdecl BGND_Free(void);</title></rect>
 <rect width="4.85" height="4.90" x="680.45" y="245.52" class="known"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fillColor);</title></rect>
 <rect width="4.85" height="4.90" x="688.31" y="245.52" class="known"><title>void __cdecl WinVidExitMessage(void);</title></rect>
