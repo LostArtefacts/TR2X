@@ -716,3 +716,10 @@ void __cdecl Lara_State_Extra_SharkKill(
         g_Lara.death_count = 1;
     }
 }
+
+void __cdecl Lara_State_Extra_Airlock(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_AIRLOCK_ANGLE;
+    g_Camera.target_elevation = CAM_AIRLOCK_ELEVATION;
+}
