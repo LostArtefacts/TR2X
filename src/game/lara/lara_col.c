@@ -683,3 +683,27 @@ void __cdecl Lara_Col_SwanDive(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed = 0;
     item->pos.y += coll->side_mid.floor;
 }
+
+void __cdecl Lara_Col_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = BAD_JUMP_CEILING;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_DeflectEdgeJump(item, coll);
+
+    if (coll->side_mid.floor > 0 || item->fall_speed <= 0) {
+        return;
+    }
+
+    if (item->fall_speed > 133) {
+        item->goal_anim_state = LS_DEATH;
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+    item->gravity = 0;
+    item->fall_speed = 0;
+    item->pos.y += coll->side_mid.floor;
+}
