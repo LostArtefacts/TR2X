@@ -70,3 +70,5 @@ void __cdecl Lara_State_Extra_Breath(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Extra_YetiKill(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Extra_SharkKill(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

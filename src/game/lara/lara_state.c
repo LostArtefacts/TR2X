@@ -689,9 +689,29 @@ void __cdecl Lara_State_Extra_Breath(
 void __cdecl Lara_State_Extra_YetiKill(
     struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
-    g_Camera.target_angle = CAM_YETI_ANGLE;
-    g_Camera.target_distance = CAM_YETI_DISTANCE;
+    g_Camera.target_angle = CAM_YETI_KILL_ANGLE;
+    g_Camera.target_distance = CAM_YETI_KILL_DISTANCE;
     g_Lara.hit_direction = -1;
+    if (item->frame_num < g_Anims[item->anim_num].frame_end - 30) {
+        g_Lara.death_count = 1;
+    }
+}
+
+void __cdecl Lara_State_Extra_SharkKill(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_SHARK_KILL_ANGLE;
+    g_Camera.target_distance = CAM_SHARK_KILL_DISTANCE;
+    g_Lara.hit_direction = -1;
+
+    if (item->frame_num == g_Anims[item->anim_num].frame_end) {
+        int32_t water_height = Room_GetWaterHeight(
+            item->pos.x, item->pos.y, item->pos.z, item->room_num);
+        if (water_height != NO_HEIGHT && water_height < item->pos.y - 100) {
+            item->pos.y -= 5;
+        }
+    }
+
     if (item->frame_num < g_Anims[item->anim_num].frame_end - 30) {
         g_Lara.death_count = 1;
     }

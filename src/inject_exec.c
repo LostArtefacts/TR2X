@@ -123,6 +123,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x00428710, Lara_State_DeathSlide);
     INJECT(1, 0x004287B0, Lara_State_Extra_Breath);
     INJECT(1, 0x00428800, Lara_State_Extra_YetiKill);
+    INJECT(1, 0x00428850, Lara_State_Extra_SharkKill);
 }
 
 static void Inject_S_Audio_Sample(void)
