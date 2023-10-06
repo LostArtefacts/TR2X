@@ -416,3 +416,47 @@ void __cdecl Lara_Col_Compress(ITEM_INFO *item, COLL_INFO *coll)
         item->pos.y += coll->side_mid.floor;
     }
 }
+
+void __cdecl Lara_Col_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    if (g_Lara.water_status == LWS_WADE) {
+        coll->bad_pos = NO_BAD_POS;
+    } else {
+        coll->bad_pos = STEPUP_HEIGHT;
+    }
+    coll->slopes_are_pits = 1;
+    coll->slopes_are_walls = 1;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    if (Lara_HitCeiling(item, coll)) {
+        return;
+    }
+
+    if (Lara_DeflectEdge(item, coll)) {
+        Lara_CollideStop(item, coll);
+    }
+
+    if (Lara_Fallen(item, coll)) {
+        return;
+    }
+
+    if (coll->side_mid.floor > STEP_L / 2
+        && coll->side_mid.floor < STEPUP_HEIGHT) {
+        if (item->frame_num >= 964 && item->frame_num <= 993) {
+            item->anim_num = LA_BACK_STEP_DOWN_RIGHT;
+            item->frame_num = g_Anims[LA_BACK_STEP_DOWN_RIGHT].frame_base;
+        } else {
+            item->anim_num = LA_BACK_STEP_DOWN_LEFT;
+            item->frame_num = g_Anims[LA_BACK_STEP_DOWN_LEFT].frame_base;
+        }
+    }
+
+    if (!Lara_TestSlide(item, coll)) {
+        item->pos.y += coll->side_mid.floor;
+    }
+}
