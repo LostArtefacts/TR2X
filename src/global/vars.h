@@ -59,6 +59,7 @@
 #define g_Lara VAR_U_(0x005206E0, struct LARA_INFO)
 #define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
 #define g_SoundFxCount VAR_U_(0x00521FDC, int32_t)
+#define g_Meshes VAR_U_(0x005252B0, int16_t **)
 #define g_Anims VAR_U_(0x005258F4, struct ANIM_STRUCT *)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 #define g_FlipStatus VAR_U_(0x00526240, int32_t)
@@ -70,4 +71,5 @@
 #define g_CineFrameIdx VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
+#define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [])
 // clang-format on

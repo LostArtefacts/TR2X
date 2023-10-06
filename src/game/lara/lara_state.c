@@ -1,5 +1,6 @@
 #include "game/lara/lara_state.h"
 
+#include "game/music.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -741,5 +742,28 @@ void __cdecl Lara_State_Extra_DinoKill(
     g_Lara.hit_direction = -1;
     if (item->frame_num < g_Anims[item->anim_num].frame_end - 30) {
         g_Lara.death_count = 1;
+    }
+}
+
+void __cdecl Lara_State_Extra_PullDagger(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    int32_t frame_num_rel =
+        item->frame_num - g_Anims[item->anim_num].frame_base;
+    if (frame_num_rel == 1) {
+        Music_PlaySynced(MX_DAGGER_PULL);
+    } else if (frame_num_rel == 180) {
+        g_Lara.mesh_ptrs[LM_HAND_R] =
+            g_Meshes[g_Objects[O_LARA].mesh_idx + LM_HAND_R];
+        Inv_AddItem(O_PUZZLE_ITEM_2);
+    }
+
+    if (item->frame_num == g_Anims[item->anim_num].frame_end) {
+        item->pos.y_rot += PHD_90;
+        int16_t room_num;
+        struct FLOOR_INFO *floor = Room_GetFloor(
+            item->pos.x, item->pos.y, item->pos.z, (int16_t *)&room_num);
+        Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
+        Room_TestTriggers(g_TriggerIndex, 1);
     }
 }

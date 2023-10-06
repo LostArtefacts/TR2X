@@ -759,6 +759,42 @@ typedef struct BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+typedef struct OBJECT_INFO {
+    int16_t mesh_count;
+    int16_t mesh_idx;
+    int32_t bone_idx;
+    int16_t *frame_base;
+
+    void (*initialise)(int16_t item_number);
+    void (*control)(int16_t item_number);
+    void (*floor)(
+        struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z,
+        int32_t *height);
+    void (*ceiling)(
+        struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z,
+        int32_t *height);
+    void (*draw_routine)(struct ITEM_INFO *item);
+    void (*collision)(
+        int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+
+    int16_t anim_idx;
+    int16_t hit_points;
+    int16_t pivot_length;
+    int16_t radius;
+    int16_t shadow_size;
+
+    uint16_t bite_offset;
+    uint16_t loaded : 1;
+    uint16_t intelligent : 1;
+    uint16_t non_lot : 1;
+    uint16_t save_position : 1;
+    uint16_t save_hitpoints : 1;
+    uint16_t save_flags : 1;
+    uint16_t save_anim : 1;
+    uint16_t semi_transparent : 1;
+    uint16_t water_creature : 1;
+} OBJECT_INFO;
+
 typedef struct CAMERA_INFO {
     struct GAME_VECTOR pos;
     struct GAME_VECTOR target;
@@ -1074,3 +1110,368 @@ typedef enum LARA_GUN_STATE {
     LGS_UNDRAW = 3,
     LGS_READY = 4,
 } LARA_GUN_STATE;
+
+typedef enum LARA_MESH {
+    LM_HIPS = 0,
+    LM_THIGH_L = 1,
+    LM_CALF_L = 2,
+    LM_FOOT_L = 3,
+    LM_THIGH_R = 4,
+    LM_CALF_R = 5,
+    LM_FOOT_R = 6,
+    LM_TORSO = 7,
+    LM_UARM_R = 8,
+    LM_LARM_R = 9,
+    LM_HAND_R = 10,
+    LM_UARM_L = 11,
+    LM_LARM_L = 12,
+    LM_HAND_L = 13,
+    LM_HEAD = 14,
+    LM_NUMBER_OF = 15,
+} LARA_MESH;
+
+// clang-format off
+typedef enum {
+    O_NONE                  = -1,
+    O_LARA                  = 0,
+    O_LARA_PISTOLS          = 1,
+    O_LARA_HAIR             = 2,
+    O_LARA_SHOTGUN          = 3,
+    O_LARA_MAGNUMS          = 4,
+    O_LARA_UZIS             = 5,
+    O_LARA_M16              = 6,
+    O_LARA_GRENADE          = 7,
+    O_LARA_HARPOON          = 8,
+    O_LARA_FLARE            = 9,
+    O_LARA_SKIDOO           = 10,
+    O_LARA_BOAT             = 11,
+    O_LARA_EXTRA            = 12,
+    O_SKIDOO_FAST           = 13,
+    O_BOAT                  = 14,
+    O_DOG                   = 15,
+    O_CULT_1                = 16,
+    O_CULT_1A               = 17,
+    O_CULT_1B               = 18,
+    O_CULT_2                = 19,
+    O_CULT_3                = 20,
+    O_MOUSE                 = 21,
+    O_DRAGON_FRONT          = 22,
+    O_DRAGON_BACK           = 23,
+    O_GONDOLA               = 24,
+    O_SHARK                 = 25,
+    O_EEL                   = 26,
+    O_BIG_EEL               = 27,
+    O_BARRACUDA             = 28,
+    O_DIVER                 = 29,
+    O_WORKER_1              = 30,
+    O_WORKER_2              = 31,
+    O_WORKER_3              = 32,
+    O_WORKER_4              = 33,
+    O_WORKER_5              = 34,
+    O_JELLY                 = 35,
+    O_SPIDER_or_WOLF        = 36,
+    O_BIG_SPIDER_or_BEAR    = 37,
+    O_CROW                  = 38,
+    O_TIGER                 = 39,
+    O_BARTOLI               = 40,
+    O_XIAN_LORD             = 41,
+    O_CHINESE_2             = 42,
+    O_WARRIOR               = 43,
+    O_CHINESE_4             = 44,
+    O_YETI                  = 45,
+    O_GIANT_YETI            = 46,
+    O_EAGLE                 = 47,
+    O_BANDIT_1              = 48,
+    O_BANDIT_2              = 49,
+    O_BANDIT_2B             = 50,
+    O_SKIDOO_ARMED          = 51,
+    O_SKIDMAN               = 52,
+    O_MONK_1                = 53,
+    O_MONK_2                = 54,
+    O_FALLING_BLOCK_1       = 55,
+    O_FALLING_BLOCK_2       = 56,
+    O_FALLING_BLOCK_3       = 57,
+    O_PENDULUM_1            = 58,
+    O_SPIKES                = 59,
+    O_ROLLING_BALL_1        = 60,
+    O_DARTS                 = 61,
+    O_DART_EMITTER          = 62,
+    O_DRAW_BRIDGE           = 63,
+    O_TEETH_TRAP            = 64,
+    O_LIFT                  = 65,
+    O_GENERAL               = 66,
+    O_MOVABLE_BLOCK_1       = 67,
+    O_MOVABLE_BLOCK_2       = 68,
+    O_MOVABLE_BLOCK_3       = 69,
+    O_MOVABLE_BLOCK_4       = 70,
+    O_BIG_BOWL              = 71,
+    O_WINDOW_1              = 72,
+    O_WINDOW_2              = 73,
+    O_WINDOW_3              = 74,
+    O_WINDOW_4              = 75,
+    O_PROPELLER_1           = 76,
+    O_PROPELLER_2           = 77,
+    O_HOOK                  = 78,
+    O_FALLING_CEILING       = 79,
+    O_SPINNING_BLADE        = 80,
+    O_BLADE                 = 81,
+    O_KILLER_STATUE         = 82,
+    O_ROLLING_BALL_2        = 83,
+    O_ICICLE                = 84,
+    O_SPIKE_WALL            = 85,
+    O_SPRING_BOARD          = 86,
+    O_CEILING_SPIKES        = 87,
+    O_BELL                  = 88,
+    O_WATER_SPRITE          = 89,
+    O_SNOW_SPRITE           = 90,
+    O_SKIDOO_LARA           = 91,
+    O_SWITCH_TYPE_1         = 92,
+    O_SWITCH_TYPE_2         = 93,
+    O_PROPELLER_3           = 94,
+    O_PROPELLER_4           = 95,
+    O_PENDULUM_2            = 96,
+    O_MESH_SWAP_1           = 97,
+    O_MESH_SWAP_2           = 98,
+    O_LARA_SWAP             = 99,
+    O_TEXT_BOX              = 100,
+    O_ROLLING_BALL_3        = 101,
+    O_DEATH_SLIDE           = 102,
+    O_SWITCH_TYPE_3         = 103,
+    O_SWITCH_TYPE_4         = 104,
+    O_SWITCH_TYPE_5         = 105,
+    O_DOOR_TYPE_1           = 106,
+    O_DOOR_TYPE_2           = 107,
+    O_DOOR_TYPE_3           = 108,
+    O_DOOR_TYPE_4           = 109,
+    O_DOOR_TYPE_5           = 110,
+    O_DOOR_TYPE_6           = 111,
+    O_DOOR_TYPE_7           = 112,
+    O_DOOR_TYPE_8           = 113,
+    O_TRAPDOOR_TYPE_1       = 114,
+    O_TRAPDOOR_TYPE_2       = 115,
+    O_TRAPDOOR_TYPE_3       = 116,
+    O_BRIDGE_FLAT           = 117,
+    O_BRIDGE_TILT_1         = 118,
+    O_BRIDGE_TILT_2         = 119,
+    O_PASSPORT_OPTION       = 120,
+    O_COMPASS_OPTION        = 121,
+    O_PHOTO_OPTION          = 122,
+    O_PLAYER_1              = 123,
+    O_PLAYER_2              = 124,
+    O_PLAYER_3              = 125,
+    O_PLAYER_4              = 126,
+    O_PLAYER_5              = 127,
+    O_PLAYER_6              = 128,
+    O_PLAYER_7              = 129,
+    O_PLAYER_8              = 130,
+    O_PLAYER_9              = 131,
+    O_PLAYER_10             = 132,
+    O_PASSPORT_CLOSED       = 133,
+    O_COMPASS_ITEM          = 134,
+    O_PISTOL_ITEM           = 135,
+    O_SHOTGUN_ITEM          = 136,
+    O_MAGNUM_ITEM           = 137,
+    O_UZI_ITEM              = 138,
+    O_HARPOON_ITEM          = 139,
+    O_M16_ITEM              = 140,
+    O_GRENADE_ITEM          = 141,
+    O_PISTOL_AMMO_ITEM      = 142,
+    O_SHOTGUN_AMMO_ITEM     = 143,
+    O_MAGNUM_AMMO_ITEM      = 144,
+    O_UZI_AMMO_ITEM         = 145,
+    O_HARPOON_AMMO_ITEM     = 146,
+    O_M16_AMMO_ITEM         = 147,
+    O_GRENADE_AMMO_ITEM     = 148,
+    O_SMALL_MEDIPACK_ITEM   = 149,
+    O_LARGE_MEDIPACK_ITEM   = 150,
+    O_FLARES_ITEM           = 151,
+    O_FLARE_ITEM            = 152,
+    O_DETAIL_OPTION         = 153,
+    O_SOUND_OPTION          = 154,
+    O_CONTROL_OPTION        = 155,
+    O_GAMMA_OPTION          = 156,
+    O_PISTOL_OPTION         = 157,
+    O_SHOTGUN_OPTION        = 158,
+    O_MAGNUM_OPTION         = 159,
+    O_UZI_OPTION            = 160,
+    O_HARPOON_OPTION        = 161,
+    O_M16_OPTION            = 162,
+    O_GRENADE_OPTION        = 163,
+    O_PISTOL_AMMO_OPTION    = 164,
+    O_SHOTGUN_AMMO_OPTION   = 165,
+    O_MAGNUM_AMMO_OPTION    = 166,
+    O_UZI_AMMO_OPTION       = 167,
+    O_HARPOON_AMMO_OPTION   = 168,
+    O_M16_AMMO_OPTION       = 169,
+    O_GRENADE_AMMO_OPTION   = 170,
+    O_SMALL_MEDIPACK_OPTION = 171,
+    O_LARGE_MEDIPACK_OPTION = 172,
+    O_FLARES_OPTION         = 173,
+    O_PUZZLE_ITEM_1         = 174,
+    O_PUZZLE_ITEM_2         = 175,
+    O_PUZZLE_ITEM_3         = 176,
+    O_PUZZLE_ITEM_4         = 177,
+    O_PUZZLE_OPTION_1       = 178,
+    O_PUZZLE_OPTION_2       = 179,
+    O_PUZZLE_OPTION_3       = 180,
+    O_PUZZLE_OPTION_4       = 181,
+    O_PUZZLE_HOLE_1         = 182,
+    O_PUZZLE_HOLE_2         = 183,
+    O_PUZZLE_HOLE_3         = 184,
+    O_PUZZLE_HOLE_4         = 185,
+    O_PUZZLE_DONE_1         = 186,
+    O_PUZZLE_DONE_2         = 187,
+    O_PUZZLE_DONE_3         = 188,
+    O_PUZZLE_DONE_4         = 189,
+    O_SECRET_1              = 190,
+    O_SECRET_2              = 191,
+    O_SECRET_3              = 192,
+    O_KEY_ITEM_1            = 193,
+    O_KEY_ITEM_2            = 194,
+    O_KEY_ITEM_3            = 195,
+    O_KEY_ITEM_4            = 196,
+    O_KEY_OPTION_1          = 197,
+    O_KEY_OPTION_2          = 198,
+    O_KEY_OPTION_3          = 199,
+    O_KEY_OPTION_4          = 200,
+    O_KEY_HOLE_1            = 201,
+    O_KEY_HOLE_2            = 202,
+    O_KEY_HOLE_3            = 203,
+    O_KEY_HOLE_4            = 204,
+    O_PICKUP_ITEM_1         = 205,
+    O_PICKUP_ITEM_2         = 206,
+    O_PICKUP_OPTION_1       = 207,
+    O_PICKUP_OPTION_2       = 208,
+    O_SPHERE_OF_DOOM_1      = 209,
+    O_SPHERE_OF_DOOM_2      = 210,
+    O_SPHERE_OF_DOOM_3      = 211,
+    O_ALARM_SOUND           = 212,
+    O_BIRD_TWEETER_1        = 213,
+    O_DINO                  = 214,
+    O_BIRD_TWEETER_2        = 215,
+    O_CLOCK_CHIMES          = 216,
+    O_DRAGON_BONES_1        = 217,
+    O_DRAGON_BONES_2        = 218,
+    O_DRAGON_BONES_3        = 219,
+    O_HOT_LIQUID            = 220,
+    O_BOAT_BITS             = 221,
+    O_MINE                  = 222,
+    O_INV_BACKGROUND        = 223,
+    O_FX_RESERVED           = 224,
+    O_GONG_BONGER           = 225,
+    O_DETONATOR_1           = 226,
+    O_DETONATOR_2           = 227,
+    O_COPTER                = 228,
+    O_EXPLOSION             = 229,
+    O_SPLASH                = 230,
+    O_BUBBLES               = 231,
+    O_BUBBLE_EMITTER        = 232,
+    O_BLOOD                 = 233,
+    O_DART_EFFECT           = 234,
+    O_FLARE_FIRE            = 235,
+    O_GLOW                  = 236,
+    O_GLOW_RESERVED         = 237,
+    O_RICOCHET              = 238,
+    O_TWINKLE               = 239,
+    O_GUN_FLASH             = 240,
+    O_M16_FLASH             = 241,
+    O_BODY_PART             = 242,
+    O_CAMERA_TARGET         = 243,
+    O_WATERFALL             = 244,
+    O_MISSILE_HARPOON       = 245,
+    O_MISSILE_FLAME         = 246,
+    O_MISSILE_KNIFE         = 247,
+    O_ROCKET                = 248,
+    O_HARPOON_BOLT          = 249,
+    O_LAVA                  = 250,
+    O_LAVA_EMITTER          = 251,
+    O_FLAME                 = 252,
+    O_FLAME_EMITTER         = 253,
+    O_SKYBOX                = 254,
+    O_ALPHABET              = 255,
+    O_DYING_MONK            = 256,
+    O_DING_DONG             = 257,
+    O_LARA_ALARM            = 258,
+    O_MINI_COPTER           = 259,
+    O_WINSTON               = 260,
+    O_ASSAULT_DIGITS        = 261,
+    O_FINAL_LEVEL_COUNTER   = 262,
+    O_CUT_SHOTGUN           = 263,
+    O_EARTHQUAKE            = 264,
+    O_NUMBER_OF             = 265,
+} GAME_OBJECT_ID;
+// clang-format on
+
+// clang-format off
+typedef enum MUSIC_TRACK_ID {
+    MX_INACTIVE                = -1,
+    MX_UNUSED_0                = 0, // 2.mp3
+    MX_UNUSED_1                = 1, // 2.mp3
+    MX_CUTSCENE_THE_GREAT_WALL = 2, // 2.mp3
+    MX_UNUSED_2                = 3, // 2.mp3
+    MX_CUTSCENE_OPERA_HOUSE    = 4, // 3.mp3
+    MX_CUTSCENE_BROTHER_CHAN   = 5, // 4.mp3
+    MX_GYM_HINT_1              = 6, // 5.mp3
+    MX_GYM_HINT_2              = 7, // 6.mp3
+    MX_GYM_HINT_3              = 8, // 7.mp3
+    MX_GYM_HINT_4              = 9, // 8.mp3
+    MX_GYM_HINT_5              = 10, // 9.mp3
+    MX_GYM_HINT_6              = 11, // 10.mp3
+    MX_GYM_HINT_7              = 12, // 11.mp3
+    MX_GYM_HINT_8              = 13, // 12.mp3
+    MX_GYM_HINT_9              = 14, // 13.mp3
+    MX_GYM_HINT_10             = 15, // 14.mp3
+    MX_GYM_HINT_11             = 16, // 15.mp3
+    MX_GYM_HINT_12             = 17, // 16.mp3
+    MX_GYM_HINT_13             = 18, // 17.mp3
+    MX_GYM_HINT_14             = 19, // 18.mp3
+    MX_UNUSED_3                = 20, // 18.mp3
+    MX_UNUSED_4                = 21, // 18.mp3
+    MX_GYM_HINT_15             = 22, // 19.mp3
+    MX_GYM_HINT_16             = 23, // 20.mp3
+    MX_GYM_HINT_17             = 24, // 21.mp3
+    MX_GYM_HINT_18             = 25, // 22.mp3
+    MX_GYM_HINT_19             = 26, // 23.mp3
+    MX_UNUSED_5                = 27, // 23.mp3
+    MX_DAGGER_PULL             = 28, // 24.mp3
+    MX_GYM_HINT_20             = 29, // 25.mp3
+    MX_CUTSCENE_XIAN           = 30, // 26.mp3
+    MX_CAVES_AMBIENCE          = 31, // 27.mp3
+    MX_SEWERS_AMBIENCE         = 32, // 28.mp3
+    MX_WINDY_AMBIENCE          = 33, // 29.mp3
+    MX_HEARTBEAT_AMBIENCE      = 34, // 30.mp3
+    MX_SURPRISE_1              = 35, // 31.mp3
+    MX_SURPRISE_2              = 36, // 32.mp3
+    MX_SURPRISE_3              = 37, // 33.mp3
+    MX_OOH_AAH_1               = 38, // 34.mp3
+    MX_OOH_AAH_2               = 39, // 35.mp3
+    MX_VENICE_VIOLINS          = 40, // 36.mp3
+    MX_END_OF_LEVEL            = 41, // 37.mp3
+    MX_SPOOKY_1                = 42, // 38.mp3
+    MX_SPOOKY_2                = 43, // 39.mp3
+    MX_SPOOKY_3                = 44, // 40.mp3
+    MX_HARP_THEME              = 45, // 41.mp3
+    MX_MYSTERY_1               = 46, // 42.mp3
+    MX_SECRET                  = 47, // 43.mp3
+    MX_AMBUSH_1                = 48, // 44.mp3
+    MX_AMBUSH_2                = 49, // 45.mp3
+    MX_AMBUSH_3                = 50, // 46.mp3
+    MX_AMBUSH_4                = 51, // 47.mp3
+    MX_SKIDOO_THEME            = 52, // 48.mp3
+    MX_BATTLE_THEME            = 53, // 49.mp3
+    MX_MYSTERY_2               = 54, // 50.mp3
+    MX_MYSTERY_3               = 55, // 51.mp3
+    MX_MYSTERY_4               = 56, // 52.mp3
+    MX_MYSTERY_5               = 57, // 53.mp3
+    MX_RIG_AMBIENCE            = 58, // 54.mp3
+    MX_TOMB_AMBIENCE           = 59, // 55.mp3
+    MX_OOH_AAH_3               = 60, // 56.mp3
+    MX_REVEAL_1                = 61, // 57.mp3
+    MX_CUTSCENE_RIG            = 62, // 58.mp3
+    MX_REVEAL_2                = 63, // 59.mp3
+    MX_TITLE_THEME             = 64, // 60.mp3
+    MX_UNUSED_6                = 65, // 61.mp3
+} MUSIC_TRACK_ID;
+// clang-format on
+
+#pragma pack(pop)

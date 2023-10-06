@@ -1,4 +1,5 @@
 # TYPES
+#pragma pack(push, 1)
 typedef int16_t PHD_ANGLE;
 
 typedef void* LPDIRECT3DTEXTURE2;
@@ -744,6 +745,42 @@ typedef struct BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+typedef struct OBJECT_INFO {
+    int16_t mesh_count;
+    int16_t mesh_idx;
+    int32_t bone_idx;
+    int16_t *frame_base;
+
+    void (*initialise)(int16_t item_number);
+    void (*control)(int16_t item_number);
+    void (*floor)(
+        struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z,
+        int32_t *height);
+    void (*ceiling)(
+        struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z,
+        int32_t *height);
+    void (*draw_routine)(struct ITEM_INFO *item);
+    void (*collision)(
+        int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+
+    int16_t anim_idx;
+    int16_t hit_points;
+    int16_t pivot_length;
+    int16_t radius;
+    int16_t shadow_size;
+
+    uint16_t bite_offset;
+    uint16_t loaded : 1;
+    uint16_t intelligent : 1;
+    uint16_t non_lot : 1;
+    uint16_t save_position : 1;
+    uint16_t save_hitpoints : 1;
+    uint16_t save_flags : 1;
+    uint16_t save_anim : 1;
+    uint16_t semi_transparent : 1;
+    uint16_t water_creature : 1;
+} OBJECT_INFO;
+
 typedef struct __unaligned CAMERA_INFO {
     struct GAME_VECTOR pos;
     struct GAME_VECTOR target;
@@ -771,7 +808,7 @@ typedef struct __unaligned CAMERA_INFO {
     struct PHD_VECTOR mic_pos;
 } CAMERA_INFO;
 
-typedef struct __unaligned LARA_ARM {
+typedef struct LARA_ARM {
     int16_t *frame_base;
     int16_t frame_num;
     int16_t anim_num;
@@ -782,11 +819,11 @@ typedef struct __unaligned LARA_ARM {
     int16_t flash_gun;
 } LARA_ARM;
 
-typedef struct __unaligned AMMO_INFO {
+typedef struct AMMO_INFO {
     int32_t ammo;
 } AMMO_INFO;
 
-typedef struct __unaligned LARA_INFO {
+typedef struct LARA_INFO {
     int16_t item_num;
     int16_t gun_status;
     int16_t gun_type;
@@ -1029,6 +1066,8 @@ typedef enum LARA_GUN_STATE {
     LGS_UNDRAW = 3,
     LGS_READY = 4,
 } LARA_GUN_STATE;
+
+#pragma pack(pop)
 
 # FUNCTIONS
 #   Flags:
@@ -1526,7 +1565,7 @@ typedef enum LARA_GUN_STATE {
 004288F0    00000013    +       void __cdecl Lara_State_Extra_Airlock(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428910    0000001D    +       void __cdecl Lara_State_Extra_GongBong(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428930    00000051    +       void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00428990    000000BC    -       void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428990    000000BC    +       void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428A50    0000004D    -       void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428AA0    000000A5    -       void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428B50    000000A3    -       void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2406,6 +2445,7 @@ typedef enum LARA_GUN_STATE {
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 00521FDC    -       int32_t g_SoundFxCount;
+005252B0    -       int16_t **g_Meshes;
 005258F4    -       struct ANIM_STRUCT *g_Anims;
 0052618C    -       struct ROOM_INFO *g_Rooms;
 00526240    -       int32_t g_FlipStatus;
@@ -2417,3 +2457,4 @@ typedef enum LARA_GUN_STATE {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
+00522000    -       struct OBJECT_INFO g_Objects[];

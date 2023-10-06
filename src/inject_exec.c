@@ -127,6 +127,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x004288F0, Lara_State_Extra_Airlock);
     INJECT(1, 0x00428910, Lara_State_Extra_GongBong);
     INJECT(1, 0x00428930, Lara_State_Extra_DinoKill);
+    INJECT(1, 0x00428990, Lara_State_Extra_PullDagger);
 }
 
 static void Inject_S_Audio_Sample(void)
