@@ -585,3 +585,10 @@ void __cdecl Lara_State_UseKey(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Camera.target_elevation = CAM_USE_KEY_ELEVATION;
     g_Camera.target_distance = CAM_USE_KEY_DISTANCE;
 }
+
+void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.flags = CF_FOLLOW_CENTRE;
+    g_Camera.target_angle = CAM_SPECIAL_ANGLE;
+    g_Camera.target_elevation = CAM_SPECIAL_ELEVATION;
+}

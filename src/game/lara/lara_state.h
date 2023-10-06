@@ -56,3 +56,4 @@ void __cdecl Lara_State_PickupFlare(
 void __cdecl Lara_State_SwitchOn(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_UseKey(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll);
