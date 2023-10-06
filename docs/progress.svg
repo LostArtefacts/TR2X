@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.42% (77)</tspan> · <tspan class="known">91.17% (1094)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.50% (78)</tspan> · <tspan class="known">91.08% (1093)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="47.93" height="6" x="0" y="0" class="decompiled"/>
-<rect width="681.02" height="6" x="47.93" y="0" class="known"/>
+<rect width="48.56" height="6" x="0" y="0" class="decompiled"/>
+<rect width="680.39" height="6" x="48.56" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -479,7 +479,7 @@
 <rect width="12" height="12" x="735" y="105" class="decompiled"><title>void __cdecl Lara_State_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="0" y="120" class="decompiled"><title>void __cdecl Lara_State_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="15" y="120" class="decompiled"><title>void __cdecl Lara_State_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="30" y="120" class="known"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="30" y="120" class="decompiled"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="45" y="120" class="known"><title>void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="60" y="120" class="known"><title>void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="75" y="120" class="known"><title>void __cdecl Lara_State_FastTurn(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.33%</tspan> · <tspan class="known">95.34%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.41%</tspan> · <tspan class="known">95.26%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="32.32" height="6" x="0" y="0" class="decompiled"/>
-<rect width="712.22" height="6" x="32.32" y="0" class="known"/>
+<rect width="32.91" height="6" x="0" y="0" class="decompiled"/>
+<rect width="711.63" height="6" x="32.91" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1626,7 +1626,7 @@
 <rect width="11.85" height="11.70" x="477.44" y="348.30" class="known"><title>void __cdecl Inv_RingInit(struct RING_INFO *ring, int16_t type, struct INVENTORY_ITEM **list, int16_t qty, int16_t current, struct IMOTION_INFO *imo);</title></rect>
 <rect width="11.66" height="11.88" x="492.29" y="90.80" class="known"><title>void __cdecl ScreenShotPCX(void);</title></rect>
 <rect width="11.61" height="11.88" x="506.95" y="90.80" class="decompiled"><title>bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);</title></rect>
-<rect width="11.50" height="11.88" x="521.56" y="90.80" class="known"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="11.50" height="11.88" x="521.56" y="90.80" class="decompiled"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="11.50" height="11.88" x="536.06" y="90.80" class="known"><title>void __cdecl CopterControl(int16_t item_num);</title></rect>
 <rect width="11.45" height="11.88" x="550.56" y="90.80" class="known"><title>void __cdecl ControlLavaBlob(int16_t fx_num);</title></rect>
 <rect width="11.45" height="11.88" x="565.01" y="90.80" class="known"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>

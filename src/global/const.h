@@ -36,6 +36,7 @@
 #define LARA_JUMP_TURN ((PHD_DEGREE * 1) + LARA_TURN_UNDO) // = 546
 #define LARA_FAST_FALL_SPEED (FAST_FALL_SPEED + 3) // = 131
 
+#define STEPUP_HEIGHT ((STEP_L * 3) / 2) // = 384
 #define DAMAGE_START 140
 #define DAMAGE_LENGTH 14
 
