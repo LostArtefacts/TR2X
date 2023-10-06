@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11% (132)</tspan> · <tspan class="known">86.58% (1039)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.08% (133)</tspan> · <tspan class="known">86.50% (1038)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="82.17" height="6" x="0" y="0" class="decompiled"/>
-<rect width="646.78" height="6" x="82.17" y="0" class="known"/>
+<rect width="82.79" height="6" x="0" y="0" class="decompiled"/>
+<rect width="646.16" height="6" x="82.79" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -536,7 +536,7 @@
 <rect width="12" height="12" x="90" y="135" class="decompiled"><title>void __cdecl Lara_Col_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="105" y="135" class="decompiled"><title>void __cdecl Lara_Col_StepLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="120" y="135" class="decompiled"><title>void __cdecl Lara_Col_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="135" y="135" class="known"><title>void __cdecl Lara_Col_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="135" y="135" class="decompiled"><title>void __cdecl Lara_Col_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="150" y="135" class="known"><title>void __cdecl Lara_Col_RightJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="165" y="135" class="known"><title>void __cdecl Lara_Col_LeftJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="180" y="135" class="known"><title>void __cdecl Lara_Col_UpJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.08%</tspan> · <tspan class="known">93.59%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.09%</tspan> · <tspan class="known">93.58%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="45.42" height="6" x="0" y="0" class="decompiled"/>
-<rect width="699.12" height="6" x="45.42" y="0" class="known"/>
+<rect width="45.50" height="6" x="0" y="0" class="decompiled"/>
+<rect width="699.04" height="6" x="45.50" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2323,7 +2323,7 @@
 <rect width="2.52" height="2.25" x="693.03" y="332.24" class="known"><title>void __cdecl HWR_TexSource(HWR_TEXHANDLE texSource);</title></rect>
 <rect width="2.52" height="2.10" x="693.03" y="337.49" class="known"><title>void __cdecl RubbleFX(struct ITEM_INFO *item);</title></rect>
 <rect width="2.52" height="2.10" x="693.03" y="342.59" class="known"><title>void __cdecl ExplosionFX(struct ITEM_INFO *item);</title></rect>
-<rect width="2.52" height="2.10" x="693.03" y="347.69" class="known"><title>void __cdecl Lara_Col_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="2.52" height="2.10" x="693.03" y="347.69" class="decompiled"><title>void __cdecl Lara_Col_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.52" height="2.10" x="693.03" y="352.80" class="known"><title>void __cdecl Lara_Col_RightJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.52" height="2.10" x="693.03" y="357.90" class="known"><title>void __cdecl Lara_Col_LeftJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.19" height="2.43" x="698.55" y="311.25" class="known"><title>void __cdecl Lara_Col_SlideBack(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
