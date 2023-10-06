@@ -29,12 +29,12 @@ void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
     if (Lara_DeflectEdge(item, coll)) {
         if (item->frame_num >= 29 && item->frame_num <= 47) {
             item->anim_num = LA_STOP_RIGHT;
-            item->frame_num = g_Anims[LA_STOP_RIGHT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else if (
             (item->frame_num >= 22 && item->frame_num <= 28)
             || (item->frame_num >= 48 && item->frame_num <= 57)) {
             item->anim_num = LA_STOP_LEFT;
-            item->frame_num = g_Anims[LA_STOP_LEFT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             Lara_CollideStop(item, coll);
         }
@@ -47,10 +47,10 @@ void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
     if (coll->side_mid.floor > STEP_L / 2) {
         if (item->frame_num >= 28 && item->frame_num <= 45) {
             item->anim_num = LA_WALK_STEP_DOWN_RIGHT;
-            item->frame_num = g_Anims[LA_WALK_STEP_DOWN_RIGHT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             item->anim_num = LA_WALK_STEP_DOWN_LEFT;
-            item->frame_num = g_Anims[LA_WALK_STEP_DOWN_LEFT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
 
@@ -58,10 +58,10 @@ void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
         && coll->side_mid.floor < -STEP_L / 2) {
         if (item->frame_num >= 27 && item->frame_num <= 44) {
             item->anim_num = LA_WALK_STEP_UP_RIGHT;
-            item->frame_num = g_Anims[LA_WALK_STEP_UP_RIGHT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             item->anim_num = LA_WALK_STEP_UP_LEFT;
-            item->frame_num = g_Anims[LA_WALK_STEP_UP_LEFT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
 
@@ -95,12 +95,12 @@ void __cdecl Lara_Col_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
             item->current_anim_state = LS_SPLAT;
             if (item->frame_num >= 0 && item->frame_num <= 9) {
                 item->anim_num = LA_HIT_WALL_LEFT;
-                item->frame_num = g_Anims[LS_FAST_DIVE].frame_base;
+                item->frame_num = g_Anims[item->anim_num].frame_base;
                 return;
             }
             if (item->frame_num >= 10 && item->frame_num <= 21) {
                 item->anim_num = LA_HIT_WALL_RIGHT;
-                item->frame_num = g_Anims[LA_HIT_WALL_RIGHT].frame_base;
+                item->frame_num = g_Anims[item->anim_num].frame_base;
                 return;
             }
         }
@@ -115,10 +115,10 @@ void __cdecl Lara_Col_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
         && coll->side_mid.floor < -STEP_L / 2) {
         if (item->frame_num >= 3 && item->frame_num <= 14) {
             item->anim_num = LA_RUN_STEP_UP_LEFT;
-            item->frame_num = g_Anims[LA_RUN_STEP_UP_LEFT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             item->anim_num = LA_RUN_STEP_UP_RIGHT;
-            item->frame_num = g_Anims[LA_RUN_STEP_UP_RIGHT].frame_base;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
 
@@ -163,14 +163,12 @@ void __cdecl Lara_Col_ForwardJump(
     } else {
         g_Lara.move_angle = item->pos.y_rot;
     }
-
     coll->bad_pos = NO_BAD_POS;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
     Lara_GetLaraCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
-
     if (item->speed < 0) {
         g_Lara.move_angle = item->pos.y_rot;
     }
@@ -206,6 +204,7 @@ void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = NO_BAD_POS;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
+
     Lara_GetLaraCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll)) {
         return;
@@ -218,7 +217,7 @@ void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->pos.y += coll->side_mid.floor;
     } else {
         item->anim_num = LA_FALL_BACK;
-        item->frame_num = g_Anims[LA_FALL_BACK].frame_base;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
         item->current_anim_state = LS_FALL_BACK;
         item->goal_anim_state = LS_FALL_BACK;
         item->gravity = 1;
@@ -236,6 +235,7 @@ void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = STEPUP_HEIGHT;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
+
     Lara_GetLaraCollisionInfo(item, coll);
 
     if (coll->side_mid.floor <= 100) {
@@ -244,7 +244,7 @@ void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
         }
     } else {
         item->anim_num = LA_FALL_DOWN;
-        item->frame_num = g_Anims[LA_FALL_DOWN].frame_base;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
         item->current_anim_state = LS_FORWARD_JUMP;
         item->goal_anim_state = LS_FORWARD_JUMP;
         item->gravity = 1;
@@ -265,9 +265,39 @@ void __cdecl Lara_Col_Death(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
     coll->radius = 400;
+
     Lara_GetLaraCollisionInfo(item, coll);
     Item_ShiftCol(item, coll);
+
     item->pos.y += coll->side_mid.floor;
     item->hit_points = -1;
     g_Lara.air = -1;
+}
+
+void __cdecl Lara_Col_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 1;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = BAD_JUMP_CEILING;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_SlideEdgeJump(item, coll);
+    if (coll->side_mid.floor > 0) {
+        return;
+    }
+
+    if (Lara_LandedBad(item, coll)) {
+        item->goal_anim_state = LS_DEATH;
+    } else {
+        item->goal_anim_state = LS_STOP;
+        item->current_anim_state = LS_STOP;
+        item->anim_num = LA_LAND_FAR;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    }
+
+    Sound_StopEffect(SFX_LARA_FALL);
+    item->gravity = 0;
+    item->fall_speed = 0;
+    item->pos.y += coll->side_mid.floor;
 }
