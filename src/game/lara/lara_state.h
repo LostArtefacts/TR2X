@@ -25,3 +25,5 @@ void __cdecl Lara_State_Compress(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_FastTurn(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

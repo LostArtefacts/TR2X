@@ -358,3 +358,23 @@ void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->enable_spaz = 0;
     coll->enable_baddie_push = 0;
 }
+
+void __cdecl Lara_State_FastTurn(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_STOP;
+        return;
+    }
+
+    if (g_Lara.turn_rate >= 0) {
+        g_Lara.turn_rate = LARA_FAST_TURN;
+        if (!(g_Input & IN_RIGHT)) {
+            item->goal_anim_state = LS_STOP;
+        }
+    } else {
+        g_Lara.turn_rate = -LARA_FAST_TURN;
+        if (!(g_Input & IN_LEFT)) {
+            item->goal_anim_state = LS_STOP;
+        }
+    }
+}

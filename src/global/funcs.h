@@ -373,7 +373,6 @@
 #define Lara_LookUpDown ((void __cdecl (*)(void))0x00427720)
 #define Lara_LookLeftRight ((void __cdecl (*)(void))0x00427790)
 #define Lara_ResetLook ((void __cdecl (*)(void))0x00427810)
-#define Lara_State_FastTurn ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x004280D0)
 #define Lara_State_StepRight ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428120)
 #define Lara_State_StepLeft ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x004281A0)
 #define Lara_State_Slide ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428220)
