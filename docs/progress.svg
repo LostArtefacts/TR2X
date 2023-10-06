@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.50% (78)</tspan> · <tspan class="known">91.08% (1093)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">6.58% (79)</tspan> · <tspan class="known">91% (1092)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="48.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="680.39" height="6" x="48.56" y="0" class="known"/>
+<rect width="49.18" height="6" x="0" y="0" class="decompiled"/>
+<rect width="679.77" height="6" x="49.18" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -480,7 +480,7 @@
 <rect width="12" height="12" x="0" y="120" class="decompiled"><title>void __cdecl Lara_State_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="15" y="120" class="decompiled"><title>void __cdecl Lara_State_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="30" y="120" class="decompiled"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="45" y="120" class="known"><title>void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="45" y="120" class="decompiled"><title>void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="60" y="120" class="known"><title>void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="75" y="120" class="known"><title>void __cdecl Lara_State_FastTurn(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="90" y="120" class="known"><title>void __cdecl Lara_State_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.41%</tspan> · <tspan class="known">95.26%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">4.44%</tspan> · <tspan class="known">95.23%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="32.91" height="6" x="0" y="0" class="decompiled"/>
-<rect width="711.63" height="6" x="32.91" y="0" class="known"/>
+<rect width="33.20" height="6" x="0" y="0" class="decompiled"/>
+<rect width="711.33" height="6" x="33.20" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1892,7 +1892,7 @@
 <rect width="7.43" height="7.27" x="577.68" y="211.69" class="known"><title>void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);</title></rect>
 <rect width="7.43" height="7.27" x="577.68" y="221.96" class="known"><title>void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.27" x="577.68" y="232.23" class="known"><title>int32_t __cdecl Targetable(struct ITEM_INFO *item, AI_INFO *info);</title></rect>
-<rect width="7.43" height="7.19" x="577.68" y="242.49" class="known"><title>void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="7.43" height="7.19" x="577.68" y="242.49" class="decompiled"><title>void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.19" x="577.68" y="252.68" class="decompiled"><title>bool __cdecl Music_PlaySynced(int32_t trackID);</title></rect>
 <rect width="7.43" height="7.11" x="577.68" y="262.87" class="known"><title>void __cdecl DrawSpriteItem(struct ITEM_INFO *item);</title></rect>
 <rect width="7.43" height="7.11" x="577.68" y="272.99" class="known"><title>void __cdecl Lara_Col_Fallback(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

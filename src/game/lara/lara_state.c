@@ -329,3 +329,26 @@ void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_FAST_FALL;
     }
 }
+
+void __cdecl Lara_State_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_STOP;
+        return;
+    }
+
+    if ((g_Input & IN_BACK)
+        && ((g_Input & IN_SLOW) || g_Lara.water_status == LWS_WADE)) {
+        item->goal_anim_state = LS_BACK;
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_SLOW_TURN);
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, LARA_SLOW_TURN);
+    }
+}
