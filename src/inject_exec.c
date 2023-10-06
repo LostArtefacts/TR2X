@@ -143,6 +143,7 @@ static void Inject_Lara_Col(void)
     INJECT(1, 0x004290D0, Lara_Col_ForwardJump);
     INJECT(1, 0x004291B0, Lara_Col_FastBack);
     INJECT(1, 0x00429270, Lara_Col_TurnRight);
+    INJECT(1, 0x00429310, Lara_Col_TurnLeft);
 }
 
 static void Inject_S_Audio_Sample(void)

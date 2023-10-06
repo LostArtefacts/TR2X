@@ -250,3 +250,8 @@ void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->fall_speed = 0;
     }
 }
+
+void __cdecl Lara_Col_TurnLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_Col_TurnRight(item, coll);
+}
