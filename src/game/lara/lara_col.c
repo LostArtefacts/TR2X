@@ -761,3 +761,25 @@ void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_ceiling = 0;
     Lara_GetLaraCollisionInfo(item, coll);
 }
+
+void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = BAD_JUMP_CEILING;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_DeflectEdgeJump(item, coll);
+    if (item->fall_speed <= 0 || coll->side_mid.floor > 0) {
+        return;
+    }
+
+    if (Lara_LandedBad(item, coll)) {
+        item->goal_anim_state = LS_DEATH;
+    } else {
+        item->goal_anim_state = LS_STOP;
+    }
+    item->gravity = 0;
+    item->fall_speed = 0;
+    item->pos.y += coll->side_mid.floor;
+}
