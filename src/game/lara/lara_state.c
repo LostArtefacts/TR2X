@@ -723,3 +723,11 @@ void __cdecl Lara_State_Extra_Airlock(
     g_Camera.target_angle = CAM_AIRLOCK_ANGLE;
     g_Camera.target_elevation = CAM_AIRLOCK_ELEVATION;
 }
+
+void __cdecl Lara_State_Extra_GongBong(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_GONG_BONG_ANGLE;
+    g_Camera.target_elevation = CAM_GONG_BONG_ELEVATION;
+    g_Camera.target_distance = CAM_GONG_BONG_DISTANCE;
+}
