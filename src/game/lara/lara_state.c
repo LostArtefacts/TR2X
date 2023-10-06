@@ -430,3 +430,20 @@ void __cdecl Lara_State_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_FORWARD_JUMP;
     }
 }
+
+void __cdecl Lara_State_BackJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_BACK_JUMP_ANGLE;
+    if (item->fall_speed > LARA_FAST_FALL_SPEED) {
+        item->goal_anim_state = LS_FAST_FALL;
+        return;
+    }
+
+    if (item->goal_anim_state == LS_RUN) {
+        item->goal_anim_state = LS_STOP;
+    } else if (
+        ((g_Input & IN_FORWARD) || (g_Input & IN_ROLL))
+        && item->goal_anim_state != LS_STOP) {
+        item->goal_anim_state = LS_TWIST;
+    }
+}
