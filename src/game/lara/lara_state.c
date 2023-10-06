@@ -650,3 +650,25 @@ void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_STOP;
     }
 }
+
+void __cdecl Lara_State_DeathSlide(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.target_angle = CAM_DEATH_SLIDE_ANGLE;
+
+    int16_t room_num = item->room_num;
+    struct FLOOR_INFO *floor =
+        Room_GetFloor(item->pos.x, item->pos.y, item->pos.z, &room_num);
+    Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
+
+    coll->trigger = g_TriggerIndex;
+
+    if (!(g_Input & IN_ACTION)) {
+        item->goal_anim_state = LS_FORWARD_JUMP;
+        Lara_Animate(item);
+        g_LaraItem->gravity = 1;
+        g_LaraItem->speed = 100;
+        g_LaraItem->fall_speed = 40;
+        g_Lara.move_angle = item->pos.y_rot;
+    }
+}

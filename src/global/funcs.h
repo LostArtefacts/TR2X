@@ -373,7 +373,6 @@
 #define Lara_LookUpDown ((void __cdecl (*)(void))0x00427720)
 #define Lara_LookLeftRight ((void __cdecl (*)(void))0x00427790)
 #define Lara_ResetLook ((void __cdecl (*)(void))0x00427810)
-#define Lara_State_DeathSlide ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428710)
 #define Lara_StateExtra_Breath ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x004287B0)
 #define Lara_StateExtra_YetiKill ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428800)
 #define Lara_StateExtra_SharkKill ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428850)

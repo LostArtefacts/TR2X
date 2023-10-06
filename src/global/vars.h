@@ -62,6 +62,7 @@
 #define g_Anims VAR_U_(0x005258F4, struct ANIM_STRUCT *)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 #define g_FlipStatus VAR_U_(0x00526240, int32_t)
+#define g_TriggerIndex VAR_U_(0x00526288, int16_t *)
 #define g_Items ARRAY_(0x005262F0, struct ITEM_INFO, [])
 #define g_NumCineFrames VAR_U_(0x005262F6, int16_t)
 #define g_CineData VAR_I_(0x005262F8, CINE_FRAME *, NULL)
