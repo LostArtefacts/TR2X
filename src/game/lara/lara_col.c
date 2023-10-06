@@ -127,3 +127,29 @@ void __cdecl Lara_Col_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     item->pos.y += MIN(coll->side_mid.floor, 50);
 }
+
+void __cdecl Lara_Col_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->slopes_are_pits = 1;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = STEPUP_HEIGHT;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+    Lara_GetLaraCollisionInfo(item, coll);
+
+    if (Lara_HitCeiling(item, coll)) {
+        return;
+    }
+    if (Lara_Fallen(item, coll)) {
+        return;
+    }
+    if (Lara_TestSlide(item, coll)) {
+        return;
+    }
+
+    Item_ShiftCol(item, coll);
+    item->pos.y += coll->side_mid.floor;
+}
