@@ -745,7 +745,7 @@ typedef struct BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
-typedef struct OBJECT_INFO {
+typedef struct __unaligned OBJECT_INFO {
     int16_t mesh_count;
     int16_t mesh_idx;
     int32_t bone_idx;
@@ -769,7 +769,6 @@ typedef struct OBJECT_INFO {
     int16_t radius;
     int16_t shadow_size;
 
-    uint16_t bite_offset;
     uint16_t loaded : 1;
     uint16_t intelligent : 1;
     uint16_t non_lot : 1;
@@ -1567,7 +1566,7 @@ typedef enum LARA_GUN_STATE {
 00428930    00000051    +       void __cdecl Lara_State_Extra_DinoKill(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428990    000000BC    +       void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428A50    0000004D    +       void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00428AA0    000000A5    -       void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428AA0    000000A5    +       void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428B50    000000A3    -       void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428C00    00000051    -       int32_t __cdecl Lara_Fallen(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428C60    0000009B    -       void __cdecl Lara_CollideStop(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2457,4 +2456,4 @@ typedef enum LARA_GUN_STATE {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-00522000    -       struct OBJECT_INFO g_Objects[];
+00522000    -       struct OBJECT_INFO g_Objects[265];

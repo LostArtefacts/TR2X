@@ -71,5 +71,5 @@
 #define g_CineFrameIdx VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
-#define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [])
+#define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [265])
 // clang-format on

@@ -777,3 +777,24 @@ void __cdecl Lara_State_Extra_StartAnim(
     Room_GetHeight(floor, item->pos.x, item->pos.y, item->pos.z);
     Room_TestTriggers(g_TriggerIndex, 0);
 }
+
+void __cdecl Lara_State_Extra_StartHouse(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    int32_t frame_num_rel =
+        item->frame_num - g_Anims[item->anim_num].frame_base;
+    if (frame_num_rel == 1) {
+        Music_PlaySynced(MX_REVEAL_2);
+        g_Lara.mesh_ptrs[LM_HAND_R] =
+            g_Meshes[g_Objects[O_LARA_EXTRA].mesh_idx + LM_HAND_R];
+        g_Lara.mesh_ptrs[LM_HIPS] = g_Meshes[g_Objects[O_LARA_EXTRA].mesh_idx];
+    } else if (frame_num_rel == 401) {
+        g_Lara.mesh_ptrs[LM_HAND_R] =
+            g_Meshes[g_Objects[O_LARA].mesh_idx + LM_HAND_R];
+        g_Lara.mesh_ptrs[LM_HIPS] = g_Meshes[g_Objects[O_LARA].mesh_idx];
+        Inv_AddItem(O_PUZZLE_ITEM_1);
+    } else if (item->frame_num == g_Anims[item->anim_num].frame_end) {
+        g_Camera.type = CAM_CHASE;
+        Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
+    }
+}

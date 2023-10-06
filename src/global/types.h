@@ -783,7 +783,6 @@ typedef struct OBJECT_INFO {
     int16_t radius;
     int16_t shadow_size;
 
-    uint16_t bite_offset;
     uint16_t loaded : 1;
     uint16_t intelligent : 1;
     uint16_t non_lot : 1;
