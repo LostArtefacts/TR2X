@@ -3,6 +3,7 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "util.h"
 
 void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
@@ -68,4 +69,61 @@ void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
     }
 
     item->pos.y += coll->side_mid.floor;
+}
+
+void __cdecl Lara_Col_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot;
+    coll->slopes_are_walls = 1;
+    coll->bad_pos = NO_BAD_POS;
+    coll->bad_neg = -STEPUP_HEIGHT;
+    coll->bad_ceiling = 0;
+    Lara_GetLaraCollisionInfo(item, coll);
+
+    if (Lara_HitCeiling(item, coll)) {
+        return;
+    }
+    if (Lara_TestVault(item, coll)) {
+        return;
+    }
+
+    if (Lara_DeflectEdge(item, coll)) {
+        item->pos.z_rot = 0;
+        if (item->anim_num != LA_RUN_START
+            && Lara_TestWall(item, 256, 0, -640)) {
+            item->current_anim_state = LS_SPLAT;
+            if (item->frame_num >= 0 && item->frame_num <= 9) {
+                item->anim_num = LA_HIT_WALL_LEFT;
+                item->frame_num = g_Anims[LS_FAST_DIVE].frame_base;
+                return;
+            }
+            if (item->frame_num >= 10 && item->frame_num <= 21) {
+                item->anim_num = LA_HIT_WALL_RIGHT;
+                item->frame_num = g_Anims[LA_HIT_WALL_RIGHT].frame_base;
+                return;
+            }
+        }
+        Lara_CollideStop(item, coll);
+    }
+
+    if (Lara_Fallen(item, coll)) {
+        return;
+    }
+
+    if (coll->side_mid.floor >= -STEPUP_HEIGHT
+        && coll->side_mid.floor < -STEP_L / 2) {
+        if (item->frame_num >= 3 && item->frame_num <= 14) {
+            item->anim_num = LA_RUN_STEP_UP_LEFT;
+            item->frame_num = g_Anims[LA_RUN_STEP_UP_LEFT].frame_base;
+        } else {
+            item->anim_num = LA_RUN_STEP_UP_RIGHT;
+            item->frame_num = g_Anims[LA_RUN_STEP_UP_RIGHT].frame_base;
+        }
+    }
+
+    if (Lara_TestSlide(item, coll)) {
+        return;
+    }
+
+    item->pos.y += MIN(coll->side_mid.floor, 50);
 }
