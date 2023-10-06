@@ -575,3 +575,13 @@ void __cdecl Lara_State_SwitchOn(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Camera.target_distance = CAM_SWITCH_ON_DISTANCE;
     g_Camera.speed = CAM_SWITCH_ON_SPEED;
 }
+
+void __cdecl Lara_State_UseKey(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.look = 0;
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_angle = CAM_USE_KEY_ANGLE;
+    g_Camera.target_elevation = CAM_USE_KEY_ELEVATION;
+    g_Camera.target_distance = CAM_USE_KEY_DISTANCE;
+}
