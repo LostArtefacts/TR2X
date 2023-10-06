@@ -798,3 +798,27 @@ void __cdecl Lara_State_Extra_StartHouse(
         Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
     }
 }
+
+void __cdecl Lara_State_Extra_FinalAnim(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->hit_points = 1000;
+
+    int32_t frame_num_rel =
+        item->frame_num - g_Anims[item->anim_num].frame_base;
+    if (frame_num_rel == 1) {
+        g_Lara.back_gun = 0;
+        g_Lara.mesh_ptrs[LM_HAND_R] =
+            g_Meshes[g_Objects[O_LARA].mesh_idx + LM_HAND_R];
+        g_Lara.mesh_ptrs[LM_HEAD] =
+            g_Meshes[g_Objects[O_LARA].mesh_idx + LM_HEAD];
+        g_Lara.mesh_ptrs[LM_HIPS] =
+            g_Meshes[g_Objects[O_LARA_EXTRA].mesh_idx + LM_HIPS];
+        Music_PlaySynced(MX_CUTSCENE_BATH);
+    } else if (frame_num_rel == 316) {
+        g_Lara.mesh_ptrs[LM_HAND_R] =
+            g_Meshes[g_Objects[O_LARA_SHOTGUN].mesh_idx + LM_HAND_R];
+    } else if (item->frame_num == g_Anims[item->anim_num].frame_end - 1) {
+        g_LevelComplete = 1;
+    }
+}

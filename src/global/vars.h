@@ -49,6 +49,7 @@
 #define g_ChannelBuffers ARRAY_(0x004D8E08, LPDIRECTSOUNDBUFFER, [32])
 #define g_CurrentSoundAdapter VAR_U_(0x004D8E8C, struct SOUND_ADAPTER)
 #define g_PrimarySoundAdapter VAR_U_(0x004D8EAC, struct SOUND_ADAPTER_NODE *)
+#define g_LevelComplete VAR_U_(0x004D9EC4, int32_t)
 #define g_Input VAR_U_(0x0051A208, int32_t)
 #define g_SavedAppSettings VAR_U_(0x0051BCC0, struct APP_SETTINGS)
 #define g_ErrorMessage ARRAY_(0x0051BD20, char, [128])
@@ -59,6 +60,7 @@
 #define g_Lara VAR_U_(0x005206E0, struct LARA_INFO)
 #define g_LaraItem VAR_U_(0x005207BC, struct ITEM_INFO *)
 #define g_SoundFxCount VAR_U_(0x00521FDC, int32_t)
+#define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [265])
 #define g_Meshes VAR_U_(0x005252B0, int16_t **)
 #define g_Anims VAR_U_(0x005258F4, struct ANIM_STRUCT *)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
@@ -71,5 +73,4 @@
 #define g_CineFrameIdx VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
-#define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [265])
 // clang-format on

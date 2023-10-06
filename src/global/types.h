@@ -1430,8 +1430,8 @@ typedef enum MUSIC_TRACK_ID {
     MX_GYM_HINT_16             = 23, // 20.mp3
     MX_GYM_HINT_17             = 24, // 21.mp3
     MX_GYM_HINT_18             = 25, // 22.mp3
-    MX_GYM_HINT_19             = 26, // 23.mp3
-    MX_UNUSED_5                = 27, // 23.mp3
+    MX_UNUSED_5                = 26, // 23.mp3
+    MX_CUTSCENE_BATH           = 27, // 23.mp3
     MX_DAGGER_PULL             = 28, // 24.mp3
     MX_GYM_HINT_20             = 29, // 25.mp3
     MX_CUTSCENE_XIAN           = 30, // 26.mp3

@@ -1567,7 +1567,7 @@ typedef enum LARA_GUN_STATE {
 00428990    000000BC    +       void __cdecl Lara_State_Extra_PullDagger(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428A50    0000004D    +       void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428AA0    000000A5    +       void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00428B50    000000A3    -       void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00428B50    000000A3    +       void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428C00    00000051    -       int32_t __cdecl Lara_Fallen(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428C60    0000009B    -       void __cdecl Lara_CollideStop(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00428D20    00000191    -       void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2434,6 +2434,7 @@ typedef enum LARA_GUN_STATE {
 004D8E08    -       LPDIRECTSOUNDBUFFER g_ChannelBuffers[32];
 004D8E8C    -       struct SOUND_ADAPTER g_CurrentSoundAdapter;
 004D8EAC    -       struct SOUND_ADAPTER_NODE *g_PrimarySoundAdapter;
+004D9EC4    -       int32_t g_LevelComplete;
 0051A208    -       int32_t g_Input;
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
@@ -2444,6 +2445,7 @@ typedef enum LARA_GUN_STATE {
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 00521FDC    -       int32_t g_SoundFxCount;
+00522000    -       struct OBJECT_INFO g_Objects[265];
 005252B0    -       int16_t **g_Meshes;
 005258F4    -       struct ANIM_STRUCT *g_Anims;
 0052618C    -       struct ROOM_INFO *g_Rooms;
@@ -2456,4 +2458,3 @@ typedef enum LARA_GUN_STATE {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-00522000    -       struct OBJECT_INFO g_Objects[265];
