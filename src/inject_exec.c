@@ -116,6 +116,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x00428500, Lara_State_SwitchOn);
     INJECT(1, 0x00428540, Lara_State_UseKey);
     INJECT(1, 0x00428570, Lara_State_Special);
+    INJECT(1, 0x00428590, Lara_State_SwanDive);
 }
 
 static void Inject_S_Audio_Sample(void)

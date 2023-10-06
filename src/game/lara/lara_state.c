@@ -592,3 +592,13 @@ void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Camera.target_angle = CAM_SPECIAL_ANGLE;
     g_Camera.target_elevation = CAM_SPECIAL_ELEVATION;
 }
+
+void __cdecl Lara_State_SwanDive(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 1;
+    if (item->fall_speed > LARA_FAST_FALL_SPEED
+        && item->goal_anim_state != LS_DIVE) {
+        item->goal_anim_state = LS_FAST_DIVE;
+    }
+}
