@@ -591,3 +591,10 @@ void __cdecl Lara_Col_Fallback(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed = 0;
     item->pos.y += coll->side_mid.floor;
 }
+
+void __cdecl Lara_Col_HangLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot - PHD_90;
+    Lara_HangTest(item, coll);
+    g_Lara.move_angle = item->pos.y_rot - PHD_90;
+}
