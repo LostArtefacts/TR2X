@@ -460,3 +460,37 @@ void __cdecl Lara_Col_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->pos.y += coll->side_mid.floor;
     }
 }
+
+void __cdecl Lara_Col_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->current_anim_state == LS_STEP_RIGHT) {
+        g_Lara.move_angle = item->pos.y_rot + PHD_90;
+    } else {
+        g_Lara.move_angle = item->pos.y_rot - PHD_90;
+    }
+
+    item->gravity = 0;
+    item->fall_speed = 0;
+    if (g_Lara.water_status == LWS_WADE) {
+        coll->bad_pos = NO_BAD_POS;
+    } else {
+        coll->bad_pos = STEP_L / 2;
+    }
+    coll->slopes_are_pits = 1;
+    coll->slopes_are_walls = 1;
+    coll->bad_neg = -STEP_L / 2;
+    coll->bad_ceiling = 0;
+
+    Lara_GetLaraCollisionInfo(item, coll);
+    if (Lara_HitCeiling(item, coll)) {
+        return;
+    }
+
+    if (Lara_DeflectEdge(item, coll)) {
+        Lara_CollideStop(item, coll);
+    }
+
+    if (!Lara_Fallen(item, coll) && !Lara_TestSlide(item, coll)) {
+        item->pos.y += coll->side_mid.floor;
+    }
+}
