@@ -12,3 +12,4 @@ void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_TurnLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Death(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll);

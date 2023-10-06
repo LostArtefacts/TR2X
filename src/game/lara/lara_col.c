@@ -301,3 +301,40 @@ void __cdecl Lara_Col_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed = 0;
     item->pos.y += coll->side_mid.floor;
 }
+
+void __cdecl Lara_Col_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_HangTest(item, coll);
+    if (item->goal_anim_state != LS_HANG) {
+        return;
+    }
+
+    if ((g_Input & IN_FORWARD)) {
+        if (coll->side_front.floor <= -850 || coll->side_front.floor >= -650
+            || coll->side_front.floor - coll->side_front.ceiling < 0
+            || coll->side_left.floor - coll->side_left.ceiling < 0
+            || coll->side_right.floor - coll->side_right.ceiling < 0
+            || coll->hit_static) {
+            if (g_Lara.climb_status && item->anim_num == LA_GRAB_LEDGE
+                && item->frame_num == g_Anims[item->anim_num].frame_base + 21
+                && coll->side_mid.ceiling <= -256) {
+                item->goal_anim_state = LS_HANG;
+                item->current_anim_state = LS_HANG;
+                item->anim_num = LA_HANG_UP;
+                item->frame_num = g_Anims[LA_HANG_UP].frame_base;
+            }
+        } else if (g_Input & IN_SLOW) {
+            item->goal_anim_state = LS_GYMNAST;
+        } else {
+            item->goal_anim_state = LS_NULL;
+        }
+    } else if (
+        (g_Input & IN_BACK) && g_Lara.climb_status
+        && item->anim_num == LA_GRAB_LEDGE
+        && item->frame_num == g_Anims[item->anim_num].frame_base + 21) {
+        item->goal_anim_state = LS_HANG;
+        item->current_anim_state = LS_HANG;
+        item->anim_num = LA_HANG_DOWN;
+        item->frame_num = g_Anims[LA_HANG_DOWN].frame_base;
+    }
+}
