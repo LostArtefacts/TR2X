@@ -47,3 +47,5 @@ void __cdecl Lara_State_HangRight(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_SlideBack(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_PushBlock(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
