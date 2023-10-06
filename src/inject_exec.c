@@ -107,6 +107,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x00428320, Lara_State_UpJump);
     INJECT(1, 0x00428340, Lara_State_Fallback);
     INJECT(1, 0x00428370, Lara_State_HangLeft);
+    INJECT(1, 0x004283B0, Lara_State_HangRight);
 }
 
 static void Inject_S_Audio_Sample(void)
