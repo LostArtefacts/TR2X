@@ -421,3 +421,12 @@ void __cdecl Lara_State_StepLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
         CLAMPG(g_Lara.turn_rate, LARA_SLOW_TURN);
     }
 }
+
+void __cdecl Lara_State_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Camera.flags = CF_NO_CHUNKY;
+    g_Camera.target_elevation = CAM_SLIDE_ELEVATION;
+    if ((g_Input & IN_JUMP) && !(g_Input & IN_BACK)) {
+        item->goal_anim_state = LS_FORWARD_JUMP;
+    }
+}

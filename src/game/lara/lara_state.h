@@ -31,3 +31,4 @@ void __cdecl Lara_State_StepRight(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_StepLeft(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Slide(struct ITEM_INFO *item, struct COLL_INFO *coll);
