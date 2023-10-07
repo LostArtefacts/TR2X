@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.50% (174)</tspan> · <tspan class="known">83.08% (997)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.58% (175)</tspan> · <tspan class="known">83% (996)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="108.32" height="6" x="0" y="0" class="decompiled"/>
-<rect width="620.63" height="6" x="108.32" y="0" class="known"/>
+<rect width="108.94" height="6" x="0" y="0" class="decompiled"/>
+<rect width="620.01" height="6" x="108.94" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -661,7 +661,7 @@
 <rect width="12" height="12" x="465" y="165" class="decompiled"><title>void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="480" y="165" class="decompiled"><title>void __cdecl Lara_State_Dive(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="495" y="165" class="decompiled"><title>void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="510" y="165" class="known"><title>void __cdecl Lara_State_WaterRoll(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="510" y="165" class="decompiled"><title>void __cdecl Lara_State_UWTwist(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="165" class="known"><title>void __cdecl Lara_Col_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="540" y="165" class="known"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="165" class="known"><title>int32_t __cdecl Lara_GetWaterDepth(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
@@ -1283,8 +1283,8 @@
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.49%</tspan> · <tspan class="known">92.18%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="55.93" height="6" x="0" y="0" class="decompiled"/>
-<rect width="688.61" height="6" x="55.93" y="0" class="known"/>
+<rect width="55.95" height="6" x="0" y="0" class="decompiled"/>
+<rect width="688.58" height="6" x="55.95" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2452,7 +2452,7 @@
 <rect width="0.10" height="0.34" x="739.38" y="346.44" class="known"><title>void __cdecl finish_level_effect(struct ITEM_INFO *item);</title></rect>
 <rect width="0.10" height="0.34" x="742.04" y="346.44" class="known"><title>void __cdecl dynamic_light_off(struct ITEM_INFO *item);</title></rect>
 <rect width="0.10" height="0.34" x="744.69" y="346.44" class="decompiled"><title>void __cdecl Lara_State_Null(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="0.10" height="0.34" x="747.35" y="346.44" class="known"><title>void __cdecl Lara_State_WaterRoll(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="0.10" height="0.34" x="747.35" y="346.44" class="decompiled"><title>void __cdecl Lara_State_UWTwist(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="349.77" class="known"><title>void __cdecl S_ClearScreen(void);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="352.63" class="known"><title>void __cdecl Game_SetCutsceneTrack(int32_t track);</title></rect>
 <rect width="0.10" height="0.10" x="736.49" y="355.22" class="known"><title>void __cdecl lara_hands_free(struct ITEM_INFO *item);</title></rect>

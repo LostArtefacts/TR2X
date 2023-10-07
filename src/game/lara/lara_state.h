@@ -113,3 +113,4 @@ void __cdecl Lara_State_Glide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Dive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_UWTwist(struct ITEM_INFO *item, struct COLL_INFO *coll);

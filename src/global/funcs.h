@@ -458,7 +458,6 @@
 #define Lara_TestWaterClimbOut ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431D30)
 #define Lara_HandleUnderwater ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431F50)
 #define Lara_SwimTurn ((void __cdecl (*)(struct ITEM_INFO *item))0x00432180)
-#define Lara_State_WaterRoll ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00432410)
 #define Lara_Col_Swim ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00432420)
 #define Lara_Col_UWDeath ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00432440)
 #define Lara_GetWaterDepth ((int32_t __cdecl (*)(int32_t x, int32_t y, int32_t z, int16_t room_num))0x004324A0)

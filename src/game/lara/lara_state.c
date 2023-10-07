@@ -1119,3 +1119,8 @@ void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->pos.x_rot += angle;
     }
 }
+
+void __cdecl Lara_State_UWTwist(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->fall_speed = 0;
+}
