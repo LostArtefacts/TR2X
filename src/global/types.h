@@ -1492,4 +1492,11 @@ typedef enum COLL_TYPE {
 } COLL_TYPE;
 // clang-format on
 
+typedef enum DIRECTION {
+    DIR_NORTH = 0,
+    DIR_EAST = 1,
+    DIR_SOUTH = 2,
+    DIR_WEST = 3,
+} DIRECTION;
+
 #pragma pack(pop)

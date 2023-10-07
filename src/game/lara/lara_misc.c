@@ -182,3 +182,56 @@ void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
         break;
     }
 }
+
+int32_t __cdecl Lara_TestWall(
+    struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down)
+{
+    int32_t x = item->pos.x;
+    int32_t y = item->pos.y + down;
+    int32_t z = item->pos.z;
+
+    DIRECTION dir = Math_GetDirection(item->pos.y_rot);
+    switch (dir) {
+    case DIR_NORTH:
+        x -= right;
+        break;
+    case DIR_EAST:
+        z -= right;
+        break;
+    case DIR_SOUTH:
+        x += right;
+        break;
+    case DIR_WEST:
+        z += right;
+        break;
+    }
+
+    int16_t room_num = item->room_num;
+    Room_GetFloor(x, y, z, &room_num);
+
+    switch (dir) {
+    case DIR_NORTH:
+        z += front;
+        break;
+    case DIR_EAST:
+        x += front;
+        break;
+    case DIR_SOUTH:
+        z -= front;
+        break;
+    case DIR_WEST:
+        x -= front;
+        break;
+    }
+
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    int32_t height = Room_GetHeight(floor, x, y, z);
+    int32_t ceiling = Room_GetCeiling(floor, x, y, z);
+    if (height == NO_HEIGHT) {
+        return 1;
+    }
+    if (height - y > 0 && ceiling - y < 0) {
+        return 0;
+    }
+    return 2;
+}
