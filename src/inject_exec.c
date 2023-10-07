@@ -86,7 +86,7 @@ static void Inject_Sound(void)
 
 static void Inject_Lara_Misc(void)
 {
-    INJECT(1, 0x0042A0A0, Lara_GetLaraCollisionInfo);
+    INJECT(1, 0x0042A0A0, Lara_GetCollisionInfo);
     INJECT(1, 0x0042A0E0, Lara_SlideSlope);
     INJECT(1, 0x0042A1D0, Lara_HitCeiling);
     INJECT(1, 0x0042A240, Lara_DeflectEdge);
@@ -95,6 +95,7 @@ static void Inject_Lara_Misc(void)
     INJECT(1, 0x0042A530, Lara_TestWall);
     INJECT(1, 0x0042A640, Lara_TestHangOnClimbWall);
     INJECT(1, 0x0042A750, Lara_TestClimbStance);
+    INJECT(1, 0x0042A810, Lara_HangTest);
 }
 
 static void Inject_Lara_State(void)

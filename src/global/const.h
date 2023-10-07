@@ -12,8 +12,10 @@
 #define STEP_L (WALL_L / 4)
 #define NO_HEIGHT (-32512)
 #define NO_BAD_POS (-NO_HEIGHT) // = 32512
+#define NO_BAD_NEG (NO_HEIGHT) // = -32512
 #define BAD_JUMP_CEILING ((STEP_L * 3) / 4) // = 192
 #define STEPUP_HEIGHT ((STEP_L * 3) / 2) // = 384
+#define SLOPE_DIF 60
 
 #define GAME_FOV 80
 #define MIN_SQUARE SQUARE(WALL_L / 3)

@@ -18,7 +18,7 @@ void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = STEPUP_HEIGHT;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 
     if (Lara_HitCeiling(item, coll) || Lara_TestVault(item, coll)) {
         return;
@@ -77,7 +77,7 @@ void __cdecl Lara_Col_Run(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = NO_BAD_POS;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 
     if (Lara_HitCeiling(item, coll) || Lara_TestVault(item, coll)) {
         return;
@@ -134,7 +134,7 @@ void __cdecl Lara_Col_Stop(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = STEPUP_HEIGHT;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 
     if (Lara_HitCeiling(item, coll) || Lara_Fallen(item, coll)
         || Lara_TestSlide(item, coll)) {
@@ -157,7 +157,7 @@ void __cdecl Lara_Col_ForwardJump(
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
     if (item->speed < 0) {
         g_Lara.move_angle = item->pos.y_rot;
@@ -195,7 +195,7 @@ void __cdecl Lara_Col_FastBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll)) {
         return;
     }
@@ -226,7 +226,7 @@ void __cdecl Lara_Col_TurnRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 
     if (coll->side_mid.floor <= 100) {
         if (!Lara_TestSlide(item, coll)) {
@@ -256,7 +256,7 @@ void __cdecl Lara_Col_Death(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_ceiling = 0;
     coll->radius = 400;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Item_ShiftCol(item, coll);
 
     item->pos.y += coll->side_mid.floor;
@@ -271,7 +271,7 @@ void __cdecl Lara_Col_FastFall(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_SlideEdgeJump(item, coll);
     if (coll->side_mid.floor > 0) {
         return;
@@ -337,7 +337,7 @@ void __cdecl Lara_Col_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = 0;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_TestHangJump(item, coll)) {
         return;
     }
@@ -366,7 +366,7 @@ void __cdecl Lara_Col_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Item_ShiftCol(item, coll);
 
     if (coll->side_mid.floor > -STEP_L && coll->side_mid.floor < STEP_L) {
@@ -384,10 +384,10 @@ void __cdecl Lara_Col_Compress(ITEM_INFO *item, COLL_INFO *coll)
     item->gravity = 0;
     item->fall_speed = 0;
     coll->bad_pos = NO_BAD_POS;
-    coll->bad_neg = NO_HEIGHT;
+    coll->bad_neg = NO_BAD_NEG;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 
     if (coll->side_mid.ceiling > -100) {
         item->anim_num = LA_STOP;
@@ -422,7 +422,7 @@ void __cdecl Lara_Col_Back(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll)) {
         return;
     }
@@ -471,7 +471,7 @@ void __cdecl Lara_Col_StepRight(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEP_L / 2;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll)) {
         return;
     }
@@ -564,7 +564,7 @@ void __cdecl Lara_Col_Fallback(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
 
     if (coll->side_mid.floor > 0 || item->fall_speed <= 0) {
@@ -617,7 +617,7 @@ void __cdecl Lara_Col_Roll(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll) || Lara_TestSlide(item, coll)
         || Lara_Fallen(item, coll)) {
         return;
@@ -637,7 +637,7 @@ void __cdecl Lara_Col_Roll2(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll) || Lara_TestSlide(item, coll)) {
         return;
     }
@@ -662,7 +662,7 @@ void __cdecl Lara_Col_SwanDive(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
     if (coll->side_mid.floor > 0 || item->fall_speed <= 0) {
         return;
@@ -681,7 +681,7 @@ void __cdecl Lara_Col_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
 
     if (coll->side_mid.floor > 0 || item->fall_speed <= 0) {
@@ -706,7 +706,7 @@ void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     if (Lara_HitCeiling(item, coll) || Lara_TestVault(item, coll)) {
         return;
     }
@@ -760,7 +760,7 @@ void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_pos = STEPUP_HEIGHT;
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = 0;
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
 }
 
 void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll)
@@ -769,7 +769,7 @@ void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->bad_neg = -STEPUP_HEIGHT;
     coll->bad_ceiling = BAD_JUMP_CEILING;
 
-    Lara_GetLaraCollisionInfo(item, coll);
+    Lara_GetCollisionInfo(item, coll);
     Lara_DeflectEdgeJump(item, coll);
     if (item->fall_speed <= 0 || coll->side_mid.floor > 0) {
         return;

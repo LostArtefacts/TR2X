@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">15.50% (186)</tspan> · <tspan class="known">82.08% (985)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">15.58% (187)</tspan> · <tspan class="known">82% (984)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="115.78" height="6" x="0" y="0" class="decompiled"/>
-<rect width="613.16" height="6" x="115.78" y="0" class="known"/>
+<rect width="116.41" height="6" x="0" y="0" class="decompiled"/>
+<rect width="612.54" height="6" x="116.41" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -561,7 +561,7 @@
 <rect width="12" height="12" x="465" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);</title></rect>
 <rect width="12" height="12" x="480" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="495" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="510" y="135" class="known"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="510" y="135" class="decompiled"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="135" class="known"><title>int32_t __cdecl Lara_TestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);</title></rect>
 <rect width="12" height="12" x="540" y="135" class="known"><title>int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="135" class="known"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -796,7 +796,7 @@
 <rect width="12" height="12" x="240" y="210" class="known"><title>void __cdecl Sound_Init(void);</title></rect>
 <rect width="12" height="12" x="255" y="210" class="known"><title>int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *laraitem);</title></rect>
 <rect width="12" height="12" x="270" y="210" class="known"><title>int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);</title></rect>
-<rect width="12" height="12" x="285" y="210" class="known"><title>void __cdecl GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>
+<rect width="12" height="12" x="285" y="210" class="known"><title>void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>
 <rect width="12" height="12" x="300" y="210" class="known"><title>void __cdecl BaddieBiteEffect(struct ITEM_INFO *item, struct BITE_INFO *bite);</title></rect>
 <rect width="12" height="12" x="315" y="210" class="known"><title>void __cdecl SpiderLeap(int16_t item_num, int16_t angle);</title></rect>
 <rect width="12" height="12" x="330" y="210" class="known"><title>void __cdecl SpiderControl(int16_t item_num);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.01%</tspan> · <tspan class="known">91.66%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.26%</tspan> · <tspan class="known">91.41%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="59.83" height="6" x="0" y="0" class="decompiled"/>
-<rect width="684.70" height="6" x="59.83" y="0" class="known"/>
+<rect width="61.67" height="6" x="0" y="0" class="decompiled"/>
+<rect width="682.87" height="6" x="61.67" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1385,7 +1385,7 @@
 <rect width="23.34" height="22.56" x="289.78" y="235.89" class="known"><title>void __cdecl ControlHarpoonBolt(int16_t item_num);</title></rect>
 <rect width="23.34" height="22.53" x="289.78" y="261.44" class="known"><title>int16_t *__cdecl Output_InsertObjectG3_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="23.34" height="22.47" x="289.78" y="286.97" class="known"><title>void __fastcall wgtmapA(int32_t y0, int32_t y1, BYTE *texPage);</title></rect>
-<rect width="23.34" height="22.37" x="289.78" y="312.44" class="known"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="23.34" height="22.37" x="289.78" y="312.44" class="decompiled"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="23.34" height="22.19" x="289.78" y="337.81" class="known"><title>void __cdecl Item_Animate(struct ITEM_INFO *item);</title></rect>
 <rect width="22.54" height="22.72" x="316.12" y="0" class="known"><title>void __cdecl AnimatePistols(int32_t weapon_type);</title></rect>
 <rect width="22.54" height="22.62" x="316.12" y="25.72" class="known"><title>void __cdecl CheckCheatMode(void);</title></rect>
@@ -1510,7 +1510,7 @@
 <rect width="15.03" height="15.48" x="537.14" y="40.16" class="known"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="14.99" height="15.48" x="555.17" y="40.16" class="known"><title>void __cdecl BigEelControl(int16_t item_num);</title></rect>
 <rect width="14.94" height="15.48" x="573.16" y="40.16" class="decompiled"><title>void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="14.86" height="15.48" x="591.11" y="40.16" class="known"><title>void __cdecl GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>
+<rect width="14.86" height="15.48" x="591.11" y="40.16" class="known"><title>void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>
 <rect width="14.77" height="15.48" x="608.97" y="40.16" class="known"><title>struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
 <rect width="14.68" height="15.48" x="626.74" y="40.16" class="known"><title>int32_t __cdecl AddTexturePage16(int32_t width, int32_t height, BYTE *pageBuffer);</title></rect>
 <rect width="14.64" height="15.48" x="644.42" y="40.16" class="known"><title>void __cdecl Output_InsertTrans8_Sorted(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>

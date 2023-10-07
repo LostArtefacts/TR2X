@@ -469,5 +469,5 @@ uint32_t __fastcall Math_Sqrt(uint32_t n)
 
 enum DIRECTION Math_GetDirection(int16_t angle)
 {
-    return (angle + PHD_45) / PHD_90;
+    return (uint16_t)(angle + PHD_45) / PHD_90;
 }

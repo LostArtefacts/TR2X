@@ -1077,6 +1077,13 @@ typedef enum COLL_TYPE {
     COLL_CLAMP    = 0x20,
 } COLL_TYPE;
 
+enum DIRECTION {
+    DIR_NORTH = 0,
+    DIR_EAST = 1,
+    DIR_SOUTH = 2,
+    DIR_WEST = 3,
+};
+
 #pragma pack(pop)
 
 # FUNCTIONS
@@ -1615,7 +1622,7 @@ typedef enum COLL_TYPE {
 00429E70    00000162    +       void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00429FE0    00000036    +       void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A020    00000074    +       void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042A0A0    00000032    +       void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A0A0    00000032    +       void __cdecl Lara_GetCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A0E0    000000E2    +       void __cdecl Lara_SlideSlope(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A1D0    00000067    +       int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A240    0000007F    +       int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -1624,7 +1631,7 @@ typedef enum COLL_TYPE {
 0042A530    000000E1    +       int32_t __cdecl Lara_TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);
 0042A640    000000F5    +       int32_t __cdecl Lara_TestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A750    000000BE    +       int32_t __cdecl Lara_TestClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042A810    0000033E    -       void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A810    0000033E    +       void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AB70    000000AD    -       int32_t __cdecl Lara_TestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
 0042AC20    0000016D    -       int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AD90    0000019E    -       int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -1901,7 +1908,7 @@ typedef enum COLL_TYPE {
 # game/sphere.c
 0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *laraitem);
 0043FAE0    000002D8    -R      int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);
-0043FDC0    0000019A    -R      void __cdecl GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);
+0043FDC0    0000019A    -       void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);
 0043FF60    0000005D    -R      void __cdecl BaddieBiteEffect(struct ITEM_INFO *item, struct BITE_INFO *bite);
 
 # game/spider.c
