@@ -1021,6 +1021,7 @@ typedef enum LARA_ANIMATION {
     LA_BREATH = 103,
     LA_HANG_UP = 187, // climb ladders up
     LA_HANG_DOWN = 188, // climb ladders down
+    LA_CLIMB_STANCE = 164,
 } LARA_ANIMATION;
 
 typedef enum LARA_STATE {

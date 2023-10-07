@@ -40,3 +40,5 @@ void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_ClimbLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_ClimbRight(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_ClimbStance(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
