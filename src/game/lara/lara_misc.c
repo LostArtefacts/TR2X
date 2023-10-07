@@ -235,3 +235,48 @@ int32_t __cdecl Lara_TestWall(
     }
     return 2;
 }
+
+int32_t __cdecl Lara_TestHangOnClimbWall(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (!g_Lara.climb_status || item->fall_speed < 0) {
+        return 0;
+    }
+
+    DIRECTION dir = Math_GetDirection(item->pos.y_rot);
+    switch (dir) {
+    case DIR_NORTH:
+    case DIR_SOUTH:
+        item->pos.z += coll->shift.z;
+        break;
+
+    case DIR_EAST:
+    case DIR_WEST:
+        item->pos.x += coll->shift.x;
+        break;
+    }
+
+    int16_t *bounds = Item_GetBoundsAccurate(item);
+    int32_t y = bounds[FBBOX_MIN_Y];
+    int32_t h = bounds[FBBOX_MAX_Y] - y;
+
+    int32_t shift;
+    if (!Lara_TestClimbPos(item, coll->radius, coll->radius, y, h, &shift)) {
+        return 0;
+    }
+
+    if (!Lara_TestClimbPos(item, coll->radius, -coll->radius, y, h, &shift)) {
+        return 0;
+    }
+
+    int32_t result = Lara_TestClimbPos(item, coll->radius, 0, y, h, &shift);
+    switch (result) {
+    case 0:
+    case 1:
+        return result;
+
+    default:
+        item->pos.y += shift;
+        return 1;
+    }
+}
