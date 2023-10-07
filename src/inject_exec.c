@@ -87,6 +87,7 @@ static void Inject_Sound(void)
 static void Inject_Lara_Misc(void)
 {
     INJECT(1, 0x0042A0A0, Lara_GetLaraCollisionInfo);
+    INJECT(1, 0x0042A0E0, Lara_SlideSlope);
 }
 
 static void Inject_Lara_State(void)
