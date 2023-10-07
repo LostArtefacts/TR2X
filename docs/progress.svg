@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.67% (176)</tspan> · <tspan class="known">82.92% (995)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.75% (177)</tspan> · <tspan class="known">82.83% (994)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="109.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="619.39" height="6" x="109.56" y="0" class="known"/>
+<rect width="110.18" height="6" x="0" y="0" class="decompiled"/>
+<rect width="618.76" height="6" x="110.18" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -663,7 +663,7 @@
 <rect width="12" height="12" x="495" y="165" class="decompiled"><title>void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="510" y="165" class="decompiled"><title>void __cdecl Lara_State_UWTwist(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="165" class="decompiled"><title>void __cdecl Lara_Col_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="540" y="165" class="known"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="540" y="165" class="decompiled"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="165" class="known"><title>int32_t __cdecl Lara_GetWaterDepth(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="570" y="165" class="known"><title>void __cdecl Lara_TestWaterDepth(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="585" y="165" class="known"><title>void __cdecl Lara_SwimCollision(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.50%</tspan> · <tspan class="known">92.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.52%</tspan> · <tspan class="known">92.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="688.54" height="6" x="56" y="0" class="known"/>
+<rect width="56.20" height="6" x="0" y="0" class="decompiled"/>
+<rect width="688.34" height="6" x="56.20" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2026,7 +2026,7 @@
 <rect width="5.81" height="5.40" x="615.94" y="296.77" class="known"><title>void __cdecl ready_pistols(int32_t weapon_type);</title></rect>
 <rect width="5.81" height="5.40" x="615.94" y="305.18" class="known"><title>BOOL __cdecl S_InitialiseSystem(void);</title></rect>
 <rect width="5.81" height="5.40" x="615.94" y="313.58" class="known"><title>bool __cdecl GetRegistryFloatValue(LPCTSTR lpValueName, double *value, double defaultValue);</title></rect>
-<rect width="5.81" height="5.31" x="615.94" y="321.99" class="known"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="5.81" height="5.31" x="615.94" y="321.99" class="decompiled"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.81" height="5.22" x="615.94" y="330.30" class="known"><title>void __cdecl AddActiveItem(int16_t item_num);</title></rect>
 <rect width="5.81" height="5.22" x="615.94" y="338.52" class="known"><title>void __cdecl WinInReadKeyboard(LPVOID lpInputData);</title></rect>
 <rect width="5.81" height="5.13" x="615.94" y="346.74" class="known"><title>int32_t __cdecl Demo_Control(int32_t level_num);</title></rect>

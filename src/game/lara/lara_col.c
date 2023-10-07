@@ -1073,3 +1073,16 @@ void __cdecl Lara_Col_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     Lara_SwimCollision(item, coll);
 }
+
+void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->hit_points = -1;
+    g_Lara.air = -1;
+    g_Lara.gun_status = LGS_HANDS_BUSY;
+    int32_t wh = Room_GetWaterHeight(
+        item->pos.x, item->pos.y, item->pos.z, item->room_num);
+    if (wh != NO_HEIGHT && wh < item->pos.y - 100) {
+        item->pos.y -= 5;
+    }
+    Lara_SwimCollision(item, coll);
+}
