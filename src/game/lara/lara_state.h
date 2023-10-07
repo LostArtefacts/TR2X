@@ -102,3 +102,5 @@ void __cdecl Lara_State_SurfSwim(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_SurfBack(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_SurfLeft(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
