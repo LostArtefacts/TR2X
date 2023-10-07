@@ -417,7 +417,6 @@
 #define undraw_pistol_mesh_right ((void __cdecl (*)(int32_t weapon_type))0x0042D350)
 #define PistolHandler ((void __cdecl (*)(int32_t weapon_type))0x0042D390)
 #define AnimatePistols ((void __cdecl (*)(int32_t weapon_type))0x0042D520)
-#define Lara_State_ClimbStance ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042D8D0)
 #define Lara_State_Climbing ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042D950)
 #define Lara_State_ClimbEnd ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042D970)
 #define Lara_State_ClimbDown ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042D990)

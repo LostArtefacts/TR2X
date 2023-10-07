@@ -846,3 +846,25 @@ void __cdecl Lara_State_ClimbRight(
         item->goal_anim_state = LS_CLIMB_STANCE;
     }
 }
+
+void __cdecl Lara_State_ClimbStance(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_elevation = CAM_CLIMB_STANCE_ELEVATION;
+
+    if (g_Input & IN_LOOK) {
+        Lara_LookUpDown();
+    }
+
+    if ((g_Input & IN_LEFT) || (g_Input & IN_STEP_LEFT)) {
+        item->goal_anim_state = LS_CLIMB_LEFT;
+    } else if ((g_Input & IN_RIGHT) || (g_Input & IN_STEP_RIGHT)) {
+        item->goal_anim_state = LS_CLIMB_RIGHT;
+    } else if ((g_Input & IN_JUMP)) {
+        item->goal_anim_state = LS_BACK_JUMP;
+        g_Lara.gun_status = LGS_ARMLESS;
+        g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    }
+}
