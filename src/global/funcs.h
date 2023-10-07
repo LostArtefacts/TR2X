@@ -453,7 +453,6 @@
 #define Lara_InitialiseInventory ((void __cdecl (*)(int32_t level_num))0x00431200)
 #define Lara_InitialiseMeshes ((void __cdecl (*)(int32_t level_num))0x00431570)
 #define Lara_HandleSurface ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431670)
-#define Lara_Col_SurfRight ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431AF0)
 #define Lara_Col_SurfTread ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431B20)
 #define Lara_SurfaceCollision ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431B40)
 #define Lara_TestWaterStepOut ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431C40)
