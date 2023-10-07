@@ -453,7 +453,6 @@
 #define Lara_InitialiseInventory ((void __cdecl (*)(int32_t level_num))0x00431200)
 #define Lara_InitialiseMeshes ((void __cdecl (*)(int32_t level_num))0x00431570)
 #define Lara_HandleSurface ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431670)
-#define Lara_State_SurfSwim ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x004317D0)
 #define Lara_State_SurfBack ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431840)
 #define Lara_State_SurfLeft ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x004318A0)
 #define Lara_State_SurfRight ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431900)

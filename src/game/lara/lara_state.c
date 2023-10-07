@@ -891,3 +891,23 @@ void __cdecl Lara_State_ClimbDown(
     coll->enable_baddie_push = 0;
     g_Camera.target_elevation = CAM_CLIMB_DOWN_ELEVATION;
 }
+
+void __cdecl Lara_State_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_UW_DEATH;
+        return;
+    }
+
+    g_Lara.dive_count = 0;
+    if (g_Input & IN_LEFT) {
+        item->pos.y_rot -= LARA_SLOW_TURN;
+    } else if (g_Input & IN_RIGHT) {
+        item->pos.y_rot += LARA_SLOW_TURN;
+    }
+    if (!(g_Input & LS_RUN) || (g_Input & LS_BACK)) {
+        item->goal_anim_state = LS_SURF_TREAD;
+    }
+    item->fall_speed += 8;
+    CLAMPG(item->fall_speed, LARA_MAX_SURF_SPEED);
+}
