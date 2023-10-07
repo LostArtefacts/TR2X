@@ -1043,3 +1043,28 @@ void __cdecl Lara_State_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_GLIDE;
     }
 }
+
+void __cdecl Lara_State_Glide(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_UW_DEATH;
+        return;
+    }
+
+    if ((g_Input & IN_ROLL) != 0) {
+        item->current_anim_state = LS_WATER_ROLL;
+        item->anim_num = LA_UW_TWIST;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        return;
+    }
+
+    Lara_SwimTurn(item);
+    if (g_Input & IN_JUMP) {
+        item->goal_anim_state = LS_SWIM;
+    }
+    item->fall_speed -= LARA_UW_FRICTION;
+    CLAMPL(item->fall_speed, 0);
+    if (item->fall_speed <= LARA_MAX_SWIM_SPEED * 2 / 3) {
+        item->goal_anim_state = LS_TREAD;
+    }
+}
