@@ -1,5 +1,6 @@
 #include "game/lara/lara_col.h"
 
+#include "game/lara/lara_misc.h"
 #include "game/sound.h"
 #include "global/const.h"
 #include "global/funcs.h"

@@ -2,6 +2,7 @@
 
 #include "game/camera.h"
 #include "game/lara/lara_col.h"
+#include "game/lara/lara_misc.h"
 #include "game/lara/lara_state.h"
 #include "game/math.h"
 #include "game/matrix.h"
@@ -18,6 +19,7 @@ static void Inject_Matrix(void);
 static void Inject_Shell(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
+static void Inject_Lara_Misc(void);
 static void Inject_Lara_State(void);
 static void Inject_Lara_Col(void);
 static void Inject_S_Audio_Sample(void);
@@ -80,6 +82,11 @@ static void Inject_Music(void)
 static void Inject_Sound(void)
 {
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
+}
+
+static void Inject_Lara_Misc(void)
+{
+    INJECT(1, 0x0042A0A0, Lara_GetLaraCollisionInfo);
 }
 
 static void Inject_Lara_State(void)
@@ -247,6 +254,7 @@ void Inject_Exec(void)
     Inject_Shell();
     Inject_Music();
     Inject_Sound();
+    Inject_Lara_Misc();
     Inject_Lara_State();
     Inject_Lara_Col();
 

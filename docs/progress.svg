@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.75% (177)</tspan> · <tspan class="known">82.83% (994)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">14.83% (178)</tspan> · <tspan class="known">82.75% (993)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="110.18" height="6" x="0" y="0" class="decompiled"/>
-<rect width="618.76" height="6" x="110.18" y="0" class="known"/>
+<rect width="110.80" height="6" x="0" y="0" class="decompiled"/>
+<rect width="618.14" height="6" x="110.80" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -552,7 +552,7 @@
 <rect width="12" height="12" x="330" y="135" class="decompiled"><title>void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="345" y="135" class="decompiled"><title>void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="360" y="135" class="decompiled"><title>void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="375" y="135" class="known"><title>void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="375" y="135" class="decompiled"><title>void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="390" y="135" class="known"><title>void __cdecl Lara_Slide_Slope(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="405" y="135" class="known"><title>int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="420" y="135" class="known"><title>int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.52%</tspan> · <tspan class="known">92.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.54%</tspan> · <tspan class="known">92.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="56.20" height="6" x="0" y="0" class="decompiled"/>
-<rect width="688.34" height="6" x="56.20" y="0" class="known"/>
+<rect width="56.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="688.23" height="6" x="56.31" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2236,7 +2236,7 @@
 <rect width="3.32" height="3.50" x="706.51" y="281.75" class="known"><title>void __cdecl phd_PushUnitMatrix(void);</title></rect>
 <rect width="3.20" height="3.50" x="712.83" y="281.75" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
 <rect width="3.20" height="3.50" x="719.02" y="281.75" class="known"><title>void __cdecl RingActive(void);</title></rect>
-<rect width="3.20" height="3.50" x="725.22" y="281.75" class="known"><title>void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="3.20" height="3.50" x="725.22" y="281.75" class="decompiled"><title>void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.20" height="3.50" x="731.41" y="281.75" class="decompiled"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.20" height="3.50" x="737.61" y="281.75" class="known"><title>void __cdecl OpenThatDoor(struct DOORPOS_DATA *d);</title></rect>
 <rect width="3.20" height="3.50" x="743.80" y="281.75" class="known"><title>void __cdecl BGND_GetPageHandles(void);</title></rect>

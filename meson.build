@@ -78,6 +78,7 @@ dll_sources = [
   'src/filesystem.c',
   'src/game/camera.c',
   'src/game/lara/lara_col.c',
+  'src/game/lara/lara_misc.c',
   'src/game/lara/lara_state.c',
   'src/game/math.c',
   'src/game/matrix.c',
