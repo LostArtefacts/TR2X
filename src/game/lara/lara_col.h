@@ -49,3 +49,4 @@ void __cdecl Lara_Col_SurfBack(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SurfLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SurfRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SurfTread(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);

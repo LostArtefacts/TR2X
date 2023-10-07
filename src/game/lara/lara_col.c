@@ -1068,3 +1068,8 @@ void __cdecl Lara_Col_SurfTread(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_Lara.move_angle = item->pos.y_rot;
     Lara_SurfaceCollision(item, coll);
 }
+
+void __cdecl Lara_Col_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Lara_SwimCollision(item, coll);
+}
