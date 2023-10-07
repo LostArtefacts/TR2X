@@ -1066,6 +1066,17 @@ typedef enum LARA_GUN_STATE {
     LGS_READY = 4,
 } LARA_GUN_STATE;
 
+
+typedef enum COLL_TYPE {
+    COLL_NONE     = 0x00,
+    COLL_FRONT    = 0x01,
+    COLL_LEFT     = 0x02,
+    COLL_RIGHT    = 0x04,
+    COLL_TOP      = 0x08,
+    COLL_TOPFRONT = 0x10,
+    COLL_CLAMP    = 0x20,
+} COLL_TYPE;
+
 #pragma pack(pop)
 
 # FUNCTIONS
@@ -1608,7 +1619,7 @@ typedef enum LARA_GUN_STATE {
 0042A0E0    000000E2    +       void __cdecl Lara_SlideSlope(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A1D0    00000067    +       int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A240    0000007F    +       int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042A2C0    00000136    -       void __cdecl Lara_DeflectEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A2C0    00000136    +       void __cdecl Lara_DeflectEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A440    000000AB    -       void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A530    000000E1    -       int32_t __cdecl Lara_TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);
 0042A640    000000F5    -       int32_t __cdecl Lara_TestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);

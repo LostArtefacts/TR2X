@@ -8,3 +8,5 @@ void __cdecl Lara_SlideSlope(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_DeflectEdge(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_DeflectEdgeJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

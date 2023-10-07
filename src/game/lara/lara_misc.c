@@ -1,5 +1,6 @@
 #include "game/lara/lara_misc.h"
 
+#include "game/math.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -94,5 +95,57 @@ int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     default:
         return 0;
+    }
+}
+
+void __cdecl Lara_DeflectEdgeJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Item_ShiftCol(item, coll);
+    switch (coll->coll_type) {
+    case COLL_FRONT:
+    case COLL_TOPFRONT:
+        if (!g_Lara.climb_status || item->speed != 2) {
+            if (coll->side_mid.floor > 512) {
+                item->goal_anim_state = LS_FAST_FALL;
+                item->current_anim_state = LS_FAST_FALL;
+                item->anim_num = LA_FAST_FALL;
+                item->frame_num = g_Anims[item->anim_num].frame_base + 1;
+            } else if (coll->side_mid.floor <= 128) {
+                item->goal_anim_state = LS_LAND;
+                item->current_anim_state = LS_LAND;
+                item->anim_num = LA_LAND;
+                item->frame_num = g_Anims[item->anim_num].frame_base;
+            }
+            item->speed /= 4;
+            g_Lara.move_angle += PHD_180;
+            CLAMPL(item->fall_speed, 1);
+        }
+        break;
+
+    case COLL_LEFT:
+        item->pos.y_rot += LARA_DEFLECT_ANGLE;
+        break;
+
+    case COLL_RIGHT:
+        item->pos.y_rot -= LARA_DEFLECT_ANGLE;
+        break;
+
+    case COLL_TOP:
+        CLAMPL(item->fall_speed, 1);
+        break;
+
+    case COLL_CLAMP:
+        item->pos.z -= (Math_Cos(coll->facing) * 100) >> W2V_SHIFT;
+        item->pos.x -= (Math_Sin(coll->facing) * 100) >> W2V_SHIFT;
+        item->speed = 0;
+        coll->side_mid.floor = 0;
+        if (item->fall_speed <= 0) {
+            item->fall_speed = 16;
+        }
+        break;
+
+    default:
+        break;
     }
 }

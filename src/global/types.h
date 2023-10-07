@@ -976,6 +976,7 @@ typedef enum LARA_ANIMATION {
     LA_WALK_BACK = 40,
     LA_VAULT_12 = 50,
     LA_VAULT_34 = 42,
+    LA_LAND = 31,
     LA_FAST_FALL = 32,
     LA_STOP = 11,
     LA_FALL_DOWN = 34,
