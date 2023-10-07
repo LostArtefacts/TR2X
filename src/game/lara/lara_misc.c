@@ -50,3 +50,22 @@ void __cdecl Lara_SlideSlope(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_STOP;
     }
 }
+
+int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (coll->coll_type != COLL_TOP && coll->coll_type != COLL_CLAMP) {
+        return 0;
+    }
+
+    item->pos.x = coll->old.x;
+    item->pos.y = coll->old.y;
+    item->pos.z = coll->old.z;
+    item->goal_anim_state = LS_STOP;
+    item->current_anim_state = LS_STOP;
+    item->anim_num = LS_REACH;
+    item->frame_num = g_Anims[item->anim_num].frame_base;
+    item->speed = 0;
+    item->gravity = 0;
+    item->fall_speed = 0;
+    return 1;
+}
