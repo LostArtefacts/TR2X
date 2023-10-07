@@ -142,6 +142,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x004317D0, Lara_State_SurfSwim);
     INJECT(1, 0x00431840, Lara_State_SurfBack);
     INJECT(1, 0x004318A0, Lara_State_SurfLeft);
+    INJECT(1, 0x00431900, Lara_State_SurfRight);
 }
 
 static void Inject_Lara_Col(void)

@@ -951,3 +951,24 @@ void __cdecl Lara_State_SurfLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed += 8;
     CLAMPG(item->fall_speed, LARA_MAX_SURF_SPEED);
 }
+
+void __cdecl Lara_State_SurfRight(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_UW_DEATH;
+        return;
+    }
+
+    g_Lara.dive_count = 0;
+    if (g_Input & IN_LEFT) {
+        item->pos.y_rot -= LARA_UW_TURN;
+    } else if (g_Input & IN_RIGHT) {
+        item->pos.y_rot += LARA_UW_TURN;
+    }
+    if (!(g_Input & IN_STEP_RIGHT)) {
+        item->goal_anim_state = LS_SURF_TREAD;
+    }
+    item->fall_speed += 8;
+    CLAMPG(item->fall_speed, LARA_MAX_SURF_SPEED);
+}
