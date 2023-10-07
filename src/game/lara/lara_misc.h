@@ -10,3 +10,4 @@ int32_t __cdecl Lara_DeflectEdge(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_DeflectEdgeJump(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);

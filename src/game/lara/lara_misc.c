@@ -149,3 +149,36 @@ void __cdecl Lara_DeflectEdgeJump(
         break;
     }
 }
+
+void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    Item_ShiftCol(item, coll);
+
+    switch (coll->coll_type) {
+    case COLL_LEFT:
+        item->pos.y_rot += LARA_DEFLECT_ANGLE;
+        break;
+
+    case COLL_RIGHT:
+        item->pos.y_rot -= LARA_DEFLECT_ANGLE;
+        break;
+
+    case COLL_TOP:
+    case COLL_TOPFRONT:
+        CLAMPL(item->fall_speed, 1);
+        break;
+
+    case COLL_CLAMP:
+        item->pos.z -= (Math_Cos(coll->facing) * 100) >> W2V_SHIFT;
+        item->pos.x -= (Math_Sin(coll->facing) * 100) >> W2V_SHIFT;
+        item->speed = 0;
+        coll->side_mid.floor = 0;
+        if (item->fall_speed <= 0) {
+            item->fall_speed = 16;
+        }
+        break;
+
+    default:
+        break;
+    }
+}
