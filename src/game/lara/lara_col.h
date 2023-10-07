@@ -45,3 +45,4 @@ void __cdecl Lara_Col_ClimbStance(
 void __cdecl Lara_Col_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_SurfBack(struct ITEM_INFO *item, struct COLL_INFO *coll);

@@ -188,6 +188,7 @@ static void Inject_Lara_Col(void)
     INJECT(1, 0x0042DC80, Lara_Col_Climbing);
     INJECT(1, 0x0042DDD0, Lara_Col_ClimbDown);
     INJECT(1, 0x00431A50, Lara_Col_SurfSwim);
+    INJECT(1, 0x00431A90, Lara_Col_SurfBack);
 }
 
 static void Inject_S_Audio_Sample(void)

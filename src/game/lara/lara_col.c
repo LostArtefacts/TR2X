@@ -1044,3 +1044,9 @@ void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll)
     Lara_SurfaceCollision(item, coll);
     Lara_TestWaterClimbOut(item, coll);
 }
+
+void __cdecl Lara_Col_SurfBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    g_Lara.move_angle = item->pos.y_rot + PHD_180;
+    Lara_SurfaceCollision(item, coll);
+}
