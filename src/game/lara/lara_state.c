@@ -875,3 +875,11 @@ void __cdecl Lara_State_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll)
     coll->enable_baddie_push = 0;
     g_Camera.target_elevation = CAM_CLIMBING_ELEVATION;
 }
+
+void __cdecl Lara_State_ClimbEnd(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.flags = CF_FOLLOW_CENTRE;
+    g_Camera.target_angle = CAM_CLIMB_END_ELEVATION;
+}
