@@ -110,3 +110,4 @@ void __cdecl Lara_State_SurfTread(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Glide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll);

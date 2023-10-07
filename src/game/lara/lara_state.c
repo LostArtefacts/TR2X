@@ -1068,3 +1068,31 @@ void __cdecl Lara_State_Glide(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->goal_anim_state = LS_TREAD;
     }
 }
+
+void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_UW_DEATH;
+        return;
+    }
+
+    if (g_Input & IN_ROLL) {
+        item->current_anim_state = LS_WATER_ROLL;
+        item->anim_num = LA_UW_TWIST;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        return;
+    }
+
+    if (g_Input & IN_LOOK) {
+        Lara_LookUpDown();
+    }
+    Lara_SwimTurn(item);
+    if (g_Input & IN_JUMP) {
+        item->goal_anim_state = LS_SWIM;
+    }
+    item->fall_speed -= LARA_UW_FRICTION;
+    CLAMPL(item->fall_speed, 0);
+    if (g_Lara.gun_status == LGS_HANDS_BUSY) {
+        g_Lara.gun_status = LGS_ARMLESS;
+    }
+}
