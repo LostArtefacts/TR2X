@@ -868,3 +868,10 @@ void __cdecl Lara_State_ClimbStance(
         g_Lara.move_angle = item->pos.y_rot + PHD_180;
     }
 }
+
+void __cdecl Lara_State_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_elevation = CAM_CLIMBING_ELEVATION;
+}
