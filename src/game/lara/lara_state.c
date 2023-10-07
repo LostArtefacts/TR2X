@@ -834,3 +834,15 @@ void __cdecl Lara_State_ClimbLeft(
         item->goal_anim_state = LS_CLIMB_STANCE;
     }
 }
+
+void __cdecl Lara_State_ClimbRight(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_angle = CAM_CLIMB_RIGHT_ANGLE;
+    g_Camera.target_elevation = CAM_CLIMB_RIGHT_ELEVATION;
+    if (!(g_Input & IN_RIGHT) && !(g_Input & IN_STEP_RIGHT)) {
+        item->goal_anim_state = LS_CLIMB_STANCE;
+    }
+}

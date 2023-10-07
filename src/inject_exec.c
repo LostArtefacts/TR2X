@@ -134,6 +134,7 @@ static void Inject_Lara_State(void)
     INJECT(1, 0x00428AA0, Lara_State_Extra_StartHouse);
     INJECT(1, 0x00428B50, Lara_State_Extra_FinalAnim);
     INJECT(1, 0x0042D850, Lara_State_ClimbLeft);
+    INJECT(1, 0x0042D890, Lara_State_ClimbRight);
 }
 
 static void Inject_Lara_Col(void)
