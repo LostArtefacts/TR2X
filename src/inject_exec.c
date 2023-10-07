@@ -177,6 +177,7 @@ static void Inject_Lara_Col(void)
     INJECT(1, 0x00429E70, Lara_Col_Wade);
     INJECT(1, 0x00429FE0, Lara_Col_Default);
     INJECT(1, 0x0042A020, Lara_Col_Jumper);
+    INJECT(1, 0x0042D9B0, Lara_Col_ClimbLeft);
 }
 
 static void Inject_S_Audio_Sample(void)

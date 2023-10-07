@@ -783,3 +783,18 @@ void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed = 0;
     item->pos.y += coll->side_mid.floor;
 }
+
+void __cdecl Lara_Col_ClimbLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (Lara_CheckForLetGo(item, coll)) {
+        return;
+    }
+    g_Lara.move_angle = item->pos.y_rot - PHD_90;
+
+    int32_t shift;
+    int32_t result = Lara_TestClimbPos(
+        item, coll->radius, -(coll->radius + LARA_CLIMB_WIDTH),
+        -LARA_CLIMB_HIT_ELEVATION, LARA_CLIMB_HIT_ELEVATION, &shift);
+
+    Lara_DoClimbLeftRight(item, coll, result, shift);
+}

@@ -37,3 +37,4 @@ void __cdecl Lara_Col_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_Col_Jumper(struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_Col_ClimbLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
