@@ -180,6 +180,7 @@ static void Inject_Lara_Col(void)
     INJECT(1, 0x0042D9B0, Lara_Col_ClimbLeft);
     INJECT(1, 0x0042DA10, Lara_Col_ClimbRight);
     INJECT(1, 0x0042DA70, Lara_Col_ClimbStance);
+    INJECT(1, 0x0042DC80, Lara_Col_Climbing);
 }
 
 static void Inject_S_Audio_Sample(void)

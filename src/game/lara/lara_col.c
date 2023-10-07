@@ -913,3 +913,59 @@ void __cdecl Lara_Col_ClimbStance(
         }
     }
 }
+
+void __cdecl Lara_Col_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (Lara_CheckForLetGo(item, coll) || item->anim_num != LA_CLIMBING) {
+        return;
+    }
+
+    int32_t yshift;
+    int32_t frame_rel = item->frame_num - g_Anims[LA_CLIMBING].frame_base;
+    if (frame_rel == 0) {
+        yshift = 0;
+    } else if (frame_rel == 28 || frame_rel == 29) {
+        yshift = -STEP_L;
+    } else if (frame_rel == 57) {
+        yshift = -STEP_L * 2;
+    } else {
+        return;
+    }
+
+    item->pos.y += yshift - STEP_L;
+
+    int32_t shift_r = 0;
+    int32_t ledge_r = 0;
+    int32_t result_r = Lara_TestClimbUpPos(
+        item, coll->radius, coll->radius + LARA_CLIMB_WIDTH_RIGHT, &shift_r,
+        &ledge_r);
+
+    int32_t shift_l = 0;
+    int32_t ledge_l = 0;
+    int32_t result_l = Lara_TestClimbUpPos(
+        item, coll->radius, -(coll->radius + LARA_CLIMB_WIDTH_LEFT), &shift_l,
+        &ledge_l);
+
+    item->pos.y += STEP_L;
+
+    if (!result_r || !result_l || !(g_Input & IN_FORWARD)) {
+        item->goal_anim_state = LS_CLIMB_STANCE;
+        if (yshift) {
+            Lara_Animate(item);
+        }
+        return;
+    }
+
+    if (result_r < 0 || result_l < 0) {
+        item->goal_anim_state = LS_CLIMB_STANCE;
+        Lara_Animate(item);
+        if (ABS(ledge_l - ledge_r) <= 120) {
+            item->goal_anim_state = LS_NULL;
+            item->pos.y += (ledge_r + ledge_l) / 2 - STEP_L;
+        }
+        return;
+    }
+
+    item->goal_anim_state = LS_CLIMBING;
+    item->pos.y -= yshift;
+}
