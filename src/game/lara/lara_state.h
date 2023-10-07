@@ -96,3 +96,5 @@ void __cdecl Lara_State_Climbing(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_ClimbEnd(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_ClimbDown(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
