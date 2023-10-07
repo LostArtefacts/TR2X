@@ -1096,3 +1096,10 @@ void __cdecl Lara_State_Tread(struct ITEM_INFO *item, struct COLL_INFO *coll)
         g_Lara.gun_status = LGS_ARMLESS;
     }
 }
+
+void __cdecl Lara_State_Dive(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (g_Input & IN_FORWARD) {
+        item->pos.x_rot -= PHD_DEGREE;
+    }
+}
