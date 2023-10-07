@@ -969,3 +969,70 @@ void __cdecl Lara_Col_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->goal_anim_state = LS_CLIMBING;
     item->pos.y -= yshift;
 }
+
+void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (Lara_CheckForLetGo(item, coll) || item->anim_num != LA_CLIMB_DOWN) {
+        return;
+    }
+
+    int32_t yshift;
+    int32_t frame_rel = item->frame_num - g_Anims[LA_CLIMB_DOWN].frame_base;
+    if (frame_rel == 0) {
+        yshift = 0;
+    } else if (frame_rel >= 28 && frame_rel <= 29) {
+        yshift = STEP_L;
+    } else if (frame_rel == 57) {
+        yshift = STEP_L * 2;
+    } else {
+        return;
+    }
+
+    item->pos.y += yshift + STEP_L;
+
+    int32_t shift_r = 0;
+    int32_t result_r = Lara_TestClimbPos(
+        item, coll->radius, coll->radius + LARA_CLIMB_WIDTH_RIGHT,
+        -LARA_CLIMB_HEIGHT, LARA_CLIMB_HEIGHT, &shift_r);
+
+    int32_t shift_l = 0;
+    int32_t result_l = Lara_TestClimbPos(
+        item, coll->radius, -(coll->radius + LARA_CLIMB_WIDTH_LEFT),
+        -LARA_CLIMB_HEIGHT, LARA_CLIMB_HEIGHT, &shift_l);
+
+    item->pos.y -= STEP_L;
+
+    if (!result_r || !result_l || !(g_Input & IN_BACK)) {
+        item->goal_anim_state = LS_CLIMB_STANCE;
+        if (yshift) {
+            Lara_Animate(item);
+        }
+        return;
+    }
+
+    int32_t shift = shift_l;
+    if (shift_r && shift_l) {
+        if ((shift_r < 0) != (shift_l < 0)) {
+            item->goal_anim_state = LS_CLIMB_STANCE;
+            Lara_Animate(item);
+            return;
+        }
+        if (shift_r < 0 && shift_r < shift_l) {
+            shift = shift_r;
+        } else if (shift_r > 0 && shift_r > shift_l) {
+            shift = shift_r;
+        }
+    }
+
+    if (result_r == -1 || result_l == -1) {
+        item->anim_num = LA_CLIMB_STANCE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        item->current_anim_state = LS_CLIMB_STANCE;
+        item->goal_anim_state = LS_HANG;
+        Lara_Animate(item);
+        return;
+    }
+
+    item->goal_anim_state = LS_CLIMB_DOWN;
+    item->pos.y -= yshift;
+}
