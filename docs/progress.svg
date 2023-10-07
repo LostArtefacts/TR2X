@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">13.67% (164)</tspan> · <tspan class="known">83.92% (1007)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">13.75% (165)</tspan> · <tspan class="known">83.83% (1006)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="102.09" height="6" x="0" y="0" class="decompiled"/>
-<rect width="626.86" height="6" x="102.09" y="0" class="known"/>
+<rect width="102.71" height="6" x="0" y="0" class="decompiled"/>
+<rect width="626.24" height="6" x="102.71" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -646,7 +646,7 @@
 <rect width="12" height="12" x="240" y="165" class="decompiled"><title>void __cdecl Lara_State_SurfLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="255" y="165" class="decompiled"><title>void __cdecl Lara_State_SurfRight(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="270" y="165" class="decompiled"><title>void __cdecl Lara_State_SurfTread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="285" y="165" class="known"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="285" y="165" class="decompiled"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="300" y="165" class="known"><title>void __cdecl Lara_Col_SurfBack(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="315" y="165" class="known"><title>void __cdecl Lara_Col_SurfLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="330" y="165" class="known"><title>void __cdecl Lara_Col_SurfRight(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.30%</tspan> · <tspan class="known">92.37%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">7.31%</tspan> · <tspan class="known">92.36%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="54.50" height="6" x="0" y="0" class="decompiled"/>
-<rect width="690.03" height="6" x="54.50" y="0" class="known"/>
+<rect width="54.61" height="6" x="0" y="0" class="decompiled"/>
+<rect width="689.92" height="6" x="54.61" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2237,7 +2237,7 @@
 <rect width="3.20" height="3.50" x="712.83" y="281.75" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
 <rect width="3.20" height="3.50" x="719.02" y="281.75" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="3.20" height="3.50" x="725.22" y="281.75" class="known"><title>void __cdecl Lara_GetLaraCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="3.20" height="3.50" x="731.41" y="281.75" class="known"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="3.20" height="3.50" x="731.41" y="281.75" class="decompiled"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.20" height="3.50" x="737.61" y="281.75" class="known"><title>void __cdecl OpenThatDoor(struct DOORPOS_DATA *d);</title></rect>
 <rect width="3.20" height="3.50" x="743.80" y="281.75" class="known"><title>void __cdecl BGND_GetPageHandles(void);</title></rect>
 <rect width="3.31" height="3.38" x="674.91" y="288.24" class="known"><title>void __thiscall DisplayModeListDelete(DISPLAY_MODE_LIST *pList);</title></rect>

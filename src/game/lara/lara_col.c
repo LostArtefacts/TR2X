@@ -1036,3 +1036,11 @@ void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->goal_anim_state = LS_CLIMB_DOWN;
     item->pos.y -= yshift;
 }
+
+void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->bad_neg = -STEPUP_HEIGHT;
+    g_Lara.move_angle = item->pos.y_rot;
+    Lara_SurfaceCollision(item, coll);
+    Lara_TestWaterClimbOut(item, coll);
+}
