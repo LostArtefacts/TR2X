@@ -822,3 +822,15 @@ void __cdecl Lara_State_Extra_FinalAnim(
         g_LevelComplete = 1;
     }
 }
+
+void __cdecl Lara_State_ClimbLeft(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    coll->enable_spaz = 0;
+    coll->enable_baddie_push = 0;
+    g_Camera.target_angle = CAM_CLIMB_LEFT_ANGLE;
+    g_Camera.target_elevation = CAM_CLIMB_LEFT_ELEVATION;
+    if (!(g_Input & IN_LEFT) && !(g_Input & IN_STEP_LEFT)) {
+        item->goal_anim_state = LS_CLIMB_STANCE;
+    }
+}

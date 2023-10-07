@@ -1652,7 +1652,7 @@ typedef enum LARA_GUN_STATE {
 0042D520    00000330    -R      void __cdecl AnimatePistols(int32_t weapon_type);
 
 # game/laraclimb.c
-0042D850    00000035    -       void __cdecl Lara_State_ClimbLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042D850    00000035    +       void __cdecl Lara_State_ClimbLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042D890    00000035    -       void __cdecl Lara_State_ClimbRight(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042D8D0    00000075    -       void __cdecl Lara_State_ClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042D950    00000014    -       void __cdecl Lara_State_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);

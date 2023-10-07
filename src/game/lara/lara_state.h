@@ -86,3 +86,5 @@ void __cdecl Lara_State_Extra_StartHouse(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_State_Extra_FinalAnim(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_State_ClimbLeft(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
