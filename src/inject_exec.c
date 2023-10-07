@@ -89,6 +89,7 @@ static void Inject_Lara_Misc(void)
     INJECT(1, 0x0042A0A0, Lara_GetLaraCollisionInfo);
     INJECT(1, 0x0042A0E0, Lara_SlideSlope);
     INJECT(1, 0x0042A1D0, Lara_HitCeiling);
+    INJECT(1, 0x0042A240, Lara_DeflectEdge);
 }
 
 static void Inject_Lara_State(void)

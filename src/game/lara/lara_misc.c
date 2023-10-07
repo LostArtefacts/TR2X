@@ -69,3 +69,30 @@ int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll)
     item->fall_speed = 0;
     return 1;
 }
+
+int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    switch (coll->coll_type) {
+    case COLL_FRONT:
+    case COLL_TOPFRONT:
+        Item_ShiftCol(item, coll);
+        item->goal_anim_state = LS_STOP;
+        item->current_anim_state = LS_STOP;
+        item->gravity = 0;
+        item->speed = 0;
+        return 1;
+
+    case COLL_LEFT:
+        Item_ShiftCol(item, coll);
+        item->pos.y_rot += LARA_DEFLECT_ANGLE;
+        return 0;
+
+    case COLL_RIGHT:
+        Item_ShiftCol(item, coll);
+        item->pos.y_rot -= LARA_DEFLECT_ANGLE;
+        return 0;
+
+    default:
+        return 0;
+    }
+}
