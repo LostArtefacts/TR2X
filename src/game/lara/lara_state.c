@@ -921,9 +921,9 @@ void __cdecl Lara_State_SurfBack(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     g_Lara.dive_count = 0;
     if (g_Input & IN_LEFT) {
-        item->pos.y_rot -= LARA_UW_TURN;
+        item->pos.y_rot -= LARA_SURF_TURN;
     } else if (g_Input & IN_RIGHT) {
-        item->pos.y_rot += LARA_UW_TURN;
+        item->pos.y_rot += LARA_SURF_TURN;
     }
     if (!(g_Input & IN_BACK)) {
         item->goal_anim_state = LS_SURF_TREAD;
@@ -941,9 +941,9 @@ void __cdecl Lara_State_SurfLeft(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     g_Lara.dive_count = 0;
     if (g_Input & IN_LEFT) {
-        item->pos.y_rot -= LARA_UW_TURN;
+        item->pos.y_rot -= LARA_SURF_TURN;
     } else if (g_Input & IN_RIGHT) {
-        item->pos.y_rot += LARA_UW_TURN;
+        item->pos.y_rot += LARA_SURF_TURN;
     }
     if (!(g_Input & IN_STEP_LEFT)) {
         item->goal_anim_state = LS_SURF_TREAD;
@@ -962,13 +962,62 @@ void __cdecl Lara_State_SurfRight(
 
     g_Lara.dive_count = 0;
     if (g_Input & IN_LEFT) {
-        item->pos.y_rot -= LARA_UW_TURN;
+        item->pos.y_rot -= LARA_SURF_TURN;
     } else if (g_Input & IN_RIGHT) {
-        item->pos.y_rot += LARA_UW_TURN;
+        item->pos.y_rot += LARA_SURF_TURN;
     }
     if (!(g_Input & IN_STEP_RIGHT)) {
         item->goal_anim_state = LS_SURF_TREAD;
     }
     item->fall_speed += 8;
     CLAMPG(item->fall_speed, LARA_MAX_SURF_SPEED);
+}
+
+void __cdecl Lara_State_SurfTread(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->fall_speed -= 4;
+    CLAMPL(item->fall_speed, 0);
+
+    if (item->hit_points <= 0) {
+        item->goal_anim_state = LS_UW_DEATH;
+        return;
+    }
+    if (g_Input & IN_LOOK) {
+        Lara_LookUpDown();
+        return;
+    }
+
+    if (g_Input & IN_LEFT) {
+        item->pos.y_rot -= LARA_SLOW_TURN;
+    } else if (g_Input & IN_RIGHT) {
+        item->pos.y_rot += LARA_SLOW_TURN;
+    }
+
+    if (g_Input & IN_FORWARD) {
+        item->goal_anim_state = LS_SURF_SWIM;
+    } else if (g_Input & IN_BACK) {
+        item->goal_anim_state = LS_SURF_BACK;
+    }
+
+    if (g_Input & IN_STEP_LEFT) {
+        item->goal_anim_state = LS_SURF_LEFT;
+    } else if (g_Input & IN_STEP_RIGHT) {
+        item->goal_anim_state = LS_SURF_RIGHT;
+    }
+
+    if (g_Input & IN_JUMP) {
+        g_Lara.dive_count++;
+        if (g_Lara.dive_count == 10) {
+            item->anim_num = LA_SURF_DIVE;
+            item->frame_num = g_Anims[item->anim_num].frame_base;
+            item->goal_anim_state = LS_SWIM;
+            item->current_anim_state = LS_DIVE;
+            item->pos.x_rot = -45 * PHD_DEGREE;
+            item->fall_speed = 80;
+            g_Lara.water_status = LWS_UNDERWATER;
+        }
+    } else {
+        g_Lara.dive_count = 0;
+    }
 }
