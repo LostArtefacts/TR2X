@@ -15,3 +15,5 @@ int32_t __cdecl Lara_TestWall(
     struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);
 int32_t __cdecl Lara_TestHangOnClimbWall(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+int32_t __cdecl Lara_TestClimbStance(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

@@ -1623,7 +1623,7 @@ typedef enum COLL_TYPE {
 0042A440    000000AB    +       void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A530    000000E1    +       int32_t __cdecl Lara_TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);
 0042A640    000000F5    +       int32_t __cdecl Lara_TestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042A750    000000BE    -       int32_t __cdecl Lara_TestClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042A750    000000BE    +       int32_t __cdecl Lara_TestClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042A810    0000033E    -       void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AB70    000000AD    -       int32_t __cdecl Lara_TestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
 0042AC20    0000016D    -       int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);
