@@ -1103,3 +1103,19 @@ void __cdecl Lara_State_Dive(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->pos.x_rot -= PHD_DEGREE;
     }
 }
+
+void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed -= 8;
+    CLAMPL(item->fall_speed, 0);
+
+    int32_t angle = 2 * PHD_DEGREE;
+    if (item->pos.x_rot >= -angle && item->pos.x_rot <= angle) {
+        item->pos.x_rot = 0;
+    } else if (item->pos.x_rot >= 0) {
+        item->pos.x_rot -= angle;
+    } else {
+        item->pos.x_rot += angle;
+    }
+}
