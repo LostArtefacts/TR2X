@@ -97,6 +97,7 @@ static void Inject_Lara_Misc(void)
     INJECT(1, 0x0042A750, Lara_TestClimbStance);
     INJECT(1, 0x0042A810, Lara_HangTest);
     INJECT(1, 0x0042AB70, Lara_TestEdgeCatch);
+    INJECT(1, 0x0042AC20, Lara_TestHangJumpUp);
 }
 
 static void Inject_Lara_State(void)

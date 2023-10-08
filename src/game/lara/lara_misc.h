@@ -20,3 +20,5 @@ int32_t __cdecl Lara_TestClimbStance(
 void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_TestEdgeCatch(
     struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
+int32_t __cdecl Lara_TestHangJumpUp(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

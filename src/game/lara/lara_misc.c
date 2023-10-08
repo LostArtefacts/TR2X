@@ -475,3 +475,59 @@ int32_t __cdecl Lara_TestEdgeCatch(
 
     return ABS(coll->side_left.floor - coll->side_right.floor) < SLOPE_DIF;
 }
+
+int32_t __cdecl Lara_TestHangJumpUp(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (coll->coll_type != COLL_FRONT || !(g_Input & IN_ACTION)
+        || g_Lara.gun_status != LGS_ARMLESS || coll->hit_static
+        || coll->side_mid.ceiling > -STEPUP_HEIGHT) {
+        return 0;
+    }
+
+    int32_t edge;
+    int32_t edge_catch = Lara_TestEdgeCatch(item, coll, &edge);
+    if (!edge_catch
+        || (edge_catch < 0 && !Lara_TestHangOnClimbWall(item, coll))) {
+        return 0;
+    }
+
+    int16_t angle = item->pos.y_rot;
+    if (angle >= -LARA_HANG_ANGLE && angle <= LARA_HANG_ANGLE) {
+        angle = 0;
+    } else if (
+        angle >= PHD_90 - LARA_HANG_ANGLE
+        && angle <= PHD_90 + LARA_HANG_ANGLE) {
+        angle = PHD_90;
+    } else if (
+        angle >= PHD_180 - LARA_HANG_ANGLE
+        || angle <= -PHD_180 + LARA_HANG_ANGLE) {
+        angle = PHD_180;
+    } else if (
+        angle >= -PHD_90 - LARA_HANG_ANGLE
+        && angle <= -PHD_90 + LARA_HANG_ANGLE) {
+        angle = -PHD_90;
+    } else {
+        return 0;
+    }
+
+    item->goal_anim_state = LS_HANG;
+    item->current_anim_state = LS_HANG;
+    item->anim_num = LA_HANG;
+    item->frame_num = g_Anims[item->anim_num].frame_base + 12;
+
+    int16_t *bounds = Item_GetBoundsAccurate(item);
+    if (edge_catch > 0) {
+        item->pos.y += coll->side_front.floor - bounds[FBBOX_MIN_Y];
+    } else {
+        item->pos.y = edge - bounds[FBBOX_MIN_Y];
+    }
+    item->pos.x += coll->shift.x;
+    item->pos.z += coll->shift.z;
+    item->pos.y_rot = angle;
+    item->speed = 0;
+    item->gravity = 0;
+    item->fall_speed = 0;
+    g_Lara.gun_status = LGS_HANDS_BUSY;
+    return 1;
+}
