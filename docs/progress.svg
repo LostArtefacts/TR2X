@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.17% (194)</tspan> · <tspan class="known">81.42% (977)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.25% (195)</tspan> · <tspan class="known">81.33% (976)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="120.76" height="6" x="0" y="0" class="decompiled"/>
-<rect width="608.18" height="6" x="120.76" y="0" class="known"/>
+<rect width="121.39" height="6" x="0" y="0" class="decompiled"/>
+<rect width="607.56" height="6" x="121.39" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -569,7 +569,7 @@
 <rect width="12" height="12" x="585" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="600" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="615" y="135" class="decompiled"><title>int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);</title></rect>
-<rect width="12" height="12" x="630" y="135" class="known"><title>int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="630" y="135" class="decompiled"><title>int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="645" y="135" class="known"><title>void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);</title></rect>
 <rect width="12" height="12" x="660" y="135" class="known"><title>void __cdecl Lara_GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
 <rect width="12" height="12" x="675" y="135" class="known"><title>void __cdecl draw_shotgun_meshes(int32_t weapon_type);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.93%</tspan> · <tspan class="known">90.74%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.99%</tspan> · <tspan class="known">90.68%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="66.73" height="6" x="0" y="0" class="decompiled"/>
-<rect width="677.80" height="6" x="66.73" y="0" class="known"/>
+<rect width="67.15" height="6" x="0" y="0" class="decompiled"/>
+<rect width="677.39" height="6" x="67.15" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1755,7 +1755,7 @@
 <rect width="9.33" height="9.28" x="532.47" y="170.69" class="known"><title>int32_t __cdecl Lara_TestClimbPos(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t origin, int32_t height, int32_t *shift);</title></rect>
 <rect width="9.33" height="9.28" x="532.47" y="182.97" class="known"><title>bool __cdecl WinVidCheckGameWindowPalette(HWND hWnd);</title></rect>
 <rect width="9.33" height="9.28" x="532.47" y="195.24" class="known"><title>void __cdecl CreateZBuffer(void);</title></rect>
-<rect width="9.33" height="9.21" x="532.47" y="207.52" class="known"><title>int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="9.33" height="9.21" x="532.47" y="207.52" class="decompiled"><title>int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="9.33" height="9.21" x="532.47" y="219.73" class="known"><title>void __cdecl AlterFloorHeight(struct ITEM_INFO *item, int32_t height);</title></rect>
 <rect width="9.33" height="9.15" x="532.47" y="231.94" class="known"><title>void __cdecl Lara_CheatGetStuff(void);</title></rect>
 <rect width="9.33" height="9.08" x="532.47" y="244.09" class="known"><title>int16_t __cdecl GunHit(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>

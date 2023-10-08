@@ -767,3 +767,28 @@ int16_t __cdecl Lara_FloorFront(
     }
     return height;
 }
+
+int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    int32_t x = item->pos.x;
+    int32_t y = item->pos.y;
+    int32_t z = item->pos.z;
+    int16_t room_num = item->room_num;
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    int32_t height = Room_GetHeight(floor, x, y - LARA_HEIGHT, z);
+    item->pos.y = height;
+    item->floor = height;
+    Room_TestTriggers(g_TriggerIndex, 0);
+    int32_t land_speed = item->fall_speed - DAMAGE_START;
+    item->pos.y = y;
+    if (land_speed <= 0) {
+        return 0;
+    }
+    if (land_speed <= DAMAGE_LENGTH) {
+        item->hit_points += -LARA_MAX_HITPOINTS * land_speed * land_speed
+            / (DAMAGE_LENGTH * DAMAGE_LENGTH);
+    } else {
+        item->hit_points = -1;
+    }
+    return item->hit_points <= 0;
+}

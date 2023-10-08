@@ -1665,7 +1665,7 @@ typedef enum LARA_MESH {
 0042AFF0    000002E7    +       int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B2E0    00000130    +       int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B410    00000075    +       int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);
-0042B490    000000BB    -       int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042B490    000000BB    +       int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B550    0000038F    -       void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
 0042B8E0    0000031A    -       void __cdecl Lara_GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
 
