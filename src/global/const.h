@@ -23,6 +23,8 @@
 #define NO_ITEM (-1)
 #define NO_CAMERA (-1)
 
+#define GRAVITY 6
+
 #define MAX_AUDIO_SAMPLE_BUFFERS 256
 #define MAX_AUDIO_SAMPLE_TRACKS 32
 
@@ -55,6 +57,7 @@
 #define LARA_CLIMB_HEIGHT (WALL_L / 2) // = 512
 #define LARA_DEFLECT_ANGLE (5 * PHD_DEGREE) // = 910
 #define LARA_HANG_ANGLE (35 * PHD_DEGREE) // = 6370
+#define LARA_VAULT_ANGLE (30 * PHD_DEGREE) // = 5460
 
 #define CAM_HANG_ANGLE 0
 #define CAM_HANG_ELEVATION (-60 * PHD_DEGREE) // = -10920

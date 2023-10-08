@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">15.92% (191)</tspan> · <tspan class="known">81.67% (980)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16% (192)</tspan> · <tspan class="known">81.58% (979)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="118.90" height="6" x="0" y="0" class="decompiled"/>
-<rect width="610.05" height="6" x="118.90" y="0" class="known"/>
+<rect width="119.52" height="6" x="0" y="0" class="decompiled"/>
+<rect width="609.43" height="6" x="119.52" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -566,7 +566,7 @@
 <rect width="12" height="12" x="540" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="570" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);</title></rect>
-<rect width="12" height="12" x="585" y="135" class="known"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="585" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="600" y="135" class="known"><title>int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="615" y="135" class="known"><title>int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);</title></rect>
 <rect width="12" height="12" x="630" y="135" class="known"><title>int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.59%</tspan> · <tspan class="known">91.08%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.81%</tspan> · <tspan class="known">90.86%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="64.16" height="6" x="0" y="0" class="decompiled"/>
-<rect width="680.37" height="6" x="64.16" y="0" class="known"/>
+<rect width="65.80" height="6" x="0" y="0" class="decompiled"/>
+<rect width="678.73" height="6" x="65.80" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1399,7 +1399,7 @@
 <rect width="22.54" height="20.61" x="316.12" y="222.52" class="known"><title>void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
 <rect width="22.54" height="20.58" x="316.12" y="246.13" class="known"><title>int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="22.54" height="20.54" x="316.12" y="269.70" class="known"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
-<rect width="22.54" height="20.42" x="316.12" y="293.25" class="known"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="22.54" height="20.42" x="316.12" y="293.25" class="decompiled"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="22.54" height="20.20" x="316.12" y="316.67" class="known"><title>void __cdecl WinPlayFMV(LPCTSTR fileName, bool isPlayback);</title></rect>
 <rect width="22.54" height="20.13" x="316.12" y="339.87" class="known"><title>bool __cdecl SE_ShowSetupDialog(HWND hParent, bool isDefault);</title></rect>
 <rect width="20.53" height="21.98" x="341.66" y="0" class="known"><title>void __cdecl do_detail_option(INVENTORY_ITEM *item);</title></rect>
