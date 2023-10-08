@@ -582,3 +582,30 @@ int32_t __cdecl Lara_TestHangJump(
     g_Lara.gun_status = LGS_HANDS_BUSY;
     return 1;
 }
+
+int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle)
+{
+    int32_t x = item->pos.x;
+    int32_t y = item->pos.y;
+    int32_t z = item->pos.z;
+    int16_t room_num = item->room_num;
+    switch (angle) {
+    case 0:
+        z += STEP_L;
+        break;
+    case PHD_90:
+        x += STEP_L;
+        break;
+    case -PHD_180:
+        z -= STEP_L;
+        break;
+    case -PHD_90:
+        x -= STEP_L;
+        break;
+    }
+
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    int32_t height = Room_GetHeight(floor, x, y, z);
+    int32_t ceiling = Room_GetCeiling(floor, x, y, z);
+    return height != NO_HEIGHT && height - y > 0 && ceiling - y < -400;
+}

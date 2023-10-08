@@ -24,3 +24,4 @@ int32_t __cdecl Lara_TestHangJumpUp(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_TestHangJump(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);
