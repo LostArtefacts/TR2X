@@ -10,6 +10,7 @@
 #define g_FlipEffect VAR_U_(0x004640C4, int32_t)
 #define g_OptionMusicVolume VAR_U_(0x00465A60, int16_t)
 #define g_JumpPermitted VAR_I_(0x00465AD4, int32_t, 1)
+#define g_LaraOldSlideAngle VAR_I_(0x00465AD8, int16_t, 1)
 #define g_ViewportAspectRatio VAR_I_(0x0046C304, float, 0.0f)
 #define g_PhdWinTop VAR_U_(0x0046E310, int32_t)
 #define g_FltWinBottom VAR_U_(0x0047031C, float)

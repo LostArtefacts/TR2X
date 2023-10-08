@@ -703,3 +703,52 @@ int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll)
     Item_ShiftCol(item, coll);
     return 1;
 }
+
+int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (ABS(coll->x_tilt) <= 2 && ABS(coll->z_tilt) <= 2) {
+        return 0;
+    }
+
+    int16_t angle = 0;
+    if (coll->x_tilt > 2) {
+        angle = -PHD_90;
+    } else if (coll->x_tilt < -2) {
+        angle = PHD_90;
+    }
+
+    if (coll->z_tilt > 2 && coll->z_tilt > ABS(coll->x_tilt)) {
+        angle = PHD_180;
+    } else if (coll->z_tilt < -2 && -coll->z_tilt > ABS(coll->x_tilt)) {
+        angle = 0;
+    }
+
+    int16_t angle_dif = angle - item->pos.y_rot;
+    Item_ShiftCol(item, coll);
+
+    if (angle_dif >= -PHD_90 && angle_dif <= PHD_90) {
+        if (item->current_anim_state == LS_SLIDE
+            && g_LaraOldSlideAngle == angle) {
+            return 1;
+        }
+        item->goal_anim_state = LS_SLIDE;
+        item->current_anim_state = LS_SLIDE;
+        item->anim_num = LA_SLIDE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        item->pos.y_rot = angle;
+    } else {
+        if (item->current_anim_state == LS_SLIDE_BACK
+            && g_LaraOldSlideAngle == angle) {
+            return 1;
+        }
+        item->goal_anim_state = LS_SLIDE_BACK;
+        item->current_anim_state = LS_SLIDE_BACK;
+        item->anim_num = LA_SLIDE_BACK;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        item->pos.y_rot = angle + PHD_180;
+    }
+
+    g_Lara.move_angle = angle;
+    g_LaraOldSlideAngle = angle;
+    return 1;
+}

@@ -1663,7 +1663,7 @@ typedef enum LARA_MESH {
 0042AD90    0000019E    +       int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AF30    000000B1    +       int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);
 0042AFF0    000002E7    +       int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042B2E0    00000130    *       int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042B2E0    00000130    +       int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B410    00000075    -       int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);
 0042B490    000000BB    -       int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B550    0000038F    -       void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
@@ -2436,6 +2436,7 @@ typedef enum LARA_MESH {
 004641F8    -       void (__cdecl *g_EffectRoutines[32])(struct ITEM_INFO *item);
 00465A60    -       int16_t g_OptionMusicVolume;
 00465AD4    -       int32_t g_JumpPermitted = 1;
+00465AD8    -       int16_t g_LaraOldSlideAngle = 1;
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
 00468DF4    +       const int16_t g_SinTable[0x402];
