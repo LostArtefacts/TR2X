@@ -375,7 +375,6 @@
 #define Lara_ResetLook ((void __cdecl (*)(void))0x00427810)
 #define Lara_Fallen ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C00)
 #define Lara_CollideStop ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00428C60)
-#define Lara_TestEdgeCatch ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge))0x0042AB70)
 #define Lara_TestHangJumpUp ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042AC20)
 #define Lara_TestHangJump ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x0042AD90)
 #define Lara_TestHangSwingIn ((int32_t __cdecl (*)(struct ITEM_INFO *item, PHD_ANGLE angle))0x0042AF30)

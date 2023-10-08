@@ -452,3 +452,26 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
 
     item->pos.y += hdif;
 }
+
+int32_t __cdecl Lara_TestEdgeCatch(
+    struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge)
+{
+    int16_t *bounds = Item_GetBoundsAccurate(item);
+    int32_t hdif1 = coll->side_front.floor - bounds[FBBOX_MIN_Y];
+    int32_t hdif2 = hdif1 + item->fall_speed;
+    if ((hdif1 < 0 && hdif2 < 0) || (hdif1 > 0 && hdif2 > 0)) {
+        hdif1 = item->pos.y + bounds[FBBOX_MIN_Y];
+        hdif2 = hdif1 + item->fall_speed;
+        if ((hdif1 >> (WALL_SHIFT - 2)) == (hdif2 >> (WALL_SHIFT - 2))) {
+            return 0;
+        }
+        if (item->fall_speed > 0) {
+            *edge = hdif2 & ~(STEP_L - 1);
+        } else {
+            *edge = hdif1 & ~(STEP_L - 1);
+        }
+        return -1;
+    }
+
+    return ABS(coll->side_left.floor - coll->side_right.floor) < SLOPE_DIF;
+}
