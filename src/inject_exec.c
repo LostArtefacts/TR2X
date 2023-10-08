@@ -102,6 +102,7 @@ static void Inject_Lara_Misc(void)
     INJECT(1, 0x0042AF30, Lara_TestHangSwingIn);
     INJECT(1, 0x0042AFF0, Lara_TestVault);
     INJECT(1, 0x0042B2E0, Lara_TestSlide);
+    INJECT(1, 0x0042B410, Lara_FloorFront);
 }
 
 static void Inject_Lara_State(void)

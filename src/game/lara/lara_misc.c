@@ -752,3 +752,18 @@ int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll)
     g_LaraOldSlideAngle = angle;
     return 1;
 }
+
+int16_t __cdecl Lara_FloorFront(
+    struct ITEM_INFO *item, int16_t ang, int32_t dist)
+{
+    int32_t x = item->pos.x + ((dist * Math_Sin(ang)) >> W2V_SHIFT);
+    int32_t y = item->pos.y - LARA_HEIGHT;
+    int32_t z = item->pos.z + ((dist * Math_Cos(ang)) >> W2V_SHIFT);
+    int16_t room_num = item->room_num;
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    int32_t height = Room_GetHeight(floor, x, y, z);
+    if (height != NO_HEIGHT) {
+        height -= item->pos.y;
+    }
+    return height;
+}

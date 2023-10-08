@@ -27,3 +27,5 @@ int32_t __cdecl Lara_TestHangJump(
 int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);
 int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
+int16_t __cdecl Lara_FloorFront(
+    struct ITEM_INFO *item, int16_t ang, int32_t dist);
