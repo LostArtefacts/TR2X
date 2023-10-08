@@ -1,5 +1,4 @@
 # TYPES
-#pragma pack(push, 1)
 typedef int16_t PHD_ANGLE;
 
 typedef void* LPDIRECT3DTEXTURE2;
@@ -14,44 +13,44 @@ typedef enum VGA_MODE {
     VGA_Standard,
 } VGA_MODE;
 
-typedef struct BITMAP_RESOURCE {
+typedef struct __unaligned BITMAP_RESOURCE {
     LPBITMAPINFO bmp_info;
     void *bmp_data;
     HPALETTE hPalette;
     DWORD flags;
 } BITMAP_RESOURCE;
 
-typedef struct POS_3D {
+typedef struct __unaligned POS_3D {
     int16_t x;
     int16_t y;
     int16_t z;
 } POS_3D;
 
-typedef struct DISPLAY_MODE {
+typedef struct __unaligned DISPLAY_MODE {
     int32_t width;
     int32_t height;
     int32_t bpp;
     VGA_MODE vga;
 } DISPLAY_MODE;
 
-typedef struct DISPLAY_MODE_NODE {
+typedef struct __unaligned DISPLAY_MODE_NODE {
     struct DISPLAY_MODE_NODE *next;
     struct DISPLAY_MODE_NODE *previous;
     struct DISPLAY_MODE body;
 } DISPLAY_MODE_NODE;
 
-typedef struct DISPLAY_MODE_LIST {
+typedef struct __unaligned DISPLAY_MODE_LIST {
     struct DISPLAY_MODE_NODE *head;
     struct DISPLAY_MODE_NODE *tail;
     DWORD count;
 } DISPLAY_MODE_LIST;
 
-typedef struct STRING_FLAGGED {
+typedef struct __unaligned STRING_FLAGGED {
     char *content;
     bool is_valid;
 } STRING_FLAGGED;
 
-typedef struct DISPLAY_ADAPTER {
+typedef struct __unaligned DISPLAY_ADAPTER {
     LPGUID adapter_guid_ptr;
     GUID adapter_guid;
     STRING_FLAGGED driver_description;
@@ -77,51 +76,51 @@ typedef struct DISPLAY_ADAPTER {
     bool shade_restricted;
 } DISPLAY_ADAPTER;
 
-typedef struct DISPLAY_ADAPTER_NODE {
+typedef struct __unaligned DISPLAY_ADAPTER_NODE {
     struct DISPLAY_ADAPTER_NODE *next;
     struct DISPLAY_ADAPTER_NODE *previous;
     struct DISPLAY_ADAPTER body;
 } DISPLAY_ADAPTER_NODE;
 
-typedef struct DISPLAY_ADAPTER_LIST {
+typedef struct __unaligned DISPLAY_ADAPTER_LIST {
     struct DISPLAY_ADAPTER_NODE *head;
     struct DISPLAY_ADAPTER_NODE *tail;
     DWORD count;
 } DISPLAY_ADAPTER_LIST;
 
-typedef struct SOUND_ADAPTER {
+typedef struct __unaligned SOUND_ADAPTER {
     GUID *adapter_guid_ptr;
     GUID adapter_guid;
     STRING_FLAGGED description;
     STRING_FLAGGED module;
 } SOUND_ADAPTER;
 
-typedef struct SOUND_ADAPTER_NODE {
+typedef struct __unaligned SOUND_ADAPTER_NODE {
     struct SOUND_ADAPTER_NODE *next;
     struct SOUND_ADAPTER_NODE *previous;
     SOUND_ADAPTER body;
 } SOUND_ADAPTER_NODE;
 
-typedef struct SOUND_ADAPTER_LIST {
+typedef struct __unaligned SOUND_ADAPTER_LIST {
     struct SOUND_ADAPTER_NODE *head;
     struct SOUND_ADAPTER_NODE *tail;
     DWORD count;
 } SOUND_ADAPTER_LIST;
 
-typedef struct JOYSTICK {
+typedef struct __unaligned JOYSTICK {
     GUID *lpJoystickGuid;
     GUID joystickGuid;
     STRING_FLAGGED productName;
     STRING_FLAGGED instanceName;
 } JOYSTICK;
 
-typedef struct JOYSTICK_NODE {
+typedef struct __unaligned JOYSTICK_NODE {
     struct JOYSTICK_NODE *next;
     struct JOYSTICK_NODE *previous;
     JOYSTICK body;
 } JOYSTICK_NODE;
 
-typedef struct JOYSTICK_LIST {
+typedef struct __unaligned JOYSTICK_LIST {
     struct JOYSTICK_LIST *head;
     struct JOYSTICK_LIST *tail;
     DWORD count;
@@ -145,7 +144,7 @@ typedef enum TEX_ADJUST_MODE {
     TAM_Always,
 } TEX_ADJUST_MODE;
 
-typedef struct APP_SETTINGS {
+typedef struct __unaligned APP_SETTINGS {
     struct DISPLAY_ADAPTER_NODE *PreferredDisplayAdapter;
     struct SOUND_ADAPTER_NODE *PreferredSoundAdapter;
     struct JOYSTICK_NODE *PreferredJoystick;
@@ -172,7 +171,7 @@ typedef struct APP_SETTINGS {
     int32_t LinearAdjustment;
 } APP_SETTINGS;
 
-struct TEXPAGE_DESC {
+typedef struct __unaligned TEXPAGE_DESC {
     LPDDS sysMemSurface;
     LPDDS vidMemSurface;
     LPDIRECTDRAWPALETTE palette;
@@ -181,9 +180,9 @@ struct TEXPAGE_DESC {
     int32_t width;
     int32_t height;
     int32_t status;
-};
+} TEXPAGE_DESC;
 
-typedef struct MATRIX {
+typedef struct __unaligned MATRIX {
     int32_t _00;
     int32_t _01;
     int32_t _02;
@@ -198,13 +197,13 @@ typedef struct MATRIX {
     int32_t _23;
 } MATRIX;
 
-typedef struct RGB888 {
+typedef struct __unaligned RGB888 {
     uint8_t red;
     uint8_t green;
     uint8_t blue;
 } RGB888;
 
-typedef struct ColorBitMasks_t {
+typedef struct __unaligned ColorBitMasks_t {
     DWORD dwRBitMask;
     DWORD dwGBitMask;
     DWORD dwBBitMask;
@@ -219,29 +218,29 @@ typedef struct ColorBitMasks_t {
     DWORD dwRGBAlphaBitOffset;
 } COLOR_BIT_MASKS;
 
-typedef struct GOURAUD_FILL {
+typedef struct __unaligned GOURAUD_FILL {
     D3DCOLOR clr[4][4];
 } GOURAUD_FILL;
 
-typedef struct GOURAUD_OUTLINE {
+typedef struct __unaligned  GOURAUD_OUTLINE {
     D3DCOLOR clr[9];
 } GOURAUD_OUTLINE;
 
-typedef struct DEPTHQ_ENTRY {
+typedef struct __unaligned  DEPTHQ_ENTRY {
     uint8_t index[256];
 } DEPTHQ_ENTRY;
 
-typedef struct GOURAUD_ENTRY {
+typedef struct __unaligned  GOURAUD_ENTRY {
     uint8_t index[32];
 } GOURAUD_ENTRY;
 
-typedef struct PHD_VECTOR {
+typedef struct __unaligned  PHD_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
 } PHD_VECTOR;
 
-typedef struct PHD_3DPOS {
+typedef struct __unaligned  PHD_3DPOS {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -250,14 +249,14 @@ typedef struct PHD_3DPOS {
     int16_t z_rot;
 } PHD_3DPOS;
 
-typedef struct SPHERE {
+typedef struct __unaligned  SPHERE {
     int32_t x;
     int32_t y;
     int32_t z;
     int32_t r;
 } SPHERE;
 
-typedef struct TEXTSTRING {
+typedef struct __unaligned  TEXTSTRING {
     uint32_t flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
@@ -283,7 +282,7 @@ typedef struct TEXTSTRING {
     char *string;
 } TEXTSTRING;
 
-typedef struct PHD_VBUF {
+typedef struct __unaligned  PHD_VBUF {
     float xv;
     float yv;
     float zv;
@@ -296,18 +295,18 @@ typedef struct PHD_VBUF {
     int16_t v;
 } PHD_VBUF;
 
-typedef struct PHD_UV {
+typedef struct __unaligned  PHD_UV {
     uint16_t u;
     uint16_t v;
 } PHD_UV;
 
-typedef struct PHD_TEXTURE {
+typedef struct __unaligned  PHD_TEXTURE {
     uint16_t draw_type;
     uint16_t tex_page;
     PHD_UV uv[4];
 } PHD_TEXTURE;
 
-typedef struct POINT_INFO {
+typedef struct __unaligned  POINT_INFO {
     float xv;
     float yv;
     float zv;
@@ -319,7 +318,7 @@ typedef struct POINT_INFO {
     float g;
 } POINT_INFO;
 
-typedef struct VERTEX_INFO {
+typedef struct __unaligned  VERTEX_INFO {
     float x;
     float y;
     float rhw;
@@ -345,7 +344,7 @@ typedef enum KEYMAP {
     KM_Option,
 } KEYMAP;
 
-typedef struct REQUEST_INFO {
+typedef struct __unaligned  REQUEST_INFO {
     uint16_t req_flags;
     uint16_t items_count;
     uint16_t selected;
@@ -388,13 +387,13 @@ typedef enum SORT_TYPE {
     ST_FAR_Z,
 } SORT_TYPE;
 
-typedef struct COLL_SIDE {
+typedef struct __unaligned  COLL_SIDE {
     int32_t floor;
     int32_t ceiling;
     int32_t type;
 } COLL_SIDE;
 
-typedef struct COLL_INFO {
+typedef struct __unaligned  COLL_INFO {
     struct COLL_SIDE side_mid;
     struct COLL_SIDE side_front;
     struct COLL_SIDE side_left;
@@ -424,7 +423,7 @@ typedef struct COLL_INFO {
     uint16_t hit_ceiling : 1;
 } COLL_INFO;
 
-typedef struct ITEM_INFO {
+typedef struct __unaligned  ITEM_INFO {
     int32_t floor;
     uint32_t touch_bits;
     uint32_t mesh_bits;
@@ -459,7 +458,7 @@ typedef struct ITEM_INFO {
     uint16_t pad : 7;
 } ITEM_INFO;
 
-typedef struct FLOOR_INFO {
+typedef struct __unaligned  FLOOR_INFO {
     int16_t idx;
     int16_t box;
     int8_t pit_room;
@@ -468,7 +467,7 @@ typedef struct FLOOR_INFO {
     int8_t ceiling;
 } FLOOR_INFO;
 
-typedef struct WEAPON_INFO {
+typedef struct __unaligned  WEAPON_INFO {
     int16_t lock_angles[4];
     int16_t left_angles[4];
     int16_t right_angles[4];
@@ -482,7 +481,7 @@ typedef struct WEAPON_INFO {
     int16_t sample_num;
 } WEAPON_INFO;
 
-typedef struct FX_INFO {
+typedef struct __unaligned  FX_INFO {
     struct PHD_3DPOS pos;
     int16_t room_num;
     int16_t object_num;
@@ -495,7 +494,7 @@ typedef struct FX_INFO {
     int16_t shade;
 } FX_INFO;
 
-typedef struct AI_INFO {
+typedef struct __unaligned  AI_INFO {
     int16_t zone_num;
     int16_t enemy_zone;
     int32_t distance;
@@ -505,14 +504,14 @@ typedef struct AI_INFO {
     int16_t enemy_facing;
 } AI_INFO;
 
-typedef struct BOX_NODE {
+typedef struct __unaligned  BOX_NODE {
     int16_t exit_box;
     uint16_t search_num;
     int16_t next_expansion;
     int16_t box_num;
 } BOX_NODE;
 
-typedef struct LOT_INFO {
+typedef struct __unaligned  LOT_INFO {
     struct BOX_NODE *node;
     int16_t head;
     int16_t tail;
@@ -539,7 +538,7 @@ typedef enum GF_LEVEL_TYPE {
     GFL_MIDSTORY,
 } GF_LEVEL_TYPE;
 
-typedef struct INVENTORY_ITEM {
+typedef struct __unaligned  INVENTORY_ITEM {
     char *string;
     int16_t obj_num;
     int16_t frames_total;
@@ -609,14 +608,14 @@ typedef enum TARGET_TYPE {
     TARGET_SECONDARY = 2,
 } TARGET_TYPE;
 
-typedef struct BITE_INFO {
+typedef struct __unaligned  BITE_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
     int32_t mesh_idx;
 } BITE_INFO;
 
-typedef struct ANIM_STRUCT {
+typedef struct __unaligned  ANIM_STRUCT {
     int16_t *frame_ptr;
     int16_t interpolation;
     int16_t current_anim_state;
@@ -632,7 +631,7 @@ typedef struct ANIM_STRUCT {
     int16_t command_idx;
 } ANIM_STRUCT;
 
-typedef struct DOOR_INFO {
+typedef struct __unaligned  DOOR_INFO {
     int16_t room;
     int16_t x;
     int16_t y;
@@ -640,12 +639,12 @@ typedef struct DOOR_INFO {
     struct POS_3D vertex[4];
 } DOOR_INFO;
 
-typedef struct DOOR_INFOS {
+typedef struct __unaligned  DOOR_INFOS {
     int16_t count;
     struct DOOR_INFO door[];
 } DOOR_INFOS;
 
-typedef struct LIGHT_INFO {
+typedef struct __unaligned  LIGHT_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -655,7 +654,7 @@ typedef struct LIGHT_INFO {
     int32_t falloff2;
 } LIGHT_INFO;
 
-typedef struct MESH_INFO {
+typedef struct __unaligned  MESH_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -665,8 +664,7 @@ typedef struct MESH_INFO {
     int16_t static_num;
 } MESH_INFO;
 
-
-typedef struct ROOM_INFO {
+typedef struct __unaligned  ROOM_INFO {
     int16_t *data;
     struct DOOR_INFOS *doors;
     struct FLOOR_INFO *floor;
@@ -699,7 +697,7 @@ typedef struct ROOM_INFO {
     uint16_t flags;
 } ROOM_INFO;
 
-typedef struct CREATURE_INFO {
+typedef struct __unaligned  CREATURE_INFO {
     int16_t head_rotation;
     int16_t neck_rotation;
     int16_t maximum_turn;
@@ -720,7 +718,7 @@ typedef enum CAMERA_TYPE {
     CAM_HEAVY = 5,
 } CAMERA_TYPE;
 
-typedef struct GAME_VECTOR {
+typedef struct __unaligned  GAME_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -728,7 +726,7 @@ typedef struct GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
-typedef struct OBJECT_VECTOR {
+typedef struct __unaligned  OBJECT_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -736,7 +734,7 @@ typedef struct OBJECT_VECTOR {
     int16_t flags;
 } OBJECT_VECTOR;
 
-typedef struct BOX_INFO {
+typedef struct __unaligned  BOX_INFO {
     uint8_t left;
     uint8_t right;
     uint8_t top;
@@ -807,7 +805,7 @@ typedef struct __unaligned CAMERA_INFO {
     struct PHD_VECTOR mic_pos;
 } CAMERA_INFO;
 
-typedef struct LARA_ARM {
+typedef struct __unaligned  LARA_ARM {
     int16_t *frame_base;
     int16_t frame_num;
     int16_t anim_num;
@@ -818,11 +816,11 @@ typedef struct LARA_ARM {
     int16_t flash_gun;
 } LARA_ARM;
 
-typedef struct AMMO_INFO {
+typedef struct __unaligned  AMMO_INFO {
     int32_t ammo;
 } AMMO_INFO;
 
-typedef struct LARA_INFO {
+typedef struct __unaligned  LARA_INFO {
     int16_t item_num;
     int16_t gun_status;
     int16_t gun_type;
@@ -879,7 +877,7 @@ typedef struct LARA_INFO {
     struct CREATURE_INFO *creature;
 } LARA_INFO;
 
-typedef struct CINE_FRAME {
+typedef struct __unaligned  CINE_FRAME {
     int16_t tx;
     int16_t ty;
     int16_t tz;
@@ -1066,7 +1064,6 @@ typedef enum LARA_GUN_STATE {
     LGS_READY = 4,
 } LARA_GUN_STATE;
 
-
 typedef enum COLL_TYPE {
     COLL_NONE     = 0x00,
     COLL_FRONT    = 0x01,
@@ -1077,14 +1074,43 @@ typedef enum COLL_TYPE {
     COLL_CLAMP    = 0x20,
 } COLL_TYPE;
 
-enum DIRECTION {
+typedef enum DIRECTION {
     DIR_NORTH = 0,
     DIR_EAST = 1,
     DIR_SOUTH = 2,
     DIR_WEST = 3,
-};
+} DIRECTION;
 
-#pragma pack(pop)
+typedef enum FRAME_BBOX_INFO {
+    FBBOX_MIN_X = 0,
+    FBBOX_MAX_X = 1,
+    FBBOX_MIN_Y = 2,
+    FBBOX_MAX_Y = 3,
+    FBBOX_MIN_Z = 4,
+    FBBOX_MAX_Z = 5,
+    FBBOX_X = 6,
+    FBBOX_Y = 7,
+    FBBOX_Z = 8,
+} FRAME_BBOX_INFO;
+
+typedef enum LARA_MESH {
+    LM_HIPS = 0,
+    LM_THIGH_L = 1,
+    LM_CALF_L = 2,
+    LM_FOOT_L = 3,
+    LM_THIGH_R = 4,
+    LM_CALF_R = 5,
+    LM_FOOT_R = 6,
+    LM_TORSO = 7,
+    LM_UARM_R = 8,
+    LM_LARM_R = 9,
+    LM_HAND_R = 10,
+    LM_UARM_L = 11,
+    LM_LARM_L = 12,
+    LM_HAND_L = 13,
+    LM_HEAD = 14,
+    LM_NUMBER_OF = 15,
+} LARA_MESH;
 
 # FUNCTIONS
 #   Flags:
