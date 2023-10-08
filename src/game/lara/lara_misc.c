@@ -204,6 +204,8 @@ int32_t __cdecl Lara_TestWall(
     case DIR_WEST:
         z += right;
         break;
+    default:
+        break;
     }
 
     int16_t room_num = item->room_num;
@@ -221,6 +223,8 @@ int32_t __cdecl Lara_TestWall(
         break;
     case DIR_WEST:
         x -= front;
+        break;
+    default:
         break;
     }
 
@@ -253,6 +257,9 @@ int32_t __cdecl Lara_TestHangOnClimbWall(
     case DIR_EAST:
     case DIR_WEST:
         item->pos.x += coll->shift.x;
+        break;
+
+    default:
         break;
     }
 
@@ -349,6 +356,8 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
         break;
     case DIR_WEST:
         item->pos.x -= 2;
+        break;
+    default:
         break;
     }
 
@@ -448,6 +457,9 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
     case DIR_WEST:
         item->pos.x += coll->shift.x;
         break;
+
+    default:
+        break;
     }
 
     item->pos.y += hdif;
@@ -492,24 +504,12 @@ int32_t __cdecl Lara_TestHangJumpUp(
         return 0;
     }
 
-    int16_t angle = item->pos.y_rot;
-    if (angle >= -LARA_HANG_ANGLE && angle <= LARA_HANG_ANGLE) {
-        angle = 0;
-    } else if (
-        angle >= PHD_90 - LARA_HANG_ANGLE
-        && angle <= PHD_90 + LARA_HANG_ANGLE) {
-        angle = PHD_90;
-    } else if (
-        angle >= PHD_180 - LARA_HANG_ANGLE
-        || angle <= -PHD_180 + LARA_HANG_ANGLE) {
-        angle = PHD_180;
-    } else if (
-        angle >= -PHD_90 - LARA_HANG_ANGLE
-        && angle <= -PHD_90 + LARA_HANG_ANGLE) {
-        angle = -PHD_90;
-    } else {
+    enum DIRECTION dir =
+        Math_GetDirectionCone(item->pos.y_rot, LARA_HANG_ANGLE);
+    if (dir == DIR_UNKNOWN) {
         return 0;
     }
+    int16_t angle = Math_DirectionToAngle(dir);
 
     item->goal_anim_state = LS_HANG;
     item->current_anim_state = LS_HANG;
@@ -528,6 +528,57 @@ int32_t __cdecl Lara_TestHangJumpUp(
     item->speed = 0;
     item->gravity = 0;
     item->fall_speed = 0;
+    g_Lara.gun_status = LGS_HANDS_BUSY;
+    return 1;
+}
+
+int32_t __cdecl Lara_TestHangJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (coll->coll_type != COLL_FRONT || !(g_Input & IN_ACTION)
+        || g_Lara.gun_status != LGS_ARMLESS || coll->hit_static
+        || coll->side_mid.ceiling > -STEPUP_HEIGHT
+        || coll->side_mid.floor < 200) {
+        return 0;
+    }
+
+    int32_t edge;
+    int32_t edge_catch = Lara_TestEdgeCatch(item, coll, &edge);
+    if (!edge_catch
+        || (edge_catch < 0 && !Lara_TestHangOnClimbWall(item, coll))) {
+        return 0;
+    }
+
+    enum DIRECTION dir =
+        Math_GetDirectionCone(item->pos.y_rot, LARA_HANG_ANGLE);
+    if (dir == DIR_UNKNOWN) {
+        return 0;
+    }
+    int16_t angle = Math_DirectionToAngle(dir);
+
+    if (Lara_TestHangSwingIn(item, angle)) {
+        item->anim_num = LA_GRAB_LEDGE_IN;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    } else {
+        item->anim_num = LA_GRAB_LEDGE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    }
+    item->current_anim_state = LS_HANG;
+    item->goal_anim_state = LS_HANG;
+
+    int16_t *bounds = Item_GetBoundsAccurate(item);
+    if (edge_catch > 0) {
+        item->pos.y += coll->side_front.floor - bounds[FBBOX_MIN_Y];
+        item->pos.x += coll->shift.x;
+        item->pos.z += coll->shift.z;
+    } else {
+        item->pos.y = edge - bounds[FBBOX_MIN_Y];
+    }
+
+    item->pos.y_rot = angle;
+    item->speed = 2;
+    item->gravity = 1;
+    item->fall_speed = 1;
     g_Lara.gun_status = LGS_HANDS_BUSY;
     return 1;
 }

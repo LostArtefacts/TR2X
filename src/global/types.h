@@ -1493,6 +1493,7 @@ typedef enum COLL_TYPE {
 // clang-format on
 
 typedef enum DIRECTION {
+    DIR_UNKNOWN = -1,
     DIR_NORTH = 0,
     DIR_EAST = 1,
     DIR_SOUTH = 2,

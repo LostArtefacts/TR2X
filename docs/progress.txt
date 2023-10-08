@@ -1660,7 +1660,7 @@ typedef enum LARA_MESH {
 0042A810    0000033E    +       void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AB70    000000AD    +       int32_t __cdecl Lara_TestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
 0042AC20    0000016D    +       int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042AD90    0000019E    -       int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042AD90    0000019E    +       int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042AF30    000000B1    -       int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);
 0042AFF0    000002E7    *       int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B2E0    00000130    *       int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);

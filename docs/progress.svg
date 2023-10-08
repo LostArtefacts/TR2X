@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">15.75% (189)</tspan> · <tspan class="known">81.83% (982)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">15.83% (190)</tspan> · <tspan class="known">81.75% (981)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="117.65" height="6" x="0" y="0" class="decompiled"/>
-<rect width="611.30" height="6" x="117.65" y="0" class="known"/>
+<rect width="118.28" height="6" x="0" y="0" class="decompiled"/>
+<rect width="610.67" height="6" x="118.28" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -564,7 +564,7 @@
 <rect width="12" height="12" x="510" y="135" class="decompiled"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="525" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestEdgeCatch(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);</title></rect>
 <rect width="12" height="12" x="540" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangJumpUp(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="555" y="135" class="known"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="555" y="135" class="decompiled"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="570" y="135" class="known"><title>int32_t __cdecl Lara_TestHangSwingIn(struct ITEM_INFO *item, PHD_ANGLE angle);</title></rect>
 <rect width="12" height="12" x="585" y="135" class="known"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="600" y="135" class="known"><title>int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.41%</tspan> · <tspan class="known">91.26%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">8.54%</tspan> · <tspan class="known">91.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="62.86" height="6" x="0" y="0" class="decompiled"/>
-<rect width="681.68" height="6" x="62.86" y="0" class="known"/>
+<rect width="63.77" height="6" x="0" y="0" class="decompiled"/>
+<rect width="680.77" height="6" x="63.77" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1507,7 +1507,7 @@
 <rect width="15.29" height="15.48" x="482.74" y="40.16" class="known"><title>void __cdecl ClearBuffers(DWORD flags, DWORD fillColor);</title></rect>
 <rect width="15.08" height="15.48" x="501.04" y="40.16" class="known"><title>void __cdecl Output_DrawPolyLine(int16_t *obj_ptr);</title></rect>
 <rect width="15.03" height="15.48" x="519.11" y="40.16" class="decompiled"><title>int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);</title></rect>
-<rect width="15.03" height="15.48" x="537.14" y="40.16" class="known"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="15.03" height="15.48" x="537.14" y="40.16" class="decompiled"><title>int32_t __cdecl Lara_TestHangJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="14.99" height="15.48" x="555.17" y="40.16" class="known"><title>void __cdecl BigEelControl(int16_t item_num);</title></rect>
 <rect width="14.94" height="15.48" x="573.16" y="40.16" class="decompiled"><title>void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="14.86" height="15.48" x="591.11" y="40.16" class="known"><title>void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>

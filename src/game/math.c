@@ -471,3 +471,33 @@ enum DIRECTION Math_GetDirection(int16_t angle)
 {
     return (uint16_t)(angle + PHD_45) / PHD_90;
 }
+
+enum DIRECTION Math_GetDirectionCone(int16_t angle, int16_t cone)
+{
+    if (angle >= -cone && angle <= cone) {
+        return DIR_NORTH;
+    } else if (angle >= PHD_90 - cone && angle <= PHD_90 + cone) {
+        return DIR_WEST;
+    } else if (angle >= PHD_180 - cone || angle <= -PHD_180 + cone) {
+        return DIR_SOUTH;
+    } else if (angle >= -PHD_90 - cone && angle <= -PHD_90 + cone) {
+        return DIR_EAST;
+    }
+    return DIR_UNKNOWN;
+}
+
+int16_t Math_DirectionToAngle(enum DIRECTION dir)
+{
+    switch (dir) {
+    case DIR_NORTH:
+        return 0;
+    case DIR_WEST:
+        return PHD_90;
+    case DIR_SOUTH:
+        return PHD_180;
+    case DIR_EAST:
+        return -PHD_90;
+    default:
+        return 0;
+    }
+}

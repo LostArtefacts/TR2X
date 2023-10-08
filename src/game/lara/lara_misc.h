@@ -22,3 +22,5 @@ int32_t __cdecl Lara_TestEdgeCatch(
     struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge);
 int32_t __cdecl Lara_TestHangJumpUp(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+int32_t __cdecl Lara_TestHangJump(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
