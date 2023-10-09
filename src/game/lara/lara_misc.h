@@ -30,3 +30,5 @@ int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int16_t __cdecl Lara_FloorFront(
     struct ITEM_INFO *item, int16_t ang, int32_t dist);
 int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
+int32_t __cdecl Lara_CheckForLetGo(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);

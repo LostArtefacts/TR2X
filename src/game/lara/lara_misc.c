@@ -792,3 +792,31 @@ int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll)
     }
     return item->hit_points <= 0;
 }
+
+int32_t __cdecl Lara_CheckForLetGo(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    item->gravity = 0;
+    item->fall_speed = 0;
+
+    int16_t room_num = item->room_num;
+    int32_t x = item->pos.x;
+    int32_t y = item->pos.y;
+    int32_t z = item->pos.z;
+    const struct FLOOR_INFO *floor = Room_GetFloor(x, y, z, &room_num);
+    Room_GetHeight(floor, x, y, z);
+    coll->trigger = g_TriggerIndex;
+    if ((g_Input & IN_ACTION) && item->hit_points > 0) {
+        return 0;
+    }
+
+    item->goal_anim_state = LS_FORWARD_JUMP;
+    item->current_anim_state = LS_FORWARD_JUMP;
+    item->anim_num = LA_FALL_DOWN;
+    item->frame_num = g_Anims[item->anim_num].frame_base;
+    item->gravity = 1;
+    item->speed = 2;
+    item->fall_speed = 1;
+    g_Lara.gun_status = LGS_ARMLESS;
+    return 1;
+}

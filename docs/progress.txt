@@ -1707,7 +1707,7 @@ typedef enum LARA_MESH {
 0042DA70    0000020D    +       void __cdecl Lara_Col_ClimbStance(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042DC80    0000014D    +       void __cdecl Lara_Col_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042DDD0    0000019C    +       void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042DF70    000000AA    -       int32_t __cdecl Lara_CheckForLetGo(struct ITEM_INFO *item, struct COLL_INFO *coll);
+0042DF70    000000AA    +       int32_t __cdecl Lara_CheckForLetGo(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042E020    00000263    -       int32_t __cdecl Lara_TestClimb(int32_t x, int32_t y, int32_t z, int32_t xfront, int32_t zfront, int32_t item_height, int16_t item_room, int32_t *shift);
 0042E290    000000BC    -       int32_t __cdecl Lara_TestClimbPos(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t origin, int32_t height, int32_t *shift);
 0042E360    000000EF    -       void __cdecl Lara_DoClimbLeftRight(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t result, int32_t shift);
