@@ -1385,7 +1385,7 @@ typedef enum LARA_MESH {
 00419A70    00000378    -       void __cdecl Object_DrawAnimatingItem(struct ITEM_INFO *item);
 00419DF0    00000D02    -       void __cdecl Lara_Draw(struct ITEM_INFO *item);
 0041AB20    00000BC6    -       void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
-0041B710    00000034    *       void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
+0041B710    00000034    +       void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
 0041B750    00000022    -       void __cdecl Matrix_Pop_I(void);
 0041B780    00000027    -       void __cdecl Matrix_Push_I(void);
 0041B7B0    00000031    -       void __cdecl Matrix_RotY_I(int16_t ang);
@@ -2507,7 +2507,12 @@ typedef enum LARA_MESH {
 00521FDC    -       int32_t g_SoundFxCount;
 00522000    -       struct OBJECT_INFO g_Objects[265];
 005252B0    -       int16_t **g_Meshes;
+005252C0    -       struct MATRIX g_IMMatrixStack[256];
+005258F0    -       int32_t g_IMFrac;
 005258F4    -       struct ANIM_STRUCT *g_Anims;
+00525BE8    -       int32_t *g_Bones;
+00526184    -       int32_t g_IMRate;
+00526188    -       struct MATRIX *g_IMMatrixPtr;
 0052618C    -       struct ROOM_INFO *g_Rooms;
 00526240    -       int32_t g_FlipStatus;
 00526288    -       int16_t *g_TriggerIndex;
@@ -2518,4 +2523,3 @@ typedef enum LARA_MESH {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-00525BE8    -       int32_t *g_Bones;

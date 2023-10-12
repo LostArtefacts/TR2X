@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.50% (198)</tspan> · <tspan class="known">81.08% (973)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.58% (199)</tspan> · <tspan class="known">81% (972)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="123.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="605.69" height="6" x="123.26" y="0" class="known"/>
+<rect width="123.88" height="6" x="0" y="0" class="decompiled"/>
+<rect width="605.07" height="6" x="123.88" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -296,7 +296,7 @@
 <rect width="12" height="12" x="240" y="60" class="known"><title>void __cdecl Object_DrawAnimatingItem(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="255" y="60" class="known"><title>void __cdecl Lara_Draw(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="270" y="60" class="known"><title>void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
-<rect width="12" height="12" x="285" y="60" class="known"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
+<rect width="12" height="12" x="285" y="60" class="decompiled"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
 <rect width="12" height="12" x="300" y="60" class="known"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
 <rect width="12" height="12" x="315" y="60" class="known"><title>void __cdecl Matrix_Push_I(void);</title></rect>
 <rect width="12" height="12" x="330" y="60" class="known"><title>void __cdecl Matrix_RotY_I(int16_t ang);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.54%</tspan> · <tspan class="known">90.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.56%</tspan> · <tspan class="known">90.11%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="71.29" height="6" x="0" y="0" class="decompiled"/>
-<rect width="673.25" height="6" x="71.29" y="0" class="known"/>
+<rect width="71.40" height="6" x="0" y="0" class="decompiled"/>
+<rect width="673.13" height="6" x="71.40" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2221,7 +2221,7 @@
 <rect width="3.72" height="3.35" x="668.19" y="300.80" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE colorIdx, D3DCOLOR *gour, uint16_t flags);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="307.15" class="known"><title>void __cdecl HWR_GetPageHandles(void);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="313.50" class="known"><title>bool __cdecl ReloadTextures(bool reset);</title></rect>
-<rect width="3.72" height="3.23" x="668.19" y="319.86" class="known"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
+<rect width="3.72" height="3.23" x="668.19" y="319.86" class="decompiled"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
 <rect width="3.72" height="3.23" x="668.19" y="326.09" class="known"><title>void __cdecl TempVideoAdjust(int32_t hires, double sizer);</title></rect>
 <rect width="3.72" height="3.23" x="668.19" y="332.32" class="known"><title>void __cdecl game_free(DWORD freeSize);</title></rect>
 <rect width="3.72" height="3.11" x="668.19" y="338.55" class="known"><title>void __cdecl Output_SortPolyList(void);</title></rect>

@@ -63,7 +63,12 @@
 #define g_SoundFxCount VAR_U_(0x00521FDC, int32_t)
 #define g_Objects ARRAY_(0x00522000, struct OBJECT_INFO, [265])
 #define g_Meshes VAR_U_(0x005252B0, int16_t **)
+#define g_IMMatrixStack ARRAY_(0x005252C0, struct MATRIX, [256])
+#define g_IMFrac VAR_U_(0x005258F0, int32_t)
 #define g_Anims VAR_U_(0x005258F4, struct ANIM_STRUCT *)
+#define g_Bones VAR_U_(0x00525BE8, int32_t *)
+#define g_IMRate VAR_U_(0x00526184, int32_t)
+#define g_IMMatrixPtr VAR_U_(0x00526188, struct MATRIX *)
 #define g_Rooms VAR_U_(0x0052618C, struct ROOM_INFO *)
 #define g_FlipStatus VAR_U_(0x00526240, int32_t)
 #define g_TriggerIndex VAR_U_(0x00526288, int16_t *)
@@ -74,5 +79,4 @@
 #define g_CineFrameIdx VAR_U_(0x00526314, int16_t)
 #define g_Camera VAR_U_(0x00526320, struct CAMERA_INFO)
 #define g_Boxes VAR_U_(0x005263CC, struct BOX_INFO *)
-#define g_Bones VAR_U_(0x00525BE8, int32_t *)
 // clang-format on

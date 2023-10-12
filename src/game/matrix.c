@@ -288,3 +288,11 @@ bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z)
         ABS(mptr->_03) <= g_PhdFarZ && ABS(mptr->_13) <= g_PhdFarZ
         && ABS(mptr->_23) <= g_PhdFarZ);
 }
+
+void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate)
+{
+    g_IMRate = rate;
+    g_IMFrac = frac;
+    g_IMMatrixPtr = g_IMMatrixStack;
+    *g_IMMatrixPtr = *g_MatrixPtr;
+}

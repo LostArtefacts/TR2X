@@ -18,3 +18,5 @@ void __cdecl Matrix_RotZ(PHD_ANGLE rz);
 void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);
 void __cdecl Matrix_RotYXZpack(uint32_t rpack);
 bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
+
+void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
