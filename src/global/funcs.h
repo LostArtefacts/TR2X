@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Math_GetVectorAngles ((void __cdecl (*)(int32_t x, int32_t y, int32_t z, int16_t *dest))0x00401250)
-#define Matrix_TranslateAbs ((void __cdecl (*)(int32_t x, int32_t y, int32_t z))0x00401960)
 #define Output_InsertPolygons ((void __cdecl (*)(int16_t *obj_ptr, int32_t clip))0x004019E0)
 #define Output_InsertRoom ((void __cdecl (*)(const int16_t *obj_ptr))0x00401AE0)
 #define Output_CalcBackgroundLight ((int16_t *__cdecl (*)(const int16_t *obj_ptr))0x00401BD0)

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.75% (213)</tspan> · <tspan class="known">79.83% (958)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.83% (214)</tspan> · <tspan class="known">79.75% (957)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="132.59" height="6" x="0" y="0" class="decompiled"/>
-<rect width="596.36" height="6" x="132.59" y="0" class="known"/>
+<rect width="133.22" height="6" x="0" y="0" class="decompiled"/>
+<rect width="595.73" height="6" x="133.22" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -86,7 +86,7 @@
 <rect width="12" height="12" x="90" y="0" class="decompiled"><title>void __cdecl Matrix_RotYXZ(int16_t ry, int16_t rx, int16_t rz);</title></rect>
 <rect width="12" height="12" x="105" y="0" class="decompiled"><title>void __cdecl Matrix_RotYXZpack(uint32_t rpack);</title></rect>
 <rect width="12" height="12" x="120" y="0" class="decompiled"><title>bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);</title></rect>
-<rect width="12" height="12" x="135" y="0" class="known"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
+<rect width="12" height="12" x="135" y="0" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="150" y="0" class="known"><title>void __cdecl Output_InsertPolygons(int16_t *obj_ptr, int32_t clip);</title></rect>
 <rect width="12" height="12" x="165" y="0" class="known"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="180" y="0" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.97%</tspan> · <tspan class="known">89.70%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.01%</tspan> · <tspan class="known">89.66%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="74.49" height="6" x="0" y="0" class="decompiled"/>
-<rect width="670.05" height="6" x="74.49" y="0" class="known"/>
+<rect width="74.76" height="6" x="0" y="0" class="decompiled"/>
+<rect width="669.78" height="6" x="74.76" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1925,7 +1925,7 @@
 <rect width="7.32" height="6.68" x="608.74" y="201.03" class="known"><title>void __cdecl SkidooExplode(struct ITEM_INFO *skidoo);</title></rect>
 <rect width="7.32" height="6.68" x="619.05" y="201.03" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="7.23" height="6.68" x="629.37" y="201.03" class="known"><title>void __cdecl FireM16(int32_t running);</title></rect>
-<rect width="7.15" height="6.68" x="639.60" y="201.03" class="known"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
+<rect width="7.15" height="6.68" x="639.60" y="201.03" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="7.15" height="6.68" x="649.75" y="201.03" class="known"><title>int16_t __cdecl Diver_Harpoon(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE y_rot, int16_t room_num);</title></rect>
 <rect width="7.15" height="6.68" x="659.90" y="201.03" class="known"><title>void __cdecl DisplayModeInfo(char* string);</title></rect>
 <rect width="7.07" height="6.68" x="670.05" y="201.03" class="known"><title>void __cdecl Misc_EffectSpaz(struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>

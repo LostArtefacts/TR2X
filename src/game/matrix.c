@@ -348,6 +348,17 @@ bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z)
         && ABS(mptr->_23) <= g_PhdFarZ);
 }
 
+void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z)
+{
+    struct MATRIX *mptr = g_MatrixPtr;
+    const int32_t dx = x - g_W2VMatrix._03;
+    const int32_t dy = y - g_W2VMatrix._13;
+    const int32_t dz = z - g_W2VMatrix._23;
+    mptr->_03 = dx * mptr->_00 + dy * mptr->_01 + dz * mptr->_02;
+    mptr->_13 = dx * mptr->_10 + dy * mptr->_11 + dz * mptr->_12;
+    mptr->_23 = dx * mptr->_20 + dy * mptr->_21 + dz * mptr->_22;
+}
+
 void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate)
 {
     g_IMRate = rate;
