@@ -1397,7 +1397,7 @@ typedef enum LARA_MESH {
 0041B960    0000003D    +       void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);
 0041B9A0    000000A1    +       void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);
 0041BA50    0000002A    -       void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);
-0041BA80    000001A5    *       void __cdecl Matrix_Interpolate(void);
+0041BA80    000001A5    +       void __cdecl Matrix_Interpolate(void);
 0041BC30    000000FC    -       void __cdecl Matrix_InterpolateArm(void);
 0041BD30    0000014B    -       void __cdecl Gun_DrawFlash(int32_t weapon_type, int32_t clip);
 0041BEA0    000000E8    -       void __cdecl Output_CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);

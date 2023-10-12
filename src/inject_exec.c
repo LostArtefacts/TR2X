@@ -64,6 +64,7 @@ static void Inject_Matrix(void)
     INJECT(1, 0x0041B910, Matrix_RotYXZ_I);
     INJECT(1, 0x0041B960, Matrix_RotYXZsuperpack_I);
     INJECT(1, 0x0041B9A0, Matrix_RotYXZsuperpack);
+    INJECT(1, 0x0041BA80, Matrix_Interpolate);
 }
 
 static void Inject_Math(void)

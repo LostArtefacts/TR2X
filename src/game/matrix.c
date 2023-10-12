@@ -333,6 +333,42 @@ void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate)
     *g_IMMatrixPtr = *g_MatrixPtr;
 }
 
+void __cdecl Matrix_Interpolate(void)
+{
+    const int32_t frac = g_IMFrac;
+    const int32_t rate = g_IMRate;
+    const struct MATRIX *iptr = g_IMMatrixPtr;
+    struct MATRIX *mptr = g_MatrixPtr;
+
+    if (g_IMRate == 2) {
+        mptr->_00 += (iptr->_00 - mptr->_00) / 2;
+        mptr->_01 += (iptr->_01 - mptr->_01) / 2;
+        mptr->_02 += (iptr->_02 - mptr->_02) / 2;
+        mptr->_03 += (iptr->_03 - mptr->_03) / 2;
+        mptr->_10 += (iptr->_10 - mptr->_10) / 2;
+        mptr->_11 += (iptr->_11 - mptr->_11) / 2;
+        mptr->_12 += (iptr->_12 - mptr->_12) / 2;
+        mptr->_13 += (iptr->_13 - mptr->_13) / 2;
+        mptr->_20 += (iptr->_20 - mptr->_20) / 2;
+        mptr->_21 += (iptr->_21 - mptr->_21) / 2;
+        mptr->_22 += (iptr->_22 - mptr->_22) / 2;
+        mptr->_23 += (iptr->_23 - mptr->_23) / 2;
+    } else {
+        mptr->_00 += (iptr->_00 - mptr->_00) * frac / rate;
+        mptr->_01 += (iptr->_01 - mptr->_01) * frac / rate;
+        mptr->_02 += (iptr->_02 - mptr->_02) * frac / rate;
+        mptr->_03 += (iptr->_03 - mptr->_03) * frac / rate;
+        mptr->_10 += (iptr->_10 - mptr->_10) * frac / rate;
+        mptr->_11 += (iptr->_11 - mptr->_11) * frac / rate;
+        mptr->_12 += (iptr->_12 - mptr->_12) * frac / rate;
+        mptr->_13 += (iptr->_13 - mptr->_13) * frac / rate;
+        mptr->_20 += (iptr->_20 - mptr->_20) * frac / rate;
+        mptr->_21 += (iptr->_21 - mptr->_21) * frac / rate;
+        mptr->_22 += (iptr->_22 - mptr->_22) * frac / rate;
+        mptr->_23 += (iptr->_23 - mptr->_23) * frac / rate;
+    }
+}
+
 void __cdecl Matrix_Push_I(void)
 {
     Matrix_PushMatrix();
