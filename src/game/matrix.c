@@ -310,6 +310,15 @@ void __cdecl Matrix_Pop_I(void)
     g_IMMatrixPtr--;
 }
 
+void __cdecl Matrix_RotX_I(int16_t ang)
+{
+    Matrix_RotX(ang);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_RotX(ang);
+    g_MatrixPtr = old_matrix;
+}
+
 void __cdecl Matrix_RotY_I(int16_t ang)
 {
     Matrix_RotY(ang);
