@@ -277,6 +277,42 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack)
     }
 }
 
+void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t index)
+{
+    uint16_t *prot = (uint16_t *)*pprot;
+
+    for (int i = 0; i < index; i++) {
+        if ((*prot >> 14) == 0) {
+            prot += 2;
+        } else {
+            prot += 1;
+        }
+    }
+
+    switch (*prot >> 14) {
+    case 0: {
+        uint32_t packed = (prot[0] << 16) + prot[1];
+        Matrix_RotYXZpack(packed);
+        prot += 2;
+        break;
+    }
+    case 1:
+        Matrix_RotX((int16_t)((*prot & 1023) << 6));
+        prot += 1;
+        break;
+    case 2:
+        Matrix_RotY((int16_t)((*prot & 1023) << 6));
+        prot += 1;
+        break;
+    default:
+        Matrix_RotZ((int16_t)((*prot & 1023) << 6));
+        prot += 1;
+        break;
+    }
+
+    *pprot = (int16_t *)prot;
+}
+
 bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z)
 {
     struct MATRIX *mptr = g_MatrixPtr;
@@ -337,6 +373,25 @@ void __cdecl Matrix_RotZ_I(int16_t ang)
     g_MatrixPtr = old_matrix;
 }
 
+void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z)
+{
+    Matrix_RotYXZ(y, x, z);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_RotYXZ(y, x, z);
+    g_MatrixPtr = old_matrix;
+}
+
+void __cdecl Matrix_RotYXZsuperpack_I(
+    int16_t **pprot1, int16_t **pprot2, int32_t index)
+{
+    Matrix_RotYXZsuperpack(pprot1, index);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_RotYXZsuperpack(pprot2, index);
+    g_MatrixPtr = old_matrix;
+}
+
 void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z)
 {
     Matrix_TranslateRel(x, y, z);
@@ -353,24 +408,5 @@ void __cdecl Matrix_TranslateRel_ID(
     struct MATRIX *old_matrix = g_MatrixPtr;
     g_MatrixPtr = g_IMMatrixPtr;
     Matrix_TranslateRel(x2, y2, z2);
-    g_MatrixPtr = old_matrix;
-}
-
-void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z)
-{
-    Matrix_RotYXZ(y, x, z);
-    struct MATRIX *old_matrix = g_MatrixPtr;
-    g_MatrixPtr = g_IMMatrixPtr;
-    Matrix_RotYXZ(y, x, z);
-    g_MatrixPtr = old_matrix;
-}
-
-void __cdecl Matrix_RotYXZsuperpack_I(
-    int16_t **pprot1, int16_t **pprot2, int32_t skip)
-{
-    Matrix_RotYXZsuperpack(pprot1, skip);
-    struct MATRIX *old_matrix = g_MatrixPtr;
-    g_MatrixPtr = g_IMMatrixPtr;
-    Matrix_RotYXZsuperpack(pprot2, skip);
     g_MatrixPtr = old_matrix;
 }

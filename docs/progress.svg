@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.33% (208)</tspan> · <tspan class="known">80.25% (963)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.42% (209)</tspan> · <tspan class="known">80.17% (962)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="129.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="599.47" height="6" x="129.48" y="0" class="known"/>
+<rect width="130.10" height="6" x="0" y="0" class="decompiled"/>
+<rect width="598.84" height="6" x="130.10" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -306,7 +306,7 @@
 <rect width="12" height="12" x="390" y="60" class="decompiled"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
 <rect width="12" height="12" x="405" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
 <rect width="12" height="12" x="420" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>
-<rect width="12" height="12" x="435" y="60" class="known"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
+<rect width="12" height="12" x="435" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
 <rect width="12" height="12" x="450" y="60" class="known"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
 <rect width="12" height="12" x="465" y="60" class="known"><title>void __cdecl Matrix_Interpolate(void);</title></rect>
 <rect width="12" height="12" x="480" y="60" class="known"><title>void __cdecl Matrix_InterpolateArm(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.70%</tspan> · <tspan class="known">89.97%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.75%</tspan> · <tspan class="known">89.92%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="72.47" height="6" x="0" y="0" class="decompiled"/>
-<rect width="672.07" height="6" x="72.47" y="0" class="known"/>
+<rect width="72.82" height="6" x="0" y="0" class="decompiled"/>
+<rect width="671.71" height="6" x="72.82" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1811,7 +1811,7 @@
 <rect width="8.38" height="8.53" x="544.80" y="227.59" class="known"><title>int32_t __cdecl OnTrapDoor(struct ITEM_INFO *item, int32_t x, int32_t z);</title></rect>
 <rect width="8.38" height="8.46" x="544.80" y="239.12" class="known"><title>bool __cdecl LoadTexturePage(int32_t pageIndex, bool reset);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="250.58" class="known"><title>void __cdecl Viewport_AlterFOV(int16_t fov);</title></rect>
-<rect width="8.38" height="8.39" x="544.80" y="261.97" class="known"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
+<rect width="8.38" height="8.39" x="544.80" y="261.97" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="273.36" class="known"><title>void __cdecl CreateRenderBuffer(void);</title></rect>
 <rect width="8.38" height="8.32" x="544.80" y="284.75" class="known"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="8.38" height="8.25" x="544.80" y="296.07" class="known"><title>int16_t *__cdecl Output_InsertObjectGT3_Sorted(int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
