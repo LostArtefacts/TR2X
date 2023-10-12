@@ -1386,7 +1386,7 @@ typedef enum LARA_MESH {
 00419DF0    00000D02    -       void __cdecl Lara_Draw(struct ITEM_INFO *item);
 0041AB20    00000BC6    -       void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
 0041B710    00000034    +       void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
-0041B750    00000022    -       void __cdecl Matrix_Pop_I(void);
+0041B750    00000022    +       void __cdecl Matrix_Pop_I(void);
 0041B780    00000027    -       void __cdecl Matrix_Push_I(void);
 0041B7B0    00000031    -       void __cdecl Matrix_RotY_I(int16_t ang);
 0041B7F0    00000031    -       void __cdecl Matrix_RotX_I(int16_t ang);

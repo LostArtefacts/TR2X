@@ -20,3 +20,4 @@ void __cdecl Matrix_RotYXZpack(uint32_t rpack);
 bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
 
 void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
+void __cdecl Matrix_Pop_I(void);

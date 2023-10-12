@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.58% (199)</tspan> · <tspan class="known">81% (972)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.67% (200)</tspan> · <tspan class="known">80.92% (971)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="123.88" height="6" x="0" y="0" class="decompiled"/>
-<rect width="605.07" height="6" x="123.88" y="0" class="known"/>
+<rect width="124.50" height="6" x="0" y="0" class="decompiled"/>
+<rect width="604.45" height="6" x="124.50" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -297,7 +297,7 @@
 <rect width="12" height="12" x="255" y="60" class="known"><title>void __cdecl Lara_Draw(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="270" y="60" class="known"><title>void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
 <rect width="12" height="12" x="285" y="60" class="decompiled"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
-<rect width="12" height="12" x="300" y="60" class="known"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
+<rect width="12" height="12" x="300" y="60" class="decompiled"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
 <rect width="12" height="12" x="315" y="60" class="known"><title>void __cdecl Matrix_Push_I(void);</title></rect>
 <rect width="12" height="12" x="330" y="60" class="known"><title>void __cdecl Matrix_RotY_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="345" y="60" class="known"><title>void __cdecl Matrix_RotX_I(int16_t ang);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.56%</tspan> · <tspan class="known">90.11%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.57%</tspan> · <tspan class="known">90.10%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="71.40" height="6" x="0" y="0" class="decompiled"/>
-<rect width="673.13" height="6" x="71.40" y="0" class="known"/>
+<rect width="71.48" height="6" x="0" y="0" class="decompiled"/>
+<rect width="673.06" height="6" x="71.48" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2333,7 +2333,7 @@
 <rect width="2.19" height="2.43" x="719.31" y="311.25" class="known"><title>void __cdecl SecretControl(int16_t item_num);</title></rect>
 <rect width="2.19" height="2.43" x="724.50" y="311.25" class="known"><title>uint16_t __cdecl S_COLOUR(int32_t red, int32_t green, int32_t blue);</title></rect>
 <rect width="2.19" height="2.43" x="729.69" y="311.25" class="known"><title>void __cdecl FreePalette(int32_t paletteIndex);</title></rect>
-<rect width="2.04" height="2.43" x="734.88" y="311.25" class="known"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
+<rect width="2.04" height="2.43" x="734.88" y="311.25" class="decompiled"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
 <rect width="2.04" height="2.43" x="739.92" y="311.25" class="known"><title>void __cdecl Inv_RingMotionRotation(struct RING_INFO *ring, int16_t rotation, int16_t target);</title></rect>
 <rect width="2.04" height="2.43" x="744.96" y="311.25" class="known"><title>void __cdecl DrawMovableBlock(struct ITEM_INFO *item);</title></rect>
 <rect width="2.14" height="2.32" x="698.55" y="316.68" class="known"><title>void __cdecl WinVidFreeWindow(void);</title></rect>
