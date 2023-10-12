@@ -22,3 +22,4 @@ bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);
 void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
 void __cdecl Matrix_Push_I(void);
 void __cdecl Matrix_Pop_I(void);
+void __cdecl Matrix_RotY_I(int16_t ang);

@@ -202,7 +202,6 @@
 #define Object_DrawAnimatingItem ((void __cdecl (*)(struct ITEM_INFO *item))0x00419A70)
 #define Lara_Draw ((void __cdecl (*)(struct ITEM_INFO *item))0x00419DF0)
 #define Lara_Draw_I ((void __cdecl (*)(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate))0x0041AB20)
-#define Matrix_RotY_I ((void __cdecl (*)(int16_t ang))0x0041B7B0)
 #define Matrix_RotX_I ((void __cdecl (*)(int16_t ang))0x0041B7F0)
 #define Matrix_RotZ_I ((void __cdecl (*)(int16_t ang))0x0041B830)
 #define Matrix_TranslateRel_I ((void __cdecl (*)(int32_t x, int32_t y, int32_t z))0x0041B870)
