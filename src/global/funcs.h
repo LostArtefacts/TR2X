@@ -958,7 +958,6 @@
 #define SE_SetupWindowProc ((LRESULT __stdcall (*)(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam))0x00456FA0)
 #define SE_PassMessageToImage ((void __cdecl (*)(HWND hWnd, UINT uMsg, WPARAM wParam))0x004571E0)
 #define UT_MemBlt ((void __cdecl (*)(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch))0x00457210)
-#define Matrix_PushUnit ((void __cdecl (*)(void))0x0045729E)
 #define flatA ((void __fastcall (*)(int32_t y0, int32_t y1, BYTE colorIdx))0x004572D4)
 #define transA ((void __fastcall (*)(int32_t y0, int32_t y1, BYTE depthQ))0x00457335)
 #define gourA ((void __fastcall (*)(int32_t y0, int32_t y1, BYTE colorIdx))0x0045746F)

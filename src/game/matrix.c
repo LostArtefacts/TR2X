@@ -15,6 +15,23 @@ void __cdecl Matrix_Push(void)
     g_MatrixPtr[0] = g_MatrixPtr[-1];
 }
 
+void __cdecl Matrix_PushUnit(void)
+{
+    struct MATRIX *mptr = ++g_MatrixPtr;
+    mptr->_00 = (1 << W2V_SHIFT);
+    mptr->_01 = 0;
+    mptr->_02 = 0;
+    mptr->_10 = 0;
+    mptr->_11 = (1 << W2V_SHIFT);
+    mptr->_12 = 0;
+    mptr->_20 = 0;
+    mptr->_21 = 0;
+    mptr->_22 = (1 << W2V_SHIFT);
+    // mptr->_03 = 0;
+    // mptr->_13 = 0;
+    // mptr->_23 = 0;
+}
+
 void __cdecl Matrix_Pop(void)
 {
     g_MatrixPtr--;

@@ -8,6 +8,7 @@
 struct PHD_3DPOS;
 
 void __cdecl Matrix_Push(void);
+void __cdecl Matrix_PushUnit(void);
 void __cdecl Matrix_Pop(void);
 void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);
 void __cdecl Matrix_LookAt(
