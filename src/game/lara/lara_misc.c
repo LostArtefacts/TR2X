@@ -861,7 +861,7 @@ void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
         frame_ptr = frmptr[0];
     }
 
-    Matrix_PushUnitMatrix();
+    Matrix_PushUnit();
     g_MatrixPtr->_03 = 0;
     g_MatrixPtr->_13 = 0;
     g_MatrixPtr->_23 = 0;
@@ -931,7 +931,7 @@ void __cdecl Lara_GetJointAbsPosition_I(
 {
     const struct OBJECT_INFO *obj = &g_Objects[item->object_num];
 
-    Matrix_PushUnitMatrix();
+    Matrix_PushUnit();
     g_MatrixPtr->_03 = 0;
     g_MatrixPtr->_13 = 0;
     g_MatrixPtr->_23 = 0;

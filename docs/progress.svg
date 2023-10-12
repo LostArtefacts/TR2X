@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.58% (211)</tspan> · <tspan class="known">80% (960)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.67% (212)</tspan> · <tspan class="known">79.92% (959)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="131.35" height="6" x="0" y="0" class="decompiled"/>
-<rect width="597.60" height="6" x="131.35" y="0" class="known"/>
+<rect width="131.97" height="6" x="0" y="0" class="decompiled"/>
+<rect width="596.98" height="6" x="131.97" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -1265,8 +1265,8 @@
 <rect width="12" height="12" x="525" y="345" class="known"><title>LRESULT __stdcall SE_SetupWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);</title></rect>
 <rect width="12" height="12" x="540" y="345" class="known"><title>void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);</title></rect>
 <rect width="12" height="12" x="555" y="345" class="known"><title>void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);</title></rect>
-<rect width="12" height="12" x="570" y="345" class="known"><title>void __cdecl Matrix_PushMatrix(void);</title></rect>
-<rect width="12" height="12" x="585" y="345" class="known"><title>void __cdecl Matrix_PushUnitMatrix(void);</title></rect>
+<rect width="12" height="12" x="570" y="345" class="decompiled"><title>void __cdecl Matrix_Push(void);</title></rect>
+<rect width="12" height="12" x="585" y="345" class="known"><title>void __cdecl Matrix_PushUnit(void);</title></rect>
 <rect width="12" height="12" x="600" y="345" class="known"><title>void __fastcall flatA(int32_t y0, int32_t y1, BYTE colorIdx);</title></rect>
 <rect width="12" height="12" x="615" y="345" class="known"><title>void __fastcall transA(int32_t y0, int32_t y1, BYTE depthQ);</title></rect>
 <rect width="12" height="12" x="630" y="345" class="known"><title>void __fastcall gourA(int32_t y0, int32_t y1, BYTE colorIdx);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.95%</tspan> · <tspan class="known">89.72%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.96%</tspan> · <tspan class="known">89.71%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="74.31" height="6" x="0" y="0" class="decompiled"/>
-<rect width="670.23" height="6" x="74.31" y="0" class="known"/>
+<rect width="74.38" height="6" x="0" y="0" class="decompiled"/>
+<rect width="670.16" height="6" x="74.38" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2233,7 +2233,7 @@
 <rect width="3.32" height="3.50" x="687.55" y="281.75" class="known"><title>void __cdecl draw_shotgun_meshes(int32_t weapon_type);</title></rect>
 <rect width="3.32" height="3.50" x="693.87" y="281.75" class="known"><title>int32_t __cdecl PickupTrigger(int16_t item_num);</title></rect>
 <rect width="3.32" height="3.50" x="700.19" y="281.75" class="known"><title>void __cdecl DDrawRelease(void);</title></rect>
-<rect width="3.32" height="3.50" x="706.51" y="281.75" class="known"><title>void __cdecl Matrix_PushUnitMatrix(void);</title></rect>
+<rect width="3.32" height="3.50" x="706.51" y="281.75" class="known"><title>void __cdecl Matrix_PushUnit(void);</title></rect>
 <rect width="3.20" height="3.50" x="712.83" y="281.75" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
 <rect width="3.20" height="3.50" x="719.02" y="281.75" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="3.20" height="3.50" x="725.22" y="281.75" class="decompiled"><title>void __cdecl Lara_GetCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -2360,7 +2360,7 @@
 <rect width="1.63" height="2.21" x="703.70" y="337.10" class="known"><title>int32_t __cdecl Random_GetControl(void);</title></rect>
 <rect width="1.63" height="2.21" x="703.70" y="342.32" class="known"><title>int32_t __cdecl GetRandomDraw(void);</title></rect>
 <rect width="1.63" height="2.21" x="703.70" y="347.53" class="known"><title>LONG __cdecl SetRegistryDwordValue(LPCTSTR lpValueName, DWORD value);</title></rect>
-<rect width="1.63" height="2.21" x="703.70" y="352.75" class="known"><title>void __cdecl Matrix_PushMatrix(void);</title></rect>
+<rect width="1.63" height="2.21" x="703.70" y="352.75" class="decompiled"><title>void __cdecl Matrix_Push(void);</title></rect>
 <rect width="1.63" height="2.04" x="703.70" y="357.96" class="decompiled"><title>void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="1.90" height="1.76" x="708.33" y="321.46" class="decompiled"><title>void __cdecl Lara_State_Extra_GongBong(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="1.90" height="1.60" x="708.33" y="326.22" class="known"><title>void __cdecl BoilerFX(struct ITEM_INFO *item);</title></rect>

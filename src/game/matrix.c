@@ -9,6 +9,12 @@
 
 #include <stdint.h>
 
+void __cdecl Matrix_Push(void)
+{
+    g_MatrixPtr++;
+    g_MatrixPtr[0] = g_MatrixPtr[-1];
+}
+
 void __cdecl Matrix_Pop(void)
 {
     g_MatrixPtr--;
@@ -407,7 +413,7 @@ void __cdecl Matrix_InterpolateArm(void)
 
 void __cdecl Matrix_Push_I(void)
 {
-    Matrix_PushMatrix();
+    Matrix_Push();
     g_IMMatrixPtr[1] = g_IMMatrixPtr[0];
     g_IMMatrixPtr++;
 }

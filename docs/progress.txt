@@ -2427,8 +2427,8 @@ typedef enum LARA_MESH {
 00456FA0    0000023A    -R      LRESULT __stdcall SE_SetupWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 004571E0    00000026    -R      void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);
 00457210    0000006E    -R      void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);
-00457280    0000001E    -       void __cdecl Matrix_PushMatrix(void);
-0045729E    00000033    *       void __cdecl Matrix_PushUnitMatrix(void);
+00457280    0000001E    +       void __cdecl Matrix_Push(void);
+0045729E    00000033    *       void __cdecl Matrix_PushUnit(void);
 004572D4    00000061    -R      void __fastcall flatA(int32_t y0, int32_t y1, BYTE colorIdx);
 00457335    0000013A    -R      void __fastcall transA(int32_t y0, int32_t y1, BYTE depthQ);
 0045746F    00000160    -R      void __fastcall gourA(int32_t y0, int32_t y1, BYTE colorIdx);
