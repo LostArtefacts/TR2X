@@ -1062,7 +1062,22 @@ typedef enum LARA_GUN_STATE {
     LGS_DRAW = 2,
     LGS_UNDRAW = 3,
     LGS_READY = 4,
+    LGS_SPECIAL = 5,
 } LARA_GUN_STATE;
+
+typedef enum LARA_GUN_TYPE {
+    LGT_UNARMED = 0,
+    LGT_PISTOLS = 1,
+    LGT_MAGNUMS = 2,
+    LGT_UZIS = 3,
+    LGT_SHOTGUN = 4,
+    LGT_M16 = 5,
+    LGT_ROCKET = 6,
+    LGT_HARPOON = 7,
+    LGT_FLARE = 8 ,
+    LGT_SKIDOO = 9,
+    NUM_WEAPONS = 10,
+} LARA_GUN_TYPE;
 
 typedef enum COLL_TYPE {
     COLL_NONE     = 0x00,
@@ -1386,7 +1401,7 @@ typedef enum LARA_MESH {
 0041BC30    000000FC    -R      void __cdecl InterpolateArmMatrix(void);
 0041BD30    0000014B    -R      void __cdecl DrawGunFlash(int32_t weapon_type, int32_t clip);
 0041BEA0    000000E8    -R      void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);
-0041BF90    00000092    -       int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
+0041BF90    00000092    *       int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
 0041C030    0000007C    *       int16_t *__cdecl Item_GetBoundsAccurate(const struct ITEM_INFO *item);
 0041C0B0    00000035    -R      int16_t *__cdecl GetBestFrame(struct ITEM_INFO *item);
 0041C0F0    00000048    -R      void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);
@@ -1666,8 +1681,8 @@ typedef enum LARA_MESH {
 0042B2E0    00000130    +       int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B410    00000075    +       int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);
 0042B490    000000BB    +       int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
-0042B550    0000038F    -       void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
-0042B8E0    0000031A    -       void __cdecl Lara_GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
+0042B550    0000038F    +       void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
+0042B8E0    0000031A    *       void __cdecl Lara_GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
 
 # game/lara1gun.c
 0042BC00    00000033    -R      void __cdecl draw_shotgun_meshes(int32_t weapon_type);
@@ -2412,8 +2427,8 @@ typedef enum LARA_MESH {
 00456FA0    0000023A    -R      LRESULT __stdcall SE_SetupWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 004571E0    00000026    -R      void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);
 00457210    0000006E    -R      void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);
-00457280    0000001E    -R      void __cdecl phd_PushMatrix(void);
-0045729E    00000033    -R      void __cdecl phd_PushUnitMatrix(void);
+00457280    0000001E    -R      void __cdecl Matrix_PushMatrix(void);
+0045729E    00000033    -R      void __cdecl Matrix_PushUnitMatrix(void);
 004572D4    00000061    -R      void __fastcall flatA(int32_t y0, int32_t y1, BYTE colorIdx);
 00457335    0000013A    -R      void __fastcall transA(int32_t y0, int32_t y1, BYTE depthQ);
 0045746F    00000160    -R      void __fastcall gourA(int32_t y0, int32_t y1, BYTE colorIdx);
@@ -2503,3 +2518,4 @@ typedef enum LARA_MESH {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
+00525BE8    -       int32_t *g_Bones;

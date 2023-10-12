@@ -1,6 +1,7 @@
 #include "game/lara/lara_misc.h"
 
 #include "game/math.h"
+#include "game/matrix.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -819,4 +820,106 @@ int32_t __cdecl Lara_CheckForLetGo(
     item->fall_speed = 1;
     g_Lara.gun_status = LGS_ARMLESS;
     return 1;
+}
+
+void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
+{
+    int16_t *frmptr[2] = { NULL, NULL };
+    if (g_Lara.hit_direction < 0) {
+        int32_t rate;
+        int32_t frac = Item_GetFrames(g_LaraItem, frmptr, &rate);
+        if (frac) {
+            Lara_GetLJAInt(g_LaraItem, vec, frmptr[0], frmptr[1], frac, rate);
+            return;
+        }
+    }
+
+    int16_t *frame_ptr = NULL;
+    const struct OBJECT_INFO *obj = &g_Objects[g_LaraItem->object_num];
+    if (g_Lara.hit_direction >= 0) {
+        enum LARA_ANIMATION anim_num;
+        switch (g_Lara.hit_direction) {
+        case DIR_EAST:
+            anim_num = LA_SPAZ_RIGHT;
+            break;
+        case DIR_SOUTH:
+            anim_num = LA_SPAZ_BACK;
+            break;
+        case DIR_WEST:
+            anim_num = LA_SPAZ_LEFT;
+            break;
+        default:
+            anim_num = LA_SPAZ_FORWARD;
+            break;
+        }
+        const struct ANIM_STRUCT *anim = &g_Anims[anim_num];
+        int32_t interpolation = anim->interpolation;
+        frame_ptr =
+            anim->frame_ptr + (int)(g_Lara.hit_frame * (interpolation >> 8));
+    } else {
+        frame_ptr = frmptr[0];
+    }
+
+    Matrix_PushUnitMatrix();
+    g_MatrixPtr->_03 = 0;
+    g_MatrixPtr->_13 = 0;
+    g_MatrixPtr->_23 = 0;
+    Matrix_RotYXZ(
+        g_LaraItem->pos.y_rot, g_LaraItem->pos.x_rot, g_LaraItem->pos.z_rot);
+
+    int16_t *rot = frame_ptr + 9;
+    int32_t *bone = &g_Bones[obj->bone_idx];
+
+    Matrix_TranslateRel(frame_ptr[6], frame_ptr[7], frame_ptr[8]);
+    gar_RotYXZsuperpack(&rot, 0);
+
+    Matrix_TranslateRel(bone[25], bone[26], bone[27]);
+    gar_RotYXZsuperpack(&rot, 6);
+    Matrix_RotYXZ(g_Lara.torso_y_rot, g_Lara.torso_x_rot, g_Lara.torso_z_rot);
+
+    enum LARA_GUN_TYPE gun_type = LGT_UNARMED;
+    if (g_Lara.gun_status == LGS_READY || g_Lara.gun_status == LGS_SPECIAL
+        || g_Lara.gun_status == LGS_DRAW || g_Lara.gun_status == LGS_UNDRAW) {
+        gun_type = g_Lara.gun_type;
+    }
+
+    if (g_Lara.gun_type == LGT_FLARE) {
+        Matrix_TranslateRel(bone[41], bone[42], bone[43]);
+        if (g_Lara.flare_control_left) {
+            const struct LARA_ARM *arm = &g_Lara.left_arm;
+            const struct ANIM_STRUCT *anim = &g_Anims[arm->anim_num];
+            rot = &arm->frame_base
+                       [(anim->interpolation >> 8)
+                            * (arm->frame_num - anim->frame_base)
+                        + 9];
+        } else {
+            rot = frame_ptr + 9;
+        }
+        gar_RotYXZsuperpack(&rot, 11);
+
+        Matrix_TranslateRel(bone[45], bone[46], bone[47]);
+        gar_RotYXZsuperpack(&rot, 0);
+
+        Matrix_TranslateRel(bone[49], bone[50], bone[51]);
+        gar_RotYXZsuperpack(&rot, 0);
+    } else if (gun_type != LGT_UNARMED) {
+        Matrix_TranslateRel(bone[29], bone[30], bone[31]);
+        const struct LARA_ARM *arm = &g_Lara.right_arm;
+        rot = &arm->frame_base
+                   [arm->frame_num * (g_Anims[arm->anim_num].interpolation >> 8)
+                    + 9];
+        gar_RotYXZsuperpack(&rot, 8);
+
+        Matrix_TranslateRel(bone[33], bone[34], bone[35]);
+        gar_RotYXZsuperpack(&rot, 0);
+
+        Matrix_TranslateRel(bone[37], bone[38], bone[39]);
+        gar_RotYXZsuperpack(&rot, 0);
+    }
+
+    Matrix_TranslateRel(vec->x, vec->y, vec->z);
+    vec->x = g_LaraItem->pos.x + (g_MatrixPtr->_03 >> W2V_SHIFT);
+    vec->y = g_LaraItem->pos.y + (g_MatrixPtr->_13 >> W2V_SHIFT);
+    vec->z = g_LaraItem->pos.z + (g_MatrixPtr->_23 >> W2V_SHIFT);
+    Matrix_Pop();
 }

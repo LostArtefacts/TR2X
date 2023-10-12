@@ -9,6 +9,11 @@
 
 #include <stdint.h>
 
+void __cdecl Matrix_Pop(void)
+{
+    g_MatrixPtr--;
+}
+
 void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos)
 {
     g_MatrixPtr = &g_MatrixStack[0];

@@ -32,3 +32,4 @@ int16_t __cdecl Lara_FloorFront(
 int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
 int32_t __cdecl Lara_CheckForLetGo(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
