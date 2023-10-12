@@ -1390,7 +1390,7 @@ typedef enum LARA_MESH {
 0041B780    00000027    +       void __cdecl Matrix_Push_I(void);
 0041B7B0    00000031    +       void __cdecl Matrix_RotY_I(int16_t ang);
 0041B7F0    00000031    +       void __cdecl Matrix_RotX_I(int16_t ang);
-0041B830    00000031    -       void __cdecl Matrix_RotZ_I(int16_t ang);
+0041B830    00000031    +       void __cdecl Matrix_RotZ_I(int16_t ang);
 0041B870    00000041    *       void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);
 0041B8C0    00000047    *       void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);
 0041B910    00000041    *       void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);
