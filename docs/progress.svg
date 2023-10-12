@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.17% (206)</tspan> · <tspan class="known">80.42% (965)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.25% (207)</tspan> · <tspan class="known">80.33% (964)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="128.24" height="6" x="0" y="0" class="decompiled"/>
-<rect width="600.71" height="6" x="128.24" y="0" class="known"/>
+<rect width="128.86" height="6" x="0" y="0" class="decompiled"/>
+<rect width="600.09" height="6" x="128.86" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -304,7 +304,7 @@
 <rect width="12" height="12" x="360" y="60" class="decompiled"><title>void __cdecl Matrix_RotZ_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="375" y="60" class="decompiled"><title>void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="390" y="60" class="decompiled"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
-<rect width="12" height="12" x="405" y="60" class="known"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
+<rect width="12" height="12" x="405" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
 <rect width="12" height="12" x="420" y="60" class="known"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>
 <rect width="12" height="12" x="435" y="60" class="known"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
 <rect width="12" height="12" x="450" y="60" class="known"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.66%</tspan> · <tspan class="known">90.01%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.68%</tspan> · <tspan class="known">89.99%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="72.19" height="6" x="0" y="0" class="decompiled"/>
-<rect width="672.35" height="6" x="72.19" y="0" class="known"/>
+<rect width="72.33" height="6" x="0" y="0" class="decompiled"/>
+<rect width="672.20" height="6" x="72.33" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2131,7 +2131,7 @@
 <rect width="4.36" height="4.22" x="640.46" y="320.13" class="known"><title>void __cdecl ShutThatDoor(struct DOORPOS_DATA *d);</title></rect>
 <rect width="4.36" height="4.22" x="640.46" y="327.35" class="known"><title>int32_t __cdecl UT_ErrorBox(UINT uID, HWND hWnd);</title></rect>
 <rect width="4.36" height="4.11" x="640.46" y="334.56" class="decompiled"><title>void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);</title></rect>
-<rect width="4.36" height="4.11" x="640.46" y="341.67" class="known"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
+<rect width="4.36" height="4.11" x="640.46" y="341.67" class="decompiled"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
 <rect width="4.36" height="4.11" x="640.46" y="348.78" class="known"><title>void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="4.36" height="4.11" x="640.46" y="355.89" class="known"><title>void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="3.98" height="4.38" x="647.83" y="261.18" class="known"><title>void __cdecl lara_normal_effect(struct ITEM_INFO *item);</title></rect>

@@ -202,7 +202,6 @@
 #define Object_DrawAnimatingItem ((void __cdecl (*)(struct ITEM_INFO *item))0x00419A70)
 #define Lara_Draw ((void __cdecl (*)(struct ITEM_INFO *item))0x00419DF0)
 #define Lara_Draw_I ((void __cdecl (*)(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate))0x0041AB20)
-#define Matrix_RotYXZ_I ((void __cdecl (*)(int16_t y, int16_t x, int16_t z))0x0041B910)
 #define Matrix_RotYXZsuperpack_I ((void __cdecl (*)(int16_t **pprot1, int16_t **pprot2, int32_t skip))0x0041B960)
 #define Matrix_RotYXZsuperpack ((void __cdecl (*)(int16_t **pprot, int32_t skip))0x0041B9A0)
 #define Output_InsertPolygons_I ((void __cdecl (*)(int16_t *ptr, int32_t clip))0x0041BA50)
