@@ -106,6 +106,7 @@ static void Inject_Lara_Misc(void)
     INJECT(1, 0x0042B490, Lara_LandedBad);
     INJECT(1, 0x0042DF70, Lara_CheckForLetGo);
     INJECT(1, 0x0042B550, Lara_GetJointAbsPosition);
+    INJECT(1, 0x0042B8E0, Lara_GetJointAbsPosition_I);
 }
 
 static void Inject_Lara_State(void)

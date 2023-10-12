@@ -1372,38 +1372,38 @@ typedef enum LARA_MESH {
 004186A0    00000287    -R      void __cdecl DinoControl(int16_t item_num);
 
 # game/draw.c
-00418950    00000037    -R      int32_t __cdecl DrawPhaseCinematic(void);
-00418990    00000037    -R      int32_t __cdecl DrawPhaseGame(void);
-004189D0    000002B0    -R      void __cdecl DrawRooms(int16_t current_room);
-00418C80    000001C6    -R      void __cdecl GetRoomBounds(void);
-00418E50    0000037F    -R      void __cdecl SetRoomBounds(int16_t *objptr, int32_t room_num, ROOM_INFO *parent);
-004191D0    000003D2    -R      void __cdecl ClipRoom(struct ROOM_INFO *r);
-004195B0    000000B4    -R      void __cdecl PrintRooms(int16_t room_num);
-00419670    00000218    -R      void __cdecl PrintObjects(int16_t room_num);
-00419890    00000147    -R      void __cdecl DrawEffect(int16_t fx_num);
-004199E0    00000083    -R      void __cdecl DrawSpriteItem(struct ITEM_INFO *item);
-00419A70    00000378    -R      void __cdecl DrawAnimatingItem(struct ITEM_INFO *item);
-00419DF0    00000D02    -R      void __cdecl DrawLara(struct ITEM_INFO *item);
-0041AB20    00000BC6    -R      void __cdecl DrawLaraInt(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
-0041B710    00000034    -R      void __cdecl InitInterpolate(int32_t frac, int32_t rate);
-0041B750    00000022    -R      void __cdecl phd_PopMatrix_I(void);
-0041B780    00000027    -R      void __cdecl phd_PushMatrix_I(void);
-0041B7B0    00000031    -R      void __cdecl phd_RotY_I(int16_t ang);
-0041B7F0    00000031    -R      void __cdecl phd_RotX_I(int16_t ang);
-0041B830    00000031    -R      void __cdecl phd_RotZ_I(int16_t ang);
-0041B870    00000041    -R      void __cdecl phd_TranslateRel_I(int32_t x, int32_t y, int32_t z);
-0041B8C0    00000047    -R      void __cdecl phd_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);
-0041B910    00000041    -R      void __cdecl phd_RotYXZ_I(int16_t y, int16_t x, int16_t z);
-0041B960    0000003D    -R      void __cdecl gar_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);
-0041B9A0    000000A1    -R      void __cdecl gar_RotYXZsuperpack(int16_t **pprot, int32_t skip);
-0041BA50    0000002A    -R      void __cdecl phd_PutPolygons_I(int16_t *ptr, int32_t clip);
-0041BA80    000001A5    -R      void __cdecl InterpolateMatrix(void);
-0041BC30    000000FC    -R      void __cdecl InterpolateArmMatrix(void);
-0041BD30    0000014B    -R      void __cdecl DrawGunFlash(int32_t weapon_type, int32_t clip);
-0041BEA0    000000E8    -R      void __cdecl CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);
+00418950    00000037    -       int32_t __cdecl Game_DrawCinematic(void);
+00418990    00000037    -       int32_t __cdecl Game_Draw(void);
+004189D0    000002B0    -       void __cdecl Room_DrawAllRooms(int16_t current_room);
+00418C80    000001C6    -       void __cdecl Room_GetBounds(void);
+00418E50    0000037F    -       void __cdecl Room_SetBounds(int16_t *objptr, int32_t room_num, ROOM_INFO *parent);
+004191D0    000003D2    -       void __cdecl Room_Clip(struct ROOM_INFO *r);
+004195B0    000000B4    -       void __cdecl Room_DrawSingleRoomGeometry(int16_t room_num);
+00419670    00000218    -       void __cdecl Room_DrawSingleRoomObjects(int16_t room_num);
+00419890    00000147    -       void __cdecl Effect_Draw(int16_t fx_num);
+004199E0    00000083    -       void __cdecl Object_DrawSpriteItem(struct ITEM_INFO *item);
+00419A70    00000378    -       void __cdecl Object_DrawAnimatingItem(struct ITEM_INFO *item);
+00419DF0    00000D02    -       void __cdecl Lara_Draw(struct ITEM_INFO *item);
+0041AB20    00000BC6    -       void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
+0041B710    00000034    *       void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);
+0041B750    00000022    -       void __cdecl Matrix_Pop_I(void);
+0041B780    00000027    -       void __cdecl Matrix_Push_I(void);
+0041B7B0    00000031    -       void __cdecl Matrix_RotY_I(int16_t ang);
+0041B7F0    00000031    -       void __cdecl Matrix_RotX_I(int16_t ang);
+0041B830    00000031    -       void __cdecl Matrix_RotZ_I(int16_t ang);
+0041B870    00000041    *       void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);
+0041B8C0    00000047    *       void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);
+0041B910    00000041    *       void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);
+0041B960    0000003D    *       void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);
+0041B9A0    000000A1    *       void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);
+0041BA50    0000002A    -       void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);
+0041BA80    000001A5    *       void __cdecl Matrix_Interpolate(void);
+0041BC30    000000FC    -       void __cdecl Matrix_InterpolateArm(void);
+0041BD30    0000014B    -       void __cdecl Gun_DrawFlash(int32_t weapon_type, int32_t clip);
+0041BEA0    000000E8    -       void __cdecl Output_CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);
 0041BF90    00000092    *       int32_t __cdecl Item_GetFrames(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate);
 0041C030    0000007C    *       int16_t *__cdecl Item_GetBoundsAccurate(const struct ITEM_INFO *item);
-0041C0B0    00000035    -R      int16_t *__cdecl GetBestFrame(struct ITEM_INFO *item);
+0041C0B0    00000035    -       int16_t *__cdecl Item_GetBestFrame(struct ITEM_INFO *item);
 0041C0F0    00000048    -R      void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);
 
 # game/eel.c
@@ -1682,7 +1682,7 @@ typedef enum LARA_MESH {
 0042B410    00000075    +       int16_t __cdecl Lara_FloorFront(struct ITEM_INFO *item, PHD_ANGLE ang, int32_t dist);
 0042B490    000000BB    +       int32_t __cdecl Lara_LandedBad(struct ITEM_INFO *item, struct COLL_INFO *coll);
 0042B550    0000038F    +       void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint);
-0042B8E0    0000031A    *       void __cdecl Lara_GetLJAInt(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
+0042B8E0    0000031A    +       void __cdecl Lara_GetJointAbsPosition_I(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);
 
 # game/lara1gun.c
 0042BC00    00000033    -R      void __cdecl draw_shotgun_meshes(int32_t weapon_type);
@@ -2427,8 +2427,8 @@ typedef enum LARA_MESH {
 00456FA0    0000023A    -R      LRESULT __stdcall SE_SetupWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 004571E0    00000026    -R      void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);
 00457210    0000006E    -R      void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);
-00457280    0000001E    -R      void __cdecl Matrix_PushMatrix(void);
-0045729E    00000033    -R      void __cdecl Matrix_PushUnitMatrix(void);
+00457280    0000001E    -       void __cdecl Matrix_PushMatrix(void);
+0045729E    00000033    *       void __cdecl Matrix_PushUnitMatrix(void);
 004572D4    00000061    -R      void __fastcall flatA(int32_t y0, int32_t y1, BYTE colorIdx);
 00457335    0000013A    -R      void __fastcall transA(int32_t y0, int32_t y1, BYTE depthQ);
 0045746F    00000160    -R      void __fastcall gourA(int32_t y0, int32_t y1, BYTE colorIdx);

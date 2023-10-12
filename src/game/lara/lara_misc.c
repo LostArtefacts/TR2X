@@ -829,7 +829,8 @@ void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
         int32_t rate;
         int32_t frac = Item_GetFrames(g_LaraItem, frmptr, &rate);
         if (frac) {
-            Lara_GetLJAInt(g_LaraItem, vec, frmptr[0], frmptr[1], frac, rate);
+            Lara_GetJointAbsPosition_I(
+                g_LaraItem, vec, frmptr[0], frmptr[1], frac, rate);
             return;
         }
     }
@@ -871,10 +872,10 @@ void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
     int32_t *bone = &g_Bones[obj->bone_idx];
 
     Matrix_TranslateRel(frame_ptr[6], frame_ptr[7], frame_ptr[8]);
-    gar_RotYXZsuperpack(&rot, 0);
+    Matrix_RotYXZsuperpack(&rot, 0);
 
     Matrix_TranslateRel(bone[25], bone[26], bone[27]);
-    gar_RotYXZsuperpack(&rot, 6);
+    Matrix_RotYXZsuperpack(&rot, 6);
     Matrix_RotYXZ(g_Lara.torso_y_rot, g_Lara.torso_x_rot, g_Lara.torso_z_rot);
 
     enum LARA_GUN_TYPE gun_type = LGT_UNARMED;
@@ -895,31 +896,107 @@ void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
         } else {
             rot = frame_ptr + 9;
         }
-        gar_RotYXZsuperpack(&rot, 11);
+        Matrix_RotYXZsuperpack(&rot, 11);
 
         Matrix_TranslateRel(bone[45], bone[46], bone[47]);
-        gar_RotYXZsuperpack(&rot, 0);
+        Matrix_RotYXZsuperpack(&rot, 0);
 
         Matrix_TranslateRel(bone[49], bone[50], bone[51]);
-        gar_RotYXZsuperpack(&rot, 0);
+        Matrix_RotYXZsuperpack(&rot, 0);
     } else if (gun_type != LGT_UNARMED) {
         Matrix_TranslateRel(bone[29], bone[30], bone[31]);
+
         const struct LARA_ARM *arm = &g_Lara.right_arm;
-        rot = &arm->frame_base
-                   [arm->frame_num * (g_Anims[arm->anim_num].interpolation >> 8)
-                    + 9];
-        gar_RotYXZsuperpack(&rot, 8);
+        const struct ANIM_STRUCT *anim = &g_Anims[arm->anim_num];
+        rot = &arm->frame_base[arm->frame_num * (anim->interpolation >> 8) + 9];
+        Matrix_RotYXZsuperpack(&rot, 8);
 
         Matrix_TranslateRel(bone[33], bone[34], bone[35]);
-        gar_RotYXZsuperpack(&rot, 0);
+        Matrix_RotYXZsuperpack(&rot, 0);
 
         Matrix_TranslateRel(bone[37], bone[38], bone[39]);
-        gar_RotYXZsuperpack(&rot, 0);
+        Matrix_RotYXZsuperpack(&rot, 0);
     }
 
     Matrix_TranslateRel(vec->x, vec->y, vec->z);
     vec->x = g_LaraItem->pos.x + (g_MatrixPtr->_03 >> W2V_SHIFT);
     vec->y = g_LaraItem->pos.y + (g_MatrixPtr->_13 >> W2V_SHIFT);
     vec->z = g_LaraItem->pos.z + (g_MatrixPtr->_23 >> W2V_SHIFT);
+    Matrix_Pop();
+}
+
+void __cdecl Lara_GetJointAbsPosition_I(
+    struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1,
+    int16_t *frame2, int32_t frac, int32_t rate)
+{
+    const struct OBJECT_INFO *obj = &g_Objects[item->object_num];
+
+    Matrix_PushUnitMatrix();
+    g_MatrixPtr->_03 = 0;
+    g_MatrixPtr->_13 = 0;
+    g_MatrixPtr->_23 = 0;
+    Matrix_RotYXZ(item->pos.y_rot, item->pos.x_rot, item->pos.z_rot);
+
+    int32_t *bone = &g_Bones[obj->bone_idx];
+    int16_t *rot1 = frame1 + 9;
+    int16_t *rot2 = frame2 + 9;
+    Matrix_InitInterpolate(frac, rate);
+
+    Matrix_TranslateRel_ID(
+        frame1[6], frame1[7], frame1[8], frame2[6], frame2[7], frame2[8]);
+    Matrix_RotYXZsuperpack_I(&rot1, &rot2, 0);
+
+    Matrix_TranslateRel_I(bone[25], bone[26], bone[27]);
+    Matrix_RotYXZsuperpack_I(&rot1, &rot2, 6);
+    Matrix_RotYXZ_I(g_Lara.torso_y_rot, g_Lara.torso_x_rot, g_Lara.torso_z_rot);
+
+    enum LARA_GUN_TYPE gun_type = LGT_UNARMED;
+    if (g_Lara.gun_status == LGS_READY || g_Lara.gun_status == LGS_SPECIAL
+        || g_Lara.gun_status == LGS_DRAW || g_Lara.gun_status == LGS_UNDRAW) {
+        gun_type = g_Lara.gun_type;
+    }
+
+    if (g_Lara.gun_type == LGT_FLARE) {
+        Matrix_Interpolate();
+        Matrix_TranslateRel(bone[29], bone[30], bone[31]);
+        if (g_Lara.flare_control_left) {
+            const struct LARA_ARM *arm = &g_Lara.left_arm;
+            const struct ANIM_STRUCT *anim = &g_Anims[arm->anim_num];
+            rot1 = &arm->frame_base
+                        [(anim->interpolation >> 8)
+                             * (arm->frame_num - anim->frame_base)
+                         + 9];
+        } else {
+            rot1 = frame1 + 9;
+        }
+        Matrix_RotYXZsuperpack(&rot1, 11);
+
+        Matrix_TranslateRel(bone[45], bone[46], bone[47]);
+        Matrix_RotYXZsuperpack(&rot1, 0);
+
+        Matrix_TranslateRel(bone[49], bone[50], bone[51]);
+        Matrix_RotYXZsuperpack(&rot1, 0);
+    } else if (gun_type != LGT_UNARMED) {
+        Matrix_Interpolate();
+        Matrix_TranslateRel(bone[29], bone[30], bone[31]);
+
+        const struct LARA_ARM *arm = &g_Lara.right_arm;
+        const struct ANIM_STRUCT *anim = &g_Anims[arm->anim_num];
+        rot1 =
+            &arm->frame_base[arm->frame_num * (anim->interpolation >> 8) + 9];
+        Matrix_RotYXZsuperpack(&rot1, 8);
+
+        Matrix_TranslateRel(bone[33], bone[34], bone[35]);
+        Matrix_RotYXZsuperpack(&rot1, 0);
+
+        Matrix_TranslateRel(bone[37], bone[38], bone[39]);
+        Matrix_RotYXZsuperpack(&rot1, 0);
+    }
+
+    Matrix_TranslateRel(vec->x, vec->y, vec->z);
+    vec->x = item->pos.x + (g_MatrixPtr->_03 >> W2V_SHIFT);
+    vec->y = item->pos.y + (g_MatrixPtr->_13 >> W2V_SHIFT);
+    vec->z = item->pos.z + (g_MatrixPtr->_23 >> W2V_SHIFT);
+
     Matrix_Pop();
 }
