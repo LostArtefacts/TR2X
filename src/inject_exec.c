@@ -60,6 +60,7 @@ static void Inject_Matrix(void)
     INJECT(1, 0x0041B7F0, Matrix_RotX_I);
     INJECT(1, 0x0041B830, Matrix_RotZ_I);
     INJECT(1, 0x0041B870, Matrix_TranslateRel_I);
+    INJECT(1, 0x0041B8C0, Matrix_TranslateRel_ID);
 }
 
 static void Inject_Math(void)

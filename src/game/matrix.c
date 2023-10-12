@@ -345,3 +345,13 @@ void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z)
     Matrix_TranslateRel(x, y, z);
     g_MatrixPtr = old_matrix;
 }
+
+void __cdecl Matrix_TranslateRel_ID(
+    int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2)
+{
+    Matrix_TranslateRel(x, y, z);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_TranslateRel(x2, y2, z2);
+    g_MatrixPtr = old_matrix;
+}

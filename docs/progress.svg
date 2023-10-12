@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.08% (205)</tspan> · <tspan class="known">80.50% (966)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.17% (206)</tspan> · <tspan class="known">80.42% (965)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="127.61" height="6" x="0" y="0" class="decompiled"/>
-<rect width="601.34" height="6" x="127.61" y="0" class="known"/>
+<rect width="128.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="600.71" height="6" x="128.24" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -303,7 +303,7 @@
 <rect width="12" height="12" x="345" y="60" class="decompiled"><title>void __cdecl Matrix_RotX_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="360" y="60" class="decompiled"><title>void __cdecl Matrix_RotZ_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="375" y="60" class="decompiled"><title>void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);</title></rect>
-<rect width="12" height="12" x="390" y="60" class="known"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
+<rect width="12" height="12" x="390" y="60" class="decompiled"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
 <rect width="12" height="12" x="405" y="60" class="known"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
 <rect width="12" height="12" x="420" y="60" class="known"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>
 <rect width="12" height="12" x="435" y="60" class="known"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.64%</tspan> · <tspan class="known">90.03%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.66%</tspan> · <tspan class="known">90.01%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="72.03" height="6" x="0" y="0" class="decompiled"/>
-<rect width="672.50" height="6" x="72.03" y="0" class="known"/>
+<rect width="72.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="672.35" height="6" x="72.19" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2109,7 +2109,7 @@
 <rect width="4.47" height="4.76" x="647.93" y="253.42" class="known"><title>void __cdecl WinStopFMV(bool isPlayback);</title></rect>
 <rect width="4.47" height="4.76" x="655.40" y="253.42" class="decompiled"><title>int32_t __fastcall Math_Atan(int32_t x, int32_t y);</title></rect>
 <rect width="4.36" height="4.76" x="662.87" y="253.42" class="known"><title>int32_t __cdecl Creature_Activate(int16_t item_num);</title></rect>
-<rect width="4.36" height="4.76" x="670.23" y="253.42" class="known"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
+<rect width="4.36" height="4.76" x="670.23" y="253.42" class="decompiled"><title>void __cdecl Matrix_TranslateRel_ID(int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);</title></rect>
 <rect width="4.36" height="4.76" x="677.60" y="253.42" class="decompiled"><title>void __cdecl Lara_State_Extra_YetiKill(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.26" height="4.76" x="684.96" y="253.42" class="known"><title>void __cdecl InitialiseKillerStatue(int16_t item_num);</title></rect>
 <rect width="4.26" height="4.76" x="692.22" y="253.42" class="known"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
