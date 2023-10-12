@@ -297,6 +297,13 @@ void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate)
     *g_IMMatrixPtr = *g_MatrixPtr;
 }
 
+void __cdecl Matrix_Push_I(void)
+{
+    Matrix_PushMatrix();
+    g_IMMatrixPtr[1] = g_IMMatrixPtr[0];
+    g_IMMatrixPtr++;
+}
+
 void __cdecl Matrix_Pop_I(void)
 {
     g_MatrixPtr--;

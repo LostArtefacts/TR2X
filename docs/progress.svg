@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.67% (200)</tspan> · <tspan class="known">80.92% (971)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">16.75% (201)</tspan> · <tspan class="known">80.83% (970)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="124.50" height="6" x="0" y="0" class="decompiled"/>
-<rect width="604.45" height="6" x="124.50" y="0" class="known"/>
+<rect width="125.12" height="6" x="0" y="0" class="decompiled"/>
+<rect width="603.82" height="6" x="125.12" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -298,7 +298,7 @@
 <rect width="12" height="12" x="270" y="60" class="known"><title>void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
 <rect width="12" height="12" x="285" y="60" class="decompiled"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
 <rect width="12" height="12" x="300" y="60" class="decompiled"><title>void __cdecl Matrix_Pop_I(void);</title></rect>
-<rect width="12" height="12" x="315" y="60" class="known"><title>void __cdecl Matrix_Push_I(void);</title></rect>
+<rect width="12" height="12" x="315" y="60" class="decompiled"><title>void __cdecl Matrix_Push_I(void);</title></rect>
 <rect width="12" height="12" x="330" y="60" class="known"><title>void __cdecl Matrix_RotY_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="345" y="60" class="known"><title>void __cdecl Matrix_RotX_I(int16_t ang);</title></rect>
 <rect width="12" height="12" x="360" y="60" class="known"><title>void __cdecl Matrix_RotZ_I(int16_t ang);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.57%</tspan> · <tspan class="known">90.10%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">9.58%</tspan> · <tspan class="known">90.09%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="71.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="673.06" height="6" x="71.48" y="0" class="known"/>
+<rect width="71.56" height="6" x="0" y="0" class="decompiled"/>
+<rect width="672.97" height="6" x="71.56" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2298,7 +2298,7 @@
 <rect width="2.94" height="2.56" x="687.09" y="357.44" class="known"><title>void __cdecl HWR_ResetTexSource(void);</title></rect>
 <rect width="2.86" height="2.50" x="693.03" y="300.51" class="known"><title>void __cdecl MakeAmmoString(char *string);</title></rect>
 <rect width="2.86" height="2.50" x="698.89" y="300.51" class="known"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
-<rect width="2.71" height="2.50" x="704.74" y="300.51" class="known"><title>void __cdecl Matrix_Push_I(void);</title></rect>
+<rect width="2.71" height="2.50" x="704.74" y="300.51" class="decompiled"><title>void __cdecl Matrix_Push_I(void);</title></rect>
 <rect width="2.71" height="2.50" x="710.46" y="300.51" class="decompiled"><title>void __cdecl Lara_State_PPReady(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="2.71" height="2.50" x="716.17" y="300.51" class="known"><title>void __cdecl InitialiseLevelFlags(void);</title></rect>
 <rect width="2.71" height="2.50" x="721.88" y="300.51" class="known"><title>void __cdecl T_DrawText(void);</title></rect>

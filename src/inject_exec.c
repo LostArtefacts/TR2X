@@ -55,6 +55,7 @@ static void Inject_Matrix(void)
     INJECT(1, 0x004018B0, Matrix_TranslateRel);
     INJECT(1, 0x0041B710, Matrix_InitInterpolate);
     INJECT(1, 0x0041B750, Matrix_Pop_I);
+    INJECT(1, 0x0041B780, Matrix_Push_I);
 }
 
 static void Inject_Math(void)
