@@ -25,3 +25,4 @@ void __cdecl Matrix_Pop_I(void);
 void __cdecl Matrix_RotX_I(int16_t ang);
 void __cdecl Matrix_RotY_I(int16_t ang);
 void __cdecl Matrix_RotZ_I(int16_t ang);
+void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);

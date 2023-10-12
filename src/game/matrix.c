@@ -336,3 +336,12 @@ void __cdecl Matrix_RotZ_I(int16_t ang)
     Matrix_RotZ(ang);
     g_MatrixPtr = old_matrix;
 }
+
+void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z)
+{
+    Matrix_TranslateRel(x, y, z);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_TranslateRel(x, y, z);
+    g_MatrixPtr = old_matrix;
+}
