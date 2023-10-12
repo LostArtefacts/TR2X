@@ -29,3 +29,5 @@ void __cdecl Matrix_TranslateRel_I(int32_t x, int32_t y, int32_t z);
 void __cdecl Matrix_TranslateRel_ID(
     int32_t x, int32_t y, int32_t z, int32_t x2, int32_t y2, int32_t z2);
 void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);
+void __cdecl Matrix_RotYXZsuperpack_I(
+    int16_t **pprot1, int16_t **pprot2, int32_t skip);

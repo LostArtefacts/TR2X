@@ -364,3 +364,13 @@ void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z)
     Matrix_RotYXZ(y, x, z);
     g_MatrixPtr = old_matrix;
 }
+
+void __cdecl Matrix_RotYXZsuperpack_I(
+    int16_t **pprot1, int16_t **pprot2, int32_t skip)
+{
+    Matrix_RotYXZsuperpack(pprot1, skip);
+    struct MATRIX *old_matrix = g_MatrixPtr;
+    g_MatrixPtr = g_IMMatrixPtr;
+    Matrix_RotYXZsuperpack(pprot2, skip);
+    g_MatrixPtr = old_matrix;
+}
