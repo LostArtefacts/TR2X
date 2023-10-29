@@ -5,6 +5,7 @@
 #include "game/lara/lara_misc.h"
 #include "game/lara/lara_state.h"
 #include "game/math.h"
+#include "game/math_misc.h"
 #include "game/matrix.h"
 #include "game/music.h"
 #include "game/shell.h"
@@ -77,6 +78,7 @@ static void Inject_Math(void)
     INJECT(1, 0x00457C58, Math_Cos);
     INJECT(1, 0x00457C5E, Math_Sin);
     INJECT(1, 0x00457C93, Math_Sqrt);
+    INJECT(1, 0x00401250, Math_GetVectorAngles);
 }
 
 static void Inject_Shell(void)

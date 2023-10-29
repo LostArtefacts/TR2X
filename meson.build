@@ -81,6 +81,7 @@ dll_sources = [
   'src/game/lara/lara_misc.c',
   'src/game/lara/lara_state.c',
   'src/game/math.c',
+  'src/game/math_misc.c',
   'src/game/matrix.c',
   'src/game/music.c',
   'src/game/shell.c',
