@@ -262,11 +262,11 @@ const int16_t *__cdecl Output_CalcRoomVertices(
             clip_flags = 0xFF80;
         } else {
             const double persp = g_FltPersp / zv;
+            const int32_t depth = zv_int >> W2V_SHIFT;
             vbuf->zv += base_z;
 
-            if (zv_int < 335544320) {
-                if (zv_int > 201326592) {
-                    const int32_t depth = zv_int >> W2V_SHIFT;
+            if (depth < FOG_END) {
+                if (depth > FOG_START) {
                     shade += depth - FOG_START;
                 }
                 vbuf->rhw = persp * g_FltRhwOPersp;
