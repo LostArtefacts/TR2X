@@ -69,12 +69,12 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.25% (231)</tspan> · <tspan class="known">78.33% (940)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.25% (231)</tspan> · <tspan class="known">78.25% (939)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="143.80" height="6" x="0" y="0" class="decompiled"/>
-<rect width="585.15" height="6" x="143.80" y="0" class="known"/>
-<rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
-<rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
+<rect width="584.53" height="6" x="143.80" y="0" class="known"/>
+<rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
+<rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
@@ -91,7 +91,7 @@
 <rect width="12" height="12" x="165" y="0" class="decompiled"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside);</title></rect>
 <rect width="12" height="12" x="180" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="195" y="0" class="decompiled"><title>void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="210" y="0" class="known"><title>void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="210" y="0" class="unused"><title>void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="225" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="240" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="255" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);</title></rect>
@@ -1281,11 +1281,11 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.20%</tspan> · <tspan class="known">88.48%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.20%</tspan> · <tspan class="known">88.47%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="83.63" height="6" x="0" y="0" class="decompiled"/>
 <rect width="660.91" height="6" x="83.63" y="0" class="known"/>
-<rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
+<rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2484,7 +2484,7 @@
 <rect width="0.10" height="0.10" x="748.43" y="357.62" class="known"><title>void __cdecl SE_SoundTestFinish(void);</title></rect>
 <rect width="0.10" height="0.10" x="746.86" y="360.18" class="known"><title>bool __cdecl RenderInit(void);</title></rect>
 <rect width="0.10" height="0.10" x="746.86" y="361.59" class="known"><title>int32_t __cdecl SE_GraphicsTestExecute(void);</title></rect>
-<rect width="0.10" height="0.10" x="748.57" y="360.18" class="known"><title>void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);</title></rect>
+<rect width="0.10" height="0.10" x="748.57" y="360.18" class="unused"><title>void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);</title></rect>
 <rect width="0.10" height="0.10" x="749.29" y="360.18" class="unused"><title>sub_444BC0</title></rect>
 <rect width="0.10" height="0.10" x="748.57" y="361.31" class="todo"><title>sub_448420</title></rect>
 <rect width="0.10" height="0.10" x="749.29" y="361.31" class="unused"><title>sub_44E6F0</title></rect>

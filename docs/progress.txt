@@ -1155,7 +1155,7 @@ typedef enum LARA_MESH {
 00401AE0    000000EA    +       void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside);
 00401BD0    00000032    +       const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);
 00401C10    00000134    +       void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);
-00401D50    00000001    -       void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);
+00401D50    00000001    x       void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);
 00401D60    000001D5    +       const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);
 00401F40    0000016D    +       const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
 004020B0    0000027D    +       const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);
