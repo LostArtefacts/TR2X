@@ -8,6 +8,7 @@
 #include "game/math_misc.h"
 #include "game/matrix.h"
 #include "game/music.h"
+#include "game/output.h"
 #include "game/shell.h"
 #include "game/sound.h"
 #include "inject_util.h"
@@ -18,6 +19,7 @@ static void Inject_Camera(void);
 static void Inject_Math(void);
 static void Inject_Matrix(void);
 static void Inject_Shell(void);
+static void Inject_Output(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
 static void Inject_Lara_Misc(void);
@@ -84,6 +86,11 @@ static void Inject_Math(void)
 static void Inject_Shell(void)
 {
     INJECT(1, 0x0044E890, Shell_ExitSystem);
+}
+
+static void Inject_Output(void)
+{
+    INJECT(1, 0x004019E0, Output_InsertPolygons);
 }
 
 static void Inject_Music(void)
@@ -290,6 +297,7 @@ void Inject_Exec(void)
     Inject_Math();
     Inject_Matrix();
     Inject_Shell();
+    Inject_Output();
     Inject_Music();
     Inject_Sound();
     Inject_Lara_Misc();

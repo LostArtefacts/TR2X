@@ -115,7 +115,7 @@ def make_var_pointer_define(variable: Symbol) -> str:
         call_type = match.group("call_type")
         func_name = match.group("func_name")
         args = match.group("args")
-        ret = f"#define {func_name} VAR_U_(0x{variable.offset:08X}, {ret_type}({call_type}*)({args}))"
+        ret = f"#define {func_name} (*({ret_type}({call_type}**)({args}))0x{variable.offset:08X})"
         return ret
 
     if match := re.match(
