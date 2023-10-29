@@ -398,3 +398,16 @@ void __cdecl Output_PrintPolyList(uint8_t *surface_ptr)
         g_PolyDrawRoutines[poly_type](obj_ptr);
     }
 }
+
+void __cdecl Output_SetNearZ(int32_t near_z)
+{
+    g_PhdNearZ = near_z;
+    g_FltNearZ = near_z;
+    g_FltRhwONearZ = g_RhwFactor / g_FltNearZ;
+    g_FltPerspONearZ = g_FltPersp / g_FltNearZ;
+
+    double res_z = 0.99 * g_FltNearZ * g_FltFarZ / (g_FltFarZ - g_FltNearZ);
+    g_FltResZ = res_z;
+    g_FltResZORhw = res_z / g_RhwFactor;
+    g_FltResZBuf = 0.005 + res_z / g_FltNearZ;
+}
