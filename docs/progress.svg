@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18% (216)</tspan> · <tspan class="known">79.58% (955)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.08% (217)</tspan> · <tspan class="known">79.50% (954)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="134.46" height="6" x="0" y="0" class="decompiled"/>
-<rect width="594.49" height="6" x="134.46" y="0" class="known"/>
+<rect width="135.08" height="6" x="0" y="0" class="decompiled"/>
+<rect width="593.86" height="6" x="135.08" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -88,7 +88,7 @@
 <rect width="12" height="12" x="120" y="0" class="decompiled"><title>bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="135" y="0" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="150" y="0" class="decompiled"><title>void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip);</title></rect>
-<rect width="12" height="12" x="165" y="0" class="known"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="165" y="0" class="decompiled"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="180" y="0" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="195" y="0" class="known"><title>void __cdecl Output_InsertBackground(int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="210" y="0" class="known"><title>void __cdecl Output_InsertInventoryBackground(int16_t *obj_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.12%</tspan> · <tspan class="known">89.55%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.18%</tspan> · <tspan class="known">89.49%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="75.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="668.98" height="6" x="75.56" y="0" class="known"/>
+<rect width="76.08" height="6" x="0" y="0" class="decompiled"/>
+<rect width="668.46" height="6" x="76.08" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1670,7 +1670,7 @@
 <rect width="10.68" height="11.07" x="603.26" y="105.68" class="known"><title>void __cdecl Lara_DoClimbLeftRight(struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t result, int32_t shift);</title></rect>
 <rect width="10.56" height="11.07" x="616.94" y="105.68" class="decompiled"><title>void __cdecl Camera_Chase(const struct ITEM_INFO *item);</title></rect>
 <rect width="10.45" height="11.07" x="630.50" y="105.68" class="decompiled"><title>void __cdecl Lara_State_SurfTread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="10.39" height="11.07" x="643.95" y="105.68" class="known"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
+<rect width="10.39" height="11.07" x="643.95" y="105.68" class="decompiled"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
 <rect width="10.28" height="11.07" x="657.34" y="105.68" class="known"><title>void __cdecl Output_CalculateObjectLighting(struct ITEM_INFO *item, int16_t *frame);</title></rect>
 <rect width="10.28" height="11.07" x="670.62" y="105.68" class="known"><title>BOOL __stdcall DInputEnumDevicesCallback(LPCDIDEVICEINSTANCE lpddi, LPVOID pvRef);</title></rect>
 <rect width="10.28" height="11.07" x="683.90" y="105.68" class="known"><title>void __cdecl CalculateWibbleTable(void);</title></rect>

@@ -20,3 +20,17 @@ void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip)
         g_Output_DrawObjectG3(obj_ptr + 1, *obj_ptr, ST_AVG_Z);
     }
 }
+
+void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside)
+{
+    g_FltWinLeft = (g_PhdWinMinX + g_PhdWinLeft);
+    g_FltWinTop = (g_PhdWinMinY + g_PhdWinTop);
+    g_FltWinRight = (g_PhdWinRight + g_PhdWinMinX + 1);
+    g_FltWinBottom = (g_PhdWinBottom + g_PhdWinMinY + 1);
+    g_FltWinCenterX = (g_PhdWinMinX + g_PhdWinCenterX);
+    g_FltWinCenterY = (g_PhdWinMinY + g_PhdWinCenterY);
+    obj_ptr = Output_CalcRoomVertices(obj_ptr, is_outside ? 0 : 16);
+    obj_ptr = g_Output_DrawObjectGT4(obj_ptr + 1, *obj_ptr, ST_MAX_Z);
+    obj_ptr = g_Output_DrawObjectGT3(obj_ptr + 1, *obj_ptr, ST_MAX_Z);
+    Output_InsertRoomSprite(obj_ptr + 1, *obj_ptr);
+}
