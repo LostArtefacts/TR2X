@@ -3,6 +3,7 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "util.h"
 
 void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip)
 {
@@ -153,6 +154,58 @@ const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr)
 
     for (int i = 0; i < count; i++) {
         g_PhdVBuf[i].g = 0xFFF;
+    }
+
+    return obj_ptr;
+}
+
+const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr)
+{
+    int32_t vtx_count = *obj_ptr++;
+
+    if (vtx_count > 0) {
+        if (g_LsDivider) {
+            // clang-format off
+            int32_t xv = (
+                g_LsVectorView.x * g_MatrixPtr->_00 +
+                g_LsVectorView.y * g_MatrixPtr->_10 +
+                g_LsVectorView.z * g_MatrixPtr->_20
+            ) / g_LsDivider;
+            int32_t yv = (
+                g_LsVectorView.x * g_MatrixPtr->_01 +
+                g_LsVectorView.y * g_MatrixPtr->_11 +
+                g_LsVectorView.z * g_MatrixPtr->_21
+            ) / g_LsDivider;
+            int32_t zv = (
+                g_LsVectorView.x * g_MatrixPtr->_02 +
+                g_LsVectorView.y * g_MatrixPtr->_12 +
+                g_LsVectorView.z * g_MatrixPtr->_22
+            ) / g_LsDivider;
+            // clang-format on
+
+            for (int i = 0; i < vtx_count; i++) {
+                int16_t shade = g_LsAdder
+                    + ((xv * obj_ptr[0] + yv * obj_ptr[1] + zv * obj_ptr[2])
+                       >> 16);
+                CLAMP(shade, 0, 0x1FFF);
+
+                g_PhdVBuf[i].g = shade;
+                obj_ptr += 3;
+            }
+        } else {
+            int16_t shade = g_LsAdder;
+            CLAMP(shade, 0, 0x1FFF);
+            obj_ptr += 3 * vtx_count;
+            for (int i = 0; i < vtx_count; i++) {
+                g_PhdVBuf[i].g = shade;
+            }
+        }
+    } else if (vtx_count < 0) {
+        for (int i = 0; i < -vtx_count; i++) {
+            int16_t shade = g_LsAdder + *obj_ptr++;
+            CLAMP(shade, 0, 0x1FFF);
+            g_PhdVBuf[i].g = shade;
+        }
     }
 
     return obj_ptr;

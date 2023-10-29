@@ -1152,7 +1152,7 @@ typedef enum LARA_MESH {
 00401C10    00000134    +       void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);
 00401D50    00000001    -       void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);
 00401D60    000001D5    +       const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);
-00401F40    0000016D    -       const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
+00401F40    0000016D    +       const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
 004020B0    0000027D    -       const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);
 00402330    000000C7    -       void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
 00402400    00000039    -       void __cdecl Output_InitPolyList(void);
@@ -2460,6 +2460,7 @@ typedef enum LARA_MESH {
 0046C300    -       int32_t g_MidSort = 0;
 0046C304    -       float g_ViewportAspectRatio = 0.0f;
 0046E310    -       int32_t g_PhdWinTop;
+00470318    -       int32_t g_LsAdder;
 0047031C    -       float g_FltWinBottom;
 00470320    -       float g_FltResZBuf;
 00470324    -       float g_FltResZ;
@@ -2502,8 +2503,10 @@ typedef enum LARA_MESH {
 004BCB50    -       int16_t *(__cdecl *g_Output_DrawObjectG3)(const int16_t*,int32_t, enum SORT_TYPE);
 004BCB58    -       struct MATRIX g_MatrixStack[];
 004BF3D8    -       int32_t g_PhdScreenWidth;
+004BF3DC    -       int32_t g_LsDivider;
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
 004D6B60    -       float g_FltWinRight;
+004D6B68    -       struct PHD_VECTOR g_LsVectorView;
 004D6BF8    -       int32_t g_PhdWinRight;
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;

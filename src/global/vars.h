@@ -16,6 +16,7 @@
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f
 #define g_PhdWinTop (*(int32_t*)0x0046E310)
+#define g_LsAdder (*(int32_t*)0x00470318)
 #define g_FltWinBottom (*(float*)0x0047031C)
 #define g_FltResZBuf (*(float*)0x00470320)
 #define g_FltResZ (*(float*)0x00470324)
@@ -54,8 +55,10 @@
 #define g_Output_DrawObjectG3 (*(int16_t *(__cdecl **)(const int16_t*,int32_t, enum SORT_TYPE))0x004BCB50)
 #define g_MatrixStack (*(struct MATRIX(*)[])0x004BCB58)
 #define g_PhdScreenWidth (*(int32_t*)0x004BF3D8)
+#define g_LsDivider (*(int32_t*)0x004BF3DC)
 #define g_PhdVBuf (*(struct PHD_VBUF(*)[1500])0x004BF3E0)
 #define g_FltWinRight (*(float*)0x004D6B60)
+#define g_LsVectorView (*(struct PHD_VECTOR*)0x004D6B68)
 #define g_PhdWinRight (*(int32_t*)0x004D6BF8)
 #define g_CineFrameCurrent (*(int32_t*)0x004D7780)
 #define g_IsChunkyCamera (*(int32_t*)0x004D778C)
