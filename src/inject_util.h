@@ -12,9 +12,6 @@ typedef struct {
 
 void InjectImpl(bool enable, void (*from)(void), void (*to)(void));
 
-#define VAR_U_(address, type) (*(type *)(address))
-#define VAR_I_(address, type, value) (*(type *)(address))
-#define ARRAY_(address, type, length) (*(type(*) length)(address))
 #define INJECT(enable, from, to)                                               \
     {                                                                          \
         InjectImpl(enable, (void (*)(void))from, (void (*)(void))to);          \

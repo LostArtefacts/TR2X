@@ -2468,10 +2468,10 @@ typedef enum LARA_MESH {
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
 004B29F0    -       int32_t g_PhdWinMaxX;
-004B2A1C    -       int32_t g_PhdWinMaxY;
 004B2A00    -       float g_FltWinCenterX;
 004B2A04    -       float g_FltWinCenterY;
 004B2A10    -       int16_t g_PhdWinMinX;
+004B2A1C    -       int32_t g_PhdWinMaxY;
 004B2A28    -       struct MATRIX *g_MatrixPtr;
 004B2A2C    -       int16_t *(__cdecl *g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);
 004B2A30    -       int16_t *(__cdecl *g_Output_DrawObjectGT4)(const int16_t*, int32_t, enum SORT_TYPE);

@@ -127,11 +127,11 @@ def make_var_pointer_define(variable: Symbol) -> str:
         array_def = match.group("array_def")
         value_def = match.group("value_def")
         if array_def:
-            return f"#define {var_name} ARRAY_(0x{variable.offset:08X}, {ret_type}, {array_def})"
+            return f"#define {var_name} (*({ret_type}(*){array_def})0x{variable.offset:08X})"
         elif value_def:
-            return f"#define {var_name} VAR_I_(0x{variable.offset:08X}, {ret_type}, {value_def})"
+            return f"#define {var_name} (*({ret_type}*)0x{variable.offset:08X}) // = {value_def}"
         else:
-            return f"#define {var_name} VAR_U_(0x{variable.offset:08X}, {ret_type})"
+            return f"#define {var_name} (*({ret_type}*)0x{variable.offset:08X})"
     return ""
 
 
@@ -165,7 +165,7 @@ def make_vars_h(variables: list[Symbol]) -> None:
     footer = ["// clang-format on"]
 
     defines = []
-    for variable in variables:
+    for variable in sorted(variables, key=lambda symbol: symbol.offset):
         if "+" not in variable.flags and (
             define := make_var_pointer_define(variable)
         ):
