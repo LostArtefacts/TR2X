@@ -1520,4 +1520,9 @@ typedef enum DIRECTION {
     DIR_WEST = 3,
 } DIRECTION;
 
+typedef struct XBUF_X {
+    int32_t x1;
+    int32_t x2;
+} XBUF_X;
+
 #pragma pack(pop)

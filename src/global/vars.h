@@ -17,6 +17,8 @@
 #define g_LaraOldSlideAngle (*(int16_t*)0x00465AD8) // = 1
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f
+#define g_XGenY1 (*(int32_t*)0x0046C308)
+#define g_XGenY2 (*(int32_t*)0x0046C30C)
 #define g_PhdWinTop (*(int32_t*)0x0046E310)
 #define g_LsAdder (*(int32_t*)0x00470318)
 #define g_FltWinBottom (*(float*)0x0047031C)
@@ -71,6 +73,7 @@
 #define g_PhdScreenWidth (*(int32_t*)0x004BF3D8)
 #define g_LsDivider (*(int32_t*)0x004BF3DC)
 #define g_PhdVBuf (*(struct PHD_VBUF(*)[1500])0x004BF3E0)
+#define g_XBuffer ((void*)0x004CAF60)
 #define g_FltWinRight (*(float*)0x004D6B60)
 #define g_LsVectorView (*(struct PHD_VECTOR*)0x004D6B68)
 #define g_WibbleTable (*(float(*)[32])0x004D6B78)

@@ -32,6 +32,10 @@ class Symbol:
     signature: str
     flags: str = ""
 
+    @property
+    def offset_str(self) -> str:
+        return f'0x{self.offset:08X}'
+
 
 @dataclass
 class ProgressFile:
@@ -102,7 +106,7 @@ def make_func_pointer_define(function: Symbol) -> str:
         ret_type = match.group("ret_type").strip()
         func_name = match.group("func_name").strip()
         args = match.group("args").strip()
-        return f"#define {func_name} (({ret_type} (*)({args}))0x{function.offset:08X})"
+        return f"#define {func_name} (({ret_type} (*)({args})){function.offset_str})"
     return ""
 
 
@@ -122,9 +126,9 @@ def make_var_pointer_define(variable: Symbol) -> str:
         func_name = match.group("func_name")
         args = match.group("args")
         if array_def:
-            return f'#define {func_name} (*(({ret_type}({call_type} *(*){array_def})({args}))0x{variable.offset:08X}))'
+            return f'#define {func_name} (*(({ret_type}({call_type} *(*){array_def})({args})){variable.offset_str}))'
         else:
-            return f"#define {func_name} (*({ret_type}({call_type}**)({args}))0x{variable.offset:08X})"
+            return f"#define {func_name} (*({ret_type}({call_type}**)({args})){variable.offset_str})"
 
     if match := re.match(
         r"^(?P<ret_type>.+?)\s*(?P<var_name>\w+)\s*(?P<array_def>\[[^\]]*?\])?(\s*=\s*(?P<value_def>.*?))?;?$",
@@ -134,12 +138,14 @@ def make_var_pointer_define(variable: Symbol) -> str:
         var_name = match.group("var_name")
         array_def = match.group("array_def")
         value_def = match.group("value_def")
+        if not array_def and not value_def and re.match('void\s*\*', ret_type):
+            return f"#define {var_name} ((void*){variable.offset_str})"
         if array_def:
-            return f"#define {var_name} (*({ret_type}(*){array_def})0x{variable.offset:08X})"
+            return f"#define {var_name} (*({ret_type}(*){array_def}){variable.offset_str})"
         elif value_def:
-            return f"#define {var_name} (*({ret_type}*)0x{variable.offset:08X}) // = {value_def}"
+            return f"#define {var_name} (*({ret_type}*){variable.offset_str}) // = {value_def}"
         else:
-            return f"#define {var_name} (*({ret_type}*)0x{variable.offset:08X})"
+            return f"#define {var_name} (*({ret_type}*){variable.offset_str})"
 
     print('warn: unrecognized signature', variable.signature)
     return ""

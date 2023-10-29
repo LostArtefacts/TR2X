@@ -7,6 +7,29 @@
 #include "global/vars.h"
 #include "util.h"
 
+static void __fastcall Output_FlatA(int32_t y1, int32_t y2, uint8_t color_idx)
+{
+    int32_t y_size = y2 - y1;
+    if (y_size <= 0) {
+        return;
+    }
+
+    int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_X *xbuf = ((const struct XBUF_X *)g_XBuffer) + y1;
+    uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
+
+    while (y_size > 0) {
+        int32_t x = xbuf->x1 / PHD_ONE;
+        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+        if (x_size > 0) {
+            memset(draw_ptr + x, color_idx, x_size);
+        }
+        y_size--;
+        xbuf++;
+        draw_ptr += stride;
+    }
+}
+
 void __cdecl Output_Init(
     int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
     int32_t far_z, int16_t view_angle, int32_t screen_width,
@@ -525,4 +548,113 @@ void __cdecl Output_AlterFOV(int16_t fov)
 
     g_ViewportAspectRatio =
         window_aspect_ratio / ((double)g_PhdWinWidth / (double)g_PhdWinHeight);
+}
+
+void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr)
+{
+    int32_t x1 = *obj_ptr++;
+    int32_t y1 = *obj_ptr++;
+    int32_t x2 = *obj_ptr++;
+    int32_t y2 = *obj_ptr++;
+    uint8_t lcolor = (uint8_t)*obj_ptr;
+
+    if (x2 < x1) {
+        int32_t tmp;
+        SWAP(x1, x2, tmp);
+        SWAP(y1, y2, tmp);
+    }
+
+    if (x2 < 0 || x1 > g_PhdWinMaxX) {
+        return;
+    }
+
+    if (x1 < 0) {
+        y1 -= x1 * (y2 - y1) / (x2 - x1);
+        x1 = 0;
+    }
+
+    if (x2 > g_PhdWinMaxX) {
+        y2 = y1 + (y2 - y1) * (g_PhdWinMaxX - x1) / (x2 - x1);
+        x2 = g_PhdWinMaxX;
+    }
+
+    if (y2 < y1) {
+        int32_t tmp;
+        SWAP(x1, x2, tmp);
+        SWAP(y1, y2, tmp);
+    }
+
+    if (y2 < 0 || y1 > g_PhdWinMaxY) {
+        return;
+    }
+
+    if (y1 < 0) {
+        x1 -= y1 * (x2 - x1) / (y2 - y1);
+        y1 = 0;
+    }
+
+    if (y2 > g_PhdWinMaxY) {
+        x2 = x1 + (x2 - x1) * (g_PhdWinMaxY - y1) / (y2 - y1);
+        y2 = g_PhdWinMaxY;
+    }
+
+    int32_t x_size = x2 - x1;
+    int32_t y_size = y2 - y1;
+    uint8_t *draw_ptr = &g_PrintSurfacePtr[x1 + g_PhdScreenWidth * y1];
+
+    if (!x_size && !y_size) {
+        *draw_ptr = lcolor;
+        return;
+    }
+
+    int32_t x_add = 0;
+    if (x_size < 0) {
+        x_add = -1;
+        x_size = -x_size;
+    } else {
+        x_add = 1;
+    }
+
+    int32_t y_add;
+    if (y_size < 0) {
+        y_add = -g_PhdScreenWidth;
+        y_size = -y_size;
+    } else {
+        y_add = g_PhdScreenWidth;
+    }
+
+    int32_t col_add;
+    int32_t row_add;
+    int32_t cols;
+    int32_t rows;
+    if (x_size >= y_size) {
+        col_add = x_add;
+        row_add = y_add;
+        cols = x_size + 1;
+        rows = y_size + 1;
+    } else {
+        col_add = y_add;
+        row_add = x_add;
+        cols = y_size + 1;
+        rows = x_size + 1;
+    }
+
+    int32_t part_sum = 0;
+    int32_t part = PHD_ONE * rows / cols;
+    for (int i = 0; i < cols; i++) {
+        part_sum += part;
+        *draw_ptr = lcolor;
+        draw_ptr += col_add;
+        if (part_sum >= PHD_ONE) {
+            draw_ptr += row_add;
+            part_sum -= PHD_ONE;
+        }
+    }
+}
+
+void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr)
+{
+    if (Output_XGenX(obj_ptr + 1)) {
+        Output_FlatA(g_XGenY1, g_XGenY2, *obj_ptr);
+    }
 }
