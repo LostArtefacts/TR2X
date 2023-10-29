@@ -102,6 +102,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402470, Output_QuickSort);
     INJECT(1, 0x00402540, Output_PrintPolyList);
     INJECT(1, 0x00402690, Output_SetNearZ);
+    INJECT(1, 0x004026E0, Output_SetFarZ);
 }
 
 static void Inject_Music(void)

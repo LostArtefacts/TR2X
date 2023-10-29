@@ -7,7 +7,6 @@
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
 #define Viewport_AlterFOV ((void __cdecl (*)(int16_t fov))0x00402580)
-#define Output_SetFarZ ((void __cdecl (*)(int32_t far_z))0x004026E0)
 #define Viewport_Init ((void __cdecl (*)(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height))0x00402700)
 #define Output_DrawPolyLine ((void __cdecl (*)(int16_t *obj_ptr))0x00402970)
 #define Output_DrawPolyFlat ((void __cdecl (*)(int16_t *obj_ptr))0x00402B10)
