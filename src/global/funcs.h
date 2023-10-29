@@ -5,11 +5,10 @@
 #include "global/types.h"
 
 // clang-format off
-#define Output_InsertBackground ((void __cdecl (*)(int16_t *obj_ptr))0x00401C10)
-#define Output_InsertInventoryBackground ((void __cdecl (*)(int16_t *obj_ptr))0x00401D50)
-#define Output_CalcObjectVertices ((const int16_t __cdecl * (*)(const int16_t *obj_ptr))0x00401D60)
-#define Output_CalcVerticeLight ((const int16_t __cdecl * (*)(const int16_t *obj_ptr))0x00401F40)
-#define Output_CalcRoomVertices ((const int16_t __cdecl * (*)(const int16_t *obj_ptr, int32_t far_clip))0x004020B0)
+#define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
+#define Output_CalcObjectVertices ((const int16_t *__cdecl (*)(const int16_t *obj_ptr))0x00401D60)
+#define Output_CalcVerticeLight ((const int16_t *__cdecl (*)(const int16_t *obj_ptr))0x00401F40)
+#define Output_CalcRoomVertices ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t far_clip))0x004020B0)
 #define Output_RotateLight ((void __cdecl (*)(int16_t pitch, int16_t yaw))0x00402330)
 #define Output_InitPolyList ((void __cdecl (*)(void))0x00402400)
 #define Output_SortPolyList ((void __cdecl (*)(void))0x00402430)

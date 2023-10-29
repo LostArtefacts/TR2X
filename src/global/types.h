@@ -161,48 +161,48 @@ typedef struct JOYSTICK_LIST {
 } JOYSTICK_LIST;
 
 typedef enum RENDER_MODE {
-    RM_Unknown,
-    RM_Software,
-    RM_Hardware,
+    RM_UNKNOWN,
+    RM_SOFTWARE,
+    RM_HARDWARE,
 } RENDER_MODE;
 
 typedef enum ASPECT_MODE {
     AM_4_3,
     AM_16_9,
-    AM_Any,
+    AM_ANY,
 } ASPECT_MODE;
 
 typedef enum TEX_ADJUST_MODE {
-    TAM_Disabled,
-    TAM_BilinearOnly,
-    TAM_Always,
+    TAM_DISABLED,
+    TAM_BILINEAR_ONLY,
+    TAM_ALWAYS,
 } TEX_ADJUST_MODE;
 
 typedef struct APP_SETTINGS {
-    struct DISPLAY_ADAPTER_NODE *PreferredDisplayAdapter;
-    struct SOUND_ADAPTER_NODE *PreferredSoundAdapter;
-    struct JOYSTICK_NODE *PreferredJoystick;
-    struct DISPLAY_MODE_NODE *VideoMode;
-    enum RENDER_MODE RenderMode;
-    int32_t WindowWidth;
-    int32_t WindowHeight;
-    enum ASPECT_MODE AspectMode;
-    bool PerspectiveCorrect;
-    bool Dither;
-    bool ZBuffer;
-    bool BilinearFiltering;
-    bool TripleBuffering;
-    bool FullScreen;
-    bool SoundEnabled;
-    bool LaraMic;
-    bool JoystickEnabled;
-    bool Disable16BitTextures;
-    bool DontSortPrimitives;
-    bool FlipBroken;
-    bool DisableFMV;
-    TEX_ADJUST_MODE TexelAdjustMode;
-    int32_t NearestAdjustment;
-    int32_t LinearAdjustment;
+    struct DISPLAY_ADAPTER_NODE *preferred_display_adapter;
+    struct SOUND_ADAPTER_NODE *preferred_sound_adapter;
+    struct JOYSTICK_NODE *preferred_joystick;
+    struct DISPLAY_MODE_NODE *video_mode;
+    enum RENDER_MODE render_mode;
+    int32_t window_width;
+    int32_t window_height;
+    enum ASPECT_MODE aspect_mode;
+    bool perspective_correct;
+    bool dither;
+    bool zbuffer;
+    bool bilinear_filtering;
+    bool triple_buffering;
+    bool fullscreen;
+    bool sound_enabled;
+    bool lara_mic;
+    bool joystick_enabled;
+    bool disable_16bit_textures;
+    bool dont_sort_primitives;
+    bool flip_broken;
+    bool disable_fmv;
+    TEX_ADJUST_MODE texel_adjust_mode;
+    int32_t nearest_adjustment;
+    int32_t linear_adjustment;
 } APP_SETTINGS;
 
 struct TEXPAGE_DESC {

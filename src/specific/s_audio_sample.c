@@ -270,16 +270,16 @@ void __cdecl S_Audio_Sample_Init2(HWND hwnd)
     memset(g_SampleBuffers, 0, sizeof(g_SampleBuffers));
     memset(g_ChannelBuffers, 0, sizeof(g_ChannelBuffers));
 
-    g_Camera.is_lara_mic = g_SavedAppSettings.LaraMic;
+    g_Camera.is_lara_mic = g_SavedAppSettings.lara_mic;
     g_IsSoundEnabled = false;
 
-    if (!g_SavedAppSettings.SoundEnabled
-        || !g_SavedAppSettings.PreferredSoundAdapter) {
+    if (!g_SavedAppSettings.sound_enabled
+        || !g_SavedAppSettings.preferred_sound_adapter) {
         return;
     }
 
     struct SOUND_ADAPTER *preferred =
-        &g_SavedAppSettings.PreferredSoundAdapter->body;
+        &g_SavedAppSettings.preferred_sound_adapter->body;
     g_CurrentSoundAdapter = *preferred;
 
     S_FlaggedString_Copy(
