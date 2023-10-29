@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.25% (219)</tspan> · <tspan class="known">79.33% (952)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.33% (220)</tspan> · <tspan class="known">79.25% (951)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="136.33" height="6" x="0" y="0" class="decompiled"/>
-<rect width="592.62" height="6" x="136.33" y="0" class="known"/>
+<rect width="136.95" height="6" x="0" y="0" class="decompiled"/>
+<rect width="592" height="6" x="136.95" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -92,7 +92,7 @@
 <rect width="12" height="12" x="180" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="195" y="0" class="decompiled"><title>void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="210" y="0" class="known"><title>void __cdecl Output_InsertInventoryBackground(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="225" y="0" class="known"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="225" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="240" y="0" class="known"><title>const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="255" y="0" class="known"><title>const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="270" y="0" class="known"><title>void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.29%</tspan> · <tspan class="known">89.38%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.43%</tspan> · <tspan class="known">89.24%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="76.87" height="6" x="0" y="0" class="decompiled"/>
-<rect width="667.67" height="6" x="76.87" y="0" class="known"/>
+<rect width="77.90" height="6" x="0" y="0" class="decompiled"/>
+<rect width="666.63" height="6" x="77.90" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1484,7 +1484,7 @@
 <rect width="16.34" height="16.57" x="408.09" y="304.30" class="known"><title>void __cdecl ShowGymStatsText(char *time_str, int32_t type);</title></rect>
 <rect width="16.34" height="16.57" x="408.09" y="323.87" class="known"><title>BOOL __cdecl LoadItems(HANDLE hFile);</title></rect>
 <rect width="16.34" height="16.57" x="408.09" y="343.43" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
-<rect width="16.85" height="16.03" x="427.43" y="21.13" class="known"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
+<rect width="16.85" height="16.03" x="427.43" y="21.13" class="decompiled"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="16.63" height="16.03" x="447.27" y="21.13" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
 <rect width="16.47" height="16.03" x="466.91" y="21.13" class="known"><title>void __cdecl S_DrawHealthBar(int32_t percent);</title></rect>
 <rect width="16.34" height="16.03" x="486.37" y="21.13" class="known"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>

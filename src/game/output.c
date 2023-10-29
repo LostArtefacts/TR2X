@@ -1,5 +1,6 @@
 #include "game/output.h"
 
+#include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -61,6 +62,83 @@ void __cdecl Output_InsertSkybox(const int16_t *obj_ptr)
             HWR_EnableZBuffer(1, 1);
         }
     }
+}
+
+const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr)
+{
+    const double base_z =
+        g_SavedAppSettings.zbuffer ? 0.0 : (g_MidSort << (W2V_SHIFT + 8));
+    uint8_t total_clip = 0xFF;
+
+    obj_ptr++; // skip poly counter
+    const int32_t vtx_count = *obj_ptr++;
+
+    for (int i = 0; i < vtx_count; i++) {
+        struct PHD_VBUF *const vbuf = &g_PhdVBuf[i];
+
+        // clang-format off
+        const struct MATRIX *const mptr = g_MatrixPtr;
+        const double xv = (
+            mptr->_00 * obj_ptr[0] +
+            mptr->_01 * obj_ptr[1] +
+            mptr->_02 * obj_ptr[2] +
+            mptr->_03
+        );
+        const double yv = (
+            mptr->_10 * obj_ptr[0] +
+            mptr->_11 * obj_ptr[1] +
+            mptr->_12 * obj_ptr[2] +
+            mptr->_13
+        );
+        double zv = (
+            mptr->_20 * obj_ptr[0] +
+            mptr->_21 * obj_ptr[1] +
+            mptr->_22 * obj_ptr[2] +
+            mptr->_23
+        );
+        // clang-format on
+
+        vbuf->xv = xv;
+        vbuf->yv = yv;
+
+        uint8_t clip_flags;
+        if (zv < g_FltNearZ) {
+            vbuf->zv = zv;
+            clip_flags = 0x80;
+        } else {
+
+            if (zv >= g_FltFarZ) {
+                zv = g_FltFarZ;
+                vbuf->zv = zv;
+            } else {
+                vbuf->zv = zv + base_z;
+            }
+
+            const double persp = g_FltPersp / zv;
+            vbuf->xs = persp * xv + g_FltWinCenterX;
+            vbuf->ys = persp * yv + g_FltWinCenterY;
+            vbuf->rhw = persp * g_FltRhwOPersp;
+
+            clip_flags = 0x00;
+            if (vbuf->xs < g_FltWinLeft) {
+                clip_flags |= 1;
+            } else if (vbuf->xs > g_FltWinRight) {
+                clip_flags |= 2;
+            }
+
+            if (vbuf->ys < g_FltWinTop) {
+                clip_flags |= 4;
+            } else if (vbuf->ys > g_FltWinBottom) {
+                clip_flags |= 8;
+            }
+        }
+
+        vbuf->clip = clip_flags;
+        total_clip &= clip_flags;
+        obj_ptr += 3;
+    }
+
+    return total_clip == 0 ? obj_ptr : 0;
 }
 
 const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr)
