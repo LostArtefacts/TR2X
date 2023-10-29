@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_QuickSort ((void __cdecl (*)(int32_t left, int32_t right))0x00402470)
 #define Output_PrintPolyList ((void __cdecl (*)(uint8_t *surface_ptr))0x00402540)
 #define Viewport_AlterFOV ((void __cdecl (*)(int16_t fov))0x00402580)
 #define Output_SetNearZ ((void __cdecl (*)(int32_t near_z))0x00402690)

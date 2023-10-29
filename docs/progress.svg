@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.75% (225)</tspan> · <tspan class="known">78.83% (946)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.83% (226)</tspan> · <tspan class="known">78.75% (945)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="140.06" height="6" x="0" y="0" class="decompiled"/>
-<rect width="588.88" height="6" x="140.06" y="0" class="known"/>
+<rect width="140.68" height="6" x="0" y="0" class="decompiled"/>
+<rect width="588.26" height="6" x="140.68" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -98,7 +98,7 @@
 <rect width="12" height="12" x="270" y="0" class="decompiled"><title>void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);</title></rect>
 <rect width="12" height="12" x="285" y="0" class="decompiled"><title>void __cdecl Output_InitPolyList(void);</title></rect>
 <rect width="12" height="12" x="300" y="0" class="decompiled"><title>void __cdecl Output_SortPolyList(void);</title></rect>
-<rect width="12" height="12" x="315" y="0" class="known"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
+<rect width="12" height="12" x="315" y="0" class="decompiled"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
 <rect width="12" height="12" x="330" y="0" class="known"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
 <rect width="12" height="12" x="345" y="0" class="known"><title>void __cdecl Viewport_AlterFOV(int16_t fov);</title></rect>
 <rect width="12" height="12" x="360" y="0" class="known"><title>void __cdecl Output_SetNearZ(int32_t near_z);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.82%</tspan> · <tspan class="known">88.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.87%</tspan> · <tspan class="known">88.80%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="80.80" height="6" x="0" y="0" class="decompiled"/>
-<rect width="663.74" height="6" x="80.80" y="0" class="known"/>
+<rect width="81.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="663.31" height="6" x="81.23" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1731,7 +1731,7 @@
 <rect width="9.76" height="9.49" x="519.71" y="313.10" class="unused"><title>sub_4449D0</title></rect>
 <rect width="9.76" height="9.49" x="519.71" y="325.59" class="known"><title>bool __cdecl WinVidCreateGameWindow(void);</title></rect>
 <rect width="9.76" height="9.49" x="519.71" y="338.08" class="known"><title>BOOL __cdecl Read_Strings(DWORD dwCount, char **stringTable, char **stringBuffer, LPDWORD lpBufferSize, HANDLE hFile);</title></rect>
-<rect width="9.76" height="9.43" x="519.71" y="350.57" class="known"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
+<rect width="9.76" height="9.43" x="519.71" y="350.57" class="decompiled"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
 <rect width="9.37" height="9.82" x="532.47" y="133.25" class="known"><title>void __cdecl LavaSpray(int16_t item_num);</title></rect>
 <rect width="9.31" height="9.82" x="544.85" y="133.25" class="known"><title>void __cdecl SmashWindow(int16_t item_num);</title></rect>
 <rect width="9.31" height="9.82" x="557.16" y="133.25" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundBufferTest(void);</title></rect>

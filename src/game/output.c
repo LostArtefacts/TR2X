@@ -355,3 +355,35 @@ void __cdecl Output_SortPolyList(void)
         Output_QuickSort(0, g_SurfaceCount - 1);
     }
 }
+
+void __cdecl Output_QuickSort(int32_t left, int32_t right)
+{
+    int32_t compare = g_SortBuffer[(left + right) / 2]._1;
+    int32_t i = left;
+    int32_t j = right;
+
+    do {
+        while ((i < right) && (g_SortBuffer[i]._1 > compare)) {
+            i++;
+        }
+        while ((left < j) && (compare > g_SortBuffer[j]._1)) {
+            j--;
+        }
+        if (i > j) {
+            break;
+        }
+
+        struct SORT_ITEM tmp_item;
+        SWAP(g_SortBuffer[i], g_SortBuffer[j], tmp_item);
+
+        i++;
+        j--;
+    } while (i <= j);
+
+    if (left < j) {
+        Output_QuickSort(left, j);
+    }
+    if (i < right) {
+        Output_QuickSort(i, right);
+    }
+}
