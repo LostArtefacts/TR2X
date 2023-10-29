@@ -381,6 +381,11 @@ typedef struct __unaligned  REQUEST_INFO {
     uint32_t render_height;
 } REQUEST_INFO;
 
+typedef struct SORT_ITEM {
+    int32_t _0;
+    int32_t _1;
+} SORT_ITEM;
+
 typedef enum SORT_TYPE {
     ST_AVG_Z,
     ST_MAX_Z,
@@ -1155,7 +1160,7 @@ typedef enum LARA_MESH {
 00401F40    0000016D    +       const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
 004020B0    0000027D    +       const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);
 00402330    000000C7    +       void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
-00402400    00000039    -       void __cdecl Output_InitPolyList(void);
+00402400    00000039    +       void __cdecl Output_InitPolyList(void);
 00402430    00000033    -       void __cdecl Output_SortPolyList(void);
 00402470    000000C5    -       void __cdecl Output_QuickSort(int32_t left, int32_t right);
 00402540    00000036    -       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
@@ -2471,6 +2476,7 @@ typedef enum LARA_MESH {
 00470338    -       int16_t g_LsYaw;
 0047033C    -       void (*__cdecl g_Output_InsertTrans8)(struct PHD_VBUF *vbuf, int16_t shade);;
 00470340    -       float g_FltWinTop;
+00470348    -       struct SORT_ITEM g_SortBuffer[4000];
 00478048    -       float g_FltWinLeft;
 0047804C    -       int16_t g_PhdWinMinY;
 00478058    -       int32_t g_PhdFarZ;
@@ -2479,6 +2485,7 @@ typedef enum LARA_MESH {
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
 0047806C    -       void (*__cdecl g_Output_InsertFlatRect)(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);;
+00478070    -       int16_t g_Info3DBuffer[120000];
 004B29F0    -       int32_t g_PhdWinMaxX;
 004B29F4    -       int32_t g_PhdNearZ;
 004B29F8    -       float g_FltResZORhw;
@@ -2498,6 +2505,7 @@ typedef enum LARA_MESH {
 004B2A38    -       int32_t g_RandomTable[32];
 004B2AB8    -       float g_FltPersp;
 004B2AC0    -       struct MATRIX g_W2VMatrix;
+004B2AF0    -       int16_t *g_Info3DPtr;
 004B2AF4    -       int32_t g_PhdWinWidth;
 004B2AF8    -       void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
 004BCB00    -       int32_t g_PhdViewDistance;
@@ -2511,8 +2519,10 @@ typedef enum LARA_MESH {
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
 004D6B60    -       float g_FltWinRight;
 004D6B68    -       struct PHD_VECTOR g_LsVectorView;
-004D6B78    -       float g_WibbleTable[WIBBLE_SIZE];
+004D6B78    -       float g_WibbleTable[32];
 004D6BF8    -       int32_t g_PhdWinRight;
+004D6BFC    -       int32_t g_SurfaceCount;
+004D6C00    -       struct SORT_ITEM *g_Sort3dPtr;
 004D6C0C    -       int32_t g_WibbleOffset;
 004D6C10    -       int32_t g_IsWibbleEffect;
 004D6C14    -       int32_t g_IsWaterEffect;
@@ -2536,6 +2546,8 @@ typedef enum LARA_MESH {
 004D92C0    -       LPDDS g_ZBufferSurface;
 004D92C8    -       LPDDS g_PrimaryBufferSurface;
 004D9EC4    -       int32_t g_LevelComplete;
+004D9ED8    -       D3DTLVERTEX g_HWR_VertexBuffer[0x2000];
+00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
 0051A208    -       int32_t g_Input;
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];

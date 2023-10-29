@@ -335,3 +335,13 @@ void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw)
     g_LsVectorView.y = (m->_10 * x + m->_11 * y + m->_12 * z) >> W2V_SHIFT;
     g_LsVectorView.z = (m->_20 * x + m->_21 * y + m->_22 * z) >> W2V_SHIFT;
 }
+
+void __cdecl Output_InitPolyList(void)
+{
+    g_SurfaceCount = 0;
+    g_Sort3dPtr = g_SortBuffer;
+    g_Info3DPtr = g_Info3DBuffer;
+    if (g_SavedAppSettings.render_mode != RM_SOFTWARE) {
+        g_HWR_VertexPtr = g_HWR_VertexBuffer;
+    }
+}

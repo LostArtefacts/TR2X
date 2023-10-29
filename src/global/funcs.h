@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_InitPolyList ((void __cdecl (*)(void))0x00402400)
 #define Output_SortPolyList ((void __cdecl (*)(void))0x00402430)
 #define Output_QuickSort ((void __cdecl (*)(int32_t left, int32_t right))0x00402470)
 #define Output_PrintPolyList ((void __cdecl (*)(uint8_t *surface_ptr))0x00402540)

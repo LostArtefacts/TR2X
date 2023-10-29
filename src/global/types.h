@@ -391,6 +391,11 @@ typedef struct REQUEST_INFO {
     uint32_t render_height;
 } REQUEST_INFO;
 
+typedef struct SORT_ITEM {
+    int32_t _0;
+    int32_t _1;
+} SORT_ITEM;
+
 typedef enum SORT_TYPE {
     ST_AVG_Z,
     ST_MAX_Z,

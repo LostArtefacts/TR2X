@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.58% (223)</tspan> · <tspan class="known">79% (948)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.67% (224)</tspan> · <tspan class="known">78.92% (947)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="138.82" height="6" x="0" y="0" class="decompiled"/>
-<rect width="590.13" height="6" x="138.82" y="0" class="known"/>
+<rect width="139.44" height="6" x="0" y="0" class="decompiled"/>
+<rect width="589.51" height="6" x="139.44" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -96,7 +96,7 @@
 <rect width="12" height="12" x="240" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="255" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);</title></rect>
 <rect width="12" height="12" x="270" y="0" class="decompiled"><title>void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);</title></rect>
-<rect width="12" height="12" x="285" y="0" class="known"><title>void __cdecl Output_InitPolyList(void);</title></rect>
+<rect width="12" height="12" x="285" y="0" class="decompiled"><title>void __cdecl Output_InitPolyList(void);</title></rect>
 <rect width="12" height="12" x="300" y="0" class="known"><title>void __cdecl Output_SortPolyList(void);</title></rect>
 <rect width="12" height="12" x="315" y="0" class="known"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
 <rect width="12" height="12" x="330" y="0" class="known"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.78%</tspan> · <tspan class="known">88.89%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.80%</tspan> · <tspan class="known">88.87%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="80.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="663.98" height="6" x="80.56" y="0" class="known"/>
+<rect width="80.68" height="6" x="0" y="0" class="decompiled"/>
+<rect width="663.85" height="6" x="80.68" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2171,7 +2171,7 @@
 <rect width="3.91" height="3.76" x="654.81" y="309.53" class="known"><title>void __cdecl undraw_pistol_mesh_left(int32_t weapon_type);</title></rect>
 <rect width="3.91" height="3.76" x="654.81" y="316.29" class="known"><title>void __cdecl undraw_pistol_mesh_right(int32_t weapon_type);</title></rect>
 <rect width="3.91" height="3.76" x="654.81" y="323.05" class="known"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
-<rect width="3.91" height="3.64" x="654.81" y="329.80" class="known"><title>void __cdecl Output_InitPolyList(void);</title></rect>
+<rect width="3.91" height="3.64" x="654.81" y="329.80" class="decompiled"><title>void __cdecl Output_InitPolyList(void);</title></rect>
 <rect width="3.91" height="3.64" x="654.81" y="336.44" class="known"><title>void __cdecl SetPCRequesterSize(struct REQUEST_INFO *req, int32_t maxlines, int32_t ypos);</title></rect>
 <rect width="3.91" height="3.64" x="654.81" y="343.08" class="known"><title>int16_t __cdecl CreateItem(void);</title></rect>
 <rect width="3.91" height="3.64" x="654.81" y="349.72" class="decompiled"><title>void __cdecl Lara_State_SwitchOn(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
