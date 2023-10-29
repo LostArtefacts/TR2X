@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Viewport_AlterFOV ((void __cdecl (*)(int16_t fov))0x00402580)
 #define Output_DrawPolyLine ((void __cdecl (*)(int16_t *obj_ptr))0x00402970)
 #define Output_DrawPolyFlat ((void __cdecl (*)(int16_t *obj_ptr))0x00402B10)
 #define Output_DrawPolyTrans ((void __cdecl (*)(int16_t *obj_ptr))0x00402B50)

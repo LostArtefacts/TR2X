@@ -22,3 +22,4 @@ void __cdecl Output_QuickSort(int32_t left, int32_t right);
 void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
 void __cdecl Output_SetNearZ(int32_t near_z);
 void __cdecl Output_SetFarZ(int32_t far_z);
+void __cdecl Output_AlterFOV(int16_t fov);

@@ -2,6 +2,7 @@
 
 #include "game/lara/lara_misc.h"
 #include "game/music.h"
+#include "game/output.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -685,7 +686,7 @@ void __cdecl Lara_State_Extra_Breath(
     g_Lara.extra_anim = 0;
     g_Lara.gun_status = LGS_ARMLESS;
     g_Camera.type = CAM_CHASE;
-    Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
+    Output_AlterFOV(GAME_FOV * PHD_DEGREE);
 }
 
 void __cdecl Lara_State_Extra_YetiKill(
@@ -796,7 +797,7 @@ void __cdecl Lara_State_Extra_StartHouse(
         Inv_AddItem(O_PUZZLE_ITEM_1);
     } else if (item->frame_num == g_Anims[item->anim_num].frame_end) {
         g_Camera.type = CAM_CHASE;
-        Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
+        Output_AlterFOV(GAME_FOV * PHD_DEGREE);
     }
 }
 

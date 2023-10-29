@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.17% (230)</tspan> · <tspan class="known">78.42% (941)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.25% (231)</tspan> · <tspan class="known">78.33% (940)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="143.18" height="6" x="0" y="0" class="decompiled"/>
-<rect width="585.77" height="6" x="143.18" y="0" class="known"/>
+<rect width="143.80" height="6" x="0" y="0" class="decompiled"/>
+<rect width="585.15" height="6" x="143.80" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -100,7 +100,7 @@
 <rect width="12" height="12" x="300" y="0" class="decompiled"><title>void __cdecl Output_SortPolyList(void);</title></rect>
 <rect width="12" height="12" x="315" y="0" class="decompiled"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
 <rect width="12" height="12" x="330" y="0" class="decompiled"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
-<rect width="12" height="12" x="345" y="0" class="known"><title>void __cdecl Viewport_AlterFOV(int16_t fov);</title></rect>
+<rect width="12" height="12" x="345" y="0" class="decompiled"><title>void __cdecl Output_AlterFOV(int16_t fov);</title></rect>
 <rect width="12" height="12" x="360" y="0" class="decompiled"><title>void __cdecl Output_SetNearZ(int32_t near_z);</title></rect>
 <rect width="12" height="12" x="375" y="0" class="decompiled"><title>void __cdecl Output_SetFarZ(int32_t far_z);</title></rect>
 <rect width="12" height="12" x="390" y="0" class="decompiled"><title>void __cdecl Output_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.15%</tspan> · <tspan class="known">88.52%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.20%</tspan> · <tspan class="known">88.48%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="83.27" height="6" x="0" y="0" class="decompiled"/>
-<rect width="661.26" height="6" x="83.27" y="0" class="known"/>
+<rect width="83.63" height="6" x="0" y="0" class="decompiled"/>
+<rect width="660.91" height="6" x="83.63" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1810,7 +1810,7 @@
 <rect width="8.38" height="8.53" x="544.80" y="216.06" class="decompiled"><title>void __cdecl Lara_State_Extra_FinalAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="8.38" height="8.53" x="544.80" y="227.59" class="known"><title>int32_t __cdecl OnTrapDoor(struct ITEM_INFO *item, int32_t x, int32_t z);</title></rect>
 <rect width="8.38" height="8.46" x="544.80" y="239.12" class="known"><title>bool __cdecl LoadTexturePage(int32_t pageIndex, bool reset);</title></rect>
-<rect width="8.38" height="8.39" x="544.80" y="250.58" class="known"><title>void __cdecl Viewport_AlterFOV(int16_t fov);</title></rect>
+<rect width="8.38" height="8.39" x="544.80" y="250.58" class="decompiled"><title>void __cdecl Output_AlterFOV(int16_t fov);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="261.97" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="273.36" class="known"><title>void __cdecl CreateRenderBuffer(void);</title></rect>
 <rect width="8.38" height="8.32" x="544.80" y="284.75" class="known"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>

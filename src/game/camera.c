@@ -3,6 +3,7 @@
 #include "game/math.h"
 #include "game/matrix.h"
 #include "game/music.h"
+#include "game/output.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -48,7 +49,7 @@ void __cdecl Camera_Initialise(void)
     g_Camera.num = NO_CAMERA;
     g_Camera.fixed_camera = 0;
 
-    Viewport_AlterFOV(GAME_FOV * PHD_DEGREE);
+    Output_AlterFOV(GAME_FOV * PHD_DEGREE);
     Camera_Update();
 }
 
@@ -820,7 +821,7 @@ void __cdecl Camera_LoadCutsceneFrame(void)
     g_Camera.pos.y = g_CinePos.y + cy;
     g_Camera.pos.z = g_CinePos.z + ((cz * c - cx * s) >> W2V_SHIFT);
 
-    Viewport_AlterFOV(fov);
+    Output_AlterFOV(fov);
     Matrix_LookAt(
         g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z, g_Camera.target.x,
         g_Camera.target.y, g_Camera.target.z, roll);
@@ -873,7 +874,7 @@ void __cdecl Camera_UpdateCutscene(void)
     if (room_num >= 0) {
         g_Camera.pos.room_num = room_num;
     }
-    Viewport_AlterFOV(fov);
+    Output_AlterFOV(fov);
     Matrix_LookAt(
         campos.x, campos.y, campos.z, camtar.x, camtar.y, camtar.z, roll);
 }

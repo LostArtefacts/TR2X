@@ -42,7 +42,7 @@ void __cdecl Output_Init(
     g_PhdScreenWidth = screen_width;
     g_PhdScreenHeight = screen_height;
 
-    Viewport_AlterFOV(182 * view_angle);
+    Output_AlterFOV(182 * view_angle);
     Output_SetNearZ(g_PhdNearZ);
     Output_SetFarZ(g_PhdFarZ);
 
@@ -505,4 +505,24 @@ void __cdecl Output_SetFarZ(int32_t far_z)
     g_FltResZ = res_z;
     g_FltResZORhw = res_z / g_RhwFactor;
     g_FltResZBuf = 0.005 - res_z / g_FltNearZ;
+}
+
+void __cdecl Output_AlterFOV(int16_t fov)
+{
+    fov /= 2;
+
+    g_PhdPersp = g_PhdWinWidth / 2 * Math_Cos(fov) / Math_Sin(fov);
+
+    g_FltPersp = g_PhdPersp;
+    g_FltRhwOPersp = g_RhwFactor / g_FltPersp;
+    g_FltPerspONearZ = g_FltPersp / g_FltNearZ;
+
+    double window_aspect_ratio = 4.0 / 3.0;
+    if (!g_SavedAppSettings.fullscreen
+        && g_SavedAppSettings.aspect_mode == AM_16_9) {
+        window_aspect_ratio = 16.0 / 9.0;
+    }
+
+    g_ViewportAspectRatio =
+        window_aspect_ratio / ((double)g_PhdWinWidth / (double)g_PhdWinHeight);
 }
