@@ -1161,7 +1161,7 @@ typedef enum LARA_MESH {
 004020B0    0000027D    +       const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);
 00402330    000000C7    +       void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
 00402400    00000039    +       void __cdecl Output_InitPolyList(void);
-00402430    00000033    -       void __cdecl Output_SortPolyList(void);
+00402430    00000033    +       void __cdecl Output_SortPolyList(void);
 00402470    000000C5    -       void __cdecl Output_QuickSort(int32_t left, int32_t right);
 00402540    00000036    -       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
 00402580    000000A1    *       void __cdecl Viewport_AlterFOV(int16_t fov);

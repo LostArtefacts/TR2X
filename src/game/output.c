@@ -345,3 +345,13 @@ void __cdecl Output_InitPolyList(void)
         g_HWR_VertexPtr = g_HWR_VertexBuffer;
     }
 }
+
+void __cdecl Output_SortPolyList(void)
+{
+    if (g_SurfaceCount) {
+        for (int i = 0; i < g_SurfaceCount; i++) {
+            g_SortBuffer[i]._1 += i;
+        }
+        Output_QuickSort(0, g_SurfaceCount - 1);
+    }
+}

@@ -12,3 +12,4 @@ const int16_t *__cdecl Output_CalcRoomVertices(
     const int16_t *obj_ptr, int32_t far_clip);
 void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
 void __cdecl Output_InitPolyList(void);
+void __cdecl Output_SortPolyList(void);

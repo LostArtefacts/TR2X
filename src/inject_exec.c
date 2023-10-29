@@ -98,7 +98,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00401F40, Output_CalcVerticeLight);
     INJECT(1, 0x004020B0, Output_CalcRoomVertices);
     INJECT(1, 0x00402330, Output_RotateLight);
-    INJECT(1, 0x00402400, Output_InitPolyList);
+    INJECT(1, 0x00402430, Output_SortPolyList);
 }
 
 static void Inject_Music(void)
