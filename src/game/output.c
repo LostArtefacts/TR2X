@@ -34,3 +34,20 @@ void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside)
     obj_ptr = g_Output_DrawObjectGT3(obj_ptr + 1, *obj_ptr, ST_MAX_Z);
     Output_InsertRoomSprite(obj_ptr + 1, *obj_ptr);
 }
+
+const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr)
+{
+    int32_t count = *obj_ptr++;
+    if (count > 0) {
+        obj_ptr += 3 * count;
+    } else if (count < 0) {
+        count = -count;
+        obj_ptr += count;
+    }
+
+    for (int i = 0; i < count; i++) {
+        g_PhdVBuf[i].g = 0xFFF;
+    }
+
+    return obj_ptr;
+}

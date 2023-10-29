@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.08% (217)</tspan> · <tspan class="known">79.50% (954)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.17% (218)</tspan> · <tspan class="known">79.42% (953)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="135.08" height="6" x="0" y="0" class="decompiled"/>
-<rect width="593.86" height="6" x="135.08" y="0" class="known"/>
+<rect width="135.70" height="6" x="0" y="0" class="decompiled"/>
+<rect width="593.24" height="6" x="135.70" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -89,7 +89,7 @@
 <rect width="12" height="12" x="135" y="0" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="150" y="0" class="decompiled"><title>void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip);</title></rect>
 <rect width="12" height="12" x="165" y="0" class="decompiled"><title>void __cdecl Output_InsertRoom(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="180" y="0" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="180" y="0" class="decompiled"><title>const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="195" y="0" class="known"><title>void __cdecl Output_InsertBackground(int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="210" y="0" class="known"><title>void __cdecl Output_InsertInventoryBackground(int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="225" y="0" class="known"><title>const int16_t __cdecl *Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.18%</tspan> · <tspan class="known">89.49%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.20%</tspan> · <tspan class="known">89.47%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="76.08" height="6" x="0" y="0" class="decompiled"/>
-<rect width="668.46" height="6" x="76.08" y="0" class="known"/>
+<rect width="76.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="668.35" height="6" x="76.19" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2234,7 +2234,7 @@
 <rect width="3.32" height="3.50" x="693.87" y="281.75" class="known"><title>int32_t __cdecl PickupTrigger(int16_t item_num);</title></rect>
 <rect width="3.32" height="3.50" x="700.19" y="281.75" class="known"><title>void __cdecl DDrawRelease(void);</title></rect>
 <rect width="3.32" height="3.50" x="706.51" y="281.75" class="decompiled"><title>void __cdecl Matrix_PushUnit(void);</title></rect>
-<rect width="3.20" height="3.50" x="712.83" y="281.75" class="known"><title>int16_t *__cdecl Output_CalcBackgroundLight(const int16_t *obj_ptr);</title></rect>
+<rect width="3.20" height="3.50" x="712.83" y="281.75" class="decompiled"><title>const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);</title></rect>
 <rect width="3.20" height="3.50" x="719.02" y="281.75" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="3.20" height="3.50" x="725.22" y="281.75" class="decompiled"><title>void __cdecl Lara_GetCollisionInfo(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.20" height="3.50" x="731.41" y="281.75" class="decompiled"><title>void __cdecl Lara_Col_SurfSwim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

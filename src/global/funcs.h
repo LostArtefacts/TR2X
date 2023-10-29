@@ -5,7 +5,6 @@
 #include "global/types.h"
 
 // clang-format off
-#define Output_CalcBackgroundLight ((int16_t *__cdecl (*)(const int16_t *obj_ptr))0x00401BD0)
 #define Output_InsertBackground ((void __cdecl (*)(int16_t *obj_ptr))0x00401C10)
 #define Output_InsertInventoryBackground ((void __cdecl (*)(int16_t *obj_ptr))0x00401D50)
 #define Output_CalcObjectVertices ((const int16_t __cdecl * (*)(const int16_t *obj_ptr))0x00401D60)
