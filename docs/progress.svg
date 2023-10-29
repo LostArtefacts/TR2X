@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.83% (226)</tspan> · <tspan class="known">78.75% (945)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.92% (227)</tspan> · <tspan class="known">78.67% (944)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.75% (21)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="140.68" height="6" x="0" y="0" class="decompiled"/>
-<rect width="588.26" height="6" x="140.68" y="0" class="known"/>
+<rect width="141.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="587.64" height="6" x="141.31" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.95" y="0" class="todo"/>
 <rect width="13.07" height="6" x="733.93" y="0" class="unused"/>
 </g>
@@ -99,7 +99,7 @@
 <rect width="12" height="12" x="285" y="0" class="decompiled"><title>void __cdecl Output_InitPolyList(void);</title></rect>
 <rect width="12" height="12" x="300" y="0" class="decompiled"><title>void __cdecl Output_SortPolyList(void);</title></rect>
 <rect width="12" height="12" x="315" y="0" class="decompiled"><title>void __cdecl Output_QuickSort(int32_t left, int32_t right);</title></rect>
-<rect width="12" height="12" x="330" y="0" class="known"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
+<rect width="12" height="12" x="330" y="0" class="decompiled"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
 <rect width="12" height="12" x="345" y="0" class="known"><title>void __cdecl Viewport_AlterFOV(int16_t fov);</title></rect>
 <rect width="12" height="12" x="360" y="0" class="known"><title>void __cdecl Output_SetNearZ(int32_t near_z);</title></rect>
 <rect width="12" height="12" x="375" y="0" class="known"><title>void __cdecl Output_SetFarZ(int32_t far_z);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.87%</tspan> · <tspan class="known">88.80%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">10.89%</tspan> · <tspan class="known">88.78%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="81.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="663.31" height="6" x="81.23" y="0" class="known"/>
+<rect width="81.35" height="6" x="0" y="0" class="decompiled"/>
+<rect width="663.19" height="6" x="81.35" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.54" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2195,7 +2195,7 @@
 <rect width="3.47" height="3.84" x="661.72" y="295.48" class="known"><title>void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);</title></rect>
 <rect width="3.47" height="3.84" x="661.72" y="302.32" class="known"><title>LONG __cdecl SetRegistryBinaryValue(LPCTSTR lpValueName, LPBYTE value, DWORD valueSize);</title></rect>
 <rect width="3.47" height="3.84" x="661.72" y="309.16" class="known"><title>void __thiscall SE_ReleaseBitmapResource(BITMAP_RESOURCE *bmpRsrc);</title></rect>
-<rect width="3.47" height="3.71" x="661.72" y="316" class="known"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
+<rect width="3.47" height="3.71" x="661.72" y="316" class="decompiled"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
 <rect width="3.47" height="3.71" x="661.72" y="322.71" class="decompiled"><title>void __cdecl Lara_Col_Default(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.47" height="3.71" x="661.72" y="329.43" class="known"><title>void __cdecl DrawBridgeFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="3.47" height="3.71" x="661.72" y="336.14" class="known"><title>void __cdecl ChangeFileNameExtension(char *fileName, const char *fileExt);</title></rect>

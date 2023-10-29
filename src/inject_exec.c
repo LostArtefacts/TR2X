@@ -100,6 +100,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402330, Output_RotateLight);
     INJECT(1, 0x00402430, Output_SortPolyList);
     INJECT(1, 0x00402470, Output_QuickSort);
+    INJECT(1, 0x00402540, Output_PrintPolyList);
 }
 
 static void Inject_Music(void)

@@ -387,3 +387,14 @@ void __cdecl Output_QuickSort(int32_t left, int32_t right)
         Output_QuickSort(i, right);
     }
 }
+
+void __cdecl Output_PrintPolyList(uint8_t *surface_ptr)
+{
+    g_PrintSurfacePtr = surface_ptr;
+
+    for (int i = 0; i < g_SurfaceCount; i++) {
+        const int16_t *obj_ptr = (const int16_t *)g_SortBuffer[i]._0;
+        const int16_t poly_type = *obj_ptr++;
+        g_PolyDrawRoutines[poly_type](obj_ptr);
+    }
+}

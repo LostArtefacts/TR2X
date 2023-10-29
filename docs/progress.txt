@@ -1163,7 +1163,7 @@ typedef enum LARA_MESH {
 00402400    00000039    +       void __cdecl Output_InitPolyList(void);
 00402430    00000033    +       void __cdecl Output_SortPolyList(void);
 00402470    000000C5    +       void __cdecl Output_QuickSort(int32_t left, int32_t right);
-00402540    00000036    -       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
+00402540    00000036    +       void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
 00402580    000000A1    *       void __cdecl Viewport_AlterFOV(int16_t fov);
 00402690    00000095    -       void __cdecl Output_SetNearZ(int32_t near_z);
 004026E0    0000006B    -       void __cdecl Output_SetFarZ(int32_t far_z);
@@ -2451,6 +2451,7 @@ typedef enum LARA_MESH {
 #   + decompiled
 # Offset    Flags   Declaration
 
+00464068    -       void (__cdecl *g_PolyDrawRoutines[9])(const int16_t *);
 00464060    -       int32_t g_PerspectiveDistance;
 0046408C    -       float g_RhwFactor;
 004640BC    -       int16_t g_CD_TrackID;
@@ -2469,12 +2470,12 @@ typedef enum LARA_MESH {
 0047031C    -       float g_FltWinBottom;
 00470320    -       float g_FltResZBuf;
 00470324    -       float g_FltResZ;
-00470328    -       void (*__cdecl g_Output_InsertTransQuad)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+00470328    -       void (__cdecl *g_Output_InsertTransQuad)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 0047032C    -       int32_t g_PhdWinHeight;
 00470330    -       int32_t g_PhdWinCenterX;
 00470334    -       int32_t g_PhdWinCenterY;
 00470338    -       int16_t g_LsYaw;
-0047033C    -       void (*__cdecl g_Output_InsertTrans8)(struct PHD_VBUF *vbuf, int16_t shade);;
+0047033C    -       void (__cdecl *g_Output_InsertTrans8)(struct PHD_VBUF *vbuf, int16_t shade);
 00470340    -       float g_FltWinTop;
 00470348    -       struct SORT_ITEM g_SortBuffer[4000];
 00478048    -       float g_FltWinLeft;
@@ -2484,7 +2485,7 @@ typedef enum LARA_MESH {
 00478060    -       int32_t g_PhdWinBottom;
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
-0047806C    -       void (*__cdecl g_Output_InsertFlatRect)(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);;
+0047806C    -       void (__cdecl *g_Output_InsertFlatRect)(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
 00478070    -       int16_t g_Info3DBuffer[120000];
 004B29F0    -       int32_t g_PhdWinMaxX;
 004B29F4    -       int32_t g_PhdNearZ;
@@ -2493,11 +2494,12 @@ typedef enum LARA_MESH {
 004B2A00    -       float g_FltWinCenterX;
 004B2A04    -       float g_FltWinCenterY;
 004B2A08    -       int32_t g_PhdScreenHeight;
+004B2A0C    -       uint8_t *g_PrintSurfacePtr;
 004B2A10    -       int16_t g_PhdWinMinX;
 004B2A14    -       float g_FltPerspONearZ;
 004B2A18    -       float g_FltRhwONearZ;
 004B2A1C    -       int32_t g_PhdWinMaxY;
-004B2A20    -       void (*__cdecl g_Output_InsertSprite)(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
+004B2A20    -       void (__cdecl *g_Output_InsertSprite)(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
 004B2A24    -       float g_FltNearZ;
 004B2A28    -       struct MATRIX *g_MatrixPtr;
 004B2A2C    -       int16_t *(__cdecl *g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);
