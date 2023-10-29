@@ -16,6 +16,7 @@
 #define BAD_JUMP_CEILING ((STEP_L * 3) / 4) // = 192
 #define STEPUP_HEIGHT ((STEP_L * 3) / 2) // = 384
 #define SLOPE_DIF 60
+#define WIBBLE_SIZE 32
 
 #define GAME_FOV 80
 #define MIN_SQUARE SQUARE(WALL_L / 3)
@@ -101,3 +102,9 @@
 #define CAM_CLIMBING_ELEVATION (30 * PHD_DEGREE) // = 5460
 #define CAM_CLIMB_END_ELEVATION (45 * PHD_DEGREE) // = -8190
 #define CAM_CLIMB_DOWN_ELEVATION CAM_CLIMB_END_ELEVATION // = -8190
+
+#define VIEW_NEAR (20 * 1) // = 20
+#define VIEW_FAR (20 * WALL_L) // = 20480
+
+#define FOG_START (12 * WALL_L) // = 12288
+#define FOG_END (20 * WALL_L) // = 20480

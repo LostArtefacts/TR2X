@@ -166,20 +166,21 @@ const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr)
     if (vtx_count > 0) {
         if (g_LsDivider) {
             // clang-format off
+            const struct MATRIX *const mptr = g_MatrixPtr;
             int32_t xv = (
-                g_LsVectorView.x * g_MatrixPtr->_00 +
-                g_LsVectorView.y * g_MatrixPtr->_10 +
-                g_LsVectorView.z * g_MatrixPtr->_20
+                g_LsVectorView.x * mptr->_00 +
+                g_LsVectorView.y * mptr->_10 +
+                g_LsVectorView.z * mptr->_20
             ) / g_LsDivider;
             int32_t yv = (
-                g_LsVectorView.x * g_MatrixPtr->_01 +
-                g_LsVectorView.y * g_MatrixPtr->_11 +
-                g_LsVectorView.z * g_MatrixPtr->_21
+                g_LsVectorView.x * mptr->_01 +
+                g_LsVectorView.y * mptr->_11 +
+                g_LsVectorView.z * mptr->_21
             ) / g_LsDivider;
             int32_t zv = (
-                g_LsVectorView.x * g_MatrixPtr->_02 +
-                g_LsVectorView.y * g_MatrixPtr->_12 +
-                g_LsVectorView.z * g_MatrixPtr->_22
+                g_LsVectorView.x * mptr->_02 +
+                g_LsVectorView.y * mptr->_12 +
+                g_LsVectorView.z * mptr->_22
             ) / g_LsDivider;
             // clang-format on
 
@@ -206,6 +207,109 @@ const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr)
             CLAMP(shade, 0, 0x1FFF);
             g_PhdVBuf[i].g = shade;
         }
+    }
+
+    return obj_ptr;
+}
+
+const int16_t *__cdecl Output_CalcRoomVertices(
+    const int16_t *obj_ptr, int32_t far_clip)
+{
+    const double base_z =
+        g_ZBufferSurface ? 0.0 : (g_MidSort << (W2V_SHIFT + 8));
+    int32_t vtx_count = *obj_ptr++;
+
+    for (int i = 0; i < vtx_count; i++) {
+        struct PHD_VBUF *const vbuf = &g_PhdVBuf[i];
+
+        // clang-format off
+        const struct MATRIX *const mptr = g_MatrixPtr;
+        const double xv = (
+            mptr->_00 * obj_ptr[0] +
+            mptr->_01 * obj_ptr[1] +
+            mptr->_02 * obj_ptr[2] +
+            mptr->_03
+        );
+        const double yv = (
+            mptr->_10 * obj_ptr[0] +
+            mptr->_11 * obj_ptr[1] +
+            mptr->_12 * obj_ptr[2] +
+            mptr->_13
+        );
+        const int32_t zv_int = (
+            mptr->_20 * obj_ptr[0] +
+            mptr->_21 * obj_ptr[1] +
+            mptr->_22 * obj_ptr[2] +
+            mptr->_23
+        );
+        const double zv = zv_int;
+        // clang-format on
+
+        vbuf->xv = xv;
+        vbuf->yv = yv;
+        vbuf->zv = zv;
+
+        int16_t shade = obj_ptr[5];
+        if (g_IsWaterEffect) {
+            shade += g_ShadesTable
+                [((uint8_t)g_WibbleOffset
+                  + (uint8_t)g_RandomTable[(vtx_count - i) % WIBBLE_SIZE])
+                 % WIBBLE_SIZE];
+        }
+
+        uint16_t clip_flags = 0;
+        if (zv < g_FltNearZ) {
+            clip_flags = 0xFF80;
+        } else {
+            const double persp = g_FltPersp / zv;
+            vbuf->zv += base_z;
+
+            if (zv_int < 335544320) {
+                if (zv_int > 201326592) {
+                    const int32_t depth = zv_int >> W2V_SHIFT;
+                    shade += depth - FOG_START;
+                }
+                vbuf->rhw = persp * g_FltRhwOPersp;
+            } else {
+                clip_flags = far_clip;
+                shade = 0x1FFF;
+                vbuf->zv = g_FltFarZ;
+                vbuf->rhw = 0.0; // *(int32_t*)0x00478054
+            }
+
+            double xs = xv * persp + g_FltWinCenterX;
+            double ys = yv * persp + g_FltWinCenterY;
+
+            if (g_IsWibbleEffect && obj_ptr[4] >= 0) {
+                xs += g_WibbleTable
+                    [((uint8_t)g_WibbleOffset + (uint8_t)vbuf->ys)
+                     % WIBBLE_SIZE];
+                ys += g_WibbleTable
+                    [((uint8_t)g_WibbleOffset + (uint8_t)vbuf->xs)
+                     % WIBBLE_SIZE];
+            }
+
+            if (xs < g_FltWinLeft) {
+                clip_flags |= 1;
+            } else if (xs > g_FltWinRight) {
+                clip_flags |= 2;
+            }
+
+            if (ys < g_FltWinTop) {
+                clip_flags |= 4;
+            } else if (ys > g_FltWinBottom) {
+                clip_flags |= 8;
+            }
+
+            vbuf->xs = xs;
+            vbuf->ys = ys;
+            clip_flags |= (~((uint8_t)(vbuf->zv / 0x155555.p0))) << 8;
+        }
+
+        CLAMP(shade, 0, 0x1FFF);
+        vbuf->g = shade;
+        vbuf->clip = clip_flags;
+        obj_ptr += 6;
     }
 
     return obj_ptr;

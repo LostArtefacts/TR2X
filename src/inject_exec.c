@@ -96,6 +96,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00401C10, Output_InsertSkybox);
     INJECT(1, 0x00401D60, Output_CalcObjectVertices);
     INJECT(1, 0x00401F40, Output_CalcVerticeLight);
+    INJECT(1, 0x004020B0, Output_CalcRoomVertices);
 }
 
 static void Inject_Music(void)

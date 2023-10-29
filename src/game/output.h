@@ -8,3 +8,5 @@ void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);
 const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);
 const int16_t *__cdecl Output_CalcSkyboxLight(const int16_t *obj_ptr);
 const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
+const int16_t *__cdecl Output_CalcRoomVertices(
+    const int16_t *obj_ptr, int32_t far_clip);
