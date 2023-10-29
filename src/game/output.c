@@ -1,5 +1,6 @@
 #include "game/output.h"
 
+#include "game/math.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -313,4 +314,24 @@ const int16_t *__cdecl Output_CalcRoomVertices(
     }
 
     return obj_ptr;
+}
+
+void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw)
+{
+    g_LsYaw = yaw;
+    g_LsPitch = pitch;
+
+    int32_t xcos = Math_Cos(pitch);
+    int32_t xsin = Math_Sin(pitch);
+    int32_t wcos = Math_Cos(yaw);
+    int32_t wsin = Math_Sin(yaw);
+
+    int32_t x = (xcos * wsin) >> W2V_SHIFT;
+    int32_t y = -xsin;
+    int32_t z = (xcos * wcos) >> W2V_SHIFT;
+
+    const struct MATRIX *const m = &g_W2VMatrix;
+    g_LsVectorView.x = (m->_00 * x + m->_01 * y + m->_02 * z) >> W2V_SHIFT;
+    g_LsVectorView.y = (m->_10 * x + m->_11 * y + m->_12 * z) >> W2V_SHIFT;
+    g_LsVectorView.z = (m->_20 * x + m->_21 * y + m->_22 * z) >> W2V_SHIFT;
 }

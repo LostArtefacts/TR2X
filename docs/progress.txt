@@ -1154,7 +1154,7 @@ typedef enum LARA_MESH {
 00401D60    000001D5    +       const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);
 00401F40    0000016D    +       const int16_t *__cdecl Output_CalcVerticeLight(const int16_t *obj_ptr);
 004020B0    0000027D    +       const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);
-00402330    000000C7    -       void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
+00402330    000000C7    +       void __cdecl Output_RotateLight(int16_t pitch, int16_t yaw);
 00402400    00000039    -       void __cdecl Output_InitPolyList(void);
 00402430    00000033    -       void __cdecl Output_SortPolyList(void);
 00402470    000000C5    -       void __cdecl Output_QuickSort(int32_t left, int32_t right);
@@ -2468,6 +2468,7 @@ typedef enum LARA_MESH {
 0047032C    -       int32_t g_PhdWinHeight;
 00470330    -       int32_t g_PhdWinCenterX;
 00470334    -       int32_t g_PhdWinCenterY;
+00470338    -       int16_t g_LsYaw;
 0047033C    -       void (*__cdecl g_Output_InsertTrans8)(struct PHD_VBUF *vbuf, int16_t shade);;
 00470340    -       float g_FltWinTop;
 00478048    -       float g_FltWinLeft;
@@ -2500,6 +2501,7 @@ typedef enum LARA_MESH {
 004B2AF4    -       int32_t g_PhdWinWidth;
 004B2AF8    -       void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
 004BCB00    -       int32_t g_PhdViewDistance;
+004BCB04    -       int16_t g_LsPitch;
 004BCB08    -       int16_t *(__cdecl *g_Output_DrawObjectG4)(const int16_t*,int32_t, enum SORT_TYPE);
 004BCB10    -       int16_t g_ShadesTable[32];
 004BCB50    -       int16_t *(__cdecl *g_Output_DrawObjectG3)(const int16_t*,int32_t, enum SORT_TYPE);
