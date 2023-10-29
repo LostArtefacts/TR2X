@@ -1167,7 +1167,7 @@ typedef enum LARA_MESH {
 00402580    000000A1    *       void __cdecl Viewport_AlterFOV(int16_t fov);
 00402690    00000095    +       void __cdecl Output_SetNearZ(int32_t near_z);
 004026E0    0000006B    +       void __cdecl Output_SetFarZ(int32_t far_z);
-00402700    00000266    -       void __cdecl Viewport_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);
+00402700    00000266    +       void __cdecl Output_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);
 
 # 3dsystem/3d_out.c
 00402970    0000019F    -       void __cdecl Output_DrawPolyLine(int16_t *obj_ptr);
@@ -2451,8 +2451,8 @@ typedef enum LARA_MESH {
 #   + decompiled
 # Offset    Flags   Declaration
 
-00464068    -       void (__cdecl *g_PolyDrawRoutines[9])(const int16_t *);
 00464060    -       int32_t g_PerspectiveDistance;
+00464068    -       void (__cdecl *g_PolyDrawRoutines[9])(const int16_t *);
 0046408C    -       float g_RhwFactor;
 004640BC    -       int16_t g_CD_TrackID;
 004640C4    -       int32_t g_FlipEffect;
@@ -2551,6 +2551,7 @@ typedef enum LARA_MESH {
 004D9ED8    -       D3DTLVERTEX g_HWR_VertexBuffer[0x2000];
 00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
 0051A208    -       int32_t g_Input;
+0051B918    -       RECT g_PhdWinRect;
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
 0051BDA8    -       int32_t g_MasterVolume;

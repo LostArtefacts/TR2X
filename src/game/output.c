@@ -1,10 +1,94 @@
 #include "game/output.h"
 
 #include "game/math.h"
+#include "game/shell.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "util.h"
+
+void __cdecl Output_Init(
+    int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
+    int32_t far_z, int16_t view_angle, int32_t screen_width,
+    int32_t screen_height)
+{
+    g_PhdWinMinX = x;
+    g_PhdWinMinY = y;
+    g_PhdWinMaxX = width - 1;
+    g_PhdWinMaxY = height - 1;
+
+    g_PhdWinWidth = width;
+    g_PhdWinHeight = height;
+
+    g_PhdWinCenterX = width / 2;
+    g_PhdWinCenterY = height / 2;
+    g_FltWinCenterX = width / 2;
+    g_FltWinCenterY = height / 2;
+
+    g_PhdNearZ = near_z << 14;
+    g_PhdFarZ = far_z << W2V_SHIFT;
+    g_PhdViewDistance = far_z;
+
+    g_PhdWinLeft = 0;
+    g_PhdWinTop = 0;
+    g_PhdWinRight = g_PhdWinMaxX;
+    g_PhdWinBottom = g_PhdWinMaxY;
+
+    g_PhdWinRect.left = g_PhdWinMinX;
+    g_PhdWinRect.bottom = g_PhdWinMinY + g_PhdWinHeight;
+    g_PhdWinRect.top = g_PhdWinMinY;
+    g_PhdWinRect.right = g_PhdWinMinX + g_PhdWinWidth;
+
+    g_PhdScreenWidth = screen_width;
+    g_PhdScreenHeight = screen_height;
+
+    Viewport_AlterFOV(182 * view_angle);
+    Output_SetNearZ(g_PhdNearZ);
+    Output_SetFarZ(g_PhdFarZ);
+
+    g_MatrixPtr = g_MatrixStack;
+
+    switch (g_SavedAppSettings.render_mode) {
+    case RM_SOFTWARE:
+        g_PerspectiveDistance = g_SavedAppSettings.perspective_correct
+            ? SW_DETAIL_HIGH
+            : SW_DETAIL_MEDIUM;
+        g_Output_DrawObjectGT3 = Output_InsertObjectGT3;
+        g_Output_DrawObjectGT4 = Output_InsertObjectGT4;
+        g_Output_DrawObjectG3 = Output_InsertObjectG3;
+        g_Output_DrawObjectG4 = Output_InsertObjectG4;
+        g_Output_InsertSprite = Output_InsertSprite;
+        g_Output_InsertFlatRect = Output_InsertFlatRect;
+        g_Output_DrawLine = Output_InsertLine;
+        g_Output_InsertTrans8 = Output_InsertTrans8;
+        g_Output_InsertTransQuad = Output_InsertTransQuad;
+        break;
+
+    case RM_HARDWARE:
+        if (g_SavedAppSettings.zbuffer) {
+            g_Output_DrawObjectGT3 = Output_InsertObjectGT3_ZBuffered;
+            g_Output_DrawObjectGT4 = Output_InsertObjectGT4_ZBuffered;
+            g_Output_DrawObjectG3 = Output_InsertObjectG3_ZBuffered;
+            g_Output_DrawObjectG4 = Output_InsertObjectG4_ZBuffered;
+            g_Output_InsertFlatRect = Output_InsertFlatRect_ZBuffered;
+            g_Output_DrawLine = Output_InsertLine_ZBuffered;
+        } else {
+            g_Output_DrawObjectGT3 = Output_InsertObjectGT3_Sorted;
+            g_Output_DrawObjectGT4 = Output_InsertObjectGT4_Sorted;
+            g_Output_DrawObjectG3 = Output_InsertObjectG3_Sorted;
+            g_Output_DrawObjectG4 = Output_InsertObjectG4_Sorted;
+            g_Output_InsertFlatRect = Output_InsertFlatRect_Sorted;
+            g_Output_DrawLine = Output_InsertLine_Sorted;
+        }
+        g_Output_InsertSprite = Output_InsertSprite_Sorted;
+        g_Output_InsertTrans8 = Output_InsertTrans8_Sorted;
+        g_Output_InsertTransQuad = Output_InsertTransQuad_Sorted;
+        break;
+
+    default:
+        Shell_ExitSystem("unknown render mode");
+    }
+}
 
 void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip)
 {

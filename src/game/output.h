@@ -2,6 +2,11 @@
 
 #include <stdint.h>
 
+void __cdecl Output_Init(
+    int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
+    int32_t far_z, int16_t view_angle, int32_t screen_width,
+    int32_t screen_height);
+
 void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip);
 void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside);
 void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);

@@ -103,6 +103,7 @@
 #define g_HWR_VertexBuffer (*(D3DTLVERTEX(*)[0x2000])0x004D9ED8)
 #define g_HWR_VertexPtr (*(D3DTLVERTEX **)0x00519F60)
 #define g_Input (*(int32_t*)0x0051A208)
+#define g_PhdWinRect (*(RECT*)0x0051B918)
 #define g_SavedAppSettings (*(struct APP_SETTINGS*)0x0051BCC0)
 #define g_ErrorMessage (*(char(*)[128])0x0051BD20)
 #define g_MasterVolume (*(int32_t*)0x0051BDA8)
