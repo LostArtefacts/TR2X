@@ -1530,6 +1530,12 @@ typedef struct XBUF_X {
     int32_t x2;
 } XBUF_X;
 
+typedef struct XGEN_XG {
+    int16_t x;
+    int16_t y;
+    int16_t g;
+} XGEN_XG;
+
 typedef struct XBUF_XG {
     int32_t x1;
     int32_t g1;

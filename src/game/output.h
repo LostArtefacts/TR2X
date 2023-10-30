@@ -30,3 +30,4 @@ void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
+int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);

@@ -1,4 +1,5 @@
 #define PHD_ONE 0x10000
+#define PHD_HALF 0x100
 #define PHD_DEGREE (PHD_ONE / 360) // = 182
 #define PHD_360 (PHD_ONE) // = 65536 = 0x10000
 #define PHD_180 (PHD_ONE / 2) // = 32768 = 0x8000

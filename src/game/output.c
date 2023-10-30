@@ -859,7 +859,7 @@ int32_t __cdecl Output_XGenX(const int16_t *obj_ptr)
 
         if (y1 < y2) {
             CLAMPG(y_min, y1);
-            int32_t x_size = x2 - x1;
+            const int32_t x_size = x2 - x1;
             int32_t y_size = y2 - y1;
 
             struct XBUF_X *x_ptr = (struct XBUF_X *)g_XBuffer + y1;
@@ -873,7 +873,7 @@ int32_t __cdecl Output_XGenX(const int16_t *obj_ptr)
             }
         } else if (y2 < y1) {
             CLAMPL(y_max, y1);
-            int32_t x_size = x1 - x2;
+            const int32_t x_size = x1 - x2;
             int32_t y_size = y1 - y2;
 
             struct XBUF_X *x_ptr = (struct XBUF_X *)g_XBuffer + y2;
@@ -884,6 +884,74 @@ int32_t __cdecl Output_XGenX(const int16_t *obj_ptr)
                 x += x_add;
                 x_ptr->x1 = x;
                 x_ptr++;
+            }
+        }
+    }
+
+    if (y_min == y_max) {
+        return 0;
+    }
+
+    g_XGenY1 = y_min;
+    g_XGenY2 = y_max;
+    return 1;
+}
+
+int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr)
+{
+    int32_t pt_count = *obj_ptr++;
+    const struct XGEN_XG *pt2 = (const struct XGEN_XG *)obj_ptr;
+    const struct XGEN_XG *pt1 = pt2 + (pt_count - 1);
+
+    int32_t y_min = pt1->y;
+    int32_t y_max = pt1->y;
+
+    while (pt_count--) {
+        const int32_t x1 = pt1->x;
+        const int32_t y1 = pt1->y;
+        const int32_t g1 = pt1->g;
+        const int32_t x2 = pt2->x;
+        const int32_t y2 = pt2->y;
+        const int32_t g2 = pt2->g;
+        pt1 = pt2++;
+
+        if (y1 < y2) {
+            CLAMPG(y_min, y1);
+            const int32_t g_size = g2 - g1;
+            const int32_t x_size = x2 - x1;
+            int32_t y_size = y2 - y1;
+
+            struct XBUF_XG *xg_ptr = (struct XBUF_XG *)g_XBuffer + y1;
+            const int32_t x_add = PHD_ONE * x_size / y_size;
+            const int32_t g_add = PHD_HALF * g_size / y_size;
+            int32_t x = x1 * PHD_ONE + (PHD_ONE - 1);
+            int32_t g = g1 * PHD_HALF;
+
+            while (y_size--) {
+                x += x_add;
+                g += g_add;
+                xg_ptr->x2 = x;
+                xg_ptr->g2 = g;
+                xg_ptr++;
+            }
+        } else if (y2 < y1) {
+            CLAMPL(y_max, y1);
+            const int32_t g_size = g1 - g2;
+            const int32_t x_size = x1 - x2;
+            int32_t y_size = y1 - y2;
+
+            struct XBUF_XG *xg_ptr = (struct XBUF_XG *)g_XBuffer + y2;
+            const int32_t x_add = PHD_ONE * x_size / y_size;
+            const int32_t g_add = PHD_HALF * g_size / y_size;
+            int32_t x = x2 * PHD_ONE + 1;
+            int32_t g = g2 * PHD_HALF;
+
+            while (y_size--) {
+                x += x_add;
+                g += g_add;
+                xg_ptr->x1 = x;
+                xg_ptr->g1 = g;
+                xg_ptr++;
             }
         }
     }
