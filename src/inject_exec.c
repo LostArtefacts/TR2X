@@ -98,6 +98,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00401F40, Output_CalcVerticeLight);
     INJECT(1, 0x004020B0, Output_CalcRoomVertices);
     INJECT(1, 0x00402330, Output_RotateLight);
+    INJECT(1, 0x00402400, Output_InitPolyList);
     INJECT(1, 0x00402430, Output_SortPolyList);
     INJECT(1, 0x00402470, Output_QuickSort);
     INJECT(1, 0x00402540, Output_PrintPolyList);
@@ -107,6 +108,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402700, Output_Init);
     INJECT(1, 0x00402970, Output_DrawPolyLine);
     INJECT(1, 0x00402B10, Output_DrawPolyFlat);
+    INJECT(1, 0x00402B50, Output_DrawPolyTrans);
     INJECT(1, 0x00402B90, Output_DrawPolyGouraud);
     INJECT(1, 0x00402BD0, Output_DrawPolyGTMap);
     INJECT(1, 0x00402C10, Output_DrawPolyWGTMap);
