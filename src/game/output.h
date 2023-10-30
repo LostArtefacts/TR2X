@@ -47,3 +47,4 @@ int32_t __cdecl Output_VisibleZClip(
     struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);
 int32_t __cdecl Output_ZedClipper(
     int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);
+int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);

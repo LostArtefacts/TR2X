@@ -120,6 +120,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00405810, Output_DrawPolyWGTMapPersp);
     INJECT(1, 0x00405850, Output_VisibleZClip);
     INJECT(1, 0x004058C0, Output_ZedClipper);
+    INJECT(1, 0x00405A00, Output_XYGUVClipper);
 }
 
 static void Inject_Music(void)

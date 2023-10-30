@@ -192,6 +192,16 @@ static void __fastcall Output_WGTMapA(
     }
 }
 
+static inline void Output_ClipGUV(
+    struct VERTEX_INFO *const buf, struct VERTEX_INFO *const vtx1,
+    struct VERTEX_INFO *const vtx2, const float clip)
+{
+    buf->rhw = vtx2->rhw + (vtx1->rhw - vtx2->rhw) * clip;
+    buf->g = vtx2->g + (vtx1->g - vtx2->g) * clip;
+    buf->u = vtx2->u + (vtx1->u - vtx2->u) * clip;
+    buf->v = vtx2->v + (vtx1->v - vtx2->v) * clip;
+}
+
 void __cdecl Output_Init(
     int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
     int32_t far_z, int16_t view_angle, int32_t screen_width,
@@ -1512,6 +1522,105 @@ int32_t __cdecl Output_ZedClipper(
 
     loop_end:
         pts1 = pts0++;
+    }
+
+    return (j < 3) ? 0 : j;
+}
+
+int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx)
+{
+    struct VERTEX_INFO vtx_buf[8];
+    struct VERTEX_INFO *vtx1, *vtx2;
+    float clip;
+    int j;
+
+    if (vtx_count < 3) {
+        return 0;
+    }
+
+    // horizontal clip
+    j = 0;
+    vtx2 = &vtx[vtx_count - 1];
+    for (int i = 0; i < vtx_count; ++i) {
+        vtx1 = vtx2;
+        vtx2 = &vtx[i];
+
+        if (vtx1->x < g_FltWinLeft) {
+            if (vtx2->x < g_FltWinLeft) {
+                continue;
+            }
+            float clip = (g_FltWinLeft - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinLeft;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            Output_ClipGUV(&vtx_buf[j++], vtx1, vtx2, clip);
+        } else if (vtx1->x > g_FltWinRight) {
+            if (vtx2->x > g_FltWinRight) {
+                continue;
+            }
+            float clip = (g_FltWinRight - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinRight;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            Output_ClipGUV(&vtx_buf[j++], vtx1, vtx2, clip);
+        }
+
+        if (vtx2->x < g_FltWinLeft) {
+            float clip = (g_FltWinLeft - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinLeft;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            Output_ClipGUV(&vtx_buf[j++], vtx1, vtx2, clip);
+        } else if (vtx2->x > g_FltWinRight) {
+            float clip = (g_FltWinRight - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinRight;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            Output_ClipGUV(&vtx_buf[j++], vtx1, vtx2, clip);
+        } else {
+            vtx_buf[j++] = *vtx2;
+        }
+    }
+
+    vtx_count = j;
+    if (vtx_count < 3) {
+        return 0;
+    }
+
+    // vertical clip
+    j = 0;
+    vtx2 = &vtx_buf[vtx_count - 1];
+    for (int i = 0; i < vtx_count; ++i) {
+        vtx1 = vtx2;
+        vtx2 = &vtx_buf[i];
+
+        if (vtx1->y < g_FltWinTop) {
+            if (vtx2->y < g_FltWinTop) {
+                continue;
+            }
+            clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinTop;
+            Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
+        } else if (vtx1->y > g_FltWinBottom) {
+            if (vtx2->y > g_FltWinBottom) {
+                continue;
+            }
+            clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinBottom;
+            Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
+        }
+
+        if (vtx2->y < g_FltWinTop) {
+            clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinTop;
+            Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
+        } else if (vtx2->y > g_FltWinBottom) {
+            clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinBottom;
+            Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
+        } else {
+            vtx[j++] = *vtx2;
+        }
     }
 
     return (j < 3) ? 0 : j;
