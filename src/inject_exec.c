@@ -115,6 +115,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402E80, Output_XGenXGUV);
     INJECT(1, 0x004030A0, Output_XGen_XGUVPerspFP);
     INJECT(1, 0x00403330, Output_GTMapPersp32FP);
+    INJECT(1, 0x004057D0, Output_DrawPolyGTMapPersp);
 }
 
 static void Inject_Music(void)

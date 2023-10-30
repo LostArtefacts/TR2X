@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.58% (247)</tspan> · <tspan class="known">76.92% (923)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.67% (248)</tspan> · <tspan class="known">76.83% (922)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="153.76" height="6" x="0" y="0" class="decompiled"/>
-<rect width="574.57" height="6" x="153.76" y="0" class="known"/>
+<rect width="154.38" height="6" x="0" y="0" class="decompiled"/>
+<rect width="573.94" height="6" x="154.38" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -116,7 +116,7 @@
 <rect width="12" height="12" x="540" y="0" class="decompiled"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="555" y="0" class="decompiled"><title>void __cdecl Output_GTMapPersp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
 <rect width="12" height="12" x="570" y="0" class="known"><title>void __cdecl Output_WGTMapPersp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
-<rect width="12" height="12" x="585" y="0" class="known"><title>void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="585" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="600" y="0" class="known"><title>void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="615" y="0" class="known"><title>bool __cdecl Output_VisibleZClip(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);</title></rect>
 <rect width="12" height="12" x="630" y="0" class="known"><title>int32_t __cdecl Output_ZedClipper(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">13.80%</tspan> · <tspan class="known">85.87%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">13.82%</tspan> · <tspan class="known">85.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="103.09" height="6" x="0" y="0" class="decompiled"/>
-<rect width="641.44" height="6" x="103.09" y="0" class="known"/>
+<rect width="103.21" height="6" x="0" y="0" class="decompiled"/>
+<rect width="641.32" height="6" x="103.21" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2184,7 +2184,7 @@
 <rect width="3.88" height="3.67" x="696.14" y="268.30" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="3.88" height="3.67" x="703.02" y="268.30" class="decompiled"><title>void __cdecl S_Audio_Sample_OutSetPanAndVolume(int32_t track_id, int32_t pan, uint16_t volume);</title></rect>
 <rect width="3.88" height="3.67" x="709.91" y="268.30" class="decompiled"><title>void __cdecl Music_Stop(void);</title></rect>
-<rect width="3.64" height="3.67" x="716.79" y="268.30" class="known"><title>void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);</title></rect>
+<rect width="3.64" height="3.67" x="716.79" y="268.30" class="decompiled"><title>void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);</title></rect>
 <rect width="3.64" height="3.67" x="723.43" y="268.30" class="known"><title>void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);</title></rect>
 <rect width="3.64" height="3.67" x="730.07" y="268.30" class="known"><title>void __cdecl Item_ShiftCol(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.64" height="3.67" x="736.72" y="268.30" class="known"><title>int32_t __cdecl Game_DrawCinematic(void);</title></rect>

@@ -1304,3 +1304,11 @@ void __cdecl Output_GTMapPersp32FP(
         draw_ptr += stride;
     }
 }
+
+void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr)
+{
+    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
+        Output_GTMapPersp32FP(
+            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
+    }
+}

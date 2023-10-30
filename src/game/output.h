@@ -35,3 +35,4 @@ int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
 void __cdecl Output_GTMapPersp32FP(
     int32_t y1, int32_t y2, const uint8_t *tex_page);
+void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);
