@@ -23,12 +23,16 @@ void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);
 void __cdecl Output_SetNearZ(int32_t near_z);
 void __cdecl Output_SetFarZ(int32_t far_z);
 void __cdecl Output_AlterFOV(int16_t fov);
+
 void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);
+void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);
+void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);
+
 int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
@@ -36,5 +40,3 @@ int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
 void __cdecl Output_GTMapPersp32FP(
     int32_t y1, int32_t y2, const uint8_t *tex_page);
 void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
-void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);
-void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);

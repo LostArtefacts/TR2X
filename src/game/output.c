@@ -851,6 +851,22 @@ void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr)
     }
 }
 
+void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr)
+{
+    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
+        Output_GTMapPersp32FP(
+            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
+    }
+}
+
+void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr)
+{
+    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
+        Output_WGTMapPersp32FP(
+            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
+    }
+}
+
 int32_t __cdecl Output_XGenX(const int16_t *obj_ptr)
 {
     int32_t pt_count = *obj_ptr++;
@@ -1447,21 +1463,5 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
         y_size--;
         xbuf++;
         draw_ptr += stride;
-    }
-}
-
-void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr)
-{
-    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
-        Output_GTMapPersp32FP(
-            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
-    }
-}
-
-void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr)
-{
-    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
-        Output_WGTMapPersp32FP(
-            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
     }
 }
