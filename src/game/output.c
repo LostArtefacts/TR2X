@@ -1457,3 +1457,16 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
         draw_ptr += stride;
     }
 }
+
+int32_t __cdecl Output_VisibleZClip(
+    struct PHD_VBUF *const vtx0, struct PHD_VBUF *vtx1,
+    struct PHD_VBUF *const vtx2)
+{
+    // clang-format off
+    return (
+        vtx1->xv * (vtx0->yv * vtx2->zv - vtx0->zv * vtx2->yv) +
+        vtx1->yv * (vtx0->zv * vtx2->xv - vtx0->xv * vtx2->zv) +
+        vtx1->zv * (vtx0->xv * vtx2->yv - vtx0->yv * vtx2->xv) < 0.0
+    );
+    // clang-format on
+}

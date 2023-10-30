@@ -1,5 +1,7 @@
 #pragma once
 
+#include "global/types.h"
+
 #include <stdint.h>
 
 void __cdecl Output_Init(
@@ -40,3 +42,6 @@ int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
 void __cdecl Output_GTMapPersp32FP(
     int32_t y1, int32_t y2, const uint8_t *tex_page);
 void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
+
+int32_t __cdecl Output_VisibleZClip(
+    struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);

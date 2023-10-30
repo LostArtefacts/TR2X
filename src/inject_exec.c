@@ -118,6 +118,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00404300, Output_WGTMapPersp32FP);
     INJECT(1, 0x004057D0, Output_DrawPolyGTMapPersp);
     INJECT(1, 0x00405810, Output_DrawPolyWGTMapPersp);
+    INJECT(1, 0x00405850, Output_VisibleZClip);
 }
 
 static void Inject_Music(void)
