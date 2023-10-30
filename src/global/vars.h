@@ -83,7 +83,7 @@
 #define g_WibbleTable (*(float(*)[32])0x004D6B78)
 #define g_PhdWinRight (*(int32_t*)0x004D6BF8)
 #define g_SurfaceCount (*(int32_t*)0x004D6BFC)
-#define g_Sort3dPtr (*(struct SORT_ITEM **)0x004D6C00)
+#define g_Sort3DPtr (*(struct SORT_ITEM **)0x004D6C00)
 #define g_WibbleOffset (*(int32_t*)0x004D6C0C)
 #define g_IsWibbleEffect (*(int32_t*)0x004D6C10)
 #define g_IsWaterEffect (*(int32_t*)0x004D6C14)
