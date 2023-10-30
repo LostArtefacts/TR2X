@@ -38,13 +38,17 @@ void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
-int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
+int32_t __cdecl Output_XGenXGUVPerspFP(const int16_t *obj_ptr);
 void __cdecl Output_GTMapPersp32FP(
     int32_t y1, int32_t y2, const uint8_t *tex_page);
 void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
 
 int32_t __cdecl Output_VisibleZClip(
-    struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);
+    const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1,
+    const struct PHD_VBUF *vtx2);
 int32_t __cdecl Output_ZedClipper(
-    int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);
+    int32_t vtx_count, const struct POINT_INFO *pts, struct VERTEX_INFO *vtx);
 int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
+
+const int16_t *__cdecl Output_InsertObjectGT4(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);

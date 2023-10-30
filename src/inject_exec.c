@@ -113,7 +113,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402C50, Output_XGenX);
     INJECT(1, 0x00402D30, Output_XGenXG);
     INJECT(1, 0x00402E80, Output_XGenXGUV);
-    INJECT(1, 0x004030A0, Output_XGen_XGUVPerspFP);
+    INJECT(1, 0x004030A0, Output_XGenXGUVPerspFP);
     INJECT(1, 0x00403330, Output_GTMapPersp32FP);
     INJECT(1, 0x00404300, Output_WGTMapPersp32FP);
     INJECT(1, 0x004057D0, Output_DrawPolyGTMapPersp);
@@ -121,6 +121,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00405850, Output_VisibleZClip);
     INJECT(1, 0x004058C0, Output_ZedClipper);
     INJECT(1, 0x00405A00, Output_XYGUVClipper);
+    INJECT(1, 0x00405F20, Output_InsertObjectGT4);
 }
 
 static void Inject_Music(void)

@@ -391,6 +391,23 @@ typedef struct REQUEST_INFO {
     uint32_t render_height;
 } REQUEST_INFO;
 
+typedef enum POLY_TYPE {
+    POLY_GTMAP,
+    POLY_WGTMAP,
+    POLY_GTMAP_PERSP,
+    POLY_WGTMAP_PERSP,
+    POLY_LINE,
+    POLY_FLAT,
+    POLY_GOURAUD,
+    POLY_TRANS,
+    POLY_SPRITE,
+    POLY_HWR_GTMAP,
+    POLY_HWR_WGTMAP,
+    POLY_HWR_GOURAUD,
+    POLY_HWR_LINE,
+    POLY_HWR_TRANS,
+} POLY_TYPE;
+
 typedef struct SORT_ITEM {
     int32_t _0;
     int32_t _1;
@@ -401,6 +418,11 @@ typedef enum SORT_TYPE {
     ST_MAX_Z,
     ST_FAR_Z,
 } SORT_TYPE;
+
+typedef enum DRAW_TYPE {
+    DRAW_OPAQUE,
+    DRAW_COLOR_KEY,
+} DRAW_TYPE;
 
 typedef struct COLL_SIDE {
     int32_t floor;
