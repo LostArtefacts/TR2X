@@ -1180,8 +1180,8 @@ typedef enum LARA_MESH {
 00402D30    00000146    +       int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
 00402E80    00000219    +       int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
 004030A0    00000284    +       int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
-00403330    00000FC6    +       void __cdecl Output_GTMapPersp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
-00404300    000014C4    -       void __cdecl Output_WGTMapPersp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
+00403330    00000FC6    +       void __cdecl Output_GTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
+00404300    000014C4    +       void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
 004057D0    00000037    +       void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);
 00405810    00000037    -       void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr);
 
@@ -1197,8 +1197,8 @@ typedef enum LARA_MESH {
 00407D30    000002D0    -       int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
 00408000    000004A4    -       void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
 004084B0    000000D3    -       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
-00408590    000000CB    -       void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-00408660    000000B5    -       void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00408590    000000CB    -       void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+00408660    000000B5    -       void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2);
 00408D70    00000140    -       void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
 00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture);
@@ -1207,8 +1207,8 @@ typedef enum LARA_MESH {
 00409450    0000039C    -       int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
 004098F0    000002D3    -       int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2, enum SORT_TYPE sort_type);
 0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
 0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
@@ -1217,12 +1217,12 @@ typedef enum LARA_MESH {
 0040ADB0    0000043B    -       int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040B1F0    00000175    -       void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);
 0040B370    00000343    -       int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-0040B6C0    00000347    -       void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
-0040BA10    0000017F    -       void __cdecl Output_InsertFlatRect_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
-0040BB90    0000012B    -       void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+0040B6C0    00000347    -       void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
+0040BA10    0000017F    -       void __cdecl Output_InsertFlatRect_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+0040BB90    0000012B    -       void __cdecl Output_InsertLine_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(struct PHD_VBUF *vbuf, int16_t shade);
 0040BE60    0000013D    -       void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
-0040BFA0    000000A7    -       void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
+0040BFA0    000000A7    -       void __cdecl Output_InsertSprite(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
 
 # 3dsystem/scalespr.c
 0040C050    000002C7    -       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
@@ -2290,7 +2290,7 @@ typedef enum LARA_MESH {
 00450C40    00000037    -R      void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);
 00450C80    00000089    -R      void __cdecl S_OutputPolyList(void);
 00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);
-00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
+00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);
 00451180    000002F6    -R      void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00451480    00000031    -R      void __cdecl S_CalculateStaticLight(int16_t adder);
@@ -2434,11 +2434,11 @@ typedef enum LARA_MESH {
 00457210    0000006E    -R      void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);
 00457280    0000001E    +       void __cdecl Matrix_Push(void);
 0045729E    00000033    +       void __cdecl Matrix_PushUnit(void);
-004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
-00457335    0000013A    +       void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported
-0045746F    00000160    +       void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
-004575CF    000002FD    +       void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
-004578CC    00000341    +       void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
+004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y1, int32_t y2, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
+00457335    0000013A    +       void __fastcall Output_TransA(int32_t y1, int32_t y2, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported
+0045746F    00000160    +       void __fastcall Output_GourA(int32_t y1, int32_t y2, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
+004575CF    000002FD    +       void __fastcall Output_GTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
+004578CC    00000341    +       void __fastcall Output_WGTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
 00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
 00457C5E    0000001B    +       int32_t __fastcall Math_Sin(int16_t angle);
@@ -2488,7 +2488,7 @@ typedef enum LARA_MESH {
 00478060    -       int32_t g_PhdWinBottom;
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
-0047806C    -       void (__cdecl *g_Output_InsertFlatRect)(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
+0047806C    -       void (__cdecl *g_Output_InsertFlatRect)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00478070    -       int16_t g_Info3DBuffer[120000];
 004B29F0    -       int32_t g_PhdWinMaxX;
 004B29F4    -       int32_t g_PhdNearZ;
@@ -2502,7 +2502,7 @@ typedef enum LARA_MESH {
 004B2A14    -       float g_FltPerspONearZ;
 004B2A18    -       float g_FltRhwONearZ;
 004B2A1C    -       int32_t g_PhdWinMaxY;
-004B2A20    -       void (__cdecl *g_Output_InsertSprite)(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
+004B2A20    -       void (__cdecl *g_Output_InsertSprite)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
 004B2A24    -       float g_FltNearZ;
 004B2A28    -       struct MATRIX *g_MatrixPtr;
 004B2A2C    -       int16_t *(__cdecl *g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);

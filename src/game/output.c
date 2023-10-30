@@ -1305,6 +1305,151 @@ void __cdecl Output_GTMapPersp32FP(
     }
 }
 
+void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
+{
+    int32_t y_size = y2 - y1;
+    if (y_size <= 0) {
+        return;
+    }
+
+    const int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_XGUVP *xbuf = (const struct XBUF_XGUVP *)g_XBuffer + y1;
+    uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
+
+    while (y_size > 0) {
+        const int32_t x = xbuf->x1 / PHD_ONE;
+        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+        if (x_size <= 0) {
+            goto loop_end;
+        }
+
+        int32_t g = xbuf->g1;
+        double u = xbuf->u1;
+        double v = xbuf->v1;
+        double rhw = xbuf->rhw1;
+
+        const int32_t g_add = (xbuf->g2 - g) / x_size;
+
+        int32_t u0 = PHD_HALF * u / rhw;
+        int32_t v0 = PHD_HALF * v / rhw;
+
+        uint8_t *line_ptr = draw_ptr + x;
+        int32_t batch_size = 32;
+
+        if (x_size >= batch_size) {
+            const double u_add =
+                (xbuf->u2 - u) / (double)x_size * (double)batch_size;
+            const double v_add =
+                (xbuf->v2 - v) / (double)x_size * (double)batch_size;
+            const double rhw_add =
+                (xbuf->rhw2 - rhw) / (double)x_size * (double)batch_size;
+
+            while (x_size >= batch_size) {
+                u += u_add;
+                v += v_add;
+                rhw += rhw_add;
+
+                const int32_t u1 = PHD_HALF * u / rhw;
+                const int32_t v1 = PHD_HALF * v / rhw;
+
+                const int32_t u0_add = (u1 - u0) / batch_size;
+                const int32_t v0_add = (v1 - v0) / batch_size;
+
+                if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
+                    int32_t batch_counter = batch_size / 2;
+                    while (batch_counter--) {
+                        uint8_t color_idx = tex_page
+                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        if (color_idx != 0) {
+                            color_idx = g_DepthQTable[(g >> 16) & 0xFF]
+                                            .index[color_idx];
+                            line_ptr[0] = color_idx;
+                            line_ptr[1] = color_idx;
+                        }
+                        line_ptr += 2;
+                        g += g_add * 2;
+                        u0 += u0_add * 2;
+                        v0 += v0_add * 2;
+                    }
+                } else {
+                    int32_t batch_counter = batch_size;
+                    while (batch_counter--) {
+                        uint8_t color_idx = tex_page
+                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        if (color_idx != 0) {
+                            *line_ptr =
+                                g_DepthQTable[BYTE2(g)].index[color_idx];
+                        }
+                        line_ptr++;
+                        g += g_add;
+                        u0 += u0_add;
+                        v0 += v0_add;
+                    }
+                }
+
+                u0 = u1;
+                v0 = v1;
+                x_size -= batch_size;
+            }
+        }
+
+        if (x_size > 1) {
+            const int32_t u1 = PHD_HALF * xbuf->u2 / xbuf->rhw2;
+            const int32_t v1 = PHD_HALF * xbuf->v2 / xbuf->rhw2;
+            const int32_t u0_add = (u1 - u0) / x_size;
+            const int32_t v0_add = (v1 - v0) / x_size;
+
+            batch_size = x_size & ~1;
+            x_size -= batch_size;
+
+            if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
+                int32_t batch_counter = batch_size / 2;
+                while (batch_counter--) {
+                    uint8_t color_idx = tex_page
+                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    if (color_idx != 0) {
+                        color_idx =
+                            g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
+                        line_ptr[0] = color_idx;
+                        line_ptr[1] = color_idx;
+                    }
+                    line_ptr += 2;
+                    g += g_add * 2;
+                    u0 += u0_add * 2;
+                    v0 += v0_add * 2;
+                };
+            } else {
+                int32_t batch_counter = batch_size;
+                while (batch_counter--) {
+                    uint8_t color_idx = tex_page
+                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    if (color_idx != 0) {
+                        *line_ptr =
+                            g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
+                    }
+                    line_ptr++;
+                    g += g_add;
+                    u0 += u0_add;
+                    v0 += v0_add;
+                }
+            }
+        }
+
+        if (x_size == 1) {
+            const uint8_t color_idx =
+                tex_page[(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+            if (color_idx != 0) {
+                *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
+            }
+        }
+
+    loop_end:
+        y_size--;
+        xbuf++;
+        draw_ptr += stride;
+    }
+}
+
 void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr)
 {
     if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
