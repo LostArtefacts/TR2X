@@ -1532,4 +1532,15 @@ typedef struct XBUF_XG {
     int32_t g2;
 } XBUF_XG;
 
+typedef struct XBUF_XGUV {
+    int32_t x1;
+    int32_t g1;
+    int32_t u1;
+    int32_t v1;
+    int32_t x2;
+    int32_t g2;
+    int32_t u2;
+    int32_t v2;
+} XBUF_XGUV;
+
 #pragma pack(pop)

@@ -76,6 +76,7 @@
 #define g_LsDivider (*(int32_t*)0x004BF3DC)
 #define g_PhdVBuf (*(struct PHD_VBUF(*)[1500])0x004BF3E0)
 #define g_XBuffer ((void*)0x004CAF60)
+#define g_TexturePageBuffer8 (*(uint8_t *(*)[32])0x004D6AE0)
 #define g_FltWinRight (*(float*)0x004D6B60)
 #define g_LsVectorView (*(struct PHD_VECTOR*)0x004D6B68)
 #define g_WibbleTable (*(float(*)[32])0x004D6B78)

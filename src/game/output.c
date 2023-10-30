@@ -94,6 +94,49 @@ static void __fastcall Output_GourA(int32_t y1, int32_t y2, uint8_t color_idx)
     }
 }
 
+static void __fastcall Output_GTMapA(int y1, int y2, const uint8_t *tex_page)
+{
+    int32_t y_size = y2 - y1;
+    if (y_size <= 0) {
+        return;
+    }
+
+    const int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_XGUV *xbuf = (const struct XBUF_XGUV *)g_XBuffer + y1;
+    uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
+
+    while (y_size > 0) {
+        const int32_t x = xbuf->x1 / PHD_ONE;
+        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+
+        if (x_size > 0) {
+            int32_t g = xbuf->g1;
+            int32_t u = xbuf->u1;
+            int32_t v = xbuf->v1;
+            const int32_t g_add = (xbuf->g2 - g) / x_size;
+            const int32_t u_add = (xbuf->u2 - u) / x_size;
+            const int32_t v_add = (xbuf->v2 - v) / x_size;
+
+            uint8_t *line_ptr = draw_ptr + x;
+            while (x_size > 0) {
+                const int32_t tex_idx =
+                    ((((v >> 16) & 0xFF) << 8) | ((u >> 16) & 0xFF));
+                uint8_t color_idx = tex_page[tex_idx];
+                *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
+                line_ptr++;
+                g += g_add;
+                u += u_add;
+                v += v_add;
+                x_size--;
+            }
+        }
+
+        y_size--;
+        xbuf++;
+        draw_ptr += stride;
+    }
+}
+
 void __cdecl Output_Init(
     int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
     int32_t far_z, int16_t view_angle, int32_t screen_width,
@@ -734,5 +777,12 @@ void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr)
 {
     if (Output_XGenXG(obj_ptr + 1)) {
         Output_GourA(g_XGenY1, g_XGenY2, *obj_ptr);
+    }
+}
+
+void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr)
+{
+    if (Output_XGenXGUV(obj_ptr + 1)) {
+        Output_GTMapA(g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
     }
 }

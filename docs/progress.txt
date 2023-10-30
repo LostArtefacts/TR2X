@@ -1174,7 +1174,7 @@ typedef enum LARA_MESH {
 00402B10    00000035    +       void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);
 00402B50    00000035    +       void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);
 00402B90    00000035    +       void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);
-00402BD0    0000003C    -       void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);
+00402BD0    0000003C    +       void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);
 00402C10    0000003C    -       void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);
 00402C50    000000D2    -       int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
 00402D30    00000146    -       int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
@@ -2437,7 +2437,7 @@ typedef enum LARA_MESH {
 004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
 00457335    0000013A    +       void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported
 0045746F    00000160    +       void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
-004575CF    000002FD    -       void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
+004575CF    000002FD    +       void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
 004578CC    00000341    -       void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
 00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
@@ -2524,6 +2524,7 @@ typedef enum LARA_MESH {
 004BF3DC    -       int32_t g_LsDivider;
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
 004CAF60    -       void *g_XBuffer;
+004D6AE0    -       uint8_t *g_TexturePageBuffer8[32];
 004D6B60    -       float g_FltWinRight;
 004D6B68    -       struct PHD_VECTOR g_LsVectorView;
 004D6B78    -       float g_WibbleTable[32];
