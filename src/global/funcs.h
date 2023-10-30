@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_DrawPolyWGTMapPersp ((void __cdecl (*)(const int16_t *obj_ptr))0x00405810)
 #define Output_VisibleZClip ((bool __cdecl (*)(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2))0x00405850)
 #define Output_ZedClipper ((int32_t __cdecl (*)(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx))0x004058C0)
 #define Output_XYGUVClipper ((int32_t __cdecl (*)(int32_t vtx_count, struct VERTEX_INFO *vtx))0x00405A00)

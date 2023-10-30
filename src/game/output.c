@@ -1457,3 +1457,11 @@ void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr)
             g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
     }
 }
+
+void __cdecl Output_DrawPolyWGTMapPersp(const int16_t *obj_ptr)
+{
+    if (Output_XGen_XGUVPerspFP(obj_ptr + 1)) {
+        Output_WGTMapPersp32FP(
+            g_XGenY1, g_XGenY2, g_TexturePageBuffer8[*obj_ptr]);
+    }
+}
