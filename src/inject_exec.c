@@ -112,6 +112,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402C10, Output_DrawPolyWGTMap);
     INJECT(1, 0x00402C50, Output_XGenX);
     INJECT(1, 0x00402D30, Output_XGenXG);
+    INJECT(1, 0x00402E80, Output_XGenXGUV);
 }
 
 static void Inject_Music(void)

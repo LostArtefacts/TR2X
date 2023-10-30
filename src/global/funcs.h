@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_XGenXGUV ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402E80)
 #define Output_XGen_XGUVPerspFP ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x004030A0)
 #define Output_GTMap_Persp32FP ((void __cdecl (*)(int32_t y0, int32_t y1, uint8_t *tex_page))0x00403330)
 #define Output_WGTmap_Persp32FP ((void __cdecl (*)(int32_t y0, int32_t y1, uint8_t *tex_page))0x00404300)

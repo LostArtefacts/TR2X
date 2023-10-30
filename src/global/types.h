@@ -1543,6 +1543,14 @@ typedef struct XBUF_XG {
     int32_t g2;
 } XBUF_XG;
 
+typedef struct XGEN_XGUV {
+    uint16_t x;
+    uint16_t y;
+    uint16_t g;
+    uint16_t u;
+    uint16_t v;
+} XGEN_XGUV;
+
 typedef struct XBUF_XGUV {
     int32_t x1;
     int32_t g1;
