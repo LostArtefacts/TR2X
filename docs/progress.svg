@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.17% (242)</tspan> · <tspan class="known">77.33% (928)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.25% (243)</tspan> · <tspan class="known">77.25% (927)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="150.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="577.68" height="6" x="150.64" y="0" class="known"/>
+<rect width="151.27" height="6" x="0" y="0" class="decompiled"/>
+<rect width="577.06" height="6" x="151.27" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -110,7 +110,7 @@
 <rect width="12" height="12" x="450" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="465" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="480" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="495" y="0" class="known"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="495" y="0" class="decompiled"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="510" y="0" class="known"><title>int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="525" y="0" class="known"><title>int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="540" y="0" class="known"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">12.10%</tspan> · <tspan class="known">87.57%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">12.16%</tspan> · <tspan class="known">87.51%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="90.38" height="6" x="0" y="0" class="decompiled"/>
-<rect width="654.16" height="6" x="90.38" y="0" class="known"/>
+<rect width="90.84" height="6" x="0" y="0" class="decompiled"/>
+<rect width="653.69" height="6" x="90.84" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1713,7 +1713,7 @@
 <rect width="9.58" height="10.50" x="699.73" y="119.75" class="decompiled"><title>void __cdecl Lara_State_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="9.58" height="10.50" x="712.31" y="119.75" class="known"><title>void __cdecl DoFlareInHand(int32_t flare_age);</title></rect>
 <rect width="9.58" height="10.50" x="724.90" y="119.75" class="known"><title>void __cdecl CreateWindowPalette(void);</title></rect>
-<rect width="9.52" height="10.50" x="737.48" y="119.75" class="known"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
+<rect width="9.52" height="10.50" x="737.48" y="119.75" class="decompiled"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
 <rect width="9.76" height="10.25" x="519.71" y="133.25" class="known"><title>void __cdecl GeneralControl(int16_t item_num);</title></rect>
 <rect width="9.76" height="10.25" x="519.71" y="146.50" class="known"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
 <rect width="9.76" height="10.06" x="519.71" y="159.75" class="known"><title>void __cdecl UpdateFrame(bool needRunMessageLoop, LPRECT rect);</title></rect>

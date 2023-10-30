@@ -1520,6 +1520,11 @@ typedef enum DIRECTION {
     DIR_WEST = 3,
 } DIRECTION;
 
+typedef struct XGEN_X {
+    uint16_t x;
+    uint16_t y;
+} XGEN_X;
+
 typedef struct XBUF_X {
     int32_t x1;
     int32_t x2;

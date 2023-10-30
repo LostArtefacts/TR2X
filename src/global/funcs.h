@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_XGenX ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402C50)
 #define Output_XGenXG ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402D30)
 #define Output_XGenXGUV ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402E80)
 #define Output_XGen_XGUVPerspFP ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x004030A0)
