@@ -109,6 +109,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402B10, Output_DrawPolyFlat);
     INJECT(1, 0x00402B90, Output_DrawPolyGouraud);
     INJECT(1, 0x00402BD0, Output_DrawPolyGTMap);
+    INJECT(1, 0x00402C10, Output_DrawPolyWGTMap);
 }
 
 static void Inject_Music(void)

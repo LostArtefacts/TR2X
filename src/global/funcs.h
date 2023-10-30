@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_DrawPolyWGTMap ((void __cdecl (*)(const int16_t *obj_ptr))0x00402C10)
 #define Output_XGenX ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402C50)
 #define Output_XGenXG ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402D30)
 #define Output_XGenXGUV ((int32_t __cdecl (*)(const int16_t *obj_ptr))0x00402E80)
@@ -935,5 +934,4 @@
 #define SE_SetupWindowProc ((LRESULT __stdcall (*)(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam))0x00456FA0)
 #define SE_PassMessageToImage ((void __cdecl (*)(HWND hWnd, UINT uMsg, WPARAM wParam))0x004571E0)
 #define UT_MemBlt ((void __cdecl (*)(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch))0x00457210)
-#define Output_WGTMapA ((void __fastcall (*)(int32_t y0, int32_t y1, BYTE *texPage))0x004578CC)
 // clang-format on
