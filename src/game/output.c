@@ -731,7 +731,7 @@ void __cdecl Output_SetFarZ(int32_t far_z)
     double res_z = g_FltFarZ * g_FltNearZ * 0.99 / (g_FltFarZ - g_FltNearZ);
     g_FltResZ = res_z;
     g_FltResZORhw = res_z / g_RhwFactor;
-    g_FltResZBuf = 0.005 - res_z / g_FltNearZ;
+    g_FltResZBuf = 0.005 + res_z / g_FltNearZ;
 }
 
 void __cdecl Output_AlterFOV(int16_t fov)
