@@ -225,8 +225,8 @@ static void __fastcall Output_WGTMapA(
 }
 
 static inline void Output_ClipGUV(
-    struct VERTEX_INFO *const buf, struct VERTEX_INFO *const vtx1,
-    struct VERTEX_INFO *const vtx2, const float clip)
+    struct VERTEX_INFO *const buf, const struct VERTEX_INFO *const vtx1,
+    const struct VERTEX_INFO *const vtx2, const float clip)
 {
     buf->rhw = vtx2->rhw + (vtx1->rhw - vtx2->rhw) * clip;
     buf->g = vtx2->g + (vtx1->g - vtx2->g) * clip;
@@ -1358,7 +1358,8 @@ void __cdecl Output_GTMapPersp32FP(
     }
 }
 
-void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
+void __cdecl Output_WGTMapPersp32FP(
+    int32_t y1, int32_t y2, const uint8_t *const tex_page)
 {
     int32_t y_size = y2 - y1;
     if (y_size <= 0) {
@@ -1564,8 +1565,8 @@ int32_t __cdecl Output_XYGUVClipper(
     int32_t vtx_count, struct VERTEX_INFO *const vtx)
 {
     struct VERTEX_INFO vtx_buf[8];
-    struct VERTEX_INFO *vtx1, *vtx2;
-    float clip;
+    struct VERTEX_INFO *vtx1;
+    struct VERTEX_INFO *vtx2;
     int j;
 
     if (vtx_count < 3) {
@@ -1628,7 +1629,7 @@ int32_t __cdecl Output_XYGUVClipper(
             if (vtx2->y < g_FltWinTop) {
                 continue;
             }
-            clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            float clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
             vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
             vtx[j].y = g_FltWinTop;
             Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
@@ -1636,19 +1637,19 @@ int32_t __cdecl Output_XYGUVClipper(
             if (vtx2->y > g_FltWinBottom) {
                 continue;
             }
-            clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            float clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
             vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
             vtx[j].y = g_FltWinBottom;
             Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
         }
 
         if (vtx2->y < g_FltWinTop) {
-            clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            float clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
             vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
             vtx[j].y = g_FltWinTop;
             Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);
         } else if (vtx2->y > g_FltWinBottom) {
-            clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            float clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
             vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
             vtx[j].y = g_FltWinBottom;
             Output_ClipGUV(&vtx[j++], vtx1, vtx2, clip);

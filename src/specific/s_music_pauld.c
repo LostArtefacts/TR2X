@@ -7,6 +7,7 @@
 #include "lib/winmm.h"
 #include "log.h"
 
+#include <inttypes.h>
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -82,7 +83,7 @@ static const struct CDAUDIO_SPEC *S_Music_PaulD_FindSpec(void)
 
     if (!spec) {
         LOG_WARNING("Cannot find any CDAudio data files");
-        return false;
+        return NULL;
     }
     return spec;
 }
@@ -110,7 +111,8 @@ static bool S_Music_PaulD_ParseCDAudio(void)
         uint64_t from;
         uint64_t to;
         int32_t result = sscanf(
-            &track_content[offset], "%llu %llu %llu", &track_num, &from, &to);
+            &track_content[offset], "%" PRIu64 " %" PRIu64 " %" PRIu64,
+            &track_num, &from, &to);
 
         if (result == 3 && track_num > 0 && track_num <= MAX_CD_TRACKS) {
             int32_t track_idx = track_num - 1;
@@ -135,7 +137,7 @@ parse_end:
             continue;
         }
 
-        if (m_Tracks[i].from >= m_Tracks[i].to && i < MAX_CD_TRACKS - 1) {
+        if (i < MAX_CD_TRACKS - 1 && m_Tracks[i].from >= m_Tracks[i].to) {
             for (int32_t j = i + 1; j < MAX_CD_TRACKS; j++) {
                 if (m_Tracks[j].active) {
                     m_Tracks[i].to = m_Tracks[j].from;
@@ -198,7 +200,7 @@ static void S_Music_PaulD_Play(int32_t track_id, bool is_looped)
     g_CD_TrackID = track_id;
 
     S_Music_PaulD_Command(
-        NULL, 0, "play " CD_ALIAS " from %llu to %llu",
+        NULL, 0, "play " CD_ALIAS " from %" PRIu64 " to %" PRIu64,
         m_Tracks[real_track_id - 1].from, m_Tracks[real_track_id - 1].to);
 
     if (is_looped) {
@@ -231,7 +233,7 @@ static bool S_Music_PaulD_PlaySynced(int32_t track_id)
     }
 
     return S_Music_PaulD_Command(
-        NULL, 0, "play " CD_ALIAS " from %llu to %llu",
+        NULL, 0, "play " CD_ALIAS " from %" PRIu64 " to %" PRIu64,
         m_Tracks[real_track_id - 1].from, m_Tracks[real_track_id - 1].to);
 }
 

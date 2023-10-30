@@ -7,7 +7,8 @@
 #include "log.h"
 #include "specific/s_flagged_string.h"
 
-const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid)
+const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(
+    const GUID *guid)
 {
     if (guid != NULL) {
         for (const struct SOUND_ADAPTER_NODE *adapter = g_SoundAdapterList.head;

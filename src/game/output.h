@@ -41,7 +41,8 @@ int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXGUVPerspFP(const int16_t *obj_ptr);
 void __cdecl Output_GTMapPersp32FP(
     int32_t y1, int32_t y2, const uint8_t *tex_page);
-void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
+void __cdecl Output_WGTMapPersp32FP(
+    int32_t y1, int32_t y2, const uint8_t *tex_page);
 
 int32_t __cdecl Output_VisibleZClip(
     const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1,

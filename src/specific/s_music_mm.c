@@ -15,8 +15,7 @@ static void __cdecl S_Music_MM_SetVolume(int32_t volume);
 
 static bool __cdecl S_Music_MM_Init(void)
 {
-    MCI_OPEN_PARMS open_params;
-    open_params.lpstrDeviceType = "cdaudio";
+    MCI_OPEN_PARMS open_params = { .lpstrDeviceType = "cdaudio", 0 };
 
     if (mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE, (DWORD_PTR)&open_params)) {
         return false;
@@ -34,7 +33,7 @@ static bool __cdecl S_Music_MM_Init(void)
 
 static void __cdecl S_Music_MM_Shutdown(void)
 {
-    MCI_GENERIC_PARMS params;
+    MCI_GENERIC_PARMS params = { 0 };
     mciSendCommand(g_MciDeviceID, MCI_STOP, 0, (DWORD_PTR)&params);
     mciSendCommand(g_MciDeviceID, MCI_CLOSE, 0, (DWORD_PTR)&params);
 }
@@ -67,7 +66,7 @@ static void __cdecl S_Music_MM_Stop(void)
         return;
     }
 
-    MCI_GENERIC_PARMS params;
+    MCI_GENERIC_PARMS params = { 0 };
     mciSendCommand(g_MciDeviceID, MCI_STOP, 0, (DWORD_PTR)&params);
     g_CD_TrackID = 0;
     g_CD_LoopTrack = 0;

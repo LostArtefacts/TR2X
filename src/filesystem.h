@@ -46,7 +46,7 @@ size_t File_Pos(MYFILE *file);
 
 size_t File_Size(MYFILE *file);
 
-const char *File_GetPath(MYFILE *file);
+const char *File_GetPath(const MYFILE *file);
 
 void File_Skip(MYFILE *file, size_t bytes);
 

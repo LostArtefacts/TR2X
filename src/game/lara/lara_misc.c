@@ -264,7 +264,7 @@ int32_t __cdecl Lara_TestHangOnClimbWall(
         break;
     }
 
-    int16_t *bounds = Item_GetBoundsAccurate(item);
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
     int32_t y = bounds[FBBOX_MIN_Y];
     int32_t h = bounds[FBBOX_MAX_Y] - y;
 
@@ -418,7 +418,7 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
         item->current_anim_state = LS_UP_JUMP;
         item->anim_num = LA_STOP_HANG;
         item->frame_num = g_Anims[item->anim_num].frame_base + 9;
-        int16_t *bounds = Item_GetBoundsAccurate(item);
+        const int16_t *bounds = Item_GetBoundsAccurate(item);
         item->pos.y += bounds[FBBOX_MAX_Y];
         item->pos.x += coll->shift.x;
         item->pos.z += coll->shift.z;
@@ -429,7 +429,7 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
         return;
     }
 
-    int16_t *bounds = Item_GetBoundsAccurate(item);
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
     int32_t hdif = coll->side_front.floor - bounds[FBBOX_MIN_Y];
 
     if (ABS(coll->side_left.floor - coll->side_right.floor) >= SLOPE_DIF
@@ -469,7 +469,7 @@ void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll)
 int32_t __cdecl Lara_TestEdgeCatch(
     struct ITEM_INFO *item, struct COLL_INFO *coll, int32_t *edge)
 {
-    int16_t *bounds = Item_GetBoundsAccurate(item);
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
     int32_t hdif1 = coll->side_front.floor - bounds[FBBOX_MIN_Y];
     int32_t hdif2 = hdif1 + item->fall_speed;
     if ((hdif1 < 0 && hdif2 < 0) || (hdif1 > 0 && hdif2 > 0)) {
@@ -517,7 +517,7 @@ int32_t __cdecl Lara_TestHangJumpUp(
     item->anim_num = LA_HANG;
     item->frame_num = g_Anims[item->anim_num].frame_base + 12;
 
-    int16_t *bounds = Item_GetBoundsAccurate(item);
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
     if (edge_catch > 0) {
         item->pos.y += coll->side_front.floor - bounds[FBBOX_MIN_Y];
     } else {
@@ -567,7 +567,7 @@ int32_t __cdecl Lara_TestHangJump(
     item->current_anim_state = LS_HANG;
     item->goal_anim_state = LS_HANG;
 
-    int16_t *bounds = Item_GetBoundsAccurate(item);
+    const int16_t *bounds = Item_GetBoundsAccurate(item);
     if (edge_catch > 0) {
         item->pos.y += coll->side_front.floor - bounds[FBBOX_MIN_Y];
         item->pos.x += coll->shift.x;
@@ -869,7 +869,7 @@ void __cdecl Lara_GetJointAbsPosition(struct PHD_VECTOR *vec, int32_t joint)
         g_LaraItem->pos.y_rot, g_LaraItem->pos.x_rot, g_LaraItem->pos.z_rot);
 
     int16_t *rot = frame_ptr + 9;
-    int32_t *bone = &g_Bones[obj->bone_idx];
+    const int32_t *bone = &g_Bones[obj->bone_idx];
 
     Matrix_TranslateRel(frame_ptr[6], frame_ptr[7], frame_ptr[8]);
     Matrix_RotYXZsuperpack(&rot, 0);
@@ -937,7 +937,7 @@ void __cdecl Lara_GetJointAbsPosition_I(
     g_MatrixPtr->_23 = 0;
     Matrix_RotYXZ(item->pos.y_rot, item->pos.x_rot, item->pos.z_rot);
 
-    int32_t *bone = &g_Bones[obj->bone_idx];
+    const int32_t *bone = &g_Bones[obj->bone_idx];
     int16_t *rot1 = frame1 + 9;
     int16_t *rot2 = frame2 + 9;
     Matrix_InitInterpolate(frac, rate);

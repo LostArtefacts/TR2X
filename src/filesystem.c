@@ -169,7 +169,7 @@ size_t File_Size(MYFILE *file)
     return size;
 }
 
-const char *File_GetPath(MYFILE *file)
+const char *File_GetPath(const MYFILE *file)
 {
     return file->path;
 }
