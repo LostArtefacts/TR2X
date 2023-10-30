@@ -1179,7 +1179,7 @@ typedef enum LARA_MESH {
 00402C50    000000D2    +       int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
 00402D30    00000146    +       int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
 00402E80    00000219    +       int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
-004030A0    00000284    -       int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
+004030A0    00000284    +       int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);
 00403330    00000FC6    -       void __cdecl Output_GTMap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
 00404300    000014C4    -       void __cdecl Output_WGTmap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);
 004057D0    00000037    -       void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);

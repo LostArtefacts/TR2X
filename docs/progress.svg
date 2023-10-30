@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.42% (245)</tspan> · <tspan class="known">77.08% (925)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.50% (246)</tspan> · <tspan class="known">77% (924)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="152.51" height="6" x="0" y="0" class="decompiled"/>
-<rect width="575.81" height="6" x="152.51" y="0" class="known"/>
+<rect width="153.14" height="6" x="0" y="0" class="decompiled"/>
+<rect width="575.19" height="6" x="153.14" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -113,7 +113,7 @@
 <rect width="12" height="12" x="495" y="0" class="decompiled"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="510" y="0" class="decompiled"><title>int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="525" y="0" class="decompiled"><title>int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="540" y="0" class="known"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="540" y="0" class="decompiled"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="555" y="0" class="known"><title>void __cdecl Output_GTMap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
 <rect width="12" height="12" x="570" y="0" class="known"><title>void __cdecl Output_WGTmap_Persp32FP(int32_t y0, int32_t y1, uint8_t *tex_page);</title></rect>
 <rect width="12" height="12" x="585" y="0" class="known"><title>void __cdecl Output_DrawPolyGTMapPersp(const int16_t *obj_ptr);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">12.42%</tspan> · <tspan class="known">87.25%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">12.61%</tspan> · <tspan class="known">87.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="92.75" height="6" x="0" y="0" class="decompiled"/>
-<rect width="651.79" height="6" x="92.75" y="0" class="known"/>
+<rect width="94.17" height="6" x="0" y="0" class="decompiled"/>
+<rect width="650.36" height="6" x="94.17" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1418,7 +1418,7 @@
 <rect width="20.53" height="19.58" x="341.66" y="318.01" class="known"><title>void __cdecl PuzzleHoleCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
 <rect width="20.53" height="19.41" x="341.66" y="340.59" class="known"><title>void __cdecl ControlDeathSlide(int16_t item_num);</title></rect>
 <rect width="18.92" height="20.76" x="365.19" y="0" class="known"><title>void __cdecl DinoControl(int16_t item_num);</title></rect>
-<rect width="18.92" height="20.65" x="365.19" y="23.76" class="known"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
+<rect width="18.92" height="20.65" x="365.19" y="23.76" class="decompiled"><title>int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);</title></rect>
 <rect width="18.92" height="20.43" x="365.19" y="47.41" class="known"><title>void __cdecl Tiger_Control(int16_t item_num);</title></rect>
 <rect width="18.92" height="20.39" x="365.19" y="70.84" class="decompiled"><title>const int16_t *__cdecl Output_CalcRoomVertices(const int16_t *obj_ptr, int32_t far_clip);</title></rect>
 <rect width="18.92" height="20.36" x="365.19" y="94.24" class="known"><title>void __cdecl SharkControl(int16_t item_num);</title></rect>

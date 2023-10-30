@@ -32,3 +32,4 @@ void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);
 int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);
+int32_t __cdecl Output_XGen_XGUVPerspFP(const int16_t *obj_ptr);

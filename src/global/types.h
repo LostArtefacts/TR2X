@@ -1562,4 +1562,26 @@ typedef struct XBUF_XGUV {
     int32_t v2;
 } XBUF_XGUV;
 
+typedef struct XGEN_XGUVP {
+    uint16_t x;
+    uint16_t y;
+    uint16_t g;
+    float rhw;
+    float u;
+    float v;
+} XGEN_XGUVP;
+
+typedef struct XBUF_XGUVP {
+    int32_t x1;
+    int32_t g1;
+    float u1;
+    float v1;
+    float rhw1;
+    int32_t x2;
+    int32_t g2;
+    float u2;
+    float v2;
+    float rhw2;
+} XBUF_XGUVP;
+
 #pragma pack(pop)

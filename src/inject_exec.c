@@ -113,6 +113,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00402C50, Output_XGenX);
     INJECT(1, 0x00402D30, Output_XGenXG);
     INJECT(1, 0x00402E80, Output_XGenXGUV);
+    INJECT(1, 0x004030A0, Output_XGen_XGUVPerspFP);
 }
 
 static void Inject_Music(void)
