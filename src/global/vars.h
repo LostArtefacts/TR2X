@@ -70,6 +70,7 @@
 #define g_ShadesTable (*(int16_t(*)[32])0x004BCB10)
 #define g_Output_DrawObjectG3 (*(int16_t *(__cdecl **)(const int16_t*,int32_t, enum SORT_TYPE))0x004BCB50)
 #define g_MatrixStack (*(struct MATRIX(*)[])0x004BCB58)
+#define g_DepthQTable (*(struct DEPTHQ_ENTRY(*)[32])0x004BD2D8)
 #define g_PhdScreenWidth (*(int32_t*)0x004BF3D8)
 #define g_LsDivider (*(int32_t*)0x004BF3DC)
 #define g_PhdVBuf (*(struct PHD_VBUF(*)[1500])0x004BF3E0)

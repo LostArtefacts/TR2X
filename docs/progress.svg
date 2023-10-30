@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.50% (234)</tspan> · <tspan class="known">78% (936)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.67% (236)</tspan> · <tspan class="known">77.83% (934)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="145.66" height="6" x="0" y="0" class="decompiled"/>
-<rect width="582.66" height="6" x="145.66" y="0" class="known"/>
+<rect width="146.91" height="6" x="0" y="0" class="decompiled"/>
+<rect width="581.42" height="6" x="146.91" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -106,7 +106,7 @@
 <rect width="12" height="12" x="390" y="0" class="decompiled"><title>void __cdecl Output_Init(int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z, int32_t far_z, int16_t view_angle, int32_t screen_width, int32_t screen_height);</title></rect>
 <rect width="12" height="12" x="405" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="420" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="435" y="0" class="known"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="435" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="450" y="0" class="known"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="465" y="0" class="known"><title>void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="480" y="0" class="known"><title>void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);</title></rect>
@@ -1268,7 +1268,7 @@
 <rect width="12" height="12" x="570" y="345" class="decompiled"><title>void __cdecl Matrix_Push(void);</title></rect>
 <rect width="12" height="12" x="585" y="345" class="decompiled"><title>void __cdecl Matrix_PushUnit(void);</title></rect>
 <rect width="12" height="12" x="600" y="345" class="decompiled"><title>void __fastcall Output_FlatA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
-<rect width="12" height="12" x="615" y="345" class="known"><title>void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported</title></rect>
+<rect width="12" height="12" x="615" y="345" class="decompiled"><title>void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="630" y="345" class="known"><title>void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="645" y="345" class="known"><title>void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="660" y="345" class="known"><title>void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.36%</tspan> · <tspan class="known">88.31%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.47%</tspan> · <tspan class="known">88.20%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="84.88" height="6" x="0" y="0" class="decompiled"/>
-<rect width="659.66" height="6" x="84.88" y="0" class="known"/>
+<rect width="85.69" height="6" x="0" y="0" class="decompiled"/>
+<rect width="658.85" height="6" x="85.69" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1584,7 +1584,7 @@
 <rect width="12.90" height="13" x="623.89" y="74.81" class="known"><title>void __cdecl RestoreLostBuffers(void);</title></rect>
 <rect width="12.85" height="13" x="639.79" y="74.81" class="known"><title>void __cdecl Item_AlignPosition(struct PHD_VECTOR *vec, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);</title></rect>
 <rect width="12.85" height="13" x="655.64" y="74.81" class="known"><title>void __cdecl CreateScreenBuffers(void);</title></rect>
-<rect width="12.80" height="13" x="671.49" y="74.81" class="known"><title>void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported</title></rect>
+<rect width="12.80" height="13" x="671.49" y="74.81" class="decompiled"><title>void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12.70" height="13" x="687.30" y="74.81" class="decompiled"><title>void __cdecl Camera_UpdateCutscene(void);</title></rect>
 <rect width="12.70" height="13" x="703" y="74.81" class="known"><title>void __cdecl ControlSpikeWall(int16_t item_num);</title></rect>
 <rect width="12.65" height="13" x="718.70" y="74.81" class="known"><title>int32_t __cdecl Item_TestPosition(int16_t *bounds, struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item);</title></rect>
@@ -2203,7 +2203,7 @@
 <rect width="3.47" height="3.71" x="661.72" y="349.57" class="known"><title>LPVOID __cdecl UT_LoadResource(LPCTSTR lpName, LPCTSTR lpType);</title></rect>
 <rect width="3.47" height="3.71" x="661.72" y="356.29" class="known"><title>LONG __cdecl SetRegistryFloatValue(LPCTSTR lpValueName, double value);</title></rect>
 <rect width="3.29" height="3.78" x="668.19" y="274.97" class="decompiled"><title>void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);</title></rect>
-<rect width="3.29" height="3.78" x="674.49" y="274.97" class="known"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
+<rect width="3.29" height="3.78" x="674.49" y="274.97" class="decompiled"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
 <rect width="3.29" height="3.78" x="680.78" y="274.97" class="known"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
 <rect width="3.29" height="3.78" x="687.07" y="274.97" class="known"><title>void __cdecl Creature_Tilt(struct ITEM_INFO *item, int16_t angle);</title></rect>
 <rect width="3.29" height="3.78" x="693.37" y="274.97" class="known"><title>int16_t *__cdecl Item_GetBestFrame(struct ITEM_INFO *item);</title></rect>

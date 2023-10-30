@@ -14,16 +14,46 @@ static void __fastcall Output_FlatA(int32_t y1, int32_t y2, uint8_t color_idx)
         return;
     }
 
-    int32_t stride = g_PhdScreenWidth;
-    const struct XBUF_X *xbuf = ((const struct XBUF_X *)g_XBuffer) + y1;
+    const int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_X *xbuf = (const struct XBUF_X *)g_XBuffer + y1;
     uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
 
     while (y_size > 0) {
-        int32_t x = xbuf->x1 / PHD_ONE;
-        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+        const int32_t x = xbuf->x1 / PHD_ONE;
+        const int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
         if (x_size > 0) {
             memset(draw_ptr + x, color_idx, x_size);
         }
+        y_size--;
+        xbuf++;
+        draw_ptr += stride;
+    }
+}
+
+static void __fastcall Output_TransA(int32_t y1, int32_t y2, uint8_t depth_q)
+{
+    int32_t y_size = y2 - y1;
+    if (y_size <= 0 || depth_q >= 32) {
+        return;
+    }
+
+    const int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_X *xbuf = (const struct XBUF_X *)g_XBuffer + y1;
+    uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
+    const DEPTHQ_ENTRY *qt = g_DepthQTable + depth_q;
+
+    while (y_size > 0) {
+        const int32_t x = xbuf->x1 / PHD_ONE;
+        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+        if (x_size > 0) {
+            uint8_t *line_ptr = draw_ptr + x;
+            while (x_size > 0) {
+                *line_ptr = qt->index[*line_ptr];
+                line_ptr++;
+                x_size--;
+            }
+        }
+
         y_size--;
         xbuf++;
         draw_ptr += stride;
@@ -656,5 +686,12 @@ void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr)
 {
     if (Output_XGenX(obj_ptr + 1)) {
         Output_FlatA(g_XGenY1, g_XGenY2, *obj_ptr);
+    }
+}
+
+void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr)
+{
+    if (Output_XGenX(obj_ptr + 1)) {
+        Output_TransA(g_XGenY1, g_XGenY2, *obj_ptr);
     }
 }
