@@ -45,3 +45,5 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);
 
 int32_t __cdecl Output_VisibleZClip(
     struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2);
+int32_t __cdecl Output_ZedClipper(
+    int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);

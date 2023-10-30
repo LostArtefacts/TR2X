@@ -1470,3 +1470,49 @@ int32_t __cdecl Output_VisibleZClip(
     );
     // clang-format on
 }
+
+int32_t __cdecl Output_ZedClipper(
+    int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx)
+{
+    int j = 0;
+    struct POINT_INFO *pts0 = &pts[0];
+    struct POINT_INFO *pts1 = &pts[vtx_count - 1];
+
+    for (int i = 0; i < vtx_count; i++) {
+        int32_t diff0 = g_FltNearZ - pts0->zv;
+        int32_t diff1 = g_FltNearZ - pts1->zv;
+        if ((diff0 | diff1) >= 0) {
+            goto loop_end;
+        }
+
+        if ((diff0 ^ diff1) < 0) {
+            double clip = diff0 / (pts1->zv - pts0->zv);
+            vtx[j].x =
+                (pts0->xv + (pts1->xv - pts0->xv) * clip) * g_FltPerspONearZ
+                + g_FltWinCenterX;
+            vtx[j].y =
+                (pts0->yv + (pts1->yv - pts0->yv) * clip) * g_FltPerspONearZ
+                + g_FltWinCenterY;
+            vtx[j].rhw = g_FltRhwONearZ;
+            vtx[j].g = pts0->g + (pts1->g - pts0->g) * clip;
+            vtx[j].u = (pts0->u + (pts1->u - pts0->u) * clip) * g_FltRhwONearZ;
+            vtx[j].v = (pts0->v + (pts1->v - pts0->v) * clip) * g_FltRhwONearZ;
+            j++;
+        }
+
+        if (diff0 < 0) {
+            vtx[j].x = pts0->xs;
+            vtx[j].y = pts0->ys;
+            vtx[j].rhw = pts0->rhw;
+            vtx[j].g = pts0->g;
+            vtx[j].u = pts0->u * pts0->rhw;
+            vtx[j].v = pts0->v * pts0->rhw;
+            ++j;
+        }
+
+    loop_end:
+        pts1 = pts0++;
+    }
+
+    return (j < 3) ? 0 : j;
+}
