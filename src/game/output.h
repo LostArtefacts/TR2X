@@ -26,3 +26,4 @@ void __cdecl Output_AlterFOV(int16_t fov);
 void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);
 void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);
+void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);

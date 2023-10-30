@@ -19,6 +19,7 @@
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f
 #define g_XGenY1 (*(int32_t*)0x0046C308)
 #define g_XGenY2 (*(int32_t*)0x0046C30C)
+#define g_GouraudTable (*(struct GOURAUD_ENTRY(*)[256])0x0046C310)
 #define g_PhdWinTop (*(int32_t*)0x0046E310)
 #define g_LsAdder (*(int32_t*)0x00470318)
 #define g_FltWinBottom (*(float*)0x0047031C)

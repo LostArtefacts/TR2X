@@ -1173,7 +1173,7 @@ typedef enum LARA_MESH {
 00402970    0000019F    +       void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr);
 00402B10    00000035    +       void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);
 00402B50    00000035    +       void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);
-00402B90    00000035    -       void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);
+00402B90    00000035    +       void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);
 00402BD0    0000003C    -       void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);
 00402C10    0000003C    -       void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);
 00402C50    000000D2    -       int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);
@@ -2436,7 +2436,7 @@ typedef enum LARA_MESH {
 0045729E    00000033    +       void __cdecl Matrix_PushUnit(void);
 004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
 00457335    0000013A    +       void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported
-0045746F    00000160    -       void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
+0045746F    00000160    +       void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
 004575CF    000002FD    -       void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
 004578CC    00000341    -       void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
@@ -2467,6 +2467,7 @@ typedef enum LARA_MESH {
 0046C304    -       float g_ViewportAspectRatio = 0.0f;
 0046C308    -       int32_t g_XGenY1;
 0046C30C    -       int32_t g_XGenY2;
+0046C310    -       struct GOURAUD_ENTRY g_GouraudTable[256];
 0046E310    -       int32_t g_PhdWinTop;
 00470318    -       int32_t g_LsAdder;
 0047031C    -       float g_FltWinBottom;

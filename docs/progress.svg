@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.67% (236)</tspan> · <tspan class="known">77.83% (934)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.83% (238)</tspan> · <tspan class="known">77.67% (932)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="146.91" height="6" x="0" y="0" class="decompiled"/>
-<rect width="581.42" height="6" x="146.91" y="0" class="known"/>
+<rect width="148.16" height="6" x="0" y="0" class="decompiled"/>
+<rect width="580.17" height="6" x="148.16" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -107,7 +107,7 @@
 <rect width="12" height="12" x="405" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyLine(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="420" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="435" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
-<rect width="12" height="12" x="450" y="0" class="known"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
+<rect width="12" height="12" x="450" y="0" class="decompiled"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="465" y="0" class="known"><title>void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="480" y="0" class="known"><title>void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="495" y="0" class="known"><title>int32_t __cdecl Output_XGenX(const int16_t *obj_ptr);</title></rect>
@@ -1269,7 +1269,7 @@
 <rect width="12" height="12" x="585" y="345" class="decompiled"><title>void __cdecl Matrix_PushUnit(void);</title></rect>
 <rect width="12" height="12" x="600" y="345" class="decompiled"><title>void __fastcall Output_FlatA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="615" y="345" class="decompiled"><title>void __fastcall Output_TransA(int32_t y0, int32_t y1, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported</title></rect>
-<rect width="12" height="12" x="630" y="345" class="known"><title>void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
+<rect width="12" height="12" x="630" y="345" class="decompiled"><title>void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="645" y="345" class="known"><title>void __fastcall Output_GTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="660" y="345" class="known"><title>void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="12" height="12" x="675" y="345" class="decompiled"><title>int32_t __fastcall Math_Atan(int32_t x, int32_t y);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.47%</tspan> · <tspan class="known">88.20%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">11.59%</tspan> · <tspan class="known">88.08%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="85.69" height="6" x="0" y="0" class="decompiled"/>
-<rect width="658.85" height="6" x="85.69" y="0" class="known"/>
+<rect width="86.58" height="6" x="0" y="0" class="decompiled"/>
+<rect width="657.95" height="6" x="86.58" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1555,7 +1555,7 @@
 <rect width="14.36" height="13.56" x="444.89" y="329.92" class="known"><title>BOOL __cdecl S_FrontEndCheck(void);</title></rect>
 <rect width="14.36" height="13.51" x="444.89" y="346.49" class="known"><title>void __cdecl FlameControl(int16_t fx_num);</title></rect>
 <rect width="14.63" height="13.16" x="462.24" y="58.64" class="decompiled"><title>void __cdecl Lara_Col_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="14.53" height="13.16" x="479.88" y="58.64" class="known"><title>void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
+<rect width="14.53" height="13.16" x="479.88" y="58.64" class="decompiled"><title>void __fastcall Output_GourA(int32_t y0, int32_t y1, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="14.48" height="13.16" x="497.41" y="58.64" class="known"><title>int32_t __cdecl Level_Initialise(int32_t level_num, int32_t level_type);</title></rect>
 <rect width="14.43" height="13.16" x="514.89" y="58.64" class="known"><title>void __cdecl Boat_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
 <rect width="14.33" height="13.16" x="532.33" y="58.64" class="known"><title>void __cdecl Lara_SwimCollision(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -2204,7 +2204,7 @@
 <rect width="3.47" height="3.71" x="661.72" y="356.29" class="known"><title>LONG __cdecl SetRegistryFloatValue(LPCTSTR lpValueName, double value);</title></rect>
 <rect width="3.29" height="3.78" x="668.19" y="274.97" class="decompiled"><title>void __cdecl Output_DrawPolyFlat(const int16_t *obj_ptr);</title></rect>
 <rect width="3.29" height="3.78" x="674.49" y="274.97" class="decompiled"><title>void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr);</title></rect>
-<rect width="3.29" height="3.78" x="680.78" y="274.97" class="known"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
+<rect width="3.29" height="3.78" x="680.78" y="274.97" class="decompiled"><title>void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr);</title></rect>
 <rect width="3.29" height="3.78" x="687.07" y="274.97" class="known"><title>void __cdecl Creature_Tilt(struct ITEM_INFO *item, int16_t angle);</title></rect>
 <rect width="3.29" height="3.78" x="693.37" y="274.97" class="known"><title>int16_t *__cdecl Item_GetBestFrame(struct ITEM_INFO *item);</title></rect>
 <rect width="3.29" height="3.78" x="699.66" y="274.97" class="decompiled"><title>void __cdecl Lara_State_HangLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

@@ -60,6 +60,40 @@ static void __fastcall Output_TransA(int32_t y1, int32_t y2, uint8_t depth_q)
     }
 }
 
+static void __fastcall Output_GourA(int32_t y1, int32_t y2, uint8_t color_idx)
+{
+    int32_t y_size = y2 - y1;
+    if (y_size <= 0) {
+        return;
+    }
+
+    const int32_t stride = g_PhdScreenWidth;
+    const struct XBUF_XG *xbuf = (const struct XBUF_XG *)g_XBuffer + y1;
+    uint8_t *draw_ptr = g_PrintSurfacePtr + y1 * stride;
+    const struct GOURAUD_ENTRY *gt = g_GouraudTable + color_idx;
+
+    while (y_size > 0) {
+        const int32_t x = xbuf->x1 / PHD_ONE;
+        int32_t x_size = (xbuf->x2 / PHD_ONE) - x;
+        if (x_size > 0) {
+            int32_t g = xbuf->g1;
+            const int32_t g_add = (xbuf->g2 - g) / x_size;
+
+            uint8_t *line_ptr = draw_ptr + x;
+            while (x_size > 0) {
+                *line_ptr = gt->index[(g >> 16) & 0xFF];
+                line_ptr++;
+                g += g_add;
+                x_size--;
+            }
+        }
+
+        y_size--;
+        xbuf++;
+        draw_ptr += stride;
+    }
+}
+
 void __cdecl Output_Init(
     int16_t x, int16_t y, int32_t width, int32_t height, int32_t near_z,
     int32_t far_z, int16_t view_angle, int32_t screen_width,
@@ -693,5 +727,12 @@ void __cdecl Output_DrawPolyTrans(const int16_t *obj_ptr)
 {
     if (Output_XGenX(obj_ptr + 1)) {
         Output_TransA(g_XGenY1, g_XGenY2, *obj_ptr);
+    }
+}
+
+void __cdecl Output_DrawPolyGouraud(const int16_t *obj_ptr)
+{
+    if (Output_XGenXG(obj_ptr + 1)) {
+        Output_GourA(g_XGenY1, g_XGenY2, *obj_ptr);
     }
 }
