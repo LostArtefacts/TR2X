@@ -33,3 +33,9 @@
         (a) = (b);                                                             \
         (b) = (c);                                                             \
     } while (0)
+
+#define BYTEn(a, b) (*((uint8_t *)&(a) + b))
+#define BYTE0(a) (BYTEn(a, 0))
+#define BYTE1(a) (BYTEn(a, 1))
+#define BYTE2(a) (BYTEn(a, 2))
+#define BYTE3(a) (BYTEn(a, 3))

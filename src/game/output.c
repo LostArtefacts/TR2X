@@ -128,8 +128,7 @@ static void __fastcall Output_GTMapA(
 
         uint8_t *line_ptr = draw_ptr + x;
         while (x_size > 0) {
-            const int32_t tex_idx =
-                ((((v >> 16) & 0xFF) << 8) | ((u >> 16) & 0xFF));
+            const int32_t tex_idx = ((BYTE2(v) << 8) | BYTE2(u));
             uint8_t color_idx = tex_page[tex_idx];
             *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
             line_ptr++;
@@ -174,8 +173,7 @@ static void __fastcall Output_WGTMapA(
 
         uint8_t *line_ptr = draw_ptr + x;
         while (x_size > 0) {
-            const int32_t tex_idx =
-                ((((v >> 16) & 0xFF) << 8) | ((u >> 16) & 0xFF));
+            const int32_t tex_idx = ((BYTE2(v) << 8) | BYTE2(u));
             uint8_t color_idx = tex_page[tex_idx];
             if (color_idx != 0) {
                 *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
@@ -1243,8 +1241,8 @@ void __cdecl Output_GTMapPersp32FP(
                 if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
                     int32_t batch_counter = batch_size / 2;
                     while (batch_counter--) {
-                        uint8_t color_idx = tex_page
-                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        uint8_t color_idx =
+                            tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                         color_idx =
                             g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
                         *line_ptr++ = color_idx;
@@ -1256,8 +1254,8 @@ void __cdecl Output_GTMapPersp32FP(
                 } else {
                     int32_t batch_counter = batch_size;
                     while (batch_counter--) {
-                        uint8_t color_idx = tex_page
-                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        uint8_t color_idx =
+                            tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                         *line_ptr++ =
                             g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
                         g += g_add;
@@ -1284,8 +1282,7 @@ void __cdecl Output_GTMapPersp32FP(
             if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
                 int32_t batch_counter = batch_size / 2;
                 while (batch_counter--) {
-                    uint8_t color_idx = tex_page
-                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                     color_idx =
                         g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
                     *line_ptr++ = color_idx;
@@ -1297,8 +1294,7 @@ void __cdecl Output_GTMapPersp32FP(
             } else {
                 int32_t batch_counter = batch_size;
                 while (batch_counter--) {
-                    uint8_t color_idx = tex_page
-                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                     *line_ptr++ =
                         g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
                     g += g_add;
@@ -1309,8 +1305,7 @@ void __cdecl Output_GTMapPersp32FP(
         }
 
         if (x_size == 1) {
-            const uint8_t color_idx =
-                tex_page[(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+            const uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
             *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
         }
 
@@ -1374,8 +1369,8 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
                 if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
                     int32_t batch_counter = batch_size / 2;
                     while (batch_counter--) {
-                        uint8_t color_idx = tex_page
-                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        uint8_t color_idx =
+                            tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                         if (color_idx != 0) {
                             color_idx = g_DepthQTable[(g >> 16) & 0xFF]
                                             .index[color_idx];
@@ -1390,8 +1385,8 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
                 } else {
                     int32_t batch_counter = batch_size;
                     while (batch_counter--) {
-                        uint8_t color_idx = tex_page
-                            [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                        uint8_t color_idx =
+                            tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                         if (color_idx != 0) {
                             *line_ptr =
                                 g_DepthQTable[BYTE2(g)].index[color_idx];
@@ -1421,8 +1416,7 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
             if ((ABS(u0_add) + ABS(v0_add)) < (PHD_ONE / 2)) {
                 int32_t batch_counter = batch_size / 2;
                 while (batch_counter--) {
-                    uint8_t color_idx = tex_page
-                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                     if (color_idx != 0) {
                         color_idx =
                             g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
@@ -1437,8 +1431,7 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
             } else {
                 int32_t batch_counter = batch_size;
                 while (batch_counter--) {
-                    uint8_t color_idx = tex_page
-                        [(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+                    uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
                     if (color_idx != 0) {
                         *line_ptr =
                             g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
@@ -1452,8 +1445,7 @@ void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page)
         }
 
         if (x_size == 1) {
-            const uint8_t color_idx =
-                tex_page[(((v0 >> 16) & 0xFF) << 8) | ((u0 >> 16) & 0xFF)];
+            const uint8_t color_idx = tex_page[(BYTE2(v0) << 8) | BYTE2(u0)];
             if (color_idx != 0) {
                 *line_ptr = g_DepthQTable[(g >> 16) & 0xFF].index[color_idx];
             }
