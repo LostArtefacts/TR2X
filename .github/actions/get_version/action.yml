@@ -1,0 +1,14 @@
+name: 'Get the current version'
+outputs:
+  version:
+    description: 'Repository version'
+    value: ${{ steps.get_version.outputs.VERSION }}
+runs:
+  using: composite
+  steps:
+    - name: 'Extract tag name'
+      id: get_version
+      run: |
+        VERSION=$(git describe --always --abbrev=7 --tags --exclude latest)
+        echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+      shell: bash

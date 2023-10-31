@@ -8,19 +8,19 @@ jobs:
     name: Build Docker toolchain
     runs-on: ubuntu-latest
     steps:
-      - name: Login to Docker Hub
+      - name: 'Login to Docker Hub'
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Checkout code
+      - name: 'Checkout code'
         uses: actions/checkout@v2
         with:
           path: .
-          fetch-depth: 0
+          fetch-tags: true
 
-      - name: Build Docker image
+      - name: 'Build Docker image'
         run: |
           docker build -t "rrdash/tr2x:latest" . -f docker/game-win/Dockerfile
           docker push "rrdash/tr2x:latest"

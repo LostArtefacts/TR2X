@@ -1,0 +1,24 @@
+name: 'Prepare changelog'
+outputs:
+  changelog:
+    description: 'Changelog'
+    value: ${{ steps.prepare_changelog.outputs.CHANGELOG }}
+runs:
+  using: composite
+  steps:
+    - name: 'Prepare changelog'
+      id: prepare_changelog
+      run: |
+        echo 'CHANGELOG<<EOF' >> "$GITHUB_OUTPUT"
+
+        python3 -c '''
+        import re
+        from pathlib import Path
+        sections = [s for s in Path("CHANGELOG.md").read_text().split("\n\n") if re.search("- \w", s)]
+        if sections:
+            section = sections[0]
+            print("\n".join(line for line in section.splitlines() if not line.startswith("#")))
+        ''' >> "$GITHUB_OUTPUT"
+
+        echo EOF >> "$GITHUB_OUTPUT"
+      shell: bash

@@ -1,0 +1,66 @@
+on:
+  - workflow_call
+
+jobs:
+  build_game_win:
+    name: 'Build'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v3
+        with:
+          path: .
+          fetch-tags: true
+
+      - name: 'Install dependencies'
+        run: |
+          echo "$GITHUB_CONTEXT"
+          sudo apt-get update
+          sudo apt-get install -y make moby-engine moby-cli
+        shell: sh
+
+      - name: 'Build the game'
+        run: |
+          make clean release
+          mkdir -p out/
+          cp build/win/*.exe out/
+          cp build/win/*.dll out/
+          cp -r bin/* out/
+        shell: sh
+
+      - name: 'Upload the artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: game_win
+          path: out/
+
+  package_game_win:
+    name: 'Package'
+    runs-on: ubuntu-latest
+    needs:
+      - build_game_win
+    steps:
+      - name: 'Download built assets'
+        uses: actions/download-artifact@v1
+        with:
+          name: game_win
+          path: artifacts/
+
+      - name: 'Install dependencies'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y p7zip-full
+        shell: sh
+
+      - name: 'Package the game'
+        run: |
+          mkdir -p out
+          cd artifacts
+          7z a ../out/game-win.zip *
+        shell: sh
+
+      - name: 'Upload the artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: game_win_zip
+          path: out/game-win.zip
