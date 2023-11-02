@@ -1785,9 +1785,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
         int32_t num_points = 4;
 
         const int8_t clip_or =
-            (vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip);
+            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip);
         const int8_t clip_and =
-            (vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip);
+            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip);
 
         if (clip_and != 0) {
             continue;
@@ -1889,28 +1889,28 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             g_VBuffer[0].x = vtx[0]->xs;
             g_VBuffer[0].y = vtx[0]->ys;
             g_VBuffer[0].rhw = vtx[0]->rhw;
-            g_VBuffer[0].g = vtx[0]->g;
+            g_VBuffer[0].g = (float)vtx[0]->g;
             g_VBuffer[0].u = (double)uv[0].u * vtx[0]->rhw;
             g_VBuffer[0].v = (double)uv[0].v * vtx[0]->rhw;
 
             g_VBuffer[1].x = vtx[1]->xs;
             g_VBuffer[1].y = vtx[1]->ys;
             g_VBuffer[1].rhw = vtx[1]->rhw;
-            g_VBuffer[1].g = vtx[1]->g;
+            g_VBuffer[1].g = (float)vtx[1]->g;
             g_VBuffer[1].u = (double)uv[1].u * vtx[1]->rhw;
             g_VBuffer[1].v = (double)uv[1].v * vtx[1]->rhw;
 
             g_VBuffer[2].x = vtx[2]->xs;
             g_VBuffer[2].y = vtx[2]->ys;
             g_VBuffer[2].rhw = vtx[2]->rhw;
-            g_VBuffer[2].g = vtx[2]->g;
+            g_VBuffer[2].g = (float)vtx[2]->g;
             g_VBuffer[2].u = (double)uv[2].u * vtx[2]->rhw;
             g_VBuffer[2].v = (double)uv[2].v * vtx[2]->rhw;
 
             g_VBuffer[3].x = vtx[3]->xs;
             g_VBuffer[3].y = vtx[3]->ys;
             g_VBuffer[3].rhw = vtx[3]->rhw;
-            g_VBuffer[3].g = vtx[3]->g;
+            g_VBuffer[3].g = (float)vtx[3]->g;
             g_VBuffer[3].u = (double)uv[3].u * vtx[3]->rhw;
             g_VBuffer[3].v = (double)uv[3].v * vtx[3]->rhw;
         } else {
@@ -1925,9 +1925,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             points[0].rhw = vtx[0]->rhw;
             points[0].xs = vtx[0]->xs;
             points[0].ys = vtx[0]->ys;
-            points[0].g = vtx[0]->g;
-            points[0].u = uv[0].u;
-            points[0].v = uv[0].v;
+            points[0].g = (float)vtx[0]->g;
+            points[0].u = (float)uv[0].u;
+            points[0].v = (float)uv[0].v;
 
             points[1].yv = vtx[1]->yv;
             points[1].xv = vtx[1]->xv;
@@ -1935,9 +1935,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             points[1].rhw = vtx[1]->rhw;
             points[1].xs = vtx[1]->xs;
             points[1].ys = vtx[1]->ys;
-            points[1].g = vtx[1]->g;
-            points[1].u = uv[1].u;
-            points[1].v = uv[1].v;
+            points[1].g = (float)vtx[1]->g;
+            points[1].u = (float)uv[1].u;
+            points[1].v = (float)uv[1].v;
 
             points[2].xv = vtx[2]->xv;
             points[2].yv = vtx[2]->yv;
@@ -1945,9 +1945,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             points[2].rhw = vtx[2]->rhw;
             points[2].xs = vtx[2]->xs;
             points[2].ys = vtx[2]->ys;
-            points[2].g = vtx[2]->g;
-            points[2].u = uv[2].u;
-            points[2].v = uv[2].v;
+            points[2].g = (float)vtx[2]->g;
+            points[2].u = (float)uv[2].u;
+            points[2].v = (float)uv[2].v;
 
             points[3].xv = vtx[3]->xv;
             points[3].yv = vtx[3]->yv;
@@ -1955,9 +1955,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             points[3].rhw = vtx[3]->rhw;
             points[3].xs = vtx[3]->xs;
             points[3].ys = vtx[3]->ys;
-            points[3].g = vtx[3]->g;
-            points[3].u = uv[3].u;
-            points[3].v = uv[3].v;
+            points[3].g = (float)vtx[3]->g;
+            points[3].u = (float)uv[3].u;
+            points[3].v = (float)uv[3].v;
 
             num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
@@ -1972,7 +1972,7 @@ const int16_t *__cdecl Output_InsertObjectGT4(
 
         const float zv = Output_CalculatePolyZ(
             sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, vtx[3]->zv);
-        g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+        g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
         g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
         g_Sort3DPtr++;
 
@@ -1983,11 +1983,11 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             *g_Info3DPtr++ = num_points;
 
             for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = g_VBuffer[j].x;
-                *g_Info3DPtr++ = g_VBuffer[j].y;
-                *g_Info3DPtr++ = g_VBuffer[j].g;
-                *g_Info3DPtr++ = (g_VBuffer[j].u / g_VBuffer[j].rhw);
-                *g_Info3DPtr++ = (g_VBuffer[j].v / g_VBuffer[j].rhw);
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].u / g_VBuffer[j].rhw);
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].v / g_VBuffer[j].rhw);
             }
         } else {
             *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
@@ -1997,9 +1997,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
             *g_Info3DPtr++ = num_points;
 
             for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = g_VBuffer[j].x;
-                *g_Info3DPtr++ = g_VBuffer[j].y;
-                *g_Info3DPtr++ = g_VBuffer[j].g;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
                 *(float *)g_Info3DPtr = g_VBuffer[j].rhw;
                 g_Info3DPtr += sizeof(float) / sizeof(int16_t);
                 *(float *)g_Info3DPtr = g_VBuffer[j].u;
@@ -2207,9 +2207,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             *g_Info3DPtr++ = num_points;
 
             for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = g_VBuffer[j].x;
-                *g_Info3DPtr++ = g_VBuffer[j].y;
-                *g_Info3DPtr++ = g_VBuffer[j].g;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
                 *(float *)g_Info3DPtr = g_VBuffer[j].rhw;
                 g_Info3DPtr += sizeof(float) / sizeof(int16_t);
                 *(float *)g_Info3DPtr = g_VBuffer[j].u;
