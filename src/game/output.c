@@ -1569,6 +1569,109 @@ int32_t __cdecl Output_ZedClipper(
     return (j < 3) ? 0 : j;
 }
 
+int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx)
+{
+    int j;
+    struct VERTEX_INFO vtx_buf[20];
+    const struct VERTEX_INFO *vtx1;
+    const struct VERTEX_INFO *vtx2;
+
+    if (vtx_count < 3) {
+        return 0;
+    }
+
+    // horizontal clip
+    j = 0;
+    vtx2 = &vtx[vtx_count - 1];
+    for (int i = 0; i < vtx_count; i++) {
+        vtx1 = vtx2;
+        vtx2 = &vtx[i];
+
+        if (vtx1->x < g_FltWinLeft) {
+            if (vtx2->x < g_FltWinLeft) {
+                continue;
+            }
+            const float clip = (g_FltWinLeft - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinLeft;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            j++;
+        } else if (vtx1->x > g_FltWinRight) {
+            if (vtx2->x > g_FltWinRight) {
+                continue;
+            }
+            const float clip = (g_FltWinRight - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinRight;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            j++;
+        }
+
+        if (vtx2->x < g_FltWinLeft) {
+            const float clip = (g_FltWinLeft - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinLeft;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            j++;
+        } else if (vtx2->x > g_FltWinRight) {
+            const float clip = (g_FltWinRight - vtx2->x) / (vtx1->x - vtx2->x);
+            vtx_buf[j].x = g_FltWinRight;
+            vtx_buf[j].y = vtx2->y + (vtx1->y - vtx2->y) * clip;
+            j++;
+        } else {
+            vtx_buf[j].x = vtx2->x;
+            vtx_buf[j].y = vtx2->y;
+            j++;
+        }
+    }
+
+    vtx_count = j;
+    if (vtx_count < 3) {
+        return 0;
+    }
+
+    // vertical clip
+    j = 0;
+    vtx2 = &vtx_buf[vtx_count - 1];
+    for (int i = 0; i < vtx_count; i++) {
+        vtx1 = vtx2;
+        vtx2 = &vtx_buf[i];
+
+        if (vtx1->y < g_FltWinTop) {
+            if (vtx2->y < g_FltWinTop) {
+                continue;
+            }
+            const float clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinTop;
+            j++;
+        } else if (vtx1->y > g_FltWinBottom) {
+            if (vtx2->y > g_FltWinBottom) {
+                continue;
+            }
+            const float clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinBottom;
+            j++;
+        }
+
+        if (vtx2->y < g_FltWinTop) {
+            const float clip = (g_FltWinTop - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinTop;
+            j++;
+        } else if (vtx2->y > g_FltWinBottom) {
+            const float clip = (g_FltWinBottom - vtx2->y) / (vtx1->y - vtx2->y);
+            vtx[j].x = vtx2->x + (vtx1->x - vtx2->x) * clip;
+            vtx[j].y = g_FltWinBottom;
+            j++;
+        } else {
+            vtx[j].x = vtx2->x;
+            vtx[j].y = vtx2->y;
+            j++;
+        }
+    }
+
+    return (j < 3) ? 0 : j;
+}
+
 int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx)
 {
     struct VERTEX_INFO vtx_buf[8];
@@ -1619,8 +1722,8 @@ int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx)
             vtx_buf[j++] = *vtx2;
         }
     }
-    vtx_count = j;
 
+    vtx_count = j;
     if (vtx_count < 3) {
         return 0;
     }

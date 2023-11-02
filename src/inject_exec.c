@@ -128,6 +128,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00407200, Output_XYGClipper);
     INJECT(1, 0x00407A10, Output_InsertObjectG3);
     INJECT(1, 0x00407630, Output_InsertObjectG4);
+    INJECT(1, 0x00407D30, Output_XYClipper);
 }
 
 static void Inject_Music(void)

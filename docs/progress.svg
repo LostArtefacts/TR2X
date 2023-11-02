@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.50% (258)</tspan> · <tspan class="known">76% (912)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.58% (259)</tspan> · <tspan class="known">75.92% (911)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="160.60" height="6" x="0" y="0" class="decompiled"/>
-<rect width="567.72" height="6" x="160.60" y="0" class="known"/>
+<rect width="161.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="567.10" height="6" x="161.23" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -126,7 +126,7 @@
 <rect width="12" height="12" x="690" y="0" class="decompiled"><title>int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="12" height="12" x="705" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="720" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="735" y="0" class="known"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
+<rect width="12" height="12" x="735" y="0" class="decompiled"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="12" height="12" x="0" y="15" class="known"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="15" y="15" class="known"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
 <rect width="12" height="12" x="30" y="15" class="known"><title>void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.18%</tspan> · <tspan class="known">81.49%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.39%</tspan> · <tspan class="known">81.28%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="135.77" height="6" x="0" y="0" class="decompiled"/>
-<rect width="608.76" height="6" x="135.77" y="0" class="known"/>
+<rect width="137.36" height="6" x="0" y="0" class="decompiled"/>
+<rect width="607.17" height="6" x="137.36" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1406,7 +1406,7 @@
 <rect width="20.53" height="21.91" x="341.66" y="24.98" class="known"><title>int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);</title></rect>
 <rect width="20.53" height="21.81" x="341.66" y="49.89" class="known"><title>void __cdecl DrawSkidoo(struct ITEM_INFO *item);</title></rect>
 <rect width="20.53" height="21.74" x="341.66" y="74.69" class="known"><title>const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="20.53" height="21.64" x="341.66" y="99.43" class="known"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
+<rect width="20.53" height="21.64" x="341.66" y="99.43" class="decompiled"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="20.53" height="21.64" x="341.66" y="124.07" class="known"><title>void __cdecl ControlMissile(int16_t fx_num);</title></rect>
 <rect width="20.53" height="21.64" x="341.66" y="148.70" class="known"><title>BOOL __cdecl GameMain(void);</title></rect>
 <rect width="20.53" height="21.53" x="341.66" y="173.34" class="known"><title>void __cdecl Lara_Animate(struct ITEM_INFO *item);</title></rect>
