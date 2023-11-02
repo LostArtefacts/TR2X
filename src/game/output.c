@@ -2620,3 +2620,25 @@ void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade)
     }
     g_SurfaceCount++;
 }
+
+void __cdecl Output_InsertTransQuad(
+    int32_t x, int32_t y, int32_t width, int32_t height, int32_t z)
+{
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(g_PhdNearZ + 8 * z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_TRANS;
+    *g_Info3DPtr++ = 32;
+    *g_Info3DPtr++ = 4; // number of vertices
+    *g_Info3DPtr++ = x;
+    *g_Info3DPtr++ = y;
+    *g_Info3DPtr++ = x + width;
+    *g_Info3DPtr++ = y;
+    *g_Info3DPtr++ = x + width;
+    *g_Info3DPtr++ = height + y;
+    *g_Info3DPtr++ = x;
+    *g_Info3DPtr++ = height + y;
+
+    g_SurfaceCount++;
+}

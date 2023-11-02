@@ -63,3 +63,5 @@ const int16_t *__cdecl Output_InsertObjectGT4(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 
 void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
+void __cdecl Output_InsertTransQuad(
+    int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
