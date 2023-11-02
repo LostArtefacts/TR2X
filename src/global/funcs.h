@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_XYGClipper ((int32_t __cdecl (*)(int32_t vtx_count, struct VERTEX_INFO *vtx))0x00407200)
 #define Output_InsertObjectG4 ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x00407630)
 #define Output_InsertObjectG3 ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x00407A10)
 #define Output_XYClipper ((int32_t __cdecl (*)(int32_t vtx_count, struct VERTEX_INFO *vtx))0x00407D30)
