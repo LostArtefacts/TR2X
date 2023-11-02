@@ -2642,3 +2642,26 @@ void __cdecl Output_InsertTransQuad(
 
     g_SurfaceCount++;
 }
+
+void __cdecl Output_InsertFlatRect(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
+    uint8_t color_idx)
+{
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_FLAT;
+    *g_Info3DPtr++ = color_idx;
+    *g_Info3DPtr++ = 4;
+    *g_Info3DPtr++ = x1;
+    *g_Info3DPtr++ = y1;
+    *g_Info3DPtr++ = x2;
+    *g_Info3DPtr++ = y1;
+    *g_Info3DPtr++ = x2;
+    *g_Info3DPtr++ = y2;
+    *g_Info3DPtr++ = x1;
+    *g_Info3DPtr++ = y2;
+
+    g_SurfaceCount++;
+}

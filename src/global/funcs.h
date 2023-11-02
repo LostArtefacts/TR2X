@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_InsertFlatRect ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00408590)
 #define Output_InsertLine ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00408660)
 #define Output_InsertGT3_ZBuffered ((void __cdecl (*)(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2))0x00408720)
 #define Output_DrawClippedPoly_Textured ((void __cdecl (*)(int32_t vtx_count))0x00408D70)

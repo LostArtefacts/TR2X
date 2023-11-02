@@ -65,3 +65,6 @@ const int16_t *__cdecl Output_InsertObjectGT4(
 void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
 void __cdecl Output_InsertTransQuad(
     int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+void __cdecl Output_InsertFlatRect(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
+    uint8_t color_idx);
