@@ -2567,3 +2567,56 @@ const int16_t *__cdecl Output_InsertObjectGT4(
 
     return obj_ptr;
 }
+
+void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade)
+{
+    const int32_t vtx_count = 8;
+
+    int8_t clip_or = 0;
+    uint8_t clip_and = 0xFF;
+    for (int i = 0; i < vtx_count; i++) {
+        clip_or |= vbuf[i].clip;
+        clip_and &= vbuf[i].clip;
+    }
+
+    if (clip_or < 0 || clip_and || !VBUF_VISIBLE(vbuf[0], vbuf[1], vbuf[2])) {
+        return;
+    }
+
+    int32_t num_points = vtx_count;
+    for (int i = 0; i < num_points; i++) {
+        g_VBuffer[i].x = vbuf[i].xs;
+        g_VBuffer[i].y = vbuf[i].ys;
+    }
+
+    if (clip_or != 0) {
+        g_FltWinTop = 0.0;
+        g_FltWinLeft = 0.0;
+        g_FltWinRight = (float)g_PhdWinMaxX;
+        g_FltWinBottom = (float)g_PhdWinMaxY;
+
+        num_points = Output_XYClipper(vtx_count, g_VBuffer);
+        if (!num_points) {
+            return;
+        }
+    }
+
+    double poly_z = 0.0;
+    for (int i = 0; i < vtx_count; i++) {
+        poly_z += vbuf[i].zv;
+    }
+    poly_z /= vtx_count;
+
+    g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(poly_z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_TRANS;
+    *g_Info3DPtr++ = shade;
+    *g_Info3DPtr++ = num_points;
+    for (int i = 0; i < num_points; i++) {
+        *g_Info3DPtr++ = g_VBuffer[i].x;
+        *g_Info3DPtr++ = g_VBuffer[i].y;
+    }
+    g_SurfaceCount++;
+}

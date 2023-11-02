@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_InsertTrans8 ((void __cdecl (*)(struct PHD_VBUF *vbuf, int16_t shade))0x00408000)
 #define Output_InsertTransQuad ((void __cdecl (*)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z))0x004084B0)
 #define Output_InsertFlatRect ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00408590)
 #define Output_InsertLine ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00408660)

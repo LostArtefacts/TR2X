@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.58% (259)</tspan> · <tspan class="known">75.92% (911)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.67% (260)</tspan> · <tspan class="known">75.83% (910)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="161.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="567.10" height="6" x="161.23" y="0" class="known"/>
+<rect width="161.85" height="6" x="0" y="0" class="decompiled"/>
+<rect width="566.48" height="6" x="161.85" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -127,7 +127,7 @@
 <rect width="12" height="12" x="705" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="720" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="735" y="0" class="decompiled"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
-<rect width="12" height="12" x="0" y="15" class="known"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
+<rect width="12" height="12" x="0" y="15" class="decompiled"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="15" y="15" class="known"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
 <rect width="12" height="12" x="30" y="15" class="known"><title>void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="45" y="15" class="known"><title>void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.39%</tspan> · <tspan class="known">81.28%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">18.74%</tspan> · <tspan class="known">80.93%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="137.36" height="6" x="0" y="0" class="decompiled"/>
-<rect width="607.17" height="6" x="137.36" y="0" class="known"/>
+<rect width="139.99" height="6" x="0" y="0" class="decompiled"/>
+<rect width="604.55" height="6" x="139.99" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1330,7 +1330,7 @@
 <rect width="29.57" height="27.62" x="173.07" y="126.13" class="known"><title>void __cdecl Output_InsertGT4_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
 <rect width="29.57" height="27.45" x="173.07" y="156.76" class="known"><title>void __cdecl S_ShowControls(void);</title></rect>
 <rect width="29.57" height="26.49" x="173.07" y="187.21" class="decompiled"><title>void __cdecl Camera_Update(void);</title></rect>
-<rect width="29.57" height="26.36" x="173.07" y="216.70" class="known"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
+<rect width="29.57" height="26.36" x="173.07" y="216.70" class="decompiled"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="29.57" height="26.29" x="173.07" y="246.06" class="known"><title>void __cdecl MonkControl(int16_t item_num);</title></rect>
 <rect width="29.57" height="26.24" x="173.07" y="275.35" class="known"><title>LRESULT __stdcall WinVidGameWindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);</title></rect>
 <rect width="29.57" height="26.22" x="173.07" y="304.59" class="known"><title>int32_t __cdecl SkidooDynamics(struct ITEM_INFO *skidoo);</title></rect>

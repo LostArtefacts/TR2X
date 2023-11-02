@@ -1195,7 +1195,7 @@ typedef enum LARA_MESH {
 00407630    000003D1    +       const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00407A10    0000031B    +       const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00407D30    000002D0    +       int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
-00408000    000004A4    -       void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
+00408000    000004A4    +       void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
 004084B0    000000D3    -       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 00408590    000000CB    -       void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00408660    000000B5    -       void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
