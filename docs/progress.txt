@@ -1206,7 +1206,7 @@ typedef enum LARA_MESH {
 004093A0    000000AA    -       const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409450    0000039C    -       const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
-004098F0    000002D3    -       const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+004098F0    000002D3    +       const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2, enum SORT_TYPE sort_type);
@@ -2535,6 +2535,8 @@ typedef enum LARA_MESH {
 004D6C0C    -       int32_t g_WibbleOffset;
 004D6C10    -       int32_t g_IsWibbleEffect;
 004D6C14    -       int32_t g_IsWaterEffect;
+004D6CD8    -       struct VERTEX_INFO g_VBuffer[20];
+004D7380    -       PALETTEENTRY g_GamePalette16[256];
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
 004D7C80    -       int32_t g_SoundTrackIds[128];
@@ -2586,4 +2588,3 @@ typedef enum LARA_MESH {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-004D6CD8    -       struct VERTEX_INFO g_VBuffer[20];

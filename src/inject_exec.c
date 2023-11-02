@@ -133,6 +133,7 @@ static void Inject_Output(void)
     INJECT(1, 0x004084B0, Output_InsertTransQuad);
     INJECT(1, 0x00408590, Output_InsertFlatRect);
     INJECT(1, 0x00408660, Output_InsertLine);
+    INJECT(1, 0x004098F0, Output_InsertObjectG3_ZBuffered);
 }
 
 static void Inject_Music(void)

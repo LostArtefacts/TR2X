@@ -13,7 +13,6 @@
 #define Output_InsertObjectGT3_ZBuffered ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x004093A0)
 #define Output_InsertObjectG4_ZBuffered ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x00409450)
 #define Output_DrawPoly_Gouraud ((void __cdecl (*)(int32_t vtx_count, int32_t red, int32_t green, int32_t blue))0x004097F0)
-#define Output_InsertObjectG3_ZBuffered ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x004098F0)
 #define Output_InsertFlatRect_ZBuffered ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00409BD0)
 #define Output_InsertLine_ZBuffered ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00409DA0)
 #define Output_InsertGT3_Sorted ((void __cdecl (*)(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2, enum SORT_TYPE sort_type))0x00409EE0)
