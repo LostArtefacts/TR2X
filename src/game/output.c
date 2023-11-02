@@ -1768,6 +1768,218 @@ int32_t __cdecl Output_XYGUVClipper(
     return (j < 3) ? 0 : j;
 }
 
+const int16_t *__cdecl Output_InsertObjectGT3(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
+{
+    for (int i = 0; i < num; i++) {
+        const struct PHD_VBUF *const vtx[3] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const int16_t texture_idx = *obj_ptr++;
+        const struct PHD_TEXTURE *const texture =
+            &g_PhdTextureInfo[texture_idx];
+        const struct PHD_UV *const uv = texture->uv;
+        int32_t num_points = 3;
+
+        const int8_t clip_or =
+            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
+        const int8_t clip_and =
+            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
+
+        if (clip_and != 0) {
+            continue;
+        }
+
+        if (clip_or >= 0) {
+            if (!VBUF_VISIBLE(*vtx[0], *vtx[1], *vtx[2])) {
+                continue;
+            }
+
+            if (clip_or == 0) {
+                const float zv = Output_CalculatePolyZ(
+                    sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
+                g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
+                g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
+                g_Sort3DPtr++;
+
+                if (zv >= (double)g_PerspectiveDistance) {
+                    *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
+                        ? POLY_GTMAP
+                        : POLY_WGTMAP;
+                    *g_Info3DPtr++ = texture->tex_page;
+                    *g_Info3DPtr++ = 3;
+
+                    *g_Info3DPtr++ = (int)vtx[0]->xs;
+                    *g_Info3DPtr++ = (int)vtx[0]->ys;
+                    *g_Info3DPtr++ = (int)vtx[0]->g;
+                    *g_Info3DPtr++ = uv[0].u;
+                    *g_Info3DPtr++ = uv[0].v;
+
+                    *g_Info3DPtr++ = (int)vtx[1]->xs;
+                    *g_Info3DPtr++ = (int)vtx[1]->ys;
+                    *g_Info3DPtr++ = (int)vtx[1]->g;
+                    *g_Info3DPtr++ = uv[1].u;
+                    *g_Info3DPtr++ = uv[1].v;
+
+                    *g_Info3DPtr++ = (int)vtx[2]->xs;
+                    *g_Info3DPtr++ = (int)vtx[2]->ys;
+                    *g_Info3DPtr++ = (int)vtx[2]->g;
+                    *g_Info3DPtr++ = uv[2].u;
+                    *g_Info3DPtr++ = uv[2].v;
+                } else {
+                    *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
+                        ? POLY_GTMAP_PERSP
+                        : POLY_WGTMAP_PERSP;
+                    *g_Info3DPtr++ = texture->tex_page;
+                    *g_Info3DPtr++ = 3;
+
+                    *g_Info3DPtr++ = (int)vtx[0]->xs;
+                    *g_Info3DPtr++ = (int)vtx[0]->ys;
+                    *g_Info3DPtr++ = (int)vtx[0]->g;
+                    *(float *)g_Info3DPtr = vtx[0]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[0].u * vtx[0]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[0].v * vtx[0]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+
+                    *g_Info3DPtr++ = (int)vtx[1]->xs;
+                    *g_Info3DPtr++ = (int)vtx[1]->ys;
+                    *g_Info3DPtr++ = (int)vtx[1]->g;
+                    *(float *)g_Info3DPtr = vtx[1]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[1].u * vtx[1]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[1].v * vtx[1]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+
+                    *g_Info3DPtr++ = (int)vtx[2]->xs;
+                    *g_Info3DPtr++ = (int)vtx[2]->ys;
+                    *g_Info3DPtr++ = (int)vtx[2]->g;
+                    *(float *)g_Info3DPtr = vtx[2]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[2].u * vtx[2]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                    *(float *)g_Info3DPtr = (double)uv[2].v * vtx[2]->rhw;
+                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                }
+                g_SurfaceCount++;
+                continue;
+            }
+
+            g_VBuffer[0].x = vtx[0]->xs;
+            g_VBuffer[0].y = vtx[0]->ys;
+            g_VBuffer[0].rhw = vtx[0]->rhw;
+            g_VBuffer[0].g = (float)vtx[0]->g;
+            g_VBuffer[0].u = (double)uv[0].u * vtx[0]->rhw;
+            g_VBuffer[0].v = (double)uv[0].v * vtx[0]->rhw;
+
+            g_VBuffer[1].x = vtx[1]->xs;
+            g_VBuffer[1].y = vtx[1]->ys;
+            g_VBuffer[1].rhw = vtx[1]->rhw;
+            g_VBuffer[1].g = (float)vtx[1]->g;
+            g_VBuffer[1].u = (double)uv[1].u * vtx[1]->rhw;
+            g_VBuffer[1].v = (double)uv[1].v * vtx[1]->rhw;
+
+            g_VBuffer[2].x = vtx[2]->xs;
+            g_VBuffer[2].y = vtx[2]->ys;
+            g_VBuffer[2].rhw = vtx[2]->rhw;
+            g_VBuffer[2].g = (float)vtx[2]->g;
+            g_VBuffer[2].u = (double)uv[2].u * vtx[2]->rhw;
+            g_VBuffer[2].v = (double)uv[2].v * vtx[2]->rhw;
+        } else {
+            if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
+                continue;
+            }
+
+            struct POINT_INFO points[3];
+            points[0].xv = vtx[0]->xv;
+            points[0].yv = vtx[0]->yv;
+            points[0].zv = vtx[0]->zv;
+            points[0].rhw = vtx[0]->rhw;
+            points[0].xs = vtx[0]->xs;
+            points[0].ys = vtx[0]->ys;
+            points[0].g = (float)vtx[0]->g;
+            points[0].u = (float)uv[0].u;
+            points[0].v = (float)uv[0].v;
+
+            points[1].yv = vtx[1]->yv;
+            points[1].xv = vtx[1]->xv;
+            points[1].zv = vtx[1]->zv;
+            points[1].rhw = vtx[1]->rhw;
+            points[1].xs = vtx[1]->xs;
+            points[1].ys = vtx[1]->ys;
+            points[1].g = (float)vtx[1]->g;
+            points[1].u = (float)uv[1].u;
+            points[1].v = (float)uv[1].v;
+
+            points[2].xv = vtx[2]->xv;
+            points[2].yv = vtx[2]->yv;
+            points[2].zv = vtx[2]->zv;
+            points[2].rhw = vtx[2]->rhw;
+            points[2].xs = vtx[2]->xs;
+            points[2].ys = vtx[2]->ys;
+            points[2].g = (float)vtx[2]->g;
+            points[2].u = (float)uv[2].u;
+            points[2].v = (float)uv[2].v;
+
+            num_points = Output_ZedClipper(num_points, points, g_VBuffer);
+            if (num_points == 0) {
+                continue;
+            }
+        }
+
+        num_points = Output_XYGUVClipper(num_points, g_VBuffer);
+        if (num_points == 0) {
+            continue;
+        }
+
+        const float zv = Output_CalculatePolyZ(
+            sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
+        g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
+        g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
+        g_Sort3DPtr++;
+
+        if (zv >= (double)g_PerspectiveDistance) {
+            *g_Info3DPtr++ =
+                (texture->draw_type == DRAW_OPAQUE) ? POLY_GTMAP : POLY_WGTMAP;
+            *g_Info3DPtr++ = texture->tex_page;
+            *g_Info3DPtr++ = num_points;
+
+            for (int j = 0; j < num_points; j++) {
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].u / g_VBuffer[j].rhw);
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].v / g_VBuffer[j].rhw);
+            }
+        } else {
+            *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
+                ? POLY_GTMAP_PERSP
+                : POLY_WGTMAP_PERSP;
+            *g_Info3DPtr++ = texture->tex_page;
+            *g_Info3DPtr++ = num_points;
+
+            for (int j = 0; j < num_points; j++) {
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
+                *(float *)g_Info3DPtr = g_VBuffer[j].rhw;
+                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                *(float *)g_Info3DPtr = g_VBuffer[j].u;
+                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+                *(float *)g_Info3DPtr = g_VBuffer[j].v;
+                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
+            }
+        }
+        g_SurfaceCount++;
+    }
+
+    return obj_ptr;
+}
+
 const int16_t *__cdecl Output_InsertObjectGT4(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
 {
@@ -1972,218 +2184,6 @@ const int16_t *__cdecl Output_InsertObjectGT4(
 
         const float zv = Output_CalculatePolyZ(
             sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, vtx[3]->zv);
-        g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
-        g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
-        g_Sort3DPtr++;
-
-        if (zv >= (double)g_PerspectiveDistance) {
-            *g_Info3DPtr++ =
-                (texture->draw_type == DRAW_OPAQUE) ? POLY_GTMAP : POLY_WGTMAP;
-            *g_Info3DPtr++ = texture->tex_page;
-            *g_Info3DPtr++ = num_points;
-
-            for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
-                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
-                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
-                *g_Info3DPtr++ = (int)(g_VBuffer[j].u / g_VBuffer[j].rhw);
-                *g_Info3DPtr++ = (int)(g_VBuffer[j].v / g_VBuffer[j].rhw);
-            }
-        } else {
-            *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
-                ? POLY_GTMAP_PERSP
-                : POLY_WGTMAP_PERSP;
-            *g_Info3DPtr++ = texture->tex_page;
-            *g_Info3DPtr++ = num_points;
-
-            for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
-                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
-                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
-                *(float *)g_Info3DPtr = g_VBuffer[j].rhw;
-                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                *(float *)g_Info3DPtr = g_VBuffer[j].u;
-                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                *(float *)g_Info3DPtr = g_VBuffer[j].v;
-                g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-            }
-        }
-        g_SurfaceCount++;
-    }
-
-    return obj_ptr;
-}
-
-const int16_t *__cdecl Output_InsertObjectGT3(
-    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
-{
-    for (int i = 0; i < num; i++) {
-        const struct PHD_VBUF *const vtx[3] = {
-            &g_PhdVBuf[*obj_ptr++],
-            &g_PhdVBuf[*obj_ptr++],
-            &g_PhdVBuf[*obj_ptr++],
-        };
-        const int16_t texture_idx = *obj_ptr++;
-        const struct PHD_TEXTURE *const texture =
-            &g_PhdTextureInfo[texture_idx];
-        const struct PHD_UV *const uv = texture->uv;
-        int32_t num_points = 3;
-
-        const int8_t clip_or =
-            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
-        const int8_t clip_and =
-            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
-
-        if (clip_and != 0) {
-            continue;
-        }
-
-        if (clip_or >= 0) {
-            if (!VBUF_VISIBLE(*vtx[0], *vtx[1], *vtx[2])) {
-                continue;
-            }
-
-            if (clip_or == 0) {
-                const float zv = Output_CalculatePolyZ(
-                    sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
-                g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
-                g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
-                g_Sort3DPtr++;
-
-                if (zv >= (double)g_PerspectiveDistance) {
-                    *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
-                        ? POLY_GTMAP
-                        : POLY_WGTMAP;
-                    *g_Info3DPtr++ = texture->tex_page;
-                    *g_Info3DPtr++ = 3;
-
-                    *g_Info3DPtr++ = (int)vtx[0]->xs;
-                    *g_Info3DPtr++ = (int)vtx[0]->ys;
-                    *g_Info3DPtr++ = (int)vtx[0]->g;
-                    *g_Info3DPtr++ = uv[0].u;
-                    *g_Info3DPtr++ = uv[0].v;
-
-                    *g_Info3DPtr++ = (int)vtx[1]->xs;
-                    *g_Info3DPtr++ = (int)vtx[1]->ys;
-                    *g_Info3DPtr++ = (int)vtx[1]->g;
-                    *g_Info3DPtr++ = uv[1].u;
-                    *g_Info3DPtr++ = uv[1].v;
-
-                    *g_Info3DPtr++ = (int)vtx[2]->xs;
-                    *g_Info3DPtr++ = (int)vtx[2]->ys;
-                    *g_Info3DPtr++ = (int)vtx[2]->g;
-                    *g_Info3DPtr++ = uv[2].u;
-                    *g_Info3DPtr++ = uv[2].v;
-                } else {
-                    *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
-                        ? POLY_GTMAP_PERSP
-                        : POLY_WGTMAP_PERSP;
-                    *g_Info3DPtr++ = texture->tex_page;
-                    *g_Info3DPtr++ = 3;
-
-                    *g_Info3DPtr++ = (int)vtx[0]->xs;
-                    *g_Info3DPtr++ = (int)vtx[0]->ys;
-                    *g_Info3DPtr++ = (int)vtx[0]->g;
-                    *(float *)g_Info3DPtr = vtx[0]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[0].u * vtx[0]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[0].v * vtx[0]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-
-                    *g_Info3DPtr++ = (int)vtx[1]->xs;
-                    *g_Info3DPtr++ = (int)vtx[1]->ys;
-                    *g_Info3DPtr++ = (int)vtx[1]->g;
-                    *(float *)g_Info3DPtr = vtx[1]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[1].u * vtx[1]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[1].v * vtx[1]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-
-                    *g_Info3DPtr++ = (int)vtx[2]->xs;
-                    *g_Info3DPtr++ = (int)vtx[2]->ys;
-                    *g_Info3DPtr++ = (int)vtx[2]->g;
-                    *(float *)g_Info3DPtr = vtx[2]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[2].u * vtx[2]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                    *(float *)g_Info3DPtr = (double)uv[2].v * vtx[2]->rhw;
-                    g_Info3DPtr += sizeof(float) / sizeof(int16_t);
-                }
-                g_SurfaceCount++;
-                continue;
-            }
-
-            g_VBuffer[0].x = vtx[0]->xs;
-            g_VBuffer[0].y = vtx[0]->ys;
-            g_VBuffer[0].rhw = vtx[0]->rhw;
-            g_VBuffer[0].g = (float)vtx[0]->g;
-            g_VBuffer[0].u = (double)uv[0].u * vtx[0]->rhw;
-            g_VBuffer[0].v = (double)uv[0].v * vtx[0]->rhw;
-
-            g_VBuffer[1].x = vtx[1]->xs;
-            g_VBuffer[1].y = vtx[1]->ys;
-            g_VBuffer[1].rhw = vtx[1]->rhw;
-            g_VBuffer[1].g = (float)vtx[1]->g;
-            g_VBuffer[1].u = (double)uv[1].u * vtx[1]->rhw;
-            g_VBuffer[1].v = (double)uv[1].v * vtx[1]->rhw;
-
-            g_VBuffer[2].x = vtx[2]->xs;
-            g_VBuffer[2].y = vtx[2]->ys;
-            g_VBuffer[2].rhw = vtx[2]->rhw;
-            g_VBuffer[2].g = (float)vtx[2]->g;
-            g_VBuffer[2].u = (double)uv[2].u * vtx[2]->rhw;
-            g_VBuffer[2].v = (double)uv[2].v * vtx[2]->rhw;
-        } else {
-            if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
-                continue;
-            }
-
-            struct POINT_INFO points[3];
-            points[0].xv = vtx[0]->xv;
-            points[0].yv = vtx[0]->yv;
-            points[0].zv = vtx[0]->zv;
-            points[0].rhw = vtx[0]->rhw;
-            points[0].xs = vtx[0]->xs;
-            points[0].ys = vtx[0]->ys;
-            points[0].g = (float)vtx[0]->g;
-            points[0].u = (float)uv[0].u;
-            points[0].v = (float)uv[0].v;
-
-            points[1].yv = vtx[1]->yv;
-            points[1].xv = vtx[1]->xv;
-            points[1].zv = vtx[1]->zv;
-            points[1].rhw = vtx[1]->rhw;
-            points[1].xs = vtx[1]->xs;
-            points[1].ys = vtx[1]->ys;
-            points[1].g = (float)vtx[1]->g;
-            points[1].u = (float)uv[1].u;
-            points[1].v = (float)uv[1].v;
-
-            points[2].xv = vtx[2]->xv;
-            points[2].yv = vtx[2]->yv;
-            points[2].zv = vtx[2]->zv;
-            points[2].rhw = vtx[2]->rhw;
-            points[2].xs = vtx[2]->xs;
-            points[2].ys = vtx[2]->ys;
-            points[2].g = (float)vtx[2]->g;
-            points[2].u = (float)uv[2].u;
-            points[2].v = (float)uv[2].v;
-
-            num_points = Output_ZedClipper(num_points, points, g_VBuffer);
-            if (num_points == 0) {
-                continue;
-            }
-        }
-
-        num_points = Output_XYGUVClipper(num_points, g_VBuffer);
-        if (num_points == 0) {
-            continue;
-        }
-
-        const float zv = Output_CalculatePolyZ(
-            sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
         g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
         g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
         g_Sort3DPtr++;

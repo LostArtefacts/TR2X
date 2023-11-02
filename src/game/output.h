@@ -52,7 +52,7 @@ int32_t __cdecl Output_ZedClipper(
 int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
 int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
 
-const int16_t *__cdecl Output_InsertObjectGT4(
-    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 const int16_t *__cdecl Output_InsertObjectGT3(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+const int16_t *__cdecl Output_InsertObjectGT4(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
