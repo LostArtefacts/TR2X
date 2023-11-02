@@ -68,3 +68,6 @@ void __cdecl Output_InsertTransQuad(
 void __cdecl Output_InsertFlatRect(
     int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
     uint8_t color_idx);
+void __cdecl Output_InsertLine(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
+    uint8_t color_idx);
