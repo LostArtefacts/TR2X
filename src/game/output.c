@@ -65,7 +65,8 @@ static void __fastcall Output_FlatA(int32_t y1, int32_t y2, uint8_t color_idx)
 static void __fastcall Output_TransA(int32_t y1, int32_t y2, uint8_t depth_q)
 {
     int32_t y_size = y2 - y1;
-    if (y_size <= 0 || depth_q >= 32) {
+    // TODO: depth_q should be at most 32 here
+    if (y_size <= 0 || depth_q > 32) {
         return;
     }
 
