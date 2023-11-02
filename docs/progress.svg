@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.33% (256)</tspan> · <tspan class="known">76.17% (914)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.42% (257)</tspan> · <tspan class="known">76.08% (913)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="159.36" height="6" x="0" y="0" class="decompiled"/>
-<rect width="568.96" height="6" x="159.36" y="0" class="known"/>
+<rect width="159.98" height="6" x="0" y="0" class="decompiled"/>
+<rect width="568.34" height="6" x="159.98" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -125,7 +125,7 @@
 <rect width="12" height="12" x="675" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="690" y="0" class="decompiled"><title>int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="12" height="12" x="705" y="0" class="known"><title>const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="720" y="0" class="known"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="12" height="12" x="720" y="0" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="735" y="0" class="known"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="12" height="12" x="0" y="15" class="known"><title>void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="15" y="15" class="known"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.65%</tspan> · <tspan class="known">82.02%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">17.89%</tspan> · <tspan class="known">81.78%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="131.86" height="6" x="0" y="0" class="decompiled"/>
-<rect width="612.68" height="6" x="131.86" y="0" class="known"/>
+<rect width="133.62" height="6" x="0" y="0" class="decompiled"/>
+<rect width="610.92" height="6" x="133.62" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1389,7 +1389,7 @@
 <rect width="23.34" height="22.19" x="289.78" y="337.81" class="known"><title>void __cdecl Item_Animate(struct ITEM_INFO *item);</title></rect>
 <rect width="22.54" height="22.72" x="316.12" y="0" class="known"><title>void __cdecl AnimatePistols(int32_t weapon_type);</title></rect>
 <rect width="22.54" height="22.62" x="316.12" y="25.72" class="known"><title>void __cdecl CheckCheatMode(void);</title></rect>
-<rect width="22.54" height="22.06" x="316.12" y="51.34" class="known"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="22.54" height="22.06" x="316.12" y="51.34" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="22.54" height="22.03" x="316.12" y="76.40" class="decompiled"><title>void __cdecl Lara_GetJointAbsPosition_I(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
 <rect width="22.54" height="21.55" x="316.12" y="101.43" class="known"><title>void __cdecl BanditControl(int16_t item_num);</title></rect>
 <rect width="22.54" height="21.40" x="316.12" y="125.98" class="known"><title>void __cdecl Lara_Push(struct ITEM_INFO *item, struct ITEM_INFO *lara_item, struct COLL_INFO *coll, int32_t spaz_on, int32_t big_push);</title></rect>

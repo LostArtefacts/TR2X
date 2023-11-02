@@ -1768,6 +1768,116 @@ int32_t __cdecl Output_XYGUVClipper(
     return (j < 3) ? 0 : j;
 }
 
+const int16_t *__cdecl Output_InsertObjectG3(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
+{
+    for (int i = 0; i < num; i++) {
+        const struct PHD_VBUF *const vtx[3] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const uint8_t color_idx = *obj_ptr++;
+        int32_t num_points = 3;
+
+        int8_t clip_or = BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
+        int8_t clip_and = BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
+
+        if (clip_and != 0) {
+            continue;
+        }
+
+        if (clip_or >= 0) {
+            if (!VBUF_VISIBLE(*vtx[0], *vtx[1], *vtx[2])) {
+                continue;
+            }
+
+            g_VBuffer[0].x = vtx[0]->xs;
+            g_VBuffer[0].y = vtx[0]->ys;
+            g_VBuffer[0].rhw = vtx[0]->rhw;
+            g_VBuffer[0].g = (float)vtx[0]->g;
+
+            g_VBuffer[1].x = vtx[1]->xs;
+            g_VBuffer[1].y = vtx[1]->ys;
+            g_VBuffer[1].rhw = vtx[1]->rhw;
+            g_VBuffer[1].g = (float)vtx[1]->g;
+
+            g_VBuffer[2].x = vtx[2]->xs;
+            g_VBuffer[2].y = vtx[2]->ys;
+            g_VBuffer[2].rhw = vtx[2]->rhw;
+            g_VBuffer[2].g = (float)vtx[2]->g;
+
+            if (clip_or > 0) {
+                num_points = Output_XYGClipper(num_points, g_VBuffer);
+            }
+        } else {
+            if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
+                continue;
+            }
+
+            struct POINT_INFO pts[3] = {
+                {
+                    .xv = vtx[0]->xv,
+                    .yv = vtx[0]->yv,
+                    .zv = vtx[0]->zv,
+                    .rhw = vtx[0]->rhw,
+                    .xs = vtx[0]->xs,
+                    .ys = vtx[0]->ys,
+                    .g = (float)vtx[0]->g,
+                },
+                {
+                    .xv = vtx[1]->xv,
+                    .yv = vtx[1]->yv,
+                    .zv = vtx[1]->zv,
+                    .rhw = vtx[1]->rhw,
+                    .xs = vtx[1]->xs,
+                    .ys = vtx[1]->ys,
+                    .g = (float)vtx[1]->g,
+                },
+                {
+                    .xv = vtx[2]->xv,
+                    .yv = vtx[2]->yv,
+                    .zv = vtx[2]->zv,
+                    .rhw = vtx[2]->rhw,
+                    .xs = vtx[2]->xs,
+                    .ys = vtx[2]->ys,
+                    .g = (float)vtx[2]->g,
+                },
+            };
+
+            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            if (num_points == 0) {
+                continue;
+            }
+
+            num_points = Output_XYGClipper(num_points, g_VBuffer);
+        }
+
+        if (num_points == 0) {
+            continue;
+        }
+
+        const float zv = Output_CalculatePolyZ(
+            sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
+        g_Sort3DPtr->_0 = (uint32_t)g_Info3DPtr;
+        g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
+        g_Sort3DPtr++;
+
+        *g_Info3DPtr++ = POLY_GOURAUD;
+        *g_Info3DPtr++ = color_idx;
+        *g_Info3DPtr++ = num_points;
+
+        for (int j = 0; j < num_points; j++) {
+            *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+            *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+            *g_Info3DPtr++ = (int)g_VBuffer[j].g;
+        }
+        g_SurfaceCount++;
+    }
+
+    return obj_ptr;
+}
+
 const int16_t *__cdecl Output_InsertObjectGT3(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
 {
@@ -1894,36 +2004,41 @@ const int16_t *__cdecl Output_InsertObjectGT3(
                 continue;
             }
 
-            struct POINT_INFO points[3];
-            points[0].xv = vtx[0]->xv;
-            points[0].yv = vtx[0]->yv;
-            points[0].zv = vtx[0]->zv;
-            points[0].rhw = vtx[0]->rhw;
-            points[0].xs = vtx[0]->xs;
-            points[0].ys = vtx[0]->ys;
-            points[0].g = (float)vtx[0]->g;
-            points[0].u = (float)uv[0].u;
-            points[0].v = (float)uv[0].v;
-
-            points[1].yv = vtx[1]->yv;
-            points[1].xv = vtx[1]->xv;
-            points[1].zv = vtx[1]->zv;
-            points[1].rhw = vtx[1]->rhw;
-            points[1].xs = vtx[1]->xs;
-            points[1].ys = vtx[1]->ys;
-            points[1].g = (float)vtx[1]->g;
-            points[1].u = (float)uv[1].u;
-            points[1].v = (float)uv[1].v;
-
-            points[2].xv = vtx[2]->xv;
-            points[2].yv = vtx[2]->yv;
-            points[2].zv = vtx[2]->zv;
-            points[2].rhw = vtx[2]->rhw;
-            points[2].xs = vtx[2]->xs;
-            points[2].ys = vtx[2]->ys;
-            points[2].g = (float)vtx[2]->g;
-            points[2].u = (float)uv[2].u;
-            points[2].v = (float)uv[2].v;
+            const struct POINT_INFO points[3] = {
+                {
+                    .xv = vtx[0]->xv,
+                    .yv = vtx[0]->yv,
+                    .zv = vtx[0]->zv,
+                    .rhw = vtx[0]->rhw,
+                    .xs = vtx[0]->xs,
+                    .ys = vtx[0]->ys,
+                    .g = (float)vtx[0]->g,
+                    .u = (float)uv[0].u,
+                    .v = (float)uv[0].v,
+                },
+                {
+                    .yv = vtx[1]->yv,
+                    .xv = vtx[1]->xv,
+                    .zv = vtx[1]->zv,
+                    .rhw = vtx[1]->rhw,
+                    .xs = vtx[1]->xs,
+                    .ys = vtx[1]->ys,
+                    .g = (float)vtx[1]->g,
+                    .u = (float)uv[1].u,
+                    .v = (float)uv[1].v,
+                },
+                {
+                    .xv = vtx[2]->xv,
+                    .yv = vtx[2]->yv,
+                    .zv = vtx[2]->zv,
+                    .rhw = vtx[2]->rhw,
+                    .xs = vtx[2]->xs,
+                    .ys = vtx[2]->ys,
+                    .g = (float)vtx[2]->g,
+                    .u = (float)uv[2].u,
+                    .v = (float)uv[2].v,
+                },
+            };
 
             num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
@@ -2130,46 +2245,52 @@ const int16_t *__cdecl Output_InsertObjectGT4(
                 continue;
             }
 
-            struct POINT_INFO points[4];
-            points[0].xv = vtx[0]->xv;
-            points[0].yv = vtx[0]->yv;
-            points[0].zv = vtx[0]->zv;
-            points[0].rhw = vtx[0]->rhw;
-            points[0].xs = vtx[0]->xs;
-            points[0].ys = vtx[0]->ys;
-            points[0].g = (float)vtx[0]->g;
-            points[0].u = (float)uv[0].u;
-            points[0].v = (float)uv[0].v;
-
-            points[1].yv = vtx[1]->yv;
-            points[1].xv = vtx[1]->xv;
-            points[1].zv = vtx[1]->zv;
-            points[1].rhw = vtx[1]->rhw;
-            points[1].xs = vtx[1]->xs;
-            points[1].ys = vtx[1]->ys;
-            points[1].g = (float)vtx[1]->g;
-            points[1].u = (float)uv[1].u;
-            points[1].v = (float)uv[1].v;
-
-            points[2].xv = vtx[2]->xv;
-            points[2].yv = vtx[2]->yv;
-            points[2].zv = vtx[2]->zv;
-            points[2].rhw = vtx[2]->rhw;
-            points[2].xs = vtx[2]->xs;
-            points[2].ys = vtx[2]->ys;
-            points[2].g = (float)vtx[2]->g;
-            points[2].u = (float)uv[2].u;
-            points[2].v = (float)uv[2].v;
-
-            points[3].xv = vtx[3]->xv;
-            points[3].yv = vtx[3]->yv;
-            points[3].zv = vtx[3]->zv;
-            points[3].rhw = vtx[3]->rhw;
-            points[3].xs = vtx[3]->xs;
-            points[3].ys = vtx[3]->ys;
-            points[3].g = (float)vtx[3]->g;
-            points[3].u = (float)uv[3].u;
-            points[3].v = (float)uv[3].v;
+            const struct POINT_INFO points[4] = {
+                {
+                    .xv = vtx[0]->xv,
+                    .yv = vtx[0]->yv,
+                    .zv = vtx[0]->zv,
+                    .rhw = vtx[0]->rhw,
+                    .xs = vtx[0]->xs,
+                    .ys = vtx[0]->ys,
+                    .g = (float)vtx[0]->g,
+                    .u = (float)uv[0].u,
+                    .v = (float)uv[0].v,
+                },
+                {
+                    .yv = vtx[1]->yv,
+                    .xv = vtx[1]->xv,
+                    .zv = vtx[1]->zv,
+                    .rhw = vtx[1]->rhw,
+                    .xs = vtx[1]->xs,
+                    .ys = vtx[1]->ys,
+                    .g = (float)vtx[1]->g,
+                    .u = (float)uv[1].u,
+                    .v = (float)uv[1].v,
+                },
+                {
+                    .xv = vtx[2]->xv,
+                    .yv = vtx[2]->yv,
+                    .zv = vtx[2]->zv,
+                    .rhw = vtx[2]->rhw,
+                    .xs = vtx[2]->xs,
+                    .ys = vtx[2]->ys,
+                    .g = (float)vtx[2]->g,
+                    .u = (float)uv[2].u,
+                    .v = (float)uv[2].v,
+                },
+                {
+                    .xv = vtx[3]->xv,
+                    .yv = vtx[3]->yv,
+                    .zv = vtx[3]->zv,
+                    .rhw = vtx[3]->rhw,
+                    .xs = vtx[3]->xs,
+                    .ys = vtx[3]->ys,
+                    .g = (float)vtx[3]->g,
+                    .u = (float)uv[3].u,
+                    .v = (float)uv[3].v,
+                },
+            };
 
             num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
