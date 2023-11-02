@@ -1572,8 +1572,8 @@ int32_t __cdecl Output_ZedClipper(
 int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx)
 {
     struct VERTEX_INFO vtx_buf[8];
-    struct VERTEX_INFO *vtx1;
-    struct VERTEX_INFO *vtx2;
+    const struct VERTEX_INFO *vtx1;
+    const struct VERTEX_INFO *vtx2;
     int j;
 
     if (vtx_count < 3) {
@@ -1672,8 +1672,8 @@ int32_t __cdecl Output_XYGUVClipper(
     int32_t vtx_count, struct VERTEX_INFO *const vtx)
 {
     struct VERTEX_INFO vtx_buf[8];
-    struct VERTEX_INFO *vtx1;
-    struct VERTEX_INFO *vtx2;
+    const struct VERTEX_INFO *vtx1;
+    const struct VERTEX_INFO *vtx2;
     int j;
 
     if (vtx_count < 3) {
@@ -1806,10 +1806,6 @@ const int16_t *__cdecl Output_InsertObjectG3(
             g_VBuffer[2].y = vtx[2]->ys;
             g_VBuffer[2].rhw = vtx[2]->rhw;
             g_VBuffer[2].g = (float)vtx[2]->g;
-
-            if (clip_or > 0) {
-                num_points = Output_XYGClipper(num_points, g_VBuffer);
-            }
         } else {
             if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
                 continue;
@@ -1849,10 +1845,9 @@ const int16_t *__cdecl Output_InsertObjectG3(
             if (num_points == 0) {
                 continue;
             }
-
-            num_points = Output_XYGClipper(num_points, g_VBuffer);
         }
 
+        num_points = Output_XYGClipper(num_points, g_VBuffer);
         if (num_points == 0) {
             continue;
         }
@@ -2141,10 +2136,6 @@ const int16_t *__cdecl Output_InsertObjectG4(
             g_VBuffer[3].y = vtx[3]->ys;
             g_VBuffer[3].rhw = vtx[3]->rhw;
             g_VBuffer[3].g = (float)vtx[3]->g;
-
-            if (clip_or > 0) {
-                num_points = Output_XYGClipper(num_points, g_VBuffer);
-            }
         } else {
             if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
                 continue;
@@ -2193,10 +2184,9 @@ const int16_t *__cdecl Output_InsertObjectG4(
             if (num_points == 0) {
                 continue;
             }
-
-            num_points = Output_XYGClipper(num_points, g_VBuffer);
         }
 
+        num_points = Output_XYGClipper(num_points, g_VBuffer);
         if (num_points == 0) {
             continue;
         }
