@@ -2029,8 +2029,10 @@ const int16_t *__cdecl Output_InsertObjectGT3(
         const struct PHD_UV *const uv = texture->uv;
         int32_t num_points = 3;
 
-        const int8_t clip_or = (vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
-        const int8_t clip_and = (vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
+        const int8_t clip_or =
+            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
+        const int8_t clip_and =
+            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
 
         if (clip_and != 0) {
             continue;
@@ -2055,21 +2057,21 @@ const int16_t *__cdecl Output_InsertObjectGT3(
                     *g_Info3DPtr++ = texture->tex_page;
                     *g_Info3DPtr++ = 3;
 
-                    *g_Info3DPtr++ = vtx[0]->xs;
-                    *g_Info3DPtr++ = vtx[0]->ys;
-                    *g_Info3DPtr++ = vtx[0]->g;
+                    *g_Info3DPtr++ = (int)vtx[0]->xs;
+                    *g_Info3DPtr++ = (int)vtx[0]->ys;
+                    *g_Info3DPtr++ = (int)vtx[0]->g;
                     *g_Info3DPtr++ = uv[0].u;
                     *g_Info3DPtr++ = uv[0].v;
 
-                    *g_Info3DPtr++ = vtx[1]->xs;
-                    *g_Info3DPtr++ = vtx[1]->ys;
-                    *g_Info3DPtr++ = vtx[1]->g;
+                    *g_Info3DPtr++ = (int)vtx[1]->xs;
+                    *g_Info3DPtr++ = (int)vtx[1]->ys;
+                    *g_Info3DPtr++ = (int)vtx[1]->g;
                     *g_Info3DPtr++ = uv[1].u;
                     *g_Info3DPtr++ = uv[1].v;
 
-                    *g_Info3DPtr++ = vtx[2]->xs;
-                    *g_Info3DPtr++ = vtx[2]->ys;
-                    *g_Info3DPtr++ = vtx[2]->g;
+                    *g_Info3DPtr++ = (int)vtx[2]->xs;
+                    *g_Info3DPtr++ = (int)vtx[2]->ys;
+                    *g_Info3DPtr++ = (int)vtx[2]->g;
                     *g_Info3DPtr++ = uv[2].u;
                     *g_Info3DPtr++ = uv[2].v;
                 } else {
@@ -2079,9 +2081,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
                     *g_Info3DPtr++ = texture->tex_page;
                     *g_Info3DPtr++ = 3;
 
-                    *g_Info3DPtr++ = vtx[0]->xs;
-                    *g_Info3DPtr++ = vtx[0]->ys;
-                    *g_Info3DPtr++ = vtx[0]->g;
+                    *g_Info3DPtr++ = (int)vtx[0]->xs;
+                    *g_Info3DPtr++ = (int)vtx[0]->ys;
+                    *g_Info3DPtr++ = (int)vtx[0]->g;
                     *(float *)g_Info3DPtr = vtx[0]->rhw;
                     g_Info3DPtr += sizeof(float) / sizeof(int16_t);
                     *(float *)g_Info3DPtr = (double)uv[0].u * vtx[0]->rhw;
@@ -2089,9 +2091,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
                     *(float *)g_Info3DPtr = (double)uv[0].v * vtx[0]->rhw;
                     g_Info3DPtr += sizeof(float) / sizeof(int16_t);
 
-                    *g_Info3DPtr++ = vtx[1]->xs;
-                    *g_Info3DPtr++ = vtx[1]->ys;
-                    *g_Info3DPtr++ = vtx[1]->g;
+                    *g_Info3DPtr++ = (int)vtx[1]->xs;
+                    *g_Info3DPtr++ = (int)vtx[1]->ys;
+                    *g_Info3DPtr++ = (int)vtx[1]->g;
                     *(float *)g_Info3DPtr = vtx[1]->rhw;
                     g_Info3DPtr += sizeof(float) / sizeof(int16_t);
                     *(float *)g_Info3DPtr = (double)uv[1].u * vtx[1]->rhw;
@@ -2099,9 +2101,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
                     *(float *)g_Info3DPtr = (double)uv[1].v * vtx[1]->rhw;
                     g_Info3DPtr += sizeof(float) / sizeof(int16_t);
 
-                    *g_Info3DPtr++ = vtx[2]->xs;
-                    *g_Info3DPtr++ = vtx[2]->ys;
-                    *g_Info3DPtr++ = vtx[2]->g;
+                    *g_Info3DPtr++ = (int)vtx[2]->xs;
+                    *g_Info3DPtr++ = (int)vtx[2]->ys;
+                    *g_Info3DPtr++ = (int)vtx[2]->g;
                     *(float *)g_Info3DPtr = vtx[2]->rhw;
                     g_Info3DPtr += sizeof(float) / sizeof(int16_t);
                     *(float *)g_Info3DPtr = (double)uv[2].u * vtx[2]->rhw;
@@ -2116,21 +2118,21 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             g_VBuffer[0].x = vtx[0]->xs;
             g_VBuffer[0].y = vtx[0]->ys;
             g_VBuffer[0].rhw = vtx[0]->rhw;
-            g_VBuffer[0].g = vtx[0]->g;
+            g_VBuffer[0].g = (float)vtx[0]->g;
             g_VBuffer[0].u = (double)uv[0].u * vtx[0]->rhw;
             g_VBuffer[0].v = (double)uv[0].v * vtx[0]->rhw;
 
             g_VBuffer[1].x = vtx[1]->xs;
             g_VBuffer[1].y = vtx[1]->ys;
             g_VBuffer[1].rhw = vtx[1]->rhw;
-            g_VBuffer[1].g = vtx[1]->g;
+            g_VBuffer[1].g = (float)vtx[1]->g;
             g_VBuffer[1].u = (double)uv[1].u * vtx[1]->rhw;
             g_VBuffer[1].v = (double)uv[1].v * vtx[1]->rhw;
 
             g_VBuffer[2].x = vtx[2]->xs;
             g_VBuffer[2].y = vtx[2]->ys;
             g_VBuffer[2].rhw = vtx[2]->rhw;
-            g_VBuffer[2].g = vtx[2]->g;
+            g_VBuffer[2].g = (float)vtx[2]->g;
             g_VBuffer[2].u = (double)uv[2].u * vtx[2]->rhw;
             g_VBuffer[2].v = (double)uv[2].v * vtx[2]->rhw;
         } else {
@@ -2145,9 +2147,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             points[0].rhw = vtx[0]->rhw;
             points[0].xs = vtx[0]->xs;
             points[0].ys = vtx[0]->ys;
-            points[0].g = vtx[0]->g;
-            points[0].u = uv[0].u;
-            points[0].v = uv[0].v;
+            points[0].g = (float)vtx[0]->g;
+            points[0].u = (float)uv[0].u;
+            points[0].v = (float)uv[0].v;
 
             points[1].yv = vtx[1]->yv;
             points[1].xv = vtx[1]->xv;
@@ -2155,9 +2157,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             points[1].rhw = vtx[1]->rhw;
             points[1].xs = vtx[1]->xs;
             points[1].ys = vtx[1]->ys;
-            points[1].g = vtx[1]->g;
-            points[1].u = uv[1].u;
-            points[1].v = uv[1].v;
+            points[1].g = (float)vtx[1]->g;
+            points[1].u = (float)uv[1].u;
+            points[1].v = (float)uv[1].v;
 
             points[2].xv = vtx[2]->xv;
             points[2].yv = vtx[2]->yv;
@@ -2165,9 +2167,9 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             points[2].rhw = vtx[2]->rhw;
             points[2].xs = vtx[2]->xs;
             points[2].ys = vtx[2]->ys;
-            points[2].g = vtx[2]->g;
-            points[2].u = uv[2].u;
-            points[2].v = uv[2].v;
+            points[2].g = (float)vtx[2]->g;
+            points[2].u = (float)uv[2].u;
+            points[2].v = (float)uv[2].v;
 
             num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
@@ -2193,11 +2195,11 @@ const int16_t *__cdecl Output_InsertObjectGT3(
             *g_Info3DPtr++ = num_points;
 
             for (int j = 0; j < num_points; j++) {
-                *g_Info3DPtr++ = g_VBuffer[j].x;
-                *g_Info3DPtr++ = g_VBuffer[j].y;
-                *g_Info3DPtr++ = g_VBuffer[j].g;
-                *g_Info3DPtr++ = (g_VBuffer[j].u / g_VBuffer[j].rhw);
-                *g_Info3DPtr++ = (g_VBuffer[j].v / g_VBuffer[j].rhw);
+                *g_Info3DPtr++ = (int)g_VBuffer[j].x;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].y;
+                *g_Info3DPtr++ = (int)g_VBuffer[j].g;
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].u / g_VBuffer[j].rhw);
+                *g_Info3DPtr++ = (int)(g_VBuffer[j].v / g_VBuffer[j].rhw);
             }
         } else {
             *g_Info3DPtr++ = (texture->draw_type == DRAW_OPAQUE)
