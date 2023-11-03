@@ -1339,11 +1339,11 @@ typedef enum LARA_MESH {
 004158D0    00000055    -       int32_t __cdecl Item_IsTriggerActive(struct ITEM_INFO *item);
 00415930    0000023D    *       int32_t __cdecl Room_GetCeiling(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);
 00415B90    0000004E    -       int16_t __cdecl Room_GetDoor(struct FLOOR_INFO *floor);
-00415BE0    000000A0    +       int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
-00415C80    000002EB    +       int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
-00415F70    000002EC    -       int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
-00416260    000000DA    -       int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);
-00416340    000002FE    -       int32_t __cdecl LOS_ObjectOnLOS(struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00415BE0    000000A0    +       int32_t __cdecl LOS_Check(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00415C80    000002EB    +       int32_t __cdecl LOS_CheckZ(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00415F70    000002EC    +       int32_t __cdecl LOS_CheckX(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00416260    000000DA    -       int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);
+00416340    000002FE    -       int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00416640    000000B3    -       void __cdecl Room_FlipMap(void);
 00416700    00000096    -       void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);
 004167A0    0000005C    -       void __cdecl Room_AddFlipItems(struct ROOM_INFO *r);
