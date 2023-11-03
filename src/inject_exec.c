@@ -108,6 +108,7 @@ static void Inject_Text(void)
     INJECT(1, 0x00440720, Text_CentreV);
     INJECT(1, 0x00440740, Text_AlignRight);
     INJECT(1, 0x00440760, Text_AlignBottom);
+    INJECT(1, 0x00440780, Text_GetWidth);
     INJECT(1, 0x00440890, Text_Remove);
 }
 

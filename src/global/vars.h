@@ -15,6 +15,8 @@
 #define g_OptionMusicVolume (*(int16_t*)0x00465A60)
 #define g_JumpPermitted (*(int32_t*)0x00465AD4) // = 1
 #define g_LaraOldSlideAngle (*(int16_t*)0x00465AD8) // = 1
+#define g_TextSpacing (*(int8_t(*)[80])0x00466290)
+#define g_TextASCIIMap (*(int8_t(*)[])0x004662E0)
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f
 #define g_XGenY1 (*(int32_t*)0x0046C308)

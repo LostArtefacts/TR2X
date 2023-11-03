@@ -305,7 +305,7 @@ typedef struct __unaligned  TEXTSTRING {
         int32_t h;
         int32_t v;
     } scale;
-    char *string;
+    char *text;
 } TEXTSTRING;
 
 typedef struct __unaligned  PHD_VBUF {
@@ -2002,7 +2002,7 @@ typedef enum LARA_MESH {
 00440720    0000001E    +       void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);
 00440740    0000001E    +       void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);
 00440760    0000001E    +       void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);
-00440780    00000107    -       int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);
+00440780    00000107    +       int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);
 00440890    00000025    +       int32_t __cdecl Text_Remove(struct TEXTSTRING *string);
 004408C0    00000024    +       int16_t __cdecl Text_GetTextLength(const char *text);
 004408F0    00000027    -       void __cdecl Text_Draw(void);
@@ -2486,6 +2486,8 @@ typedef enum LARA_MESH {
 00465A60    -       int16_t g_OptionMusicVolume;
 00465AD4    -       int32_t g_JumpPermitted = 1;
 00465AD8    -       int16_t g_LaraOldSlideAngle = 1;
+00466290    -       int8_t g_TextSpacing[80];
+004662E0    -       int8_t g_TextASCIIMap[];
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
 00468DF4    +       const int16_t g_SinTable[0x402];
@@ -2594,6 +2596,8 @@ typedef enum LARA_MESH {
 0051BDAC    -       MCIDEVICEID g_MciDeviceID;
 0051BDB0    -       int32_t g_CD_LoopTrack;
 0051C820    -       struct TEXTSTRING g_TextstringTable[64];
+0051D6A0    -       int16_t g_TextstringCount = 0;
+0051D6C0    -       char g_TextstringBuffers[64][64];
 0051E6C4    -       int32_t g_SoundIsActive;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
@@ -2617,5 +2621,3 @@ typedef enum LARA_MESH {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-0051D6A0    -       int16_t g_TextstringCount = 0;
-0051D6C0    -       char g_TextstringBuffers[64][64];

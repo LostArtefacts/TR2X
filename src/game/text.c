@@ -10,6 +10,15 @@
 
 #define TEXT_MAX_STRINGS 64
 #define TEXT_MAX_STRING_SIZE 64
+#define CHAR_SECRET_1 0x7Fu
+#define CHAR_SECRET_2 0x80u
+#define CHAR_SECRET_3 0x81u
+#define IS_CHAR_LEGAL(c) ((c) <= CHAR_SECRET_3 && ((c) <= 10u || (c) >= 32u))
+#define IS_CHAR_SECRET(c) ((c) >= CHAR_SECRET_1 && (c) <= CHAR_SECRET_3)
+#define IS_CHAR_DIACRITIC(c)                                                   \
+    ((c) == '(' || (c) == ')' || (c) == '$' || (c) == '~')
+#define IS_CHAR_SPACE(c) ((c) == 32)
+#define IS_CHAR_DIGIT(c) ((c) <= 0xAu)
 
 void __cdecl Text_Init(void)
 {
@@ -182,4 +191,51 @@ int32_t __cdecl Text_Remove(struct TEXTSTRING *const string)
     string->flags.active = 0;
     g_TextstringCount--;
     return 1;
+}
+
+int32_t __cdecl Text_GetWidth(struct TEXTSTRING *const string)
+{
+    assert(string);
+
+    const uint32_t scale_h = Text_GetScaleH(string->scale.h);
+    const char *str = string->text;
+    int32_t width = 0;
+
+    while (1) {
+        uint8_t c = *str++;
+        if (!c) {
+            break;
+        }
+
+        if (!IS_CHAR_LEGAL(c) || IS_CHAR_DIACRITIC(c)) {
+            continue;
+        }
+
+        int32_t spacing;
+        if (IS_CHAR_SPACE(c)) {
+            spacing = string->word_spacing;
+        } else if (IS_CHAR_SECRET(c)) {
+            spacing = 16;
+        } else {
+            int16_t sprite_num;
+            if (IS_CHAR_DIGIT(c)) {
+                sprite_num = c + 81;
+            } else {
+                sprite_num = g_TextASCIIMap[c];
+            }
+
+            // TODO: OG bug - this should check c, not sprite_num
+            if (sprite_num >= '0' && sprite_num <= '9') {
+                spacing = 12;
+            } else {
+                // TODO: OG bug - wrong letter spacing calculation
+                spacing = g_TextSpacing[sprite_num] + string->letter_spacing;
+            }
+        }
+
+        width += spacing * scale_h / PHD_ONE;
+    }
+
+    // TODO: OG bug - wrong letter spacing calculation; pointless ~1
+    return ((int16_t)width - string->letter_spacing) & ~1;
 }

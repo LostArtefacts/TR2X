@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.92% (287)</tspan> · <tspan class="known">73.58% (883)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24% (288)</tspan> · <tspan class="known">73.50% (882)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="178.66" height="6" x="0" y="0" class="decompiled"/>
-<rect width="549.67" height="6" x="178.66" y="0" class="known"/>
+<rect width="179.28" height="6" x="0" y="0" class="decompiled"/>
+<rect width="549.04" height="6" x="179.28" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -814,7 +814,7 @@
 <rect width="12" height="12" x="510" y="210" class="decompiled"><title>void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="525" y="210" class="decompiled"><title>void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="540" y="210" class="decompiled"><title>void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);</title></rect>
-<rect width="12" height="12" x="555" y="210" class="known"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
+<rect width="12" height="12" x="555" y="210" class="decompiled"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="570" y="210" class="decompiled"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="585" y="210" class="decompiled"><title>int16_t __cdecl Text_GetTextLength(const char *text);</title></rect>
 <rect width="12" height="12" x="600" y="210" class="known"><title>void __cdecl Text_Draw(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.52%</tspan> · <tspan class="known">79.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.60%</tspan> · <tspan class="known">79.07%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="153.30" height="6" x="0" y="0" class="decompiled"/>
-<rect width="591.23" height="6" x="153.30" y="0" class="known"/>
+<rect width="153.89" height="6" x="0" y="0" class="decompiled"/>
+<rect width="590.65" height="6" x="153.89" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1633,7 +1633,7 @@
 <rect width="11.39" height="11.88" x="579.45" y="90.80" class="known"><title>void __cdecl InitColours(void);</title></rect>
 <rect width="11.39" height="11.88" x="593.85" y="90.80" class="known"><title>void __cdecl Pendulum(int16_t item_num);</title></rect>
 <rect width="11.34" height="11.88" x="608.24" y="90.80" class="known"><title>void __cdecl KillerStatueControl(int16_t item_num);</title></rect>
-<rect width="11.23" height="11.88" x="622.58" y="90.80" class="known"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
+<rect width="11.23" height="11.88" x="622.58" y="90.80" class="decompiled"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
 <rect width="11.18" height="11.88" x="636.81" y="90.80" class="known"><title>int32_t __cdecl Diver_GetWaterSurface(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="11.18" height="11.88" x="650.98" y="90.80" class="known"><title>void __cdecl InitialiseSlot(int16_t item_num, int32_t slot);</title></rect>
 <rect width="11.18" height="11.88" x="665.16" y="90.80" class="known"><title>int32_t __cdecl SkidooCheckGetOffOK(int32_t direction);</title></rect>
