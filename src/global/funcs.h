@@ -112,7 +112,6 @@
 #define Item_IsTriggerActive ((int32_t __cdecl (*)(struct ITEM_INFO *item))0x004158D0)
 #define Room_GetCeiling ((int32_t __cdecl (*)(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z))0x00415930)
 #define Room_GetDoor ((int16_t __cdecl (*)(struct FLOOR_INFO *floor))0x00415B90)
-#define LOS_ClipTarget ((int32_t __cdecl (*)(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor))0x00416260)
 #define LOS_ObjectOnLOS ((int32_t __cdecl (*)(const struct GAME_VECTOR *start, struct GAME_VECTOR *target))0x00416340)
 #define Room_FlipMap ((void __cdecl (*)(void))0x00416640)
 #define Room_RemoveFlipItems ((void __cdecl (*)(struct ROOM_INFO *r))0x00416700)

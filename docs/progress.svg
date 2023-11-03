@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.50% (270)</tspan> · <tspan class="known">75% (900)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.58% (271)</tspan> · <tspan class="known">74.92% (899)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="168.08" height="6" x="0" y="0" class="decompiled"/>
-<rect width="560.25" height="6" x="168.08" y="0" class="known"/>
+<rect width="168.70" height="6" x="0" y="0" class="decompiled"/>
+<rect width="559.63" height="6" x="168.70" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -258,7 +258,7 @@
 <rect width="12" height="12" x="420" y="45" class="decompiled"><title>int32_t __cdecl LOS_Check(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="435" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckZ(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="450" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckX(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
-<rect width="12" height="12" x="465" y="45" class="known"><title>int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
+<rect width="12" height="12" x="465" y="45" class="decompiled"><title>int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
 <rect width="12" height="12" x="480" y="45" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="495" y="45" class="known"><title>void __cdecl Room_FlipMap(void);</title></rect>
 <rect width="12" height="12" x="510" y="45" class="known"><title>void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.99%</tspan> · <tspan class="known">79.68%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.05%</tspan> · <tspan class="known">79.62%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="149.29" height="6" x="0" y="0" class="decompiled"/>
-<rect width="595.24" height="6" x="149.29" y="0" class="known"/>
+<rect width="149.77" height="6" x="0" y="0" class="decompiled"/>
+<rect width="594.76" height="6" x="149.77" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1698,7 +1698,7 @@
 <rect width="10.35" height="10.21" x="506.36" y="349.79" class="known"><title>void __cdecl ModifyStartInfo(int32_t level_num);</title></rect>
 <rect width="10.06" height="10.50" x="519.71" y="119.75" class="known"><title>void __cdecl SpringBoardControl(int16_t item_num);</title></rect>
 <rect width="10.06" height="10.50" x="532.77" y="119.75" class="known"><title>void __cdecl S_LoadSettings(void);</title></rect>
-<rect width="10" height="10.50" x="545.83" y="119.75" class="known"><title>int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
+<rect width="10" height="10.50" x="545.83" y="119.75" class="decompiled"><title>int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
 <rect width="10" height="10.50" x="558.83" y="119.75" class="known"><title>void __cdecl Control_TriggerMusicNormalTrack(int16_t value, int16_t flags, int16_t type);</title></rect>
 <rect width="9.94" height="10.50" x="571.82" y="119.75" class="known"><title>void __cdecl CreateBartoliLight(int16_t item_num);</title></rect>
 <rect width="9.94" height="10.50" x="584.76" y="119.75" class="known"><title>void __cdecl DragonBones(int16_t item_num);</title></rect>

@@ -1342,7 +1342,7 @@ typedef enum LARA_MESH {
 00415BE0    000000A0    +       int32_t __cdecl LOS_Check(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00415C80    000002EB    +       int32_t __cdecl LOS_CheckZ(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00415F70    000002EC    +       int32_t __cdecl LOS_CheckX(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
-00416260    000000DA    -       int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);
+00416260    000000DA    +       int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);
 00416340    000002FE    -       int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00416640    000000B3    -       void __cdecl Room_FlipMap(void);
 00416700    00000096    -       void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);

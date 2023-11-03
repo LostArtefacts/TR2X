@@ -223,6 +223,35 @@ int32_t __cdecl LOS_CheckZ(
     return 1;
 }
 
+int32_t __cdecl LOS_ClipTarget(
+    const struct GAME_VECTOR *const start, struct GAME_VECTOR *const target,
+    const FLOOR_INFO *const floor)
+{
+    const int32_t dx = target->x - start->x;
+    const int32_t dy = target->y - start->y;
+    const int32_t dz = target->z - start->z;
+
+    const int32_t height =
+        Room_GetHeight(floor, target->x, target->y, target->z);
+    if (target->y > height && start->y < height) {
+        target->y = height;
+        target->x = start->x + dx * (height - start->y) / dy;
+        target->z = start->z + dz * (height - start->y) / dy;
+        return 0;
+    }
+
+    const int32_t ceiling =
+        Room_GetCeiling(floor, target->x, target->y, target->z);
+    if (target->y < ceiling && start->y > ceiling) {
+        target->y = ceiling;
+        target->x = start->x + dx * (ceiling - start->y) / dy;
+        target->z = start->z + dz * (ceiling - start->y) / dy;
+        return 0;
+    }
+
+    return 1;
+}
+
 int32_t __cdecl LOS_Check(
     const struct GAME_VECTOR *const start, struct GAME_VECTOR *const target)
 {
