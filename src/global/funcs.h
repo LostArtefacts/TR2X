@@ -507,7 +507,6 @@
 #define SpiderLeap ((void __cdecl (*)(int16_t item_num, int16_t angle))0x0043FFC0)
 #define SpiderControl ((void __cdecl (*)(int16_t item_num))0x00440070)
 #define BigSpiderControl ((void __cdecl (*)(int16_t item_num))0x00440290)
-#define Text_AlignRight ((void __cdecl (*)(struct TEXTSTRING *string, int16_t enable))0x00440740)
 #define Text_AlignBottom ((void __cdecl (*)(struct TEXTSTRING *string, int16_t enable))0x00440760)
 #define Text_GetWidth ((int32_t __cdecl (*)(struct TEXTSTRING *string))0x00440780)
 #define Text_Remove ((int32_t __cdecl (*)(struct TEXTSTRING *string))0x00440890)

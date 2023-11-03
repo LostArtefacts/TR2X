@@ -155,3 +155,10 @@ void __cdecl Text_CentreV(struct TEXTSTRING *const string, const int16_t enable)
     assert(string);
     string->flags.centre_v = enable;
 }
+
+void __cdecl Text_AlignRight(
+    struct TEXTSTRING *const string, const int16_t enable)
+{
+    assert(string);
+    string->flags.right = enable;
+}
