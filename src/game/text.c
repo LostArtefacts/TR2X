@@ -263,3 +263,13 @@ int32_t __cdecl Text_GetWidth(struct TEXTSTRING *const string)
     // TODO: OG bug - wrong letter spacing calculation; pointless ~1
     return ((int16_t)width - string->letter_spacing) & ~1;
 }
+
+void __cdecl Text_Draw(void)
+{
+    for (int i = 0; i < TEXT_MAX_STRINGS; i++) {
+        const struct TEXTSTRING *const textstring = &g_TextstringTable[i];
+        if (textstring->flags.active) {
+            Text_DrawText(textstring);
+        }
+    }
+}
