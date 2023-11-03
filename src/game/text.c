@@ -20,6 +20,8 @@
 #define IS_CHAR_SPACE(c) ((c) == 32)
 #define IS_CHAR_DIGIT(c) ((c) <= 0xAu)
 
+// TODO: replace textstring == NULL checks with assertions
+
 void __cdecl Text_Init(void)
 {
     DisplayModeInfo(0);
@@ -45,7 +47,7 @@ struct TEXTSTRING *__cdecl Text_Create(
         }
     }
 
-    if (!result) {
+    if (result == NULL) {
         return NULL;
     }
 
@@ -80,7 +82,9 @@ struct TEXTSTRING *__cdecl Text_Create(
 void __cdecl Text_ChangeText(
     struct TEXTSTRING *const string, const char *const text)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     assert(text);
     if (string->flags.active) {
         strncpy(string->text, text, TEXT_MAX_STRING_SIZE);
@@ -92,7 +96,9 @@ void __cdecl Text_SetScale(
     struct TEXTSTRING *const string, const int32_t scale_h,
     const int32_t scale_v)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->scale.h = scale_h;
     string->scale.v = scale_v;
 }
@@ -100,7 +106,9 @@ void __cdecl Text_SetScale(
 void __cdecl Text_Flash(
     struct TEXTSTRING *const string, const int16_t enable, const int16_t rate)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     if (enable) {
         string->flags.flash = 1;
         string->flash.rate = rate;
@@ -115,8 +123,9 @@ void __cdecl Text_AddBackground(
     const int16_t x_off, const int16_t y_off, const int16_t z_off,
     const int16_t colour, const uint16_t *const gour_ptr, const uint16_t flags)
 {
-    assert(string);
-
+    if (string == NULL) {
+        return;
+    }
     uint32_t scale_h = Text_GetScaleH(string->scale.h);
     uint32_t scale_v = Text_GetScaleV(string->scale.v);
     string->flags.background = 1;
@@ -132,7 +141,9 @@ void __cdecl Text_AddBackground(
 
 void __cdecl Text_RemoveBackground(struct TEXTSTRING *const string)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.background = 0;
 }
 
@@ -140,7 +151,9 @@ void __cdecl Text_AddOutline(
     struct TEXTSTRING *const string, const int16_t enable, const int16_t colour,
     const uint16_t *const gour_ptr, const uint16_t flags)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.outline = 1;
     string->outl_gour = gour_ptr;
     string->outl_colour = colour;
@@ -149,34 +162,43 @@ void __cdecl Text_AddOutline(
 
 void __cdecl Text_RemoveOutline(struct TEXTSTRING *const string)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.outline = 0;
 }
 
 void __cdecl Text_CentreH(struct TEXTSTRING *const string, const int16_t enable)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.centre_h = enable;
 }
 
 void __cdecl Text_CentreV(struct TEXTSTRING *const string, const int16_t enable)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.centre_v = enable;
 }
 
 void __cdecl Text_AlignRight(
     struct TEXTSTRING *const string, const int16_t enable)
 {
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.right = enable;
 }
 
 void __cdecl Text_AlignBottom(
     struct TEXTSTRING *const string, const int16_t enable)
 {
-
-    assert(string);
+    if (string == NULL) {
+        return;
+    }
     string->flags.bottom = enable;
 }
 
@@ -195,7 +217,9 @@ int32_t __cdecl Text_Remove(struct TEXTSTRING *const string)
 
 int32_t __cdecl Text_GetWidth(struct TEXTSTRING *const string)
 {
-    assert(string);
+    if (string == NULL) {
+        return 0;
+    }
 
     const uint32_t scale_h = Text_GetScaleH(string->scale.h);
     const char *str = string->text;
