@@ -5,6 +5,7 @@
 #include "global/vars.h"
 #include "util.h"
 
+#include <assert.h>
 #include <string.h>
 
 #define TEXT_MAX_STRINGS 64
@@ -65,4 +66,15 @@ struct TEXTSTRING *__cdecl Text_Create(
     result->text[TEXT_MAX_STRING_SIZE - 1] = '\0';
 
     return result;
+}
+
+void __cdecl Text_ChangeText(
+    struct TEXTSTRING *const string, const char *const text)
+{
+    assert(string);
+    assert(text);
+    if (string->flags.active) {
+        strncpy(string->text, text, TEXT_MAX_STRING_SIZE);
+        string->text[TEXT_MAX_STRING_SIZE - 1] = '\0';
+    }
 }
