@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.25% (267)</tspan> · <tspan class="known">75.25% (903)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.33% (268)</tspan> · <tspan class="known">75.17% (902)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="166.21" height="6" x="0" y="0" class="decompiled"/>
-<rect width="562.12" height="6" x="166.21" y="0" class="known"/>
+<rect width="166.83" height="6" x="0" y="0" class="decompiled"/>
+<rect width="561.50" height="6" x="166.83" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -255,10 +255,10 @@
 <rect width="12" height="12" x="375" y="45" class="known"><title>int32_t __cdecl Item_IsTriggerActive(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="390" y="45" class="known"><title>int32_t __cdecl Room_GetCeiling(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="405" y="45" class="known"><title>int16_t __cdecl Room_GetDoor(struct FLOOR_INFO *floor);</title></rect>
-<rect width="12" height="12" x="420" y="45" class="known"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="12" height="12" x="420" y="45" class="decompiled"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="435" y="45" class="known"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="450" y="45" class="known"><title>int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
-<rect width="12" height="12" x="465" y="45" class="known"><title>int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, FLOOR_INFO *floor);</title></rect>
+<rect width="12" height="12" x="465" y="45" class="known"><title>int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
 <rect width="12" height="12" x="480" y="45" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="495" y="45" class="known"><title>void __cdecl Room_FlipMap(void);</title></rect>
 <rect width="12" height="12" x="510" y="45" class="known"><title>void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.50%</tspan> · <tspan class="known">80.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.54%</tspan> · <tspan class="known">80.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="145.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="598.90" height="6" x="145.64" y="0" class="known"/>
+<rect width="145.99" height="6" x="0" y="0" class="decompiled"/>
+<rect width="598.54" height="6" x="145.99" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1698,7 +1698,7 @@
 <rect width="10.35" height="10.21" x="506.36" y="349.79" class="known"><title>void __cdecl ModifyStartInfo(int32_t level_num);</title></rect>
 <rect width="10.06" height="10.50" x="519.71" y="119.75" class="known"><title>void __cdecl SpringBoardControl(int16_t item_num);</title></rect>
 <rect width="10.06" height="10.50" x="532.77" y="119.75" class="known"><title>void __cdecl S_LoadSettings(void);</title></rect>
-<rect width="10" height="10.50" x="545.83" y="119.75" class="known"><title>int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, FLOOR_INFO *floor);</title></rect>
+<rect width="10" height="10.50" x="545.83" y="119.75" class="known"><title>int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
 <rect width="10" height="10.50" x="558.83" y="119.75" class="known"><title>void __cdecl Control_TriggerMusicNormalTrack(int16_t value, int16_t flags, int16_t type);</title></rect>
 <rect width="9.94" height="10.50" x="571.82" y="119.75" class="known"><title>void __cdecl CreateBartoliLight(int16_t item_num);</title></rect>
 <rect width="9.94" height="10.50" x="584.76" y="119.75" class="known"><title>void __cdecl DragonBones(int16_t item_num);</title></rect>
@@ -1813,7 +1813,7 @@
 <rect width="8.38" height="8.39" x="544.80" y="250.58" class="decompiled"><title>void __cdecl Output_AlterFOV(int16_t fov);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="261.97" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
 <rect width="8.38" height="8.39" x="544.80" y="273.36" class="known"><title>void __cdecl CreateRenderBuffer(void);</title></rect>
-<rect width="8.38" height="8.32" x="544.80" y="284.75" class="known"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="8.38" height="8.32" x="544.80" y="284.75" class="decompiled"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="8.38" height="8.25" x="544.80" y="296.07" class="known"><title>const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="8.38" height="8.25" x="544.80" y="307.32" class="known"><title>void __cdecl setup_screen_size(void);</title></rect>
 <rect width="8.38" height="8.11" x="544.80" y="318.57" class="known"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>

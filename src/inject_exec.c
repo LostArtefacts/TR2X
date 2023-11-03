@@ -4,6 +4,7 @@
 #include "game/lara/lara_col.h"
 #include "game/lara/lara_misc.h"
 #include "game/lara/lara_state.h"
+#include "game/los.h"
 #include "game/math.h"
 #include "game/math_misc.h"
 #include "game/matrix.h"
@@ -22,6 +23,8 @@ static void Inject_Shell(void);
 static void Inject_Output(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
+
+static void Inject_LOS(void);
 static void Inject_Lara_Misc(void);
 static void Inject_Lara_State(void);
 static void Inject_Lara_Col(void);
@@ -153,6 +156,11 @@ static void Inject_Music(void)
 static void Inject_Sound(void)
 {
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
+}
+
+static void Inject_LOS(void)
+{
+    INJECT(1, 0x00415BE0, LOS_Check);
 }
 
 static void Inject_Lara_Misc(void)
@@ -346,6 +354,8 @@ void Inject_Exec(void)
     Inject_Output();
     Inject_Music();
     Inject_Sound();
+
+    Inject_LOS();
     Inject_Lara_Misc();
     Inject_Lara_State();
     Inject_Lara_Col();
