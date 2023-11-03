@@ -107,6 +107,7 @@ static void Inject_Text(void)
     INJECT(1, 0x00440700, Text_CentreH);
     INJECT(1, 0x00440720, Text_CentreV);
     INJECT(1, 0x00440740, Text_AlignRight);
+    INJECT(1, 0x00440760, Text_AlignBottom);
 }
 
 static void Inject_Output(void)

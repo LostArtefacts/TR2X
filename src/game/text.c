@@ -162,3 +162,11 @@ void __cdecl Text_AlignRight(
     assert(string);
     string->flags.right = enable;
 }
+
+void __cdecl Text_AlignBottom(
+    struct TEXTSTRING *const string, const int16_t enable)
+{
+
+    assert(string);
+    string->flags.bottom = enable;
+}

@@ -22,3 +22,4 @@ void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);
 void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);
 void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);
 void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);
+void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);
