@@ -137,3 +137,9 @@ void __cdecl Text_AddOutline(
     string->outl_colour = colour;
     string->outl_flags = flags;
 }
+
+void __cdecl Text_RemoveOutline(struct TEXTSTRING *const string)
+{
+    assert(string);
+    string->flags.outline = 0;
+}
