@@ -161,6 +161,7 @@ static void Inject_Sound(void)
 static void Inject_LOS(void)
 {
     INJECT(1, 0x00415BE0, LOS_Check);
+    INJECT(1, 0x00415C80, LOS_CheckZ);
 }
 
 static void Inject_Lara_Misc(void)

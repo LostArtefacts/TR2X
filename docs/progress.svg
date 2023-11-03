@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.33% (268)</tspan> · <tspan class="known">75.17% (902)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.42% (269)</tspan> · <tspan class="known">75.08% (901)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="166.83" height="6" x="0" y="0" class="decompiled"/>
-<rect width="561.50" height="6" x="166.83" y="0" class="known"/>
+<rect width="167.45" height="6" x="0" y="0" class="decompiled"/>
+<rect width="560.87" height="6" x="167.45" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -256,7 +256,7 @@
 <rect width="12" height="12" x="390" y="45" class="known"><title>int32_t __cdecl Room_GetCeiling(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="405" y="45" class="known"><title>int16_t __cdecl Room_GetDoor(struct FLOOR_INFO *floor);</title></rect>
 <rect width="12" height="12" x="420" y="45" class="decompiled"><title>int32_t __cdecl LOS_Check(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
-<rect width="12" height="12" x="435" y="45" class="known"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="12" height="12" x="435" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="450" y="45" class="known"><title>int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="465" y="45" class="known"><title>int32_t __cdecl LOS_ClipTarget(struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
 <rect width="12" height="12" x="480" y="45" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.54%</tspan> · <tspan class="known">80.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">19.76%</tspan> · <tspan class="known">79.91%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="145.99" height="6" x="0" y="0" class="decompiled"/>
-<rect width="598.54" height="6" x="145.99" y="0" class="known"/>
+<rect width="147.64" height="6" x="0" y="0" class="decompiled"/>
+<rect width="596.89" height="6" x="147.64" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1398,7 +1398,7 @@
 <rect width="22.54" height="20.89" x="316.12" y="198.63" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="22.54" height="20.61" x="316.12" y="222.52" class="known"><title>void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
 <rect width="22.54" height="20.58" x="316.12" y="246.13" class="known"><title>int32_t __cdecl LOS_CheckX(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
-<rect width="22.54" height="20.54" x="316.12" y="269.70" class="known"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="22.54" height="20.54" x="316.12" y="269.70" class="decompiled"><title>int32_t __cdecl LOS_CheckZ(struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="22.54" height="20.42" x="316.12" y="293.25" class="decompiled"><title>int32_t __cdecl Lara_TestVault(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="22.54" height="20.20" x="316.12" y="316.67" class="known"><title>void __cdecl WinPlayFMV(LPCTSTR fileName, bool isPlayback);</title></rect>
 <rect width="22.54" height="20.13" x="316.12" y="339.87" class="known"><title>bool __cdecl SE_ShowSetupDialog(HWND hParent, bool isDefault);</title></rect>

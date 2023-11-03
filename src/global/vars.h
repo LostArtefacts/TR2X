@@ -91,6 +91,7 @@
 #define g_GamePalette16 (*(PALETTEENTRY(*)[256])0x004D7380)
 #define g_CineFrameCurrent (*(int32_t*)0x004D7780)
 #define g_IsChunkyCamera (*(int32_t*)0x004D778C)
+#define g_LOSNumRooms (*(int32_t*)0x004D77A0) // = 0
 #define g_SoundTrackIds (*(int32_t(*)[128])0x004D7C80)
 #define g_GameWindowHandle (*(HWND*)0x004D7F10)
 #define g_IsGameToExit (*(uint8_t*)0x004D8378)
@@ -133,6 +134,7 @@
 #define g_Rooms (*(struct ROOM_INFO **)0x0052618C)
 #define g_FlipStatus (*(int32_t*)0x00526240)
 #define g_TriggerIndex (*(int16_t **)0x00526288)
+#define g_LOSRooms (*(int32_t(*)[20])0x005262A0)
 #define g_Items (*(struct ITEM_INFO(*)[])0x005262F0)
 #define g_NumCineFrames (*(int16_t*)0x005262F6)
 #define g_CineData (*(CINE_FRAME **)0x005262F8) // = NULL
