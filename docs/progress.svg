@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.25% (279)</tspan> · <tspan class="known">74.25% (891)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.33% (280)</tspan> · <tspan class="known">74.17% (890)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="173.68" height="6" x="0" y="0" class="decompiled"/>
-<rect width="554.65" height="6" x="173.68" y="0" class="known"/>
+<rect width="174.30" height="6" x="0" y="0" class="decompiled"/>
+<rect width="554.02" height="6" x="174.30" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -808,7 +808,7 @@
 <rect width="12" height="12" x="420" y="210" class="decompiled"><title>void __cdecl Text_Flash(struct TEXTSTRING *string, int16_t enable, int16_t rate);</title></rect>
 <rect width="12" height="12" x="435" y="210" class="decompiled"><title>void __cdecl Text_AddBackground(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="450" y="210" class="decompiled"><title>void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);</title></rect>
-<rect width="12" height="12" x="465" y="210" class="known"><title>void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
+<rect width="12" height="12" x="465" y="210" class="decompiled"><title>void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="480" y="210" class="known"><title>void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="495" y="210" class="known"><title>void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="510" y="210" class="known"><title>void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.45%</tspan> · <tspan class="known">79.22%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.46%</tspan> · <tspan class="known">79.21%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="152.75" height="6" x="0" y="0" class="decompiled"/>
-<rect width="591.78" height="6" x="152.75" y="0" class="known"/>
+<rect width="152.84" height="6" x="0" y="0" class="decompiled"/>
+<rect width="591.69" height="6" x="152.84" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2293,7 +2293,7 @@
 <rect width="2.94" height="2.69" x="687.09" y="329.25" class="known"><title>void __cdecl S_UnloadLevelFile(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="334.94" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="340.63" class="known"><title>LONG __cdecl SetRegistryBoolValue(LPCTSTR lpValueName, bool value);</title></rect>
-<rect width="2.94" height="2.56" x="687.09" y="346.33" class="known"><title>void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
+<rect width="2.94" height="2.56" x="687.09" y="346.33" class="decompiled"><title>void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
 <rect width="2.94" height="2.56" x="687.09" y="351.88" class="known"><title>void __cdecl DInputKeyboardRelease(void);</title></rect>
 <rect width="2.94" height="2.56" x="687.09" y="357.44" class="known"><title>void __cdecl HWR_ResetTexSource(void);</title></rect>
 <rect width="2.86" height="2.50" x="693.03" y="300.51" class="known"><title>void __cdecl MakeAmmoString(char *string);</title></rect>

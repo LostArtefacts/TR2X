@@ -126,3 +126,14 @@ void __cdecl Text_RemoveBackground(struct TEXTSTRING *const string)
     assert(string);
     string->flags.background = 0;
 }
+
+void __cdecl Text_AddOutline(
+    struct TEXTSTRING *const string, const int16_t enable, const int16_t colour,
+    const uint16_t *const gour_ptr, const uint16_t flags)
+{
+    assert(string);
+    string->flags.outline = 1;
+    string->outl_gour = gour_ptr;
+    string->outl_colour = colour;
+    string->outl_flags = flags;
+}

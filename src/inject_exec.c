@@ -102,6 +102,7 @@ static void Inject_Text(void)
     INJECT(1, 0x004405F0, Text_Flash);
     INJECT(1, 0x00440620, Text_AddBackground);
     INJECT(1, 0x004406B0, Text_RemoveBackground);
+    INJECT(1, 0x004406C0, Text_AddOutline);
 }
 
 static void Inject_Output(void)
