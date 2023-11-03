@@ -170,3 +170,16 @@ void __cdecl Text_AlignBottom(
     assert(string);
     string->flags.bottom = enable;
 }
+
+int32_t __cdecl Text_Remove(struct TEXTSTRING *const string)
+{
+    if (string == NULL) {
+        return 0;
+    }
+    if (!string->flags.active) {
+        return 0;
+    }
+    string->flags.active = 0;
+    g_TextstringCount--;
+    return 1;
+}

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.75% (285)</tspan> · <tspan class="known">73.75% (885)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.83% (286)</tspan> · <tspan class="known">73.67% (884)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="177.41" height="6" x="0" y="0" class="decompiled"/>
-<rect width="550.91" height="6" x="177.41" y="0" class="known"/>
+<rect width="178.04" height="6" x="0" y="0" class="decompiled"/>
+<rect width="550.29" height="6" x="178.04" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -815,7 +815,7 @@
 <rect width="12" height="12" x="525" y="210" class="decompiled"><title>void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="540" y="210" class="decompiled"><title>void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="555" y="210" class="known"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
-<rect width="12" height="12" x="570" y="210" class="known"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
+<rect width="12" height="12" x="570" y="210" class="decompiled"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="585" y="210" class="known"><title>int16_t __cdecl Text_GetStringLength(const char *text);</title></rect>
 <rect width="12" height="12" x="600" y="210" class="known"><title>void __cdecl Text_Draw(void);</title></rect>
 <rect width="12" height="12" x="615" y="210" class="known"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.50%</tspan> · <tspan class="known">79.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.51%</tspan> · <tspan class="known">79.16%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="153.14" height="6" x="0" y="0" class="decompiled"/>
-<rect width="591.39" height="6" x="153.14" y="0" class="known"/>
+<rect width="153.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="591.31" height="6" x="153.23" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2310,7 +2310,7 @@
 <rect width="2.84" height="2.24" x="698.86" y="306.01" class="known"><title>void __cdecl FreeTexturePages(void);</title></rect>
 <rect width="2.84" height="2.24" x="704.70" y="306.01" class="known"><title>void __cdecl SE_PassMessageToImage(HWND hWnd, UINT uMsg, WPARAM wParam);</title></rect>
 <rect width="2.68" height="2.24" x="710.53" y="306.01" class="known"><title>void __cdecl Inv_RingMotionCameraPos(struct RING_INFO *ring, int16_t target);</title></rect>
-<rect width="2.68" height="2.24" x="716.22" y="306.01" class="known"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
+<rect width="2.68" height="2.24" x="716.22" y="306.01" class="decompiled"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
 <rect width="2.68" height="2.24" x="721.90" y="306.01" class="known"><title>HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);</title></rect>
 <rect width="2.68" height="2.24" x="727.58" y="306.01" class="known"><title>LPDIRECT3DTEXTURE2 __cdecl Create3DTexture(LPDDS surface);</title></rect>
 <rect width="2.68" height="2.24" x="733.26" y="306.01" class="known"><title>HRESULT __cdecl EnumerateTextureFormats(void);</title></rect>

@@ -23,3 +23,4 @@ void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);
 void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);
 void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);
 void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);
+int32_t __cdecl Text_Remove(struct TEXTSTRING *string);
