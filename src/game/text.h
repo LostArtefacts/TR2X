@@ -19,3 +19,4 @@ void __cdecl Text_AddOutline(
     struct TEXTSTRING *string, int16_t enable, int16_t colour,
     const uint16_t *gour_ptr, uint16_t flags);
 void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);
+void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);

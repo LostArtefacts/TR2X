@@ -1998,7 +1998,7 @@ typedef enum LARA_MESH {
 004406B0    00000010    +       void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);
 004406C0    00000029    +       void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
 004406F0    00000010    +       void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);
-00440700    0000001E    -       void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);
+00440700    0000001E    +       void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);
 00440720    0000001E    -       void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);
 00440740    0000001E    -       void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);
 00440760    0000001E    -       void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);

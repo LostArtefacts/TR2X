@@ -143,3 +143,9 @@ void __cdecl Text_RemoveOutline(struct TEXTSTRING *const string)
     assert(string);
     string->flags.outline = 0;
 }
+
+void __cdecl Text_CentreH(struct TEXTSTRING *const string, const int16_t enable)
+{
+    assert(string);
+    string->flags.centre_h = enable;
+}
