@@ -2914,6 +2914,7 @@ const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(
         };
         const struct PHD_TEXTURE *const texture = &g_PhdTextureInfo[*obj_ptr++];
         const struct PHD_UV *const uv = texture->uv;
+
         if (texture->draw_type != DRAW_OPAQUE) {
             Output_InsertGT3_Sorted(
                 vtx[0], vtx[1], vtx[2], texture, &uv[0], &uv[1], &uv[2],
@@ -2921,6 +2922,30 @@ const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(
         } else {
             Output_InsertGT3_ZBuffered(
                 vtx[0], vtx[1], vtx[2], texture, &uv[0], &uv[1], &uv[2]);
+        }
+    }
+
+    return obj_ptr;
+}
+
+const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
+{
+    for (int i = 0; i < num; i++) {
+        const struct PHD_VBUF *const vtx[4] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const struct PHD_TEXTURE *const texture = &g_PhdTextureInfo[*obj_ptr++];
+        const struct PHD_UV *const uv = texture->uv;
+
+        if (texture->draw_type != DRAW_OPAQUE) {
+            Output_InsertGT4_Sorted(
+                vtx[0], vtx[1], vtx[2], vtx[3], texture, sort_type);
+        } else {
+            Output_InsertGT4_ZBuffered(vtx[0], vtx[1], vtx[2], vtx[3], texture);
         }
     }
 
