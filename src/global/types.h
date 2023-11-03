@@ -269,6 +269,7 @@ typedef struct SPHERE {
 typedef struct TEXTSTRING {
     union {
         uint32_t all;
+        uint32_t active : 1;
     } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
@@ -301,7 +302,7 @@ typedef struct TEXTSTRING {
         int32_t h;
         int32_t v;
     } scale;
-    char *string;
+    char *text;
 } TEXTSTRING;
 
 typedef struct PHD_VBUF {

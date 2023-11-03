@@ -259,6 +259,7 @@ typedef struct __unaligned  SPHERE {
 typedef struct __unaligned  TEXTSTRING {
     union {
         uint32_t all;
+        uint32_t active : 1;
     } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
@@ -1515,7 +1516,7 @@ typedef enum LARA_MESH {
 00421E40    00000015    -R      void __cdecl InitialisePickUpDisplay(void);
 00421E60    000000FD    -R      void __cdecl DrawPickups(int32_t timed);
 00421F60    0000006C    -R      void __cdecl AddDisplayPickup(int16_t obj_num);
-00421FD0    0000007A    -R      void __cdecl DisplayModeInfo(char* string);
+00421FD0    0000007A    *R      void __cdecl DisplayModeInfo(char* string);
 00422050    0000002C    -R      void __cdecl DrawModeInfo(void);
 
 # game/inventory.c
@@ -1976,26 +1977,26 @@ typedef enum LARA_MESH {
 
 # game/text.c
 00440450    0000002C    +       void __cdecl Text_Init(void);
-00440480    00000105    -       TEXTSTRING *__cdecl Text_Create(int32_t x, int32_t y, int32_t z, const char *string);
-00440590    00000037    -       void __cdecl Text_ChangeText(struct TEXTSTRING *textstring, const char *string);
-004405D0    00000017    -       void __cdecl Text_SetScale(struct TEXTSTRING *textstring, int32_t scale_h, int32_t scale_v);
-004405F0    0000002B    -       void __cdecl Text_Flash(struct TEXTSTRING *textstring, int16_t enable, int16_t rate);
-00440620    0000008C    -       void __cdecl Text_AddBackground(struct TEXTSTRING *textstring, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
-004406B0    00000010    -       void __cdecl Text_RemoveBackground(struct TEXTSTRING *textstring);
-004406C0    00000029    -       void __cdecl Text_AddOutline(struct TEXTSTRING *textstring, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
-004406F0    00000010    -       void __cdecl Text_RemoveOutline(struct TEXTSTRING *textstring);
-00440700    0000001E    -       void __cdecl Text_CentreH(struct TEXTSTRING *textstring, int16_t enable);
-00440720    0000001E    -       void __cdecl Text_CentreV(struct TEXTSTRING *textstring, int16_t enable);
-00440740    0000001E    -       void __cdecl Text_AlignRight(struct TEXTSTRING *textstring, int16_t enable);
-00440760    0000001E    -       void __cdecl Text_AlignBottom(struct TEXTSTRING *textstring, int16_t enable);
-00440780    00000107    -       int32_t __cdecl Text_GetWidth(struct TEXTSTRING *textstring);
-00440890    00000025    -       int32_t __cdecl Text_Remove(struct TEXTSTRING *textstring);
-004408C0    00000024    -R      int16_t __cdecl Text_GetStringLength(const char *string);
+00440480    00000105    +       TEXTSTRING *__cdecl Text_Create(int32_t x, int32_t y, int32_t z, const char *text);
+00440590    00000037    -       void __cdecl Text_ChangeText(struct TEXTSTRING *string, const char *text);
+004405D0    00000017    -       void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);
+004405F0    0000002B    -       void __cdecl Text_Flash(struct TEXTSTRING *string, int16_t enable, int16_t rate);
+00440620    0000008C    -       void __cdecl Text_AddBackground(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
+004406B0    00000010    -       void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);
+004406C0    00000029    -       void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
+004406F0    00000010    -       void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);
+00440700    0000001E    -       void __cdecl Text_CentreH(struct TEXTSTRING *string, int16_t enable);
+00440720    0000001E    -       void __cdecl Text_CentreV(struct TEXTSTRING *string, int16_t enable);
+00440740    0000001E    -       void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);
+00440760    0000001E    -       void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);
+00440780    00000107    -       int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);
+00440890    00000025    -       int32_t __cdecl Text_Remove(struct TEXTSTRING *string);
+004408C0    00000024    *R      int16_t __cdecl Text_GetStringLength(const char *text);
 004408F0    00000027    -       void __cdecl Text_Draw(void);
 00440920    00000189    -       void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);
-00440AB0    000003D2    -       void __cdecl T_DrawText(struct TEXTSTRING *textstring);
-00440E90    00000037    -R      uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);
-00440ED0    00000039    -R      uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);
+00440AB0    000003D2    -       void __cdecl T_DrawText(struct TEXTSTRING *string);
+00440E90    00000037    *R      uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);
+00440ED0    00000039    *R      uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);
 
 # game/traps.c
 00440F10    000001F4    -R      void __cdecl MineControl(int16_t mine_num);
@@ -2604,3 +2605,4 @@ typedef enum LARA_MESH {
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
 0051D6A0    -       int16_t g_TextstringCount = 0;
+0051D6C0    -       char g_TextstringBuffers[64][64];
