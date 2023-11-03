@@ -99,6 +99,7 @@ static void Inject_Text(void)
     INJECT(1, 0x00440480, Text_Create);
     INJECT(1, 0x00440590, Text_ChangeText);
     INJECT(1, 0x004405D0, Text_SetScale);
+    INJECT(1, 0x004405F0, Text_Flash);
 }
 
 static void Inject_Output(void)

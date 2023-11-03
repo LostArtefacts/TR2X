@@ -87,3 +87,16 @@ void __cdecl Text_SetScale(
     string->scale.h = scale_h;
     string->scale.v = scale_v;
 }
+
+void __cdecl Text_Flash(
+    struct TEXTSTRING *const string, const int16_t enable, const int16_t rate)
+{
+    assert(string);
+    if (enable) {
+        string->flags.flash = 1;
+        string->flash.rate = rate;
+        string->flash.count = rate;
+    } else {
+        string->flags.flash = 0;
+    }
+}

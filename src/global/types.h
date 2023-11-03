@@ -270,6 +270,7 @@ typedef struct TEXTSTRING {
     union {
         uint32_t all;
         uint32_t active : 1;
+        uint32_t flash : 1;
     } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
