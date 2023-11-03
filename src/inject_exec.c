@@ -12,6 +12,7 @@
 #include "game/output.h"
 #include "game/shell.h"
 #include "game/sound.h"
+#include "game/text.h"
 #include "inject_util.h"
 #include "specific/s_audio_sample.h"
 #include "specific/s_flagged_string.h"
@@ -20,6 +21,7 @@ static void Inject_Camera(void);
 static void Inject_Math(void);
 static void Inject_Matrix(void);
 static void Inject_Shell(void);
+static void Inject_Text(void);
 static void Inject_Output(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
@@ -89,6 +91,11 @@ static void Inject_Math(void)
 static void Inject_Shell(void)
 {
     INJECT(1, 0x0044E890, Shell_ExitSystem);
+}
+
+static void Inject_Text(void)
+{
+    INJECT(1, 0x00440450, Text_Init);
 }
 
 static void Inject_Output(void)
@@ -355,6 +362,7 @@ void Inject_Exec(void)
     Inject_Math();
     Inject_Matrix();
     Inject_Shell();
+    Inject_Text();
     Inject_Output();
     Inject_Music();
     Inject_Sound();

@@ -89,6 +89,7 @@ dll_sources = [
   'src/game/output.c',
   'src/game/shell.c',
   'src/game/sound.c',
+  'src/game/text.c',
   'src/inject_exec.c',
   'src/inject_util.c',
   'src/lib/winmm.c',

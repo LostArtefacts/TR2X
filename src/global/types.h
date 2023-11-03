@@ -267,28 +267,40 @@ typedef struct SPHERE {
 } SPHERE;
 
 typedef struct TEXTSTRING {
-    uint32_t flags;
+    union {
+        uint32_t all;
+    } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
     uint16_t outl_flags;
-    int16_t xpos;
-    int16_t ypos;
-    int16_t zpos;
+    struct {
+        int16_t x;
+        int16_t y;
+        int16_t z;
+    } pos;
     int16_t letter_spacing;
     int16_t word_spacing;
-    int16_t flash_rate;
-    int16_t flash_count;
+    struct {
+        int16_t rate;
+        int16_t count;
+    } flash;
     int16_t bgnd_colour;
     uint16_t *bgnd_gour;
     int16_t outl_colour;
     uint16_t *outl_gour;
-    int16_t bgnd_size_x;
-    int16_t bgnd_size_y;
-    int16_t bgnd_off_x;
-    int16_t bgnd_off_y;
-    int16_t bgnd_off_z;
-    int32_t scale_h;
-    int32_t scale_v;
+    struct {
+        int16_t x;
+        int16_t y;
+    } bgnd_size;
+    struct {
+        int16_t x;
+        int16_t y;
+        int16_t z;
+    } bgnd_off;
+    struct {
+        int32_t h;
+        int32_t v;
+    } scale;
     char *string;
 } TEXTSTRING;
 

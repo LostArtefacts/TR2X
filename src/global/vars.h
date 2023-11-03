@@ -119,6 +119,8 @@
 #define g_MasterVolume (*(int32_t*)0x0051BDA8)
 #define g_MciDeviceID (*(MCIDEVICEID*)0x0051BDAC)
 #define g_CD_LoopTrack (*(int32_t*)0x0051BDB0)
+#define g_TextstringTable (*(struct TEXTSTRING(*)[64])0x0051C820)
+#define g_TextstringCount (*(int16_t*)0x0051D6A0) // = 0
 #define g_SoundIsActive (*(int32_t*)0x0051E6C4)
 #define g_Lara (*(struct LARA_INFO*)0x005206E0)
 #define g_LaraItem (*(struct ITEM_INFO **)0x005207BC)
