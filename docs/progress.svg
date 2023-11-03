@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.92% (275)</tspan> · <tspan class="known">74.58% (895)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23% (276)</tspan> · <tspan class="known">74.50% (894)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="171.19" height="6" x="0" y="0" class="decompiled"/>
-<rect width="557.14" height="6" x="171.19" y="0" class="known"/>
+<rect width="171.81" height="6" x="0" y="0" class="decompiled"/>
+<rect width="556.52" height="6" x="171.81" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -804,7 +804,7 @@
 <rect width="12" height="12" x="360" y="210" class="decompiled"><title>void __cdecl Text_Init(void);</title></rect>
 <rect width="12" height="12" x="375" y="210" class="decompiled"><title>TEXTSTRING *__cdecl Text_Create(int32_t x, int32_t y, int32_t z, const char *text);</title></rect>
 <rect width="12" height="12" x="390" y="210" class="decompiled"><title>void __cdecl Text_ChangeText(struct TEXTSTRING *string, const char *text);</title></rect>
-<rect width="12" height="12" x="405" y="210" class="known"><title>void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);</title></rect>
+<rect width="12" height="12" x="405" y="210" class="decompiled"><title>void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);</title></rect>
 <rect width="12" height="12" x="420" y="210" class="known"><title>void __cdecl Text_Flash(struct TEXTSTRING *string, int16_t enable, int16_t rate);</title></rect>
 <rect width="12" height="12" x="435" y="210" class="known"><title>void __cdecl Text_AddBackground(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="450" y="210" class="known"><title>void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.38%</tspan> · <tspan class="known">79.29%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.39%</tspan> · <tspan class="known">79.28%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="152.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="592.27" height="6" x="152.26" y="0" class="known"/>
+<rect width="152.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="592.22" height="6" x="152.31" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2398,7 +2398,7 @@
 <rect width="1.72" height="1.09" x="722.45" y="330.47" class="known"><title>BOOL __cdecl S_LoadLevelFile(LPCTSTR fileName, int32_t levelID, GF_LEVEL_TYPE levelType);</title></rect>
 <rect width="1.72" height="1.09" x="727.17" y="330.47" class="known"><title>int32_t __cdecl UT_MessageBox(LPCTSTR lpText, HWND hWnd);</title></rect>
 <rect width="1.53" height="1.09" x="731.90" y="330.47" class="known"><title>void __cdecl AssaultReset(struct ITEM_INFO *item);</title></rect>
-<rect width="1.53" height="1.09" x="736.42" y="330.47" class="known"><title>void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);</title></rect>
+<rect width="1.53" height="1.09" x="736.42" y="330.47" class="decompiled"><title>void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);</title></rect>
 <rect width="1.53" height="1.09" x="740.95" y="330.47" class="known"><title>void __cdecl WinInRunControlPanel(HWND hWnd);</title></rect>
 <rect width="1.53" height="1.09" x="745.47" y="330.47" class="todo"><title>sub_44E860</title></rect>
 <rect width="1.39" height="1.22" x="717.73" y="334.56" class="known"><title>void __cdecl SE_GraphicsAdapterSet(HWND hwndDlg, DISPLAY_ADAPTER_NODE *adapter);</title></rect>

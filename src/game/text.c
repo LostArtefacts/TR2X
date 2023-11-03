@@ -78,3 +78,12 @@ void __cdecl Text_ChangeText(
         string->text[TEXT_MAX_STRING_SIZE - 1] = '\0';
     }
 }
+
+void __cdecl Text_SetScale(
+    struct TEXTSTRING *const string, const int32_t scale_h,
+    const int32_t scale_v)
+{
+    assert(string);
+    string->scale.h = scale_h;
+    string->scale.v = scale_v;
+}
