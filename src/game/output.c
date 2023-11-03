@@ -2810,8 +2810,8 @@ const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
         const int8_t clip_and =
             vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip;
 
-        if (clip_and == 0) {
-            break;
+        if (clip_and != 0) {
+            continue;
         }
 
         if (clip_or >= 0) {
@@ -2895,7 +2895,7 @@ const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
             continue;
         }
 
-        const PALETTEENTRY *const color = &g_GamePalette16[color_idx];
+        const PALETTEENTRY *const color = &g_GamePalette16[color_idx >> 8];
         Output_DrawPoly_Gouraud(
             num_points, color->peRed, color->peGreen, color->peBlue);
     }
