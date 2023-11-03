@@ -62,7 +62,7 @@ const int16_t *__cdecl Output_InsertObjectGT3(
 const int16_t *__cdecl Output_InsertObjectGT4(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 
-void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
+void __cdecl Output_InsertTrans8(const struct PHD_VBUF *vbuf, int16_t shade);
 void __cdecl Output_InsertTransQuad(
     int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 void __cdecl Output_InsertFlatRect(
@@ -74,4 +74,6 @@ void __cdecl Output_InsertLine(
 const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);

@@ -1195,23 +1195,23 @@ typedef enum LARA_MESH {
 00407630    000003D1    +       const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00407A10    0000031B    +       const int16_t *__cdecl Output_InsertObjectG3(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00407D30    000002D0    +       int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);
-00408000    000004A4    +       void __cdecl Output_InsertTrans8(struct PHD_VBUF *vbuf, int16_t shade);
+00408000    000004A4    +       void __cdecl Output_InsertTrans8(const struct PHD_VBUF *vbuf, int16_t shade);
 004084B0    000000D3    +       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 00408590    000000CB    +       void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00408660    000000B5    +       void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
-00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2);
+00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2);
 00408D70    00000140    -       void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
-00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture);
+00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture);
 00409300    00000091    -       const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-004093A0    000000AA    -       const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+004093A0    000000AA    +       const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409450    0000039C    +       const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
 004098F0    000002D3    +       const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
-00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_TEXTURE *texture, struct PHD_UV *uv0, struct PHD_UV *uv1, struct PHD_UV *uv2, enum SORT_TYPE sort_type);
+00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2, enum SORT_TYPE sort_type);
 0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
-0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
+0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
 0040AC80    0000008C    -       const int16_t *__cdecl Output_InsertObjectGT4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040AD10    0000009F    -       const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040ADB0    0000043B    -       const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
@@ -1220,7 +1220,7 @@ typedef enum LARA_MESH {
 0040B6C0    00000347    -       void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
 0040BA10    0000017F    -       void __cdecl Output_InsertFlatRect_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 0040BB90    0000012B    -       void __cdecl Output_InsertLine_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
-0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(struct PHD_VBUF *vbuf, int16_t shade);
+0040BCC0    00000195    -       void __cdecl Output_InsertTrans8_Sorted(const struct PHD_VBUF *vbuf, int16_t shade);
 0040BE60    0000013D    -       void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 0040BFA0    000000A7    -       void __cdecl Output_InsertSprite(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
 
@@ -2478,7 +2478,7 @@ typedef enum LARA_MESH {
 00470330    -       int32_t g_PhdWinCenterX;
 00470334    -       int32_t g_PhdWinCenterY;
 00470338    -       int16_t g_LsYaw;
-0047033C    -       void (__cdecl *g_Output_InsertTrans8)(struct PHD_VBUF *vbuf, int16_t shade);
+0047033C    -       void (__cdecl *g_Output_InsertTrans8)(const struct PHD_VBUF *vbuf, int16_t shade);
 00470340    -       float g_FltWinTop;
 00470348    -       struct SORT_ITEM g_SortBuffer[4000];
 00478048    -       float g_FltWinLeft;

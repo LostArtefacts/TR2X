@@ -30,7 +30,7 @@
 #define g_PhdWinCenterX (*(int32_t*)0x00470330)
 #define g_PhdWinCenterY (*(int32_t*)0x00470334)
 #define g_LsYaw (*(int16_t*)0x00470338)
-#define g_Output_InsertTrans8 (*(void(__cdecl **)(struct PHD_VBUF *vbuf, int16_t shade))0x0047033C)
+#define g_Output_InsertTrans8 (*(void(__cdecl **)(const struct PHD_VBUF *vbuf, int16_t shade))0x0047033C)
 #define g_FltWinTop (*(float*)0x00470340)
 #define g_SortBuffer (*(struct SORT_ITEM(*)[4000])0x00470348)
 #define g_FltWinLeft (*(float*)0x00478048)
