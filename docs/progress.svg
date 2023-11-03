@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.83% (286)</tspan> · <tspan class="known">73.67% (884)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.92% (287)</tspan> · <tspan class="known">73.58% (883)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="178.04" height="6" x="0" y="0" class="decompiled"/>
-<rect width="550.29" height="6" x="178.04" y="0" class="known"/>
+<rect width="178.66" height="6" x="0" y="0" class="decompiled"/>
+<rect width="549.67" height="6" x="178.66" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -816,10 +816,10 @@
 <rect width="12" height="12" x="540" y="210" class="decompiled"><title>void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="12" height="12" x="555" y="210" class="known"><title>int32_t __cdecl Text_GetWidth(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="570" y="210" class="decompiled"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
-<rect width="12" height="12" x="585" y="210" class="known"><title>int16_t __cdecl Text_GetStringLength(const char *text);</title></rect>
+<rect width="12" height="12" x="585" y="210" class="decompiled"><title>int16_t __cdecl Text_GetTextLength(const char *text);</title></rect>
 <rect width="12" height="12" x="600" y="210" class="known"><title>void __cdecl Text_Draw(void);</title></rect>
 <rect width="12" height="12" x="615" y="210" class="known"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
-<rect width="12" height="12" x="630" y="210" class="known"><title>void __cdecl T_DrawText(struct TEXTSTRING *string);</title></rect>
+<rect width="12" height="12" x="630" y="210" class="known"><title>void __cdecl Text_DrawText(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="645" y="210" class="known"><title>uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);</title></rect>
 <rect width="12" height="12" x="660" y="210" class="known"><title>uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);</title></rect>
 <rect width="12" height="12" x="675" y="210" class="known"><title>void __cdecl MineControl(int16_t mine_num);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.51%</tspan> · <tspan class="known">79.16%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.52%</tspan> · <tspan class="known">79.15%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="153.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="591.31" height="6" x="153.23" y="0" class="known"/>
+<rect width="153.30" height="6" x="0" y="0" class="decompiled"/>
+<rect width="591.23" height="6" x="153.30" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1356,7 +1356,7 @@
 <rect width="25.71" height="24.71" x="234.83" y="171.67" class="known"><title>void __cdecl InitialiseDoor(int16_t item_num);</title></rect>
 <rect width="25.71" height="24.42" x="234.83" y="199.38" class="known"><title>int32_t __cdecl Collide_CollideStaticObjects(struct COLL_INFO *coll, int32_t x, int32_t y, int32_t z, int16_t room_num, int32_t hite);</title></rect>
 <rect width="25.71" height="24.42" x="234.83" y="226.80" class="known"><title>void __cdecl Room_Clip(struct ROOM_INFO *r);</title></rect>
-<rect width="25.71" height="24.42" x="234.83" y="254.23" class="known"><title>void __cdecl T_DrawText(struct TEXTSTRING *string);</title></rect>
+<rect width="25.71" height="24.42" x="234.83" y="254.23" class="known"><title>void __cdecl Text_DrawText(struct TEXTSTRING *string);</title></rect>
 <rect width="25.71" height="24.40" x="234.83" y="281.65" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="25.71" height="24.20" x="234.83" y="309.05" class="known"><title>void __cdecl Worker1Control(int16_t item_num);</title></rect>
 <rect width="25.71" height="23.75" x="234.83" y="336.25" class="known"><title>void __cdecl WarriorControl(int16_t item_num);</title></rect>
@@ -2318,7 +2318,7 @@
 <rect width="2.53" height="2.24" x="744.47" y="306.01" class="known"><title>void __cdecl AssaultStart(struct ITEM_INFO *item);</title></rect>
 <rect width="2.52" height="2.25" x="693.03" y="311.25" class="known"><title>void __cdecl RemoveInventoryText(void);</title></rect>
 <rect width="2.52" height="2.25" x="693.03" y="316.50" class="known"><title>void __cdecl Sound_Shutdown(void);</title></rect>
-<rect width="2.52" height="2.25" x="693.03" y="321.75" class="known"><title>int16_t __cdecl Text_GetStringLength(const char *text);</title></rect>
+<rect width="2.52" height="2.25" x="693.03" y="321.75" class="decompiled"><title>int16_t __cdecl Text_GetTextLength(const char *text);</title></rect>
 <rect width="2.52" height="2.25" x="693.03" y="326.99" class="known"><title>bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);</title></rect>
 <rect width="2.52" height="2.25" x="693.03" y="332.24" class="known"><title>void __cdecl HWR_TexSource(HWR_TEXHANDLE texSource);</title></rect>
 <rect width="2.52" height="2.10" x="693.03" y="337.49" class="known"><title>void __cdecl RubbleFX(struct ITEM_INFO *item);</title></rect>
