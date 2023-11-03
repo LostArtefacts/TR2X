@@ -100,6 +100,7 @@ static void Inject_Text(void)
     INJECT(1, 0x00440590, Text_ChangeText);
     INJECT(1, 0x004405D0, Text_SetScale);
     INJECT(1, 0x004405F0, Text_Flash);
+    INJECT(1, 0x00440620, Text_AddBackground);
 }
 
 static void Inject_Output(void)

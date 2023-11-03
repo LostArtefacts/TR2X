@@ -269,8 +269,20 @@ typedef struct SPHERE {
 typedef struct TEXTSTRING {
     union {
         uint32_t all;
-        uint32_t active : 1;
-        uint32_t flash : 1;
+        struct {
+            uint32_t active : 1;
+            uint32_t flash : 1;
+            uint32_t rotate_h : 1;
+            uint32_t rotate_v : 1;
+            uint32_t centre_h : 1;
+            uint32_t centre_v : 1;
+            uint32_t hide : 1;
+            uint32_t right : 1;
+            uint32_t bottom : 1;
+            uint32_t background : 1;
+            uint32_t outline : 1;
+            uint32_t multiline : 1;
+        };
     } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
@@ -287,9 +299,9 @@ typedef struct TEXTSTRING {
         int16_t count;
     } flash;
     int16_t bgnd_colour;
-    uint16_t *bgnd_gour;
+    const uint16_t *bgnd_gour;
     int16_t outl_colour;
-    uint16_t *outl_gour;
+    const uint16_t *outl_gour;
     struct {
         int16_t x;
         int16_t y;

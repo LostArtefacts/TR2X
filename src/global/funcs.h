@@ -507,7 +507,6 @@
 #define SpiderLeap ((void __cdecl (*)(int16_t item_num, int16_t angle))0x0043FFC0)
 #define SpiderControl ((void __cdecl (*)(int16_t item_num))0x00440070)
 #define BigSpiderControl ((void __cdecl (*)(int16_t item_num))0x00440290)
-#define Text_AddBackground ((void __cdecl (*)(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags))0x00440620)
 #define Text_RemoveBackground ((void __cdecl (*)(struct TEXTSTRING *string))0x004406B0)
 #define Text_AddOutline ((void __cdecl (*)(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags))0x004406C0)
 #define Text_RemoveOutline ((void __cdecl (*)(struct TEXTSTRING *string))0x004406F0)

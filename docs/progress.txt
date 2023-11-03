@@ -259,8 +259,20 @@ typedef struct __unaligned  SPHERE {
 typedef struct __unaligned  TEXTSTRING {
     union {
         uint32_t all;
-        uint32_t active : 1;
-        uint32_t flash : 1;
+        struct {
+            uint32_t active : 1;
+            uint32_t flash : 1;
+            uint32_t rotate_h : 1;
+            uint32_t rotate_v : 1;
+            uint32_t centre_h : 1;
+            uint32_t centre_v : 1;
+            uint32_t hide : 1;
+            uint32_t right : 1;
+            uint32_t bottom : 1;
+            uint32_t background : 1;
+            uint32_t outline : 1;
+            uint32_t multiline : 1;
+        };
     } flags;
     uint16_t text_flags;
     uint16_t bgnd_flags;
@@ -277,9 +289,9 @@ typedef struct __unaligned  TEXTSTRING {
         int16_t count;
     } flash;
     int16_t bgnd_colour;
-    uint16_t *bgnd_gour;
+    const uint16_t *bgnd_gour;
     int16_t outl_colour;
-    uint16_t *outl_gour;
+    const uint16_t *outl_gour;
     struct {
         int16_t x;
         int16_t y;
@@ -1982,7 +1994,7 @@ typedef enum LARA_MESH {
 00440590    00000037    +       void __cdecl Text_ChangeText(struct TEXTSTRING *string, const char *text);
 004405D0    00000017    +       void __cdecl Text_SetScale(struct TEXTSTRING *string, int32_t scale_h, int32_t scale_v);
 004405F0    0000002B    +       void __cdecl Text_Flash(struct TEXTSTRING *string, int16_t enable, int16_t rate);
-00440620    0000008C    -       void __cdecl Text_AddBackground(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
+00440620    0000008C    +       void __cdecl Text_AddBackground(struct TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off, int16_t y_off, int16_t z_off, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
 004406B0    00000010    -       void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);
 004406C0    00000029    -       void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);
 004406F0    00000010    -       void __cdecl Text_RemoveOutline(struct TEXTSTRING *string);

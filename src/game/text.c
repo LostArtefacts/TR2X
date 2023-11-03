@@ -100,3 +100,23 @@ void __cdecl Text_Flash(
         string->flags.flash = 0;
     }
 }
+
+void __cdecl Text_AddBackground(
+    struct TEXTSTRING *const string, const int16_t x_size, const int16_t y_size,
+    const int16_t x_off, const int16_t y_off, const int16_t z_off,
+    const int16_t colour, const uint16_t *const gour_ptr, const uint16_t flags)
+{
+    assert(string);
+
+    uint32_t scale_h = Text_GetScaleH(string->scale.h);
+    uint32_t scale_v = Text_GetScaleV(string->scale.v);
+    string->flags.background = 1;
+    string->bgnd_size.x = (scale_h * x_size) / PHD_ONE;
+    string->bgnd_size.y = (scale_v * y_size) / PHD_ONE;
+    string->bgnd_off.x = (scale_h * x_off) / PHD_ONE;
+    string->bgnd_off.y = (scale_v * y_off) / PHD_ONE;
+    string->bgnd_off.z = z_off;
+    string->bgnd_colour = colour;
+    string->bgnd_gour = gour_ptr;
+    string->bgnd_flags = flags;
+}
