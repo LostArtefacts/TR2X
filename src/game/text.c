@@ -120,3 +120,9 @@ void __cdecl Text_AddBackground(
     string->bgnd_gour = gour_ptr;
     string->bgnd_flags = flags;
 }
+
+void __cdecl Text_RemoveBackground(struct TEXTSTRING *const string)
+{
+    assert(string);
+    string->flags.background = 0;
+}
