@@ -499,7 +499,8 @@ int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp)
     int32_t height = Room_GetHeight(floor, x, y, z) - clamp;
     int32_t ceiling = Room_GetCeiling(floor, x, y, z) + clamp;
     if (height < ceiling) {
-        ceiling = height = (height + ceiling) / 2;
+        ceiling = (height + ceiling) >> 1;
+        height = ceiling;
     }
 
     if (y > height) {
@@ -669,9 +670,10 @@ void __cdecl Camera_Update(void)
         g_IsChunkyCamera = 1;
     }
 
-    int32_t fixed_camera = g_Camera.item
+    const int32_t fixed_camera = g_Camera.item != NULL
         && (g_Camera.type == CAM_FIXED || g_Camera.type == CAM_HEAVY);
-    const struct ITEM_INFO *item = fixed_camera ? g_Camera.item : g_LaraItem;
+    const struct ITEM_INFO *const item =
+        fixed_camera ? g_Camera.item : g_LaraItem;
 
     const int16_t *bounds = Item_GetBoundsAccurate(item);
 
@@ -680,45 +682,45 @@ void __cdecl Camera_Update(void)
         y += (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2;
     } else {
         y += bounds[FBBOX_MAX_Y]
-            + ((bounds[FBBOX_MIN_Y] - bounds[FBBOX_MAX_Y]) * 3 / 4);
+            + (((int32_t)(bounds[FBBOX_MIN_Y] - bounds[FBBOX_MAX_Y])) * 3 >> 2);
     }
 
     if (g_Camera.item && !fixed_camera) {
         bounds = Item_GetBoundsAccurate(g_Camera.item);
 
-        int32_t dz = g_Camera.item->pos.z - item->pos.z;
-        int32_t dx = g_Camera.item->pos.x - item->pos.x;
-        int32_t shift = Math_Sqrt(SQUARE(dx) + SQUARE(dz));
+        const int32_t dx = g_Camera.item->pos.x - item->pos.x;
+        const int32_t dz = g_Camera.item->pos.z - item->pos.z;
+        const int32_t shift = Math_Sqrt(SQUARE(dx) + SQUARE(dz));
         int16_t angle = Math_Atan(dz, dx) - item->pos.y_rot;
+
         int16_t tilt = Math_Atan(
             shift,
             y - (bounds[FBBOX_MIN_Y] + bounds[FBBOX_MAX_Y]) / 2
                 - g_Camera.item->pos.y);
-        tilt /= 2;
-        angle /= 2;
+        angle >>= 1;
+        tilt >>= 1;
 
         if (angle > MIN_HEAD_ROTATION && angle < MAX_HEAD_ROTATION
             && tilt > MIN_HEAD_TILT_CAM && tilt < MAX_HEAD_TILT_CAM) {
             int16_t change = angle - g_Lara.head_y_rot;
             if (change > HEAD_TURN) {
                 g_Lara.head_y_rot += HEAD_TURN;
-            } else if (change >= -HEAD_TURN) {
-                g_Lara.head_y_rot = angle;
-            } else {
+            } else if (change < -HEAD_TURN) {
                 g_Lara.head_y_rot -= HEAD_TURN;
+            } else {
+                g_Lara.head_y_rot = angle;
             }
 
             change = tilt - g_Lara.head_x_rot;
             if (change > HEAD_TURN) {
-                g_Lara.head_x_rot = g_Lara.head_x_rot + HEAD_TURN;
-            } else if (change >= -HEAD_TURN) {
-                g_Lara.head_x_rot = change + g_Lara.head_x_rot;
+                g_Lara.head_x_rot += HEAD_TURN;
+            } else if (change < -HEAD_TURN) {
+                g_Lara.head_x_rot -= HEAD_TURN;
             } else {
-                g_Lara.head_x_rot = g_Lara.head_x_rot - HEAD_TURN;
+                g_Lara.head_x_rot += change;
             }
-
-            g_Lara.torso_y_rot = g_Lara.head_y_rot;
             g_Lara.torso_x_rot = g_Lara.head_x_rot;
+            g_Lara.torso_y_rot = g_Lara.head_y_rot;
             g_Camera.type = CAM_LOOK;
             g_Camera.item->looked_at = 1;
         }
@@ -726,17 +728,15 @@ void __cdecl Camera_Update(void)
 
     if (g_Camera.type == CAM_LOOK || g_Camera.type == CAM_COMBAT) {
         y -= STEP_L;
-
         g_Camera.target.room_num = item->room_num;
         if (g_Camera.fixed_camera) {
             g_Camera.target.y = y;
             g_Camera.speed = 1;
         } else {
-            g_Camera.target.y += (y - g_Camera.target.y) / 4;
+            g_Camera.target.y += (y - g_Camera.target.y) >> 2;
             g_Camera.speed =
                 g_Camera.type == CAM_LOOK ? LOOK_SPEED : COMBAT_SPEED;
         }
-
         g_Camera.fixed_camera = 0;
         if (g_Camera.type == CAM_LOOK) {
             Camera_Look(item);
@@ -746,27 +746,29 @@ void __cdecl Camera_Update(void)
     } else {
         g_Camera.target.x = item->pos.x;
         g_Camera.target.z = item->pos.z;
+
         if (g_Camera.flags == CF_FOLLOW_CENTRE) {
-            int32_t shift = (bounds[FBBOX_MIN_Z] + bounds[FBBOX_MAX_Z]) / 2;
+            const int32_t shift =
+                (bounds[FBBOX_MIN_Z] + bounds[FBBOX_MAX_Z]) / 2;
             g_Camera.target.z +=
                 (shift * Math_Cos(item->pos.y_rot)) >> W2V_SHIFT;
             g_Camera.target.x +=
                 (shift * Math_Sin(item->pos.y_rot)) >> W2V_SHIFT;
         }
-        g_Camera.target.room_num = item->room_num;
 
+        g_Camera.target.room_num = item->room_num;
         if (g_Camera.fixed_camera != fixed_camera) {
             g_Camera.target.y = y;
             g_Camera.fixed_camera = 1;
             g_Camera.speed = 1;
         } else {
-            g_Camera.target.y += (y - g_Camera.target.y) / 4;
             g_Camera.fixed_camera = 0;
+            g_Camera.target.y += (y - g_Camera.target.y) / 4;
         }
 
-        const struct FLOOR_INFO *floor = Room_GetFloor(
+        const struct FLOOR_INFO *const floor = Room_GetFloor(
             g_Camera.target.x, y, g_Camera.target.z, &g_Camera.target.room_num);
-        int32_t height = Room_GetHeight(
+        const int32_t height = Room_GetHeight(
             floor, g_Camera.target.x, g_Camera.target.y, g_Camera.target.z);
         if (g_Camera.target.y > height) {
             g_IsChunkyCamera = 0;
