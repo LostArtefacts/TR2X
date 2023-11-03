@@ -1204,7 +1204,7 @@ typedef enum LARA_MESH {
 00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(struct PHD_VBUF *vtx0, struct PHD_VBUF *vtx1, struct PHD_VBUF *vtx2, struct PHD_VBUF *vtx3, struct PHD_TEXTURE *texture);
 00409300    00000091    -       const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004093A0    000000AA    -       const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-00409450    0000039C    -       const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+00409450    0000039C    +       const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
 004098F0    000002D3    +       const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);

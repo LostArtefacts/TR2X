@@ -73,3 +73,5 @@ void __cdecl Output_InsertLine(
     uint8_t color_idx);
 const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);

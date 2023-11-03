@@ -2784,3 +2784,121 @@ const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
 
     return obj_ptr;
 }
+
+const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type)
+{
+    HWR_TexSource(0);
+    HWR_EnableColorKey(0);
+
+    if (num == 0) {
+        return obj_ptr;
+    }
+
+    for (int i = 0; i < num; i++) {
+        const struct PHD_VBUF *const vtx[4] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const int16_t color_idx = *obj_ptr++;
+        int32_t num_points = 4;
+
+        const int8_t clip_or =
+            vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip;
+        const int8_t clip_and =
+            vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip;
+
+        if (clip_and == 0) {
+            break;
+        }
+
+        if (clip_or >= 0) {
+            if (!VBUF_VISIBLE(*vtx[0], *vtx[1], *vtx[2])) {
+                continue;
+            }
+
+            g_VBuffer[0].x = vtx[0]->xs;
+            g_VBuffer[0].y = vtx[0]->ys;
+            g_VBuffer[0].rhw = vtx[0]->rhw;
+            g_VBuffer[0].g = (float)vtx[0]->g;
+
+            g_VBuffer[1].x = vtx[1]->xs;
+            g_VBuffer[1].y = vtx[1]->ys;
+            g_VBuffer[1].rhw = vtx[1]->rhw;
+            g_VBuffer[1].g = (float)vtx[1]->g;
+
+            g_VBuffer[2].x = vtx[2]->xs;
+            g_VBuffer[2].y = vtx[2]->ys;
+            g_VBuffer[2].rhw = vtx[2]->rhw;
+            g_VBuffer[2].g = (float)vtx[2]->g;
+
+            g_VBuffer[3].x = vtx[3]->xs;
+            g_VBuffer[3].y = vtx[3]->ys;
+            g_VBuffer[3].rhw = vtx[3]->rhw;
+            g_VBuffer[3].g = (float)vtx[3]->g;
+        } else {
+            if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
+                continue;
+            }
+
+            const struct POINT_INFO pts[4] = {
+                {
+                    .xv = vtx[0]->xv,
+                    .yv = vtx[0]->yv,
+                    .zv = vtx[0]->zv,
+                    .rhw = vtx[0]->rhw,
+                    .xs = vtx[0]->xs,
+                    .ys = vtx[0]->ys,
+                    .g = (float)vtx[0]->g,
+                },
+                {
+                    .xv = vtx[1]->xv,
+                    .yv = vtx[1]->yv,
+                    .zv = vtx[1]->zv,
+                    .rhw = vtx[1]->rhw,
+                    .xs = vtx[1]->xs,
+                    .ys = vtx[1]->ys,
+                    .g = (float)vtx[1]->g,
+                },
+                {
+                    .xv = vtx[2]->xv,
+                    .yv = vtx[2]->yv,
+                    .zv = vtx[2]->zv,
+                    .rhw = vtx[2]->rhw,
+                    .xs = vtx[2]->xs,
+                    .ys = vtx[2]->ys,
+                    .g = (float)vtx[2]->g,
+                },
+                {
+                    .xv = vtx[3]->xv,
+                    .yv = vtx[3]->yv,
+                    .zv = vtx[3]->zv,
+                    .rhw = vtx[3]->rhw,
+                    .xs = vtx[3]->xs,
+                    .ys = vtx[3]->ys,
+                    .g = (float)vtx[3]->g,
+                },
+            };
+
+            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            if (num_points == 0) {
+                continue;
+            }
+        }
+
+        if (clip_or != 0) {
+            num_points = Output_XYGClipper(num_points, g_VBuffer);
+        }
+        if (num_points == 0) {
+            continue;
+        }
+
+        const PALETTEENTRY *const color = &g_GamePalette16[color_idx];
+        Output_DrawPoly_Gouraud(
+            num_points, color->peRed, color->peGreen, color->peBlue);
+    }
+
+    return obj_ptr;
+}

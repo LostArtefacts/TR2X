@@ -126,13 +126,14 @@ static void Inject_Output(void)
     INJECT(1, 0x00405F20, Output_InsertObjectGT4);
     INJECT(1, 0x00406980, Output_InsertObjectGT3);
     INJECT(1, 0x00407200, Output_XYGClipper);
-    INJECT(1, 0x00407A10, Output_InsertObjectG3);
     INJECT(1, 0x00407630, Output_InsertObjectG4);
+    INJECT(1, 0x00407A10, Output_InsertObjectG3);
     INJECT(1, 0x00407D30, Output_XYClipper);
     INJECT(1, 0x00408000, Output_InsertTrans8);
     INJECT(1, 0x004084B0, Output_InsertTransQuad);
     INJECT(1, 0x00408590, Output_InsertFlatRect);
     INJECT(1, 0x00408660, Output_InsertLine);
+    INJECT(1, 0x00409450, Output_InsertObjectG4_ZBuffered);
     INJECT(1, 0x004098F0, Output_InsertObjectG3_ZBuffered);
 }
 
