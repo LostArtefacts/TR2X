@@ -164,6 +164,7 @@ static void Inject_LOS(void)
     INJECT(1, 0x00415C80, LOS_CheckZ);
     INJECT(1, 0x00415F70, LOS_CheckX);
     INJECT(1, 0x00416260, LOS_ClipTarget);
+    INJECT(1, 0x00416340, LOS_CheckSmashable);
 }
 
 static void Inject_Lara_Misc(void)

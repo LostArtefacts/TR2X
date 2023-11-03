@@ -1,9 +1,13 @@
 #include "game/los.h"
 
+#include "game/items.h"
+#include "game/math.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "util.h"
+
+#include <assert.h>
 
 int32_t __cdecl LOS_CheckX(
     const struct GAME_VECTOR *const start, struct GAME_VECTOR *const target)
@@ -280,4 +284,105 @@ int32_t __cdecl LOS_Check(
         return 1;
     }
     return 0;
+}
+
+int32_t __cdecl LOS_CheckSmashable(
+    const struct GAME_VECTOR *const start, struct GAME_VECTOR *const target)
+{
+    const int32_t dx = target->x - start->x;
+    const int32_t dy = target->y - start->y;
+    const int32_t dz = target->z - start->z;
+
+    for (int i = 0; i < g_LOSNumRooms; i++) {
+        for (int16_t item_num = g_Rooms[g_LOSRooms[i]].item_num;
+             item_num != NO_ITEM; item_num = g_Items[item_num].next_item) {
+            const struct ITEM_INFO *const item = &g_Items[item_num];
+            if (item->status == IS_DEACTIVATED) {
+                continue;
+            }
+
+            if (!Item_IsSmashable(item)) {
+                continue;
+            }
+
+            const enum DIRECTION direction = Math_GetDirection(item->pos.y_rot);
+            const int16_t *const bounds = Item_GetBoundsAccurate(item);
+            const int16_t *x_extent;
+            const int16_t *z_extent;
+            switch (direction) {
+            case DIR_EAST:
+            case DIR_WEST:
+                x_extent = &bounds[FBBOX_MIN_Z];
+                z_extent = &bounds[FBBOX_MIN_X];
+                break;
+            case DIR_NORTH:
+            case DIR_SOUTH:
+                x_extent = &bounds[FBBOX_MIN_X];
+                z_extent = &bounds[FBBOX_MIN_Z];
+                break;
+            default:
+                assert(false);
+                break;
+            }
+
+            int32_t failure = 0;
+            if (ABS(dz) > ABS(dx)) {
+                int32_t distance = item->pos.z + z_extent[0] - start->z;
+                for (int j = 0; j < 2; j++) {
+                    if ((distance >= 0) == (dz >= 0)) {
+                        const int32_t y = dy * distance / dz;
+                        if (y <= item->pos.y + bounds[FBBOX_MIN_Y] - start->y
+                            || y >= item->pos.y + bounds[FBBOX_MAX_Y]
+                                    - start->y) {
+                            continue;
+                        }
+
+                        const int32_t x = dx * distance / dz;
+                        if (x < item->pos.x + x_extent[0] - start->x) {
+                            failure |= 1;
+                        } else if (x > item->pos.x + x_extent[1] - start->x) {
+                            failure |= 2;
+                        } else {
+                            return item_num;
+                        }
+                    }
+
+                    distance = item->pos.z + z_extent[1] - start->z;
+                }
+
+                if (failure == 3) {
+                    return item_num;
+                }
+            } else {
+                int32_t distance = item->pos.x + x_extent[0] - start->x;
+                for (int j = 0; j < 2; j++) {
+                    if ((distance >= 0) == (dx >= 0)) {
+                        const int32_t y = dy * distance / dx;
+                        if (y <= item->pos.y + bounds[FBBOX_MIN_Y] - start->y
+                            || y >= item->pos.y + bounds[FBBOX_MAX_Y]
+                                    - start->y) {
+                            continue;
+                        }
+
+                        const int32_t z = dz * distance / dx;
+                        if (z < item->pos.z + z_extent[0] - start->z) {
+                            failure |= 1;
+                        } else if (z > item->pos.z + z_extent[1] - start->z) {
+                            failure |= 2;
+                        } else {
+                            return item_num;
+                        }
+                    }
+
+                    distance = item->pos.x + x_extent[1] - start->x;
+                }
+
+                if (failure == 3) {
+                    return item_num;
+                }
+            }
+        }
+    }
+
+    return NO_ITEM;
 }

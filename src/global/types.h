@@ -969,6 +969,13 @@ typedef struct CINE_FRAME {
     int16_t roll;
 } CINE_FRAME;
 
+typedef enum ITEM_STATUS {
+    IS_NOT_ACTIVE = 0,
+    IS_ACTIVE = 1,
+    IS_DEACTIVATED = 2,
+    IS_INVISIBLE = 3,
+} ITEM_STATUS;
+
 typedef enum INPUT_STATE {
     IN_FORWARD = 0x00000001,
     IN_BACK = 0x00000002,

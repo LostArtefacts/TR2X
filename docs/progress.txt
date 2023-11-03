@@ -1343,7 +1343,7 @@ typedef enum LARA_MESH {
 00415C80    000002EB    +       int32_t __cdecl LOS_CheckZ(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00415F70    000002EC    +       int32_t __cdecl LOS_CheckX(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00416260    000000DA    +       int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);
-00416340    000002FE    -       int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
+00416340    000002FE    +       int32_t __cdecl LOS_CheckSmashable(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);
 00416640    000000B3    -       void __cdecl Room_FlipMap(void);
 00416700    00000096    -       void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);
 004167A0    0000005C    -       void __cdecl Room_AddFlipItems(struct ROOM_INFO *r);
@@ -2581,7 +2581,7 @@ typedef enum LARA_MESH {
 0052618C    -       struct ROOM_INFO *g_Rooms;
 00526240    -       int32_t g_FlipStatus;
 00526288    -       int16_t *g_TriggerIndex;
-005262F0    -       struct ITEM_INFO g_Items[];
+005262F0    -       struct ITEM_INFO *g_Items;
 005262F6    -       int16_t g_NumCineFrames;
 005262F8    -       CINE_FRAME *g_CineData = NULL;
 00526300    -       struct PHD_3DPOS g_CinePos;

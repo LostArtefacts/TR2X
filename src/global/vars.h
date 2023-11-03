@@ -135,7 +135,7 @@
 #define g_FlipStatus (*(int32_t*)0x00526240)
 #define g_TriggerIndex (*(int16_t **)0x00526288)
 #define g_LOSRooms (*(int32_t(*)[20])0x005262A0)
-#define g_Items (*(struct ITEM_INFO(*)[])0x005262F0)
+#define g_Items (*(struct ITEM_INFO **)0x005262F0)
 #define g_NumCineFrames (*(int16_t*)0x005262F6)
 #define g_CineData (*(CINE_FRAME **)0x005262F8) // = NULL
 #define g_CinePos (*(struct PHD_3DPOS*)0x00526300)

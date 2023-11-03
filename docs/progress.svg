@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.58% (271)</tspan> · <tspan class="known">74.92% (899)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.67% (272)</tspan> · <tspan class="known">74.83% (898)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="168.70" height="6" x="0" y="0" class="decompiled"/>
-<rect width="559.63" height="6" x="168.70" y="0" class="known"/>
+<rect width="169.32" height="6" x="0" y="0" class="decompiled"/>
+<rect width="559" height="6" x="169.32" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -259,7 +259,7 @@
 <rect width="12" height="12" x="435" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckZ(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="450" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckX(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="465" y="45" class="decompiled"><title>int32_t __cdecl LOS_ClipTarget(const struct GAME_VECTOR *start, struct GAME_VECTOR *target, const FLOOR_INFO *floor);</title></rect>
-<rect width="12" height="12" x="480" y="45" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="12" height="12" x="480" y="45" class="decompiled"><title>int32_t __cdecl LOS_CheckSmashable(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="12" height="12" x="495" y="45" class="known"><title>void __cdecl Room_FlipMap(void);</title></rect>
 <rect width="12" height="12" x="510" y="45" class="known"><title>void __cdecl Room_RemoveFlipItems(struct ROOM_INFO *r);</title></rect>
 <rect width="12" height="12" x="525" y="45" class="known"><title>void __cdecl Room_AddFlipItems(struct ROOM_INFO *r);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.05%</tspan> · <tspan class="known">79.62%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.28%</tspan> · <tspan class="known">79.39%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="149.77" height="6" x="0" y="0" class="decompiled"/>
-<rect width="594.76" height="6" x="149.77" y="0" class="known"/>
+<rect width="151.47" height="6" x="0" y="0" class="decompiled"/>
+<rect width="593.07" height="6" x="151.47" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1393,7 +1393,7 @@
 <rect width="22.54" height="22.03" x="316.12" y="76.40" class="decompiled"><title>void __cdecl Lara_GetJointAbsPosition_I(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
 <rect width="22.54" height="21.55" x="316.12" y="101.43" class="known"><title>void __cdecl BanditControl(int16_t item_num);</title></rect>
 <rect width="22.54" height="21.40" x="316.12" y="125.98" class="known"><title>void __cdecl Lara_Push(struct ITEM_INFO *item, struct ITEM_INFO *lara_item, struct COLL_INFO *coll, int32_t spaz_on, int32_t big_push);</title></rect>
-<rect width="22.54" height="21.14" x="316.12" y="150.38" class="known"><title>int32_t __cdecl LOS_ObjectOnLOS(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
+<rect width="22.54" height="21.14" x="316.12" y="150.38" class="decompiled"><title>int32_t __cdecl LOS_CheckSmashable(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="22.54" height="21.11" x="316.12" y="174.52" class="decompiled"><title>void __fastcall Output_GTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="22.54" height="20.89" x="316.12" y="198.63" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="22.54" height="20.61" x="316.12" y="222.52" class="known"><title>void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);</title></rect>
