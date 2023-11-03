@@ -104,7 +104,7 @@
 #define Item_Animate ((void __cdecl (*)(struct ITEM_INFO *item))0x004146F0)
 #define Item_GetAnimChange ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct ANIM_STRUCT *anim))0x00414A60)
 #define Item_Translate ((void __cdecl (*)(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z))0x00414B10)
-#define Room_GetFloor ((struct FLOOR_INFO __cdecl * (*)(int32_t x, int32_t y, int32_t z, int16_t *room_num))0x00414B70)
+#define Room_GetFloor ((struct FLOOR_INFO *__cdecl (*)(int32_t x, int32_t y, int32_t z, int16_t *room_num))0x00414B70)
 #define Room_GetWaterHeight ((int32_t __cdecl (*)(int32_t x, int32_t y, int32_t z, int16_t room_num))0x00414D10)
 #define Room_GetHeight ((int32_t __cdecl (*)(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z))0x00414E80)
 #define Camera_RefreshFromTrigger ((void __cdecl (*)(int16_t type, int16_t *data))0x00415100)

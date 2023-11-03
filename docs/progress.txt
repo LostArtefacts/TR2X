@@ -1282,7 +1282,7 @@ typedef enum LARA_MESH {
 00410650    00000372    +       void __cdecl Camera_Move(const struct GAME_VECTOR *target, int32_t speed);
 004109D0    000000D7    +       void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
 00410AB0    00000154    +       void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);
-00410C10    00000050    +       const struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);
+00410C10    00000050    +       const struct FLOOR_INFO *__cdecl Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00410C60    00000781    +       void __cdecl Camera_SmartShift(struct GAME_VECTOR *target, void (*__cdecl shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));
 004113F0    000000ED    +       void __cdecl Camera_Chase(const struct ITEM_INFO *item);
 004114E0    0000019E    +       int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);
@@ -1331,7 +1331,7 @@ typedef enum LARA_MESH {
 004146F0    00000338    -       void __cdecl Item_Animate(struct ITEM_INFO *item);
 00414A60    000000AB    -       int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, struct ANIM_STRUCT *anim);
 00414B10    0000005F    -       void __cdecl Item_Translate(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z);
-00414B70    00000198    *       struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);
+00414B70    00000198    *       struct FLOOR_INFO *__cdecl Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);
 00414D10    00000168    -       int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00414E80    00000265    *       int32_t __cdecl Room_GetHeight(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);
 00415100    000000E7    -       void __cdecl Camera_RefreshFromTrigger(int16_t type, int16_t *data);
@@ -2452,11 +2452,11 @@ typedef enum LARA_MESH {
 # Offset    Flags   Declaration
 
 00464060    -       int32_t g_PerspectiveDistance;
-00464068    -       void (__cdecl *g_PolyDrawRoutines[9])(const int16_t *);
+00464068    -       void (*__cdecl g_PolyDrawRoutines[9])(const int16_t *);
 0046408C    -       float g_RhwFactor;
 004640BC    -       int16_t g_CD_TrackID;
 004640C4    -       int32_t g_FlipEffect;
-004641F8    -       void (__cdecl *g_EffectRoutines[32])(struct ITEM_INFO *item);
+004641F8    -       void (*__cdecl g_EffectRoutines[32])(struct ITEM_INFO *item);
 00465A60    -       int16_t g_OptionMusicVolume;
 00465AD4    -       int32_t g_JumpPermitted = 1;
 00465AD8    -       int16_t g_LaraOldSlideAngle = 1;
@@ -2473,12 +2473,12 @@ typedef enum LARA_MESH {
 0047031C    -       float g_FltWinBottom;
 00470320    -       float g_FltResZBuf;
 00470324    -       float g_FltResZ;
-00470328    -       void (__cdecl *g_Output_InsertTransQuad)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+00470328    -       void (*__cdecl g_Output_InsertTransQuad)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 0047032C    -       int32_t g_PhdWinHeight;
 00470330    -       int32_t g_PhdWinCenterX;
 00470334    -       int32_t g_PhdWinCenterY;
 00470338    -       int16_t g_LsYaw;
-0047033C    -       void (__cdecl *g_Output_InsertTrans8)(const struct PHD_VBUF *vbuf, int16_t shade);
+0047033C    -       void (*__cdecl g_Output_InsertTrans8)(const struct PHD_VBUF *vbuf, int16_t shade);
 00470340    -       float g_FltWinTop;
 00470348    -       struct SORT_ITEM g_SortBuffer[4000];
 00478048    -       float g_FltWinLeft;
@@ -2488,7 +2488,7 @@ typedef enum LARA_MESH {
 00478060    -       int32_t g_PhdWinBottom;
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
-0047806C    -       void (__cdecl *g_Output_InsertFlatRect)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+0047806C    -       void (*__cdecl g_Output_InsertFlatRect)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00478070    -       int16_t g_Info3DBuffer[120000];
 004B29F0    -       int32_t g_PhdWinMaxX;
 004B29F4    -       int32_t g_PhdNearZ;
@@ -2502,23 +2502,23 @@ typedef enum LARA_MESH {
 004B2A14    -       float g_FltPerspONearZ;
 004B2A18    -       float g_FltRhwONearZ;
 004B2A1C    -       int32_t g_PhdWinMaxY;
-004B2A20    -       void (__cdecl *g_Output_InsertSprite)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
+004B2A20    -       void (*__cdecl g_Output_InsertSprite)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
 004B2A24    -       float g_FltNearZ;
 004B2A28    -       struct MATRIX *g_MatrixPtr;
-004B2A2C    -       const int16_t *(__cdecl *g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);
-004B2A30    -       const int16_t *(__cdecl *g_Output_DrawObjectGT4)(const int16_t*, int32_t, enum SORT_TYPE);
+004B2A2C    -       const int16_t *(*__cdecl g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);
+004B2A30    -       const int16_t *(*__cdecl g_Output_DrawObjectGT4)(const int16_t*, int32_t, enum SORT_TYPE);
 004B2A38    -       int32_t g_RandomTable[32];
 004B2AB8    -       float g_FltPersp;
 004B2AC0    -       struct MATRIX g_W2VMatrix;
 004B2AF0    -       int16_t *g_Info3DPtr;
 004B2AF4    -       int32_t g_PhdWinWidth;
-004B2AF8    -       void (__cdecl *g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
+004B2AF8    -       void (*__cdecl g_Output_DrawLine)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t);
 004B2B00    -       struct PHD_TEXTURE g_PhdTextureInfo[0x800];
 004BCB00    -       int32_t g_PhdViewDistance;
 004BCB04    -       int16_t g_LsPitch;
-004BCB08    -       const int16_t *(__cdecl *g_Output_DrawObjectG4)(const int16_t*,int32_t, enum SORT_TYPE);
+004BCB08    -       const int16_t *(*__cdecl g_Output_DrawObjectG4)(const int16_t*,int32_t, enum SORT_TYPE);
 004BCB10    -       int16_t g_ShadesTable[32];
-004BCB50    -       const int16_t *(__cdecl *g_Output_DrawObjectG3)(const int16_t*,int32_t, enum SORT_TYPE);
+004BCB50    -       const int16_t *(*__cdecl g_Output_DrawObjectG3)(const int16_t*,int32_t, enum SORT_TYPE);
 004BCB58    -       struct MATRIX g_MatrixStack[];
 004BD2D8    -       struct DEPTHQ_ENTRY g_DepthQTable[32];
 004BF3D8    -       int32_t g_PhdScreenWidth;

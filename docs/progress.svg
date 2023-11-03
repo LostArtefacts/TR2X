@@ -204,7 +204,7 @@
 <rect width="12" height="12" x="360" y="30" class="decompiled"><title>void __cdecl Camera_Move(const struct GAME_VECTOR *target, int32_t speed);</title></rect>
 <rect width="12" height="12" x="375" y="30" class="decompiled"><title>void __cdecl Camera_Clip(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
 <rect width="12" height="12" x="390" y="30" class="decompiled"><title>void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
-<rect width="12" height="12" x="405" y="30" class="decompiled"><title>const struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
+<rect width="12" height="12" x="405" y="30" class="decompiled"><title>const struct FLOOR_INFO *__cdecl Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="420" y="30" class="decompiled"><title>void __cdecl Camera_SmartShift(struct GAME_VECTOR *target, void (*__cdecl shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));</title></rect>
 <rect width="12" height="12" x="435" y="30" class="decompiled"><title>void __cdecl Camera_Chase(const struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="450" y="30" class="decompiled"><title>int32_t __cdecl Camera_ShiftClamp(struct GAME_VECTOR *pos, int32_t clamp);</title></rect>
@@ -247,7 +247,7 @@
 <rect width="12" height="12" x="255" y="45" class="known"><title>void __cdecl Item_Animate(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="270" y="45" class="known"><title>int32_t __cdecl Item_GetAnimChange(struct ITEM_INFO *item, struct ANIM_STRUCT *anim);</title></rect>
 <rect width="12" height="12" x="285" y="45" class="known"><title>void __cdecl Item_Translate(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z);</title></rect>
-<rect width="12" height="12" x="300" y="45" class="known"><title>struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
+<rect width="12" height="12" x="300" y="45" class="known"><title>struct FLOOR_INFO *__cdecl Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
 <rect width="12" height="12" x="315" y="45" class="known"><title>int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="330" y="45" class="known"><title>int32_t __cdecl Room_GetHeight(const struct FLOOR_INFO *floor, int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="12" height="12" x="345" y="45" class="known"><title>void __cdecl Camera_RefreshFromTrigger(int16_t type, int16_t *data);</title></rect>
@@ -1511,7 +1511,7 @@
 <rect width="14.99" height="15.48" x="555.17" y="40.16" class="known"><title>void __cdecl BigEelControl(int16_t item_num);</title></rect>
 <rect width="14.94" height="15.48" x="573.16" y="40.16" class="decompiled"><title>void __cdecl Lara_Col_ClimbDown(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="14.86" height="15.48" x="591.11" y="40.16" class="known"><title>void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);</title></rect>
-<rect width="14.77" height="15.48" x="608.97" y="40.16" class="known"><title>struct FLOOR_INFO __cdecl *Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
+<rect width="14.77" height="15.48" x="608.97" y="40.16" class="known"><title>struct FLOOR_INFO *__cdecl Room_GetFloor(int32_t x, int32_t y, int32_t z, int16_t *room_num);</title></rect>
 <rect width="14.68" height="15.48" x="626.74" y="40.16" class="known"><title>int32_t __cdecl AddTexturePage16(int32_t width, int32_t height, BYTE *pageBuffer);</title></rect>
 <rect width="14.64" height="15.48" x="644.42" y="40.16" class="known"><title>void __cdecl Output_InsertTrans8_Sorted(const struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="14.64" height="15.48" x="662.06" y="40.16" class="known"><title>void __cdecl Lara_BaddieCollision(struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
@@ -2067,7 +2067,7 @@
 <rect width="5.18" height="4.97" x="624.75" y="269.43" class="known"><title>bool __cdecl TIME_Init(void);</title></rect>
 <rect width="5.18" height="4.97" x="624.75" y="277.40" class="known"><title>LPCTSTR __cdecl GuidBinaryToString(GUID *guid);</title></rect>
 <rect width="5.18" height="4.87" x="624.75" y="285.37" class="known"><title>void __cdecl Creature_Underwater(struct ITEM_INFO *item, int32_t depth);</title></rect>
-<rect width="5.18" height="4.87" x="624.75" y="293.24" class="decompiled"><title>const struct FLOOR_INFO __cdecl *Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
+<rect width="5.18" height="4.87" x="624.75" y="293.24" class="decompiled"><title>const struct FLOOR_INFO *__cdecl Camera_GoodPosition(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="5.18" height="4.87" x="624.75" y="301.11" class="known"><title>void __cdecl InitialiseCult3(int16_t item_num);</title></rect>
 <rect width="5.18" height="4.77" x="624.75" y="308.98" class="known"><title>void __cdecl set_arm_info(struct LARA_ARM *arm, int32_t frame);</title></rect>
 <rect width="5.18" height="4.77" x="624.75" y="316.76" class="known"><title>void __cdecl DisableBaddieAI(int16_t item_num);</title></rect>

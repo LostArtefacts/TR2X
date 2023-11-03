@@ -114,7 +114,7 @@ def make_var_pointer_define(variable: Symbol) -> str:
     if match := re.match(
         r"^(?P<ret_type>.+?)\s*"
         r"\("
-        r"(?P<call_type>.*?\s)\s*\*\s*(?P<func_name>\w+)"
+        r"\s*\*(?P<call_type>.*?\s)\s*(?P<func_name>\w+)"
         r"(?P<array_def>\[[^\]]*?\])?"
         r"\)\s*"
         r"\((?P<args>.+)\);?$",
