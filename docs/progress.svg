@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24.08% (289)</tspan> · <tspan class="known">73.42% (881)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24.17% (290)</tspan> · <tspan class="known">73.33% (880)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="179.90" height="6" x="0" y="0" class="decompiled"/>
-<rect width="548.42" height="6" x="179.90" y="0" class="known"/>
+<rect width="180.52" height="6" x="0" y="0" class="decompiled"/>
+<rect width="547.80" height="6" x="180.52" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -818,7 +818,7 @@
 <rect width="12" height="12" x="570" y="210" class="decompiled"><title>int32_t __cdecl Text_Remove(struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="585" y="210" class="decompiled"><title>int16_t __cdecl Text_GetTextLength(const char *text);</title></rect>
 <rect width="12" height="12" x="600" y="210" class="decompiled"><title>void __cdecl Text_Draw(void);</title></rect>
-<rect width="12" height="12" x="615" y="210" class="known"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
+<rect width="12" height="12" x="615" y="210" class="decompiled"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="630" y="210" class="known"><title>void __cdecl Text_DrawText(const struct TEXTSTRING *string);</title></rect>
 <rect width="12" height="12" x="645" y="210" class="known"><title>uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);</title></rect>
 <rect width="12" height="12" x="660" y="210" class="known"><title>uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.61%</tspan> · <tspan class="known">79.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">20.73%</tspan> · <tspan class="known">78.94%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="153.97" height="6" x="0" y="0" class="decompiled"/>
-<rect width="590.56" height="6" x="153.97" y="0" class="known"/>
+<rect width="154.84" height="6" x="0" y="0" class="decompiled"/>
+<rect width="589.69" height="6" x="154.84" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1523,7 +1523,7 @@
 <rect width="14.46" height="15.44" x="427.43" y="77.13" class="known"><title>void __cdecl PropellerControl(int16_t item_num);</title></rect>
 <rect width="14.46" height="15.35" x="427.43" y="95.58" class="decompiled"><title>void __cdecl Camera_Combat(const struct ITEM_INFO *item);</title></rect>
 <rect width="14.46" height="15.26" x="427.43" y="113.93" class="known"><title>void __cdecl PistolHandler(int32_t weapon_type);</title></rect>
-<rect width="14.46" height="15.12" x="427.43" y="132.18" class="known"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
+<rect width="14.46" height="15.12" x="427.43" y="132.18" class="decompiled"><title>void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);</title></rect>
 <rect width="14.46" height="15.07" x="427.43" y="150.31" class="known"><title>BOOL __cdecl LoadTexturePages(HANDLE hFile);</title></rect>
 <rect width="14.46" height="15.07" x="427.43" y="168.38" class="known"><title>BOOL __cdecl LoadDepthQ(HANDLE hFile);</title></rect>
 <rect width="14.46" height="15.03" x="427.43" y="186.45" class="known"><title>int32_t __cdecl Boat_UserControl(struct ITEM_INFO *boat);</title></rect>

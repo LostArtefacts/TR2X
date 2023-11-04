@@ -273,3 +273,35 @@ void __cdecl Text_Draw(void)
         }
     }
 }
+
+void __cdecl Text_DrawBorder(
+    const int32_t x, const int32_t y, const int32_t z, const int32_t width,
+    const int32_t height)
+{
+    const int32_t mesh_idx = g_Objects[O_TEXT_BOX].mesh_idx;
+
+    const int32_t offset = 4;
+    const int32_t x0 = x + offset;
+    const int32_t y0 = y + offset;
+    const int32_t x1 = x0 + width - offset * 2;
+    const int32_t y1 = y0 + height - offset * 2;
+    const int32_t scale_h = PHD_ONE;
+    const int32_t scale_v = PHD_ONE;
+
+    Output_DrawScreenSprite2D(
+        x0, y0, z, scale_h, scale_v, mesh_idx + 0, 0x1000, 0);
+    Output_DrawScreenSprite2D(
+        x1, y0, z, scale_h, scale_v, mesh_idx + 1, 0x1000, 0);
+    Output_DrawScreenSprite2D(
+        x1, y1, z, scale_h, scale_v, mesh_idx + 2, 0x1000, 0);
+    Output_DrawScreenSprite2D(
+        x0, y1, z, scale_h, scale_v, mesh_idx + 3, 0x1000, 0);
+
+    int32_t w = (width - offset * 2) * PHD_ONE / 8;
+    int32_t h = (height - offset * 2) * PHD_ONE / 8;
+
+    Output_DrawScreenSprite2D(x0, y0, z, w, scale_v, mesh_idx + 4, 0x1000, 0);
+    Output_DrawScreenSprite2D(x1, y0, z, scale_h, h, mesh_idx + 5, 0x1000, 0);
+    Output_DrawScreenSprite2D(x0, y1, z, w, scale_v, mesh_idx + 6, 0x1000, 0);
+    Output_DrawScreenSprite2D(x0, y0, z, scale_h, h, mesh_idx + 7, 0x1000, 0);
+}

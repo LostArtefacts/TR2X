@@ -507,7 +507,6 @@
 #define SpiderLeap ((void __cdecl (*)(int16_t item_num, int16_t angle))0x0043FFC0)
 #define SpiderControl ((void __cdecl (*)(int16_t item_num))0x00440070)
 #define BigSpiderControl ((void __cdecl (*)(int16_t item_num))0x00440290)
-#define Text_DrawBorder ((void __cdecl (*)(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height))0x00440920)
 #define Text_DrawText ((void __cdecl (*)(const struct TEXTSTRING *string))0x00440AB0)
 #define Text_GetScaleH ((uint32_t __cdecl (*)(uint32_t scale_h))0x00440E90)
 #define Text_GetScaleV ((uint32_t __cdecl (*)(uint32_t scale_v))0x00440ED0)

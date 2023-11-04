@@ -2006,7 +2006,7 @@ typedef enum LARA_MESH {
 00440890    00000025    +       int32_t __cdecl Text_Remove(struct TEXTSTRING *string);
 004408C0    00000024    +       int16_t __cdecl Text_GetTextLength(const char *text);
 004408F0    00000027    +       void __cdecl Text_Draw(void);
-00440920    00000189    -       void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);
+00440920    00000189    +       void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);
 00440AB0    000003D2    -       void __cdecl Text_DrawText(const struct TEXTSTRING *string);
 00440E90    00000037    *R      uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);
 00440ED0    00000039    *R      uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);

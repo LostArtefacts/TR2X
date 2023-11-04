@@ -111,6 +111,7 @@ static void Inject_Text(void)
     INJECT(1, 0x00440780, Text_GetWidth);
     INJECT(1, 0x00440890, Text_Remove);
     INJECT(1, 0x004408F0, Text_Draw);
+    INJECT(1, 0x00440920, Text_DrawBorder);
 }
 
 static void Inject_Output(void)
