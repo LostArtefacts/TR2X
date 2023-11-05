@@ -1589,7 +1589,7 @@ typedef enum LARA_MESH {
 004268C0    00000425    -R      void __cdecl ShowEndStatsText(void);
 
 # game/items.c
-00426CF0    00000052    -       void __cdecl Item_InitialiseArray(int32_t num_items);
+00426CF0    00000052    +       void __cdecl Item_InitialiseArray(int32_t num_items);
 00426D50    0000011E    -       void __cdecl Item_Kill(int16_t item_num);
 00426E70    00000039    -       int16_t __cdecl Item_Create(void);
 00426EB0    000001B3    -       void __cdecl Item_Initialise(int16_t item_num);
@@ -2568,6 +2568,7 @@ typedef enum LARA_MESH {
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
 004D77A0    -       int32_t g_LOSNumRooms = 0;
+004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7F10    -       HWND g_GameWindowHandle;
 004D8378    -       uint8_t g_IsGameToExit;
@@ -2601,6 +2602,9 @@ typedef enum LARA_MESH {
 0051E6C4    -       int32_t g_SoundIsActive;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
+005207C6    -       int16_t g_NextItemFree;
+005207C8    -       int16_t g_NextItemActive;
+005207CC    -       int16_t g_PrevItemActive;
 00521FDC    -       int32_t g_SoundFxCount;
 00522000    -       struct OBJECT_INFO g_Objects[265];
 005252B0    -       int16_t **g_Meshes;

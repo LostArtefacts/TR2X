@@ -94,6 +94,7 @@
 #define g_CineFrameCurrent (*(int32_t*)0x004D7780)
 #define g_IsChunkyCamera (*(int32_t*)0x004D778C)
 #define g_LOSNumRooms (*(int32_t*)0x004D77A0) // = 0
+#define g_LevelItemCount (*(int32_t*)0x004D7C38)
 #define g_SoundTrackIds (*(int32_t(*)[128])0x004D7C80)
 #define g_GameWindowHandle (*(HWND*)0x004D7F10)
 #define g_IsGameToExit (*(uint8_t*)0x004D8378)
@@ -127,6 +128,9 @@
 #define g_SoundIsActive (*(int32_t*)0x0051E6C4)
 #define g_Lara (*(struct LARA_INFO*)0x005206E0)
 #define g_LaraItem (*(struct ITEM_INFO **)0x005207BC)
+#define g_NextItemFree (*(int16_t*)0x005207C6)
+#define g_NextItemActive (*(int16_t*)0x005207C8)
+#define g_PrevItemActive (*(int16_t*)0x005207CC)
 #define g_SoundFxCount (*(int32_t*)0x00521FDC)
 #define g_Objects (*(struct OBJECT_INFO(*)[265])0x00522000)
 #define g_Meshes (*(int16_t ***)0x005252B0)
