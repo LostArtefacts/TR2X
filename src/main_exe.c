@@ -3,7 +3,7 @@
 #include <windows.h>
 
 // The path to the legitimate host process
-const char *hostProcessPath = "Tomb2.exe";
+const char *m_HostProcessPath = "Tomb2.exe";
 
 static bool FileExists(const char *path)
 {
@@ -17,7 +17,7 @@ static bool FileExists(const char *path)
 
 static bool InjectDLL(HANDLE process_handle, const char *dll_path)
 {
-    bool status = false;
+    bool success = false;
     LPVOID load_library_addr =
         (LPVOID)GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
 
@@ -56,16 +56,67 @@ static bool InjectDLL(HANDLE process_handle, const char *dll_path)
         process_handle, dll_path_adr, strlen(dll_path) + 1, MEM_RELEASE);
     CloseHandle(remote_thread_handle);
 
-    status = true;
+    success = true;
 finish:
-    return status;
+    return success;
 }
 
-int main()
+const char *GetDLLPath(void)
 {
-    char dll_path[MAX_PATH];
+    static char dll_path[MAX_PATH];
     GetModuleFileNameA(NULL, dll_path, MAX_PATH);
-    strcpy(strstr(dll_path, ".exe"), ".dll");
+    char *suffix = strstr(dll_path, ".exe");
+    if (suffix != NULL) {
+        strcpy(suffix, ".dll");
+    }
+    return dll_path;
+}
+
+char *GetHostProcessArguments(
+    const char *host_process_path, const int argc, const char *const argv[])
+{
+    size_t length = 1; // null terminator
+    for (int i = 0; i < argc; i++) {
+        if (i > 0) {
+            length++;
+        }
+
+        const char *arg = i == 0 ? host_process_path : argv[i];
+        if (strchr(arg, ' ')) {
+            length += 1;
+            length += strlen(arg);
+            length += 1;
+        } else {
+            length += strlen(arg);
+        }
+    }
+
+    char *cmdline = malloc(length);
+    cmdline[0] = '\0';
+
+    for (int i = 0; i < argc; i++) {
+        if (i > 0) {
+            strcat(cmdline, " ");
+        }
+
+        const char *arg = i == 0 ? host_process_path : argv[i];
+        if (strchr(arg, ' ')) {
+            strcat(cmdline, "\"");
+            strcat(cmdline, arg);
+            strcat(cmdline, "\"");
+        } else {
+            strcat(cmdline, arg);
+        }
+    }
+
+    return cmdline;
+}
+
+int main(const int argc, const char *const argv[])
+{
+    bool success = false;
+    const char *dll_path = GetDLLPath();
+    char *cmdline = GetHostProcessArguments(m_HostProcessPath, argc, argv);
 
     STARTUPINFO si;
     ZeroMemory(&si, sizeof(si));
@@ -75,22 +126,33 @@ int main()
     ZeroMemory(&pi, sizeof(pi));
 
     if (!CreateProcess(
-            hostProcessPath, NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL,
-            NULL, &si, &pi)) {
+            m_HostProcessPath, cmdline, NULL, NULL, FALSE, CREATE_SUSPENDED,
+            NULL, NULL, &si, &pi)) {
         fprintf(stderr, "Failed to create the process.\n");
-        return 1;
+        goto finish;
     }
 
     if (!InjectDLL(pi.hProcess, dll_path)) {
-        return 1;
+        goto finish;
     }
 
     if (ResumeThread(pi.hThread) == (DWORD)-1) {
         fprintf(stderr, "Failed to resume the execution of the process.\n");
-        return 1;
+        goto finish;
     }
 
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
-    return 0;
+    success = true;
+
+finish:
+    if (cmdline) {
+        free(cmdline);
+        cmdline = NULL;
+    }
+    if (pi.hThread) {
+        CloseHandle(pi.hThread);
+    }
+    if (pi.hProcess) {
+        CloseHandle(pi.hProcess);
+    }
+    return success ? 0 : 1;
 }
