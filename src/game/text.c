@@ -428,9 +428,16 @@ void __cdecl Text_DrawText(struct TEXTSTRING *const string)
     }
 }
 
-uint32_t __cdecl Text_GetScaleH(uint32_t value)
+uint32_t __cdecl Text_GetScaleH(const uint32_t value)
 {
     const int32_t render_width = GetRenderWidth();
     const int32_t render_scale = MAX(render_width, 640) * PHD_ONE / 640;
+    return (value / PHD_HALF) * (render_scale / PHD_HALF);
+}
+
+uint32_t __cdecl Text_GetScaleV(const uint32_t value)
+{
+    const int32_t render_height = GetRenderHeight();
+    const int32_t render_scale = MAX(render_height, 480) * PHD_ONE / 480;
     return (value / PHD_HALF) * (render_scale / PHD_HALF);
 }

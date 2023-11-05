@@ -507,7 +507,6 @@
 #define SpiderLeap ((void __cdecl (*)(int16_t item_num, int16_t angle))0x0043FFC0)
 #define SpiderControl ((void __cdecl (*)(int16_t item_num))0x00440070)
 #define BigSpiderControl ((void __cdecl (*)(int16_t item_num))0x00440290)
-#define Text_GetScaleV ((uint32_t __cdecl (*)(uint32_t value))0x00440ED0)
 #define MineControl ((void __cdecl (*)(int16_t mine_num))0x00440F10)
 #define ControlSpikeWall ((void __cdecl (*)(int16_t item_num))0x00441110)
 #define ControlCeilingSpikes ((void __cdecl (*)(int16_t item_num))0x00441250)
