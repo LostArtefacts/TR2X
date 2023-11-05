@@ -1589,19 +1589,19 @@ typedef enum LARA_MESH {
 004268C0    00000425    -R      void __cdecl ShowEndStatsText(void);
 
 # game/items.c
-00426CF0    00000052    -R      void __cdecl InitialiseItemArray(int32_t numitems);
-00426D50    0000011E    -R      void __cdecl KillItem(int16_t item_num);
-00426E70    00000039    -R      int16_t __cdecl CreateItem(void);
-00426EB0    000001B3    -R      void __cdecl InitialiseItem(int16_t item_num);
+00426CF0    00000052    -       void __cdecl Item_InitialiseArray(int32_t num_items);
+00426D50    0000011E    -       void __cdecl Item_Kill(int16_t item_num);
+00426E70    00000039    -       int16_t __cdecl Item_Create(void);
+00426EB0    000001B3    -       void __cdecl Item_Initialise(int16_t item_num);
 00427070    0000008A    -       void __cdecl Item_RemoveActive(int16_t item_num);
-00427100    0000006F    -R      void __cdecl RemoveDrawnItem(int16_t item_num);
-00427170    0000005A    -R      void __cdecl AddActiveItem(int16_t item_num);
-004271D0    0000009C    -R      void __cdecl ItemNewRoom(int16_t item_num, int16_t room_num);
-00427270    0000007C    -R      int32_t __cdecl GlobalItemReplace(int32_t in_objnum, int32_t out_objnum);
-004272F0    00000030    -R      void __cdecl InitialiseFXArray(void);
-00427320    0000006C    -R      int16_t __cdecl CreateEffect(int16_t room_num);
-00427390    000000E3    -R      void __cdecl KillEffect(int16_t fx_num);
-00427480    00000093    -R      void __cdecl EffectNewRoom(int16_t fx_num, int16_t room_num);
+00427100    0000006F    -       void __cdecl Item_RemoveDrawn(int16_t item_num);
+00427170    0000005A    -       void __cdecl Item_AddActive(int16_t item_num);
+004271D0    0000009C    -       void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);
+00427270    0000007C    -       int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_objecet_num);
+004272F0    00000030    -       void __cdecl Effect_InitialiseArray(void);
+00427320    0000006C    -       int16_t __cdecl Effect_Create(int16_t room_num);
+00427390    000000E3    -       void __cdecl Effect_Kill(int16_t fx_num);
+00427480    00000093    -       void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);
 00427520    00000058    -R      void __cdecl ClearBodyBag(void);
 
 # game/lara.c
