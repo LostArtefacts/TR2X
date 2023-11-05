@@ -427,3 +427,10 @@ void __cdecl Text_DrawText(struct TEXTSTRING *const string)
         Text_DrawBorder(box_x, box_y, z, box_w, box_h);
     }
 }
+
+uint32_t __cdecl Text_GetScaleH(uint32_t value)
+{
+    const int32_t render_width = GetRenderWidth();
+    const int32_t render_scale = MAX(render_width, 640) * PHD_ONE / 640;
+    return (value / PHD_HALF) * (render_scale / PHD_HALF);
+}

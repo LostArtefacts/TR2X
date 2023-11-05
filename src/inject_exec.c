@@ -113,6 +113,7 @@ static void Inject_Text(void)
     INJECT(1, 0x004408F0, Text_Draw);
     INJECT(1, 0x00440920, Text_DrawBorder);
     INJECT(1, 0x00440AB0, Text_DrawText);
+    INJECT(1, 0x00440E90, Text_GetScaleH);
 }
 
 static void Inject_Output(void)
