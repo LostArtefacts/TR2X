@@ -308,7 +308,6 @@ void __cdecl Text_DrawBorder(
 
 void __cdecl Text_DrawText(struct TEXTSTRING *const string)
 {
-    unsigned int spacing; // ecx
     int16_t v14; // cx
     int v15; // ebp
 
@@ -369,7 +368,7 @@ void __cdecl Text_DrawText(struct TEXTSTRING *const string)
             x += spacing * scale_h / PHD_ONE;
         } else {
             int32_t sprite_num;
-            if (c < 0xB) {
+            if (IS_CHAR_DIGIT(c)) {
                 sprite_num = c + 81;
             } else if (c <= 0x12) {
                 sprite_num = c + 91;
@@ -406,24 +405,22 @@ void __cdecl Text_DrawText(struct TEXTSTRING *const string)
     }
 
     if (string->flags.outline || string->flags.background) {
-        v14 = string->bgnd_size.x;
-        if (v14) {
-            v15 = text_width / 2 + box_x;
-            text_width = v14;
-            box_x = v14 / -2 + v15;
-        }
-        box_w = text_width + 4;
-        if (string->bgnd_size.y) {
-            box_h = string->bgnd_size.y;
+        if (string->bgnd_size.x) {
+            box_x += (text_width - string->bgnd_size.x) / 2;
+            box_w = string->bgnd_size.x + 4;
         } else {
-            box_h = (16 * scale_v) / PHD_ONE;
+            box_w = text_width + 4;
         }
+
+        box_h = string->bgnd_size.y ? string->bgnd_size.y
+                                    : ((16 * scale_v) / PHD_ONE);
     }
 
     if (string->flags.background) {
         S_DrawScreenFBox(
             box_x, box_y, string->bgnd_off.z + z + 2, box_w, box_h,
-            string->bgnd_colour, NULL, string->bgnd_flags);
+            string->bgnd_colour, (const struct GOURAUD_FILL *)string->bgnd_gour,
+            string->bgnd_flags);
     }
 
     if (string->flags.outline) {

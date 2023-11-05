@@ -1043,9 +1043,9 @@
 <rect width="12" height="12" x="195" y="285" class="known"><title>void __cdecl WinStopFMV(bool isPlayback);</title></rect>
 <rect width="12" height="12" x="210" y="285" class="known"><title>bool __cdecl IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);</title></rect>
 <rect width="12" height="12" x="225" y="285" class="known"><title>uint16_t __cdecl S_COLOUR(int32_t red, int32_t green, int32_t blue);</title></rect>
-<rect width="12" height="12" x="240" y="285" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);</title></rect>
-<rect width="12" height="12" x="255" y="285" class="known"><title>void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_OUTLINE *gour, uint16_t flags);</title></rect>
-<rect width="12" height="12" x="270" y="285" class="known"><title>void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_FILL *gour, uint16_t flags);</title></rect>
+<rect width="12" height="12" x="240" y="285" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t x_len, int32_t y_len, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);</title></rect>
+<rect width="12" height="12" x="255" y="285" class="known"><title>void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_OUTLINE *gour, uint16_t flags);</title></rect>
+<rect width="12" height="12" x="270" y="285" class="known"><title>void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="285" y="285" class="known"><title>void __cdecl S_FinishInventory(void);</title></rect>
 <rect width="12" height="12" x="300" y="285" class="known"><title>void __cdecl S_FadeToBlack(void);</title></rect>
 <rect width="12" height="12" x="315" y="285" class="known"><title>void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);</title></rect>
@@ -1615,7 +1615,7 @@
 <rect width="11.85" height="12.29" x="477.44" y="183.38" class="known"><title>HRESULT __stdcall EnumTextureFormatsCallback(LPDDSDESC lpDdsd, LPVOID lpContext);</title></rect>
 <rect width="11.85" height="12.24" x="477.44" y="198.67" class="known"><title>void __cdecl SkidmanPush(struct ITEM_INFO *item, struct ITEM_INFO *laraitem, int32_t radius);</title></rect>
 <rect width="11.85" height="12.08" x="477.44" y="213.91" class="known"><title>void __cdecl JellyControl(int16_t item_num);</title></rect>
-<rect width="11.85" height="12.08" x="477.44" y="228.99" class="known"><title>void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_OUTLINE *gour, uint16_t flags);</title></rect>
+<rect width="11.85" height="12.08" x="477.44" y="228.99" class="known"><title>void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_OUTLINE *gour, uint16_t flags);</title></rect>
 <rect width="11.85" height="12.02" x="477.44" y="244.07" class="known"><title>void __cdecl ControlCeilingSpikes(int16_t item_num);</title></rect>
 <rect width="11.85" height="11.97" x="477.44" y="259.09" class="known"><title>void __cdecl InitialiseBartoli(int16_t item_num);</title></rect>
 <rect width="11.85" height="11.97" x="477.44" y="274.06" class="known"><title>int32_t __cdecl S_SaveGame(const void *save_data, uint32_t save_size, int32_t slot_num);</title></rect>
@@ -2218,7 +2218,7 @@
 <rect width="3.72" height="3.35" x="668.19" y="281.75" class="known"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="288.10" class="decompiled"><title>void __thiscall S_FlaggedString_InitAdapter(struct DISPLAY_ADAPTER *adapter);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="294.45" class="known"><title>void __cdecl S_FadeInInventory(BOOL isFade);</title></rect>
-<rect width="3.72" height="3.35" x="668.19" y="300.80" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);</title></rect>
+<rect width="3.72" height="3.35" x="668.19" y="300.80" class="known"><title>void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t x_len, int32_t y_len, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="307.15" class="known"><title>void __cdecl HWR_GetPageHandles(void);</title></rect>
 <rect width="3.72" height="3.35" x="668.19" y="313.50" class="known"><title>bool __cdecl ReloadTextures(bool reset);</title></rect>
 <rect width="3.72" height="3.23" x="668.19" y="319.86" class="decompiled"><title>void __cdecl Matrix_InitInterpolate(int32_t frac, int32_t rate);</title></rect>
@@ -2267,7 +2267,7 @@
 <rect width="2.86" height="3.45" x="681.22" y="300.81" class="unused"><title>sub_447B90</title></rect>
 <rect width="2.86" height="3.45" x="681.22" y="307.26" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);</title></rect>
 <rect width="2.86" height="3.32" x="681.22" y="313.71" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseAllTracks(void);</title></rect>
-<rect width="2.86" height="3.32" x="681.22" y="320.03" class="known"><title>void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_FILL *gour, uint16_t flags);</title></rect>
+<rect width="2.86" height="3.32" x="681.22" y="320.03" class="known"><title>void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);</title></rect>
 <rect width="2.86" height="3.18" x="681.22" y="326.34" class="known"><title>void __cdecl Demo_GetInput(void);</title></rect>
 <rect width="2.86" height="3.18" x="681.22" y="332.52" class="known"><title>int32_t __cdecl FlashIt(void);</title></rect>
 <rect width="2.86" height="3.18" x="681.22" y="338.70" class="known"><title>void __cdecl WinInStart(void);</title></rect>

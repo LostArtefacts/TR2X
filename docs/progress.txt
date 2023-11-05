@@ -2236,9 +2236,9 @@ typedef enum LARA_MESH {
 0044C0F0    00000048    -R      void __cdecl WinStopFMV(bool isPlayback);
 0044C140    00000088    -R      bool __cdecl IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);
 0044C1D0    00000023    -R      uint16_t __cdecl S_COLOUR(int32_t red, int32_t green, int32_t blue);
-0044C200    00000035    -R      void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);
-0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_OUTLINE *gour, uint16_t flags);
-0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_FILL *gour, uint16_t flags);
+0044C200    00000035    -R      void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t x_len, int32_t y_len, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);
+0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_OUTLINE *gour, uint16_t flags);
+0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);
 0044C390    0000000F    -R      void __cdecl S_FinishInventory(void);
 0044C3A0    00000043    -R      void __cdecl S_FadeToBlack(void);
 0044C3F0    00000057    -R      void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);
