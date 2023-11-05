@@ -267,7 +267,7 @@ int32_t __cdecl Text_GetWidth(struct TEXTSTRING *const string)
 void __cdecl Text_Draw(void)
 {
     for (int i = 0; i < TEXT_MAX_STRINGS; i++) {
-        const struct TEXTSTRING *const textstring = &g_TextstringTable[i];
+        struct TEXTSTRING *const textstring = &g_TextstringTable[i];
         if (textstring->flags.active) {
             Text_DrawText(textstring);
         }
@@ -304,4 +304,129 @@ void __cdecl Text_DrawBorder(
     Output_DrawScreenSprite2D(x1, y0, z, scale_h, h, mesh_idx + 5, 0x1000, 0);
     Output_DrawScreenSprite2D(x0, y1, z, w, scale_v, mesh_idx + 6, 0x1000, 0);
     Output_DrawScreenSprite2D(x0, y0, z, scale_h, h, mesh_idx + 7, 0x1000, 0);
+}
+
+void __cdecl Text_DrawText(struct TEXTSTRING *const string)
+{
+    unsigned int spacing; // ecx
+    int16_t v14; // cx
+    int v15; // ebp
+
+    int32_t box_w = 0;
+    int32_t box_h = 0;
+    const int32_t scale_h = Text_GetScaleH(string->scale.h);
+    const int32_t scale_v = Text_GetScaleV(string->scale.v);
+
+    if (string->flags.flash) {
+        string->flash.count -= g_Camera.num_frames;
+        if (string->flash.count <= -string->flash.rate) {
+            string->flash.count = string->flash.rate;
+        } else if (string->flash.count < 0) {
+            return;
+        }
+    }
+
+    int32_t x = string->pos.x;
+    int32_t y = string->pos.y;
+    int32_t z = string->pos.z;
+    int32_t text_width = Text_GetWidth(string);
+
+    if (string->flags.centre_h) {
+        x += (GetRenderWidth() - text_width) / 2;
+    } else if (string->flags.right) {
+        x += GetRenderWidth() - text_width;
+    }
+
+    if (string->flags.centre_v) {
+        y += GetRenderHeight() / 2;
+    } else if (string->flags.bottom) {
+        y += GetRenderHeight();
+    }
+
+    int32_t box_x = x + string->bgnd_off.x - ((2 * scale_h) / PHD_ONE);
+    int32_t box_y = y + string->bgnd_off.y - ((4 * scale_v) / PHD_ONE)
+        - ((11 * scale_v) / PHD_ONE);
+
+    const char *str = string->text;
+    while (1) {
+        const uint8_t c = *str++;
+        if (!c) {
+            break;
+        }
+
+        if (!IS_CHAR_LEGAL(c)) {
+            continue;
+        }
+
+        if (IS_CHAR_SPACE(c)) {
+            const int32_t spacing = string->word_spacing;
+            x += spacing * scale_h / PHD_ONE;
+        } else if (IS_CHAR_SECRET(c)) {
+            Output_DrawPickup(
+                x + 10, y, 7144,
+                g_Objects[O_SECRET_1 + c - CHAR_SECRET_1].mesh_idx, 4096);
+            const int32_t spacing = 16;
+            x += spacing * scale_h / PHD_ONE;
+        } else {
+            int32_t sprite_num;
+            if (c < 0xB) {
+                sprite_num = c + 81;
+            } else if (c <= 0x12) {
+                sprite_num = c + 91;
+            } else {
+                sprite_num = g_TextASCIIMap[c];
+            }
+
+            if (c >= '0' && c <= '9') {
+                const int32_t spacing = (12 - g_TextSpacing[sprite_num]) / 2;
+                x += spacing * scale_h / PHD_ONE;
+            }
+
+            if (x > 0 && x < GetRenderWidth() && y > 0
+                && y < GetRenderHeight()) {
+                Output_DrawScreenSprite2D(
+                    x, y, z, scale_h, scale_v,
+                    g_Objects[O_ALPHABET].mesh_idx + sprite_num, 4096,
+                    string->text_flags);
+            }
+
+            if (IS_CHAR_DIACRITIC(c)) {
+                continue;
+            }
+
+            if (c >= '0' && c <= '9') {
+                const int32_t x_off = (12 - g_TextSpacing[sprite_num]) / 2;
+                x += (12 - x_off) * scale_h / PHD_ONE;
+            } else {
+                const int32_t spacing =
+                    g_TextSpacing[sprite_num] + string->letter_spacing;
+                x += spacing * scale_h / PHD_ONE;
+            }
+        }
+    }
+
+    if (string->flags.outline || string->flags.background) {
+        v14 = string->bgnd_size.x;
+        if (v14) {
+            v15 = text_width / 2 + box_x;
+            text_width = v14;
+            box_x = v14 / -2 + v15;
+        }
+        box_w = text_width + 4;
+        if (string->bgnd_size.y) {
+            box_h = string->bgnd_size.y;
+        } else {
+            box_h = (16 * scale_v) / PHD_ONE;
+        }
+    }
+
+    if (string->flags.background) {
+        S_DrawScreenFBox(
+            box_x, box_y, string->bgnd_off.z + z + 2, box_w, box_h,
+            string->bgnd_colour, NULL, string->bgnd_flags);
+    }
+
+    if (string->flags.outline) {
+        Text_DrawBorder(box_x, box_y, z, box_w, box_h);
+    }
 }

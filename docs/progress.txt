@@ -2007,7 +2007,7 @@ typedef enum LARA_MESH {
 004408C0    00000024    +       int16_t __cdecl Text_GetTextLength(const char *text);
 004408F0    00000027    +       void __cdecl Text_Draw(void);
 00440920    00000189    +       void __cdecl Text_DrawBorder(int32_t x, int32_t y, int32_t z, int32_t width, int32_t height);
-00440AB0    000003D2    -       void __cdecl Text_DrawText(const struct TEXTSTRING *string);
+00440AB0    000003D2    +       void __cdecl Text_DrawText(const struct TEXTSTRING *string);
 00440E90    00000037    *R      uint32_t __cdecl Text_GetScaleH(uint32_t scale_h);
 00440ED0    00000039    *R      uint32_t __cdecl Text_GetScaleV(uint32_t scale_v);
 
@@ -2236,9 +2236,9 @@ typedef enum LARA_MESH {
 0044C0F0    00000048    -R      void __cdecl WinStopFMV(bool isPlayback);
 0044C140    00000088    -R      bool __cdecl IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);
 0044C1D0    00000023    -R      uint16_t __cdecl S_COLOUR(int32_t red, int32_t green, int32_t blue);
-0044C200    00000035    -R      void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE colorIdx, D3DCOLOR *gour, uint16_t flags);
-0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE colorIdx, GOURAUD_OUTLINE *gour, uint16_t flags);
-0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE colorIdx, GOURAUD_FILL *gour, uint16_t flags);
+0044C200    00000035    -R      void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t xLen, int32_t yLen, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);
+0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_OUTLINE *gour, uint16_t flags);
+0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, struct GOURAUD_FILL *gour, uint16_t flags);
 0044C390    0000000F    -R      void __cdecl S_FinishInventory(void);
 0044C3A0    00000043    -R      void __cdecl S_FadeToBlack(void);
 0044C3F0    00000057    -R      void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);
