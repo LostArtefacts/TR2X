@@ -19,6 +19,51 @@ void __cdecl Item_InitialiseArray(const int32_t num_items)
     g_Items[num_items - 1].next_item = NO_ITEM;
 }
 
+void __cdecl Item_Kill(const int16_t item_num)
+{
+    struct ITEM_INFO *const item = &g_Items[item_num];
+    item->active = 0;
+
+    int16_t link_num = g_NextItemActive;
+    if (link_num == item_num) {
+        g_NextItemActive = item->next_active;
+    } else {
+        while (link_num != NO_ITEM) {
+            if (g_Items[link_num].next_active == item_num) {
+                g_Items[link_num].next_active = item->next_active;
+                break;
+            }
+            link_num = g_Items[link_num].next_active;
+        }
+    }
+
+    if (item->room_num != NO_ROOM) {
+        link_num = g_Rooms[item->room_num].item_num;
+        if (link_num == item_num) {
+            g_Rooms[item->room_num].item_num = item->next_item;
+        } else {
+            while (link_num != NO_ITEM) {
+                if (g_Items[link_num].next_item == item_num) {
+                    g_Items[link_num].next_item = item->next_item;
+                    break;
+                }
+                link_num = g_Items[link_num].next_item;
+            }
+        }
+    }
+
+    if (item == g_Lara.target) {
+        g_Lara.target = NULL;
+    }
+
+    if (item_num < g_LevelItemCount) {
+        item->flags |= IF_KILLED_ITEM;
+    } else {
+        item->next_item = g_NextItemFree;
+        g_NextItemFree = item_num;
+    }
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);

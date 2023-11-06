@@ -1590,7 +1590,7 @@ typedef enum LARA_MESH {
 
 # game/items.c
 00426CF0    00000052    +       void __cdecl Item_InitialiseArray(int32_t num_items);
-00426D50    0000011E    -       void __cdecl Item_Kill(int16_t item_num);
+00426D50    0000011E    +       void __cdecl Item_Kill(int16_t item_num);
 00426E70    00000039    -       int16_t __cdecl Item_Create(void);
 00426EB0    000001B3    -       void __cdecl Item_Initialise(int16_t item_num);
 00427070    0000008A    -       void __cdecl Item_RemoveActive(int16_t item_num);

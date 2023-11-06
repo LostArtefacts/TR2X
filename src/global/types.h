@@ -281,7 +281,6 @@ typedef struct TEXTSTRING {
             uint32_t bottom : 1;
             uint32_t background : 1;
             uint32_t outline : 1;
-            uint32_t multiline : 1;
         };
     } flags;
     uint16_t text_flags;
@@ -994,6 +993,14 @@ typedef struct CINE_FRAME {
     int16_t fov;
     int16_t roll;
 } CINE_FRAME;
+
+typedef enum ITEM_FLAG {
+    IF_ONESHOT = 0x0100,
+    IF_CODE_BITS = 0x3E00,
+    IF_REVERSE = 0x4000,
+    IF_NOT_VISIBLE = 0x0100,
+    IF_KILLED_ITEM = 0x8000,
+} ITEM_FLAG;
 
 typedef enum ITEM_STATUS {
     IS_NOT_ACTIVE = 0,

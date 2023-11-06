@@ -262,7 +262,7 @@ void __cdecl Camera_SmartShift(
     if (good_left) {
         camera_box = good_left->box;
         edge = (int32_t)g_Boxes[camera_box].left << WALL_SHIFT;
-        if (camera_box != NO_ITEM && edge < left) {
+        if (camera_box != NO_BOX && edge < left) {
             left = edge;
         }
     } else {
@@ -275,7 +275,7 @@ void __cdecl Camera_SmartShift(
     if (good_right) {
         camera_box = good_right->box;
         edge = ((int32_t)g_Boxes[camera_box].right << WALL_SHIFT) - 1;
-        if (camera_box != NO_ITEM && edge > right) {
+        if (camera_box != NO_BOX && edge > right) {
             right = edge;
         }
     } else {
@@ -288,7 +288,7 @@ void __cdecl Camera_SmartShift(
     if (good_top) {
         camera_box = good_top->box;
         edge = (int32_t)g_Boxes[camera_box].top << WALL_SHIFT;
-        if (camera_box != NO_ITEM && edge < top) {
+        if (camera_box != NO_BOX && edge < top) {
             top = edge;
         }
     } else {
@@ -301,7 +301,7 @@ void __cdecl Camera_SmartShift(
     if (good_bottom) {
         camera_box = good_bottom->box;
         edge = ((int32_t)g_Boxes[camera_box].bottom << WALL_SHIFT) - 1;
-        if (camera_box != NO_ITEM && edge > bottom) {
+        if (camera_box != NO_BOX && edge > bottom) {
             bottom = edge;
         }
     } else {
