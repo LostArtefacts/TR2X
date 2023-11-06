@@ -288,7 +288,6 @@
 #define ShowGymStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426340)
 #define ShowStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426520)
 #define ShowEndStatsText ((void __cdecl (*)(void))0x004268C0)
-#define Item_Create ((int16_t __cdecl (*)(void))0x00426E70)
 #define Item_Initialise ((void __cdecl (*)(int16_t item_num))0x00426EB0)
 #define Item_RemoveActive ((void __cdecl (*)(int16_t item_num))0x00427070)
 #define Item_RemoveDrawn ((void __cdecl (*)(int16_t item_num))0x00427100)

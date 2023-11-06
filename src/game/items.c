@@ -19,6 +19,16 @@ void __cdecl Item_InitialiseArray(const int32_t num_items)
     g_Items[num_items - 1].next_item = NO_ITEM;
 }
 
+int16_t __cdecl Item_Create(void)
+{
+    const int16_t result = g_NextItemFree;
+    if (result != NO_ITEM) {
+        g_Items[result].flags = 0;
+        g_NextItemFree = g_Items[result].next_item;
+    }
+    return result;
+}
+
 void __cdecl Item_Kill(const int16_t item_num)
 {
     struct ITEM_INFO *const item = &g_Items[item_num];
