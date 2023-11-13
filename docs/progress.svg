@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.25% (303)</tspan> · <tspan class="known">72.25% (867)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.33% (304)</tspan> · <tspan class="known">72.17% (866)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="188.62" height="6" x="0" y="0" class="decompiled"/>
-<rect width="539.71" height="6" x="188.62" y="0" class="known"/>
+<rect width="189.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="539.08" height="6" x="189.24" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -459,7 +459,7 @@
 <rect width="12" height="12" x="435" y="105" class="decompiled"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="450" y="105" class="decompiled"><title>int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_object_num);</title></rect>
 <rect width="12" height="12" x="465" y="105" class="decompiled"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
-<rect width="12" height="12" x="480" y="105" class="known"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
+<rect width="12" height="12" x="480" y="105" class="decompiled"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
 <rect width="12" height="12" x="495" y="105" class="known"><title>void __cdecl Effect_Kill(int16_t fx_num);</title></rect>
 <rect width="12" height="12" x="510" y="105" class="known"><title>void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="525" y="105" class="known"><title>void __cdecl ClearBodyBag(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.50%</tspan> · <tspan class="known">78.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.53%</tspan> · <tspan class="known">78.14%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="160.62" height="6" x="0" y="0" class="decompiled"/>
-<rect width="583.91" height="6" x="160.62" y="0" class="known"/>
+<rect width="160.86" height="6" x="0" y="0" class="decompiled"/>
+<rect width="583.67" height="6" x="160.86" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1963,7 +1963,7 @@
 <rect width="6.53" height="6.30" x="675.25" y="210.71" class="known"><title>void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);</title></rect>
 <rect width="6.35" height="6.30" x="684.78" y="210.71" class="decompiled"><title>int32_t __cdecl Output_VisibleZClip(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2);</title></rect>
 <rect width="6.35" height="6.30" x="694.13" y="210.71" class="known"><title>void __cdecl AddDisplayPickup(int16_t obj_num);</title></rect>
-<rect width="6.35" height="6.30" x="703.49" y="210.71" class="known"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
+<rect width="6.35" height="6.30" x="703.49" y="210.71" class="decompiled"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
 <rect width="6.35" height="6.30" x="712.84" y="210.71" class="known"><title>void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);</title></rect>
 <rect width="6.27" height="6.30" x="722.20" y="210.71" class="decompiled"><title>void __cdecl Output_SetFarZ(int32_t far_z);</title></rect>
 <rect width="6.27" height="6.30" x="731.46" y="210.71" class="decompiled"><title>void __cdecl Lara_State_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

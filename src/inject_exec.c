@@ -204,6 +204,7 @@ static void Inject_Items(void)
 static void Inject_Effects(void)
 {
     INJECT(1, 0x004272F0, Effect_InitialiseArray);
+    INJECT(1, 0x00427320, Effect_Create);
 }
 
 static void Inject_LOS(void)
