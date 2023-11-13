@@ -192,6 +192,7 @@ static void Inject_Items(void)
     INJECT(1, 0x00426D50, Item_Kill);
     INJECT(1, 0x00426E70, Item_Create);
     INJECT(1, 0x00426EB0, Item_Initialise);
+    INJECT(1, 0x00427070, Item_RemoveActive);
 }
 
 static void Inject_LOS(void)

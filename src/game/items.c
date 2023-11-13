@@ -138,6 +138,30 @@ void __cdecl Item_Initialise(const int16_t item_num)
     }
 }
 
+void __cdecl Item_RemoveActive(const int16_t item_num)
+{
+    struct ITEM_INFO *const item = &g_Items[item_num];
+    if (!item->active) {
+        return;
+    }
+
+    item->active = 0;
+
+    int16_t link_num = g_NextItemActive;
+    if (link_num == item_num) {
+        g_NextItemActive = item->next_active;
+        return;
+    }
+
+    while (link_num != NO_ITEM) {
+        if (g_Items[link_num].next_active == item_num) {
+            g_Items[link_num].next_active = item->next_active;
+            return;
+        }
+        link_num = g_Items[link_num].next_active;
+    }
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);
