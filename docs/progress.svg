@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25% (300)</tspan> · <tspan class="known">72.50% (870)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.08% (301)</tspan> · <tspan class="known">72.42% (869)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="186.75" height="6" x="0" y="0" class="decompiled"/>
-<rect width="541.58" height="6" x="186.75" y="0" class="known"/>
+<rect width="187.37" height="6" x="0" y="0" class="decompiled"/>
+<rect width="540.95" height="6" x="187.37" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -456,7 +456,7 @@
 <rect width="12" height="12" x="390" y="105" class="decompiled"><title>void __cdecl Item_RemoveActive(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="405" y="105" class="decompiled"><title>void __cdecl Item_RemoveDrawn(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="420" y="105" class="decompiled"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
-<rect width="12" height="12" x="435" y="105" class="known"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
+<rect width="12" height="12" x="435" y="105" class="decompiled"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="450" y="105" class="known"><title>int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_objecet_num);</title></rect>
 <rect width="12" height="12" x="465" y="105" class="known"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
 <rect width="12" height="12" x="480" y="105" class="known"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.41%</tspan> · <tspan class="known">78.26%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.45%</tspan> · <tspan class="known">78.22%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="159.90" height="6" x="0" y="0" class="decompiled"/>
-<rect width="584.64" height="6" x="159.90" y="0" class="known"/>
+<rect width="160.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="584.29" height="6" x="160.24" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1820,7 +1820,7 @@
 <rect width="8.38" height="8.11" x="544.80" y="329.68" class="known"><title>int32_t __cdecl DoFlareLight(struct PHD_VECTOR *pos, int32_t flare_age);</title></rect>
 <rect width="8.38" height="8.11" x="544.80" y="340.79" class="known"><title>void __cdecl InitialiseFinalLevel(void);</title></rect>
 <rect width="8.38" height="8.11" x="544.80" y="351.89" class="known"><title>void __cdecl CreateClipper(void);</title></rect>
-<rect width="7.81" height="8.62" x="556.18" y="169.65" class="known"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
+<rect width="7.81" height="8.62" x="556.18" y="169.65" class="decompiled"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
 <rect width="7.81" height="8.62" x="556.18" y="181.27" class="decompiled"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
 <rect width="7.81" height="8.54" x="556.18" y="192.89" class="known"><title>void __cdecl Lara_CollideStop(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.81" height="8.47" x="556.18" y="204.43" class="known"><title>void __cdecl swap_meshes_with_meshswap3(struct ITEM_INFO *item);</title></rect>

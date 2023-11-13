@@ -288,7 +288,6 @@
 #define ShowGymStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426340)
 #define ShowStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426520)
 #define ShowEndStatsText ((void __cdecl (*)(void))0x004268C0)
-#define Item_NewRoom ((void __cdecl (*)(int16_t item_num, int16_t room_num))0x004271D0)
 #define Item_GlobalReplace ((int32_t __cdecl (*)(int32_t src_object_num, int32_t dst_objecet_num))0x00427270)
 #define Effect_InitialiseArray ((void __cdecl (*)(void))0x004272F0)
 #define Effect_Create ((int16_t __cdecl (*)(int16_t room_num))0x00427320)

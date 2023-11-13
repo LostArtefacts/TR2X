@@ -195,6 +195,7 @@ static void Inject_Items(void)
     INJECT(1, 0x00427070, Item_RemoveActive);
     INJECT(1, 0x00427100, Item_RemoveDrawn);
     INJECT(1, 0x00427170, Item_AddActive);
+    INJECT(1, 0x004271D0, Item_NewRoom);
 }
 
 static void Inject_LOS(void)

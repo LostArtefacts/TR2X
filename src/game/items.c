@@ -174,6 +174,34 @@ void __cdecl Item_AddActive(const int16_t item_num)
     g_NextItemActive = item_num;
 }
 
+void __cdecl Item_NewRoom(const int16_t item_num, const int16_t room_num)
+{
+    struct ITEM_INFO *const item = &g_Items[item_num];
+    struct ROOM_INFO *room = NULL;
+
+    if (item->room_num != NO_ROOM) {
+        room = &g_Rooms[item->room_num];
+
+        int16_t link_num = room->item_num;
+        if (link_num == item_num) {
+            room->item_num = item->next_item;
+        } else {
+            while (link_num != NO_ITEM) {
+                if (g_Items[link_num].next_item == item_num) {
+                    g_Items[link_num].next_item = item->next_item;
+                    break;
+                }
+                link_num = g_Items[link_num].next_item;
+            }
+        }
+    }
+
+    item->room_num = room_num;
+    room = &g_Rooms[room_num];
+    item->next_item = room->item_num;
+    room->item_num = item_num;
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);
