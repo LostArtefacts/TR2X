@@ -288,7 +288,6 @@
 #define ShowGymStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426340)
 #define ShowStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426520)
 #define ShowEndStatsText ((void __cdecl (*)(void))0x004268C0)
-#define Effect_Kill ((void __cdecl (*)(int16_t fx_num))0x00427390)
 #define Effect_NewRoom ((void __cdecl (*)(int16_t fx_num, int16_t room_num))0x00427480)
 #define ClearBodyBag ((void __cdecl (*)(void))0x00427520)
 #define Lara_HandleAboveWater ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00427580)
