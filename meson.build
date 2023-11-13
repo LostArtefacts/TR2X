@@ -80,6 +80,7 @@ dll_sources = [
   'src/game/effects.c',
   'src/game/items.c',
   'src/game/lara/lara_col.c',
+  'src/game/lara/lara_look.c',
   'src/game/lara/lara_misc.c',
   'src/game/lara/lara_state.c',
   'src/game/los.c',

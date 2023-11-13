@@ -1655,7 +1655,7 @@ typedef enum LARA_MESH {
 
 # game/lara.c
 00427580    00000195    -       void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);
-00427720    00000066    *       void __cdecl Lara_LookUpDown(void);
+00427720    00000066    +       void __cdecl Lara_LookUpDown(void);
 00427790    00000072    -       void __cdecl Lara_LookLeftRight(void);
 00427810    00000089    -       void __cdecl Lara_ResetLook(void);
 004278A0    0000008B    +       void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);

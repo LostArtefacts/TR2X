@@ -4,6 +4,7 @@
 #include "game/effects.h"
 #include "game/items.h"
 #include "game/lara/lara_col.h"
+#include "game/lara/lara_look.h"
 #include "game/lara/lara_misc.h"
 #include "game/lara/lara_state.h"
 #include "game/los.h"
@@ -31,6 +32,7 @@ static void Inject_Sound(void);
 static void Inject_Items(void);
 static void Inject_Effects(void);
 static void Inject_LOS(void);
+static void Inject_Lara_Look(void);
 static void Inject_Lara_Misc(void);
 static void Inject_Lara_State(void);
 static void Inject_Lara_Col(void);
@@ -217,6 +219,11 @@ static void Inject_LOS(void)
     INJECT(1, 0x00415F70, LOS_CheckX);
     INJECT(1, 0x00416260, LOS_ClipTarget);
     INJECT(1, 0x00416340, LOS_CheckSmashable);
+}
+
+static void Inject_Lara_Look(void)
+{
+    INJECT(1, 0x00427720, Lara_LookUpDown);
 }
 
 static void Inject_Lara_Misc(void)
@@ -415,6 +422,7 @@ void Inject_Exec(void)
     Inject_Items();
     Inject_Effects();
     Inject_LOS();
+    Inject_Lara_Look();
     Inject_Lara_Misc();
     Inject_Lara_State();
     Inject_Lara_Col();

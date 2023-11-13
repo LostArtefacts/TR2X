@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.58% (307)</tspan> · <tspan class="known">71.92% (863)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.67% (308)</tspan> · <tspan class="known">71.83% (862)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="191.11" height="6" x="0" y="0" class="decompiled"/>
-<rect width="537.22" height="6" x="191.11" y="0" class="known"/>
+<rect width="191.73" height="6" x="0" y="0" class="decompiled"/>
+<rect width="536.60" height="6" x="191.73" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -464,7 +464,7 @@
 <rect width="12" height="12" x="510" y="105" class="decompiled"><title>void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="525" y="105" class="decompiled"><title>void __cdecl Item_ClearKilled(void);</title></rect>
 <rect width="12" height="12" x="540" y="105" class="known"><title>void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="555" y="105" class="known"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
+<rect width="12" height="12" x="555" y="105" class="decompiled"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
 <rect width="12" height="12" x="570" y="105" class="known"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
 <rect width="12" height="12" x="585" y="105" class="known"><title>void __cdecl Lara_ResetLook(void);</title></rect>
 <rect width="12" height="12" x="600" y="105" class="decompiled"><title>void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.67%</tspan> · <tspan class="known">78%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.70%</tspan> · <tspan class="known">77.97%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="161.88" height="6" x="0" y="0" class="decompiled"/>
-<rect width="582.65" height="6" x="161.88" y="0" class="known"/>
+<rect width="162.11" height="6" x="0" y="0" class="decompiled"/>
+<rect width="582.43" height="6" x="162.11" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1986,7 +1986,7 @@
 <rect width="6.42" height="5.80" x="597.90" y="354.20" class="decompiled"><title>int32_t __cdecl Lara_HitCeiling(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="6.23" height="5.99" x="607.32" y="220" class="known"><title>void __cdecl UpdateGameResolution(void);</title></rect>
 <rect width="6.14" height="5.99" x="616.55" y="220" class="known"><title>int32_t __cdecl GF_DoLevelSequence(int32_t level, int32_t type);</title></rect>
-<rect width="6.14" height="5.99" x="625.68" y="220" class="known"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
+<rect width="6.14" height="5.99" x="625.68" y="220" class="decompiled"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
 <rect width="6.14" height="5.99" x="634.82" y="220" class="known"><title>int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="5.96" height="5.99" x="643.95" y="220" class="known"><title>void __cdecl CreateBubble(struct PHD_3DPOS *pos, int16_t room_num);</title></rect>
 <rect width="5.96" height="5.99" x="652.91" y="220" class="known"><title>int32_t __cdecl GameInit(bool skipCDInit);</title></rect>
