@@ -33,23 +33,9 @@ int16_t __cdecl Item_Create(void)
 void __cdecl Item_Kill(const int16_t item_num)
 {
     Item_RemoveActive(item_num);
+    Item_RemoveDrawn(item_num);
 
     struct ITEM_INFO *const item = &g_Items[item_num];
-    if (item->room_num != NO_ROOM) {
-        int16_t link_num = g_Rooms[item->room_num].item_num;
-        if (link_num == item_num) {
-            g_Rooms[item->room_num].item_num = item->next_item;
-        } else {
-            while (link_num != NO_ITEM) {
-                if (g_Items[link_num].next_item == item_num) {
-                    g_Items[link_num].next_item = item->next_item;
-                    break;
-                }
-                link_num = g_Items[link_num].next_item;
-            }
-        }
-    }
-
     if (item == g_Lara.target) {
         g_Lara.target = NULL;
     }
@@ -152,6 +138,9 @@ void __cdecl Item_RemoveActive(const int16_t item_num)
 void __cdecl Item_RemoveDrawn(const int16_t item_num)
 {
     const struct ITEM_INFO *const item = &g_Items[item_num];
+    if (item->room_num == NO_ROOM) {
+        return;
+    }
 
     int16_t link_num = g_Rooms[item->room_num].item_num;
     if (link_num == item_num) {
