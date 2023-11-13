@@ -202,6 +202,26 @@ void __cdecl Item_NewRoom(const int16_t item_num, const int16_t room_num)
     room->item_num = item_num;
 }
 
+int32_t __cdecl Item_GlobalReplace(
+    const int32_t src_object_num, const int32_t dst_object_num)
+{
+    int32_t changed = 0;
+
+    for (int i = 0; i < g_RoomCount; i++) {
+        int16_t j = g_Rooms[i].item_num;
+        while (j != NO_ITEM) {
+            struct ITEM_INFO *const item = &g_Items[j];
+            if (item->object_num == src_object_num) {
+                item->object_num = dst_object_num;
+                changed++;
+            }
+            j = item->next_item;
+        }
+    }
+
+    return changed;
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);

@@ -140,6 +140,7 @@
 #define g_IMFrac (*(int32_t*)0x005258F0)
 #define g_Anims (*(struct ANIM_STRUCT **)0x005258F4)
 #define g_Bones (*(int32_t **)0x00525BE8)
+#define g_RoomCount (*(int32_t*)0x00526180)
 #define g_IMRate (*(int32_t*)0x00526184)
 #define g_IMMatrixPtr (*(struct MATRIX **)0x00526188)
 #define g_Rooms (*(struct ROOM_INFO **)0x0052618C)
