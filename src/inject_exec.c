@@ -226,6 +226,7 @@ static void Inject_Lara_Control(void)
 {
     INJECT(1, 0x00427580, Lara_HandleAboveWater);
     INJECT(1, 0x00431670, Lara_HandleSurface);
+    INJECT(1, 0x00431F50, Lara_HandleUnderwater);
 }
 
 static void Inject_Lara_Look(void)

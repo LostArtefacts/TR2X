@@ -1861,7 +1861,7 @@ typedef enum LARA_MESH {
 00431D30    0000021C    -       int32_t __cdecl Lara_TestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);
 
 # game/laraswim.c
-00431F50    00000223    -       void __cdecl Lara_HandleUnderwater(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00431F50    00000223    +       void __cdecl Lara_HandleUnderwater(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00432180    00000086    -       void __cdecl Lara_SwimTurn(struct ITEM_INFO *item);
 00432210    0000006B    +       void __cdecl Lara_State_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00432280    00000076    +       void __cdecl Lara_State_Glide(struct ITEM_INFO *item, struct COLL_INFO *coll);
