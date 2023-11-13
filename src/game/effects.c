@@ -85,3 +85,27 @@ void __cdecl Effect_Kill(const int16_t fx_num)
     fx->next_fx = g_NextEffectFree;
     g_NextEffectFree = fx_num;
 }
+
+void __cdecl Effect_NewRoom(const int16_t fx_num, const int16_t room_num)
+{
+    struct FX_INFO *const fx = &g_Effects[fx_num];
+    struct ROOM_INFO *room = &g_Rooms[fx->room_num];
+
+    int16_t link_num = room->fx_num;
+    if (link_num == fx_num) {
+        room->fx_num = fx->next_fx;
+    } else {
+        while (link_num != NO_ITEM) {
+            if (g_Effects[link_num].next_fx == fx_num) {
+                g_Effects[link_num].next_fx = fx->next_fx;
+                break;
+            }
+            link_num = g_Effects[link_num].next_fx;
+        }
+    }
+
+    fx->room_num = room_num;
+    room = &g_Rooms[room_num];
+    fx->next_fx = room->fx_num;
+    room->fx_num = fx_num;
+}

@@ -206,6 +206,7 @@ static void Inject_Effects(void)
     INJECT(1, 0x004272F0, Effect_InitialiseArray);
     INJECT(1, 0x00427320, Effect_Create);
     INJECT(1, 0x00427390, Effect_Kill);
+    INJECT(1, 0x00427480, Effect_NewRoom);
 }
 
 static void Inject_LOS(void)
