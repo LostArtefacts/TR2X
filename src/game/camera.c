@@ -701,7 +701,7 @@ void __cdecl Camera_Update(void)
         angle >>= 1;
         tilt >>= 1;
 
-        if (angle > MIN_HEAD_ROTATION && angle < MAX_HEAD_ROTATION
+        if (angle > MIN_HEAD_ROTATION_CAM && angle < MAX_HEAD_ROTATION_CAM
             && tilt > MIN_HEAD_TILT_CAM && tilt < MAX_HEAD_TILT_CAM) {
             int16_t change = angle - g_Lara.head_y_rot;
             if (change > HEAD_TURN_CAM) {

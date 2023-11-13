@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.67% (308)</tspan> · <tspan class="known">71.83% (862)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.75% (309)</tspan> · <tspan class="known">71.75% (861)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="191.73" height="6" x="0" y="0" class="decompiled"/>
-<rect width="536.60" height="6" x="191.73" y="0" class="known"/>
+<rect width="192.35" height="6" x="0" y="0" class="decompiled"/>
+<rect width="535.97" height="6" x="192.35" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -465,7 +465,7 @@
 <rect width="12" height="12" x="525" y="105" class="decompiled"><title>void __cdecl Item_ClearKilled(void);</title></rect>
 <rect width="12" height="12" x="540" y="105" class="known"><title>void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="555" y="105" class="decompiled"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
-<rect width="12" height="12" x="570" y="105" class="known"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
+<rect width="12" height="12" x="570" y="105" class="decompiled"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
 <rect width="12" height="12" x="585" y="105" class="known"><title>void __cdecl Lara_ResetLook(void);</title></rect>
 <rect width="12" height="12" x="600" y="105" class="decompiled"><title>void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="615" y="105" class="decompiled"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.70%</tspan> · <tspan class="known">77.97%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.73%</tspan> · <tspan class="known">77.94%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="162.11" height="6" x="0" y="0" class="decompiled"/>
-<rect width="582.43" height="6" x="162.11" y="0" class="known"/>
+<rect width="162.36" height="6" x="0" y="0" class="decompiled"/>
+<rect width="582.18" height="6" x="162.36" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1948,7 +1948,7 @@
 <rect width="6.80" height="6.45" x="588.11" y="297.58" class="known"><title>void __cdecl GameWindowCalculateSizeFromClient(int32_t *width, int32_t *height);</title></rect>
 <rect width="6.80" height="6.37" x="588.11" y="307.03" class="decompiled"><title>void __cdecl Matrix_LookAt(int32_t xsrc, int32_t ysrc, int32_t zsrc, int32_t xtar, int32_t ytar, int32_t ztar, int16_t roll);</title></rect>
 <rect width="6.80" height="6.37" x="588.11" y="316.40" class="known"><title>void __cdecl Richochet(struct GAME_VECTOR *pos);</title></rect>
-<rect width="6.80" height="6.37" x="588.11" y="325.77" class="known"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
+<rect width="6.80" height="6.37" x="588.11" y="325.77" class="decompiled"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
 <rect width="6.80" height="6.29" x="588.11" y="335.14" class="known"><title>void __cdecl ControlSplash1(int16_t fx_num);</title></rect>
 <rect width="6.80" height="6.29" x="588.11" y="344.43" class="known"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat);</title></rect>
 <rect width="6.80" height="6.29" x="588.11" y="353.71" class="known"><title>BOOL __cdecl LoadPalettes(HANDLE hFile);</title></rect>
