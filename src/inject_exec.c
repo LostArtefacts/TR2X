@@ -225,6 +225,7 @@ static void Inject_Lara_Look(void)
 {
     INJECT(1, 0x00427720, Lara_LookUpDown);
     INJECT(1, 0x00427790, Lara_LookLeftRight);
+    INJECT(1, 0x00427810, Lara_ResetLook);
 }
 
 static void Inject_Lara_Misc(void)
