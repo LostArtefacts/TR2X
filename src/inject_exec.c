@@ -1,6 +1,7 @@
 #include "inject_exec.h"
 
 #include "game/camera.h"
+#include "game/effects.h"
 #include "game/items.h"
 #include "game/lara/lara_col.h"
 #include "game/lara/lara_misc.h"
@@ -28,6 +29,7 @@ static void Inject_Music(void);
 static void Inject_Sound(void);
 
 static void Inject_Items(void);
+static void Inject_Effects(void);
 static void Inject_LOS(void);
 static void Inject_Lara_Misc(void);
 static void Inject_Lara_State(void);
@@ -197,6 +199,11 @@ static void Inject_Items(void)
     INJECT(1, 0x00427170, Item_AddActive);
     INJECT(1, 0x004271D0, Item_NewRoom);
     INJECT(1, 0x00427270, Item_GlobalReplace);
+}
+
+static void Inject_Effects(void)
+{
+    INJECT(1, 0x004272F0, Effect_InitialiseArray);
 }
 
 static void Inject_LOS(void)
@@ -402,6 +409,7 @@ void Inject_Exec(void)
     Inject_Sound();
 
     Inject_Items();
+    Inject_Effects();
     Inject_LOS();
     Inject_Lara_Misc();
     Inject_Lara_State();

@@ -568,7 +568,7 @@ typedef struct __unaligned FX_INFO {
     int16_t next_fx;
     int16_t next_active;
     int16_t speed;
-    int16_t fallspeed;
+    int16_t fall_speed;
     int16_t frame_num;
     int16_t counter;
     int16_t shade;
@@ -1318,7 +1318,7 @@ typedef enum LARA_MESH {
 0040CE40    000000F8    -       int32_t __cdecl Boat_TestWaterHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);
 0040CF40    000001C1    -       void __cdecl Boat_DoShift(int32_t boat_num);
 0040D110    00000174    -       void __cdecl Boat_DoWakeEffect(struct ITEM_INFO *boat);
-0040D290    0000004B    -       int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);
+0040D290    0000004B    -       int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);
 0040D2E0    000004DD    -       int32_t __cdecl Boat_Dynamics(int16_t boat_num);
 0040D7C0    00000187    -       int32_t __cdecl Boat_UserControl(struct ITEM_INFO *boat);
 0040D950    00000169    -       void __cdecl Boat_Animation(struct ITEM_INFO *boat, int32_t collide);
@@ -1647,7 +1647,7 @@ typedef enum LARA_MESH {
 00427170    0000005A    +       void __cdecl Item_AddActive(int16_t item_num);
 004271D0    0000009C    +       void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);
 00427270    0000007C    +       int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_object_num);
-004272F0    00000030    -       void __cdecl Effect_InitialiseArray(void);
+004272F0    00000030    +       void __cdecl Effect_InitialiseArray(void);
 00427320    0000006C    -       int16_t __cdecl Effect_Create(int16_t room_num);
 00427390    000000E3    -       void __cdecl Effect_Kill(int16_t fx_num);
 00427480    00000093    -       void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);
@@ -2001,7 +2001,7 @@ typedef enum LARA_MESH {
 0043D060    000001F9    -R      void __cdecl SkidooBaddieCollision(struct ITEM_INFO *skidoo);
 0043D260    000000B2    -R      int32_t __cdecl TestHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);
 0043D320    0000027C    -R      int32_t __cdecl DoShift(struct ITEM_INFO *skidoo, struct PHD_VECTOR *pos, struct PHD_VECTOR *old);
-0043D5A0    00000054    -R      int32_t __cdecl DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);
+0043D5A0    00000054    -R      int32_t __cdecl DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);
 0043D600    00000090    -R      int32_t __cdecl GetCollisionAnim(struct ITEM_INFO *skidoo, struct PHD_VECTOR *moved);
 0043D690    00000140    -R      void __cdecl DoSnowEffect(struct ITEM_INFO *skidoo);
 0043D7D0    0000049E    -R      int32_t __cdecl SkidooDynamics(struct ITEM_INFO *skidoo);
@@ -2653,8 +2653,11 @@ typedef enum LARA_MESH {
 0051E9E0    -       struct SAVEGAME_INFO g_SaveGame;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
+005207C0    -       struct FX_INFO *g_Effects;
+005207C4    -       int16_t g_NextEffectFree;
 005207C6    -       int16_t g_NextItemFree;
 005207C8    -       int16_t g_NextItemActive;
+005207CA    -       int16_t g_NextEffectActive;
 005207CC    -       int16_t g_PrevItemActive;
 00521FDC    -       int32_t g_SoundFxCount;
 00522000    -       struct OBJECT_INFO g_Objects[265];

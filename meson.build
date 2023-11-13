@@ -77,6 +77,7 @@ exe_sources = [
 dll_sources = [
   'src/filesystem.c',
   'src/game/camera.c',
+  'src/game/effects.c',
   'src/game/items.c',
   'src/game/lara/lara_col.c',
   'src/game/lara/lara_misc.c',

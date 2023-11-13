@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.17% (302)</tspan> · <tspan class="known">72.33% (868)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.25% (303)</tspan> · <tspan class="known">72.25% (867)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="188" height="6" x="0" y="0" class="decompiled"/>
-<rect width="540.33" height="6" x="188" y="0" class="known"/>
+<rect width="188.62" height="6" x="0" y="0" class="decompiled"/>
+<rect width="539.71" height="6" x="188.62" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -169,7 +169,7 @@
 <rect width="12" height="12" x="585" y="15" class="known"><title>int32_t __cdecl Boat_TestWaterHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);</title></rect>
 <rect width="12" height="12" x="600" y="15" class="known"><title>void __cdecl Boat_DoShift(int32_t boat_num);</title></rect>
 <rect width="12" height="12" x="615" y="15" class="known"><title>void __cdecl Boat_DoWakeEffect(struct ITEM_INFO *boat);</title></rect>
-<rect width="12" height="12" x="630" y="15" class="known"><title>int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);</title></rect>
+<rect width="12" height="12" x="630" y="15" class="known"><title>int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>
 <rect width="12" height="12" x="645" y="15" class="known"><title>int32_t __cdecl Boat_Dynamics(int16_t boat_num);</title></rect>
 <rect width="12" height="12" x="660" y="15" class="known"><title>int32_t __cdecl Boat_UserControl(struct ITEM_INFO *boat);</title></rect>
 <rect width="12" height="12" x="675" y="15" class="known"><title>void __cdecl Boat_Animation(struct ITEM_INFO *boat, int32_t collide);</title></rect>
@@ -458,7 +458,7 @@
 <rect width="12" height="12" x="420" y="105" class="decompiled"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="435" y="105" class="decompiled"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="450" y="105" class="decompiled"><title>int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_object_num);</title></rect>
-<rect width="12" height="12" x="465" y="105" class="known"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
+<rect width="12" height="12" x="465" y="105" class="decompiled"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
 <rect width="12" height="12" x="480" y="105" class="known"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
 <rect width="12" height="12" x="495" y="105" class="known"><title>void __cdecl Effect_Kill(int16_t fx_num);</title></rect>
 <rect width="12" height="12" x="510" y="105" class="known"><title>void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);</title></rect>
@@ -772,7 +772,7 @@
 <rect width="12" height="12" x="630" y="195" class="known"><title>void __cdecl SkidooBaddieCollision(struct ITEM_INFO *skidoo);</title></rect>
 <rect width="12" height="12" x="645" y="195" class="known"><title>int32_t __cdecl TestHeight(struct ITEM_INFO *item, int32_t z_off, int32_t x_off, struct PHD_VECTOR *pos);</title></rect>
 <rect width="12" height="12" x="660" y="195" class="known"><title>int32_t __cdecl DoShift(struct ITEM_INFO *skidoo, struct PHD_VECTOR *pos, struct PHD_VECTOR *old);</title></rect>
-<rect width="12" height="12" x="675" y="195" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);</title></rect>
+<rect width="12" height="12" x="675" y="195" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>
 <rect width="12" height="12" x="690" y="195" class="known"><title>int32_t __cdecl GetCollisionAnim(struct ITEM_INFO *skidoo, struct PHD_VECTOR *moved);</title></rect>
 <rect width="12" height="12" x="705" y="195" class="known"><title>void __cdecl DoSnowEffect(struct ITEM_INFO *skidoo);</title></rect>
 <rect width="12" height="12" x="720" y="195" class="known"><title>int32_t __cdecl SkidooDynamics(struct ITEM_INFO *skidoo);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.49%</tspan> · <tspan class="known">78.18%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.50%</tspan> · <tspan class="known">78.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="160.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="584.02" height="6" x="160.52" y="0" class="known"/>
+<rect width="160.62" height="6" x="0" y="0" class="decompiled"/>
+<rect width="583.91" height="6" x="160.62" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2053,7 +2053,7 @@
 <rect width="5.49" height="5.06" x="658.71" y="237.46" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="5.39" height="5.06" x="667.20" y="237.46" class="known"><title>void __cdecl ReqItemLeftalign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);</title></rect>
 <rect width="5.39" height="5.06" x="675.59" y="237.46" class="decompiled"><title>void __cdecl Lara_State_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="5.39" height="5.06" x="683.98" y="237.46" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);</title></rect>
+<rect width="5.39" height="5.06" x="683.98" y="237.46" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>
 <rect width="5.39" height="5.06" x="692.37" y="237.46" class="known"><title>bool __cdecl DDrawCreate(LPGUID lpGUID);</title></rect>
 <rect width="5.29" height="5.06" x="700.76" y="237.46" class="decompiled"><title>void __cdecl Lara_State_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.29" height="5.06" x="709.05" y="237.46" class="known"><title>void __cdecl InitialiseLOTarray(void);</title></rect>
@@ -2087,7 +2087,7 @@
 <rect width="4.75" height="4.90" x="696.16" y="245.52" class="decompiled"><title>void __cdecl Lara_State_Extra_Breath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.75" height="4.90" x="703.91" y="245.52" class="known"><title>void __cdecl WriteSG(void *pointer, int32_t size);</title></rect>
 <rect width="4.75" height="4.90" x="711.66" y="245.52" class="known"><title>void __cdecl GetSavedGamesList(REQUEST_INFO *req);</title></rect>
-<rect width="4.65" height="4.90" x="719.41" y="245.52" class="known"><title>int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fallspeed, int32_t *y);</title></rect>
+<rect width="4.65" height="4.90" x="719.41" y="245.52" class="known"><title>int32_t __cdecl Boat_DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>
 <rect width="4.65" height="4.90" x="727.06" y="245.52" class="decompiled"><title>void __cdecl Lara_State_FastTurn(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.65" height="4.90" x="734.70" y="245.52" class="known"><title>void __cdecl set_flare_arm(int32_t frame);</title></rect>
 <rect width="4.65" height="4.90" x="742.35" y="245.52" class="known"><title>void __cdecl DartEffectControl(int16_t fx_num);</title></rect>
@@ -2249,7 +2249,7 @@
 <rect width="3.31" height="3.25" x="674.91" y="326" class="decompiled"><title>void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="3.31" height="3.25" x="674.91" y="332.26" class="known"><title>void __cdecl S_CalculateStaticLight(int16_t adder);</title></rect>
 <rect width="3.31" height="3.12" x="674.91" y="338.51" class="known"><title>void __cdecl ControlRichochet1(int16_t fx_num);</title></rect>
-<rect width="3.31" height="3.12" x="674.91" y="344.63" class="known"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
+<rect width="3.31" height="3.12" x="674.91" y="344.63" class="decompiled"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
 <rect width="3.31" height="3.12" x="674.91" y="350.75" class="decompiled"><title>void __cdecl Lara_State_PushBlock(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.31" height="3.12" x="674.91" y="356.88" class="decompiled"><title>void __cdecl Lara_State_Pickup(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="3.32" height="3.11" x="681.22" y="288.24" class="decompiled"><title>void __cdecl Lara_State_UseKey(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
