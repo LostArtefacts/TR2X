@@ -9,6 +9,25 @@
 #include "global/vars.h"
 #include "util.h"
 
+void __cdecl Lara_SwimTurn(struct ITEM_INFO *const item)
+{
+    if (g_Input & IN_FORWARD) {
+        item->pos.x_rot -= LARA_TURN_RATE_UW;
+    } else if (g_Input & IN_BACK) {
+        item->pos.x_rot += LARA_TURN_RATE_UW;
+    }
+
+    if (g_Input & IN_LEFT) {
+        g_Lara.turn_rate -= LARA_TURN_RATE;
+        CLAMPL(g_Lara.turn_rate, -LARA_MED_TURN);
+        item->pos.z_rot -= LARA_LEAN_RATE_SWIM;
+    } else if (g_Input & IN_RIGHT) {
+        g_Lara.turn_rate += LARA_TURN_RATE;
+        CLAMPG(g_Lara.turn_rate, LARA_MED_TURN);
+        item->pos.z_rot += LARA_LEAN_RATE_SWIM;
+    }
+}
+
 void __cdecl Lara_State_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     if (item->hit_points <= 0) {

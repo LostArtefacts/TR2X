@@ -263,6 +263,7 @@ static void Inject_Lara_Misc(void)
 
 static void Inject_Lara_State(void)
 {
+    INJECT(1, 0x00432180, Lara_SwimTurn);
     INJECT(1, 0x004278A0, Lara_State_Walk);
     INJECT(1, 0x00427930, Lara_State_Run);
     INJECT(1, 0x00427A80, Lara_State_Stop);

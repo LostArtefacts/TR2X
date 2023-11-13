@@ -349,7 +349,6 @@
 #define Lara_SurfaceCollision ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431B40)
 #define Lara_TestWaterStepOut ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431C40)
 #define Lara_TestWaterClimbOut ((int32_t __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00431D30)
-#define Lara_SwimTurn ((void __cdecl (*)(struct ITEM_INFO *item))0x00432180)
 #define Lara_GetWaterDepth ((int32_t __cdecl (*)(int32_t x, int32_t y, int32_t z, int16_t room_num))0x004324A0)
 #define Lara_TestWaterDepth ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00432640)
 #define Lara_SwimCollision ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00432710)
