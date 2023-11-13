@@ -288,7 +288,6 @@
 #define ShowGymStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426340)
 #define ShowStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426520)
 #define ShowEndStatsText ((void __cdecl (*)(void))0x004268C0)
-#define ClearBodyBag ((void __cdecl (*)(void))0x00427520)
 #define Lara_HandleAboveWater ((void __cdecl (*)(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00427580)
 #define Lara_LookUpDown ((void __cdecl (*)(void))0x00427720)
 #define Lara_LookLeftRight ((void __cdecl (*)(void))0x00427790)

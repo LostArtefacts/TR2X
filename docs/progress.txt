@@ -1651,7 +1651,7 @@ typedef enum LARA_MESH {
 00427320    0000006C    +       int16_t __cdecl Effect_Create(int16_t room_num);
 00427390    000000E3    +       void __cdecl Effect_Kill(int16_t fx_num);
 00427480    00000093    +       void __cdecl Effect_NewRoom(int16_t fx_num, int16_t room_num);
-00427520    00000058    -R      void __cdecl ClearBodyBag(void);
+00427520    00000058    +       void __cdecl Item_ClearKilled(void);
 
 # game/lara.c
 00427580    00000195    -       void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);

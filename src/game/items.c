@@ -222,6 +222,20 @@ int32_t __cdecl Item_GlobalReplace(
     return changed;
 }
 
+void __cdecl Item_ClearKilled(void)
+{
+    // Remove corpses and other killed items. Part of OG performance
+    // improvements, generously used in Opera House and Barkhang Monastery
+    int16_t link_num = g_PrevItemActive;
+    while (link_num != NO_ITEM) {
+        struct ITEM_INFO *const item = &g_Items[link_num];
+        Item_Kill(link_num);
+        link_num = item->next_active;
+        item->next_active = NO_ITEM;
+    }
+    g_PrevItemActive = NO_ITEM;
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);
