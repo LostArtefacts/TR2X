@@ -191,6 +191,7 @@ static void Inject_Items(void)
     INJECT(1, 0x00426CF0, Item_InitialiseArray);
     INJECT(1, 0x00426D50, Item_Kill);
     INJECT(1, 0x00426E70, Item_Create);
+    INJECT(1, 0x00426EB0, Item_Initialise);
 }
 
 static void Inject_LOS(void)

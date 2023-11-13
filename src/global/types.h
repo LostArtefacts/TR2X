@@ -509,16 +509,67 @@ typedef struct ITEM_INFO {
     int16_t carried_item;
     void *data;
     struct PHD_3DPOS pos;
-    uint16_t active : 1;
-    uint16_t status : 2;
-    uint16_t gravity : 1;
-    uint16_t hit_status : 1;
-    uint16_t collidable : 1;
-    uint16_t looked_at : 1;
-    uint16_t dynamic_light : 1;
-    uint16_t clear_body : 1;
-    uint16_t pad : 7;
+    // clang-format on
+    uint16_t active : 1; // 0x0001
+    uint16_t status : 2; // 0x0002…0x0004
+    uint16_t gravity : 1; // 0x0008
+    uint16_t hit_status : 1; // 0x0010
+    uint16_t collidable : 1; // 0x0020
+    uint16_t looked_at : 1; // 0x0040
+    uint16_t dynamic_light : 1; // 0x0080
+    uint16_t killed : 1; // 0x0100
+    uint16_t pad : 7; // 0x0200…0x8000
+    // clang-format off
 } ITEM_INFO;
+
+typedef struct STATISTICS_INFO {
+    uint32_t timer;
+    uint32_t shots;
+    uint32_t hits;
+    uint32_t distance;
+    uint16_t kills;
+    uint8_t secrets;
+    uint8_t medipacks;
+} STATISTICS_INFO;
+
+typedef struct START_INFO {
+    uint16_t pistol_ammo;
+    uint16_t magnum_ammo;
+    uint16_t uzi_ammo;
+    uint16_t shotgun_ammo;
+    uint16_t m16_ammo;
+    uint16_t grenade_ammo;
+    uint16_t harpoon_ammo;
+    uint8_t small_medipacks;
+    uint8_t large_medipacks;
+    uint8_t reserved1;
+    uint8_t flares;
+    uint8_t gun_status;
+    uint8_t gun_type;
+    uint16_t available : 1;
+    uint16_t has_pistols : 1;
+    uint16_t has_magnums : 1;
+    uint16_t has_uzis : 1;
+    uint16_t has_shotgun : 1;
+    uint16_t has_m16 : 1;
+    uint16_t has_grenade : 1;
+    uint16_t has_harpoon : 1;
+    uint16_t pad : 8;
+    uint16_t reserved2;
+    struct STATISTICS_INFO statistics;
+} START_INFO;
+
+typedef struct SAVEGAME_INFO {
+    struct START_INFO start[24];
+    struct STATISTICS_INFO statistics;
+    int16_t current_level;
+    bool bonus_flag;
+    uint8_t num_pickup[2];
+    uint8_t num_puzzle[4];
+    uint8_t num_key[4];
+    uint16_t reserved;
+    uint8_t buffer[6272];
+} SAVEGAME_INFO;
 
 typedef struct FLOOR_INFO {
     int16_t idx;
@@ -998,12 +1049,12 @@ typedef enum ITEM_FLAG {
     IF_ONESHOT = 0x0100,
     IF_CODE_BITS = 0x3E00,
     IF_REVERSE = 0x4000,
-    IF_NOT_VISIBLE = 0x0100,
-    IF_KILLED_ITEM = 0x8000,
+    IF_INVISIBLE = 0x0100,
+    IF_KILLED = 0x8000,
 } ITEM_FLAG;
 
 typedef enum ITEM_STATUS {
-    IS_NOT_ACTIVE = 0,
+    IS_INACTIVE = 0,
     IS_ACTIVE = 1,
     IS_DEACTIVATED = 2,
     IS_INVISIBLE = 3,

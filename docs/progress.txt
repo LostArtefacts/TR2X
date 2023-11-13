@@ -222,25 +222,25 @@ typedef struct __unaligned GOURAUD_FILL {
     D3DCOLOR clr[4][4];
 } GOURAUD_FILL;
 
-typedef struct __unaligned  GOURAUD_OUTLINE {
+typedef struct __unaligned GOURAUD_OUTLINE {
     D3DCOLOR clr[9];
 } GOURAUD_OUTLINE;
 
-typedef struct __unaligned  DEPTHQ_ENTRY {
+typedef struct __unaligned DEPTHQ_ENTRY {
     uint8_t index[256];
 } DEPTHQ_ENTRY;
 
-typedef struct __unaligned  GOURAUD_ENTRY {
+typedef struct __unaligned GOURAUD_ENTRY {
     uint8_t index[32];
 } GOURAUD_ENTRY;
 
-typedef struct __unaligned  PHD_VECTOR {
+typedef struct __unaligned PHD_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
 } PHD_VECTOR;
 
-typedef struct __unaligned  PHD_3DPOS {
+typedef struct __unaligned PHD_3DPOS {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -249,14 +249,14 @@ typedef struct __unaligned  PHD_3DPOS {
     int16_t z_rot;
 } PHD_3DPOS;
 
-typedef struct __unaligned  SPHERE {
+typedef struct __unaligned SPHERE {
     int32_t x;
     int32_t y;
     int32_t z;
     int32_t r;
 } SPHERE;
 
-typedef struct __unaligned  TEXTSTRING {
+typedef struct __unaligned TEXTSTRING {
     union {
         uint32_t all;
         struct {
@@ -308,7 +308,7 @@ typedef struct __unaligned  TEXTSTRING {
     char *text;
 } TEXTSTRING;
 
-typedef struct __unaligned  PHD_VBUF {
+typedef struct __unaligned PHD_VBUF {
     float xv;
     float yv;
     float zv;
@@ -321,18 +321,18 @@ typedef struct __unaligned  PHD_VBUF {
     int16_t v;
 } PHD_VBUF;
 
-typedef struct __unaligned  PHD_UV {
+typedef struct __unaligned PHD_UV {
     uint16_t u;
     uint16_t v;
 } PHD_UV;
 
-typedef struct __unaligned  PHD_TEXTURE {
+typedef struct __unaligned PHD_TEXTURE {
     uint16_t draw_type;
     uint16_t tex_page;
     PHD_UV uv[4];
 } PHD_TEXTURE;
 
-typedef struct __unaligned  POINT_INFO {
+typedef struct __unaligned POINT_INFO {
     float xv;
     float yv;
     float zv;
@@ -344,7 +344,7 @@ typedef struct __unaligned  POINT_INFO {
     float g;
 } POINT_INFO;
 
-typedef struct __unaligned  VERTEX_INFO {
+typedef struct __unaligned VERTEX_INFO {
     float x;
     float y;
     float rhw;
@@ -370,7 +370,7 @@ typedef enum KEYMAP {
     KM_Option,
 } KEYMAP;
 
-typedef struct __unaligned  REQUEST_INFO {
+typedef struct __unaligned REQUEST_INFO {
     uint16_t req_flags;
     uint16_t items_count;
     uint16_t selected;
@@ -418,13 +418,13 @@ typedef enum SORT_TYPE {
     ST_FAR_Z,
 } SORT_TYPE;
 
-typedef struct __unaligned  COLL_SIDE {
+typedef struct __unaligned COLL_SIDE {
     int32_t floor;
     int32_t ceiling;
     int32_t type;
 } COLL_SIDE;
 
-typedef struct __unaligned  COLL_INFO {
+typedef struct __unaligned COLL_INFO {
     struct COLL_SIDE side_mid;
     struct COLL_SIDE side_front;
     struct COLL_SIDE side_left;
@@ -454,7 +454,7 @@ typedef struct __unaligned  COLL_INFO {
     uint16_t hit_ceiling : 1;
 } COLL_INFO;
 
-typedef struct __unaligned  ITEM_INFO {
+typedef struct __unaligned ITEM_INFO {
     int32_t floor;
     uint32_t touch_bits;
     uint32_t mesh_bits;
@@ -478,18 +478,67 @@ typedef struct __unaligned  ITEM_INFO {
     int16_t carried_item;
     void *data;
     struct PHD_3DPOS pos;
-    uint16_t active : 1;
-    uint16_t status : 2;
-    uint16_t gravity : 1;
-    uint16_t hit_status : 1;
-    uint16_t collidable : 1;
-    uint16_t looked_at : 1;
-    uint16_t dynamic_light : 1;
-    uint16_t clear_body : 1;
-    uint16_t pad : 7;
+    uint16_t active:        1; // 0x0001
+    uint16_t status:        2; // 0x0002…0x0004
+    uint16_t gravity:       1; // 0x0008
+    uint16_t hit_status:    1; // 0x0010
+    uint16_t collidable:    1; // 0x0020
+    uint16_t looked_at:     1; // 0x0040
+    uint16_t dynamic_light: 1; // 0x0080
+    uint16_t killed:        1; // 0x0100
+    uint16_t pad:           7; // 0x0200…0x8000
 } ITEM_INFO;
 
-typedef struct __unaligned  FLOOR_INFO {
+typedef struct __unaligned STATISTICS_INFO {
+    uint32_t timer;
+    uint32_t shots;
+    uint32_t hits;
+    uint32_t distance;
+    uint16_t kills;
+    uint8_t secrets;
+    uint8_t medipacks;
+} STATISTICS_INFO;
+
+typedef struct __unaligned START_INFO {
+    uint16_t pistol_ammo;
+    uint16_t magnum_ammo;
+    uint16_t uzi_ammo;
+    uint16_t shotgun_ammo;
+    uint16_t m16_ammo;
+    uint16_t grenade_ammo;
+    uint16_t harpoon_ammo;
+    uint8_t small_medipacks;
+    uint8_t large_medipacks;
+    uint8_t reserved1;
+    uint8_t flares;
+    uint8_t gun_status;
+    uint8_t gun_type;
+    uint16_t available : 1;
+    uint16_t has_pistols : 1;
+    uint16_t has_magnums : 1;
+    uint16_t has_uzis : 1;
+    uint16_t has_shotgun : 1;
+    uint16_t has_m16 : 1;
+    uint16_t has_grenade : 1;
+    uint16_t has_harpoon : 1;
+    uint16_t pad : 8;
+    uint16_t reserved2;
+    struct STATISTICS_INFO statistics;
+} START_INFO;
+
+typedef struct __unaligned SAVEGAME_INFO {
+    struct START_INFO start[24];
+    struct STATISTICS_INFO statistics;
+    int16_t current_level;
+    bool bonus_flag;
+    uint8_t num_pickup[2];
+    uint8_t num_puzzle[4];
+    uint8_t num_key[4];
+    uint16_t reserved;
+    uint8_t buffer[6272];
+} SAVEGAME_INFO;
+
+typedef struct __unaligned FLOOR_INFO {
     int16_t idx;
     int16_t box;
     int8_t pit_room;
@@ -498,7 +547,7 @@ typedef struct __unaligned  FLOOR_INFO {
     int8_t ceiling;
 } FLOOR_INFO;
 
-typedef struct __unaligned  WEAPON_INFO {
+typedef struct __unaligned WEAPON_INFO {
     int16_t lock_angles[4];
     int16_t left_angles[4];
     int16_t right_angles[4];
@@ -512,7 +561,7 @@ typedef struct __unaligned  WEAPON_INFO {
     int16_t sample_num;
 } WEAPON_INFO;
 
-typedef struct __unaligned  FX_INFO {
+typedef struct __unaligned FX_INFO {
     struct PHD_3DPOS pos;
     int16_t room_num;
     int16_t object_num;
@@ -525,7 +574,7 @@ typedef struct __unaligned  FX_INFO {
     int16_t shade;
 } FX_INFO;
 
-typedef struct __unaligned  AI_INFO {
+typedef struct __unaligned AI_INFO {
     int16_t zone_num;
     int16_t enemy_zone;
     int32_t distance;
@@ -535,14 +584,14 @@ typedef struct __unaligned  AI_INFO {
     int16_t enemy_facing;
 } AI_INFO;
 
-typedef struct __unaligned  BOX_NODE {
+typedef struct __unaligned BOX_NODE {
     int16_t exit_box;
     uint16_t search_num;
     int16_t next_expansion;
     int16_t box_num;
 } BOX_NODE;
 
-typedef struct __unaligned  LOT_INFO {
+typedef struct __unaligned LOT_INFO {
     struct BOX_NODE *node;
     int16_t head;
     int16_t tail;
@@ -569,7 +618,7 @@ typedef enum GF_LEVEL_TYPE {
     GFL_MIDSTORY,
 } GF_LEVEL_TYPE;
 
-typedef struct __unaligned  INVENTORY_ITEM {
+typedef struct __unaligned INVENTORY_ITEM {
     char *string;
     int16_t obj_num;
     int16_t frames_total;
@@ -639,14 +688,14 @@ typedef enum TARGET_TYPE {
     TARGET_SECONDARY = 2,
 } TARGET_TYPE;
 
-typedef struct __unaligned  BITE_INFO {
+typedef struct __unaligned BITE_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
     int32_t mesh_idx;
 } BITE_INFO;
 
-typedef struct __unaligned  ANIM_STRUCT {
+typedef struct __unaligned ANIM_STRUCT {
     int16_t *frame_ptr;
     int16_t interpolation;
     int16_t current_anim_state;
@@ -662,7 +711,7 @@ typedef struct __unaligned  ANIM_STRUCT {
     int16_t command_idx;
 } ANIM_STRUCT;
 
-typedef struct __unaligned  DOOR_INFO {
+typedef struct __unaligned DOOR_INFO {
     int16_t room;
     int16_t x;
     int16_t y;
@@ -670,12 +719,12 @@ typedef struct __unaligned  DOOR_INFO {
     struct POS_3D vertex[4];
 } DOOR_INFO;
 
-typedef struct __unaligned  DOOR_INFOS {
+typedef struct __unaligned DOOR_INFOS {
     int16_t count;
     struct DOOR_INFO door[];
 } DOOR_INFOS;
 
-typedef struct __unaligned  LIGHT_INFO {
+typedef struct __unaligned LIGHT_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -685,7 +734,7 @@ typedef struct __unaligned  LIGHT_INFO {
     int32_t falloff2;
 } LIGHT_INFO;
 
-typedef struct __unaligned  MESH_INFO {
+typedef struct __unaligned MESH_INFO {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -695,7 +744,7 @@ typedef struct __unaligned  MESH_INFO {
     int16_t static_num;
 } MESH_INFO;
 
-typedef struct __unaligned  ROOM_INFO {
+typedef struct __unaligned ROOM_INFO {
     int16_t *data;
     struct DOOR_INFOS *doors;
     struct FLOOR_INFO *floor;
@@ -728,7 +777,7 @@ typedef struct __unaligned  ROOM_INFO {
     uint16_t flags;
 } ROOM_INFO;
 
-typedef struct __unaligned  CREATURE_INFO {
+typedef struct __unaligned CREATURE_INFO {
     int16_t head_rotation;
     int16_t neck_rotation;
     int16_t maximum_turn;
@@ -749,7 +798,7 @@ typedef enum CAMERA_TYPE {
     CAM_HEAVY = 5,
 } CAMERA_TYPE;
 
-typedef struct __unaligned  GAME_VECTOR {
+typedef struct __unaligned GAME_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -757,7 +806,7 @@ typedef struct __unaligned  GAME_VECTOR {
     int16_t box_num;
 } GAME_VECTOR;
 
-typedef struct __unaligned  OBJECT_VECTOR {
+typedef struct __unaligned OBJECT_VECTOR {
     int32_t x;
     int32_t y;
     int32_t z;
@@ -765,7 +814,7 @@ typedef struct __unaligned  OBJECT_VECTOR {
     int16_t flags;
 } OBJECT_VECTOR;
 
-typedef struct __unaligned  BOX_INFO {
+typedef struct __unaligned BOX_INFO {
     uint8_t left;
     uint8_t right;
     uint8_t top;
@@ -836,7 +885,7 @@ typedef struct __unaligned CAMERA_INFO {
     struct PHD_VECTOR mic_pos;
 } CAMERA_INFO;
 
-typedef struct __unaligned  LARA_ARM {
+typedef struct __unaligned LARA_ARM {
     int16_t *frame_base;
     int16_t frame_num;
     int16_t anim_num;
@@ -847,11 +896,11 @@ typedef struct __unaligned  LARA_ARM {
     int16_t flash_gun;
 } LARA_ARM;
 
-typedef struct __unaligned  AMMO_INFO {
+typedef struct __unaligned AMMO_INFO {
     int32_t ammo;
 } AMMO_INFO;
 
-typedef struct __unaligned  LARA_INFO {
+typedef struct __unaligned LARA_INFO {
     int16_t item_num;
     int16_t gun_status;
     int16_t gun_type;
@@ -908,7 +957,7 @@ typedef struct __unaligned  LARA_INFO {
     struct CREATURE_INFO *creature;
 } LARA_INFO;
 
-typedef struct __unaligned  CINE_FRAME {
+typedef struct __unaligned CINE_FRAME {
     int16_t tx;
     int16_t ty;
     int16_t tz;
@@ -1592,10 +1641,10 @@ typedef enum LARA_MESH {
 00426CF0    00000052    +       void __cdecl Item_InitialiseArray(int32_t num_items);
 00426D50    0000011E    +       void __cdecl Item_Kill(int16_t item_num);
 00426E70    00000039    +       int16_t __cdecl Item_Create(void);
-00426EB0    000001B3    -       void __cdecl Item_Initialise(int16_t item_num);
+00426EB0    000001B3    +       void __cdecl Item_Initialise(int16_t item_num);
 00427070    0000008A    -       void __cdecl Item_RemoveActive(int16_t item_num);
 00427100    0000006F    -       void __cdecl Item_RemoveDrawn(int16_t item_num);
-00427170    0000005A    -       void __cdecl Item_AddActive(int16_t item_num);
+00427170    0000005A    *       void __cdecl Item_AddActive(int16_t item_num);
 004271D0    0000009C    -       void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);
 00427270    0000007C    -       int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_objecet_num);
 004272F0    00000030    -       void __cdecl Effect_InitialiseArray(void);
@@ -2568,6 +2617,7 @@ typedef enum LARA_MESH {
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
 004D77A0    -       int32_t g_LOSNumRooms = 0;
+004D77AC    -       int32_t g_IsDemoLevelType;
 004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7F10    -       HWND g_GameWindowHandle;
@@ -2600,6 +2650,7 @@ typedef enum LARA_MESH {
 0051D6A0    -       int16_t g_TextstringCount = 0;
 0051D6C0    -       char g_TextstringBuffers[64][64];
 0051E6C4    -       int32_t g_SoundIsActive;
+0051E9E0    -       struct SAVEGAME_INFO g_SaveGame;
 005206E0    -       struct LARA_INFO g_Lara;
 005207BC    -       struct ITEM_INFO *g_LaraItem;
 005207C6    -       int16_t g_NextItemFree;
