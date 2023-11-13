@@ -4,6 +4,7 @@
 #include "game/effects.h"
 #include "game/items.h"
 #include "game/lara/lara_col.h"
+#include "game/lara/lara_control.h"
 #include "game/lara/lara_look.h"
 #include "game/lara/lara_misc.h"
 #include "game/lara/lara_state.h"
@@ -221,6 +222,11 @@ static void Inject_LOS(void)
     INJECT(1, 0x00416340, LOS_CheckSmashable);
 }
 
+static void Inject_Lara_Control(void)
+{
+    INJECT(1, 0x00427580, Lara_HandleAboveWater);
+}
+
 static void Inject_Lara_Look(void)
 {
     INJECT(1, 0x00427720, Lara_LookUpDown);
@@ -424,6 +430,7 @@ void Inject_Exec(void)
     Inject_Items();
     Inject_Effects();
     Inject_LOS();
+    Inject_Lara_Control();
     Inject_Lara_Look();
     Inject_Lara_Misc();
     Inject_Lara_State();

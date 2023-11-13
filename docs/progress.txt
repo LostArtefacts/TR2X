@@ -1654,7 +1654,7 @@ typedef enum LARA_MESH {
 00427520    00000058    +       void __cdecl Item_ClearKilled(void);
 
 # game/lara.c
-00427580    00000195    -       void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00427580    00000195    +       void __cdecl Lara_HandleAboveWater(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00427720    00000066    +       void __cdecl Lara_LookUpDown(void);
 00427790    00000072    +       void __cdecl Lara_LookLeftRight(void);
 00427810    00000089    +       void __cdecl Lara_ResetLook(void);
@@ -2535,6 +2535,9 @@ typedef enum LARA_MESH {
 00465A60    -       int16_t g_OptionMusicVolume;
 00465AD4    -       int32_t g_JumpPermitted = 1;
 00465AD8    -       int16_t g_LaraOldSlideAngle = 1;
+00465CD0    -       void (*__cdecl g_LaraControlRoutines[71])(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00465DF0    -       void (*__cdecl g_ExtraControlRoutines[11])(struct ITEM_INFO *item, struct COLL_INFO *coll);
+00465E20    -       void (*__cdecl g_LaraCollisionRoutines[71])(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00466290    -       int8_t g_TextSpacing[80];
 004662E0    -       int8_t g_TextASCIIMap[];
 00467DD0    +       const int32_t g_AtanBaseTable[8];
