@@ -32,24 +32,11 @@ int16_t __cdecl Item_Create(void)
 
 void __cdecl Item_Kill(const int16_t item_num)
 {
+    Item_RemoveActive(item_num);
+
     struct ITEM_INFO *const item = &g_Items[item_num];
-    item->active = 0;
-
-    int16_t link_num = g_NextItemActive;
-    if (link_num == item_num) {
-        g_NextItemActive = item->next_active;
-    } else {
-        while (link_num != NO_ITEM) {
-            if (g_Items[link_num].next_active == item_num) {
-                g_Items[link_num].next_active = item->next_active;
-                break;
-            }
-            link_num = g_Items[link_num].next_active;
-        }
-    }
-
     if (item->room_num != NO_ROOM) {
-        link_num = g_Rooms[item->room_num].item_num;
+        int16_t link_num = g_Rooms[item->room_num].item_num;
         if (link_num == item_num) {
             g_Rooms[item->room_num].item_num = item->next_item;
         } else {
