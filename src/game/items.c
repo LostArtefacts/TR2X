@@ -157,6 +157,23 @@ void __cdecl Item_RemoveDrawn(const int16_t item_num)
     }
 }
 
+void __cdecl Item_AddActive(const int16_t item_num)
+{
+    ITEM_INFO *const item = &g_Items[item_num];
+    if (g_Objects[item->object_num].control == NULL) {
+        item->status = IS_INACTIVE;
+        return;
+    }
+
+    if (item->active) {
+        return;
+    }
+
+    item->active = 1;
+    item->next_active = g_NextItemActive;
+    g_NextItemActive = item_num;
+}
+
 bool Item_IsSmashable(const struct ITEM_INFO *item)
 {
     return (item->object_num == O_WINDOW_1 || item->object_num == O_BELL);

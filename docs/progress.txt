@@ -1644,7 +1644,7 @@ typedef enum LARA_MESH {
 00426EB0    000001B3    +       void __cdecl Item_Initialise(int16_t item_num);
 00427070    0000008A    +       void __cdecl Item_RemoveActive(int16_t item_num);
 00427100    0000006F    +       void __cdecl Item_RemoveDrawn(int16_t item_num);
-00427170    0000005A    *       void __cdecl Item_AddActive(int16_t item_num);
+00427170    0000005A    +       void __cdecl Item_AddActive(int16_t item_num);
 004271D0    0000009C    -       void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);
 00427270    0000007C    -       int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_objecet_num);
 004272F0    00000030    -       void __cdecl Effect_InitialiseArray(void);

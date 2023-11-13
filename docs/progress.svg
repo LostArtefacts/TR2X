@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24.92% (299)</tspan> · <tspan class="known">72.58% (871)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25% (300)</tspan> · <tspan class="known">72.50% (870)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="186.13" height="6" x="0" y="0" class="decompiled"/>
-<rect width="542.20" height="6" x="186.13" y="0" class="known"/>
+<rect width="186.75" height="6" x="0" y="0" class="decompiled"/>
+<rect width="541.58" height="6" x="186.75" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -455,7 +455,7 @@
 <rect width="12" height="12" x="375" y="105" class="decompiled"><title>void __cdecl Item_Initialise(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="390" y="105" class="decompiled"><title>void __cdecl Item_RemoveActive(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="405" y="105" class="decompiled"><title>void __cdecl Item_RemoveDrawn(int16_t item_num);</title></rect>
-<rect width="12" height="12" x="420" y="105" class="known"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
+<rect width="12" height="12" x="420" y="105" class="decompiled"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="435" y="105" class="known"><title>void __cdecl Item_NewRoom(int16_t item_num, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="450" y="105" class="known"><title>int32_t __cdecl Item_GlobalReplace(int32_t src_object_num, int32_t dst_objecet_num);</title></rect>
 <rect width="12" height="12" x="465" y="105" class="known"><title>void __cdecl Effect_InitialiseArray(void);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.38%</tspan> · <tspan class="known">78.29%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">21.41%</tspan> · <tspan class="known">78.26%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="159.70" height="6" x="0" y="0" class="decompiled"/>
-<rect width="584.84" height="6" x="159.70" y="0" class="known"/>
+<rect width="159.90" height="6" x="0" y="0" class="decompiled"/>
+<rect width="584.64" height="6" x="159.90" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2027,7 +2027,7 @@
 <rect width="5.81" height="5.40" x="615.94" y="305.18" class="known"><title>BOOL __cdecl S_InitialiseSystem(void);</title></rect>
 <rect width="5.81" height="5.40" x="615.94" y="313.58" class="known"><title>bool __cdecl GetRegistryFloatValue(LPCTSTR lpValueName, double *value, double defaultValue);</title></rect>
 <rect width="5.81" height="5.31" x="615.94" y="321.99" class="decompiled"><title>void __cdecl Lara_Col_UWDeath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="5.81" height="5.22" x="615.94" y="330.30" class="known"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
+<rect width="5.81" height="5.22" x="615.94" y="330.30" class="decompiled"><title>void __cdecl Item_AddActive(int16_t item_num);</title></rect>
 <rect width="5.81" height="5.22" x="615.94" y="338.52" class="known"><title>void __cdecl WinInReadKeyboard(LPVOID lpInputData);</title></rect>
 <rect width="5.81" height="5.13" x="615.94" y="346.74" class="known"><title>int32_t __cdecl Demo_Control(int32_t level_num);</title></rect>
 <rect width="5.81" height="5.13" x="615.94" y="354.87" class="known"><title>int16_t __cdecl DoBloodSplat(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num);</title></rect>
