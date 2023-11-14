@@ -173,6 +173,7 @@ static void Inject_Output(void)
     INJECT(1, 0x004093A0, Output_InsertObjectGT3_ZBuffered);
     INJECT(1, 0x00409450, Output_InsertObjectG4_ZBuffered);
     INJECT(1, 0x004098F0, Output_InsertObjectG3_ZBuffered);
+    INJECT(1, 0x0041BA50, Output_InsertPolygons_I);
 }
 
 static void Inject_Music(void)

@@ -10,6 +10,7 @@ void __cdecl Output_Init(
     int32_t screen_height);
 
 void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip);
+void __cdecl Output_InsertPolygons_I(const int16_t *ptr, int32_t clip);
 void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside);
 void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);
 const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);

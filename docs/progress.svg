@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.58% (319)</tspan> · <tspan class="known">70.92% (851)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.67% (320)</tspan> · <tspan class="known">70.83% (850)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="198.58" height="6" x="0" y="0" class="decompiled"/>
-<rect width="529.75" height="6" x="198.58" y="0" class="known"/>
+<rect width="199.20" height="6" x="0" y="0" class="decompiled"/>
+<rect width="529.12" height="6" x="199.20" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -307,7 +307,7 @@
 <rect width="12" height="12" x="405" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZ_I(int16_t y, int16_t x, int16_t z);</title></rect>
 <rect width="12" height="12" x="420" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>
 <rect width="12" height="12" x="435" y="60" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack(int16_t **pprot, int32_t skip);</title></rect>
-<rect width="12" height="12" x="450" y="60" class="known"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
+<rect width="12" height="12" x="450" y="60" class="decompiled"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
 <rect width="12" height="12" x="465" y="60" class="decompiled"><title>void __cdecl Matrix_Interpolate(void);</title></rect>
 <rect width="12" height="12" x="480" y="60" class="decompiled"><title>void __cdecl Matrix_InterpolateArm(void);</title></rect>
 <rect width="12" height="12" x="495" y="60" class="known"><title>void __cdecl Gun_DrawFlash(int32_t weapon_type, int32_t clip);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.57%</tspan> · <tspan class="known">77.10%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.58%</tspan> · <tspan class="known">77.09%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="168.58" height="6" x="0" y="0" class="decompiled"/>
-<rect width="575.95" height="6" x="168.58" y="0" class="known"/>
+<rect width="168.67" height="6" x="0" y="0" class="decompiled"/>
+<rect width="575.86" height="6" x="168.67" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -2287,7 +2287,7 @@
 <rect width="2.62" height="3.16" x="744.38" y="294.35" class="decompiled"><title>void __cdecl Text_Flash(struct TEXTSTRING *string, int16_t enable, int16_t rate);</title></rect>
 <rect width="2.94" height="2.83" x="687.09" y="300.51" class="known"><title>DWORD __cdecl GetZBufferDepth(void);</title></rect>
 <rect width="2.94" height="2.83" x="687.09" y="306.34" class="known"><title>void __cdecl HWR_ResetColorKey(void);</title></rect>
-<rect width="2.94" height="2.69" x="687.09" y="312.17" class="known"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
+<rect width="2.94" height="2.69" x="687.09" y="312.17" class="decompiled"><title>void __cdecl Output_InsertPolygons_I(int16_t *ptr, int32_t clip);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="317.86" class="known"><title>void __cdecl Sound_Init(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="323.55" class="decompiled"><title>void __cdecl S_Audio_Sample_Shutdown(void);</title></rect>
 <rect width="2.94" height="2.69" x="687.09" y="329.25" class="known"><title>void __cdecl S_UnloadLevelFile(void);</title></rect>

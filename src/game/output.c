@@ -1,6 +1,7 @@
 #include "game/output.h"
 
 #include "game/math.h"
+#include "game/matrix.h"
 #include "game/shell.h"
 #include "global/const.h"
 #include "global/funcs.h"
@@ -326,7 +327,7 @@ void __cdecl Output_Init(
     }
 }
 
-void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip)
+void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, const int32_t clip)
 {
     g_FltWinLeft = g_PhdWinMinX;
     g_FltWinTop = g_PhdWinMinY;
@@ -343,6 +344,15 @@ void __cdecl Output_InsertPolygons(const int16_t *obj_ptr, int32_t clip)
         obj_ptr = g_Output_DrawObjectG4(obj_ptr + 1, *obj_ptr, ST_AVG_Z);
         obj_ptr = g_Output_DrawObjectG3(obj_ptr + 1, *obj_ptr, ST_AVG_Z);
     }
+}
+
+void __cdecl Output_InsertPolygons_I(
+    const int16_t *const ptr, const int32_t clip)
+{
+    Matrix_Push();
+    Matrix_Interpolate();
+    Output_InsertPolygons(ptr, clip);
+    Matrix_Pop();
 }
 
 void __cdecl Output_InsertRoom(const int16_t *obj_ptr, int32_t is_outside)

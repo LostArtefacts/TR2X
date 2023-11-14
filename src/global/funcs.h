@@ -148,7 +148,6 @@
 #define Object_DrawAnimatingItem ((void __cdecl (*)(struct ITEM_INFO *item))0x00419A70)
 #define Lara_Draw ((void __cdecl (*)(struct ITEM_INFO *item))0x00419DF0)
 #define Lara_Draw_I ((void __cdecl (*)(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate))0x0041AB20)
-#define Output_InsertPolygons_I ((void __cdecl (*)(int16_t *ptr, int32_t clip))0x0041BA50)
 #define Gun_DrawFlash ((void __cdecl (*)(int32_t weapon_type, int32_t clip))0x0041BD30)
 #define Output_CalculateObjectLighting ((void __cdecl (*)(struct ITEM_INFO *item, int16_t *frame))0x0041BEA0)
 #define Item_GetFrames ((int32_t __cdecl (*)(struct ITEM_INFO *item, int16_t *frmptr[], int32_t *rate))0x0041BF90)
