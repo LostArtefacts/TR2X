@@ -7,6 +7,41 @@
 #include "global/vars.h"
 #include "util.h"
 
+bool __cdecl Lara_TestWaterStepOut(
+    struct ITEM_INFO *item, struct COLL_INFO *coll)
+{
+    if (coll->coll_type == COLL_FRONT || coll->side_mid.type == HT_BIG_SLOPE
+        || coll->side_mid.floor >= 0) {
+        return false;
+    }
+
+    if (coll->side_mid.floor >= -STEP_L / 2) {
+        item->current_anim_state = LS_WATER_OUT;
+        item->goal_anim_state = LS_STOP;
+        item->anim_num = LA_SURF_TO_WADE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    } else if (item->goal_anim_state == LS_SURF_LEFT) {
+        item->goal_anim_state = LS_STEP_LEFT;
+    } else if (item->goal_anim_state == LS_SURF_RIGHT) {
+        item->goal_anim_state = LS_STEP_RIGHT;
+    } else {
+        item->current_anim_state = LS_WADE;
+        item->goal_anim_state = LS_WADE;
+        item->anim_num = LA_WADE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    }
+
+    item->pos.y += coll->side_front.floor + LARA_HEIGHT_SURF - 5;
+    Item_UpdateRoom(item, -LARA_HEIGHT / 2);
+    item->gravity = 0;
+    item->pos.x_rot = 0;
+    item->pos.z_rot = 0;
+    item->speed = 0;
+    item->fall_speed = 0;
+    g_Lara.water_status = LWS_WADE;
+    return true;
+}
+
 void __cdecl Lara_SurfaceCollision(
     struct ITEM_INFO *const item, struct COLL_INFO *const coll)
 {
