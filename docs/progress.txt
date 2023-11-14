@@ -1320,7 +1320,7 @@ typedef enum LARA_MESH {
 00409450    0000039C    +       const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 004097F0    000000F7    -       void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);
 004098F0    000002D3    +       const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-00409BD0    000001C9    -       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+00409BD0    000001C9    +       void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409DA0    00000133    -       void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00409EE0    00000706    -       void __cdecl Output_InsertGT3_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2, enum SORT_TYPE sort_type);
 0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
@@ -2704,6 +2704,7 @@ typedef enum LARA_MESH {
 00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
 0051A208    -       int32_t g_Input;
 0051B918    -       RECT g_PhdWinRect;
+0051B930    -       RGB888 g_GamePalette8[256];
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
 0051BDA8    -       int32_t g_MasterVolume;
