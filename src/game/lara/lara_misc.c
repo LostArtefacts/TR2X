@@ -110,7 +110,7 @@ void __cdecl Lara_DeflectEdgeJump(
             if (coll->side_mid.floor > 512) {
                 item->goal_anim_state = LS_FAST_FALL;
                 item->current_anim_state = LS_FAST_FALL;
-                item->anim_num = LA_FAST_FALL;
+                item->anim_num = LA_FAST_SPLAT;
                 item->frame_num = g_Anims[item->anim_num].frame_base + 1;
             } else if (coll->side_mid.floor <= 128) {
                 item->goal_anim_state = LS_LAND;

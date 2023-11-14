@@ -3,6 +3,8 @@
 #include "global/types.h"
 
 // TODO: make static
+bool __cdecl Lara_TestWaterClimbOut(
+    struct ITEM_INFO *item, struct COLL_INFO *coll);
 bool __cdecl Lara_TestWaterStepOut(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
 void __cdecl Lara_SurfaceCollision(

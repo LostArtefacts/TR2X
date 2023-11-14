@@ -1,14 +1,98 @@
 #include "game/lara/lara_col.h"
 
 #include "game/lara/lara_misc.h"
+#include "game/math.h"
 #include "game/sound.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "util.h"
 
+bool __cdecl Lara_TestWaterClimbOut(
+    struct ITEM_INFO *const item, struct COLL_INFO *const coll)
+{
+    if (coll->coll_type != COLL_FRONT || !(g_Input & IN_ACTION)
+        || coll->side_front.type == HT_BIG_SLOPE) {
+        return false;
+    }
+
+    const int32_t coll_hdif =
+        ABS(coll->side_left.floor - coll->side_right.floor);
+    const int32_t min_coll_hdif = 60;
+    if (coll_hdif >= min_coll_hdif) {
+        return false;
+    }
+
+    if (g_Lara.gun_status != LGS_ARMLESS
+        && (g_Lara.gun_status != LGS_READY || g_Lara.gun_type != LGT_FLARE)) {
+        return false;
+    }
+
+    if (coll->side_front.ceiling > 0) {
+        return false;
+    }
+    if (coll->side_mid.ceiling > -STEPUP_HEIGHT) {
+        return false;
+    }
+
+    const int32_t lara_hdif = coll->side_front.floor + LARA_HEIGHT_SURF;
+    if (lara_hdif <= -STEP_L * 2
+        || lara_hdif > LARA_HEIGHT_SURF - STEPUP_HEIGHT) {
+        return false;
+    }
+
+    const enum DIRECTION dir =
+        Math_GetDirectionCone(item->pos.y_rot, 35 * PHD_DEGREE);
+    if (dir == DIR_UNKNOWN) {
+        return false;
+    }
+
+    item->pos.y += lara_hdif - 5;
+    Item_UpdateRoom(item, -LARA_HEIGHT / 2);
+
+    switch (dir) {
+    case DIR_NORTH:
+        item->pos.z = (item->pos.z & -WALL_L) + WALL_L + LARA_RADIUS;
+        break;
+    case DIR_WEST:
+        item->pos.x = (item->pos.x & -WALL_L) + WALL_L + LARA_RADIUS;
+        break;
+    case DIR_SOUTH:
+        item->pos.z = (item->pos.z & -WALL_L) - LARA_RADIUS;
+        break;
+    case DIR_EAST:
+        item->pos.x = (item->pos.x & -WALL_L) - LARA_RADIUS;
+        break;
+    case DIR_UNKNOWN:
+        return false;
+    }
+
+    if (lara_hdif < -STEP_L / 2) {
+        item->anim_num = LA_SURF_CLIMB;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    } else if (lara_hdif < STEP_L / 2) {
+        item->anim_num = LA_SURF_TO_STAND;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    } else {
+        item->anim_num = LA_SURF_TO_QSTAND;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+    }
+
+    item->current_anim_state = LS_WATER_OUT;
+    item->goal_anim_state = LS_STOP;
+    item->pos.y_rot = Math_DirectionToAngle(dir);
+    item->pos.x_rot = 0;
+    item->pos.z_rot = 0;
+    item->gravity = 0;
+    item->speed = 0;
+    item->fall_speed = 0;
+    g_Lara.gun_status = LGS_HANDS_BUSY;
+    g_Lara.water_status = LWS_ABOVE_WATER;
+    return true;
+}
+
 bool __cdecl Lara_TestWaterStepOut(
-    struct ITEM_INFO *item, struct COLL_INFO *coll)
+    struct ITEM_INFO *const item, struct COLL_INFO *const coll)
 {
     if (coll->coll_type == COLL_FRONT || coll->side_mid.type == HT_BIG_SLOPE
         || coll->side_mid.floor >= 0) {

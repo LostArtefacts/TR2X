@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.33% (316)</tspan> · <tspan class="known">71.17% (854)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.42% (317)</tspan> · <tspan class="known">71.08% (853)</tspan> · <tspan class="todo">0.67% (8)</tspan> · <tspan class="unused">1.83% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="196.71" height="6" x="0" y="0" class="decompiled"/>
-<rect width="531.62" height="6" x="196.71" y="0" class="known"/>
+<rect width="197.33" height="6" x="0" y="0" class="decompiled"/>
+<rect width="530.99" height="6" x="197.33" y="0" class="known"/>
 <rect width="4.98" height="6" x="728.32" y="0" class="todo"/>
 <rect width="13.70" height="6" x="733.30" y="0" class="unused"/>
 </g>
@@ -653,7 +653,7 @@
 <rect width="12" height="12" x="345" y="165" class="decompiled"><title>void __cdecl Lara_Col_SurfTread(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="360" y="165" class="decompiled"><title>void __cdecl Lara_SurfaceCollision(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="375" y="165" class="decompiled"><title>int32_t __cdecl Lara_TestWaterStepOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="12" height="12" x="390" y="165" class="known"><title>int32_t __cdecl Lara_TestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="12" height="12" x="390" y="165" class="decompiled"><title>int32_t __cdecl Lara_TestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="405" y="165" class="decompiled"><title>void __cdecl Lara_HandleUnderwater(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12" height="12" x="420" y="165" class="decompiled"><title>void __cdecl Lara_SwimTurn(struct ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="435" y="165" class="decompiled"><title>void __cdecl Lara_State_Swim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -1281,10 +1281,10 @@
 </g>
 <g transform="translate(0 531)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.34%</tspan> · <tspan class="known">77.33%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">22.50%</tspan> · <tspan class="known">77.17%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="166.87" height="6" x="0" y="0" class="decompiled"/>
-<rect width="577.67" height="6" x="166.87" y="0" class="known"/>
+<rect width="168.06" height="6" x="0" y="0" class="decompiled"/>
+<rect width="576.48" height="6" x="168.06" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.53" y="0" class="todo"/>
 <rect width="2.33" height="6" x="744.67" y="0" class="unused"/>
 </g>
@@ -1452,7 +1452,7 @@
 <rect width="17.76" height="18.13" x="729.24" y="0" class="known"><title>BOOL __cdecl LoadBoxes(HANDLE hFile);</title></rect>
 <rect width="17.97" height="17.88" x="387.11" y="21.13" class="known"><title>void __cdecl BGND_DrawInGameBackground(void);</title></rect>
 <rect width="17.97" height="17.73" x="387.11" y="42.01" class="known"><title>void __cdecl LaraGetNewTarget(struct WEAPON_INFO *winfo);</title></rect>
-<rect width="17.97" height="17.73" x="387.11" y="62.74" class="known"><title>int32_t __cdecl Lara_TestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
+<rect width="17.97" height="17.73" x="387.11" y="62.74" class="decompiled"><title>int32_t __cdecl Lara_TestWaterClimbOut(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="17.97" height="17.69" x="387.11" y="83.47" class="known"><title>void __cdecl BaracuddaControl(int16_t item_num);</title></rect>
 <rect width="17.97" height="17.61" x="387.11" y="104.16" class="decompiled"><title>int32_t __cdecl Output_XGenXGUV(const int16_t *obj_ptr);</title></rect>
 <rect width="17.97" height="17.58" x="387.11" y="124.78" class="known"><title>void __cdecl Room_DrawSingleRoomObjects(int16_t room_num);</title></rect>

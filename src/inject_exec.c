@@ -334,8 +334,9 @@ static void Inject_Lara_State(void)
 
 static void Inject_Lara_Col(void)
 {
-    INJECT(1, 0x00431C40, Lara_TestWaterStepOut);
     INJECT(1, 0x00431B40, Lara_SurfaceCollision);
+    INJECT(1, 0x00431C40, Lara_TestWaterStepOut);
+    INJECT(1, 0x00431D30, Lara_TestWaterClimbOut);
 
     INJECT(1, 0x00428D20, Lara_Col_Walk);
     INJECT(1, 0x00428EC0, Lara_Col_Run);
