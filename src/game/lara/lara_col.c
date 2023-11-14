@@ -8,6 +8,34 @@
 #include "global/vars.h"
 #include "util.h"
 
+void __cdecl Lara_CollideStop(
+    struct ITEM_INFO *const item, const struct COLL_INFO *const coll)
+{
+    switch (coll->old_anim_state) {
+    case LS_STOP:
+    case LS_TURN_RIGHT:
+    case LS_TURN_LEFT:
+    case LS_FAST_TURN:
+        item->current_anim_state = coll->old_anim_state;
+        item->anim_num = coll->old_anim_num;
+        item->frame_num = coll->old_frame_num;
+        if (g_Input & IN_LEFT) {
+            item->goal_anim_state = LS_TURN_LEFT;
+        } else if (g_Input & IN_RIGHT) {
+            item->goal_anim_state = LS_TURN_RIGHT;
+        } else {
+            item->goal_anim_state = LS_STOP;
+        }
+        Lara_Animate(item);
+        break;
+
+    default:
+        item->anim_num = LA_STOP;
+        item->frame_num = g_Anims[LA_STOP].frame_base;
+        break;
+    }
+}
+
 bool __cdecl Lara_Fallen(
     struct ITEM_INFO *const item, const struct COLL_INFO *const coll)
 {

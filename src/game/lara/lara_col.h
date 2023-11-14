@@ -3,6 +3,8 @@
 #include "global/types.h"
 
 // TODO: make static
+void __cdecl Lara_CollideStop(
+    struct ITEM_INFO *item, const struct COLL_INFO *coll);
 bool __cdecl Lara_Fallen(struct ITEM_INFO *item, const struct COLL_INFO *coll);
 bool __cdecl Lara_TestWaterClimbOut(
     struct ITEM_INFO *item, const struct COLL_INFO *coll);
