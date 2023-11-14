@@ -76,7 +76,7 @@ int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     switch (coll->coll_type) {
     case COLL_FRONT:
-    case COLL_TOPFRONT:
+    case COLL_TOP_FRONT:
         Item_ShiftCol(item, coll);
         item->goal_anim_state = LS_STOP;
         item->current_anim_state = LS_STOP;
@@ -105,7 +105,7 @@ void __cdecl Lara_DeflectEdgeJump(
     Item_ShiftCol(item, coll);
     switch (coll->coll_type) {
     case COLL_FRONT:
-    case COLL_TOPFRONT:
+    case COLL_TOP_FRONT:
         if (!g_Lara.climb_status || item->speed != 2) {
             if (coll->side_mid.floor > 512) {
                 item->goal_anim_state = LS_FAST_FALL;
@@ -165,7 +165,7 @@ void __cdecl Lara_SlideEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll)
         break;
 
     case COLL_TOP:
-    case COLL_TOPFRONT:
+    case COLL_TOP_FRONT:
         CLAMPL(item->fall_speed, 1);
         break;
 

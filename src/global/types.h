@@ -1620,18 +1620,28 @@ typedef enum COLL_TYPE {
     COLL_LEFT     = 0x02,
     COLL_RIGHT    = 0x04,
     COLL_TOP      = 0x08,
-    COLL_TOPFRONT = 0x10,
+    COLL_TOP_FRONT = 0x10,
     COLL_CLAMP    = 0x20,
 } COLL_TYPE;
 // clang-format on
 
+// clang-format off
+typedef enum HEIGHT_TYPE {
+    HT_WALL        = 0,
+    HT_SMALL_SLOPE = 1,
+    HT_BIG_SLOPE   = 2,
+} HEIGHT_TYPE;
+// clang-format on
+
+// clang-format off
 typedef enum DIRECTION {
     DIR_UNKNOWN = -1,
-    DIR_NORTH = 0,
-    DIR_EAST = 1,
-    DIR_SOUTH = 2,
-    DIR_WEST = 3,
+    DIR_NORTH   = 0,
+    DIR_EAST    = 1,
+    DIR_SOUTH   = 2,
+    DIR_WEST    = 3,
 } DIRECTION;
+// clang-format on
 
 typedef struct XGEN_X {
     uint16_t x;

@@ -4,6 +4,8 @@
 
 void __cdecl Lara_HandleAboveWater(
     struct ITEM_INFO *item, struct COLL_INFO *coll);
+
 void __cdecl Lara_HandleSurface(struct ITEM_INFO *item, struct COLL_INFO *coll);
+
 void __cdecl Lara_HandleUnderwater(
     struct ITEM_INFO *item, struct COLL_INFO *coll);

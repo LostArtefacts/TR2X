@@ -93,7 +93,7 @@ void __cdecl Lara_HandleSurface(
 
     coll->bad_pos = NO_BAD_POS;
     coll->bad_neg = -STEP_L / 2;
-    coll->bad_ceiling = LARA_HEIGHT_SURF;
+    coll->bad_ceiling = 100;
 
     coll->slopes_are_walls = 0;
     coll->slopes_are_pits = 0;

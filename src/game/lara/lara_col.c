@@ -7,6 +7,45 @@
 #include "global/vars.h"
 #include "util.h"
 
+void __cdecl Lara_SurfaceCollision(
+    struct ITEM_INFO *const item, struct COLL_INFO *const coll)
+{
+    coll->facing = g_Lara.move_angle;
+    Collide_GetCollisionInfo(
+        coll, item->pos.x, item->pos.y + LARA_HEIGHT_SURF, item->pos.z,
+        item->room_num, LARA_HEIGHT_SURF + 100);
+
+    Item_ShiftCol(item, coll);
+
+    if (coll->coll_type == COLL_LEFT) {
+        item->pos.y_rot += 5 * PHD_DEGREE;
+    } else if (coll->coll_type == COLL_RIGHT) {
+        item->pos.y_rot -= 5 * PHD_DEGREE;
+    } else if (
+        coll->coll_type != COLL_NONE
+        || (coll->side_mid.floor < 0 && coll->side_mid.type == HT_BIG_SLOPE)) {
+        item->fall_speed = 0;
+        item->pos.x = coll->old.x;
+        item->pos.y = coll->old.y;
+        item->pos.z = coll->old.z;
+    }
+
+    const int32_t water_height = Room_GetWaterHeight(
+        item->pos.x, item->pos.y, item->pos.z, item->room_num);
+    if (water_height - item->pos.y <= -100) {
+        item->current_anim_state = LS_DIVE;
+        item->goal_anim_state = LS_SWIM;
+        item->anim_num = LA_SURF_DIVE;
+        item->frame_num = g_Anims[item->anim_num].frame_base;
+        item->pos.x_rot = -45 * PHD_DEGREE;
+        item->fall_speed = 80;
+        g_Lara.water_status = LWS_UNDERWATER;
+        return;
+    }
+
+    Lara_TestWaterStepOut(item, coll);
+}
+
 void __cdecl Lara_Col_Walk(struct ITEM_INFO *item, struct COLL_INFO *coll)
 {
     item->gravity = 0;
