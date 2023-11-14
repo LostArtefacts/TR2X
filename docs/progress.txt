@@ -1419,7 +1419,7 @@ typedef enum LARA_MESH {
 # game/collide.c
 004128F0    0000067C    -       void __cdecl Collide_GetCollisionInfo(struct COLL_INFO *coll, int32_t xpos, int32_t ypos, int32_t zpos, int16_t room_num, int32_t obj_height);
 00412FB0    0000002F    -       int32_t __cdecl Room_FindGridShift(int32_t src, int32_t dst);
-00412FE0    000003D2    -       int32_t __cdecl Collide_CollideStaticObjects(struct COLL_INFO *coll, int32_t x, int32_t y, int32_t z, int16_t room_num, int32_t hite);
+00412FE0    000003D2    -       int32_t __cdecl Collide_CollideStaticObjects(struct COLL_INFO *coll, int32_t x, int32_t y, int32_t z, int16_t room_num, int32_t height);
 004133D0    000000C8    -       void __cdecl Room_GetNearbyRooms(int32_t x, int32_t y, int32_t z, int32_t r, int32_t h, int16_t room_num);
 004134A0    00000055    -       void __cdecl Room_GetNewRoom(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00413500    00000037    -       void __cdecl Item_ShiftCol(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -1481,7 +1481,7 @@ typedef enum LARA_MESH {
 004177B0    0000017F    -R      void __cdecl ControlTwinkle(int16_t fx_num);
 00417930    000000D9    -R      void __cdecl CreateBartoliLight(int16_t item_num);
 00417A10    000000AB    -R      int16_t __cdecl DragonFire(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
-00417AC0    000002ED    -R      void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00417AC0    000002ED    -R      void __cdecl DragonCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
 00417DB0    000000D9    -R      void __cdecl DragonBones(int16_t item_num);
 00417E90    00000519    -R      void __cdecl DragonControl(int16_t back_num);
 004183E0    00000114    -R      void __cdecl InitialiseBartoli(int16_t item_num);
@@ -1542,7 +1542,9 @@ typedef enum LARA_MESH {
 0041CA90    000000C2    -R      void __cdecl Splash(struct ITEM_INFO *item);
 0041CB60    00000071    -R      void __cdecl ControlSplash1(int16_t fx_num);
 0041CBE0    000000AE    -R      void __cdecl ControlWaterSprite(int16_t fx_num);
+0041CC90    0000008C    -R      void __cdecl ControlSnowSprite(int16_t fx_num);
 0041CD20    000000DE    -R      void __cdecl ControlHotLiquid(int16_t fx_num);
+0041CE00    0000013D    -R      void __cdecl WaterFall(int16_t fx_num);
 0041CF40    0000000B    -R      void __cdecl finish_level_effect(struct ITEM_INFO *item);
 0041CF50    00000016    -R      void __cdecl turn180_effect(struct ITEM_INFO *item);
 0041CF70    00000096    -R      void __cdecl floor_shake_effect(struct ITEM_INFO *item);
@@ -1556,11 +1558,13 @@ typedef enum LARA_MESH {
 0041D1B0    0000001C    -R      void __cdecl CurtainFX(struct ITEM_INFO *item);
 0041D1D0    0000001C    -R      void __cdecl StatueFX(struct ITEM_INFO *item);
 0041D1F0    0000001C    -R      void __cdecl SetChangeFX(struct ITEM_INFO *item);
+0041D210    0000003F    -R      void __cdecl ControlDingDong(int16_t item_num);
+0041D250    00000037    -R      void __cdecl ControlLaraAlarm(int16_t item_num);
 0041D290    00000067    -R      void __cdecl ControlAlarmSound(int16_t item_num);
 0041D300    0000005D    -R      void __cdecl ControlBirdTweeter(int16_t item_num);
 0041D360    00000059    -R      void __cdecl DoChimeSound(struct ITEM_INFO *item);
 0041D3C0    00000068    -R      void __cdecl ControlClockChimes(int16_t item_num);
-0041D430    00000128    -R      void __cdecl SphereOfDoomCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+0041D430    00000128    -R      void __cdecl SphereOfDoomCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
 0041D560    000000F0    -R      void __cdecl SphereOfDoom(int16_t item_num);
 0041D650    0000012D    -R      void __cdecl DrawSphereOfDoom(struct ITEM_INFO *item);
 0041D780    0000000A    -R      void __cdecl lara_hands_free(struct ITEM_INFO *item);
@@ -1869,6 +1873,7 @@ typedef enum LARA_MESH {
 0042FFF0    00000018    -R      void __cdecl draw_flare_meshes(void);
 00430010    00000018    -R      void __cdecl undraw_flare_meshes(void);
 00430030    0000003E    -R      void __cdecl ready_flare(void);
+00430070    0000026E    -R      void __cdecl FlareControl(int16_t item_num);
 
 # game/laramisc.c
 004302E0    00000668    -       void __cdecl Lara_Control(int16_t item_num);
@@ -1930,10 +1935,10 @@ typedef enum LARA_MESH {
 # game/moveblock.c
 004338F0    0000002C    -R      void __cdecl InitialiseMovingBlock(int16_t item_num);
 00433920    00000148    -R      void __cdecl MovableBlock(int16_t item_num);
-00433A70    00000239    -R      void __cdecl MovableBlockCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
-00433CD0    0000004E    -R      int32_t __cdecl TestBlockMovable(struct ITEM_INFO *item, int32_t blokhite);
-00433D20    00000137    -R      int32_t __cdecl TestBlockPush(struct ITEM_INFO *item, int32_t blokhite, uint16_t quadrant);
-00433E70    00000225    -R      int32_t __cdecl TestBlockPull(struct ITEM_INFO *item, int32_t blokhite, uint16_t quadrant);
+00433A70    00000239    -R      void __cdecl MovableBlockCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00433CD0    0000004E    -R      int32_t __cdecl TestBlockMovable(struct ITEM_INFO *item, int32_t block_height);
+00433D20    00000137    -R      int32_t __cdecl TestBlockPush(struct ITEM_INFO *item, int32_t block_height, uint16_t quadrant);
+00433E70    00000225    -R      int32_t __cdecl TestBlockPull(struct ITEM_INFO *item, int32_t block_height, uint16_t quadrant);
 004340B0    000000BB    -R      void __cdecl AlterFloorHeight(struct ITEM_INFO *item, int32_t height);
 00434170    00000022    -R      void __cdecl DrawMovableBlock(struct ITEM_INFO *item);
 004341A0    0000006B    -R      void __cdecl DrawUnclippedItem(struct ITEM_INFO *item);
@@ -1945,20 +1950,25 @@ typedef enum LARA_MESH {
 00434400    0000020F    -R      void __cdecl FinalLevelCounter(int16_t item_num);
 00434610    000000D9    -R      void __cdecl MiniCopterControl(int16_t item_num);
 004346F0    0000007C    -R      void __cdecl InitialiseDyingMonk(int16_t item_num);
+00434770    00000087    -R      void __cdecl DyingMonk(int16_t item_num);
 00434800    000000BD    -R      void __cdecl ControlGongBonger(int16_t item_num);
+004348C0    000000BF    -R      void __cdecl DeathSlideCollision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);
 00434980    0000028F    -R      void __cdecl ControlDeathSlide(int16_t item_num);
 00434C10    000000E3    -R      void __cdecl BigBowlControl(int16_t item_num);
 00434D00    0000007E    -R      void __cdecl BellControl(int16_t item_num);
+00434D80    00000075    -R      void __cdecl InitialiseWindow(int16_t item_num);
 00434E00    000000C4    -R      void __cdecl SmashWindow(int16_t item_num);
 00434ED0    00000096    -R      void __cdecl WindowControl(int16_t item_num);
 00434F70    000000DC    -R      void __cdecl SmashIceControl(int16_t item_num);
 00435050    00000042    -R      void __cdecl ShutThatDoor(struct DOORPOS_DATA *d);
 004350A0    00000032    -R      void __cdecl OpenThatDoor(struct DOORPOS_DATA *d);
 004350E0    000003DC    -R      void __cdecl InitialiseDoor(int16_t item_num);
+004354C0    000000C8    -R      void __cdecl DoorControl(int16_t item_num);
 00435590    000000B1    -R      int32_t __cdecl OnDrawBridge(struct ITEM_INFO *item, int32_t x, int32_t y);
 00435650    00000036    -R      void __cdecl DrawBridgeFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00435690    0000003B    -R      void __cdecl DrawBridgeCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
-004356D0    0000002C    -R      void __cdecl DrawBridgeCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+004356D0    0000002C    -R      void __cdecl DrawBridgeCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00435700    00000035    -R      void __cdecl InitialiseLift(int16_t item_num);
 00435740    000000D4    -R      void __cdecl LiftControl(int16_t item_num);
 00435820    00000179    -R      void __cdecl LiftFloorCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *floor, int32_t *ceiling);
 004359A0    00000035    -R      void __cdecl LiftFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
@@ -1969,6 +1979,7 @@ typedef enum LARA_MESH {
 00435AA0    00000030    -R      void __cdecl BridgeTilt1Floor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00435AD0    00000035    -R      void __cdecl BridgeTilt1Ceiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00435B10    0000002F    -R      void __cdecl BridgeTilt2Floor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00435B40    00000034    -R      void __cdecl BridgeTilt2Ceiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00435B80    0000010C    -R      void __cdecl CopterControl(int16_t item_num);
 00435C90    000000D2    -R      void __cdecl GeneralControl(int16_t item_num);
 00435D70    0000008D    -R      void __cdecl DetonatorControl(int16_t item_num);
@@ -1992,11 +2003,12 @@ typedef enum LARA_MESH {
 00437CF0    00000172    -R      void __cdecl WinstonControl(int16_t item_num);
 
 # game/pickup.c
-00437E70    00000480    -R      void __cdecl PickUpCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
-004382F0    0000020A    -R      void __cdecl SwitchCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
-00438500    000000FC    -R      void __cdecl SwitchCollision2(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
-00438840    00000223    -R      void __cdecl KeyHoleCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
-00438A80    00000294    -R      void __cdecl PuzzleHoleCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+00437E70    00000480    -R      void __cdecl PickUpCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+004382F0    0000020A    -R      void __cdecl SwitchCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00438500    000000FC    -R      void __cdecl SwitchCollision2(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00438600    0000023B    -R      void __cdecl DetonatorCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00438840    00000223    -R      void __cdecl KeyHoleCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
+00438A80    00000294    -R      void __cdecl PuzzleHoleCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
 00438D40    00000039    -R      void __cdecl SwitchControl(int16_t item_num);
 00438D80    000000BD    -R      int32_t __cdecl SwitchTrigger(int16_t item_num, int16_t timer);
 00438E40    0000003D    -R      int32_t __cdecl KeyTrigger(int16_t item_num);
@@ -2052,8 +2064,8 @@ typedef enum LARA_MESH {
 0043EA60    000002D5    -R      void __cdecl DrawSkidoo(struct ITEM_INFO *item);
 0043ED40    0000007F    -R      void __cdecl InitialiseSkidman(int16_t item_num);
 0043EDD0    000003E2    -R      void __cdecl SkidManControl(int16_t rider_num);
-0043F1D0    00000119    -R      void __cdecl SkidmanPush(struct ITEM_INFO *item, struct ITEM_INFO *laraitem, int32_t radius);
-0043F2F0    00000081    -R      void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *laraitem, struct COLL_INFO *coll);
+0043F1D0    00000119    -R      void __cdecl SkidmanPush(struct ITEM_INFO *item, struct ITEM_INFO *lara_item, int32_t radius);
+0043F2F0    00000081    -R      void __cdecl SkidmanCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);
 
 # game/sound.c
 0043F380    00000031    *       int32_t __cdecl Music_GetRealTrack(int32_t track);
@@ -2064,7 +2076,7 @@ typedef enum LARA_MESH {
 0043F980    0000002A    -       void __cdecl Sound_Init(void);
 
 # game/sphere.c
-0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *laraitem);
+0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *lara_item);
 0043FAE0    000002D8    -R      int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);
 0043FDC0    0000019A    -       void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);
 0043FF60    0000005D    -R      void __cdecl BaddieBiteEffect(struct ITEM_INFO *item, struct BITE_INFO *bite);
@@ -2105,6 +2117,8 @@ typedef enum LARA_MESH {
 00441400    00000190    -R      void __cdecl PropellerControl(int16_t item_num);
 00441590    0000017B    -R      void __cdecl SpinningBlade(int16_t item_num);
 00441710    000000FE    -R      void __cdecl IcicleControl(int16_t item_num);
+00441810    0000003C    -R      void __cdecl InitialiseBlade(int16_t item_num);
+00441850    00000091    -R      void __cdecl BladeControl(int16_t item_num);
 004418F0    00000046    -R      void __cdecl InitialiseKillerStatue(int16_t item_num);
 00441940    00000109    -R      void __cdecl KillerStatueControl(int16_t item_num);
 00441A50    000000DB    -R      void __cdecl SpringBoardControl(int16_t item_num);
@@ -2113,12 +2127,16 @@ typedef enum LARA_MESH {
 00441EC0    0000024A    -R      void __cdecl RollingBallCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
 00442110    00000155    -R      void __cdecl SpikeCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);
 00442270    0000004F    -R      void __cdecl TrapDoorControl(int16_t item_num);
+004422C0    0000003A    -R      void __cdecl TrapDoorFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00442300    0000003F    -R      void __cdecl TrapDoorCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 00442340    000000A3    -R      int32_t __cdecl OnTrapDoor(struct ITEM_INFO *item, int32_t x, int32_t z);
 004423F0    0000010A    -R      void __cdecl Pendulum(int16_t item_num);
 00442500    00000105    -R      void __cdecl FallingBlock(int16_t item_num);
 00442610    0000003E    -R      void __cdecl FallingBlockFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
+00442650    00000044    -R      void __cdecl FallingBlockCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);
 004426A0    000000BD    -R      void __cdecl TeethTrap(int16_t item_num);
+00442760    000000E0    -R      void __cdecl FallingCeiling(int16_t item_num);
+00442840    0000013E    -R      void __cdecl DartEmitterControl(int16_t item_num);
 00442980    00000155    -R      void __cdecl DartsControl(int16_t item_num);
 00442AE0    0000004B    -R      void __cdecl DartEffectControl(int16_t fx_num);
 00442B30    00000090    -R      void __cdecl FlameEmitterControl(int16_t item_num);
