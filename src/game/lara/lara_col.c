@@ -8,8 +8,24 @@
 #include "global/vars.h"
 #include "util.h"
 
+bool __cdecl Lara_Fallen(
+    struct ITEM_INFO *const item, const struct COLL_INFO *const coll)
+{
+    if (coll->side_mid.floor <= STEPUP_HEIGHT
+        || g_Lara.water_status == LWS_WADE) {
+        return false;
+    }
+    item->current_anim_state = LS_FORWARD_JUMP;
+    item->goal_anim_state = LS_FORWARD_JUMP;
+    item->anim_num = LA_FALL_DOWN;
+    item->frame_num = g_Anims[item->anim_num].frame_base;
+    item->gravity = 1;
+    item->fall_speed = 0;
+    return true;
+}
+
 bool __cdecl Lara_TestWaterClimbOut(
-    struct ITEM_INFO *const item, struct COLL_INFO *const coll)
+    struct ITEM_INFO *const item, const struct COLL_INFO *const coll)
 {
     if (coll->coll_type != COLL_FRONT || !(g_Input & IN_ACTION)
         || coll->side_front.type == HT_BIG_SLOPE) {
@@ -92,7 +108,7 @@ bool __cdecl Lara_TestWaterClimbOut(
 }
 
 bool __cdecl Lara_TestWaterStepOut(
-    struct ITEM_INFO *const item, struct COLL_INFO *const coll)
+    struct ITEM_INFO *const item, const struct COLL_INFO *const coll)
 {
     if (coll->coll_type == COLL_FRONT || coll->side_mid.type == HT_BIG_SLOPE
         || coll->side_mid.floor >= 0) {
