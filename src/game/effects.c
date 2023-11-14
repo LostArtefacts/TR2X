@@ -62,14 +62,15 @@ int16_t __cdecl Effect_Create(const int16_t room_num)
     }
 
     struct FX_INFO *const fx = &g_Effects[fx_num];
+    g_NextEffectFree = fx->next_fx;
+
     struct ROOM_INFO *const room = &g_Rooms[room_num];
     fx->room_num = room_num;
-    fx->next_active = g_NextEffectActive;
     fx->next_fx = room->fx_num;
     room->fx_num = fx_num;
 
+    fx->next_active = g_NextEffectActive;
     g_NextEffectActive = fx_num;
-    g_NextEffectFree = fx->next_fx;
 
     fx->shade = 0x1000;
 
