@@ -3109,3 +3109,74 @@ void __cdecl Output_InsertGT3_ZBuffered(
     HWR_EnableColorKey(texture->draw_type != DRAW_OPAQUE);
     Output_DrawClippedPoly_Textured(num_points);
 }
+
+void __cdecl Output_InsertGT4_ZBuffered(
+    const struct PHD_VBUF *const vtx0, const struct PHD_VBUF *const vtx1,
+    const struct PHD_VBUF *const vtx2, const struct PHD_VBUF *const vtx3,
+    const struct PHD_TEXTURE *const texture)
+{
+    const int8_t clip_and = vtx0->clip & vtx1->clip & vtx2->clip & vtx3->clip;
+    const int8_t clip_or = vtx0->clip | vtx1->clip | vtx2->clip | vtx3->clip;
+
+    if (clip_and != 0) {
+        return;
+    }
+
+    if (clip_or >= 0) {
+        if (!VBUF_VISIBLE(*vtx0, *vtx1, *vtx2)) {
+            return;
+        }
+    } else if (clip_or < 0) {
+        if (!Output_VisibleZClip(vtx0, vtx1, vtx2)) {
+            return;
+        }
+    }
+
+    if (clip_or != 0) {
+        Output_InsertGT3_ZBuffered(
+            vtx0, vtx1, vtx2, texture, texture->uv, &texture->uv[1],
+            &texture->uv[2]);
+        Output_InsertGT3_ZBuffered(
+            vtx0, vtx2, vtx3, texture, texture->uv, &texture->uv[2],
+            &texture->uv[3]);
+        return;
+    }
+
+    g_VBufferD3D[0].sx = vtx0->xs;
+    g_VBufferD3D[0].sy = vtx0->ys;
+    g_VBufferD3D[0].sz = g_FltResZBuf - g_FltResZORhw * vtx0->rhw;
+    g_VBufferD3D[0].rhw = vtx0->rhw;
+    g_VBufferD3D[0].color = Output_ShadeColor(vtx0->g);
+    g_VBufferD3D[0].tu = (double)texture->uv[0].u / (double)PHD_ONE;
+    g_VBufferD3D[0].tv = (double)texture->uv[0].v / (double)PHD_ONE;
+
+    g_VBufferD3D[1].sx = vtx1->xs;
+    g_VBufferD3D[1].sy = vtx1->ys;
+    g_VBufferD3D[1].sz = g_FltResZBuf - g_FltResZORhw * vtx1->rhw;
+    g_VBufferD3D[1].rhw = vtx1->rhw;
+    g_VBufferD3D[1].color = Output_ShadeColor(vtx1->g);
+    g_VBufferD3D[1].tu = (double)texture->uv[1].u / (double)PHD_ONE;
+    g_VBufferD3D[1].tv = (double)texture->uv[1].v / (double)PHD_ONE;
+
+    g_VBufferD3D[2].sx = vtx2->xs;
+    g_VBufferD3D[2].sy = vtx2->ys;
+    g_VBufferD3D[2].sz = g_FltResZBuf - g_FltResZORhw * vtx2->rhw;
+    g_VBufferD3D[2].rhw = vtx2->rhw;
+    g_VBufferD3D[2].color = Output_ShadeColor(vtx2->g);
+    g_VBufferD3D[2].tu = (double)texture->uv[2].u / (double)PHD_ONE;
+    g_VBufferD3D[2].tv = (double)texture->uv[2].v / (double)PHD_ONE;
+
+    g_VBufferD3D[3].sx = vtx3->xs;
+    g_VBufferD3D[3].sy = vtx3->ys;
+    g_VBufferD3D[3].sz = g_FltResZBuf - g_FltResZORhw * vtx3->rhw;
+    g_VBufferD3D[3].rhw = vtx3->rhw;
+    g_VBufferD3D[3].color = Output_ShadeColor(vtx3->g);
+    g_VBufferD3D[3].tu = (double)texture->uv[3].u / (double)PHD_ONE;
+    g_VBufferD3D[3].tv = (double)texture->uv[3].v / (double)PHD_ONE;
+
+    HWR_TexSource(g_HWR_PageHandles[texture->tex_page]);
+    HWR_EnableColorKey(texture->draw_type != DRAW_OPAQUE);
+    g_D3DDev->lpVtbl->DrawPrimitive(
+        g_D3DDev, D3DPT_TRIANGLEFAN, D3DVT_TLVERTEX, g_VBufferD3D, 4,
+        D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
+}
