@@ -95,3 +95,7 @@ void __cdecl Output_InsertGT4_ZBuffered(
 void __cdecl Output_InsertFlatRect_ZBuffered(
     int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
     uint8_t color_idx);
+
+void __cdecl Output_InsertLine_ZBuffered(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
+    uint8_t color_idx);

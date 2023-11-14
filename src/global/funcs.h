@@ -8,7 +8,6 @@
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
 #define Output_DrawClippedPoly_Textured ((void __cdecl (*)(int32_t vtx_count))0x00408D70)
 #define Output_DrawPoly_Gouraud ((void __cdecl (*)(int32_t vtx_count, int32_t red, int32_t green, int32_t blue))0x004097F0)
-#define Output_InsertLine_ZBuffered ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x00409DA0)
 #define Output_InsertGT3_Sorted ((void __cdecl (*)(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2, enum SORT_TYPE sort_type))0x00409EE0)
 #define Output_InsertClippedPoly_Textured ((void __cdecl (*)(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page))0x0040A5F0)
 #define Output_InsertGT4_Sorted ((void __cdecl (*)(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type))0x0040A7A0)

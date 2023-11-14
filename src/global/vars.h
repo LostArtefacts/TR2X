@@ -94,7 +94,7 @@
 #define g_IsWaterEffect (*(int32_t*)0x004D6C14)
 #define g_VBuffer (*(struct VERTEX_INFO(*)[20])0x004D6CD8)
 #define g_IsShadeEffect (*(int8_t*)0x004D6F78)
-#define g_VBufferD3D (*(D3DTLVERTEX(*)[132])0x004D6F80)
+#define g_VBufferD3D (*(D3DTLVERTEX(*)[32])0x004D6F80)
 #define g_GamePalette16 (*(PALETTEENTRY(*)[256])0x004D7380)
 #define g_CineFrameCurrent (*(int32_t*)0x004D7780)
 #define g_IsChunkyCamera (*(int32_t*)0x004D778C)

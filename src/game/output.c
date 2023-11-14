@@ -3227,3 +3227,37 @@ void __cdecl Output_InsertFlatRect_ZBuffered(
         g_D3DDev, D3DPT_TRIANGLESTRIP, D3DVT_TLVERTEX, g_VBufferD3D, 4,
         D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
 }
+
+void __cdecl Output_InsertLine_ZBuffered(
+    const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2,
+    int32_t z, const uint8_t color_idx)
+{
+    if (z >= g_PhdFarZ) {
+        return;
+    }
+    CLAMPL(z, g_PhdNearZ);
+
+    const double rhw = g_RhwFactor / (double)z;
+    const double sz = g_FltResZBuf - rhw * g_FltResZORhw;
+
+    const RGB888 *const color = &g_GamePalette8[color_idx];
+    const D3DCOLOR d3d_color =
+        Output_ShadeColor(color->red, color->green, color->blue, 0xFF);
+
+    g_VBufferD3D[0].sx = (float)(g_PhdWinMinX + x1);
+    g_VBufferD3D[0].sy = (float)(g_PhdWinMinY + y1);
+    g_VBufferD3D[1].sx = (float)(g_PhdWinMinX + x2);
+    g_VBufferD3D[1].sy = (float)(g_PhdWinMinY + y2);
+
+    for (int i = 0; i < 2; i++) {
+        g_VBufferD3D[i].sz = sz;
+        g_VBufferD3D[i].rhw = rhw;
+        g_VBufferD3D[i].color = d3d_color;
+    }
+
+    HWR_TexSource(0);
+    HWR_EnableColorKey(0);
+    g_D3DDev->lpVtbl->DrawPrimitive(
+        g_D3DDev, D3DPT_LINESTRIP, D3DVT_TLVERTEX, g_VBufferD3D, 2,
+        D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
+}

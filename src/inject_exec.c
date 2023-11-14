@@ -176,6 +176,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00409450, Output_InsertObjectG4_ZBuffered);
     INJECT(1, 0x004098F0, Output_InsertObjectG3_ZBuffered);
     INJECT(1, 0x00409BD0, Output_InsertFlatRect_ZBuffered);
+    INJECT(1, 0x00409DA0, Output_InsertLine_ZBuffered);
     INJECT(1, 0x0041BA50, Output_InsertPolygons_I);
 }
 
