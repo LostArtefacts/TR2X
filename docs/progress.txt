@@ -1,10 +1,11 @@
 # TYPES
 typedef int16_t PHD_ANGLE;
 
+typedef struct IDirect3DDevice2     *LPDIRECT3DDEVICE2;
 typedef void* LPDIRECT3DTEXTURE2;
 typedef DDSURFACEDESC DDSDESC, *LPDDSDESC;
 typedef LPDIRECTDRAWSURFACE3 LPDDS;
-typedef D3DTEXTUREHANDLE HWR_TEXHANDLE;
+typedef D3DTEXTUREHANDLE HWR_TEX_HANDLE;
 
 typedef enum VGA_MODE {
     VGA_NoVga,
@@ -176,7 +177,7 @@ typedef struct __unaligned TEXPAGE_DESC {
     LPDDS vidMemSurface;
     LPDIRECTDRAWPALETTE palette;
     LPDIRECT3DTEXTURE2 texture3d;
-    HWR_TEXHANDLE texHandle;
+    HWR_TEX_HANDLE texHandle;
     int32_t width;
     int32_t height;
     int32_t status;
@@ -1311,7 +1312,7 @@ typedef enum LARA_MESH {
 004084B0    000000D3    +       void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
 00408590    000000CB    +       void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
 00408660    000000B5    +       void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
-00408720    00000642    -       void __cdecl Output_InsertGT3_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2);
+00408720    00000642    +       void __cdecl Output_InsertGT3_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2);
 00408D70    00000140    -       void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
 00408EB0    00000444    -       void __cdecl Output_InsertGT4_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture);
 00409300    00000091    +       const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
@@ -1638,12 +1639,12 @@ typedef enum LARA_MESH {
 00423DB0    00000081    -R      void __cdecl RingIsNotOpen(struct RING_INFO *ring);
 00423E40    00000369    -R      void __cdecl RingNotActive(struct INVENTORY_ITEM *inv_item);
 004242B0    00000032    -R      void __cdecl RingActive(void);
-004242F0    000006BE    -R      int32_t __cdecl Inv_AddItem(int32_t itemNum);
+004242F0    000006BE    -R      int32_t __cdecl Inv_AddItem(int32_t item_num);
 00424B00    00000129    -R      void __cdecl Inv_InsertItem(struct INVENTORY_ITEM *inv_item);
-00424C30    00000077    -R      int32_t __cdecl Inv_RequestItem(int32_t itemNum);
+00424C30    00000077    -R      int32_t __cdecl Inv_RequestItem(int32_t item_num);
 00424CB0    0000001B    -R      void __cdecl Inv_RemoveAllItems(void);
-00424CD0    00000110    -R      int32_t __cdecl Inv_RemoveItem(int32_t itemNum);
-00424DE0    000000C1    -R      int32_t __cdecl Inv_GetItemOption(int32_t itemNum);
+00424CD0    00000110    -R      int32_t __cdecl Inv_RemoveItem(int32_t item_num);
+00424DE0    000000C1    -R      int32_t __cdecl Inv_GetItemOption(int32_t item_num);
 00424FD0    00000024    -R      void __cdecl RemoveInventoryText(void);
 00425000    0000010F    -R      void __cdecl Inv_RingInit(struct RING_INFO *ring, int16_t type, struct INVENTORY_ITEM **list, int16_t qty, int16_t current, struct IMOTION_INFO *imo);
 00425110    00000060    -R      void __cdecl Inv_RingGetView(struct RING_INFO *ring, struct PHD_3DPOS *viewer);
@@ -1986,7 +1987,7 @@ typedef enum LARA_MESH {
 
 # game/people.c
 00435E00    00000085    -R      int32_t __cdecl Targetable(struct ITEM_INFO *item, AI_INFO *info);
-00435E90    0000003B    -R      void __cdecl ControlGlow(int16_t nFX);
+00435E90    0000003B    -R      void __cdecl ControlGlow(int16_t fx_num);
 00435ED0    0000004E    -R      void __cdecl ControlGunShot(int16_t fx_num);
 00435F20    00000066    -R      int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
 00435F90    000000B9    -R      int16_t __cdecl GunHit(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);
@@ -2077,7 +2078,7 @@ typedef enum LARA_MESH {
 
 # game/sphere.c
 0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *lara_item);
-0043FAE0    000002D8    -R      int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t WorldSpace);
+0043FAE0    000002D8    -R      int32_t __cdecl GetSpheres(struct ITEM_INFO *item, struct SPHERE *ptr, int32_t world_space);
 0043FDC0    0000019A    -       void __cdecl Collide_GetJointAbsPosition(struct ITEM_INFO *item, struct PHD_VECTOR *vec, int32_t joint);
 0043FF60    0000005D    -R      void __cdecl BaddieBiteEffect(struct ITEM_INFO *item, struct BITE_INFO *bite);
 
@@ -2151,12 +2152,12 @@ typedef enum LARA_MESH {
 00443350    000005ED    -R      void __cdecl YetiControl(int16_t item_num);
 
 00443990    000001B8    -R      void __cdecl BGND_Make640x480(uint8_t *bitmap, struct RGB888 *palette);
-00443B50    000000B9    -R      int32_t __cdecl BGND_AddTexture(int32_t tileIndex, BYTE *bitmap, int32_t pal_index, struct RGB888 *bmp_pal);
+00443B50    000000B9    -R      int32_t __cdecl BGND_AddTexture(int32_t tile_idx, BYTE *bitmap, int32_t pal_index, struct RGB888 *bmp_pal);
 00443C10    00000032    -R      void __cdecl BGND_GetPageHandles(void);
 00443C50    0000005F    -R      void __cdecl BGND_DrawInGameBlack(void);
 00443CB0    000000DC    -R      void __cdecl DrawQuad(float sx, float sy, float width, float height, D3DCOLOR color);
 00443D90    00000220    -R      void __cdecl BGND_DrawInGameBackground(void);
-00443FB0    00000251    -R      void __cdecl DrawTextureTile(int32_t sx, int32_t sy, int32_t width, int32_t height, HWR_TEXHANDLE texSource, int32_t tu, int32_t tv, int32_t t_width, int32_t t_height, D3DCOLOR color0, D3DCOLOR color1, D3DCOLOR color2, D3DCOLOR color3);
+00443FB0    00000251    -R      void __cdecl DrawTextureTile(int32_t sx, int32_t sy, int32_t width, int32_t height, HWR_TEX_HANDLE tex_source, int32_t tu, int32_t tv, int32_t t_width, int32_t t_height, D3DCOLOR color0, D3DCOLOR color1, D3DCOLOR color2, D3DCOLOR color3);
 00444210    0000008B    -R      D3DCOLOR __cdecl BGND_CenterLighting(int32_t x, int32_t y, int32_t width, int32_t height);
 004444C0    0000004D    -R      void __cdecl BGND_Free(void);
 00444510    00000030    -R      bool __cdecl BGND_Init(void);
@@ -2308,23 +2309,23 @@ typedef enum LARA_MESH {
 00449610    0000023A    -R      void __cdecl GameApplySettings(struct APP_SETTINGS *newSettings);
 00449850    00000067    -R      void __cdecl UpdateGameResolution(void);
 004498C0    0000000C    -R      LPCTSTR __cdecl DecodeErrorMessage(DWORD errorCode);
-004498D0    00000049    -R      BOOL __cdecl ReadFileSync(HANDLE hFile, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);
-00449920    00000188    -R      BOOL __cdecl LoadTexturePages(HANDLE hFile);
-00449AB0    000003A0    -R      BOOL __cdecl LoadRooms(HANDLE hFile);
+004498D0    00000049    -R      BOOL __cdecl ReadFileSync(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);
+00449920    00000188    -R      BOOL __cdecl LoadTexturePages(HANDLE handle);
+00449AB0    000003A0    -R      BOOL __cdecl LoadRooms(HANDLE handle);
 00449E50    00000097    -R      void __cdecl AdjustTextureUVs(bool resetUvAdd);
-00449EF0    0000057E    -R      BOOL __cdecl LoadObjects(HANDLE hFile);
-0044A470    00000135    -R      BOOL __cdecl LoadSprites(HANDLE hFile);
-0044A5B0    000001D6    -R      BOOL __cdecl LoadItems(HANDLE hFile);
-0044A790    00000188    -R      BOOL __cdecl LoadDepthQ(HANDLE hFile);
-0044A920    00000071    -R      BOOL __cdecl LoadPalettes(HANDLE hFile);
-0044A9A0    00000060    -R      BOOL __cdecl LoadCameras(HANDLE hFile);
-0044AA00    00000060    -R      BOOL __cdecl LoadSoundEffects(HANDLE hFile);
-0044AA60    00000221    -R      BOOL __cdecl LoadBoxes(HANDLE hFile);
-0044AC90    00000055    -R      BOOL __cdecl LoadAnimatedTextures(HANDLE hFile);
-0044ACF0    00000079    -R      BOOL __cdecl LoadCinematic(HANDLE hFile);
-0044AD70    0000008A    -R      BOOL __cdecl LoadDemo(HANDLE hFile);
+00449EF0    0000057E    -R      BOOL __cdecl LoadObjects(HANDLE handle);
+0044A470    00000135    -R      BOOL __cdecl LoadSprites(HANDLE handle);
+0044A5B0    000001D6    -R      BOOL __cdecl LoadItems(HANDLE handle);
+0044A790    00000188    -R      BOOL __cdecl LoadDepthQ(HANDLE handle);
+0044A920    00000071    -R      BOOL __cdecl LoadPalettes(HANDLE handle);
+0044A9A0    00000060    -R      BOOL __cdecl LoadCameras(HANDLE handle);
+0044AA00    00000060    -R      BOOL __cdecl LoadSoundEffects(HANDLE handle);
+0044AA60    00000221    -R      BOOL __cdecl LoadBoxes(HANDLE handle);
+0044AC90    00000055    -R      BOOL __cdecl LoadAnimatedTextures(HANDLE handle);
+0044ACF0    00000079    -R      BOOL __cdecl LoadCinematic(HANDLE handle);
+0044AD70    0000008A    -R      BOOL __cdecl LoadDemo(HANDLE handle);
 0044AE00    0000009A    -R      void __cdecl LoadDemoExternal(LPCTSTR levelName);
-0044AEA0    00000265    -R      BOOL __cdecl LoadSamples(HANDLE hFile);
+0044AEA0    00000265    -R      BOOL __cdecl LoadSamples(HANDLE handle);
 0044B110    00000036    -R      void __cdecl ChangeFileNameExtension(char *fileName, const char *fileExt);
 0044B150    00000026    -R      LPCTSTR __cdecl GetFullPath(LPCTSTR fileName);
 0044B180    000000E0    -R      BOOL __cdecl SelectDrive(void);
@@ -2333,7 +2334,7 @@ typedef enum LARA_MESH {
 0044B4D0    0000002A    -R      void __cdecl S_UnloadLevelFile(void);
 0044B500    00000014    -R      void __cdecl S_AdjustTexelCoordinates(void);
 0044B520    000000C4    -R      BOOL __cdecl S_ReloadLevelGraphics(BOOL reloadPalettes, BOOL reloadTexPages);
-0044B5F0    000000C6    -R      BOOL __cdecl Read_Strings(DWORD dwCount, char **stringTable, char **stringBuffer, LPDWORD lpBufferSize, HANDLE hFile);
+0044B5F0    000000C6    -R      BOOL __cdecl Read_Strings(DWORD dwCount, char **stringTable, char **stringBuffer, LPDWORD lpBufferSize, HANDLE handle);
 0044B6C0    000006D1    -R      BOOL __cdecl S_LoadGameFlow(LPCTSTR fileName);
 0044BDA0    0000006B    -R      bool __cdecl PlayFMV(LPCTSTR fileName);
 0044BE10    000002E0    -R      void __cdecl WinPlayFMV(LPCTSTR fileName, bool isPlayback);
@@ -2367,7 +2368,7 @@ typedef enum LARA_MESH {
 0044D110    00000029    -R      void __cdecl HWR_ResetTexSource(void);
 0044D140    0000002B    -R      void __cdecl HWR_ResetColorKey(void);
 0044D170    00000059    -R      void __cdecl HWR_ResetZBuffer(void);
-0044D1D0    00000024    -R      void __cdecl HWR_TexSource(HWR_TEXHANDLE texSource);
+0044D1D0    00000024    -R      void __cdecl HWR_TexSource(HWR_TEX_HANDLE texSource);
 0044D200    0000004A    -R      void __cdecl HWR_EnableColorKey(bool state);
 0044D250    00000082    *R      void __cdecl HWR_EnableZBuffer(bool z_write_enable, bool z_enable);
 0044D2E0    00000016    -R      void __cdecl HWR_BeginScene(void);
@@ -2519,7 +2520,7 @@ typedef enum LARA_MESH {
 00455F10    00000026    -R      void __cdecl FreeTexturePages(void);
 00455F40    000000A2    -R      bool __cdecl LoadTexturePage(int32_t pageIndex, bool reset);
 00455FF0    00000035    -R      bool __cdecl ReloadTextures(bool reset);
-00456030    0000003E    -R      HWR_TEXHANDLE __cdecl GetTexturePageHandle(int32_t pageIndex);
+00456030    0000003E    -R      HWR_TEX_HANDLE __cdecl GetTexturePageHandle(int32_t pageIndex);
 00456070    000000F5    -R      int32_t __cdecl AddTexturePage8(int32_t width, int32_t height, BYTE *pageBuffer, int32_t palIndex);
 00456170    00000196    -R      int32_t __cdecl AddTexturePage16(int32_t width, int32_t height, BYTE *pageBuffer);
 00456310    0000011A    -R      HRESULT __stdcall EnumTextureFormatsCallback(LPDDSDESC lpDdsd, LPVOID lpContext);
@@ -2671,6 +2672,8 @@ typedef enum LARA_MESH {
 004D6C10    -       int32_t g_IsWibbleEffect;
 004D6C14    -       int32_t g_IsWaterEffect;
 004D6CD8    -       struct VERTEX_INFO g_VBuffer[20];
+004D6F78    -       int8_t g_IsShadeEffect;
+004D6F80    -       D3DTLVERTEX g_VBufferD3D[32];
 004D7380    -       PALETTEENTRY g_GamePalette16[256];
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
@@ -2678,6 +2681,7 @@ typedef enum LARA_MESH {
 004D77AC    -       int32_t g_IsDemoLevelType;
 004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
+004D7EBC    -       LPDIRECT3DDEVICE2 g_D3DDev;
 004D7F10    -       HWND g_GameWindowHandle;
 004D8378    -       uint8_t g_IsGameToExit;
 004D8570    -       DWORD g_SampleFreqs[256];
@@ -2696,6 +2700,7 @@ typedef enum LARA_MESH {
 004D92C8    -       LPDDS g_PrimaryBufferSurface;
 004D9EC4    -       int32_t g_LevelComplete;
 004D9ED8    -       D3DTLVERTEX g_HWR_VertexBuffer[0x2000];
+00519EE0    -       HWR_TEX_HANDLE g_HWR_PageHandles[32];
 00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
 0051A208    -       int32_t g_Input;
 0051B918    -       RECT g_PhdWinRect;

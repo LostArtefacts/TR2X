@@ -12,7 +12,7 @@
 
 typedef DDSURFACEDESC DDSDESC, *LPDDSDESC;
 typedef LPDIRECTDRAWSURFACE3 LPDDS;
-typedef D3DTEXTUREHANDLE HWR_TEXHANDLE;
+typedef D3DTEXTUREHANDLE HWR_TEX_HANDLE;
 
 typedef int16_t PHD_ANGLE;
 
@@ -210,7 +210,7 @@ struct TEXPAGE_DESC {
     LPDDS vidMemSurface;
     LPDIRECTDRAWPALETTE palette;
     LPDIRECT3DTEXTURE2 texture3d;
-    HWR_TEXHANDLE texHandle;
+    HWR_TEX_HANDLE texHandle;
     int32_t width;
     int32_t height;
     int32_t status;

@@ -13,6 +13,22 @@
      >= ((c).ys - (b).ys) * ((a).xs - (b).xs))
 #define MAKE_ZSORT(z) ((uint32_t)(z))
 
+static D3DCOLOR Output_ShadeColor(uint32_t shade)
+{
+    const uint8_t alpha = 0xFF;
+
+    uint32_t value = (0x1FFF - shade) >> 4;
+    CLAMPG(value, 0xFF);
+
+    if (g_IsShadeEffect) {
+        const uint32_t v45 = (value << 15) & 0xFFFF00FF;
+        const uint32_t v46 = ((224 * value) | v45) & 0xFFFFFF00;
+        return value | v46 | (alpha << 24);
+    }
+
+    return RGBA_MAKE(value, value, value, 0xFF);
+}
+
 static double Output_CalculatePolyZ(
     enum SORT_TYPE sort_type, double z0, double z1, double z2, double z3)
 {
@@ -1534,12 +1550,12 @@ int32_t __cdecl Output_VisibleZClip(
 }
 
 int32_t __cdecl Output_ZedClipper(
-    const int32_t vtx_count, const struct POINT_INFO *const pts,
+    const int32_t vtx_count, const struct POINT_INFO *const points,
     struct VERTEX_INFO *const vtx)
 {
     int j = 0;
-    const struct POINT_INFO *pts0 = &pts[0];
-    const struct POINT_INFO *pts1 = &pts[vtx_count - 1];
+    const struct POINT_INFO *pts0 = &points[0];
+    const struct POINT_INFO *pts1 = &points[vtx_count - 1];
 
     for (int i = 0; i < vtx_count; i++) {
         int32_t diff0 = g_FltNearZ - pts0->zv;
@@ -1925,7 +1941,7 @@ const int16_t *__cdecl Output_InsertObjectG3(
                 continue;
             }
 
-            struct POINT_INFO pts[3] = {
+            struct POINT_INFO points[3] = {
                 {
                     .xv = vtx[0]->xv,
                     .yv = vtx[0]->yv,
@@ -1955,7 +1971,7 @@ const int16_t *__cdecl Output_InsertObjectG3(
                 },
             };
 
-            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
                 continue;
             }
@@ -2744,7 +2760,7 @@ const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
                 continue;
             }
 
-            const struct POINT_INFO pts[3] = {
+            const struct POINT_INFO points[3] = {
                 {
                     .xv = vtx[0]->xv,
                     .yv = vtx[0]->yv,
@@ -2774,7 +2790,7 @@ const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
                 },
             };
 
-            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
                 continue;
             }
@@ -2853,7 +2869,7 @@ const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
                 continue;
             }
 
-            const struct POINT_INFO pts[4] = {
+            const struct POINT_INFO points[4] = {
                 {
                     .xv = vtx[0]->xv,
                     .yv = vtx[0]->yv,
@@ -2892,7 +2908,7 @@ const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
                 },
             };
 
-            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            num_points = Output_ZedClipper(num_points, points, g_VBuffer);
             if (num_points == 0) {
                 continue;
             }
@@ -2960,4 +2976,136 @@ const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(
     }
 
     return obj_ptr;
+}
+
+void __cdecl Output_InsertGT3_ZBuffered(
+    const struct PHD_VBUF *const vtx0, const struct PHD_VBUF *const vtx1,
+    const struct PHD_VBUF *const vtx2, const struct PHD_TEXTURE *const texture,
+    const struct PHD_UV *const uv0, const struct PHD_UV *const uv1,
+    const struct PHD_UV *const uv2)
+{
+    const int8_t clip_or = vtx0->clip | vtx1->clip | vtx2->clip;
+    const int8_t clip_and = vtx0->clip & vtx1->clip & vtx2->clip;
+    if (clip_and != 0) {
+        return;
+    }
+
+    int32_t num_points = 3;
+
+    if (clip_or >= 0) {
+        if (!VBUF_VISIBLE(*vtx0, *vtx1, *vtx2)) {
+            return;
+        }
+
+        if (clip_or == 0) {
+            g_VBufferD3D[0].sx = vtx0->xs;
+            g_VBufferD3D[0].sy = vtx0->ys;
+            g_VBufferD3D[0].sz = g_FltResZBuf - g_FltResZORhw * vtx0->rhw;
+            g_VBufferD3D[0].rhw = vtx0->rhw;
+            g_VBufferD3D[0].color = Output_ShadeColor(vtx0->g);
+            g_VBufferD3D[0].tu = (double)uv0->u / (double)PHD_ONE;
+            g_VBufferD3D[0].tv = (double)uv0->v / (double)PHD_ONE;
+
+            g_VBufferD3D[1].sx = vtx1->xs;
+            g_VBufferD3D[1].sy = vtx1->ys;
+            g_VBufferD3D[1].sz = g_FltResZBuf - g_FltResZORhw * vtx1->rhw;
+            g_VBufferD3D[1].rhw = vtx1->rhw;
+            g_VBufferD3D[1].color = Output_ShadeColor(vtx1->g);
+            g_VBufferD3D[1].tu = (double)uv1->u / (double)PHD_ONE;
+            g_VBufferD3D[1].tv = (double)uv1->v / (double)PHD_ONE;
+
+            g_VBufferD3D[2].sx = vtx2->xs;
+            g_VBufferD3D[2].sy = vtx2->ys;
+            g_VBufferD3D[2].sz = g_FltResZBuf - g_FltResZORhw * vtx2->rhw;
+            g_VBufferD3D[2].rhw = vtx2->rhw;
+            g_VBufferD3D[2].color = Output_ShadeColor(vtx2->g);
+            g_VBufferD3D[2].tu = (double)uv2->u / (double)PHD_ONE;
+            g_VBufferD3D[2].tv = (double)uv2->v / (double)PHD_ONE;
+
+            HWR_TexSource(g_HWR_PageHandles[texture->tex_page]);
+            HWR_EnableColorKey(texture->draw_type != DRAW_OPAQUE);
+
+            g_D3DDev->lpVtbl->DrawPrimitive(
+                g_D3DDev, D3DPT_TRIANGLELIST, D3DVT_TLVERTEX, g_VBufferD3D, 3,
+                D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
+            return;
+        }
+
+        g_VBuffer[0].x = vtx0->xs;
+        g_VBuffer[0].y = vtx0->ys;
+        g_VBuffer[0].rhw = vtx0->rhw;
+        g_VBuffer[0].g = (double)vtx0->g;
+        g_VBuffer[0].u = (double)uv0->u * vtx0->rhw;
+        g_VBuffer[0].v = (double)uv0->v * vtx0->rhw;
+
+        g_VBuffer[1].x = vtx1->xs;
+        g_VBuffer[1].y = vtx1->ys;
+        g_VBuffer[1].rhw = vtx1->rhw;
+        g_VBuffer[1].g = (double)vtx1->g;
+        g_VBuffer[1].u = (double)uv1->u * vtx1->rhw;
+        g_VBuffer[1].v = (double)uv1->v * vtx1->rhw;
+
+        g_VBuffer[2].x = vtx2->xs;
+        g_VBuffer[2].y = vtx2->ys;
+        g_VBuffer[2].rhw = vtx2->rhw;
+        g_VBuffer[2].g = (double)vtx2->g;
+        g_VBuffer[2].u = (double)uv2->u * vtx2->rhw;
+        g_VBuffer[2].v = (double)uv2->v * vtx2->rhw;
+    } else {
+        if (!Output_VisibleZClip(vtx0, vtx1, vtx2)) {
+            return;
+        }
+
+        const struct POINT_INFO points[3] = {
+            {
+                .xv = vtx0->xv,
+                .yv = vtx0->yv,
+                .zv = vtx0->zv,
+                .rhw = vtx0->rhw,
+                .xs = vtx0->xs,
+                .ys = vtx0->ys,
+                .g = (float)vtx0->g,
+                .u = (float)uv0->u,
+                .v = (float)uv0->v,
+            },
+
+            {
+                .xv = vtx1->xv,
+                .yv = vtx1->yv,
+                .zv = vtx1->zv,
+                .rhw = vtx1->rhw,
+                .xs = vtx1->xs,
+                .ys = vtx1->ys,
+                .g = (float)vtx1->g,
+                .u = (float)uv1->u,
+                .v = (float)uv1->v,
+            },
+
+            {
+                .xv = vtx2->xv,
+                .yv = vtx2->yv,
+                .zv = vtx2->zv,
+                .rhw = vtx2->rhw,
+                .xs = vtx2->xs,
+                .ys = vtx2->ys,
+                .g = (float)vtx2->g,
+                .u = (float)uv2->u,
+                .v = (float)uv2->v,
+            },
+        };
+
+        num_points = Output_ZedClipper(num_points, points, g_VBuffer);
+        if (num_points == 0) {
+            return;
+        }
+    }
+
+    num_points = Output_XYGUVClipper(num_points, g_VBuffer);
+    if (num_points == 0) {
+        return;
+    }
+
+    HWR_TexSource(g_HWR_PageHandles[texture->tex_page]);
+    HWR_EnableColorKey(texture->draw_type != DRAW_OPAQUE);
+    Output_DrawClippedPoly_Textured(num_points);
 }
