@@ -141,3 +141,7 @@ void __cdecl Output_InsertTrans8_Sorted(
 
 void __cdecl Output_InsertTransQuad_Sorted(
     int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
+
+void __cdecl Output_InsertSprite(
+    int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1,
+    int32_t sprite_idx, int16_t shade);

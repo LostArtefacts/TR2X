@@ -3989,7 +3989,7 @@ void __cdecl Output_InsertTransQuad_Sorted(
     const double y1 = (double)(y + height);
 
     g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
-    g_Sort3DPtr->_1 = z;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
     g_Sort3DPtr++;
 
     *g_Info3DPtr++ = POLY_HWR_TRANS;
@@ -4020,5 +4020,23 @@ void __cdecl Output_InsertTransQuad_Sorted(
     }
 
     g_HWR_VertexPtr += 4;
+    g_SurfaceCount++;
+}
+
+void __cdecl Output_InsertSprite(
+    const int32_t z, const int32_t x0, const int32_t y0, const int32_t x1,
+    const int32_t y1, const int32_t sprite_idx, const int16_t shade)
+{
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_SPRITE;
+    *g_Info3DPtr++ = x0;
+    *g_Info3DPtr++ = y0;
+    *g_Info3DPtr++ = x1;
+    *g_Info3DPtr++ = y1;
+    *g_Info3DPtr++ = sprite_idx;
+    *g_Info3DPtr++ = shade;
     g_SurfaceCount++;
 }
