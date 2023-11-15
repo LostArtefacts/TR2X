@@ -118,3 +118,8 @@ void __cdecl Output_InsertGT3_Sorted(
     const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture,
     const struct PHD_UV *uv0, const struct PHD_UV *uv1,
     const struct PHD_UV *uv2, enum SORT_TYPE sort_type);
+
+void __cdecl Output_InsertGT4_Sorted(
+    const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1,
+    const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3,
+    const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);

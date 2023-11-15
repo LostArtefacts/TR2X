@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.01% (329)</tspan> · <tspan class="known">70.53% (859)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.09% (330)</tspan> · <tspan class="known">70.44% (858)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="201.78" height="6" x="0" y="0" class="decompiled"/>
-<rect width="526.83" height="6" x="201.78" y="0" class="known"/>
+<rect width="202.39" height="6" x="0" y="0" class="decompiled"/>
+<rect width="526.21" height="6" x="202.39" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -143,7 +143,7 @@
 <rect width="12" height="12" x="195" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="210" y="15" class="decompiled"><title>void __cdecl Output_InsertGT3_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="225" y="15" class="known"><title>void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);</title></rect>
-<rect width="12" height="12" x="240" y="15" class="known"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
+<rect width="12" height="12" x="240" y="15" class="decompiled"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="255" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="270" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="285" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24.54%</tspan> · <tspan class="known">75.13%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">24.91%</tspan> · <tspan class="known">74.77%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="183.34" height="6" x="0" y="0" class="decompiled"/>
-<rect width="561.22" height="6" x="183.34" y="0" class="known"/>
+<rect width="186.05" height="6" x="0" y="0" class="decompiled"/>
+<rect width="558.51" height="6" x="186.05" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1345,7 +1345,7 @@
 <rect width="31.68" height="28.04" x="142.39" y="346.96" class="decompiled"><title>int32_t __cdecl Output_XYGUVClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="28.60" height="29.99" x="177.07" y="0" class="known"><title>void __cdecl LaraGun(void);</title></rect>
 <rect width="28.60" height="29.70" x="177.07" y="32.99" class="known"><title>int32_t __cdecl Boat_Dynamics(int16_t boat_num);</title></rect>
-<rect width="28.60" height="29.54" x="177.07" y="65.69" class="known"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
+<rect width="28.60" height="29.54" x="177.07" y="65.69" class="decompiled"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
 <rect width="28.60" height="29.36" x="177.07" y="98.23" class="known"><title>void __cdecl S_ShowControls(void);</title></rect>
 <rect width="28.60" height="28.33" x="177.07" y="130.59" class="decompiled"><title>void __cdecl Camera_Update(void);</title></rect>
 <rect width="28.60" height="28.20" x="177.07" y="161.92" class="decompiled"><title>void __cdecl Output_InsertTrans8(const struct PHD_VBUF *vbuf, int16_t shade);</title></rect>

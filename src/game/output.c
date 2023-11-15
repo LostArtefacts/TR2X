@@ -3565,7 +3565,6 @@ void __cdecl Output_InsertGT3_Sorted(
         }
 
         if (clip_or == 0) {
-
             g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
             g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
             g_Sort3DPtr++;
@@ -3605,6 +3604,7 @@ void __cdecl Output_InsertGT3_Sorted(
                 g_HWR_VertexPtr[2].sz =
                     g_FltResZBuf - g_FltResZORhw * vtx2->rhw;
             }
+
             g_HWR_VertexPtr += 3;
             g_SurfaceCount++;
             return;
@@ -3686,4 +3686,101 @@ void __cdecl Output_InsertGT3_Sorted(
 
     Output_InsertClippedPoly_Textured(
         num_points, zv, poly_type, texture->tex_page);
+}
+
+void __cdecl Output_InsertGT4_Sorted(
+    const struct PHD_VBUF *const vtx0, const struct PHD_VBUF *const vtx1,
+    const struct PHD_VBUF *const vtx2, const struct PHD_VBUF *const vtx3,
+    const struct PHD_TEXTURE *const texture, const enum SORT_TYPE sort_type)
+{
+    const int8_t clip_or = vtx0->clip | vtx1->clip | vtx2->clip | vtx3->clip;
+    const int8_t clip_and = vtx0->clip & vtx1->clip & vtx2->clip & vtx3->clip;
+    if (clip_and != 0) {
+        return;
+    }
+
+    const double zv = Output_CalculatePolyZ(
+        sort_type, vtx0->zv, vtx1->zv, vtx2->zv, vtx3->zv);
+    const enum POLY_TYPE poly_type =
+        texture->draw_type == DRAW_OPAQUE ? POLY_HWR_GTMAP : POLY_HWR_WGTMAP;
+
+    int32_t num_points = 4;
+    if (clip_or >= 0) {
+        if (!VBUF_VISIBLE(*vtx0, *vtx1, *vtx2)) {
+            return;
+        }
+
+        if (clip_or == 0) {
+            g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+            g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
+            g_Sort3DPtr++;
+
+            g_Info3DPtr[0] = poly_type;
+            g_Info3DPtr[1] = texture->tex_page;
+            g_Info3DPtr[2] = num_points;
+            *(int32_t *)(&g_Info3DPtr[3]) = (int32_t)g_HWR_VertexPtr;
+            g_Info3DPtr += 5;
+
+            g_HWR_VertexPtr[0].sx = vtx0->xs;
+            g_HWR_VertexPtr[0].sy = vtx0->ys;
+            g_HWR_VertexPtr[0].rhw = vtx0->rhw;
+            g_HWR_VertexPtr[0].color = Output_ShadeLight(vtx0->g);
+            g_HWR_VertexPtr[0].tu = (double)texture->uv[0].u / (double)PHD_ONE;
+            g_HWR_VertexPtr[0].tv = (double)texture->uv[0].v / (double)PHD_ONE;
+
+            g_HWR_VertexPtr[1].sx = vtx1->xs;
+            g_HWR_VertexPtr[1].sy = vtx1->ys;
+            g_HWR_VertexPtr[1].rhw = vtx1->rhw;
+            g_HWR_VertexPtr[1].color = Output_ShadeLight(vtx1->g);
+            g_HWR_VertexPtr[1].tu = (double)texture->uv[1].u / (double)PHD_ONE;
+            g_HWR_VertexPtr[1].tv = (double)texture->uv[1].v / (double)PHD_ONE;
+
+            g_HWR_VertexPtr[2].sx = vtx2->xs;
+            g_HWR_VertexPtr[2].sy = vtx2->ys;
+            g_HWR_VertexPtr[2].rhw = vtx2->rhw;
+            g_HWR_VertexPtr[2].color = Output_ShadeLight(vtx2->g);
+            g_HWR_VertexPtr[2].tu = (double)texture->uv[2].u / (double)PHD_ONE;
+            g_HWR_VertexPtr[2].tv = (double)texture->uv[2].v / (double)PHD_ONE;
+
+            g_HWR_VertexPtr[3].sx = vtx3->xs;
+            g_HWR_VertexPtr[3].sy = vtx3->ys;
+            g_HWR_VertexPtr[3].rhw = vtx3->rhw;
+            g_HWR_VertexPtr[3].color = Output_ShadeLight(vtx3->g);
+            g_HWR_VertexPtr[3].tu = (double)texture->uv[3].u / (double)PHD_ONE;
+            g_HWR_VertexPtr[3].tv = (double)texture->uv[3].v / (double)PHD_ONE;
+
+            if (g_SavedAppSettings.zbuffer) {
+                g_HWR_VertexPtr[0].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx0->rhw;
+                g_HWR_VertexPtr[1].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx1->rhw;
+                g_HWR_VertexPtr[2].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx2->rhw;
+                g_HWR_VertexPtr[3].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx3->rhw;
+            }
+
+            g_HWR_VertexPtr += 4;
+            g_SurfaceCount++;
+            return;
+        }
+
+        Output_InsertGT3_Sorted(
+            vtx0, vtx1, vtx2, texture, &texture->uv[0], &texture->uv[1],
+            &texture->uv[2], sort_type);
+        Output_InsertGT3_Sorted(
+            vtx0, vtx2, vtx3, texture, &texture->uv[0], &texture->uv[2],
+            &texture->uv[3], sort_type);
+    } else {
+        if (!Output_VisibleZClip(vtx0, vtx1, vtx2)) {
+            return;
+        }
+
+        Output_InsertGT3_Sorted(
+            vtx0, vtx1, vtx2, texture, &texture->uv[0], &texture->uv[1],
+            &texture->uv[2], sort_type);
+        Output_InsertGT3_Sorted(
+            vtx0, vtx2, vtx3, texture, &texture->uv[0], &texture->uv[2],
+            &texture->uv[3], sort_type);
+    }
 }
