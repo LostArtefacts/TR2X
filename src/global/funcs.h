@@ -11,7 +11,6 @@
 #define Output_InsertClippedPoly_Textured ((void __cdecl (*)(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page))0x0040A5F0)
 #define Output_InsertPoly_Gouraud ((void __cdecl (*)(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type))0x0040B1F0)
 #define Output_InsertSprite_Sorted ((void __cdecl (*)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade))0x0040B6C0)
-#define Output_InsertLine_Sorted ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x0040BB90)
 #define Output_InsertTrans8_Sorted ((void __cdecl (*)(const struct PHD_VBUF *vbuf, int16_t shade))0x0040BCC0)
 #define Output_InsertTransQuad_Sorted ((void __cdecl (*)(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z))0x0040BE60)
 #define Output_InsertSprite ((void __cdecl (*)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade))0x0040BFA0)

@@ -3819,11 +3819,43 @@ void __cdecl Output_InsertFlatRect_Sorted(
     g_HWR_VertexPtr[2].sy = (float)y2;
     g_HWR_VertexPtr[3].sx = (float)x1;
     g_HWR_VertexPtr[3].sy = (float)y2;
+
     for (int i = 0; i < 4; i++) {
         g_HWR_VertexPtr[i].color = d3d_color;
         // TODO: missing sz and rhw initialization
     }
-    g_HWR_VertexPtr += 4;
 
+    g_HWR_VertexPtr += 4;
+    g_SurfaceCount++;
+}
+
+void __cdecl Output_InsertLine_Sorted(
+    const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2,
+    int32_t z, const uint8_t color_idx)
+{
+    const RGB888 *const color = &g_GamePalette8[color_idx];
+    const D3DCOLOR d3d_color =
+        Output_ShadeColor(color->red, color->green, color->blue, 0xFF);
+
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_HWR_LINE;
+    *g_Info3DPtr++ = 2;
+    *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+    g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
+
+    g_HWR_VertexPtr[0].sx = (float)(g_PhdWinMinX + x1);
+    g_HWR_VertexPtr[0].sy = (float)(g_PhdWinMinY + y1);
+    g_HWR_VertexPtr[1].sx = (float)(g_PhdWinMinX + x2);
+    g_HWR_VertexPtr[1].sy = (float)(g_PhdWinMinY + y2);
+
+    for (int i = 0; i < 2; i++) {
+        g_HWR_VertexPtr[i].color = d3d_color;
+        // TODO: missing sz and rhw initialization
+    }
+
+    g_HWR_VertexPtr += 2;
     g_SurfaceCount++;
 }
