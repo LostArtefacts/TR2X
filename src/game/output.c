@@ -4070,3 +4070,39 @@ const int16_t *__cdecl Output_InsertRoomSprite(
 
     return obj_ptr;
 }
+
+void __cdecl Output_InsertClippedPoly_Textured(
+    const int32_t vtx_count, const float z, const int16_t poly_type,
+    const int16_t tex_page)
+{
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = poly_type;
+    *g_Info3DPtr++ = tex_page;
+    *g_Info3DPtr++ = vtx_count;
+    *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+    g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
+
+    for (int i = 0; i < vtx_count; i++) {
+        double tu = g_VBuffer[i].u / (double)PHD_ONE / g_VBuffer[i].rhw;
+        double tv = g_VBuffer[i].v / (double)PHD_ONE / g_VBuffer[i].rhw;
+        CLAMP(tu, 0.0, 1.0);
+        CLAMP(tv, 0.0, 1.0);
+
+        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
+        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
+        if (g_SavedAppSettings.zbuffer) {
+            g_HWR_VertexPtr->sz =
+                g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
+        }
+        g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
+        g_HWR_VertexPtr[i].color = Output_ShadeLight(g_VBuffer[i].g);
+        g_HWR_VertexPtr[i].tu = tu;
+        g_HWR_VertexPtr[i].tv = tv;
+    }
+
+    g_HWR_VertexPtr += vtx_count;
+    g_SurfaceCount++;
+}

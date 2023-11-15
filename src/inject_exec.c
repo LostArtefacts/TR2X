@@ -178,6 +178,7 @@ static void Inject_Output(void)
     INJECT(1, 0x00409BD0, Output_InsertFlatRect_ZBuffered);
     INJECT(1, 0x00409DA0, Output_InsertLine_ZBuffered);
     INJECT(1, 0x00409EE0, Output_InsertGT3_Sorted);
+    INJECT(1, 0x0040A5F0, Output_InsertClippedPoly_Textured);
     INJECT(1, 0x0040A7A0, Output_InsertGT4_Sorted);
     INJECT(1, 0x0040AC80, Output_InsertObjectGT4_Sorted);
     INJECT(1, 0x0040AD10, Output_InsertObjectGT3_Sorted);
