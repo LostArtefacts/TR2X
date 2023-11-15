@@ -3569,11 +3569,11 @@ void __cdecl Output_InsertGT3_Sorted(
             g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
             g_Sort3DPtr++;
 
-            g_Info3DPtr[0] = poly_type;
-            g_Info3DPtr[1] = texture->tex_page;
-            g_Info3DPtr[2] = num_points;
-            *(int32_t *)(&g_Info3DPtr[3]) = (int32_t)g_HWR_VertexPtr;
-            g_Info3DPtr += 5;
+            *g_Info3DPtr++ = poly_type;
+            *g_Info3DPtr++ = texture->tex_page;
+            *g_Info3DPtr++ = num_points;
+            *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+            g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
 
             g_HWR_VertexPtr[0].sx = vtx0->xs;
             g_HWR_VertexPtr[0].sy = vtx0->ys;
@@ -3783,4 +3783,47 @@ void __cdecl Output_InsertGT4_Sorted(
             vtx0, vtx2, vtx3, texture, &texture->uv[0], &texture->uv[2],
             &texture->uv[3], sort_type);
     }
+}
+
+void __cdecl Output_InsertFlatRect_Sorted(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, const int32_t z,
+    const uint8_t color_idx)
+{
+    if (x2 <= x1 || y2 <= y1) {
+        return;
+    }
+
+    CLAMPL(x1, g_PhdWinMinX);
+    CLAMPL(y1, g_PhdWinMinY);
+    CLAMPG(x2, g_PhdWinWidth + g_PhdWinMinX);
+    CLAMPG(y2, g_PhdWinMinY + g_PhdWinHeight);
+
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_HWR_GOURAUD;
+    *g_Info3DPtr++ = 4;
+    *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+    g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
+
+    const RGB888 *const color = &g_GamePalette8[color_idx];
+    const D3DCOLOR d3d_color =
+        Output_ShadeColor(color->red, color->green, color->blue, 0xFF);
+
+    g_HWR_VertexPtr[0].sx = (float)x1;
+    g_HWR_VertexPtr[0].sy = (float)y1;
+    g_HWR_VertexPtr[1].sx = (float)x2;
+    g_HWR_VertexPtr[1].sy = (float)y1;
+    g_HWR_VertexPtr[2].sx = (float)x2;
+    g_HWR_VertexPtr[2].sy = (float)y2;
+    g_HWR_VertexPtr[3].sx = (float)x1;
+    g_HWR_VertexPtr[3].sy = (float)y2;
+    for (int i = 0; i < 4; i++) {
+        g_HWR_VertexPtr[i].color = d3d_color;
+        // TODO: missing sz and rhw initialization
+    }
+    g_HWR_VertexPtr += 4;
+
+    g_SurfaceCount++;
 }

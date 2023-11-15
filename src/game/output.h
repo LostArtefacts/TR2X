@@ -123,3 +123,7 @@ void __cdecl Output_InsertGT4_Sorted(
     const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1,
     const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3,
     const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
+
+void __cdecl Output_InsertFlatRect_Sorted(
+    int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
+    uint8_t color_idx);
