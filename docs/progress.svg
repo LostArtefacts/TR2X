@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.68% (325)</tspan> · <tspan class="known">70.85% (863)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.77% (326)</tspan> · <tspan class="known">70.77% (862)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="199.32" height="6" x="0" y="0" class="decompiled"/>
-<rect width="529.28" height="6" x="199.32" y="0" class="known"/>
+<rect width="199.94" height="6" x="0" y="0" class="decompiled"/>
+<rect width="528.67" height="6" x="199.94" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -146,7 +146,7 @@
 <rect width="12" height="12" x="240" y="15" class="known"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="255" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectGT4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="270" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="285" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="12" height="12" x="285" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="300" y="15" class="known"><title>void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);</title></rect>
 <rect width="12" height="12" x="315" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="330" y="15" class="known"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.61%</tspan> · <tspan class="known">76.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.93%</tspan> · <tspan class="known">75.74%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="176.39" height="6" x="0" y="0" class="decompiled"/>
-<rect width="568.17" height="6" x="176.39" y="0" class="known"/>
+<rect width="178.76" height="6" x="0" y="0" class="decompiled"/>
+<rect width="565.80" height="6" x="178.76" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1360,7 +1360,7 @@
 <rect width="27.61" height="26.61" x="208.67" y="61.31" class="decompiled"><title>void __cdecl Output_InsertGT4_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture);</title></rect>
 <rect width="27.61" height="26.50" x="208.67" y="90.91" class="known"><title>int32_t __cdecl SkidooControl(void);</title></rect>
 <rect width="27.61" height="26.47" x="208.67" y="120.41" class="known"><title>void __cdecl CreatureMood(struct ITEM_INFO *item, struct AI_INFO *info, int32_t violent);</title></rect>
-<rect width="27.61" height="26.36" x="208.67" y="149.89" class="known"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="27.61" height="26.36" x="208.67" y="149.89" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="27.61" height="25.90" x="208.67" y="179.25" class="known"><title>void __cdecl Worker2Control(int16_t item_num);</title></rect>
 <rect width="27.61" height="25.77" x="208.67" y="208.16" class="known"><title>void __cdecl ShowEndStatsText(void);</title></rect>
 <rect width="27.61" height="25.69" x="208.67" y="236.92" class="decompiled"><title>int32_t __cdecl Output_XYGClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
