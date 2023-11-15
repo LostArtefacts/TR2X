@@ -3516,3 +3516,29 @@ const int16_t *__cdecl Output_InsertObjectGT3_Sorted(
 
     return obj_ptr;
 }
+
+const int16_t *__cdecl Output_InsertObjectGT4_Sorted(
+    const int16_t *obj_ptr, const int32_t num, const enum SORT_TYPE sort_type)
+{
+    for (int i = 0; i < num; i++) {
+        if (HWR_VertexBufferFull()) {
+            obj_ptr += (num - i) * 5;
+            break;
+        }
+
+        const struct PHD_VBUF *const vtx[4] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const int16_t texture_idx = *obj_ptr++;
+        const struct PHD_TEXTURE *const texture =
+            &g_PhdTextureInfo[texture_idx];
+
+        Output_InsertGT4_Sorted(
+            vtx[0], vtx[1], vtx[2], vtx[3], texture, sort_type);
+    }
+
+    return obj_ptr;
+}
