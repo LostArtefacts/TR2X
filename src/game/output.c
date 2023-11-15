@@ -1914,8 +1914,8 @@ const int16_t *__cdecl Output_InsertObjectG3(
         const uint8_t color_idx = *obj_ptr++;
         int32_t num_points = 3;
 
-        int8_t clip_or = BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
-        int8_t clip_and = BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
+        int8_t clip_or = vtx[0]->clip | vtx[1]->clip | vtx[2]->clip;
+        int8_t clip_and = vtx[0]->clip & vtx[1]->clip & vtx[2]->clip;
 
         if (clip_and != 0) {
             continue;
@@ -2022,10 +2022,8 @@ const int16_t *__cdecl Output_InsertObjectGT3(
         const struct PHD_UV *const uv = texture->uv;
         int32_t num_points = 3;
 
-        const int8_t clip_or =
-            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip);
-        const int8_t clip_and =
-            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip);
+        const int8_t clip_or = vtx[0]->clip | vtx[1]->clip | vtx[2]->clip;
+        const int8_t clip_and = vtx[0]->clip & vtx[1]->clip & vtx[2]->clip;
 
         if (clip_and != 0) {
             continue;
@@ -2238,9 +2236,9 @@ const int16_t *__cdecl Output_InsertObjectG4(
         int32_t num_points = 4;
 
         const int8_t clip_or =
-            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip);
+            vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip;
         const int8_t clip_and =
-            LOBYTE(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip);
+            vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip;
 
         if (clip_and != 0) {
             continue;
@@ -2363,9 +2361,9 @@ const int16_t *__cdecl Output_InsertObjectGT4(
         int32_t num_points = 4;
 
         const int8_t clip_or =
-            BYTE0(vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip);
+            vtx[0]->clip | vtx[1]->clip | vtx[2]->clip | vtx[3]->clip;
         const int8_t clip_and =
-            BYTE0(vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip);
+            vtx[0]->clip & vtx[1]->clip & vtx[2]->clip & vtx[3]->clip;
 
         if (clip_and != 0) {
             continue;
@@ -2626,7 +2624,7 @@ void __cdecl Output_InsertTrans8(const struct PHD_VBUF *vbuf, int16_t shade)
         g_FltWinBottom = (float)g_PhdWinMaxY;
 
         num_points = Output_XYClipper(vtx_count, g_VBuffer);
-        if (!num_points) {
+        if (num_points == 0) {
             return;
         }
     }
@@ -3541,4 +3539,151 @@ const int16_t *__cdecl Output_InsertObjectGT4_Sorted(
     }
 
     return obj_ptr;
+}
+
+void __cdecl Output_InsertGT3_Sorted(
+    const struct PHD_VBUF *const vtx0, const struct PHD_VBUF *const vtx1,
+    const struct PHD_VBUF *const vtx2, const struct PHD_TEXTURE *const texture,
+    const struct PHD_UV *const uv0, const struct PHD_UV *const uv1,
+    const struct PHD_UV *const uv2, const enum SORT_TYPE sort_type)
+{
+    const int8_t clip_or = vtx0->clip | vtx1->clip | vtx2->clip;
+    const int8_t clip_and = vtx0->clip & vtx1->clip & vtx2->clip;
+    if (clip_and != 0) {
+        return;
+    }
+
+    const double zv =
+        Output_CalculatePolyZ(sort_type, vtx0->zv, vtx1->zv, vtx2->zv, -1.0);
+    const enum POLY_TYPE poly_type =
+        texture->draw_type == DRAW_OPAQUE ? POLY_HWR_GTMAP : POLY_HWR_WGTMAP;
+
+    int32_t num_points = 3;
+    if (clip_or >= 0) {
+        if (!VBUF_VISIBLE(*vtx0, *vtx1, *vtx2)) {
+            return;
+        }
+
+        if (clip_or == 0) {
+
+            g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+            g_Sort3DPtr->_1 = MAKE_ZSORT(zv);
+            g_Sort3DPtr++;
+
+            g_Info3DPtr[0] = poly_type;
+            g_Info3DPtr[1] = texture->tex_page;
+            g_Info3DPtr[2] = num_points;
+            *(int32_t *)(&g_Info3DPtr[3]) = (int32_t)g_HWR_VertexPtr;
+            g_Info3DPtr += 5;
+
+            g_HWR_VertexPtr[0].sx = vtx0->xs;
+            g_HWR_VertexPtr[0].sy = vtx0->ys;
+            g_HWR_VertexPtr[0].rhw = vtx0->rhw;
+            g_HWR_VertexPtr[0].color = Output_ShadeLight(vtx0->g);
+            g_HWR_VertexPtr[0].tu = (double)uv0->u / (double)PHD_ONE;
+            g_HWR_VertexPtr[0].tv = (double)uv0->v / (double)PHD_ONE;
+
+            g_HWR_VertexPtr[1].sx = vtx1->xs;
+            g_HWR_VertexPtr[1].sy = vtx1->ys;
+            g_HWR_VertexPtr[1].rhw = vtx1->rhw;
+            g_HWR_VertexPtr[1].color = Output_ShadeLight(vtx1->g);
+            g_HWR_VertexPtr[1].tu = (double)uv1->u / (double)PHD_ONE;
+            g_HWR_VertexPtr[1].tv = (double)uv1->v / (double)PHD_ONE;
+
+            g_HWR_VertexPtr[2].sx = vtx2->xs;
+            g_HWR_VertexPtr[2].sy = vtx2->ys;
+            g_HWR_VertexPtr[2].rhw = vtx2->rhw;
+            g_HWR_VertexPtr[2].color = Output_ShadeLight(vtx2->g);
+            g_HWR_VertexPtr[2].tu = (double)uv2->u / (double)PHD_ONE;
+            g_HWR_VertexPtr[2].tv = (double)uv2->v / (double)PHD_ONE;
+
+            if (g_SavedAppSettings.zbuffer) {
+                g_HWR_VertexPtr[0].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx0->rhw;
+                g_HWR_VertexPtr[1].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx1->rhw;
+                g_HWR_VertexPtr[2].sz =
+                    g_FltResZBuf - g_FltResZORhw * vtx2->rhw;
+            }
+            g_HWR_VertexPtr += 3;
+            g_SurfaceCount++;
+            return;
+        }
+
+        g_VBuffer[0].x = vtx0->xs;
+        g_VBuffer[0].y = vtx0->ys;
+        g_VBuffer[0].rhw = vtx0->rhw;
+        g_VBuffer[0].g = (double)vtx0->g;
+        g_VBuffer[0].u = (double)uv0->u * vtx0->rhw;
+        g_VBuffer[0].v = (double)uv0->v * vtx0->rhw;
+
+        g_VBuffer[1].x = vtx1->xs;
+        g_VBuffer[1].y = vtx1->ys;
+        g_VBuffer[1].rhw = vtx1->rhw;
+        g_VBuffer[1].g = (double)vtx1->g;
+        g_VBuffer[1].u = (double)uv1->u * vtx1->rhw;
+        g_VBuffer[1].v = (double)uv1->v * vtx1->rhw;
+
+        g_VBuffer[2].x = vtx2->xs;
+        g_VBuffer[2].y = vtx2->ys;
+        g_VBuffer[2].rhw = vtx2->rhw;
+        g_VBuffer[2].g = (double)vtx2->g;
+        g_VBuffer[2].u = (double)uv2->u * vtx2->rhw;
+        g_VBuffer[2].v = (double)uv2->v * vtx2->rhw;
+    } else {
+        if (!Output_VisibleZClip(vtx0, vtx1, vtx2)) {
+            return;
+        }
+
+        const struct POINT_INFO pts[3] = {
+            {
+                .xv = vtx0->xv,
+                .yv = vtx0->yv,
+                .zv = vtx0->zv,
+                .rhw = vtx0->rhw,
+                .xs = vtx0->xs,
+                .ys = vtx0->ys,
+                .g = (float)vtx0->g,
+                .u = (float)uv0->u,
+                .v = (float)uv0->v,
+            },
+
+            {
+                .xv = vtx1->xv,
+                .yv = vtx1->yv,
+                .zv = vtx1->zv,
+                .rhw = vtx1->rhw,
+                .xs = vtx1->xs,
+                .ys = vtx1->ys,
+                .g = (float)vtx1->g,
+                .u = (float)uv1->u,
+                .v = (float)uv1->v,
+            },
+
+            {
+                .xv = vtx2->xv,
+                .yv = vtx2->yv,
+                .zv = vtx2->zv,
+                .rhw = vtx2->rhw,
+                .xs = vtx2->xs,
+                .ys = vtx2->ys,
+                .g = (float)vtx2->g,
+                .u = (float)uv2->u,
+                .v = (float)uv2->v,
+            },
+        };
+
+        num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+        if (num_points == 0) {
+            return;
+        }
+    }
+
+    num_points = Output_XYGUVClipper(num_points, g_VBuffer);
+    if (num_points == 0) {
+        return;
+    }
+
+    Output_InsertClippedPoly_Textured(
+        num_points, zv, poly_type, texture->tex_page);
 }

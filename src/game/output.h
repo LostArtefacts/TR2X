@@ -112,3 +112,9 @@ const int16_t *__cdecl Output_InsertObjectGT3_Sorted(
 
 const int16_t *__cdecl Output_InsertObjectGT4_Sorted(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+
+void __cdecl Output_InsertGT3_Sorted(
+    const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1,
+    const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture,
+    const struct PHD_UV *uv0, const struct PHD_UV *uv1,
+    const struct PHD_UV *uv2, enum SORT_TYPE sort_type);
