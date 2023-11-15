@@ -186,6 +186,7 @@ static void Inject_Output(void)
     INJECT(1, 0x0040B6C0, Output_InsertSprite_Sorted);
     INJECT(1, 0x0040BA10, Output_InsertFlatRect_Sorted);
     INJECT(1, 0x0040BB90, Output_InsertLine_Sorted);
+    INJECT(1, 0x0040BCC0, Output_InsertTrans8_Sorted);
     INJECT(1, 0x0041BA50, Output_InsertPolygons_I);
 }
 

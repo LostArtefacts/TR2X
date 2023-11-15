@@ -3933,3 +3933,48 @@ void __cdecl Output_InsertSprite_Sorted(
         num_points, z, POLY_HWR_WGTMAP, sprite->tex_page);
     g_IsShadeEffect = old_shade;
 }
+
+void __cdecl Output_InsertTrans8_Sorted(
+    const struct PHD_VBUF *const vbuf, const int16_t shade)
+{
+    int8_t clip_or = 0x00;
+    int8_t clip_and = 0xFF;
+    int32_t num_vtx = 8;
+
+    for (int i = 0; i < num_vtx; i++) {
+        clip_or |= vbuf[i].clip;
+        clip_and &= vbuf[i].clip;
+    }
+
+    if (clip_or < 0 || clip_and != 0
+        || !VBUF_VISIBLE(vbuf[0], vbuf[1], vbuf[2])) {
+        return;
+    }
+
+    for (int i = 0; i < num_vtx; i++) {
+        g_VBuffer[i].x = vbuf[i].xs;
+        g_VBuffer[i].y = vbuf[i].ys;
+        g_VBuffer[i].rhw = g_RhwFactor / (double)(vbuf[i].zv - 0x20000);
+    }
+
+    int32_t num_points = num_vtx;
+    if (clip_or != 0) {
+        g_FltWinLeft = (float)g_PhdWinMinX;
+        g_FltWinTop = (float)g_PhdWinMinY;
+        g_FltWinRight = (float)(g_PhdWinMinX + g_PhdWinWidth);
+        g_FltWinBottom = (float)(g_PhdWinMinY + g_PhdWinHeight);
+        num_points = Output_XYClipper(num_points, g_VBuffer);
+        if (num_points == 0) {
+            return;
+        }
+    }
+
+    int32_t poly_z = 0;
+    for (int i = 0; i < num_vtx; i++) {
+        poly_z += vbuf[i].zv;
+    }
+    poly_z /= num_vtx;
+
+    Output_InsertPoly_Gouraud(
+        num_points, (double)(poly_z - 0x20000), 0, 0, 0, POLY_HWR_TRANS);
+}
