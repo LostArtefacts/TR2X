@@ -4040,3 +4040,33 @@ void __cdecl Output_InsertSprite(
     *g_Info3DPtr++ = shade;
     g_SurfaceCount++;
 }
+
+const int16_t *__cdecl Output_InsertRoomSprite(
+    const int16_t *obj_ptr, const int32_t vtx_count)
+{
+    for (int i = 0; i < vtx_count; i++) {
+        const struct PHD_VBUF *vbuf = &g_PhdVBuf[*obj_ptr++];
+        const int16_t sprite_idx = *obj_ptr++;
+        if ((int8_t)vbuf->clip < 0) {
+            continue;
+        }
+
+        const struct PHD_SPRITE *const sprite = &g_PhdSprites[sprite_idx];
+        const double persp = (double)(vbuf->zv / g_PhdPersp);
+        const double x0 =
+            g_PhdWinCenterX + (vbuf->xv + (sprite->x0 << W2V_SHIFT)) / persp;
+        const double y0 =
+            g_PhdWinCenterY + (vbuf->yv + (sprite->y0 << W2V_SHIFT)) / persp;
+        const double x1 =
+            g_PhdWinCenterX + (vbuf->xv + (sprite->x1 << W2V_SHIFT)) / persp;
+        const double y1 =
+            g_PhdWinCenterY + (vbuf->yv + (sprite->y1 << W2V_SHIFT)) / persp;
+        if (x1 >= g_PhdWinLeft && y1 >= g_PhdWinTop && x0 < g_PhdWinRight
+            && y0 < g_PhdWinBottom) {
+            g_Output_InsertSprite(
+                vbuf->zv, x0, y0, x1, y1, sprite_idx, vbuf->g);
+        }
+    }
+
+    return obj_ptr;
+}

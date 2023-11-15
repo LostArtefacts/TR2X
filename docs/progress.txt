@@ -338,10 +338,10 @@ typedef struct PHD_SPRITE {
     uint16_t offset;
     uint16_t width;
     uint16_t height;
+    int16_t x0;
+    int16_t y0;
     int16_t x1;
     int16_t y1;
-    int16_t x2;
-    int16_t y2;
 } PHD_SPRITE;
 
 typedef struct __unaligned POINT_INFO {
@@ -1351,7 +1351,7 @@ typedef enum LARA_MESH {
 # 3dsystem/scalespr.c
 0040C050    000002C7    -       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
 0040C320    00000085    -       void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
-0040C3B0    00000152    -       const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);
+0040C3B0    00000152    +       const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);
 0040C510    00000096    -       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C5B0    0000009D    -       void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C650    00000223    -       void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);
@@ -2432,7 +2432,7 @@ typedef enum LARA_MESH {
 00450C40    00000037    -R      void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);
 00450C80    00000089    -R      void __cdecl S_OutputPolyList(void);
 00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);
-00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
+00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
 00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);
 00451180    000002F6    -R      void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00451480    00000031    -R      void __cdecl S_CalculateStaticLight(int16_t adder);
@@ -2635,7 +2635,7 @@ typedef enum LARA_MESH {
 00478060    -       int32_t g_PhdWinBottom;
 00478064    -       int32_t g_PhdPersp;
 00478068    -       int32_t g_PhdWinLeft;
-0047806C    -       void (*__cdecl g_Output_InsertFlatRect)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);
+0047806C    -       void (*__cdecl g_Output_InsertFlatRect)(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);
 00478070    -       int16_t g_Info3DBuffer[120000];
 004B29F0    -       int32_t g_PhdWinMaxX;
 004B29F4    -       int32_t g_PhdNearZ;
@@ -2649,7 +2649,7 @@ typedef enum LARA_MESH {
 004B2A14    -       float g_FltPerspONearZ;
 004B2A18    -       float g_FltRhwONearZ;
 004B2A1C    -       int32_t g_PhdWinMaxY;
-004B2A20    -       void (*__cdecl g_Output_InsertSprite)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);
+004B2A20    -       void (*__cdecl g_Output_InsertSprite)(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
 004B2A24    -       float g_FltNearZ;
 004B2A28    -       struct MATRIX *g_MatrixPtr;
 004B2A2C    -       const int16_t *(*__cdecl g_Output_DrawObjectGT3)(const int16_t*, int32_t, enum SORT_TYPE);

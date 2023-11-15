@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.59% (336)</tspan> · <tspan class="known">69.95% (852)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.67% (337)</tspan> · <tspan class="known">69.87% (851)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="206.07" height="6" x="0" y="0" class="decompiled"/>
-<rect width="522.53" height="6" x="206.07" y="0" class="known"/>
+<rect width="206.68" height="6" x="0" y="0" class="decompiled"/>
+<rect width="521.92" height="6" x="206.68" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -157,7 +157,7 @@
 <rect width="12" height="12" x="405" y="15" class="decompiled"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="420" y="15" class="known"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
 <rect width="12" height="12" x="435" y="15" class="known"><title>void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);</title></rect>
-<rect width="12" height="12" x="450" y="15" class="known"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
+<rect width="12" height="12" x="450" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
 <rect width="12" height="12" x="465" y="15" class="known"><title>void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="480" y="15" class="known"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="495" y="15" class="known"><title>void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);</title></rect>
@@ -1141,7 +1141,7 @@
 <rect width="12" height="12" x="165" y="315" class="known"><title>void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);</title></rect>
 <rect width="12" height="12" x="180" y="315" class="known"><title>void __cdecl S_OutputPolyList(void);</title></rect>
 <rect width="12" height="12" x="195" y="315" class="known"><title>int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);</title></rect>
-<rect width="12" height="12" x="210" y="315" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x1, int32_t y1, int32_t x2, int32_t y2);</title></rect>
+<rect width="12" height="12" x="210" y="315" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
 <rect width="12" height="12" x="225" y="315" class="known"><title>void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);</title></rect>
 <rect width="12" height="12" x="240" y="315" class="known"><title>void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="12" height="12" x="255" y="315" class="known"><title>void __cdecl S_CalculateStaticLight(int16_t adder);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.61%</tspan> · <tspan class="known">74.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.71%</tspan> · <tspan class="known">73.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="191.32" height="6" x="0" y="0" class="decompiled"/>
-<rect width="553.23" height="6" x="191.32" y="0" class="known"/>
+<rect width="192.06" height="6" x="0" y="0" class="decompiled"/>
+<rect width="552.49" height="6" x="192.06" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1584,7 +1584,7 @@
 <rect width="14.16" height="13.49" x="500.66" y="76.23" class="known"><title>void __cdecl SpikeCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);</title></rect>
 <rect width="14.16" height="13.49" x="517.82" y="76.23" class="known"><title>void __cdecl DartsControl(int16_t item_num);</title></rect>
 <rect width="14.11" height="13.49" x="534.98" y="76.23" class="decompiled"><title>void __cdecl Camera_Shift(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom);</title></rect>
-<rect width="14.01" height="13.49" x="552.10" y="76.23" class="known"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
+<rect width="14.01" height="13.49" x="552.10" y="76.23" class="decompiled"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
 <rect width="13.76" height="13.49" x="569.11" y="76.23" class="decompiled"><title>void __cdecl Lara_Col_Climbing(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.66" height="13.49" x="585.87" y="76.23" class="known"><title>void __cdecl Gun_DrawFlash(int32_t weapon_type, int32_t clip);</title></rect>
 <rect width="13.56" height="13.49" x="602.53" y="76.23" class="known"><title>INT_PTR __stdcall SE_SoundDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);</title></rect>
@@ -2143,7 +2143,7 @@
 <rect width="4.74" height="4.50" x="688.28" y="261.54" class="known"><title>void __cdecl InitialiseKillerStatue(int16_t item_num);</title></rect>
 <rect width="4.74" height="4.50" x="696.02" y="261.54" class="known"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
 <rect width="4.74" height="4.50" x="703.76" y="261.54" class="known"><title>DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);</title></rect>
-<rect width="4.74" height="4.50" x="711.51" y="261.54" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x1, int32_t y1, int32_t x2, int32_t y2);</title></rect>
+<rect width="4.74" height="4.50" x="711.51" y="261.54" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
 <rect width="4.74" height="4.50" x="719.25" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.74" height="4.50" x="726.99" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.63" height="4.50" x="734.73" y="261.54" class="known"><title>void __cdecl DrawGameInfo(int32_t timed);</title></rect>

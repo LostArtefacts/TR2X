@@ -145,3 +145,6 @@ void __cdecl Output_InsertTransQuad_Sorted(
 void __cdecl Output_InsertSprite(
     int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1,
     int32_t sprite_idx, int16_t shade);
+
+const int16_t *__cdecl Output_InsertRoomSprite(
+    const int16_t *obj_ptr, int32_t vtx_count);

@@ -346,10 +346,10 @@ typedef struct PHD_SPRITE {
     uint16_t offset;
     uint16_t width;
     uint16_t height;
+    int16_t x0;
+    int16_t y0;
     int16_t x1;
     int16_t y1;
-    int16_t x2;
-    int16_t y2;
 } PHD_SPRITE;
 
 typedef struct POINT_INFO {
