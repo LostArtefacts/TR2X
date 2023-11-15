@@ -15,7 +15,6 @@
 #define Output_InsertObjectGT3_Sorted ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x0040AD10)
 #define Output_InsertObjectG4_Sorted ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x0040ADB0)
 #define Output_InsertPoly_Gouraud ((void __cdecl (*)(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type))0x0040B1F0)
-#define Output_InsertObjectG3_Sorted ((const int16_t *__cdecl (*)(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type))0x0040B370)
 #define Output_InsertSprite_Sorted ((void __cdecl (*)(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade))0x0040B6C0)
 #define Output_InsertFlatRect_Sorted ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x0040BA10)
 #define Output_InsertLine_Sorted ((void __cdecl (*)(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx))0x0040BB90)

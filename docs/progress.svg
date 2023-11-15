@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.60% (324)</tspan> · <tspan class="known">70.94% (864)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.68% (325)</tspan> · <tspan class="known">70.85% (863)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="198.71" height="6" x="0" y="0" class="decompiled"/>
-<rect width="529.89" height="6" x="198.71" y="0" class="known"/>
+<rect width="199.32" height="6" x="0" y="0" class="decompiled"/>
+<rect width="529.28" height="6" x="199.32" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -148,7 +148,7 @@
 <rect width="12" height="12" x="270" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="285" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="300" y="15" class="known"><title>void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);</title></rect>
-<rect width="12" height="12" x="315" y="15" class="known"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="12" height="12" x="315" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="330" y="15" class="known"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="345" y="15" class="known"><title>void __cdecl Output_InsertFlatRect_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="360" y="15" class="known"><title>void __cdecl Output_InsertLine_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.37%</tspan> · <tspan class="known">76.30%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">23.61%</tspan> · <tspan class="known">76.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="174.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="570" height="6" x="174.56" y="0" class="known"/>
+<rect width="176.39" height="6" x="0" y="0" class="decompiled"/>
+<rect width="568.17" height="6" x="176.39" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1401,7 +1401,7 @@
 <rect width="22.47" height="24.35" x="294.58" y="82.89" class="known"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="22.47" height="24.35" x="294.58" y="110.24" class="known"><title>void __cdecl RollingBallControl(int16_t item_num);</title></rect>
 <rect width="22.47" height="24.25" x="294.58" y="137.58" class="known"><title>void __cdecl ControlHarpoonBolt(int16_t item_num);</title></rect>
-<rect width="22.47" height="24.22" x="294.58" y="164.83" class="known"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
+<rect width="22.47" height="24.22" x="294.58" y="164.83" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="22.47" height="24.15" x="294.58" y="192.05" class="decompiled"><title>void __fastcall Output_WGTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported</title></rect>
 <rect width="22.47" height="24.05" x="294.58" y="219.20" class="decompiled"><title>void __cdecl Lara_HangTest(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="22.47" height="23.86" x="294.58" y="246.25" class="known"><title>void __cdecl Item_Animate(struct ITEM_INFO *item);</title></rect>

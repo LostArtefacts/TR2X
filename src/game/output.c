@@ -38,7 +38,6 @@ static double Output_CalculatePolyZ(
     enum SORT_TYPE sort_type, double z0, double z1, double z2, double z3)
 {
     double zv = 0.0;
-
     switch (sort_type) {
     case ST_AVG_Z:
         zv = (z3 > 0.0) ? (z0 + z1 + z2 + z3) / 4.0 : (z0 + z1 + z2) / 3.0;
@@ -317,7 +316,7 @@ void __cdecl Output_Init(
         g_Output_DrawObjectG4 = Output_InsertObjectG4;
         g_Output_InsertSprite = Output_InsertSprite;
         g_Output_InsertFlatRect = Output_InsertFlatRect;
-        g_Output_DrawLine = Output_InsertLine;
+        g_Output_InsertLine = Output_InsertLine;
         g_Output_InsertTrans8 = Output_InsertTrans8;
         g_Output_InsertTransQuad = Output_InsertTransQuad;
         break;
@@ -329,14 +328,14 @@ void __cdecl Output_Init(
             g_Output_DrawObjectG3 = Output_InsertObjectG3_ZBuffered;
             g_Output_DrawObjectG4 = Output_InsertObjectG4_ZBuffered;
             g_Output_InsertFlatRect = Output_InsertFlatRect_ZBuffered;
-            g_Output_DrawLine = Output_InsertLine_ZBuffered;
+            g_Output_InsertLine = Output_InsertLine_ZBuffered;
         } else {
             g_Output_DrawObjectGT3 = Output_InsertObjectGT3_Sorted;
             g_Output_DrawObjectGT4 = Output_InsertObjectGT4_Sorted;
             g_Output_DrawObjectG3 = Output_InsertObjectG3_Sorted;
             g_Output_DrawObjectG4 = Output_InsertObjectG4_Sorted;
             g_Output_InsertFlatRect = Output_InsertFlatRect_Sorted;
-            g_Output_DrawLine = Output_InsertLine_Sorted;
+            g_Output_InsertLine = Output_InsertLine_Sorted;
         }
         g_Output_InsertSprite = Output_InsertSprite_Sorted;
         g_Output_InsertTrans8 = Output_InsertTrans8_Sorted;
@@ -3260,4 +3259,110 @@ void __cdecl Output_InsertLine_ZBuffered(
     g_D3DDev->lpVtbl->DrawPrimitive(
         g_D3DDev, D3DPT_LINESTRIP, D3DVT_TLVERTEX, g_VBufferD3D, 2,
         D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
+}
+
+const int16_t *__cdecl Output_InsertObjectG3_Sorted(
+    const int16_t *obj_ptr, const int32_t num, const enum SORT_TYPE sort_type)
+{
+    for (int i = 0; i < num; i++) {
+        if (HWR_VertexBufferFull()) {
+            obj_ptr += (num - i) * 4;
+            break;
+        }
+
+        int32_t num_points = 3;
+        const struct PHD_VBUF *vtx[3] = {
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+            &g_PhdVBuf[*obj_ptr++],
+        };
+        const int16_t color_idx = *obj_ptr++;
+
+        const int8_t clip_or = vtx[0]->clip | vtx[1]->clip | vtx[2]->clip;
+        const int8_t clip_and = vtx[0]->clip & vtx[1]->clip & vtx[2]->clip;
+        if (clip_and != 0) {
+            continue;
+        }
+
+        if (clip_or >= 0) {
+            if (!VBUF_VISIBLE(*vtx[0], *vtx[1], *vtx[2])) {
+                continue;
+            }
+
+            g_VBuffer[0].x = vtx[0]->xs;
+            g_VBuffer[0].y = vtx[0]->ys;
+            g_VBuffer[0].rhw = vtx[0]->rhw;
+            g_VBuffer[0].g = (float)vtx[0]->g;
+
+            g_VBuffer[1].x = vtx[1]->xs;
+            g_VBuffer[1].y = vtx[1]->ys;
+            g_VBuffer[1].rhw = vtx[1]->rhw;
+            g_VBuffer[1].g = (float)vtx[1]->g;
+
+            g_VBuffer[2].x = vtx[2]->xs;
+            g_VBuffer[2].y = vtx[2]->ys;
+            g_VBuffer[2].rhw = vtx[2]->rhw;
+            g_VBuffer[2].g = (float)vtx[2]->g;
+
+            if (clip_or > 0) {
+                num_points = Output_XYGClipper(num_points, g_VBuffer);
+            }
+        } else {
+            if (!Output_VisibleZClip(vtx[0], vtx[1], vtx[2])) {
+                continue;
+            }
+
+            const struct POINT_INFO pts[3] = {
+                {
+                    .xv = vtx[0]->xv,
+                    .yv = vtx[0]->yv,
+                    .zv = vtx[0]->zv,
+                    .rhw = vtx[0]->rhw,
+                    .xs = vtx[0]->xs,
+                    .ys = vtx[0]->ys,
+                    .g = (float)vtx[0]->g,
+                },
+
+                {
+                    .xv = vtx[1]->xv,
+                    .yv = vtx[1]->yv,
+                    .zv = vtx[1]->zv,
+                    .rhw = vtx[1]->rhw,
+                    .xs = vtx[1]->xs,
+                    .ys = vtx[1]->ys,
+                    .g = (float)vtx[1]->g,
+                },
+
+                {
+                    .xv = vtx[2]->xv,
+                    .yv = vtx[2]->yv,
+                    .zv = vtx[2]->zv,
+                    .rhw = vtx[2]->rhw,
+                    .xs = vtx[2]->xs,
+                    .ys = vtx[2]->ys,
+                    .g = (float)vtx[2]->g,
+                },
+            };
+
+            num_points = Output_ZedClipper(num_points, pts, g_VBuffer);
+            if (num_points == 0) {
+                continue;
+            }
+
+            num_points = Output_XYGClipper(num_points, g_VBuffer);
+        }
+
+        if (num_points == 0) {
+            continue;
+        }
+
+        const PALETTEENTRY *const color = &g_GamePalette16[color_idx >> 8];
+        const double zv = Output_CalculatePolyZ(
+            sort_type, vtx[0]->zv, vtx[1]->zv, vtx[2]->zv, -1.0);
+        Output_InsertPoly_Gouraud(
+            num_points, zv, color->peRed, color->peGreen, color->peBlue,
+            POLY_HWR_GOURAUD);
+    }
+
+    return obj_ptr;
 }

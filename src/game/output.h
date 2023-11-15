@@ -72,6 +72,7 @@ void __cdecl Output_InsertFlatRect(
 void __cdecl Output_InsertLine(
     int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
     uint8_t color_idx);
+
 const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(
@@ -99,3 +100,6 @@ void __cdecl Output_InsertFlatRect_ZBuffered(
 void __cdecl Output_InsertLine_ZBuffered(
     int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z,
     uint8_t color_idx);
+
+const int16_t *__cdecl Output_InsertObjectG3_Sorted(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);

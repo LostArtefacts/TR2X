@@ -69,7 +69,7 @@
 #define g_W2VMatrix (*(struct MATRIX*)0x004B2AC0)
 #define g_Info3DPtr (*(int16_t **)0x004B2AF0)
 #define g_PhdWinWidth (*(int32_t*)0x004B2AF4)
-#define g_Output_DrawLine (*(void(__cdecl **)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t))0x004B2AF8)
+#define g_Output_InsertLine (*(void(__cdecl **)(int32_t, int32_t, int32_t, int32_t, int32_t, uint8_t))0x004B2AF8)
 #define g_PhdTextureInfo (*(struct PHD_TEXTURE(*)[0x800])0x004B2B00)
 #define g_PhdViewDistance (*(int32_t*)0x004BCB00)
 #define g_LsPitch (*(int16_t*)0x004BCB04)
