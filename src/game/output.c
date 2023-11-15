@@ -3978,3 +3978,47 @@ void __cdecl Output_InsertTrans8_Sorted(
     Output_InsertPoly_Gouraud(
         num_points, (double)(poly_z - 0x20000), 0, 0, 0, POLY_HWR_TRANS);
 }
+
+void __cdecl Output_InsertTransQuad_Sorted(
+    const int32_t x, const int32_t y, const int32_t width, const int32_t height,
+    const int32_t z)
+{
+    const double x0 = (double)x;
+    const double y0 = (double)y;
+    const double x1 = (double)(x + width);
+    const double y1 = (double)(y + height);
+
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = z;
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = POLY_HWR_TRANS;
+    *g_Info3DPtr++ = 4;
+    *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+    g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
+
+    g_HWR_VertexPtr[0].sx = x0;
+    g_HWR_VertexPtr[0].sy = y0;
+    g_HWR_VertexPtr[1].sx = x1;
+    g_HWR_VertexPtr[1].sy = y0;
+    g_HWR_VertexPtr[2].sx = x1;
+    g_HWR_VertexPtr[2].sy = y1;
+    g_HWR_VertexPtr[3].sx = x0;
+    g_HWR_VertexPtr[3].sy = y1;
+
+    for (int i = 0; i < 4; i++) {
+        g_HWR_VertexPtr[i].color = 0x80000000;
+    }
+
+    if (g_SavedAppSettings.zbuffer) {
+        const double rhw = g_RhwFactor / (double)z;
+        const double sz = g_FltResZBuf - rhw * g_FltResZORhw;
+        for (int i = 0; i < 4; i++) {
+            g_HWR_VertexPtr[i].rhw = rhw;
+            g_HWR_VertexPtr[i].sz = sz;
+        }
+    }
+
+    g_HWR_VertexPtr += 4;
+    g_SurfaceCount++;
+}

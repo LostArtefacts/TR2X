@@ -138,3 +138,6 @@ void __cdecl Output_InsertSprite_Sorted(
 
 void __cdecl Output_InsertTrans8_Sorted(
     const struct PHD_VBUF *vbuf, int16_t shade);
+
+void __cdecl Output_InsertTransQuad_Sorted(
+    int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);
