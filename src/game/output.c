@@ -16,6 +16,24 @@
 static D3DCOLOR Output_ShadeLight(uint32_t shade);
 static D3DCOLOR Output_ShadeColor(
     uint32_t red, uint32_t green, uint32_t blue, uint8_t alpha);
+static D3DCOLOR Output_ShadeLightColor(
+    uint32_t shade, uint32_t red, uint32_t green, uint32_t blue, uint8_t alpha);
+static double Output_CalculatePolyZ(
+    enum SORT_TYPE sort_type, double z0, double z1, double z2, double z3);
+
+static void __fastcall Output_FlatA(int32_t y1, int32_t y2, uint8_t color_idx);
+static void __fastcall Output_TransA(int32_t y1, int32_t y2, uint8_t depth_q);
+static void __fastcall Output_GourA(int32_t y1, int32_t y2, uint8_t color_idx);
+static void __fastcall Output_GTMapA(
+    int32_t y1, int32_t y2, const uint8_t *tex_page);
+static void __fastcall Output_WGTMapA(
+    int32_t y1, int32_t y2, const uint8_t *tex_page);
+static inline void Output_ClipG(
+    struct VERTEX_INFO *const buf, const struct VERTEX_INFO *const vtx1,
+    const struct VERTEX_INFO *const vtx2, const float clip);
+static inline void Output_ClipGUV(
+    struct VERTEX_INFO *const buf, const struct VERTEX_INFO *const vtx1,
+    const struct VERTEX_INFO *const vtx2, const float clip);
 
 static D3DCOLOR Output_ShadeColor(
     uint32_t red, uint32_t green, uint32_t blue, uint8_t alpha)
@@ -32,6 +50,16 @@ static D3DCOLOR Output_ShadeLight(uint32_t shade)
     uint32_t value = (0x1FFF - shade) >> 4;
     CLAMPG(value, 0xFF);
     return Output_ShadeColor(value, value, value, 0xFF);
+}
+
+static D3DCOLOR Output_ShadeLightColor(
+    uint32_t shade, uint32_t red, uint32_t green, uint32_t blue, uint8_t alpha)
+{
+    shade = 0x1FFF - shade;
+    red = (red * shade) >> 12;
+    green = (green * shade) >> 12;
+    blue = (blue * shade) >> 12;
+    return Output_ShadeColor(red, green, blue, alpha);
 }
 
 static double Output_CalculatePolyZ(
@@ -4101,6 +4129,36 @@ void __cdecl Output_InsertClippedPoly_Textured(
         g_HWR_VertexPtr[i].color = Output_ShadeLight(g_VBuffer[i].g);
         g_HWR_VertexPtr[i].tu = tu;
         g_HWR_VertexPtr[i].tv = tv;
+    }
+
+    g_HWR_VertexPtr += vtx_count;
+    g_SurfaceCount++;
+}
+
+void __cdecl Output_InsertPoly_Gouraud(
+    const int32_t vtx_count, const float z, const int32_t red,
+    const int32_t green, const int32_t blue, const int16_t poly_type)
+{
+    g_Sort3DPtr->_0 = (int32_t)g_Info3DPtr;
+    g_Sort3DPtr->_1 = MAKE_ZSORT(z);
+    g_Sort3DPtr++;
+
+    *g_Info3DPtr++ = poly_type;
+    *g_Info3DPtr++ = vtx_count;
+    *(D3DTLVERTEX **)g_Info3DPtr = g_HWR_VertexPtr;
+    g_Info3DPtr += sizeof(D3DTLVERTEX *) / sizeof(int16_t);
+
+    for (int i = 0; i < vtx_count; i++) {
+        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
+        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
+        if (g_SavedAppSettings.zbuffer) {
+            g_HWR_VertexPtr[i].sz =
+                g_FltResZBuf - g_FltResZORhw * g_VBuffer[0].rhw;
+        }
+        g_HWR_VertexPtr[i].rhw = g_VBuffer[0].rhw;
+        g_HWR_VertexPtr[i].color = Output_ShadeLightColor(
+            g_VBuffer[i].g, red, green, blue,
+            poly_type == POLY_HWR_TRANS ? 0x80 : 0xFF);
     }
 
     g_HWR_VertexPtr += vtx_count;

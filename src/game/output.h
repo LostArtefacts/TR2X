@@ -151,3 +151,7 @@ const int16_t *__cdecl Output_InsertRoomSprite(
 
 void __cdecl Output_InsertClippedPoly_Textured(
     int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
+
+void __cdecl Output_InsertPoly_Gouraud(
+    int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue,
+    int16_t poly_type);

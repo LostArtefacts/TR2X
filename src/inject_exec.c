@@ -183,6 +183,7 @@ static void Inject_Output(void)
     INJECT(1, 0x0040AC80, Output_InsertObjectGT4_Sorted);
     INJECT(1, 0x0040AD10, Output_InsertObjectGT3_Sorted);
     INJECT(1, 0x0040ADB0, Output_InsertObjectG4_Sorted);
+    INJECT(1, 0x0040B1F0, Output_InsertPoly_Gouraud);
     INJECT(1, 0x0040B370, Output_InsertObjectG3_Sorted);
     INJECT(1, 0x0040B6C0, Output_InsertSprite_Sorted);
     INJECT(1, 0x0040BA10, Output_InsertFlatRect_Sorted);
