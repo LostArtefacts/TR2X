@@ -341,6 +341,17 @@ typedef struct PHD_TEXTURE {
     PHD_UV uv[4];
 } PHD_TEXTURE;
 
+typedef struct PHD_SPRITE {
+    uint16_t tex_page;
+    uint16_t offset;
+    uint16_t width;
+    uint16_t height;
+    int16_t x1;
+    int16_t y1;
+    int16_t x2;
+    int16_t y2;
+} PHD_SPRITE;
+
 typedef struct POINT_INFO {
     float xv;
     float yv;

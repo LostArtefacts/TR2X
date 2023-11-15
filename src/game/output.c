@@ -3859,3 +3859,77 @@ void __cdecl Output_InsertLine_Sorted(
     g_HWR_VertexPtr += 2;
     g_SurfaceCount++;
 }
+
+void __cdecl Output_InsertSprite_Sorted(
+    int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1,
+    const int32_t sprite_idx, const int16_t shade)
+{
+    if (HWR_VertexBufferFull() || x0 >= x1 || y0 >= y1 || x1 <= 0 || y1 <= 0
+        || x0 >= g_PhdWinMaxX || y0 >= g_PhdWinMaxY || z >= g_PhdFarZ) {
+        return;
+    }
+
+    x0 += g_PhdWinMinX;
+    x1 += g_PhdWinMinX;
+    y0 += g_PhdWinMinY;
+    y1 += g_PhdWinMinY;
+
+    CLAMPL(z, g_PhdNearZ);
+
+    int32_t num_points = 4;
+
+    const struct PHD_SPRITE *const sprite = &g_PhdSprites[sprite_idx];
+    const double rhw = g_RhwFactor / (double)z;
+    const int32_t u_offset = (sprite->offset & 0xFF) * 256;
+    const int32_t v_offset = (sprite->offset >> 8) * 256;
+
+    const int32_t adjustment = g_UVAdd;
+    const double u0 = (double)(u_offset - adjustment + sprite->width) * rhw;
+    const double u1 = (double)(u_offset + adjustment) * rhw;
+    const double v1 = (double)(v_offset - adjustment + sprite->height) * rhw;
+    const double v0 = (double)(v_offset + adjustment) * rhw;
+
+    g_VBuffer[0].x = (float)x0;
+    g_VBuffer[0].y = (float)y0;
+    g_VBuffer[0].u = u1;
+    g_VBuffer[0].v = v0;
+
+    g_VBuffer[1].x = (float)x1;
+    g_VBuffer[1].y = (float)y0;
+    g_VBuffer[1].u = u0;
+    g_VBuffer[1].v = v0;
+
+    g_VBuffer[2].x = (float)x1;
+    g_VBuffer[2].y = (float)y1;
+    g_VBuffer[2].u = u0;
+    g_VBuffer[2].v = v1;
+
+    g_VBuffer[3].x = (float)x0;
+    g_VBuffer[3].y = (float)y1;
+    g_VBuffer[3].u = u1;
+    g_VBuffer[3].v = v1;
+
+    for (int i = 0; i < 4; i++) {
+        g_VBuffer[i].rhw = rhw;
+        g_VBuffer[i].g = (float)shade;
+    }
+
+    if (x0 < g_PhdWinMinX || y0 < g_PhdWinMinY
+        || x1 > g_PhdWinWidth + g_PhdWinMinX
+        || y1 > g_PhdWinHeight + g_PhdWinMinY) {
+        g_FltWinLeft = (float)g_PhdWinMinX;
+        g_FltWinTop = (float)g_PhdWinMinY;
+        g_FltWinRight = (float)(g_PhdWinMinX + g_PhdWinWidth);
+        g_FltWinBottom = (float)(g_PhdWinMinY + g_PhdWinHeight);
+        num_points = Output_XYGUVClipper(num_points, g_VBuffer);
+        if (num_points == 0) {
+            return;
+        }
+    }
+
+    const bool old_shade = g_IsShadeEffect;
+    g_IsShadeEffect = 0;
+    Output_InsertClippedPoly_Textured(
+        num_points, z, POLY_HWR_WGTMAP, sprite->tex_page);
+    g_IsShadeEffect = old_shade;
+}

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.26% (332)</tspan> · <tspan class="known">70.28% (856)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.34% (333)</tspan> · <tspan class="known">70.20% (855)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="203.62" height="6" x="0" y="0" class="decompiled"/>
-<rect width="524.99" height="6" x="203.62" y="0" class="known"/>
+<rect width="204.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="524.37" height="6" x="204.23" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -129,8 +129,8 @@
 <rect width="12" height="12" x="735" y="0" class="decompiled"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="12" height="12" x="0" y="15" class="decompiled"><title>void __cdecl Output_InsertTrans8(const struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="15" y="15" class="decompiled"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
-<rect width="12" height="12" x="30" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
-<rect width="12" height="12" x="45" y="15" class="decompiled"><title>void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="30" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="45" y="15" class="decompiled"><title>void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="60" y="15" class="decompiled"><title>void __cdecl Output_InsertGT3_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2);</title></rect>
 <rect width="12" height="12" x="75" y="15" class="known"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
 <rect width="12" height="12" x="90" y="15" class="decompiled"><title>void __cdecl Output_InsertGT4_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture);</title></rect>
@@ -139,8 +139,8 @@
 <rect width="12" height="12" x="135" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="150" y="15" class="known"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
 <rect width="12" height="12" x="165" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="180" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
-<rect width="12" height="12" x="195" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="180" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="195" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="210" y="15" class="decompiled"><title>void __cdecl Output_InsertGT3_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="225" y="15" class="known"><title>void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);</title></rect>
 <rect width="12" height="12" x="240" y="15" class="decompiled"><title>void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);</title></rect>
@@ -149,12 +149,12 @@
 <rect width="12" height="12" x="285" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="300" y="15" class="known"><title>void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);</title></rect>
 <rect width="12" height="12" x="315" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="330" y="15" class="known"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
-<rect width="12" height="12" x="345" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
-<rect width="12" height="12" x="360" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="330" y="15" class="decompiled"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
+<rect width="12" height="12" x="345" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12" height="12" x="360" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="375" y="15" class="known"><title>void __cdecl Output_InsertTrans8_Sorted(const struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="390" y="15" class="known"><title>void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
-<rect width="12" height="12" x="405" y="15" class="known"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
+<rect width="12" height="12" x="405" y="15" class="known"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="420" y="15" class="known"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
 <rect width="12" height="12" x="435" y="15" class="known"><title>void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="450" y="15" class="known"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.11%</tspan> · <tspan class="known">74.57%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.35%</tspan> · <tspan class="known">74.32%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="187.55" height="6" x="0" y="0" class="decompiled"/>
-<rect width="557.01" height="6" x="187.55" y="0" class="known"/>
+<rect width="189.38" height="6" x="0" y="0" class="decompiled"/>
+<rect width="555.18" height="6" x="189.38" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1398,7 +1398,7 @@
 <rect width="22.47" height="24.84" x="294.58" y="0" class="known"><title>int32_t __cdecl Game_Control(int32_t nframes, int32_t demo_mode);</title></rect>
 <rect width="22.47" height="24.67" x="294.58" y="27.84" class="known"><title>INT_PTR __stdcall SE_GraphicsDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);</title></rect>
 <rect width="22.47" height="24.38" x="294.58" y="55.51" class="known"><title>int32_t __cdecl SE_ReadAppSettings(APP_SETTINGS *settings);</title></rect>
-<rect width="22.47" height="24.35" x="294.58" y="82.89" class="known"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
+<rect width="22.47" height="24.35" x="294.58" y="82.89" class="decompiled"><title>void __cdecl Output_InsertSprite_Sorted(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="22.47" height="24.35" x="294.58" y="110.24" class="known"><title>void __cdecl RollingBallControl(int16_t item_num);</title></rect>
 <rect width="22.47" height="24.25" x="294.58" y="137.58" class="known"><title>void __cdecl ControlHarpoonBolt(int16_t item_num);</title></rect>
 <rect width="22.47" height="24.22" x="294.58" y="164.83" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
@@ -1507,7 +1507,7 @@
 <rect width="16.70" height="16.77" x="672.31" y="21.70" class="decompiled"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="16.49" height="16.77" x="692" y="21.70" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
 <rect width="16.32" height="16.77" x="711.49" y="21.70" class="known"><title>void __cdecl S_DrawHealthBar(int32_t percent);</title></rect>
-<rect width="16.19" height="16.77" x="730.81" y="21.70" class="decompiled"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="16.19" height="16.77" x="730.81" y="21.70" class="decompiled"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="16.43" height="16.52" x="411.31" y="41.46" class="known"><title>void __cdecl FadeToPal(int32_t fadeValue, RGB888 *palette);</title></rect>
 <rect width="16.43" height="16.39" x="411.31" y="60.99" class="known"><title>void __cdecl Room_GetBounds(void);</title></rect>
 <rect width="16.43" height="16.31" x="411.31" y="80.38" class="known"><title>int32_t __cdecl ShotLara(struct ITEM_INFO *item, AI_INFO *info, struct BITE_INFO *gun, int16_t extra_rotation, int32_t damage);</title></rect>
@@ -1549,7 +1549,7 @@
 <rect width="14.87" height="15.16" x="430.74" y="114.05" class="known"><title>int32_t __cdecl Boat_UserControl(struct ITEM_INFO *boat);</title></rect>
 <rect width="14.87" height="15.16" x="430.74" y="132.21" class="known"><title>int32_t __cdecl Lara_MovePosition(struct PHD_VECTOR *vec, struct ITEM_INFO *item, struct ITEM_INFO *lara_item);</title></rect>
 <rect width="14.87" height="15.16" x="430.74" y="150.36" class="known"><title>void __cdecl FireHarpoon(void);</title></rect>
-<rect width="14.87" height="14.79" x="430.74" y="168.52" class="decompiled"><title>void __cdecl Output_InsertFlatRect_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="14.87" height="14.79" x="430.74" y="168.52" class="decompiled"><title>void __cdecl Output_InsertFlatRect_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="14.87" height="14.79" x="430.74" y="186.31" class="known"><title>void __cdecl ControlTwinkle(int16_t fx_num);</title></rect>
 <rect width="14.87" height="14.65" x="430.74" y="204.09" class="decompiled"><title>void __cdecl S_Audio_Sample_Init2(HWND hwnd);</title></rect>
 <rect width="14.87" height="14.65" x="430.74" y="221.74" class="known"><title>void __cdecl SE_GraphicsDlgInit(HWND hwndDlg);</title></rect>
@@ -1615,13 +1615,13 @@
 <rect width="13.48" height="12.61" x="448.61" y="346.83" class="decompiled"><title>void __cdecl Lara_DeflectEdgeJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.48" height="12.56" x="448.61" y="362.44" class="known"><title>BOOL __cdecl LoadSprites(HANDLE handle);</title></rect>
 <rect width="13.41" height="12.58" x="465.10" y="92.72" class="decompiled"><title>void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);</title></rect>
-<rect width="13.35" height="12.58" x="481.50" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="13.35" height="12.58" x="481.50" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="13.30" height="12.58" x="497.85" y="92.72" class="known"><title>void __cdecl DrawAmmoInfo(void);</title></rect>
 <rect width="13.30" height="12.58" x="514.15" y="92.72" class="known"><title>void __cdecl DoInventoryBackground(void);</title></rect>
 <rect width="13.25" height="12.58" x="530.45" y="92.72" class="known"><title>int32_t __cdecl Creature_Vault(int16_t item_num, int16_t angle, int32_t vault, int32_t shift);</title></rect>
 <rect width="13.19" height="12.58" x="546.69" y="92.72" class="decompiled"><title>int32_t __cdecl Lara_TestSlide(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.03" height="12.58" x="562.89" y="92.72" class="known"><title>void __cdecl DrawSphereOfDoom(struct ITEM_INFO *item);</title></rect>
-<rect width="12.93" height="12.58" x="578.92" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_Sorted(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="12.93" height="12.58" x="578.92" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12.82" height="12.58" x="594.84" y="92.72" class="known"><title>void __cdecl Inv_InsertItem(struct INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12.77" height="12.58" x="610.66" y="92.72" class="known"><title>void __cdecl SphereOfDoomCollision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
 <rect width="12.77" height="12.58" x="626.43" y="92.72" class="known"><title>int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *lara_item);</title></rect>
@@ -1743,7 +1743,7 @@
 <rect width="10.04" height="10.11" x="521.63" y="136.56" class="known"><title>void __cdecl Lara_TestWaterDepth(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="10.04" height="10.11" x="534.67" y="136.56" class="known"><title>void __cdecl GetCarriedItems(void);</title></rect>
 <rect width="9.98" height="10.11" x="547.71" y="136.56" class="known"><title>void __cdecl Demo_LoadLaraPos(void);</title></rect>
-<rect width="9.85" height="10.11" x="560.69" y="136.56" class="decompiled"><title>void __cdecl Output_InsertFlatRect(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="9.85" height="10.11" x="560.69" y="136.56" class="decompiled"><title>void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="9.85" height="10.11" x="573.54" y="136.56" class="known"><title>int32_t __cdecl Item_TestBoundsCollide(struct ITEM_INFO *src_item, struct ITEM_INFO *dst_item, int32_t radius);</title></rect>
 <rect width="9.79" height="10.11" x="586.38" y="136.56" class="decompiled"><title>void __cdecl Lara_State_Wade(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="9.72" height="10.11" x="599.17" y="136.56" class="known"><title>void __cdecl DInputKeyboardCreate(void);</title></rect>
@@ -1788,7 +1788,7 @@
 <rect width="9.74" height="9.05" x="650.04" y="149.67" class="known"><title>bool __cdecl D3DSetViewport(void);</title></rect>
 <rect width="9.68" height="9.05" x="662.79" y="149.67" class="known"><title>void __cdecl Creature_Die(int16_t item_num, int32_t explode);</title></rect>
 <rect width="9.68" height="9.05" x="675.46" y="149.67" class="known"><title>void __cdecl CreateZone(struct ITEM_INFO *item);</title></rect>
-<rect width="9.47" height="9.05" x="688.14" y="149.67" class="decompiled"><title>void __cdecl Output_InsertLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t z, uint8_t color_idx);</title></rect>
+<rect width="9.47" height="9.05" x="688.14" y="149.67" class="decompiled"><title>void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="9.40" height="9.05" x="700.61" y="149.67" class="known"><title>void __cdecl Room_DrawSingleRoomGeometry(int16_t room_num);</title></rect>
 <rect width="9.33" height="9.05" x="713.01" y="149.67" class="known"><title>void __cdecl Gondola_Control(int16_t item_num);</title></rect>
 <rect width="9.33" height="9.05" x="725.34" y="149.67" class="known"><title>void __cdecl Room_FlipMap(void);</title></rect>
@@ -1823,7 +1823,7 @@
 <rect width="8.66" height="8.96" x="534.18" y="282.70" class="decompiled"><title>void __cdecl Matrix_RotZ(int16_t rz);</title></rect>
 <rect width="8.66" height="8.96" x="534.18" y="294.65" class="known"><title>void __cdecl Creature_Float(int16_t item_num);</title></rect>
 <rect width="8.66" height="8.96" x="534.18" y="306.61" class="known"><title>void __cdecl XianDamage(struct ITEM_INFO *item, CREATURE_INFO *xian, int32_t damage);</title></rect>
-<rect width="8.66" height="8.89" x="534.18" y="318.57" class="known"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t sprite_idx, int16_t shade);</title></rect>
+<rect width="8.66" height="8.89" x="534.18" y="318.57" class="known"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
 <rect width="8.66" height="8.89" x="534.18" y="330.45" class="known"><title>int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);</title></rect>
 <rect width="8.66" height="8.89" x="534.18" y="342.34" class="known"><title>void __cdecl ShootAtLara(struct FX_INFO *fx);</title></rect>
 <rect width="8.66" height="8.89" x="534.18" y="354.23" class="known"><title>int16_t __cdecl GunMiss(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
