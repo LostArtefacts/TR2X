@@ -1326,7 +1326,7 @@ typedef enum LARA_MESH {
 0040A5F0    000001AC    -       void __cdecl Output_InsertClippedPoly_Textured(int32_t vtx_count, float z, int16_t poly_type, int16_t tex_page);
 0040A7A0    000004D7    -       void __cdecl Output_InsertGT4_Sorted(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture, enum SORT_TYPE sort_type);
 0040AC80    0000008C    -       const int16_t *__cdecl Output_InsertObjectGT4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
-0040AD10    0000009F    -       const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+0040AD10    0000009F    +       const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040ADB0    0000043B    +       const int16_t *__cdecl Output_InsertObjectG4_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
 0040B1F0    00000175    -       void __cdecl Output_InsertPoly_Gouraud(int32_t vtx_count, float z, int32_t red, int32_t green, int32_t blue, int16_t poly_type);
 0040B370    00000343    +       const int16_t *__cdecl Output_InsertObjectG3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);

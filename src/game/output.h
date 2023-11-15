@@ -106,3 +106,6 @@ const int16_t *__cdecl Output_InsertObjectG3_Sorted(
 
 const int16_t *__cdecl Output_InsertObjectG4_Sorted(
     const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
+
+const int16_t *__cdecl Output_InsertObjectGT3_Sorted(
+    const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);
