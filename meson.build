@@ -78,6 +78,7 @@ dll_sources = [
   'src/filesystem.c',
   'src/game/camera.c',
   'src/game/effects.c',
+  'src/game/input.c',
   'src/game/items.c',
   'src/game/lara/lara_col.c',
   'src/game/lara/lara_control.c',
@@ -102,6 +103,7 @@ dll_sources = [
   'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',
   'src/specific/s_flagged_string.c',
+  'src/specific/s_input.c',
   'src/specific/s_music_mm.c',
   'src/specific/s_music_pauld.c',
 ]

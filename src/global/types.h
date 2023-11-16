@@ -87,17 +87,17 @@ typedef struct STRING_FLAGGED {
 typedef struct DISPLAY_ADAPTER {
     LPGUID adapter_guid_ptr;
     GUID adapter_guid;
-    STRING_FLAGGED driver_description;
-    STRING_FLAGGED driver_name;
-    DDCAPS driver_caps;
-    DDCAPS hel_caps;
+    struct STRING_FLAGGED driver_desc;
+    struct STRING_FLAGGED driver_name;
+    DDCAPS_DX5 driver_caps;
+    DDCAPS_DX5 hel_caps;
     GUID device_guid;
-    D3DDEVICEDESC device_desc;
-    DISPLAY_MODE_LIST hw_disp_mode_list;
-    DISPLAY_MODE_LIST sw_disp_mode_list;
-    DISPLAY_MODE vga_mode1;
-    DISPLAY_MODE vga_mode2;
-    DWORD screen_width;
+    D3DDEVICEDESC_V2 hw_device_desc;
+    struct DISPLAY_MODE_LIST hw_disp_mode_list;
+    struct DISPLAY_MODE_LIST sw_disp_mode_list;
+    struct DISPLAY_MODE vga_mode1;
+    struct DISPLAY_MODE vga_mode2;
+    uint32_t screen_width;
     bool hw_render_supported;
     bool sw_windowed_supported;
     bool hw_windowed_supported;
@@ -182,7 +182,7 @@ typedef struct APP_SETTINGS {
     struct DISPLAY_ADAPTER_NODE *preferred_display_adapter;
     struct SOUND_ADAPTER_NODE *preferred_sound_adapter;
     struct JOYSTICK_NODE *preferred_joystick;
-    struct DISPLAY_MODE_NODE *video_mode;
+    const struct DISPLAY_MODE_NODE *video_mode;
     enum RENDER_MODE render_mode;
     int32_t window_width;
     int32_t window_height;
@@ -1396,7 +1396,7 @@ typedef enum LARA_MESH {
 // clang-format on
 
 // clang-format off
-typedef enum {
+typedef enum GAME_OBJECT_ID {
     O_NONE                  = -1,
     O_LARA                  = 0,
     O_LARA_PISTOLS          = 1,

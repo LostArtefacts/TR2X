@@ -14,7 +14,7 @@ void __thiscall S_FlaggedString_Create(
 
 void __thiscall S_FlaggedString_InitAdapter(struct DISPLAY_ADAPTER *adapter)
 {
-    S_FlaggedString_Create(&adapter->driver_description, 256);
+    S_FlaggedString_Create(&adapter->driver_desc, 256);
     S_FlaggedString_Create(&adapter->driver_name, 256);
 }
 

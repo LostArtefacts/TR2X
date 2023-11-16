@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.49% (347)</tspan> · <tspan class="known">69.05% (841)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.57% (348)</tspan> · <tspan class="known">68.97% (840)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="212.82" height="6" x="0" y="0" class="decompiled"/>
-<rect width="515.79" height="6" x="212.82" y="0" class="known"/>
+<rect width="213.43" height="6" x="0" y="0" class="decompiled"/>
+<rect width="515.17" height="6" x="213.43" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -929,7 +929,7 @@
 <rect width="12" height="12" x="735" y="240" class="known"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);</title></rect>
 <rect width="12" height="12" x="0" y="255" class="known"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
 <rect width="12" height="12" x="15" y="255" class="known"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);</title></rect>
-<rect width="12" height="12" x="30" y="255" class="known"><title>bool __thiscall CompareVideoModes(DISPLAY_MODE *mode1, DISPLAY_MODE *mode2);</title></rect>
+<rect width="12" height="12" x="30" y="255" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
 <rect width="12" height="12" x="45" y="255" class="known"><title>bool __cdecl WinVidGetDisplayModes(void);</title></rect>
 <rect width="12" height="12" x="60" y="255" class="known"><title>HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);</title></rect>
 <rect width="12" height="12" x="75" y="255" class="known"><title>bool __cdecl WinVidInit(void);</title></rect>
@@ -1105,8 +1105,8 @@
 <rect width="12" height="12" x="375" y="300" class="known"><title>void __cdecl game_free(DWORD freeSize);</title></rect>
 <rect width="12" height="12" x="390" y="300" class="known"><title>void __cdecl CalculateWibbleTable(void);</title></rect>
 <rect width="12" height="12" x="405" y="300" class="known"><title>void __cdecl S_SeedRandom(void);</title></rect>
-<rect width="12" height="12" x="420" y="300" class="known"><title>BOOL __cdecl Key(KEYMAP keyMap);</title></rect>
-<rect width="12" height="12" x="435" y="300" class="known"><title>bool __cdecl S_UpdateInput(void);</title></rect>
+<rect width="12" height="12" x="420" y="300" class="known"><title>BOOL __cdecl Key(KEYMAP keymap);</title></rect>
+<rect width="12" height="12" x="435" y="300" class="decompiled"><title>bool __cdecl Input_Update(void);</title></rect>
 <rect width="12" height="12" x="450" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t errorCode);</title></rect>
 <rect width="12" height="12" x="465" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.82%</tspan> · <tspan class="known">72.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.63%</tspan> · <tspan class="known">72.05%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="200.34" height="6" x="0" y="0" class="decompiled"/>
-<rect width="544.21" height="6" x="200.34" y="0" class="known"/>
+<rect width="206.37" height="6" x="0" y="0" class="decompiled"/>
+<rect width="538.19" height="6" x="206.37" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1315,7 +1315,7 @@
 <rect width="58" height="41.67" x="0" y="290.49" class="known"><title>void __cdecl GF_ModifyInventory(int32_t level, int32_t type);</title></rect>
 <rect width="58" height="39.83" x="0" y="335.17" class="known"><title>void __cdecl ObjectObjects(void);</title></rect>
 <rect width="40.17" height="54.95" x="61" y="0" class="known"><title>void __cdecl Lara_Draw_I(struct ITEM_INFO *item, int16_t *frame1, int16_t *frame2, int32_t frac, int32_t rate);</title></rect>
-<rect width="40.17" height="49.99" x="61" y="57.95" class="known"><title>bool __cdecl S_UpdateInput(void);</title></rect>
+<rect width="40.17" height="49.99" x="61" y="57.95" class="decompiled"><title>bool __cdecl Input_Update(void);</title></rect>
 <rect width="40.17" height="47.99" x="61" y="110.94" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT4(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="40.17" height="45.70" x="61" y="161.94" class="known"><title>void __cdecl HairControl(int32_t in_cutscene);</title></rect>
 <rect width="40.17" height="40.30" x="61" y="210.64" class="known"><title>int32_t __cdecl Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);</title></rect>
@@ -1628,7 +1628,7 @@
 <rect width="12.77" height="12.58" x="642.20" y="92.72" class="known"><title>void __cdecl HWR_InitState(void);</title></rect>
 <rect width="12.71" height="12.58" x="657.96" y="92.72" class="decompiled"><title>void __cdecl Lara_Col_Hang(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12.55" height="12.58" x="673.67" y="92.72" class="known"><title>void __cdecl S_CalculateStaticMeshLight(int32_t x, int32_t y, int32_t z, int32_t shade1, int32_t shade2, ROOM_INFO *room);</title></rect>
-<rect width="12.34" height="12.58" x="689.23" y="92.72" class="known"><title>BOOL __cdecl Key(KEYMAP keyMap);</title></rect>
+<rect width="12.34" height="12.58" x="689.23" y="92.72" class="known"><title>BOOL __cdecl Key(KEYMAP keymap);</title></rect>
 <rect width="12.23" height="12.58" x="704.57" y="92.72" class="decompiled"><title>void __cdecl Item_Kill(int16_t item_num);</title></rect>
 <rect width="12.13" height="12.58" x="719.80" y="92.72" class="known"><title>void __cdecl InitialiseNewWeapon(void);</title></rect>
 <rect width="12.07" height="12.58" x="734.93" y="92.72" class="decompiled"><title>void __cdecl Lara_Col_UpJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -2147,7 +2147,7 @@
 <rect width="4.74" height="4.50" x="719.25" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.74" height="4.50" x="726.99" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.63" height="4.50" x="734.73" y="261.54" class="known"><title>void __cdecl DrawGameInfo(int32_t timed);</title></rect>
-<rect width="4.63" height="4.50" x="742.37" y="261.54" class="known"><title>bool __thiscall CompareVideoModes(DISPLAY_MODE *mode1, DISPLAY_MODE *mode2);</title></rect>
+<rect width="4.63" height="4.50" x="742.37" y="261.54" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
 <rect width="4.64" height="4.50" x="640.82" y="269.04" class="decompiled"><title>bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);</title></rect>
 <rect width="4.64" height="4.39" x="640.82" y="276.54" class="known"><title>void __cdecl FallingBlockCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="4.64" height="4.39" x="640.82" y="283.93" class="known"><title>HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);</title></rect>

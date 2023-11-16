@@ -54,17 +54,17 @@ typedef struct __unaligned STRING_FLAGGED {
 typedef struct __unaligned DISPLAY_ADAPTER {
     LPGUID adapter_guid_ptr;
     GUID adapter_guid;
-    STRING_FLAGGED driver_description;
-    STRING_FLAGGED driver_name;
-    DDCAPS driver_caps;
-    DDCAPS hel_caps;
+    struct STRING_FLAGGED driver_desc;
+    struct STRING_FLAGGED driver_name;
+    DDCAPS_DX5 driver_caps;
+    DDCAPS_DX5 hel_caps;
     GUID device_guid;
-    D3DDEVICEDESC device_desc;
-    DISPLAY_MODE_LIST hw_disp_mode_list;
-    DISPLAY_MODE_LIST sw_disp_mode_list;
-    DISPLAY_MODE vga_mode1;
-    DISPLAY_MODE vga_mode2;
-    DWORD screen_width;
+    D3DDEVICEDESC_V2 hw_device_desc;
+    struct DISPLAY_MODE_LIST hw_disp_mode_list;
+    struct DISPLAY_MODE_LIST sw_disp_mode_list;
+    struct DISPLAY_MODE vga_mode1;
+    struct DISPLAY_MODE vga_mode2;
+    uint32_t screen_width;
     bool hw_render_supported;
     bool sw_windowed_supported;
     bool hw_windowed_supported;
@@ -849,7 +849,22 @@ typedef struct __unaligned BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
-typedef enum GAME_FLOR_DIR {
+typedef enum GAME_FLOW_FLAG {
+    GFF_DEMO_VERSION              = 0x0001,
+    GFF_TITLE_DISABLED            = 0x0002,
+    GFF_CHEAT_MODE_CHECK_DISABLED = 0x0004,
+    GFF_NO_INPUT_TIMEOUT          = 0x0008,
+    GFF_LOAD_SAVE_DISABLED        = 0x0010,
+    GFF_SCREEN_SIZING_DISABLED    = 0x0020,
+    GFF_LOCKOUT_OPTION_RING       = 0x0040,
+    GFF_DOZY_CHEAT_ENABLED        = 0x0080,
+    GFF_USE_SECURITY_TAG          = 0x0100,
+    GFF_GYM_ENABLED               = 0x0200,
+    GFF_SELECT_ANY_LEVEL          = 0x0400,
+    GFF_ENABLE_CHEAT_CODE         = 0x0800,
+} GAME_FLOW_FLAG;
+
+typedef enum GAME_FLOW_DIR {
     GFD_START_GAME       = 0x0000,
     GFD_START_SAVED_GAME = 0x0100,
     GFD_START_CINE       = 0x0200,
@@ -1033,6 +1048,10 @@ typedef struct __unaligned CINE_FRAME {
     int16_t fov;
     int16_t roll;
 } CINE_FRAME;
+
+typedef struct CONTROL_LAYOUT {
+    uint16_t key[14];
+} CONTROL_LAYOUT;
 
 typedef enum INPUT_STATE {
     IN_FORWARD = 0x00000001,
@@ -1309,6 +1328,276 @@ typedef enum LARA_MESH {
     LM_HEAD = 14,
     LM_NUMBER_OF = 15,
 } LARA_MESH;
+
+typedef enum GAME_OBJECT_ID {
+    O_NONE                  = -1,
+    O_LARA                  = 0,
+    O_LARA_PISTOLS          = 1,
+    O_LARA_HAIR             = 2,
+    O_LARA_SHOTGUN          = 3,
+    O_LARA_MAGNUMS          = 4,
+    O_LARA_UZIS             = 5,
+    O_LARA_M16              = 6,
+    O_LARA_GRENADE          = 7,
+    O_LARA_HARPOON          = 8,
+    O_LARA_FLARE            = 9,
+    O_LARA_SKIDOO           = 10,
+    O_LARA_BOAT             = 11,
+    O_LARA_EXTRA            = 12,
+    O_SKIDOO_FAST           = 13,
+    O_BOAT                  = 14,
+    O_DOG                   = 15,
+    O_CULT_1                = 16,
+    O_CULT_1A               = 17,
+    O_CULT_1B               = 18,
+    O_CULT_2                = 19,
+    O_CULT_3                = 20,
+    O_MOUSE                 = 21,
+    O_DRAGON_FRONT          = 22,
+    O_DRAGON_BACK           = 23,
+    O_GONDOLA               = 24,
+    O_SHARK                 = 25,
+    O_EEL                   = 26,
+    O_BIG_EEL               = 27,
+    O_BARRACUDA             = 28,
+    O_DIVER                 = 29,
+    O_WORKER_1              = 30,
+    O_WORKER_2              = 31,
+    O_WORKER_3              = 32,
+    O_WORKER_4              = 33,
+    O_WORKER_5              = 34,
+    O_JELLY                 = 35,
+    O_SPIDER_or_WOLF        = 36,
+    O_BIG_SPIDER_or_BEAR    = 37,
+    O_CROW                  = 38,
+    O_TIGER                 = 39,
+    O_BARTOLI               = 40,
+    O_XIAN_LORD             = 41,
+    O_CHINESE_2             = 42,
+    O_WARRIOR               = 43,
+    O_CHINESE_4             = 44,
+    O_YETI                  = 45,
+    O_GIANT_YETI            = 46,
+    O_EAGLE                 = 47,
+    O_BANDIT_1              = 48,
+    O_BANDIT_2              = 49,
+    O_BANDIT_2B             = 50,
+    O_SKIDOO_ARMED          = 51,
+    O_SKIDMAN               = 52,
+    O_MONK_1                = 53,
+    O_MONK_2                = 54,
+    O_FALLING_BLOCK_1       = 55,
+    O_FALLING_BLOCK_2       = 56,
+    O_FALLING_BLOCK_3       = 57,
+    O_PENDULUM_1            = 58,
+    O_SPIKES                = 59,
+    O_ROLLING_BALL_1        = 60,
+    O_DARTS                 = 61,
+    O_DART_EMITTER          = 62,
+    O_DRAW_BRIDGE           = 63,
+    O_TEETH_TRAP            = 64,
+    O_LIFT                  = 65,
+    O_GENERAL               = 66,
+    O_MOVABLE_BLOCK_1       = 67,
+    O_MOVABLE_BLOCK_2       = 68,
+    O_MOVABLE_BLOCK_3       = 69,
+    O_MOVABLE_BLOCK_4       = 70,
+    O_BIG_BOWL              = 71,
+    O_WINDOW_1              = 72,
+    O_WINDOW_2              = 73,
+    O_WINDOW_3              = 74,
+    O_WINDOW_4              = 75,
+    O_PROPELLER_1           = 76,
+    O_PROPELLER_2           = 77,
+    O_HOOK                  = 78,
+    O_FALLING_CEILING       = 79,
+    O_SPINNING_BLADE        = 80,
+    O_BLADE                 = 81,
+    O_KILLER_STATUE         = 82,
+    O_ROLLING_BALL_2        = 83,
+    O_ICICLE                = 84,
+    O_SPIKE_WALL            = 85,
+    O_SPRING_BOARD          = 86,
+    O_CEILING_SPIKES        = 87,
+    O_BELL                  = 88,
+    O_WATER_SPRITE          = 89,
+    O_SNOW_SPRITE           = 90,
+    O_SKIDOO_LARA           = 91,
+    O_SWITCH_TYPE_1         = 92,
+    O_SWITCH_TYPE_2         = 93,
+    O_PROPELLER_3           = 94,
+    O_PROPELLER_4           = 95,
+    O_PENDULUM_2            = 96,
+    O_MESH_SWAP_1           = 97,
+    O_MESH_SWAP_2           = 98,
+    O_LARA_SWAP             = 99,
+    O_TEXT_BOX              = 100,
+    O_ROLLING_BALL_3        = 101,
+    O_DEATH_SLIDE           = 102,
+    O_SWITCH_TYPE_3         = 103,
+    O_SWITCH_TYPE_4         = 104,
+    O_SWITCH_TYPE_5         = 105,
+    O_DOOR_TYPE_1           = 106,
+    O_DOOR_TYPE_2           = 107,
+    O_DOOR_TYPE_3           = 108,
+    O_DOOR_TYPE_4           = 109,
+    O_DOOR_TYPE_5           = 110,
+    O_DOOR_TYPE_6           = 111,
+    O_DOOR_TYPE_7           = 112,
+    O_DOOR_TYPE_8           = 113,
+    O_TRAPDOOR_TYPE_1       = 114,
+    O_TRAPDOOR_TYPE_2       = 115,
+    O_TRAPDOOR_TYPE_3       = 116,
+    O_BRIDGE_FLAT           = 117,
+    O_BRIDGE_TILT_1         = 118,
+    O_BRIDGE_TILT_2         = 119,
+    O_PASSPORT_OPTION       = 120,
+    O_COMPASS_OPTION        = 121,
+    O_PHOTO_OPTION          = 122,
+    O_PLAYER_1              = 123,
+    O_PLAYER_2              = 124,
+    O_PLAYER_3              = 125,
+    O_PLAYER_4              = 126,
+    O_PLAYER_5              = 127,
+    O_PLAYER_6              = 128,
+    O_PLAYER_7              = 129,
+    O_PLAYER_8              = 130,
+    O_PLAYER_9              = 131,
+    O_PLAYER_10             = 132,
+    O_PASSPORT_CLOSED       = 133,
+    O_COMPASS_ITEM          = 134,
+    O_PISTOL_ITEM           = 135,
+    O_SHOTGUN_ITEM          = 136,
+    O_MAGNUM_ITEM           = 137,
+    O_UZI_ITEM              = 138,
+    O_HARPOON_ITEM          = 139,
+    O_M16_ITEM              = 140,
+    O_GRENADE_ITEM          = 141,
+    O_PISTOL_AMMO_ITEM      = 142,
+    O_SHOTGUN_AMMO_ITEM     = 143,
+    O_MAGNUM_AMMO_ITEM      = 144,
+    O_UZI_AMMO_ITEM         = 145,
+    O_HARPOON_AMMO_ITEM     = 146,
+    O_M16_AMMO_ITEM         = 147,
+    O_GRENADE_AMMO_ITEM     = 148,
+    O_SMALL_MEDIPACK_ITEM   = 149,
+    O_LARGE_MEDIPACK_ITEM   = 150,
+    O_FLARES_ITEM           = 151,
+    O_FLARE_ITEM            = 152,
+    O_DETAIL_OPTION         = 153,
+    O_SOUND_OPTION          = 154,
+    O_CONTROL_OPTION        = 155,
+    O_GAMMA_OPTION          = 156,
+    O_PISTOL_OPTION         = 157,
+    O_SHOTGUN_OPTION        = 158,
+    O_MAGNUM_OPTION         = 159,
+    O_UZI_OPTION            = 160,
+    O_HARPOON_OPTION        = 161,
+    O_M16_OPTION            = 162,
+    O_GRENADE_OPTION        = 163,
+    O_PISTOL_AMMO_OPTION    = 164,
+    O_SHOTGUN_AMMO_OPTION   = 165,
+    O_MAGNUM_AMMO_OPTION    = 166,
+    O_UZI_AMMO_OPTION       = 167,
+    O_HARPOON_AMMO_OPTION   = 168,
+    O_M16_AMMO_OPTION       = 169,
+    O_GRENADE_AMMO_OPTION   = 170,
+    O_SMALL_MEDIPACK_OPTION = 171,
+    O_LARGE_MEDIPACK_OPTION = 172,
+    O_FLARES_OPTION         = 173,
+    O_PUZZLE_ITEM_1         = 174,
+    O_PUZZLE_ITEM_2         = 175,
+    O_PUZZLE_ITEM_3         = 176,
+    O_PUZZLE_ITEM_4         = 177,
+    O_PUZZLE_OPTION_1       = 178,
+    O_PUZZLE_OPTION_2       = 179,
+    O_PUZZLE_OPTION_3       = 180,
+    O_PUZZLE_OPTION_4       = 181,
+    O_PUZZLE_HOLE_1         = 182,
+    O_PUZZLE_HOLE_2         = 183,
+    O_PUZZLE_HOLE_3         = 184,
+    O_PUZZLE_HOLE_4         = 185,
+    O_PUZZLE_DONE_1         = 186,
+    O_PUZZLE_DONE_2         = 187,
+    O_PUZZLE_DONE_3         = 188,
+    O_PUZZLE_DONE_4         = 189,
+    O_SECRET_1              = 190,
+    O_SECRET_2              = 191,
+    O_SECRET_3              = 192,
+    O_KEY_ITEM_1            = 193,
+    O_KEY_ITEM_2            = 194,
+    O_KEY_ITEM_3            = 195,
+    O_KEY_ITEM_4            = 196,
+    O_KEY_OPTION_1          = 197,
+    O_KEY_OPTION_2          = 198,
+    O_KEY_OPTION_3          = 199,
+    O_KEY_OPTION_4          = 200,
+    O_KEY_HOLE_1            = 201,
+    O_KEY_HOLE_2            = 202,
+    O_KEY_HOLE_3            = 203,
+    O_KEY_HOLE_4            = 204,
+    O_PICKUP_ITEM_1         = 205,
+    O_PICKUP_ITEM_2         = 206,
+    O_PICKUP_OPTION_1       = 207,
+    O_PICKUP_OPTION_2       = 208,
+    O_SPHERE_OF_DOOM_1      = 209,
+    O_SPHERE_OF_DOOM_2      = 210,
+    O_SPHERE_OF_DOOM_3      = 211,
+    O_ALARM_SOUND           = 212,
+    O_BIRD_TWEETER_1        = 213,
+    O_DINO                  = 214,
+    O_BIRD_TWEETER_2        = 215,
+    O_CLOCK_CHIMES          = 216,
+    O_DRAGON_BONES_1        = 217,
+    O_DRAGON_BONES_2        = 218,
+    O_DRAGON_BONES_3        = 219,
+    O_HOT_LIQUID            = 220,
+    O_BOAT_BITS             = 221,
+    O_MINE                  = 222,
+    O_INV_BACKGROUND        = 223,
+    O_FX_RESERVED           = 224,
+    O_GONG_BONGER           = 225,
+    O_DETONATOR_1           = 226,
+    O_DETONATOR_2           = 227,
+    O_COPTER                = 228,
+    O_EXPLOSION             = 229,
+    O_SPLASH                = 230,
+    O_BUBBLES               = 231,
+    O_BUBBLE_EMITTER        = 232,
+    O_BLOOD                 = 233,
+    O_DART_EFFECT           = 234,
+    O_FLARE_FIRE            = 235,
+    O_GLOW                  = 236,
+    O_GLOW_RESERVED         = 237,
+    O_RICOCHET              = 238,
+    O_TWINKLE               = 239,
+    O_GUN_FLASH             = 240,
+    O_M16_FLASH             = 241,
+    O_BODY_PART             = 242,
+    O_CAMERA_TARGET         = 243,
+    O_WATERFALL             = 244,
+    O_MISSILE_HARPOON       = 245,
+    O_MISSILE_FLAME         = 246,
+    O_MISSILE_KNIFE         = 247,
+    O_ROCKET                = 248,
+    O_HARPOON_BOLT          = 249,
+    O_LAVA                  = 250,
+    O_LAVA_EMITTER          = 251,
+    O_FLAME                 = 252,
+    O_FLAME_EMITTER         = 253,
+    O_SKYBOX                = 254,
+    O_ALPHABET              = 255,
+    O_DYING_MONK            = 256,
+    O_DING_DONG             = 257,
+    O_LARA_ALARM            = 258,
+    O_MINI_COPTER           = 259,
+    O_WINSTON               = 260,
+    O_ASSAULT_DIGITS        = 261,
+    O_FINAL_LEVEL_COUNTER   = 262,
+    O_CUT_SHOTGUN           = 263,
+    O_EARTHQUAKE            = 264,
+    O_NUMBER_OF             = 265,
+} GAME_OBJECT_ID;
 
 # FUNCTIONS
 #   Flags:
@@ -2250,7 +2539,7 @@ typedef enum LARA_MESH {
 00444DB0    00000008    -R      void __cdecl WinVidClearMinWindowSize(void);
 00444DC0    00000041    -R      void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height);
 00444E10    00000008    -R      void __cdecl WinVidClearMaxWindowSize(void);
-00444E20    00000048    -R      int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);
+00444E20    00000048    *R      int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);
 00444E70    00000028    -R      int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);
 00444EA0    00000104    -R      bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);
 00444FB0    00000011    -R      HWND __cdecl WinVidFindGameWindow(void);
@@ -2274,7 +2563,7 @@ typedef enum LARA_MESH {
 00445720    00000088    -R      bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);
 004457B0    0000010B    -R      bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);
 004458C0    000000D5    -R      void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);
-004459A0    00000045    -R      bool __thiscall CompareVideoModes(DISPLAY_MODE *mode1, DISPLAY_MODE *mode2);
+004459A0    00000045    *R      bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);
 004459F0    00000053    -R      bool __cdecl WinVidGetDisplayModes(void);
 00445A50    000003B1    -R      HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);
 00445E10    00000040    -R      bool __cdecl WinVidInit(void);
@@ -2320,9 +2609,9 @@ typedef enum LARA_MESH {
 004477B0    0000002D    -R      void __cdecl WinInStart(void);
 004477E0    0000000F    -R      void __cdecl WinInFinish(void);
 004477F0    00000017    -R      void __cdecl WinInRunControlPanel(HWND hWnd);
-00447810    00000062    -R      void __cdecl IncreaseScreenSize(void);
-00447880    00000062    -R      void __cdecl DecreaseScreenSize(void);
-004478F0    0000009F    -R      void __cdecl setup_screen_size(void);
+00447810    00000062    *R      void __cdecl IncreaseScreenSize(void);
+00447880    00000062    *R      void __cdecl DecreaseScreenSize(void);
+004478F0    0000009F    *R      void __cdecl setup_screen_size(void);
 00447990    00000034    *R      void __cdecl TempVideoAdjust(int32_t hires, double sizer);
 004479D0    00000039    -R      void __cdecl TempVideoRemove(void);
 00447A10    00000035    -R      void __cdecl S_FadeInInventory(BOOL isFade);
@@ -2371,7 +2660,7 @@ typedef enum LARA_MESH {
 00449200    000000E6    -R      void __cdecl RenderFinish(bool needToClearTextures);
 004492F0    00000204    -R      bool __cdecl ApplySettings(struct APP_SETTINGS *newSettings);
 00449500    00000105    -R      void __cdecl FmvBackToGame(void);
-00449610    0000023A    -R      void __cdecl GameApplySettings(struct APP_SETTINGS *newSettings);
+00449610    0000023A    *R      void __cdecl GameApplySettings(struct APP_SETTINGS *newSettings);
 00449850    00000067    -R      void __cdecl UpdateGameResolution(void);
 004498C0    0000000C    -R      LPCTSTR __cdecl DecodeErrorMessage(DWORD errorCode);
 004498D0    00000049    -R      BOOL __cdecl ReadFileSync(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);
@@ -2450,8 +2739,8 @@ typedef enum LARA_MESH {
 0044D740    00000034    -R      void __cdecl game_free(DWORD freeSize);
 0044D780    000000E8    -R      void __cdecl CalculateWibbleTable(void);
 0044D870    0000007F    -R      void __cdecl S_SeedRandom(void);
-0044D8F0    00000120    -R      BOOL __cdecl Key(KEYMAP keyMap);
-0044DA10    00000AC4    *R      bool __cdecl S_UpdateInput(void);
+0044D8F0    00000120    -R      BOOL __cdecl Key(KEYMAP keymap);
+0044DA10    00000AC4    +       bool __cdecl Input_Update(void);
 0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
@@ -2466,7 +2755,7 @@ typedef enum LARA_MESH {
 0044E9F0    000000AE    -R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcxData);
 0044EAA0    000000D2    -R      DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);
 0044EB80    0000003E    -R      DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);
-0044EBC0    000001F5    -R      void __cdecl ScreenShot(LPDDS screen);
+0044EBC0    000001F5    *R      void __cdecl ScreenShot(LPDDS screen);
 0044EDC0    0000007F    -R      void __cdecl do_inventory_options(INVENTORY_ITEM *item);
 0044EED0    00000648    -R      void __cdecl do_passport_option(INVENTORY_ITEM *item);
 0044F520    000002DA    -R      void __cdecl do_detail_option(INVENTORY_ITEM *item);
@@ -2663,6 +2952,7 @@ typedef enum LARA_MESH {
 004662E0    -       int8_t g_TextASCIIMap[];
 00466480    -       double g_GameSizer = 1.0;
 00466488    -       double g_GameSizerCopy = 1.0;
+00466F70    -       struct CONTROL_LAYOUT g_Layout[2];
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
 00468DF4    +       const int16_t g_SinTable[0x402];
@@ -2749,12 +3039,41 @@ typedef enum LARA_MESH {
 004D77A0    -       int32_t g_LOSNumRooms = 0;
 004D77AC    -       int32_t g_IsDemoLevelType;
 004D780C    -       int8_t g_GF_StartGame;
+004D7978    -       uint16_t g_IsInventoryActive;
 004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7EBC    -       LPDIRECT3DDEVICE2 g_D3DDev;
+004D7EE4    -       bool g_IsGameWindowCreated;
+004D7EE8    -       bool g_IsGameWindowUpdating;
+004D7EEC    -       bool g_IsDDrawGameWindowShow;
+004D7EF0    -       int32_t g_MinWindowClientWidth;
+004D7EF4    -       bool g_IsGameWindowShow;
+004D7EF8    -       bool g_IsMinWindowSizeSet;
+004D7EFC    -       int32_t g_MaxWindowClientWidth;
+004D7F00    -       int32_t g_GameWindowWidth;
+004D7F04    -       bool g_IsMinMaxInfoSpecial;
+004D7F08    -       bool g_IsGameFullScreen;
+004D7F0C    -       bool g_IsGameWindowMaximized;
 004D7F10    -       HWND g_GameWindowHandle;
+004D7F14    -       int32_t g_GameWindowHeight;
+004D7F18    -       struct DISPLAY_ADAPTER_NODE* g_PrimaryDisplayAdapter;
+004D7F20    -       struct DISPLAY_ADAPTER g_CurrentDisplayAdapter;
+004D8338    -       uint32_t g_LockedBufferCount;
+004D833C    -       int32_t g_GameWindowPositionX;
+004D8340    -       int32_t g_GameWindowPositionY;
+004D8348    -       struct DISPLAY_ADAPTER_LIST g_DisplayAdapterList;
+004D8354    -       int32_t g_MaxWindowClientHeight;
+004D8358    -       bool g_IsMessageLoopClosed;
+004D835C    -       int32_t g_MaxWindowWidth;
+004D8360    -       bool g_IsMaxWindowSizeSet;
+004D8364    -       uint32_t g_AppResultCode;
+004D8368    -       int32_t g_FullScreenWidth;
+004D836C    -       int32_t g_FullScreenHeight;
+004D8370    -       int32_t g_FullScreenBPP;
+004D8374    -       int32_t g_FullScreenVGA;
 004D8378    -       uint8_t g_IsGameToExit;
 004D8568    -       int32_t g_ScreenSizer;
+004D856C    -       int32_t g_IsVidSizeLock;
 004D8570    -       DWORD g_SampleFreqs[256];
 004D8970    -       struct SOUND_ADAPTER_LIST g_SoundAdapterList;
 004D8980    -       LPDIRECTSOUNDBUFFER g_SampleBuffers[256];
@@ -2769,15 +3088,30 @@ typedef enum LARA_MESH {
 004D92BC    -       LPDDS g_PictureBufferSurface;
 004D92C0    -       LPDDS g_ZBufferSurface;
 004D92C8    -       LPDDS g_PrimaryBufferSurface;
+004D9338    -       int32_t g_GameVidWidth;
+004D933C    -       int32_t g_GameVidHeight;
+004D9340    -       int32_t g_GameVidBPP;
 004D934C    -       int32_t g_UVAdd;
 004D9351    -       int8_t g_GameVid_IsWindowedVGA;
+004D9EAC    -       int32_t g_IsFMVPlaying;
 004D9EC4    -       int32_t g_LevelComplete;
 004D9ED8    -       D3DTLVERTEX g_HWR_VertexBuffer[0x2000];
 00519EE0    -       HWR_TEX_HANDLE g_HWR_PageHandles[32];
 00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
 0051A0CC    -       void *g_GameMemoryPtr;
+0051A0D0    -       BOOL g_ConflictLayout[14];
+0051A108    -       uint8_t g_DIKeys[256];
 0051A208    -       int32_t g_Input;
 0051A20C    -       int8_t g_IsVidModeLock;
+0051A210    -       int32_t g_JoyKeys;
+0051A214    +       int32_t g_JoyXPos;
+0051A218    +       int32_t g_JoyXPos;
+0051A220    +       int32_t g_MediPackCooldown;
+0051A224    +       int8_t g_IsF3Pressed;
+0051A228    +       int8_t g_IsF4Pressed;
+0051A22C    +       int8_t g_IsF7Pressed;
+0051A230    +       int8_t g_IsF8Pressed;
+0051A234    +       int8_t g_IsF11Pressed;
 0051B918    -       RECT g_PhdWinRect;
 0051B928    -       int32_t g_HiRes;
 0051B930    -       RGB888 g_GamePalette8[256];

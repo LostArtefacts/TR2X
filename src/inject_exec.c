@@ -2,6 +2,7 @@
 
 #include "game/camera.h"
 #include "game/effects.h"
+#include "game/input.h"
 #include "game/items.h"
 #include "game/lara/lara_col.h"
 #include "game/lara/lara_control.h"
@@ -26,6 +27,7 @@ static void Inject_Math(void);
 static void Inject_Matrix(void);
 static void Inject_Shell(void);
 static void Inject_Text(void);
+static void Inject_Input(void);
 static void Inject_Output(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
@@ -123,6 +125,11 @@ static void Inject_Text(void)
     INJECT(1, 0x00440AB0, Text_DrawText);
     INJECT(1, 0x00440E90, Text_GetScaleH);
     INJECT(1, 0x00440ED0, Text_GetScaleV);
+}
+
+static void Inject_Input(void)
+{
+    INJECT(1, 0x0044DA10, Input_Update);
 }
 
 static void Inject_Output(void)
@@ -460,6 +467,7 @@ void Inject_Exec(void)
     Inject_Matrix();
     Inject_Shell();
     Inject_Text();
+    Inject_Input();
     Inject_Output();
     Inject_Music();
     Inject_Sound();

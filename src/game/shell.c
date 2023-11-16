@@ -1,5 +1,6 @@
 #include "game/shell.h"
 
+#include "game/input.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -37,7 +38,7 @@ BOOL __cdecl Shell_Main(void)
 
     g_HiRes = 0;
     TempVideoAdjust(1, 1.0);
-    S_UpdateInput();
+    Input_Update();
 
     g_IsVidModeLock = 1;
     S_DisplayPicture("data\\legal.pcx", 0);
