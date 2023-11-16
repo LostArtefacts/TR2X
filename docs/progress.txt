@@ -849,6 +849,46 @@ typedef struct __unaligned BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+typedef enum GAME_FLOR_DIR {
+    GFD_START_GAME       = 0x0000,
+    GFD_START_SAVED_GAME = 0x0100,
+    GFD_START_CINE       = 0x0200,
+    GFD_START_FMV        = 0x0300,
+    GFD_START_DEMO       = 0x0400,
+    GFD_EXIT_TO_TITLE    = 0x0500,
+    GFD_LEVEL_COMPLETE   = 0x0600,
+    GFD_EXIT_GAME        = 0x0700,
+    GFD_EXIT_TO_OPTION   = 0x0800,
+    GFD_TITLE_DESELECT   = 0x0900,
+} GAME_FLOW_DIR;
+
+typedef struct GAME_FLOW {
+    int32_t first_option;
+    int32_t title_replace;
+    int32_t on_death_demo_mode;
+    int32_t on_death_in_game;
+    int32_t no_input_time;
+    int32_t on_demo_interrupt;
+    int32_t on_demo_end;
+    uint16_t reserved1[18];
+    uint16_t num_levels;
+    uint16_t num_pictures;
+    uint16_t num_titles;
+    uint16_t num_fmvs;
+    uint16_t num_cutscenes;
+    uint16_t num_demos;
+    uint16_t title_track;
+    int16_t single_level;
+    uint16_t reserved2[16];
+    uint16_t flags;
+    uint16_t reserved3[3];
+    uint8_t cypher_code;
+    uint8_t language;
+    uint8_t secret_track;
+    uint8_t level_complete_track;
+    uint16_t reserved4[2];
+} GAME_FLOW;
+
 typedef struct __unaligned OBJECT_INFO {
     int16_t mesh_count;
     int16_t mesh_idx;
@@ -1431,7 +1471,7 @@ typedef enum LARA_MESH {
 
 # game/cinema.c
 00411F50    0000000A    -       void __cdecl Game_SetCutsceneTrack(int32_t track);
-00411F60    00000112    -       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
+00411F60    00000112    *       int32_t __cdecl Game_Cutscene_Start(int32_t level_num);
 00412080    00000093    -R      void __cdecl Misc_InitCinematicRooms(void);
 00412120    0000016F    -       int32_t __cdecl Game_Cutscene_Control(int32_t nframes);
 00412290    00000138    +       void __cdecl Camera_UpdateCutscene(void);
@@ -1489,7 +1529,7 @@ typedef enum LARA_MESH {
 00416830    000000DA    -       void __cdecl Control_TriggerMusicNormalTrack(int16_t value, int16_t flags, int16_t type);
 
 # game/demo.c
-00416910    00000059    -       int32_t __cdecl Demo_Control(int32_t level_num);
+00416910    00000059    *       int32_t __cdecl Demo_Control(int32_t level_num);
 00416970    000001B0    -       int32_t __cdecl Demo_Start(int32_t level_num);
 00416B20    000000CD    -       void __cdecl Demo_LoadLaraPos(void);
 00416BF0    0000002D    -       void __cdecl Demo_GetInput(void);
@@ -1623,9 +1663,9 @@ typedef enum LARA_MESH {
 0041F670    000003BA    -R      void __cdecl WarriorControl(int16_t item_num);
 
 # game/gameflow.c
-0041FA60    000001E9    -R      int32_t __cdecl GF_LoadScriptFile(char *fname);
-0041FC50    0000001F    -R      int32_t __cdecl GF_DoFrontEndSequence(void);
-0041FC70    00000066    -R      int32_t __cdecl GF_DoLevelSequence(int32_t level, int32_t type);
+0041FA60    000001E9    *R      int32_t __cdecl GF_LoadScriptFile(char *fname);
+0041FC50    0000001F    *R      int32_t __cdecl GF_DoFrontEndSequence(void);
+0041FC70    00000066    *R      int32_t __cdecl GF_DoLevelSequence(int32_t level, int32_t type);
 0041FCE0    0000047C    -R      int32_t __cdecl GF_InterpretSequence(int16_t *ptr, int32_t type, int32_t seq_type);
 004201C0    00000CD3    -R      void __cdecl GF_ModifyInventory(int32_t level, int32_t type);
 
@@ -2045,7 +2085,7 @@ typedef enum LARA_MESH {
 00438EF0    000001DC    -R      void __cdecl MouseControl(int16_t item_num);
 
 # game/savegame.c
-004390E0    00000062    -R      void __cdecl InitialiseStartInfo(void);
+004390E0    00000062    *R      void __cdecl InitialiseStartInfo(void);
 00439150    000000DB    -R      void __cdecl ModifyStartInfo(int32_t level_num);
 00439230    00000201    -R      void __cdecl CreateStartInfo(int32_t level_num);
 00439440    0000052B    -R      void __cdecl CreateSaveGameInfo(void);
@@ -2099,7 +2139,7 @@ typedef enum LARA_MESH {
 0043F860    0000005E    -       void __cdecl Sound_StopEffect(int32_t sample_id);
 0043F8C0    00000086    -       void __cdecl Sound_UpdateContinued(void);
 0043F950    00000024    -       void __cdecl Sound_Shutdown(void);
-0043F980    0000002A    -       void __cdecl Sound_Init(void);
+0043F980    0000002A    *       void __cdecl Sound_Init(void);
 
 # game/sphere.c
 0043F9B0    00000128    -R      int32_t __cdecl TestCollision(struct ITEM_INFO *item, struct ITEM_INFO *lara_item);
@@ -2283,7 +2323,7 @@ typedef enum LARA_MESH {
 00447810    00000062    -R      void __cdecl IncreaseScreenSize(void);
 00447880    00000062    -R      void __cdecl DecreaseScreenSize(void);
 004478F0    0000009F    -R      void __cdecl setup_screen_size(void);
-00447990    00000034    -R      void __cdecl TempVideoAdjust(int32_t hires, double sizer);
+00447990    00000034    *R      void __cdecl TempVideoAdjust(int32_t hires, double sizer);
 004479D0    00000039    -R      void __cdecl TempVideoRemove(void);
 00447A10    00000035    -R      void __cdecl S_FadeInInventory(BOOL isFade);
 00447A50    00000027    -R      void __cdecl S_FadeOutInventory(BOOL isFade);
@@ -2370,13 +2410,13 @@ typedef enum LARA_MESH {
 0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_OUTLINE *gour, uint16_t flags);
 0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);
 0044C390    0000000F    -R      void __cdecl S_FinishInventory(void);
-0044C3A0    00000043    -R      void __cdecl S_FadeToBlack(void);
-0044C3F0    00000057    -R      void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);
+0044C3A0    00000043    *R      void __cdecl S_FadeToBlack(void);
+0044C3F0    00000057    *R      void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);
 0044C450    0000000E    -R      bool __cdecl S_PlayFMV(LPCTSTR fileName);
 0044C460    00000013    -R      bool __cdecl S_IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);
 0044C480    00000144    -R      int16_t __cdecl StartGame(int32_t levelID, GF_LEVEL_TYPE levelType);
 0044C5D0    0000009A    -R      int32_t __cdecl GameLoop(BOOL demoMode);
-0044C670    00000006    -R      int32_t __cdecl LevelCompleteSequence(void);
+0044C670    00000006    *R      int32_t __cdecl LevelCompleteSequence(void);
 0044C680    000001C2    -R      int32_t __cdecl LevelStats(int32_t levelID);
 0044C850    00000113    -R      int32_t __cdecl GameStats(int32_t levelID);
 0044C970    0000001E    *       int32_t __cdecl Random_GetControl(void);
@@ -2386,7 +2426,7 @@ typedef enum LARA_MESH {
 0044C9D0    00000044    -R      void __cdecl GetValidLevelsList(REQUEST_INFO *req);
 0044CA20    0000004C    -R      void __cdecl GetSavedGamesList(REQUEST_INFO *req);
 0044CA70    00000233    -R      void __cdecl DisplayCredits(void);
-0044CCB0    00000165    -R      BOOL __cdecl S_FrontEndCheck(void);
+0044CCB0    00000165    *R      BOOL __cdecl S_FrontEndCheck(void);
 0044CE20    00000114    -R      int32_t __cdecl S_SaveGame(const void *save_data, uint32_t save_size, int32_t slot_num);
 0044CF40    00000096    -R      int32_t __cdecl S_LoadGame(void *save_data, uint32_t save_size, int32_t slot_num);
 0044CFE0    00000128    -R      void __cdecl HWR_InitState(void);
@@ -2403,7 +2443,7 @@ typedef enum LARA_MESH {
 0044D570    00000035    -R      void __cdecl HWR_GetPageHandles(void);
 0044D5B0    00000019    -R      bool __cdecl HWR_VertexBufferFull(void);
 0044D5E0    00000022    -R      bool __cdecl HWR_Init(void);
-0044D610    0000005C    -R      BOOL __cdecl S_InitialiseSystem(void);
+0044D610    0000005C    *R      BOOL __cdecl S_InitialiseSystem(void);
 0044D670    00000011    *       void __cdecl GameBuf_Shutdown(void);
 0044D690    00000021    -R      void __cdecl init_game_malloc(void);
 0044D6C0    0000006C    -R      void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);
@@ -2411,7 +2451,7 @@ typedef enum LARA_MESH {
 0044D780    000000E8    -R      void __cdecl CalculateWibbleTable(void);
 0044D870    0000007F    -R      void __cdecl S_SeedRandom(void);
 0044D8F0    00000120    -R      BOOL __cdecl Key(KEYMAP keyMap);
-0044DA10    00000AC4    -R      bool __cdecl S_UpdateInput(void);
+0044DA10    00000AC4    *R      bool __cdecl S_UpdateInput(void);
 0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
@@ -2440,11 +2480,11 @@ typedef enum LARA_MESH {
 00450AA0    0000003B    -R      void __cdecl S_RemoveCtrlText(void);
 00450AE0    00000006    -R      int32_t __cdecl GetRenderHeight(void);
 00450AF0    00000006    -R      int32_t __cdecl GetRenderWidth(void);
-00450B00    000000E4    -R      void __cdecl S_InitialisePolyList(BOOL clearBackBuffer);
-00450BF0    00000036    -R      DWORD __cdecl S_DumpScreen(void);
+00450B00    000000E4    *R      void __cdecl S_InitialisePolyList(BOOL clearBackBuffer);
+00450BF0    00000036    *R      DWORD __cdecl S_DumpScreen(void);
 00450C30    0000000B    -R      void __cdecl S_ClearScreen(void);
 00450C40    00000037    -R      void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);
-00450C80    00000089    -R      void __cdecl S_OutputPolyList(void);
+00450C80    00000089    *R      void __cdecl S_OutputPolyList(void);
 00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);
 00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
 00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);
@@ -2458,15 +2498,15 @@ typedef enum LARA_MESH {
 00451C90    00000051    -R      void __cdecl S_SetupBelowWater(BOOL underwater);
 00451CF0    00000021    -R      void __cdecl S_SetupAboveWater(BOOL underwater);
 00451D20    000000B1    -R      void __cdecl S_AnimateTextures(int32_t nTicks);
-00451DE0    00000105    -R      void __cdecl S_DisplayPicture(LPCTSTR fileName, BOOL isTitle);
+00451DE0    00000105    *R      void __cdecl S_DisplayPicture(LPCTSTR fileName, BOOL isTitle);
 00451EF0    0000007E    -R      void __cdecl S_SyncPictureBufferPalette(void);
-00451F70    0000001C    -R      void __cdecl S_DontDisplayPicture(void);
+00451F70    0000001C    *R      void __cdecl S_DontDisplayPicture(void);
 00451F80    0000000D    -R      void __cdecl ScreenDump(void);
 00451F90    00000010    -R      void __cdecl ScreenPartialDump(void);
-00451FA0    000001C9    -R      void __cdecl FadeToPal(int32_t fadeValue, RGB888 *palette);
+00451FA0    000001C9    *R      void __cdecl FadeToPal(int32_t fadeValue, RGB888 *palette);
 00452170    00000026    -R      void __cdecl ScreenClear(bool isPhdWinSize);
 004521A0    000000AB    -R      void __cdecl S_CopyScreenToBuffer(void);
-00452250    00000254    -R      void __cdecl S_CopyBufferToScreen(void);
+00452250    00000254    *R      void __cdecl S_CopyBufferToScreen(void);
 004522A0    000000FA    -R      BOOL __cdecl DecompPCX(LPCBYTE pcx, DWORD pcxSize, LPBYTE pic, RGB888 *pal);
 004523A0    00000005    -R      sub_4523A0
 004523B0    00000001    -R      sub_4523B0
@@ -2505,11 +2545,11 @@ typedef enum LARA_MESH {
 004548B0    00000093    -R      void __cdecl SE_AdvancedDlgUpdate(HWND hwndDlg);
 00454950    0000000E    -R      void __cdecl SE_AdvancedDlgInit(HWND hwndDlg);
 00454960    00000011    -R      HWND __cdecl SE_FindSetupDialog(void);
-00454980    000002D0    -R      BOOL __cdecl GameMain(void);
-00454C50    00000110    -R      int16_t __cdecl TitleSequence(void);
+00454980    000002D0    +       BOOL __cdecl Shell_Main(void);
+00454C50    00000110    *R      int16_t __cdecl TitleSequence(void);
 00454D60    0000032D    -R      void __cdecl CheckCheatMode(void);
-004550C0    0000007D    -R      void __cdecl S_SaveSettings(void);
-00455140    000000DB    -R      void __cdecl S_LoadSettings(void);
+004550C0    0000007D    *R      void __cdecl S_SaveSettings(void);
+00455140    000000DB    *R      void __cdecl S_LoadSettings(void);
 00455220    00000046    +       int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);
 00455270    0000002A    +       int32_t __cdecl S_Audio_Sample_CalculateSampleVolume(int32_t volume);
 004552A0    00000026    +       int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);
@@ -2621,6 +2661,8 @@ typedef enum LARA_MESH {
 00465E20    -       void (*__cdecl g_LaraCollisionRoutines[71])(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00466290    -       int8_t g_TextSpacing[80];
 004662E0    -       int8_t g_TextASCIIMap[];
+00466480    -       double g_GameSizer = 1.0;
+00466488    -       double g_GameSizerCopy = 1.0;
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];
 00468DF4    +       const int16_t g_SinTable[0x402];
@@ -2630,6 +2672,7 @@ typedef enum LARA_MESH {
 0046C30C    -       int32_t g_XGenY2;
 0046C310    -       struct GOURAUD_ENTRY g_GouraudTable[256];
 0046E310    -       int32_t g_PhdWinTop;
+0046E318    -       struct PHD_SPRITE g_PhdSprites[512];
 00470318    -       int32_t g_LsAdder;
 0047031C    -       float g_FltWinBottom;
 00470320    -       float g_FltResZBuf;
@@ -2685,7 +2728,7 @@ typedef enum LARA_MESH {
 004BF3D8    -       int32_t g_PhdScreenWidth;
 004BF3DC    -       int32_t g_LsDivider;
 004BF3E0    -       struct PHD_VBUF g_PhdVBuf[1500];
-004CAF60    -       void *g_XBuffer;
+004CAF60    -       void *g_XBuffer; // no-dereferencing
 004D6AE0    -       uint8_t *g_TexturePageBuffer8[32];
 004D6B60    -       float g_FltWinRight;
 004D6B68    -       struct PHD_VECTOR g_LsVectorView;
@@ -2702,13 +2745,16 @@ typedef enum LARA_MESH {
 004D7380    -       PALETTEENTRY g_GamePalette16[256];
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
+004D7794    -       int32_t g_NoInputCounter;
 004D77A0    -       int32_t g_LOSNumRooms = 0;
 004D77AC    -       int32_t g_IsDemoLevelType;
+004D780C    -       int8_t g_GF_StartGame;
 004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7EBC    -       LPDIRECT3DDEVICE2 g_D3DDev;
 004D7F10    -       HWND g_GameWindowHandle;
 004D8378    -       uint8_t g_IsGameToExit;
+004D8568    -       int32_t g_ScreenSizer;
 004D8570    -       DWORD g_SampleFreqs[256];
 004D8970    -       struct SOUND_ADAPTER_LIST g_SoundAdapterList;
 004D8980    -       LPDIRECTSOUNDBUFFER g_SampleBuffers[256];
@@ -2723,12 +2769,17 @@ typedef enum LARA_MESH {
 004D92BC    -       LPDDS g_PictureBufferSurface;
 004D92C0    -       LPDDS g_ZBufferSurface;
 004D92C8    -       LPDDS g_PrimaryBufferSurface;
+004D934C    -       int32_t g_UVAdd;
+004D9351    -       int8_t g_GameVid_IsWindowedVGA;
 004D9EC4    -       int32_t g_LevelComplete;
 004D9ED8    -       D3DTLVERTEX g_HWR_VertexBuffer[0x2000];
 00519EE0    -       HWR_TEX_HANDLE g_HWR_PageHandles[32];
 00519F60    -       D3DTLVERTEX *g_HWR_VertexPtr;
+0051A0CC    -       void *g_GameMemoryPtr;
 0051A208    -       int32_t g_Input;
+0051A20C    -       int8_t g_IsVidModeLock;
 0051B918    -       RECT g_PhdWinRect;
+0051B928    -       int32_t g_HiRes;
 0051B930    -       RGB888 g_GamePalette8[256];
 0051BCC0    -       struct APP_SETTINGS g_SavedAppSettings;
 0051BD20    -       char g_ErrorMessage[128];
@@ -2748,6 +2799,7 @@ typedef enum LARA_MESH {
 005207C8    -       int16_t g_NextItemActive;
 005207CA    -       int16_t g_NextEffectActive;
 005207CC    -       int16_t g_PrevItemActive;
+00521DE0    -       struct GAME_FLOW g_GameFlow;
 00521FDC    -       int32_t g_SoundFxCount;
 00522000    -       struct OBJECT_INFO g_Objects[265];
 005252B0    -       int16_t **g_Meshes;
@@ -2769,6 +2821,3 @@ typedef enum LARA_MESH {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-0046E318    -       struct PHD_SPRITE g_PhdSprites[512];
-004D934C    -       int32_t g_UVAdd;
-004D9351    -       int8_t g_GameVid_IsWindowedVGA;

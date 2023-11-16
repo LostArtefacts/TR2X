@@ -536,17 +536,17 @@ typedef struct ITEM_INFO {
     int16_t carried_item;
     void *data;
     struct PHD_3DPOS pos;
-    // clang-format on
-    uint16_t active : 1; // 0x0001
-    uint16_t status : 2; // 0x0002…0x0004
-    uint16_t gravity : 1; // 0x0008
-    uint16_t hit_status : 1; // 0x0010
-    uint16_t collidable : 1; // 0x0020
-    uint16_t looked_at : 1; // 0x0040
-    uint16_t dynamic_light : 1; // 0x0080
-    uint16_t killed : 1; // 0x0100
-    uint16_t pad : 7; // 0x0200…0x8000
     // clang-format off
+    uint16_t active:        1; // 0x0001
+    uint16_t status:        2; // 0x0002…0x0004
+    uint16_t gravity:       1; // 0x0008
+    uint16_t hit_status:    1; // 0x0010
+    uint16_t collidable:    1; // 0x0020
+    uint16_t looked_at:     1; // 0x0040
+    uint16_t dynamic_light: 1; // 0x0080
+    uint16_t killed:        1; // 0x0100
+    uint16_t pad:           7; // 0x0200…0x8000
+    // clang-format on
 } ITEM_INFO;
 
 typedef struct STATISTICS_INFO {
@@ -889,6 +889,65 @@ typedef struct BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+// clang-format off
+typedef enum GAME_FLOW_DIR {
+    GFD_START_GAME       = 0x0000,
+    GFD_START_SAVED_GAME = 0x0100,
+    GFD_START_CINE       = 0x0200,
+    GFD_START_FMV        = 0x0300,
+    GFD_START_DEMO       = 0x0400,
+    GFD_EXIT_TO_TITLE    = 0x0500,
+    GFD_LEVEL_COMPLETE   = 0x0600,
+    GFD_EXIT_GAME        = 0x0700,
+    GFD_EXIT_TO_OPTION   = 0x0800,
+    GFD_TITLE_DESELECT   = 0x0900,
+} GAME_FLOW_DIR;
+// clang-format on
+
+// clang-format off
+typedef enum GAME_FLOW_FLAG {
+    GFF_DEMO_VERSION              = 0x0001,
+    GFF_TITLE_DISABLED            = 0x0002,
+    GFF_CHEAT_MODE_CHECK_DISABLED = 0x0004,
+    GFF_NO_INPUT_TIMEOUT          = 0x0008,
+    GFF_LOAD_SAVE_DISABLED        = 0x0010,
+    GFF_SCREEN_SIZING_DISABLED    = 0x0020,
+    GFF_LOCKOUT_OPTION_RING       = 0x0040,
+    GFF_DOZY_CHEAT_ENABLED        = 0x0080,
+    GFF_USE_SECURITY_TAG          = 0x0100,
+    GFF_GYM_ENABLED               = 0x0200,
+    GFF_SELECT_ANY_LEVEL          = 0x0400,
+    GFF_ENABLE_CHEAT_CODE         = 0x0800,
+} GAME_FLOW_FLAG;
+// clang-format on
+
+typedef struct GAME_FLOW {
+    int32_t first_option;
+    int32_t title_replace;
+    int32_t on_death_demo_mode;
+    int32_t on_death_in_game;
+    int32_t no_input_time;
+    int32_t on_demo_interrupt;
+    int32_t on_demo_end;
+    uint16_t reserved1[18];
+    uint16_t num_levels;
+    uint16_t num_pictures;
+    uint16_t num_titles;
+    uint16_t num_fmvs;
+    uint16_t num_cutscenes;
+    uint16_t num_demos;
+    uint16_t title_track;
+    int16_t single_level;
+    uint16_t reserved2[16];
+    uint16_t flags;
+    uint16_t reserved3[3];
+    uint8_t cypher_code;
+    uint8_t language;
+    uint8_t secret_track;
+    uint8_t level_complete_track;
+    uint16_t reserved4[2];
+} GAME_FLOW;
+
 typedef struct OBJECT_INFO {
     int16_t mesh_count;
     int16_t mesh_idx;
@@ -1072,48 +1131,55 @@ typedef struct CINE_FRAME {
     int16_t roll;
 } CINE_FRAME;
 
+// clang-format off
 typedef enum ITEM_FLAG {
-    IF_ONESHOT = 0x0100,
+    IF_ONESHOT   = 0x0100,
     IF_CODE_BITS = 0x3E00,
-    IF_REVERSE = 0x4000,
+    IF_REVERSE   = 0x4000,
     IF_INVISIBLE = 0x0100,
-    IF_KILLED = 0x8000,
+    IF_KILLED    = 0x8000,
 } ITEM_FLAG;
+// clang-format on
 
+// clang-format off
 typedef enum ITEM_STATUS {
-    IS_INACTIVE = 0,
-    IS_ACTIVE = 1,
+    IS_INACTIVE    = 0,
+    IS_ACTIVE      = 1,
     IS_DEACTIVATED = 2,
-    IS_INVISIBLE = 3,
+    IS_INVISIBLE   = 3,
 } ITEM_STATUS;
+// clang-format on
 
+// clang-format off
 typedef enum INPUT_STATE {
-    IN_FORWARD = 0x00000001,
-    IN_BACK = 0x00000002,
-    IN_LEFT = 0x00000004,
-    IN_RIGHT = 0x00000008,
-    IN_JUMP = 0x00000010,
-    IN_DRAW = 0x00000020,
-    IN_ACTION = 0x00000040,
-    IN_SLOW = 0x00000080,
-    IN_OPTION = 0x00000100,
-    IN_LOOK = 0x00000200,
-    IN_STEP_LEFT = 0x00000400,
-    IN_STEP_RIGHT = 0x00000800,
-    IN_ROLL = 0x00001000,
-    IN_PAUSE = 0x00002000,
-    IN_RESERVED1 = 0x00004000,
-    IN_RESERVED2 = 0x00008000,
-    IN_DOZY_CHEAT = 0x00010000,
+    IN_FORWARD     = 0x00000001,
+    IN_BACK        = 0x00000002,
+    IN_LEFT        = 0x00000004,
+    IN_RIGHT       = 0x00000008,
+    IN_JUMP        = 0x00000010,
+    IN_DRAW        = 0x00000020,
+    IN_ACTION      = 0x00000040,
+    IN_SLOW        = 0x00000080,
+    IN_OPTION      = 0x00000100,
+    IN_LOOK        = 0x00000200,
+    IN_STEP_LEFT   = 0x00000400,
+    IN_STEP_RIGHT  = 0x00000800,
+    IN_ROLL        = 0x00001000,
+    IN_PAUSE       = 0x00002000,
+    IN_RESERVED1   = 0x00004000,
+    IN_RESERVED2   = 0x00008000,
+    IN_DOZY_CHEAT  = 0x00010000,
     IN_STUFF_CHEAT = 0x00020000,
-    IN_DEBUG_INFO = 0x00040000,
-    IN_FLARE = 0x00080000,
-    IN_SELECT = 0x00100000,
-    IN_DESELECT = 0x00200000,
-    IN_SAVE = 0x00400000,
-    IN_LOAD = 0x00800000,
+    IN_DEBUG_INFO  = 0x00040000,
+    IN_FLARE       = 0x00080000,
+    IN_SELECT      = 0x00100000,
+    IN_DESELECT    = 0x00200000,
+    IN_SAVE        = 0x00400000,
+    IN_LOAD        = 0x00800000,
 } INPUT_STATE;
+// clang-format on
 
+// clang-format off
 typedef enum LARA_ANIMATION {
     LA_RUN                  = 0,
     LA_WALK_FORWARD         = 1,
@@ -1196,129 +1262,138 @@ typedef enum LARA_ANIMATION {
     LA_UW_TWIST             = 203,
     LA_PICKUP_FLARE_UW      = 206,
 } LARA_ANIMATION;
+// clang-format on
 
+// clang-format off
 typedef enum LARA_STATE {
-    LS_WALK = 0,
-    LS_RUN = 1,
-    LS_STOP = 2,
+    LS_WALK         = 0,
+    LS_RUN          = 1,
+    LS_STOP         = 2,
     LS_FORWARD_JUMP = 3,
-    LS_POSE = 4,
-    LS_FAST_BACK = 5,
-    LS_TURN_RIGHT = 6,
-    LS_TURN_LEFT = 7,
-    LS_DEATH = 8,
-    LS_FAST_FALL = 9,
-    LS_HANG = 10,
-    LS_REACH = 11,
-    LS_SPLAT = 12,
-    LS_TREAD = 13,
-    LS_LAND = 14,
-    LS_COMPRESS = 15,
-    LS_BACK = 16,
-    LS_SWIM = 17,
-    LS_GLIDE = 18,
-    LS_NULL = 19,
-    LS_FAST_TURN = 20,
-    LS_STEP_RIGHT = 21,
-    LS_STEP_LEFT = 22,
-    LS_HIT = 23,
-    LS_SLIDE = 24,
-    LS_BACK_JUMP = 25,
-    LS_RIGHT_JUMP = 26,
-    LS_LEFT_JUMP = 27,
-    LS_UP_JUMP = 28,
-    LS_FALL_BACK = 29,
-    LS_HANG_LEFT = 30,
-    LS_HANG_RIGHT = 31,
-    LS_SLIDE_BACK = 32,
-    LS_SURF_TREAD = 33,
-    LS_SURF_SWIM = 34,
-    LS_DIVE = 35,
-    LS_PUSH_BLOCK = 36,
-    LS_PULL_BLOCK = 37,
-    LS_PP_READY = 38,
-    LS_PICKUP = 39,
-    LS_SWITCH_ON = 40,
-    LS_SWITCH_OFF = 41,
-    LS_USE_KEY = 42,
-    LS_USE_PUZZLE = 43,
-    LS_UW_DEATH = 44,
-    LS_ROLL = 45,
-    LS_SPECIAL = 46,
-    LS_SURF_BACK = 47,
-    LS_SURF_LEFT = 48,
-    LS_SURF_RIGHT = 49,
-    LS_USE_MIDAS = 50,
-    LS_DIE_MIDAS = 51,
-    LS_SWAN_DIVE = 52,
-    LS_FAST_DIVE = 53,
-    LS_GYMNAST = 54,
-    LS_WATER_OUT = 55,
+    LS_POSE         = 4,
+    LS_FAST_BACK    = 5,
+    LS_TURN_RIGHT   = 6,
+    LS_TURN_LEFT    = 7,
+    LS_DEATH        = 8,
+    LS_FAST_FALL    = 9,
+    LS_HANG         = 10,
+    LS_REACH        = 11,
+    LS_SPLAT        = 12,
+    LS_TREAD        = 13,
+    LS_LAND         = 14,
+    LS_COMPRESS     = 15,
+    LS_BACK         = 16,
+    LS_SWIM         = 17,
+    LS_GLIDE        = 18,
+    LS_NULL         = 19,
+    LS_FAST_TURN    = 20,
+    LS_STEP_RIGHT   = 21,
+    LS_STEP_LEFT    = 22,
+    LS_HIT          = 23,
+    LS_SLIDE        = 24,
+    LS_BACK_JUMP    = 25,
+    LS_RIGHT_JUMP   = 26,
+    LS_LEFT_JUMP    = 27,
+    LS_UP_JUMP      = 28,
+    LS_FALL_BACK    = 29,
+    LS_HANG_LEFT    = 30,
+    LS_HANG_RIGHT   = 31,
+    LS_SLIDE_BACK   = 32,
+    LS_SURF_TREAD   = 33,
+    LS_SURF_SWIM    = 34,
+    LS_DIVE         = 35,
+    LS_PUSH_BLOCK   = 36,
+    LS_PULL_BLOCK   = 37,
+    LS_PP_READY     = 38,
+    LS_PICKUP       = 39,
+    LS_SWITCH_ON    = 40,
+    LS_SWITCH_OFF   = 41,
+    LS_USE_KEY      = 42,
+    LS_USE_PUZZLE   = 43,
+    LS_UW_DEATH     = 44,
+    LS_ROLL         = 45,
+    LS_SPECIAL      = 46,
+    LS_SURF_BACK    = 47,
+    LS_SURF_LEFT    = 48,
+    LS_SURF_RIGHT   = 49,
+    LS_USE_MIDAS    = 50,
+    LS_DIE_MIDAS    = 51,
+    LS_SWAN_DIVE    = 52,
+    LS_FAST_DIVE    = 53,
+    LS_GYMNAST      = 54,
+    LS_WATER_OUT    = 55,
     LS_CLIMB_STANCE = 56,
-    LS_CLIMBING = 57,
-    LS_CLIMB_LEFT = 58,
-    LS_CLIMB_END = 59,
-    LS_CLIMB_RIGHT = 60,
-    LS_CLIMB_DOWN = 61,
-    LS_LARA_TEST1 = 62,
-    LS_LARA_TEST2 = 63,
-    LS_LARA_TEST3 = 64,
-    LS_WADE = 65,
-    LS_WATER_ROLL = 66,
+    LS_CLIMBING     = 57,
+    LS_CLIMB_LEFT   = 58,
+    LS_CLIMB_END    = 59,
+    LS_CLIMB_RIGHT  = 60,
+    LS_CLIMB_DOWN   = 61,
+    LS_LARA_TEST1   = 62,
+    LS_LARA_TEST2   = 63,
+    LS_LARA_TEST3   = 64,
+    LS_WADE         = 65,
+    LS_WATER_ROLL   = 66,
     LS_FLARE_PICKUP = 67,
-    LS_TWIST = 68,
-    LS_KICK = 69,
-    LS_DEATH_SLIDE = 70,
-    LS_DUCK = 71,
-    LS_DUCK_ROLL = 72,
-    LS_DASH = 73,
-    LS_DASH_DIVE = 74,
+    LS_TWIST        = 68,
+    LS_KICK         = 69,
+    LS_DEATH_SLIDE  = 70,
+    LS_DUCK         = 71,
+    LS_DUCK_ROLL    = 72,
+    LS_DASH         = 73,
+    LS_DASH_DIVE    = 74,
     LS_MONKEY_SWING = 75,
-    LS_MONKEYF = 76,
-    LS_LAST = 77,
+    LS_MONKEYF      = 76,
+    LS_LAST         = 77,
 } LARA_STATE;
+// clang-format on
 
+// clang-format off
 typedef enum LARA_GUN_STATE {
-    LGS_ARMLESS = 0,
+    LGS_ARMLESS    = 0,
     LGS_HANDS_BUSY = 1,
-    LGS_DRAW = 2,
-    LGS_UNDRAW = 3,
-    LGS_READY = 4,
-    LGS_SPECIAL = 5,
+    LGS_DRAW       = 2,
+    LGS_UNDRAW     = 3,
+    LGS_READY      = 4,
+    LGS_SPECIAL    = 5,
 } LARA_GUN_STATE;
+// clang-format on
 
+// clang-format off
 typedef enum LARA_GUN_TYPE {
     LGT_UNARMED = 0,
     LGT_PISTOLS = 1,
     LGT_MAGNUMS = 2,
-    LGT_UZIS = 3,
+    LGT_UZIS    = 3,
     LGT_SHOTGUN = 4,
-    LGT_M16 = 5,
-    LGT_ROCKET = 6,
+    LGT_M16     = 5,
+    LGT_ROCKET  = 6,
     LGT_HARPOON = 7,
-    LGT_FLARE = 8,
-    LGT_SKIDOO = 9,
+    LGT_FLARE   = 8,
+    LGT_SKIDOO  = 9,
     NUM_WEAPONS = 10,
 } LARA_GUN_TYPE;
+// clang-format on
 
+// clang-format off
 typedef enum LARA_MESH {
-    LM_HIPS = 0,
-    LM_THIGH_L = 1,
-    LM_CALF_L = 2,
-    LM_FOOT_L = 3,
-    LM_THIGH_R = 4,
-    LM_CALF_R = 5,
-    LM_FOOT_R = 6,
-    LM_TORSO = 7,
-    LM_UARM_R = 8,
-    LM_LARM_R = 9,
-    LM_HAND_R = 10,
-    LM_UARM_L = 11,
-    LM_LARM_L = 12,
-    LM_HAND_L = 13,
-    LM_HEAD = 14,
+    LM_HIPS      = 0,
+    LM_THIGH_L   = 1,
+    LM_CALF_L    = 2,
+    LM_FOOT_L    = 3,
+    LM_THIGH_R   = 4,
+    LM_CALF_R    = 5,
+    LM_FOOT_R    = 6,
+    LM_TORSO     = 7,
+    LM_UARM_R    = 8,
+    LM_LARM_R    = 9,
+    LM_HAND_R    = 10,
+    LM_UARM_L    = 11,
+    LM_LARM_L    = 12,
+    LM_HAND_L    = 13,
+    LM_HEAD      = 14,
     LM_NUMBER_OF = 15,
 } LARA_MESH;
+// clang-format on
 
 // clang-format off
 typedef enum {

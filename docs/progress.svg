@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.41% (346)</tspan> · <tspan class="known">69.13% (842)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.49% (347)</tspan> · <tspan class="known">69.05% (841)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="212.20" height="6" x="0" y="0" class="decompiled"/>
-<rect width="516.40" height="6" x="212.20" y="0" class="known"/>
+<rect width="212.82" height="6" x="0" y="0" class="decompiled"/>
+<rect width="515.79" height="6" x="212.82" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -1200,7 +1200,7 @@
 <rect width="12" height="12" x="300" y="330" class="known"><title>void __cdecl SE_AdvancedDlgUpdate(HWND hwndDlg);</title></rect>
 <rect width="12" height="12" x="315" y="330" class="known"><title>void __cdecl SE_AdvancedDlgInit(HWND hwndDlg);</title></rect>
 <rect width="12" height="12" x="330" y="330" class="known"><title>HWND __cdecl SE_FindSetupDialog(void);</title></rect>
-<rect width="12" height="12" x="345" y="330" class="known"><title>BOOL __cdecl GameMain(void);</title></rect>
+<rect width="12" height="12" x="345" y="330" class="decompiled"><title>BOOL __cdecl Shell_Main(void);</title></rect>
 <rect width="12" height="12" x="360" y="330" class="known"><title>int16_t __cdecl TitleSequence(void);</title></rect>
 <rect width="12" height="12" x="375" y="330" class="known"><title>void __cdecl CheckCheatMode(void);</title></rect>
 <rect width="12" height="12" x="390" y="330" class="known"><title>void __cdecl S_SaveSettings(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.61%</tspan> · <tspan class="known">73.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.82%</tspan> · <tspan class="known">72.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="198.77" height="6" x="0" y="0" class="decompiled"/>
-<rect width="545.79" height="6" x="198.77" y="0" class="known"/>
+<rect width="200.34" height="6" x="0" y="0" class="decompiled"/>
+<rect width="544.21" height="6" x="200.34" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1426,7 +1426,7 @@
 <rect width="21.61" height="21.39" x="320.05" y="353.61" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="20.95" height="21.96" x="344.65" y="0" class="decompiled"><title>int32_t __cdecl Output_XYClipper(int32_t vtx_count, struct VERTEX_INFO *vtx);</title></rect>
 <rect width="20.95" height="21.96" x="344.65" y="24.96" class="known"><title>void __cdecl ControlMissile(int16_t fx_num);</title></rect>
-<rect width="20.95" height="21.96" x="344.65" y="49.91" class="known"><title>BOOL __cdecl GameMain(void);</title></rect>
+<rect width="20.95" height="21.96" x="344.65" y="49.91" class="decompiled"><title>BOOL __cdecl Shell_Main(void);</title></rect>
 <rect width="20.95" height="21.85" x="344.65" y="74.87" class="known"><title>void __cdecl Lara_Animate(struct ITEM_INFO *item);</title></rect>
 <rect width="20.95" height="21.75" x="344.65" y="99.73" class="known"><title>void __cdecl GiantYetiControl(int16_t item_num);</title></rect>
 <rect width="20.95" height="21.65" x="344.65" y="124.47" class="decompiled"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
