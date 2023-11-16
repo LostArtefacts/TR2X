@@ -198,6 +198,7 @@ static void Inject_Output(void)
     INJECT(1, 0x0040C3B0, Output_InsertRoomSprite);
     INJECT(1, 0x0040C510, Output_DrawScreenSprite2D);
     INJECT(1, 0x0040C5B0, Output_DrawScreenSprite);
+    INJECT(1, 0x0040C650, Output_DrawScaledSpriteC);
     INJECT(1, 0x0041BA50, Output_InsertPolygons_I);
 }
 

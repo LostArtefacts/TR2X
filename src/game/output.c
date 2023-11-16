@@ -4347,3 +4347,65 @@ void __cdecl Output_DrawScreenSprite(
         g_Output_InsertSprite(z, x0, y0, x1, y1, sprite_idx, shade);
     }
 }
+
+void __cdecl Output_DrawScaledSpriteC(const int16_t *const obj_ptr)
+{
+    int32_t x0 = obj_ptr[0];
+    int32_t y0 = obj_ptr[1];
+    int32_t x1 = obj_ptr[2];
+    int32_t y1 = obj_ptr[3];
+    const int16_t sprite_idx = obj_ptr[4];
+    const int16_t shade = obj_ptr[5];
+
+    if (x0 >= x1 || y0 >= y1 || x1 <= 0 || y1 <= 0 || x0 >= g_PhdWinMaxX
+        || y0 >= g_PhdWinMaxY) {
+        return;
+    }
+
+    const struct DEPTHQ_ENTRY *const depth_q = &g_DepthQTable[shade >> 8];
+    const struct PHD_SPRITE *const sprite = &g_PhdSprites[sprite_idx];
+
+    int32_t u_base = 0x4000;
+    int32_t v_base = 0x4000;
+    const int32_t u_add = ((sprite->width - 64) << 8) / (x1 - x0);
+    const int32_t v_add = ((sprite->height - 64) << 8) / (y1 - y0);
+
+    if (x0 < 0) {
+        u_base -= x0 * u_add;
+        x0 = 0;
+    }
+    if (y0 < 0) {
+        v_base -= y0 * v_add;
+        y0 = 0;
+    }
+    CLAMPG(x1, g_PhdWinMaxX + 1);
+    CLAMPG(y1, g_PhdWinMaxY + 1);
+
+    const int32_t stride = g_PhdScreenWidth;
+    const int32_t width = x1 - x0;
+    const int32_t height = y1 - y0;
+
+    const uint8_t *const src_base =
+        &g_TexturePageBuffer8[sprite->tex_page][sprite->offset];
+    uint8_t *dst =
+        &g_PrintSurfacePtr[(g_PhdWinMinY + y0) * stride + g_PhdWinMinX + x0];
+    const int32_t dst_add = stride - width;
+
+    const bool is_depth_q =
+        depth_q != &g_DepthQTable[16] || g_GameVid_IsWindowedVGA;
+
+    for (int i = 0; i < height; i++) {
+        int32_t u = u_base;
+        const uint8_t *const src = &src_base[(v_base >> 16) << 8];
+        for (int j = 0; j < width; j++) {
+            const uint8_t pix = src[u >> 16];
+            if (pix != 0) {
+                *dst = is_depth_q ? depth_q->index[pix] : pix;
+            }
+            u += u_add;
+            dst++;
+        }
+        dst += dst_add;
+        v_base += v_add;
+    }
+}

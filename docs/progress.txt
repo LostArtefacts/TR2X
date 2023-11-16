@@ -1368,7 +1368,7 @@ typedef enum LARA_MESH {
 0040C3B0    00000152    +       const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);
 0040C510    00000096    +       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C5B0    0000009D    +       void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
-0040C650    00000223    -       void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);
+0040C650    00000223    +       void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);
 
 # game/bird.c
 0040C880    00000089    -       void __cdecl Eagle_Initialise(int16_t item_num);
@@ -2771,3 +2771,4 @@ typedef enum LARA_MESH {
 005263CC    -       struct BOX_INFO *g_Boxes;
 0046E318    -       struct PHD_SPRITE g_PhdSprites[512];
 004D934C    -       int32_t g_UVAdd;
+004D9351    -       int8_t g_GameVid_IsWindowedVGA;

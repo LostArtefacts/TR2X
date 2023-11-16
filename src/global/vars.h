@@ -121,6 +121,7 @@
 #define g_ZBufferSurface (*(LPDDS*)0x004D92C0)
 #define g_PrimaryBufferSurface (*(LPDDS*)0x004D92C8)
 #define g_UVAdd (*(int32_t*)0x004D934C)
+#define g_GameVid_IsWindowedVGA (*(int8_t*)0x004D9351)
 #define g_LevelComplete (*(int32_t*)0x004D9EC4)
 #define g_HWR_VertexBuffer (*(D3DTLVERTEX(*)[0x2000])0x004D9ED8)
 #define g_HWR_PageHandles (*(HWR_TEX_HANDLE(*)[32])0x00519EE0)

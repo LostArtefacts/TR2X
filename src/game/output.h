@@ -176,3 +176,5 @@ void __cdecl Output_DrawScreenSprite2D(
 void __cdecl Output_DrawScreenSprite(
     int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v,
     int16_t sprite_idx, int16_t shade, uint16_t flags);
+
+void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);
