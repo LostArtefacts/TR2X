@@ -644,6 +644,11 @@ typedef enum GF_LEVEL_TYPE {
     GFL_MIDSTORY,
 } GF_LEVEL_TYPE;
 
+typedef struct PICKUP_INFO {
+    int16_t timer;
+    int16_t sprite;
+} PICKUP_INFO;
+
 typedef struct __unaligned INVENTORY_ITEM {
     char *string;
     int16_t obj_num;
@@ -1964,18 +1969,18 @@ typedef enum GAME_OBJECT_ID {
 00421920    00000076    -R      void __cdecl DrawHair(void);
 
 # game/health.c
-004219A0    0000002D    -R      int32_t __cdecl FlashIt(void);
-004219D0    00000145    -R      void __cdecl DrawAssaultTimer(void);
-00421B20    00000045    -R      void __cdecl DrawGameInfo(int32_t timed);
-00421B70    000000AB    -R      void __cdecl DrawHealthBar(int32_t flash_state);
-00421C20    00000097    -R      void __cdecl DrawAirBar(int32_t flash_state);
-00421CC0    00000028    -R      void __cdecl MakeAmmoString(char *string);
-00421CF0    00000132    -R      void __cdecl DrawAmmoInfo(void);
-00421E40    00000015    -R      void __cdecl InitialisePickUpDisplay(void);
-00421E60    000000FD    -R      void __cdecl DrawPickups(int32_t timed);
-00421F60    0000006C    -R      void __cdecl AddDisplayPickup(int16_t obj_num);
-00421FD0    0000007A    *R      void __cdecl DisplayModeInfo(char* string);
-00422050    0000002C    -R      void __cdecl DrawModeInfo(void);
+004219A0    0000002D    -       int32_t __cdecl Overlay_FlashCounter(void);
+004219D0    00000145    -       void __cdecl Overlay_DrawAssaultTimer(void);
+00421B20    00000045    -       void __cdecl Overlay_DrawGameInfo(int32_t timed);
+00421B70    000000AB    -       void __cdecl Overlay_DrawHealthBar(int32_t flash_state);
+00421C20    00000097    -       void __cdecl Overlay_DrawAirBar(int32_t flash_state);
+00421CC0    00000028    -       void __cdecl Overlay_MakeAmmoString(char *string);
+00421CF0    00000132    -       void __cdecl Overlay_DrawAmmoInfo(void);
+00421E40    00000015    -       void __cdecl Overlay_InitialisePickUpDisplay(void);
+00421E60    000000FD    -       void __cdecl Overlay_DrawPickups(int32_t timed);
+00421F60    0000006C    -       void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);
+00421FD0    0000007A    *       void __cdecl Overlay_DisplayModeInfo(char* string);
+00422050    0000002C    -       void __cdecl Overlay_DrawModeInfo(void);
 
 # game/inventory.c
 00422080    0000119E    -R      int32_t __cdecl Display_Inventory(int32_t inventory_mode);
@@ -2651,22 +2656,22 @@ typedef enum GAME_OBJECT_ID {
 004488F0    0000002B    -R      DWORD __cdecl GetZBufferDepth(void);
 00448920    000000A1    -R      void __cdecl CreateRenderBuffer(void);
 004489D0    00000070    -R      void __cdecl CreatePictureBuffer(void);
-00448A40    000001A4    -R      void __cdecl ClearBuffers(DWORD flags, DWORD fillColor);
+00448A40    000001A4    -R      void __cdecl ClearBuffers(DWORD flags, DWORD fill_color);
 00448BF0    0000013C    -R      void __cdecl RestoreLostBuffers(void);
-00448D30    000000CF    -R      void __cdecl UpdateFrame(bool needRunMessageLoop, LPRECT rect);
+00448D30    000000CF    -R      void __cdecl UpdateFrame(bool need_run_message_loop, LPRECT rect);
 00448E00    0000003B    -R      void __cdecl WaitPrimaryBufferFlip(void);
 00448E40    00000003    -R      bool __cdecl RenderInit(void);
-00448E50    000003A5    -R      void __cdecl RenderStart(bool isReset);
-00449200    000000E6    -R      void __cdecl RenderFinish(bool needToClearTextures);
-004492F0    00000204    -R      bool __cdecl ApplySettings(struct APP_SETTINGS *newSettings);
+00448E50    000003A5    -R      void __cdecl RenderStart(bool is_reset);
+00449200    000000E6    -R      void __cdecl RenderFinish(bool need_to_clear_textures);
+004492F0    00000204    -R      bool __cdecl ApplySettings(struct APP_SETTINGS *new_settings);
 00449500    00000105    -R      void __cdecl FmvBackToGame(void);
-00449610    0000023A    *R      void __cdecl GameApplySettings(struct APP_SETTINGS *newSettings);
+00449610    0000023A    *R      void __cdecl GameApplySettings(struct APP_SETTINGS *new_settings);
 00449850    00000067    -R      void __cdecl UpdateGameResolution(void);
-004498C0    0000000C    -R      LPCTSTR __cdecl DecodeErrorMessage(DWORD errorCode);
+004498C0    0000000C    -R      LPCTSTR __cdecl DecodeErrorMessage(DWORD error_code);
 004498D0    00000049    -R      BOOL __cdecl ReadFileSync(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);
 00449920    00000188    -R      BOOL __cdecl LoadTexturePages(HANDLE handle);
 00449AB0    000003A0    -R      BOOL __cdecl LoadRooms(HANDLE handle);
-00449E50    00000097    -R      void __cdecl AdjustTextureUVs(bool resetUvAdd);
+00449E50    00000097    -R      void __cdecl AdjustTextureUVs(bool reset_uv_add);
 00449EF0    0000057E    -R      BOOL __cdecl LoadObjects(HANDLE handle);
 0044A470    00000135    -R      BOOL __cdecl LoadSprites(HANDLE handle);
 0044A5B0    000001D6    -R      BOOL __cdecl LoadItems(HANDLE handle);
@@ -2678,36 +2683,36 @@ typedef enum GAME_OBJECT_ID {
 0044AC90    00000055    -R      BOOL __cdecl LoadAnimatedTextures(HANDLE handle);
 0044ACF0    00000079    -R      BOOL __cdecl LoadCinematic(HANDLE handle);
 0044AD70    0000008A    -R      BOOL __cdecl LoadDemo(HANDLE handle);
-0044AE00    0000009A    -R      void __cdecl LoadDemoExternal(LPCTSTR levelName);
+0044AE00    0000009A    -R      void __cdecl LoadDemoExternal(LPCTSTR level_name);
 0044AEA0    00000265    -R      BOOL __cdecl LoadSamples(HANDLE handle);
-0044B110    00000036    -R      void __cdecl ChangeFileNameExtension(char *fileName, const char *fileExt);
-0044B150    00000026    -R      LPCTSTR __cdecl GetFullPath(LPCTSTR fileName);
+0044B110    00000036    -R      void __cdecl ChangeFileNameExtension(char *file_name, const char *file_ext);
+0044B150    00000026    -R      LPCTSTR __cdecl GetFullPath(LPCTSTR file_name);
 0044B180    000000E0    -R      BOOL __cdecl SelectDrive(void);
-0044B260    0000024A    -R      BOOL __cdecl LoadLevel(LPCTSTR fileName, int32_t levelID);
-0044B4B0    00000018    -R      BOOL __cdecl S_LoadLevelFile(LPCTSTR fileName, int32_t levelID, GF_LEVEL_TYPE levelType);
+0044B260    0000024A    -R      BOOL __cdecl LoadLevel(LPCTSTR file_name, int32_t level_num);
+0044B4B0    00000018    -R      BOOL __cdecl S_LoadLevelFile(LPCTSTR file_name, int32_t level_num, GF_LEVEL_TYPE level_type);
 0044B4D0    0000002A    -R      void __cdecl S_UnloadLevelFile(void);
 0044B500    00000014    -R      void __cdecl S_AdjustTexelCoordinates(void);
-0044B520    000000C4    -R      BOOL __cdecl S_ReloadLevelGraphics(BOOL reloadPalettes, BOOL reloadTexPages);
-0044B5F0    000000C6    -R      BOOL __cdecl Read_Strings(DWORD dwCount, char **stringTable, char **stringBuffer, LPDWORD lpBufferSize, HANDLE handle);
-0044B6C0    000006D1    -R      BOOL __cdecl S_LoadGameFlow(LPCTSTR fileName);
-0044BDA0    0000006B    -R      bool __cdecl PlayFMV(LPCTSTR fileName);
-0044BE10    000002E0    -R      void __cdecl WinPlayFMV(LPCTSTR fileName, bool isPlayback);
-0044C0F0    00000048    -R      void __cdecl WinStopFMV(bool isPlayback);
-0044C140    00000088    -R      bool __cdecl IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);
+0044B520    000000C4    -R      BOOL __cdecl S_ReloadLevelGraphics(BOOL reload_palettes, BOOL reload_tex_pages);
+0044B5F0    000000C6    -R      BOOL __cdecl Read_Strings(DWORD count, char **string_table, char **string_buf, LPDWORD buf_size, HANDLE handle);
+0044B6C0    000006D1    -R      BOOL __cdecl S_LoadGameFlow(const char *file_name);
+0044BDA0    0000006B    -R      bool __cdecl PlayFMV(const char *file_name);
+0044BE10    000002E0    -R      void __cdecl WinPlayFMV(const char *file_name, bool is_playback);
+0044C0F0    00000048    -R      void __cdecl WinStopFMV(bool is_playback);
+0044C140    00000088    -R      bool __cdecl IntroFMV(const char *file_name1, const char *file_name2);
 0044C1D0    00000023    -R      uint16_t __cdecl S_COLOUR(int32_t red, int32_t green, int32_t blue);
 0044C200    00000035    -R      void __cdecl S_DrawScreenLine(int32_t x, int32_t y, int32_t z, int32_t x_len, int32_t y_len, BYTE color_idx, D3DCOLOR *gour, uint16_t flags);
 0044C240    00000116    -R      void __cdecl S_DrawScreenBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_OUTLINE *gour, uint16_t flags);
 0044C360    0000002E    -R      void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);
 0044C390    0000000F    -R      void __cdecl S_FinishInventory(void);
 0044C3A0    00000043    *R      void __cdecl S_FadeToBlack(void);
-0044C3F0    00000057    *R      void __cdecl S_Wait(int32_t timeout, BOOL inputCheck);
-0044C450    0000000E    -R      bool __cdecl S_PlayFMV(LPCTSTR fileName);
-0044C460    00000013    -R      bool __cdecl S_IntroFMV(LPCTSTR fileName1, LPCTSTR fileName2);
-0044C480    00000144    -R      int16_t __cdecl StartGame(int32_t levelID, GF_LEVEL_TYPE levelType);
-0044C5D0    0000009A    -R      int32_t __cdecl GameLoop(BOOL demoMode);
+0044C3F0    00000057    *R      void __cdecl S_Wait(int32_t timeout, BOOL input_check);
+0044C450    0000000E    -R      bool __cdecl S_PlayFMV(const char *file_name);
+0044C460    00000013    -R      bool __cdecl S_IntroFMV(const char *file_name1, const char *file_name2);
+0044C480    00000144    -R      int16_t __cdecl StartGame(int32_t level_num, GF_LEVEL_TYPE level_type);
+0044C5D0    0000009A    -R      int32_t __cdecl GameLoop(BOOL demo_mode);
 0044C670    00000006    *R      int32_t __cdecl LevelCompleteSequence(void);
-0044C680    000001C2    -R      int32_t __cdecl LevelStats(int32_t levelID);
-0044C850    00000113    -R      int32_t __cdecl GameStats(int32_t levelID);
+0044C680    000001C2    -R      int32_t __cdecl LevelStats(int32_t level_num);
+0044C850    00000113    -R      int32_t __cdecl GameStats(int32_t level_num);
 0044C970    0000001E    +       int32_t __cdecl Random_GetControl(void);
 0044C990    0000000A    +       void __cdecl Random_SeedControl(int32_t seed);
 0044C9A0    0000001E    +       int32_t __cdecl Random_GetDraw(void);
@@ -2722,12 +2727,12 @@ typedef enum GAME_OBJECT_ID {
 0044D110    00000029    -R      void __cdecl HWR_ResetTexSource(void);
 0044D140    0000002B    -R      void __cdecl HWR_ResetColorKey(void);
 0044D170    00000059    -R      void __cdecl HWR_ResetZBuffer(void);
-0044D1D0    00000024    -R      void __cdecl HWR_TexSource(HWR_TEX_HANDLE texSource);
+0044D1D0    00000024    -R      void __cdecl HWR_TexSource(HWR_TEX_HANDLE tex_source);
 0044D200    0000004A    -R      void __cdecl HWR_EnableColorKey(bool state);
 0044D250    00000082    *R      void __cdecl HWR_EnableZBuffer(bool z_write_enable, bool z_enable);
 0044D2E0    00000016    -R      void __cdecl HWR_BeginScene(void);
 0044D310    0000016C    -R      void __cdecl HWR_DrawPolyList(void);
-0044D490    0000008E    -R      void __cdecl HWR_LoadTexturePages(int32_t pagesCount, LPVOID pagesBuffer, RGB888 *palette);
+0044D490    0000008E    -R      void __cdecl HWR_LoadTexturePages(int32_t pages_count, void *pages_buf, RGB888 *palette);
 0044D520    0000004A    -R      void __cdecl HWR_FreeTexturePages(void);
 0044D570    00000035    -R      void __cdecl HWR_GetPageHandles(void);
 0044D5B0    00000019    -R      bool __cdecl HWR_VertexBufferFull(void);
@@ -2735,16 +2740,16 @@ typedef enum GAME_OBJECT_ID {
 0044D610    0000005C    *R      BOOL __cdecl S_InitialiseSystem(void);
 0044D670    00000011    *       void __cdecl GameBuf_Shutdown(void);
 0044D690    00000021    -R      void __cdecl init_game_malloc(void);
-0044D6C0    0000006C    -R      void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);
-0044D740    00000034    -R      void __cdecl game_free(DWORD freeSize);
+0044D6C0    0000006C    -R      void *__cdecl game_malloc(uint32_t alloc_size, uint32_t buf_index);
+0044D740    00000034    -R      void __cdecl game_free(uint32_t free_size);
 0044D780    000000E8    -R      void __cdecl CalculateWibbleTable(void);
 0044D870    0000007F    +       void __cdecl Random_Seed(void);
 0044D8F0    00000120    +       BOOL __cdecl S_Input_Key(KEYMAP keymap);
 0044DA10    00000AC4    +       bool __cdecl Input_Update(void);
-0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
+0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t error_code);
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
-0044E700    00000064    -R      int32_t __cdecl GameInit(bool skipCDInit);
+0044E700    00000064    -R      int32_t __cdecl GameInit(bool skip_cd_init);
 0044E770    00000055    *       void __cdecl Shell_Cleanup(void);
 0044E7A0    0000007C    -R      int32_t __cdecl WinGameStart(void);
 0044E820    00000039    *       void __cdecl Shell_Shutdown(void);
@@ -2752,7 +2757,7 @@ typedef enum GAME_OBJECT_ID {
 0044E880    00000010    -R      sub_44E880
 0044E890    0000003C    +       void __cdecl Shell_ExitSystem(const char *message);
 0044E8E0    0000010F    -R      void __cdecl ScreenShotPCX(void);
-0044E9F0    000000AE    -R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcxData);
+0044E9F0    000000AE    -R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);
 0044EAA0    000000D2    -R      DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);
 0044EB80    0000003E    -R      DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);
 0044EBC0    000001F5    *R      void __cdecl ScreenShot(LPDDS screen);
@@ -2769,34 +2774,34 @@ typedef enum GAME_OBJECT_ID {
 00450AA0    0000003B    -R      void __cdecl S_RemoveCtrlText(void);
 00450AE0    00000006    -R      int32_t __cdecl GetRenderHeight(void);
 00450AF0    00000006    -R      int32_t __cdecl GetRenderWidth(void);
-00450B00    000000E4    *R      void __cdecl S_InitialisePolyList(BOOL clearBackBuffer);
+00450B00    000000E4    *R      void __cdecl S_InitialisePolyList(BOOL clear_back_buffer);
 00450BF0    00000036    *R      DWORD __cdecl S_DumpScreen(void);
 00450C30    0000000B    -R      void __cdecl S_ClearScreen(void);
-00450C40    00000037    -R      void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE levelType);
+00450C40    00000037    -R      void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE level_type);
 00450C80    00000089    *R      void __cdecl S_OutputPolyList(void);
-00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *bPtr);
+00450CC0    00000270    -R      int32_t __cdecl S_GetObjectBounds(int16_t *obj_ptr);
 00450F30    00000046    -R      void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
-00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *bPtr, ITEM_INFO *item);
+00450F80    000001F1    -R      void __cdecl S_PrintShadow(int16_t radius, int16_t *obj_ptr, ITEM_INFO *item);
 00451180    000002F6    -R      void __cdecl S_CalculateLight(int32_t x, int32_t y, int32_t z, int16_t room_num);
 00451480    00000031    -R      void __cdecl S_CalculateStaticLight(int16_t adder);
 004514C0    00000124    -R      void __cdecl S_CalculateStaticMeshLight(int32_t x, int32_t y, int32_t z, int32_t shade1, int32_t shade2, ROOM_INFO *room);
 004515F0    00000206    -R      void __cdecl S_LightRoom(ROOM_INFO *room);
 00451800    000001CC    -R      void __cdecl S_DrawHealthBar(int32_t percent);
 004519D0    000001F6    -R      void __cdecl S_DrawAirBar(int32_t percent);
-00451BD0    000000C0    -R      void __cdecl AnimateTextures(int32_t nTicks);
+00451BD0    000000C0    -R      void __cdecl AnimateTextures(int32_t ticks);
 00451C90    00000051    -R      void __cdecl S_SetupBelowWater(BOOL underwater);
 00451CF0    00000021    -R      void __cdecl S_SetupAboveWater(BOOL underwater);
-00451D20    000000B1    -R      void __cdecl S_AnimateTextures(int32_t nTicks);
-00451DE0    00000105    *R      void __cdecl S_DisplayPicture(LPCTSTR fileName, BOOL isTitle);
+00451D20    000000B1    -R      void __cdecl S_AnimateTextures(int32_t ticks);
+00451DE0    00000105    *R      void __cdecl S_DisplayPicture(const char *file_name, BOOL is_title);
 00451EF0    0000007E    -R      void __cdecl S_SyncPictureBufferPalette(void);
 00451F70    0000001C    *R      void __cdecl S_DontDisplayPicture(void);
 00451F80    0000000D    -R      void __cdecl ScreenDump(void);
 00451F90    00000010    -R      void __cdecl ScreenPartialDump(void);
-00451FA0    000001C9    *R      void __cdecl FadeToPal(int32_t fadeValue, RGB888 *palette);
-00452170    00000026    -R      void __cdecl ScreenClear(bool isPhdWinSize);
+00451FA0    000001C9    *R      void __cdecl FadeToPal(int32_t fade_value, RGB888 *palette);
+00452170    00000026    -R      void __cdecl ScreenClear(bool is_phd_win_size);
 004521A0    000000AB    -R      void __cdecl S_CopyScreenToBuffer(void);
 00452250    00000254    *R      void __cdecl S_CopyBufferToScreen(void);
-004522A0    000000FA    -R      BOOL __cdecl DecompPCX(LPCBYTE pcx, DWORD pcxSize, LPBYTE pic, RGB888 *pal);
+004522A0    000000FA    -R      BOOL __cdecl DecompPCX(const uint8_t *pcx, size_t pcx_size, LPBYTE pic, RGB888 *pal);
 004523A0    00000005    -R      sub_4523A0
 004523B0    00000001    -R      sub_4523B0
 004523C0    0000004E    -R      bool __cdecl OpenGameRegistryKey(LPCTSTR key);
@@ -2853,30 +2858,30 @@ typedef enum GAME_OBJECT_ID {
 00455460    00000051    +       void __cdecl Music_Shutdown(void);
 00455500    0000006F    +       void __cdecl Music_Play(int16_t track_id, bool is_looped);
 00455570    00000039    +       void __cdecl Music_Stop(void);
-004555B0    00000084    +       bool __cdecl Music_PlaySynced(int32_t trackID);
+004555B0    00000084    +       bool __cdecl Music_PlaySynced(int32_t track_id);
 00455640    00000061    +       int32_t __cdecl Music_GetFrames(void);
 004556B0    00000092    +       void __cdecl Music_SetVolume(int32_t volume);
-004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *srcPal, BYTE *srcBitmap, int32_t bitmapSize, RGB888 *destPal);
-004558E0    000000C8    -R      BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignoreSysPalette);
-004559B0    000000AE    -R      void __cdecl SyncSurfacePalettes(void *srcData, int32_t width, int32_t height, int32_t srcPitch, RGB888 *srcPalette, void *dstData, int32_t dstPitch, RGB888 *dstPalette, bool preserveSysPalette);
+004557A0    00000137    -R      void __cdecl CopyBitmapPalette(RGB888 *src_pal, BYTE *src_bitmap, int32_t bitmap_size, RGB888 *dest_pal);
+004558E0    000000C8    -R      BYTE __cdecl FindNearestPaletteEntry(RGB888 *palette, int32_t red, int32_t green, int32_t blue, bool ignore_sys_palette);
+004559B0    000000AE    -R      void __cdecl SyncSurfacePalettes(void *src_data, int32_t width, int32_t height, int32_t src_pitch, RGB888 *src_palette, void *dst_data, int32_t dst_pitch, RGB888 *dst_palette, bool preserve_sys_palette);
 00455A60    00000087    -R      int32_t __cdecl CreateTexturePalette(RGB888 *pal);
 00455AF0    0000001C    -R      int32_t __cdecl GetFreePaletteIndex(void);
-00455B10    00000023    -R      void __cdecl FreePalette(int32_t paletteIndex);
-00455B40    00000012    -R      void __cdecl SafeFreePalette(int32_t paletteIndex);
+00455B10    00000023    -R      void __cdecl FreePalette(int32_t palette_idx);
+00455B40    00000012    -R      void __cdecl SafeFreePalette(int32_t palette_idx);
 00455B90    0000006A    -R      int32_t __cdecl CreateTexturePage(int32_t width, int32_t height, bool alpha);
 00455C00    0000001C    -R      int32_t __cdecl GetFreeTexturePageIndex(void);
 00455C20    00000098    -R      bool __cdecl CreateTexturePageSurface(TEXPAGE_DESC *desc);
 00455CC0    00000174    -R      bool __cdecl TexturePageInit(TEXPAGE_DESC *page);
 00455E40    00000025    -R      LPDIRECT3DTEXTURE2 __cdecl Create3DTexture(LPDDS surface);
-00455E70    00000020    -R      void __cdecl SafeFreeTexturePage(int32_t pageIndex);
-00455E90    00000032    -R      void __cdecl FreeTexturePage(int32_t pageIndex);
+00455E70    00000020    -R      void __cdecl SafeFreeTexturePage(int32_t page_idx);
+00455E90    00000032    -R      void __cdecl FreeTexturePage(int32_t page_idx);
 00455ED0    0000003B    -R      void __cdecl TexturePageReleaseVidMemSurface(TEXPAGE_DESC *page);
 00455F10    00000026    -R      void __cdecl FreeTexturePages(void);
-00455F40    000000A2    -R      bool __cdecl LoadTexturePage(int32_t pageIndex, bool reset);
+00455F40    000000A2    -R      bool __cdecl LoadTexturePage(int32_t page_idx, bool reset);
 00455FF0    00000035    -R      bool __cdecl ReloadTextures(bool reset);
-00456030    0000003E    -R      HWR_TEX_HANDLE __cdecl GetTexturePageHandle(int32_t pageIndex);
-00456070    000000F5    -R      int32_t __cdecl AddTexturePage8(int32_t width, int32_t height, BYTE *pageBuffer, int32_t palIndex);
-00456170    00000196    -R      int32_t __cdecl AddTexturePage16(int32_t width, int32_t height, BYTE *pageBuffer);
+00456030    0000003E    -R      HWR_TEX_HANDLE __cdecl GetTexturePageHandle(int32_t page_idx);
+00456070    000000F5    -R      int32_t __cdecl AddTexturePage8(int32_t width, int32_t height, BYTE *page_buf, int32_t pal_idx);
+00456170    00000196    -R      int32_t __cdecl AddTexturePage16(int32_t width, int32_t height, BYTE *page_buf);
 00456310    0000011A    -R      HRESULT __stdcall EnumTextureFormatsCallback(LPDDSDESC lpDdsd, LPVOID lpContext);
 00456430    00000025    -R      HRESULT __cdecl EnumerateTextureFormats(void);
 00456460    00000030    -R      void __cdecl CleanupTextures(void);
@@ -2919,11 +2924,11 @@ typedef enum GAME_OBJECT_ID {
 00457210    0000006E    -R      void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);
 00457280    0000001E    +       void __cdecl Matrix_Push(void);
 0045729E    00000033    +       void __cdecl Matrix_PushUnit(void);
-004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y1, int32_t y2, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
-00457335    0000013A    +       void __fastcall Output_TransA(int32_t y1, int32_t y2, BYTE depthQ); // actually, __watcall, which is esoteric and rarely supported
-0045746F    00000160    +       void __fastcall Output_GourA(int32_t y1, int32_t y2, BYTE colorIdx); // actually, __watcall, which is esoteric and rarely supported
-004575CF    000002FD    +       void __fastcall Output_GTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
-004578CC    00000341    +       void __fastcall Output_WGTMapA(int32_t y1, int32_t y2, BYTE *texPage); // actually, __watcall, which is esoteric and rarely supported
+004572D4    00000061    +       void __fastcall Output_FlatA(int32_t y0, int32_t y1, uint8_t color_idx); // actually, __watcall, which is esoteric and rarely supported
+00457335    0000013A    +       void __fastcall Output_TransA(int32_t y0, int32_t y1, uint8_t depth_q); // actually, __watcall, which is esoteric and rarely supported
+0045746F    00000160    +       void __fastcall Output_GourA(int32_t y0, int32_t y1, uint8_t color_idx); // actually, __watcall, which is esoteric and rarely supported
+004575CF    000002FD    +       void __fastcall Output_GTMapA(int32_t y0, int32_t y1, uint8_t *tex_page); // actually, __watcall, which is esoteric and rarely supported
+004578CC    00000341    +       void __fastcall Output_WGTMapA(int32_t y0, int32_t y1, uint8_t *tex_page); // actually, __watcall, which is esoteric and rarely supported
 00457C10    00000048    +       int32_t __fastcall Math_Atan(int32_t x, int32_t y);
 00457C58    00000006    +       int32_t __fastcall Math_Cos(int16_t angle);
 00457C5E    0000001B    +       int32_t __fastcall Math_Sin(int16_t angle);
@@ -3135,6 +3140,7 @@ typedef enum GAME_OBJECT_ID {
 005207C8    -       int16_t g_NextItemActive;
 005207CA    -       int16_t g_NextEffectActive;
 005207CC    -       int16_t g_PrevItemActive;
+00521CA0    -       struct PICKUP_INFO g_Pickups[12];
 00521DE0    -       struct GAME_FLOW g_GameFlow;
 00521FDC    -       int32_t g_SoundFxCount;
 00522000    -       struct OBJECT_INFO g_Objects[265];

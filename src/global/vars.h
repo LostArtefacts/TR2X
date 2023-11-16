@@ -192,6 +192,7 @@
 #define g_NextItemActive (*(int16_t*)0x005207C8)
 #define g_NextEffectActive (*(int16_t*)0x005207CA)
 #define g_PrevItemActive (*(int16_t*)0x005207CC)
+#define g_Pickups (*(struct PICKUP_INFO(*)[12])0x00521CA0)
 #define g_GameFlow (*(struct GAME_FLOW*)0x00521DE0)
 #define g_SoundFxCount (*(int32_t*)0x00521FDC)
 #define g_Objects (*(struct OBJECT_INFO(*)[265])0x00522000)

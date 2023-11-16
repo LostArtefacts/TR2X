@@ -678,6 +678,11 @@ typedef enum GF_LEVEL_TYPE {
     GFL_MIDSTORY,
 } GF_LEVEL_TYPE;
 
+typedef struct PICKUP_INFO {
+    int16_t timer;
+    int16_t sprite;
+} PICKUP_INFO;
+
 typedef struct INVENTORY_ITEM {
     char *string;
     int16_t obj_num;
