@@ -10,6 +10,11 @@ void __cdecl Random_SeedControl(const int32_t seed)
     g_RandControl = seed;
 }
 
+void __cdecl Random_SeedDraw(const int32_t seed)
+{
+    g_RandDraw = seed;
+}
+
 void __cdecl Random_Seed(void)
 {
     time_t lt = time(0);
