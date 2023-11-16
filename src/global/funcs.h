@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_DrawSprite ((void __cdecl (*)(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale))0x0040C050)
 #define Output_DrawPickup ((void __cdecl (*)(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade))0x0040C320)
 #define Output_DrawScreenSprite2D ((void __cdecl (*)(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags))0x0040C510)
 #define Output_DrawScreenSprite ((void __cdecl (*)(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags))0x0040C5B0)

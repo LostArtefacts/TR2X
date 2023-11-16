@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28% (341)</tspan> · <tspan class="known">69.54% (847)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.08% (342)</tspan> · <tspan class="known">69.46% (846)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="209.14" height="6" x="0" y="0" class="decompiled"/>
-<rect width="519.47" height="6" x="209.14" y="0" class="known"/>
+<rect width="209.75" height="6" x="0" y="0" class="decompiled"/>
+<rect width="518.85" height="6" x="209.75" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -155,7 +155,7 @@
 <rect width="12" height="12" x="375" y="15" class="decompiled"><title>void __cdecl Output_InsertTrans8_Sorted(const struct PHD_VBUF *vbuf, int16_t shade);</title></rect>
 <rect width="12" height="12" x="390" y="15" class="decompiled"><title>void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
 <rect width="12" height="12" x="405" y="15" class="decompiled"><title>void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);</title></rect>
-<rect width="12" height="12" x="420" y="15" class="known"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
+<rect width="12" height="12" x="420" y="15" class="decompiled"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
 <rect width="12" height="12" x="435" y="15" class="known"><title>void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="450" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
 <rect width="12" height="12" x="465" y="15" class="known"><title>void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.11%</tspan> · <tspan class="known">73.56%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.32%</tspan> · <tspan class="known">73.35%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="195.06" height="6" x="0" y="0" class="decompiled"/>
-<rect width="549.50" height="6" x="195.06" y="0" class="known"/>
+<rect width="196.61" height="6" x="0" y="0" class="decompiled"/>
+<rect width="547.95" height="6" x="196.61" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1429,7 +1429,7 @@
 <rect width="20.95" height="21.96" x="344.65" y="49.91" class="known"><title>BOOL __cdecl GameMain(void);</title></rect>
 <rect width="20.95" height="21.85" x="344.65" y="74.87" class="known"><title>void __cdecl Lara_Animate(struct ITEM_INFO *item);</title></rect>
 <rect width="20.95" height="21.75" x="344.65" y="99.73" class="known"><title>void __cdecl GiantYetiControl(int16_t item_num);</title></rect>
-<rect width="20.95" height="21.65" x="344.65" y="124.47" class="known"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
+<rect width="20.95" height="21.65" x="344.65" y="124.47" class="decompiled"><title>void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);</title></rect>
 <rect width="20.95" height="21.30" x="344.65" y="149.12" class="known"><title>void __cdecl Lara_Initialise(int32_t type);</title></rect>
 <rect width="20.95" height="21.16" x="344.65" y="173.42" class="known"><title>void __cdecl SkidooAnimation(struct ITEM_INFO *skidoo, int32_t collide, int32_t dead);</title></rect>
 <rect width="20.95" height="20.85" x="344.65" y="197.58" class="known"><title>void __cdecl Room_DrawAllRooms(int16_t current_room);</title></rect>

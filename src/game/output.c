@@ -4204,3 +4204,100 @@ void __cdecl Output_DrawPoly_Gouraud(
         g_D3DDev, D3DPT_TRIANGLEFAN, D3DVT_TLVERTEX, g_VBufferD3D, vtx_count,
         D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
 }
+
+void __cdecl Output_DrawSprite(
+    const uint32_t flags, int32_t x, int32_t y, int32_t z,
+    const int16_t sprite_idx, int16_t shade, const int16_t scale)
+{
+    const struct MATRIX *const mptr = g_MatrixPtr;
+
+    int32_t xv;
+    int32_t yv;
+    int32_t zv;
+    if (flags & SPRF_ABS) {
+        x -= g_W2VMatrix._03;
+        y -= g_W2VMatrix._13;
+        z -= g_W2VMatrix._23;
+        if (x < -g_PhdViewDistance || x > g_PhdViewDistance
+            || y < -g_PhdViewDistance || y > g_PhdViewDistance
+            || z < -g_PhdViewDistance || z > g_PhdViewDistance) {
+            return;
+        }
+
+        zv = g_W2VMatrix._22 * z + g_W2VMatrix._21 * y + g_W2VMatrix._20 * x;
+        if (zv < g_PhdNearZ || zv >= g_PhdFarZ) {
+            return;
+        }
+        xv = g_W2VMatrix._02 * z + g_W2VMatrix._01 * y + g_W2VMatrix._00 * x;
+        yv = g_W2VMatrix._12 * z + g_W2VMatrix._11 * y + g_W2VMatrix._10 * x;
+    } else if (x | y | z) {
+        zv = x * mptr->_20 + y * mptr->_21 + z * mptr->_22 + mptr->_23;
+        if (zv < g_PhdNearZ || zv > g_PhdFarZ) {
+            return;
+        }
+        xv = x * mptr->_00 + y * mptr->_01 + z * mptr->_02 + mptr->_03;
+        yv = x * mptr->_10 + y * mptr->_11 + z * mptr->_12 + mptr->_13;
+    } else {
+        zv = mptr->_23;
+        if (zv < g_PhdNearZ || zv > g_PhdFarZ) {
+            return;
+        }
+        xv = mptr->_03;
+        yv = mptr->_13;
+    }
+
+    const struct PHD_SPRITE *const sprite = &g_PhdSprites[sprite_idx];
+    int32_t x0 = sprite->x0;
+    int32_t y0 = sprite->y0;
+    int32_t x1 = sprite->x1;
+    int32_t y1 = sprite->y1;
+
+    if (flags & SPRF_SCALE) {
+        x0 = (x0 * scale) << (W2V_SHIFT - 8);
+        y0 = (y0 * scale) << (W2V_SHIFT - 8);
+        x1 = (x1 * scale) << (W2V_SHIFT - 8);
+        y1 = (y1 * scale) << (W2V_SHIFT - 8);
+    } else {
+        x0 <<= W2V_SHIFT;
+        y0 <<= W2V_SHIFT;
+        x1 <<= W2V_SHIFT;
+        y1 <<= W2V_SHIFT;
+    }
+
+    int32_t zp = zv / g_PhdPersp;
+
+    x0 = g_PhdWinCenterX + (x0 + xv) / zp;
+    if (x0 >= g_PhdWinWidth) {
+        return;
+    }
+
+    y0 = g_PhdWinCenterY + (y0 + yv) / zp;
+    if (y0 >= g_PhdWinHeight) {
+        return;
+    }
+
+    x1 = g_PhdWinCenterX + (x1 + xv) / zp;
+    if (x1 < 0) {
+        return;
+    }
+
+    y1 = g_PhdWinCenterY + (y1 + yv) / zp;
+    if (y1 < 0) {
+        return;
+    }
+
+    shade;
+    if (flags & SPRF_SHADE) {
+        const int32_t depth = zv >> W2V_SHIFT;
+        if (depth > FOG_START) {
+            shade += depth - FOG_START;
+            if (shade > 0x1FFF) {
+                return;
+            }
+        }
+    } else {
+        shade = 0x1000;
+    }
+
+    g_Output_InsertSprite(zv, x0, y0, x1, y1, sprite_idx, shade);
+}

@@ -352,6 +352,22 @@ typedef struct PHD_SPRITE {
     int16_t y1;
 } PHD_SPRITE;
 
+// clang-format off
+typedef enum SPRITE_FLAG {
+    SPRF_RGB       = 0x00FFFFFF,
+    SPRF_ABS       = 0x01000000,
+    SPRF_SEMITRANS = 0x02000000,
+    SPRF_SCALE     = 0x04000000,
+    SPRF_SHADE     = 0x08000000,
+    SPRF_TINT      = 0x10000000,
+    SPRF_BLEND_ADD = 0x20000000,
+    SPRF_BLEND_SUB = 0x40000000,
+    SPRF_BLEND_QRT = SPRF_BLEND_ADD | SPRF_BLEND_SUB,
+    SPRF_BLEND     = SPRF_BLEND_QRT,
+    SPRF_ITEM      = 0x80000000,
+} SPRITE_FLAG;
+// clang-format on
+
 typedef struct POINT_INFO {
     float xv;
     float yv;

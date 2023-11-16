@@ -193,6 +193,7 @@ static void Inject_Output(void)
     INJECT(1, 0x0040BCC0, Output_InsertTrans8_Sorted);
     INJECT(1, 0x0040BE60, Output_InsertTransQuad_Sorted);
     INJECT(1, 0x0040BFA0, Output_InsertSprite);
+    INJECT(1, 0x0040C050, Output_DrawSprite);
     INJECT(1, 0x0040C3B0, Output_InsertRoomSprite);
     INJECT(1, 0x0041BA50, Output_InsertPolygons_I);
 }

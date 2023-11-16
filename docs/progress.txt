@@ -344,6 +344,20 @@ typedef struct PHD_SPRITE {
     int16_t y1;
 } PHD_SPRITE;
 
+typedef enum SPRITE_FLAG {
+    SPRF_RGB       = 0x00FFFFFF,
+    SPRF_ABS       = 0x01000000,
+    SPRF_SEMITRANS = 0x02000000,
+    SPRF_SCALE     = 0x04000000,
+    SPRF_SHADE     = 0x08000000,
+    SPRF_TINT      = 0x10000000,
+    SPRF_BLEND_ADD = 0x20000000,
+    SPRF_BLEND_SUB = 0x40000000,
+    SPRF_BLEND_QRT = SPRF_BLEND_ADD | SPRF_BLEND_SUB,
+    SPRF_BLEND     = SPRF_BLEND_QRT,
+    SPRF_ITEM      = 0x80000000,
+} SPRITE_FLAG;
+
 typedef struct __unaligned POINT_INFO {
     float xv;
     float yv;
@@ -1349,7 +1363,7 @@ typedef enum LARA_MESH {
 0040BFA0    000000A7    +       void __cdecl Output_InsertSprite(int32_t z, int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t sprite_idx, int16_t shade);
 
 # 3dsystem/scalespr.c
-0040C050    000002C7    -       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
+0040C050    000002C7    +       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
 0040C320    00000085    -       void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
 0040C3B0    00000152    +       const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);
 0040C510    00000096    -       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
