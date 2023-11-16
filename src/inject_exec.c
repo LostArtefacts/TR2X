@@ -21,6 +21,7 @@
 #include "inject_util.h"
 #include "specific/s_audio_sample.h"
 #include "specific/s_flagged_string.h"
+#include "specific/s_input.h"
 
 static void Inject_Camera(void);
 static void Inject_Math(void);
@@ -40,6 +41,7 @@ static void Inject_Lara_Misc(void);
 static void Inject_Lara_State(void);
 static void Inject_Lara_Col(void);
 static void Inject_S_Audio_Sample(void);
+static void Inject_S_Input(void);
 static void Inject_S_FlaggedString(void);
 
 static void Inject_Camera(void)
@@ -453,6 +455,11 @@ static void Inject_S_Audio_Sample(void)
     INJECT(1, 0x004553C0, S_Audio_Sample_OutIsTrackPlaying);
 }
 
+static void Inject_S_Input(void)
+{
+    INJECT(1, 0x0044D8F0, S_Input_Key);
+}
+
 static void Inject_S_FlaggedString(void)
 {
     INJECT(1, 0x00445F00, S_FlaggedString_Delete);
@@ -482,5 +489,6 @@ void Inject_Exec(void)
     Inject_Lara_Col();
 
     Inject_S_Audio_Sample();
+    Inject_S_Input();
     Inject_S_FlaggedString();
 }

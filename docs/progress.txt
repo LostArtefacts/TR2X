@@ -204,7 +204,7 @@ typedef struct __unaligned RGB888 {
     uint8_t blue;
 } RGB888;
 
-typedef struct __unaligned ColorBitMasks_t {
+typedef struct __unaligned COLOR_BIT_MASKS {
     DWORD dwRBitMask;
     DWORD dwGBitMask;
     DWORD dwBBitMask;
@@ -2739,7 +2739,7 @@ typedef enum GAME_OBJECT_ID {
 0044D740    00000034    -R      void __cdecl game_free(DWORD freeSize);
 0044D780    000000E8    -R      void __cdecl CalculateWibbleTable(void);
 0044D870    0000007F    -R      void __cdecl S_SeedRandom(void);
-0044D8F0    00000120    -R      BOOL __cdecl Key(KEYMAP keymap);
+0044D8F0    00000120    +       BOOL __cdecl S_Input_Key(KEYMAP keymap);
 0044DA10    00000AC4    +       bool __cdecl Input_Update(void);
 0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
@@ -3105,7 +3105,7 @@ typedef enum GAME_OBJECT_ID {
 0051A20C    -       int8_t g_IsVidModeLock;
 0051A210    -       int32_t g_JoyKeys;
 0051A214    +       int32_t g_JoyXPos;
-0051A218    +       int32_t g_JoyXPos;
+0051A218    +       int32_t g_JoyYPos;
 0051A220    +       int32_t g_MediPackCooldown;
 0051A224    +       int8_t g_IsF3Pressed;
 0051A228    +       int8_t g_IsF4Pressed;

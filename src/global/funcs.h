@@ -693,7 +693,6 @@
 #define game_free ((void __cdecl (*)(DWORD freeSize))0x0044D740)
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
 #define S_SeedRandom ((void __cdecl (*)(void))0x0044D870)
-#define Key ((BOOL __cdecl (*)(KEYMAP keymap))0x0044D8F0)
 #define RenderErrorBox ((int32_t __cdecl (*)(int32_t errorCode))0x0044E4E0)
 #define WinMain ((int32_t __stdcall (*)(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd))0x0044E520)
 #define GameInit ((int32_t __cdecl (*)(bool skipCDInit))0x0044E700)

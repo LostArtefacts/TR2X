@@ -222,7 +222,7 @@ typedef struct RGB888 {
     uint8_t blue;
 } RGB888;
 
-typedef struct ColorBitMasks_t {
+typedef struct COLOR_BIT_MASKS {
     DWORD dwRBitMask;
     DWORD dwGBitMask;
     DWORD dwBBitMask;
@@ -1149,6 +1149,10 @@ typedef enum ITEM_STATUS {
     IS_INVISIBLE   = 3,
 } ITEM_STATUS;
 // clang-format on
+
+typedef struct CONTROL_LAYOUT {
+    uint16_t key[14];
+} CONTROL_LAYOUT;
 
 // clang-format off
 typedef enum INPUT_STATE {
