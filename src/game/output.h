@@ -168,3 +168,7 @@ void __cdecl Output_DrawSprite(
 
 void __cdecl Output_DrawPickup(
     int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
+
+void __cdecl Output_DrawScreenSprite2D(
+    int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v,
+    int16_t sprite_idx, int16_t shade, uint16_t flags);

@@ -1366,7 +1366,7 @@ typedef enum LARA_MESH {
 0040C050    000002C7    +       void __cdecl Output_DrawSprite(uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx, int16_t shade, int16_t scale);
 0040C320    00000085    +       void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
 0040C3B0    00000152    +       const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);
-0040C510    00000096    -       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
+0040C510    00000096    +       void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C5B0    0000009D    -       void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);
 0040C650    00000223    -       void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);
 
