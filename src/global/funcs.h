@@ -663,7 +663,6 @@
 #define LevelStats ((int32_t __cdecl (*)(int32_t levelID))0x0044C680)
 #define GameStats ((int32_t __cdecl (*)(int32_t levelID))0x0044C850)
 #define Random_GetControl ((int32_t __cdecl (*)(void))0x0044C970)
-#define Random_SeedControl ((void __cdecl (*)(int32_t seed))0x0044C990)
 #define Random_GetDraw ((int32_t __cdecl (*)(void))0x0044C9A0)
 #define Random_SeedDraw ((void __cdecl (*)(int32_t seed))0x0044C9C0)
 #define GetValidLevelsList ((void __cdecl (*)(REQUEST_INFO *req))0x0044C9D0)

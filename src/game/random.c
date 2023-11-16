@@ -1,8 +1,14 @@
 #include "game/random.h"
 
 #include "global/funcs.h"
+#include "global/vars.h"
 
 #include <time.h>
+
+void __cdecl Random_SeedControl(const int32_t seed)
+{
+    g_RandControl = seed;
+}
 
 void __cdecl Random_Seed(void)
 {
