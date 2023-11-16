@@ -15,6 +15,7 @@
 #include "game/matrix.h"
 #include "game/music.h"
 #include "game/output.h"
+#include "game/random.h"
 #include "game/shell.h"
 #include "game/sound.h"
 #include "game/text.h"
@@ -226,6 +227,11 @@ static void Inject_Music(void)
 static void Inject_Sound(void)
 {
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
+}
+
+static void Inject_Random(void)
+{
+    INJECT(1, 0x0044D870, Random_Seed);
 }
 
 static void Inject_Items(void)

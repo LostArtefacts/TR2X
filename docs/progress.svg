@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.65% (349)</tspan> · <tspan class="known">68.88% (839)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.74% (350)</tspan> · <tspan class="known">68.80% (838)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="214.04" height="6" x="0" y="0" class="decompiled"/>
-<rect width="514.56" height="6" x="214.04" y="0" class="known"/>
+<rect width="214.66" height="6" x="0" y="0" class="decompiled"/>
+<rect width="513.95" height="6" x="214.66" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -1075,9 +1075,9 @@
 <rect width="12" height="12" x="675" y="285" class="known"><title>int32_t __cdecl LevelStats(int32_t levelID);</title></rect>
 <rect width="12" height="12" x="690" y="285" class="known"><title>int32_t __cdecl GameStats(int32_t levelID);</title></rect>
 <rect width="12" height="12" x="705" y="285" class="known"><title>int32_t __cdecl Random_GetControl(void);</title></rect>
-<rect width="12" height="12" x="720" y="285" class="known"><title>void __cdecl SeedRandomControl(int32_t seed);</title></rect>
-<rect width="12" height="12" x="735" y="285" class="known"><title>int32_t __cdecl GetRandomDraw(void);</title></rect>
-<rect width="12" height="12" x="0" y="300" class="known"><title>void __cdecl SeedRandomDraw(int32_t seed);</title></rect>
+<rect width="12" height="12" x="720" y="285" class="known"><title>void __cdecl Random_SeedControl(int32_t seed);</title></rect>
+<rect width="12" height="12" x="735" y="285" class="known"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
+<rect width="12" height="12" x="0" y="300" class="known"><title>void __cdecl Random_SeedDraw(int32_t seed);</title></rect>
 <rect width="12" height="12" x="15" y="300" class="known"><title>void __cdecl GetValidLevelsList(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="30" y="300" class="known"><title>void __cdecl GetSavedGamesList(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="45" y="300" class="known"><title>void __cdecl DisplayCredits(void);</title></rect>
@@ -1104,7 +1104,7 @@
 <rect width="12" height="12" x="360" y="300" class="known"><title>void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);</title></rect>
 <rect width="12" height="12" x="375" y="300" class="known"><title>void __cdecl game_free(DWORD freeSize);</title></rect>
 <rect width="12" height="12" x="390" y="300" class="known"><title>void __cdecl CalculateWibbleTable(void);</title></rect>
-<rect width="12" height="12" x="405" y="300" class="known"><title>void __cdecl S_SeedRandom(void);</title></rect>
+<rect width="12" height="12" x="405" y="300" class="decompiled"><title>void __cdecl Random_Seed(void);</title></rect>
 <rect width="12" height="12" x="420" y="300" class="decompiled"><title>BOOL __cdecl S_Input_Key(KEYMAP keymap);</title></rect>
 <rect width="12" height="12" x="435" y="300" class="decompiled"><title>bool __cdecl Input_Update(void);</title></rect>
 <rect width="12" height="12" x="450" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t errorCode);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.71%</tspan> · <tspan class="known">71.96%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.75%</tspan> · <tspan class="known">71.92%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="207" height="6" x="0" y="0" class="decompiled"/>
-<rect width="537.56" height="6" x="207" y="0" class="known"/>
+<rect width="207.28" height="6" x="0" y="0" class="decompiled"/>
+<rect width="537.28" height="6" x="207.28" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1938,7 +1938,7 @@
 <rect width="7.43" height="7.11" x="578.55" y="257.79" class="decompiled"><title>int32_t __cdecl Lara_DeflectEdge(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.11" x="578.55" y="267.90" class="known"><title>void __cdecl InitialiseSkidman(int16_t item_num);</title></rect>
 <rect width="7.43" height="7.11" x="578.55" y="278.01" class="known"><title>bool __cdecl WinInputInit(void);</title></rect>
-<rect width="7.43" height="7.11" x="578.55" y="288.12" class="known"><title>void __cdecl S_SeedRandom(void);</title></rect>
+<rect width="7.43" height="7.11" x="578.55" y="288.12" class="decompiled"><title>void __cdecl Random_Seed(void);</title></rect>
 <rect width="7.43" height="7.11" x="578.55" y="298.23" class="known"><title>void __cdecl do_inventory_options(INVENTORY_ITEM *item);</title></rect>
 <rect width="7.43" height="7.03" x="578.55" y="308.34" class="known"><title>void __cdecl BellControl(int16_t item_num);</title></rect>
 <rect width="7.43" height="7.03" x="578.55" y="318.37" class="known"><title>void __cdecl FlashConflicts(void);</title></rect>
@@ -2394,7 +2394,7 @@
 <rect width="1.91" height="2.07" x="703.97" y="362.79" class="decompiled"><title>void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="1.91" height="2.07" x="703.97" y="367.86" class="decompiled"><title>void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="1.91" height="2.07" x="703.97" y="372.93" class="known"><title>int32_t __cdecl Random_GetControl(void);</title></rect>
-<rect width="2.32" height="1.68" x="708.89" y="332.19" class="known"><title>int32_t __cdecl GetRandomDraw(void);</title></rect>
+<rect width="2.32" height="1.68" x="708.89" y="332.19" class="known"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
 <rect width="2.32" height="1.68" x="714.20" y="332.19" class="known"><title>LONG __cdecl SetRegistryDwordValue(LPCTSTR lpValueName, DWORD value);</title></rect>
 <rect width="2.32" height="1.68" x="719.52" y="332.19" class="decompiled"><title>void __cdecl Matrix_Push(void);</title></rect>
 <rect width="2.14" height="1.68" x="724.84" y="332.19" class="decompiled"><title>void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
@@ -2493,8 +2493,8 @@
 <rect width="0.10" height="0.10" x="734.29" y="375" class="known"><title>void __cdecl Game_SetCutsceneTrack(int32_t track);</title></rect>
 <rect width="0.22" height="0.10" x="737.06" y="365.10" class="known"><title>void __cdecl lara_hands_free(struct ITEM_INFO *item);</title></rect>
 <rect width="0.22" height="0.10" x="737.06" y="367.68" class="decompiled"><title>void __cdecl Lara_State_Splat(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="0.22" height="0.10" x="737.06" y="370.26" class="known"><title>void __cdecl SeedRandomControl(int32_t seed);</title></rect>
-<rect width="0.22" height="0.10" x="737.06" y="372.84" class="known"><title>void __cdecl SeedRandomDraw(int32_t seed);</title></rect>
+<rect width="0.22" height="0.10" x="737.06" y="370.26" class="known"><title>void __cdecl Random_SeedControl(int32_t seed);</title></rect>
+<rect width="0.22" height="0.10" x="737.06" y="372.84" class="known"><title>void __cdecl Random_SeedDraw(int32_t seed);</title></rect>
 <rect width="0.22" height="0.10" x="737.06" y="375.42" class="known"><title>void __cdecl SE_SoundAdapterSet(HWND hwndDlg, SOUND_ADAPTER_NODE *adapter);</title></rect>
 <rect width="0.35" height="0.10" x="740.28" y="365.10" class="known"><title>void __cdecl SE_ControlsJoystickSet(HWND hwndDlg, JOYSTICK_NODE *joystick);</title></rect>
 <rect width="0.35" height="0.10" x="743.63" y="365.10" class="decompiled"><title>void __cdecl Sound_SetMasterVolume(int32_t volume);</title></rect>

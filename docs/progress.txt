@@ -2709,9 +2709,9 @@ typedef enum GAME_OBJECT_ID {
 0044C680    000001C2    -R      int32_t __cdecl LevelStats(int32_t levelID);
 0044C850    00000113    -R      int32_t __cdecl GameStats(int32_t levelID);
 0044C970    0000001E    *       int32_t __cdecl Random_GetControl(void);
-0044C990    0000000A    -R      void __cdecl SeedRandomControl(int32_t seed);
-0044C9A0    0000001E    -R      int32_t __cdecl GetRandomDraw(void);
-0044C9C0    0000000A    -R      void __cdecl SeedRandomDraw(int32_t seed);
+0044C990    0000000A    -       void __cdecl Random_SeedControl(int32_t seed);
+0044C9A0    0000001E    -       int32_t __cdecl Random_GetDraw(void);
+0044C9C0    0000000A    -       void __cdecl Random_SeedDraw(int32_t seed);
 0044C9D0    00000044    -R      void __cdecl GetValidLevelsList(REQUEST_INFO *req);
 0044CA20    0000004C    -R      void __cdecl GetSavedGamesList(REQUEST_INFO *req);
 0044CA70    00000233    -R      void __cdecl DisplayCredits(void);
@@ -2738,7 +2738,7 @@ typedef enum GAME_OBJECT_ID {
 0044D6C0    0000006C    -R      void *__cdecl game_malloc(DWORD allocSize, DWORD bufIndex);
 0044D740    00000034    -R      void __cdecl game_free(DWORD freeSize);
 0044D780    000000E8    -R      void __cdecl CalculateWibbleTable(void);
-0044D870    0000007F    -R      void __cdecl S_SeedRandom(void);
+0044D870    0000007F    +       void __cdecl Random_Seed(void);
 0044D8F0    00000120    +       BOOL __cdecl S_Input_Key(KEYMAP keymap);
 0044DA10    00000AC4    +       bool __cdecl Input_Update(void);
 0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t errorCode);
