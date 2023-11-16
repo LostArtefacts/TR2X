@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.24% (344)</tspan> · <tspan class="known">69.29% (844)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.33% (345)</tspan> · <tspan class="known">69.21% (843)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="210.98" height="6" x="0" y="0" class="decompiled"/>
-<rect width="517.63" height="6" x="210.98" y="0" class="known"/>
+<rect width="211.59" height="6" x="0" y="0" class="decompiled"/>
+<rect width="517.01" height="6" x="211.59" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -159,7 +159,7 @@
 <rect width="12" height="12" x="435" y="15" class="decompiled"><title>void __cdecl Output_DrawPickup(int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);</title></rect>
 <rect width="12" height="12" x="450" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertRoomSprite(const int16_t *obj_ptr, int32_t vtx_count);</title></rect>
 <rect width="12" height="12" x="465" y="15" class="decompiled"><title>void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
-<rect width="12" height="12" x="480" y="15" class="known"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
+<rect width="12" height="12" x="480" y="15" class="decompiled"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
 <rect width="12" height="12" x="495" y="15" class="known"><title>void __cdecl Output_DrawScaledSpriteC(const int16_t *obj_ptr);</title></rect>
 <rect width="12" height="12" x="510" y="15" class="known"><title>void __cdecl Eagle_Initialise(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="525" y="15" class="known"><title>void __cdecl Eagle_Control(int16_t item_num);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.40%</tspan> · <tspan class="known">73.27%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.45%</tspan> · <tspan class="known">73.22%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="197.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="547.33" height="6" x="197.23" y="0" class="known"/>
+<rect width="197.57" height="6" x="0" y="0" class="decompiled"/>
+<rect width="546.99" height="6" x="197.57" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1841,7 +1841,7 @@
 <rect width="8.31" height="8.75" x="660.82" y="173.80" class="decompiled"><title>int32_t __cdecl LOS_Check(const struct GAME_VECTOR *start, struct GAME_VECTOR *target);</title></rect>
 <rect width="8.24" height="8.75" x="672.12" y="173.80" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3_Sorted(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="8.24" height="8.75" x="683.36" y="173.80" class="known"><title>void __cdecl setup_screen_size(void);</title></rect>
-<rect width="8.09" height="8.75" x="694.60" y="173.80" class="known"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
+<rect width="8.09" height="8.75" x="694.60" y="173.80" class="decompiled"><title>void __cdecl Output_DrawScreenSprite(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
 <rect width="8.09" height="8.75" x="705.69" y="173.80" class="known"><title>int32_t __cdecl DoFlareLight(struct PHD_VECTOR *pos, int32_t flare_age);</title></rect>
 <rect width="8.09" height="8.75" x="716.79" y="173.80" class="known"><title>void __cdecl InitialiseFinalLevel(void);</title></rect>
 <rect width="8.09" height="8.75" x="727.88" y="173.80" class="known"><title>void __cdecl CreateClipper(void);</title></rect>

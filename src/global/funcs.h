@@ -6,7 +6,6 @@
 
 // clang-format off
 #define Output_InsertInventoryBackground ((void __cdecl (*)(const int16_t *obj_ptr))0x00401D50)
-#define Output_DrawScreenSprite ((void __cdecl (*)(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags))0x0040C5B0)
 #define Output_DrawScaledSpriteC ((void __cdecl (*)(const int16_t *obj_ptr))0x0040C650)
 #define Eagle_Initialise ((void __cdecl (*)(int16_t item_num))0x0040C880)
 #define Eagle_Control ((void __cdecl (*)(int16_t item_num))0x0040C910)
