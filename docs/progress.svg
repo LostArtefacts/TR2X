@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.91% (340)</tspan> · <tspan class="known">69.62% (848)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28% (341)</tspan> · <tspan class="known">69.54% (847)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="208.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="520.08" height="6" x="208.52" y="0" class="known"/>
+<rect width="209.14" height="6" x="0" y="0" class="decompiled"/>
+<rect width="519.47" height="6" x="209.14" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -137,7 +137,7 @@
 <rect width="12" height="12" x="105" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="120" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="135" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
-<rect width="12" height="12" x="150" y="15" class="known"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
+<rect width="12" height="12" x="150" y="15" class="decompiled"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
 <rect width="12" height="12" x="165" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectG3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="180" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="195" y="15" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.04%</tspan> · <tspan class="known">73.63%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.11%</tspan> · <tspan class="known">73.56%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="194.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="550.04" height="6" x="194.52" y="0" class="known"/>
+<rect width="195.06" height="6" x="0" y="0" class="decompiled"/>
+<rect width="549.50" height="6" x="195.06" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1677,7 +1677,7 @@
 <rect width="11.45" height="11.24" x="480.35" y="209.14" class="known"><title>int32_t __cdecl Creature_CheckBaddieOverlap(int16_t item_num);</title></rect>
 <rect width="11.45" height="11.24" x="480.35" y="223.38" class="known"><title>void __cdecl DrawFlareInAir(struct ITEM_INFO *item);</title></rect>
 <rect width="11.45" height="11.24" x="480.35" y="237.63" class="known"><title>void __cdecl SkidooCollision(int16_t item_num, struct ITEM_INFO *litem, struct COLL_INFO *coll);</title></rect>
-<rect width="11.45" height="11.19" x="480.35" y="251.87" class="known"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
+<rect width="11.45" height="11.19" x="480.35" y="251.87" class="decompiled"><title>void __cdecl Output_DrawPoly_Gouraud(int32_t vtx_count, int32_t red, int32_t green, int32_t blue);</title></rect>
 <rect width="11.45" height="11.07" x="480.35" y="266.06" class="decompiled"><title>int32_t __cdecl Lara_TestHangOnClimbWall(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="11.45" height="11.07" x="480.35" y="280.13" class="known"><title>void __cdecl RifleHandler(int32_t weapon_type);</title></rect>
 <rect width="11.45" height="11.07" x="480.35" y="294.20" class="known"><title>int32_t __cdecl AddTexturePage8(int32_t width, int32_t height, BYTE *pageBuffer, int32_t palIndex);</title></rect>

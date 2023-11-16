@@ -4186,3 +4186,21 @@ void __cdecl Output_DrawClippedPoly_Textured(const int32_t vtx_count)
         g_D3DDev, D3DPT_TRIANGLEFAN, D3DVT_TLVERTEX, g_VBufferD3D, vtx_count,
         D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
 }
+
+void __cdecl Output_DrawPoly_Gouraud(
+    const int32_t vtx_count, const int32_t red, const int32_t green,
+    const int32_t blue)
+{
+    for (int i = 0; i < vtx_count; i++) {
+        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
+        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
+        g_HWR_VertexPtr[i].sz = g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
+        g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
+        g_HWR_VertexPtr[i].color =
+            Output_ShadeLightColor(g_VBuffer[i].g, red, green, blue, 0xFF);
+    }
+
+    g_D3DDev->lpVtbl->DrawPrimitive(
+        g_D3DDev, D3DPT_TRIANGLEFAN, D3DVT_TLVERTEX, g_VBufferD3D, vtx_count,
+        D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
+}

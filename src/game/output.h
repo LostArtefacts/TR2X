@@ -157,3 +157,7 @@ void __cdecl Output_InsertPoly_Gouraud(
     int16_t poly_type);
 
 void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);
+
+void __cdecl Output_DrawPoly_Gouraud(
+    const int32_t vtx_count, const int32_t red, const int32_t green,
+    const int32_t blue);
