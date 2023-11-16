@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.98% (353)</tspan> · <tspan class="known">68.56% (835)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.06% (354)</tspan> · <tspan class="known">68.47% (834)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="216.50" height="6" x="0" y="0" class="decompiled"/>
-<rect width="512.11" height="6" x="216.50" y="0" class="known"/>
+<rect width="217.11" height="6" x="0" y="0" class="decompiled"/>
+<rect width="511.49" height="6" x="217.11" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -1076,7 +1076,7 @@
 <rect width="12" height="12" x="690" y="285" class="known"><title>int32_t __cdecl GameStats(int32_t levelID);</title></rect>
 <rect width="12" height="12" x="705" y="285" class="decompiled"><title>int32_t __cdecl Random_GetControl(void);</title></rect>
 <rect width="12" height="12" x="720" y="285" class="decompiled"><title>void __cdecl Random_SeedControl(int32_t seed);</title></rect>
-<rect width="12" height="12" x="735" y="285" class="known"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
+<rect width="12" height="12" x="735" y="285" class="decompiled"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
 <rect width="12" height="12" x="0" y="300" class="decompiled"><title>void __cdecl Random_SeedDraw(int32_t seed);</title></rect>
 <rect width="12" height="12" x="15" y="300" class="known"><title>void __cdecl GetValidLevelsList(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="30" y="300" class="known"><title>void __cdecl GetSavedGamesList(REQUEST_INFO *req);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.76%</tspan> · <tspan class="known">71.91%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.77%</tspan> · <tspan class="known">71.90%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="207.39" height="6" x="0" y="0" class="decompiled"/>
-<rect width="537.17" height="6" x="207.39" y="0" class="known"/>
+<rect width="207.46" height="6" x="0" y="0" class="decompiled"/>
+<rect width="537.10" height="6" x="207.46" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -2394,7 +2394,7 @@
 <rect width="1.91" height="2.07" x="703.97" y="362.79" class="decompiled"><title>void __cdecl Text_AlignRight(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="1.91" height="2.07" x="703.97" y="367.86" class="decompiled"><title>void __cdecl Text_AlignBottom(struct TEXTSTRING *string, int16_t enable);</title></rect>
 <rect width="1.91" height="2.07" x="703.97" y="372.93" class="decompiled"><title>int32_t __cdecl Random_GetControl(void);</title></rect>
-<rect width="2.32" height="1.68" x="708.89" y="332.19" class="known"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
+<rect width="2.32" height="1.68" x="708.89" y="332.19" class="decompiled"><title>int32_t __cdecl Random_GetDraw(void);</title></rect>
 <rect width="2.32" height="1.68" x="714.20" y="332.19" class="known"><title>LONG __cdecl SetRegistryDwordValue(LPCTSTR lpValueName, DWORD value);</title></rect>
 <rect width="2.32" height="1.68" x="719.52" y="332.19" class="decompiled"><title>void __cdecl Matrix_Push(void);</title></rect>
 <rect width="2.14" height="1.68" x="724.84" y="332.19" class="decompiled"><title>void __cdecl Lara_State_Special(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

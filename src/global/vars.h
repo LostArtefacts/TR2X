@@ -22,7 +22,6 @@
 #define g_TextASCIIMap (*(int8_t(*)[])0x004662E0)
 #define g_GameSizer (*(double*)0x00466480) // = 1.0
 #define g_GameSizerCopy (*(double*)0x00466488) // = 1.0
-#define g_RandDraw (*(int32_t*)0x00466BB4)
 #define g_Layout (*(struct CONTROL_LAYOUT(*)[2])0x00466F70)
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f

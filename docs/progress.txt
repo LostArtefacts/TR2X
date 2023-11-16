@@ -2710,7 +2710,7 @@ typedef enum GAME_OBJECT_ID {
 0044C850    00000113    -R      int32_t __cdecl GameStats(int32_t levelID);
 0044C970    0000001E    +       int32_t __cdecl Random_GetControl(void);
 0044C990    0000000A    +       void __cdecl Random_SeedControl(int32_t seed);
-0044C9A0    0000001E    -       int32_t __cdecl Random_GetDraw(void);
+0044C9A0    0000001E    +       int32_t __cdecl Random_GetDraw(void);
 0044C9C0    0000000A    +       void __cdecl Random_SeedDraw(int32_t seed);
 0044C9D0    00000044    -R      void __cdecl GetValidLevelsList(REQUEST_INFO *req);
 0044CA20    0000004C    -R      void __cdecl GetSavedGamesList(REQUEST_INFO *req);
@@ -2953,7 +2953,7 @@ typedef enum GAME_OBJECT_ID {
 00466480    -       double g_GameSizer = 1.0;
 00466488    -       double g_GameSizerCopy = 1.0;
 00466BB0    +       int32_t g_RandControl;
-00466BB4    -       int32_t g_RandDraw;
+00466BB4    +       int32_t g_RandDraw;
 00466F70    -       struct CONTROL_LAYOUT g_Layout[2];
 00467DD0    +       const int32_t g_AtanBaseTable[8];
 00467DF0    +       const int16_t g_AtanAngleTable[0x800];

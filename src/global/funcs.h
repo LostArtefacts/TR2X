@@ -662,7 +662,6 @@
 #define LevelCompleteSequence ((int32_t __cdecl (*)(void))0x0044C670)
 #define LevelStats ((int32_t __cdecl (*)(int32_t levelID))0x0044C680)
 #define GameStats ((int32_t __cdecl (*)(int32_t levelID))0x0044C850)
-#define Random_GetDraw ((int32_t __cdecl (*)(void))0x0044C9A0)
 #define GetValidLevelsList ((void __cdecl (*)(REQUEST_INFO *req))0x0044C9D0)
 #define GetSavedGamesList ((void __cdecl (*)(REQUEST_INFO *req))0x0044CA20)
 #define DisplayCredits ((void __cdecl (*)(void))0x0044CA70)
