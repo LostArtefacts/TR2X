@@ -4,4 +4,5 @@
 
 void __cdecl Random_SeedControl(int32_t seed);
 void __cdecl Random_SeedDraw(int32_t seed);
+int32_t __cdecl Random_GetControl(void);
 void __cdecl Random_Seed(void);

@@ -5,6 +5,7 @@
 #include "game/matrix.h"
 #include "game/music.h"
 #include "game/output.h"
+#include "game/random.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"

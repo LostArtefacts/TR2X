@@ -5,14 +5,22 @@
 
 #include <time.h>
 
+static int32_t m_RandControl = 0xD371F947;
+
 void __cdecl Random_SeedControl(const int32_t seed)
 {
-    g_RandControl = seed;
+    m_RandControl = seed;
 }
 
 void __cdecl Random_SeedDraw(const int32_t seed)
 {
     g_RandDraw = seed;
+}
+
+int32_t __cdecl Random_GetControl(void)
+{
+    m_RandControl = 0x41C64E6D * m_RandControl + 12345;
+    return (m_RandControl >> 10) & 0x7FFF;
 }
 
 void __cdecl Random_Seed(void)

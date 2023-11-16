@@ -231,6 +231,7 @@ static void Inject_Sound(void)
 
 static void Inject_Random(void)
 {
+    INJECT(1, 0x0044C970, Random_GetControl);
     INJECT(1, 0x0044C990, Random_SeedControl);
     INJECT(1, 0x0044C9C0, Random_SeedDraw);
     INJECT(1, 0x0044D870, Random_Seed);
