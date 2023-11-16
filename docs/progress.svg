@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.83% (339)</tspan> · <tspan class="known">69.70% (849)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.91% (340)</tspan> · <tspan class="known">69.62% (848)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="207.91" height="6" x="0" y="0" class="decompiled"/>
-<rect width="520.69" height="6" x="207.91" y="0" class="known"/>
+<rect width="208.52" height="6" x="0" y="0" class="decompiled"/>
+<rect width="520.08" height="6" x="208.52" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -132,7 +132,7 @@
 <rect width="12" height="12" x="30" y="15" class="decompiled"><title>void __cdecl Output_InsertFlatRect(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="45" y="15" class="decompiled"><title>void __cdecl Output_InsertLine(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="12" height="12" x="60" y="15" class="decompiled"><title>void __cdecl Output_InsertGT3_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_TEXTURE *texture, const struct PHD_UV *uv0, const struct PHD_UV *uv1, const struct PHD_UV *uv2);</title></rect>
-<rect width="12" height="12" x="75" y="15" class="known"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
+<rect width="12" height="12" x="75" y="15" class="decompiled"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
 <rect width="12" height="12" x="90" y="15" class="decompiled"><title>void __cdecl Output_InsertGT4_ZBuffered(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2, const struct PHD_VBUF *vtx3, const struct PHD_TEXTURE *texture);</title></rect>
 <rect width="12" height="12" x="105" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT4_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
 <rect width="12" height="12" x="120" y="15" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, enum SORT_TYPE sort_type);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">25.95%</tspan> · <tspan class="known">73.73%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">26.04%</tspan> · <tspan class="known">73.63%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="193.82" height="6" x="0" y="0" class="decompiled"/>
-<rect width="550.74" height="6" x="193.82" y="0" class="known"/>
+<rect width="194.52" height="6" x="0" y="0" class="decompiled"/>
+<rect width="550.04" height="6" x="194.52" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1596,7 +1596,7 @@
 <rect width="13.31" height="13.49" x="701.33" y="76.23" class="known"><title>int16_t __cdecl StartGame(int32_t levelID, GF_LEVEL_TYPE levelType);</title></rect>
 <rect width="13.26" height="13.49" x="717.64" y="76.23" class="decompiled"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.11" height="13.49" x="733.89" y="76.23" class="decompiled"><title>int32_t __cdecl Output_ZedClipper(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);</title></rect>
-<rect width="13.48" height="13.11" x="448.61" y="92.72" class="known"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
+<rect width="13.48" height="13.11" x="448.61" y="92.72" class="decompiled"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
 <rect width="13.48" height="13.11" x="448.61" y="108.84" class="known"><title>void __cdecl DoSnowEffect(struct ITEM_INFO *skidoo);</title></rect>
 <rect width="13.48" height="13.06" x="448.61" y="124.95" class="known"><title>void __cdecl Lara_UseItem(int16_t object_num);</title></rect>
 <rect width="13.48" height="13.01" x="448.61" y="141.01" class="known"><title>void __cdecl Inv_RingDoMotions(struct RING_INFO *ring);</title></rect>

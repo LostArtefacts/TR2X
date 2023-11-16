@@ -4122,7 +4122,7 @@ void __cdecl Output_InsertClippedPoly_Textured(
         g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
         g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
         if (g_SavedAppSettings.zbuffer) {
-            g_HWR_VertexPtr->sz =
+            g_HWR_VertexPtr[i].sz =
                 g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
         }
         g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
@@ -4163,4 +4163,26 @@ void __cdecl Output_InsertPoly_Gouraud(
 
     g_HWR_VertexPtr += vtx_count;
     g_SurfaceCount++;
+}
+
+void __cdecl Output_DrawClippedPoly_Textured(const int32_t vtx_count)
+{
+    for (int i = 0; i < vtx_count; i++) {
+        double tu = g_VBuffer[i].u * (double)PHD_ONE / g_VBuffer[i].rhw;
+        double tv = g_VBuffer[i].v * (double)PHD_ONE / g_VBuffer[i].rhw;
+        CLAMP(tu, 0.0, 1.0);
+        CLAMP(tv, 0.0, 1.0);
+
+        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
+        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
+        g_HWR_VertexPtr[i].sz = g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
+        g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
+        g_HWR_VertexPtr[i].color = Output_ShadeLight(g_VBuffer[i].g);
+        g_HWR_VertexPtr[i].tu = tu;
+        g_HWR_VertexPtr[i].tv = tv;
+    }
+
+    g_D3DDev->lpVtbl->DrawPrimitive(
+        g_D3DDev, D3DPT_TRIANGLEFAN, D3DVT_TLVERTEX, g_VBufferD3D, vtx_count,
+        D3DDP_DONOTCLIP | D3DDP_DONOTUPDATEEXTENTS);
 }
