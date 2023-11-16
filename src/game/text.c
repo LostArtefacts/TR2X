@@ -1,5 +1,6 @@
 #include "game/text.h"
 
+#include "game/output.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"

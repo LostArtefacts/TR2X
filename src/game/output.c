@@ -4301,3 +4301,17 @@ void __cdecl Output_DrawSprite(
 
     g_Output_InsertSprite(zv, x0, y0, x1, y1, sprite_idx, shade);
 }
+
+void __cdecl Output_DrawPickup(
+    const int32_t sx, const int32_t sy, const int32_t scale,
+    const int16_t sprite_idx, const int16_t shade)
+{
+    const struct PHD_SPRITE *const sprite = &g_PhdSprites[sprite_idx];
+    const int32_t x0 = sx + ((sprite->x0 * scale) / PHD_ONE);
+    const int32_t y0 = sy + ((sprite->y0 * scale) / PHD_ONE);
+    const int32_t x1 = sx + ((sprite->x1 * scale) / PHD_ONE);
+    const int32_t y1 = sy + ((sprite->y1 * scale) / PHD_ONE);
+    if (x1 >= 0 && y1 >= 0 && x0 < g_PhdWinWidth && y0 < g_PhdWinHeight) {
+        g_Output_InsertSprite(200, x0, y0, x1, y1, sprite_idx, shade);
+    }
+}

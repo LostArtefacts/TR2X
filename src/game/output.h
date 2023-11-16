@@ -165,3 +165,6 @@ void __cdecl Output_DrawPoly_Gouraud(
 void __cdecl Output_DrawSprite(
     uint32_t flags, int32_t x, int32_t y, int32_t z, int16_t sprite_idx,
     int16_t shade, int16_t scale);
+
+void __cdecl Output_DrawPickup(
+    int32_t sx, int32_t sy, int32_t scale, int16_t sprite_idx, int16_t shade);
