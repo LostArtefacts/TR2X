@@ -203,7 +203,6 @@
 #define InitialiseHair ((void __cdecl (*)(void))0x00420EA0)
 #define HairControl ((void __cdecl (*)(int32_t in_cutscene))0x00420F20)
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
-#define Overlay_DrawAmmoInfo ((void __cdecl (*)(void))0x00421CF0)
 #define Overlay_InitialisePickUpDisplay ((void __cdecl (*)(void))0x00421E40)
 #define Overlay_DrawPickups ((void __cdecl (*)(int32_t timed))0x00421E60)
 #define Overlay_AddDisplayPickup ((void __cdecl (*)(int16_t obj_num))0x00421F60)

@@ -8,3 +8,4 @@ void __cdecl Overlay_DrawGameInfo(bool pickup_state);
 void __cdecl Overlay_DrawHealthBar(bool flash_state);
 void __cdecl Overlay_DrawAirBar(bool flash_state);
 void __cdecl Overlay_MakeAmmoString(char *string);
+void __cdecl Overlay_DrawAmmoInfo(void);

@@ -240,6 +240,7 @@ static void Inject_Overlay(void)
     INJECT(1, 0x00421B70, Overlay_DrawHealthBar);
     INJECT(1, 0x00421C20, Overlay_DrawAirBar);
     INJECT(1, 0x00421CC0, Overlay_MakeAmmoString);
+    INJECT(1, 0x00421CF0, Overlay_DrawAmmoInfo);
 }
 
 static void Inject_Random(void)

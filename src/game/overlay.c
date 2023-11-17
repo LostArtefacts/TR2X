@@ -151,3 +151,53 @@ void __cdecl Overlay_MakeAmmoString(char *const string)
         }
     }
 }
+
+void __cdecl Overlay_DrawAmmoInfo(void)
+{
+    if (g_Lara.gun_status != LGS_READY || g_OverlayStatus <= 0
+        || g_SaveGame.bonus_flag) {
+        if (g_AmmoTextInfo != NULL) {
+            Text_Remove(g_AmmoTextInfo);
+            g_AmmoTextInfo = NULL;
+        }
+        return;
+    }
+
+    char buffer[80] = "";
+    switch (g_Lara.gun_type) {
+    case LGT_MAGNUMS:
+        sprintf(buffer, "%5d", g_Lara.magnum_ammo.ammo);
+        break;
+
+    case LGT_UZIS:
+        sprintf(buffer, "%5d", g_Lara.uzi_ammo.ammo);
+        break;
+
+    case LGT_SHOTGUN:
+        sprintf(buffer, "%5d", g_Lara.shotgun_ammo.ammo / 6);
+        break;
+
+    case LGT_M16:
+        sprintf(buffer, "%5d", g_Lara.m16_ammo.ammo);
+        break;
+
+    case LGT_ROCKET:
+        sprintf(buffer, "%5d", g_Lara.grenade_ammo.ammo);
+        break;
+
+    case LGT_HARPOON:
+        sprintf(buffer, "%5d", g_Lara.harpoon_ammo.ammo);
+        break;
+
+    default:
+        return;
+    }
+
+    Overlay_MakeAmmoString(buffer);
+    if (g_AmmoTextInfo != NULL) {
+        Text_ChangeText(g_AmmoTextInfo, buffer);
+    } else {
+        g_AmmoTextInfo = Text_Create(AMMO_X, AMMO_Y, 0, buffer);
+        Text_AlignRight(g_AmmoTextInfo, true);
+    }
+}

@@ -1990,7 +1990,7 @@ typedef enum GAME_OBJECT_ID {
 00421B70    000000AB    +       void __cdecl Overlay_DrawHealthBar(bool flash_state);
 00421C20    00000097    +       void __cdecl Overlay_DrawAirBar(bool flash_state);
 00421CC0    00000028    +       void __cdecl Overlay_MakeAmmoString(char *string);
-00421CF0    00000132    *       void __cdecl Overlay_DrawAmmoInfo(void);
+00421CF0    00000132    +       void __cdecl Overlay_DrawAmmoInfo(void);
 00421E40    00000015    -       void __cdecl Overlay_InitialisePickUpDisplay(void);
 00421E60    000000FD    *       void __cdecl Overlay_DrawPickups(int32_t timed);
 00421F60    0000006C    -       void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);
