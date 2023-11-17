@@ -133,6 +133,7 @@
 #define g_GF_StartGame (*(int8_t*)0x004D780C)
 #define g_IsInventoryActive (*(uint16_t*)0x004D7978)
 #define g_LevelItemCount (*(int32_t*)0x004D7C38)
+#define g_HealthBarTimer (*(int32_t*)0x004D7C3C)
 #define g_SoundTrackIds (*(int32_t(*)[128])0x004D7C80)
 #define g_D3DDev (*(LPDIRECT3DDEVICE2*)0x004D7EBC)
 #define g_IsGameWindowCreated (*(bool*)0x004D7EE4)

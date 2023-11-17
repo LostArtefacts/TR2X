@@ -1981,8 +1981,8 @@ typedef enum GAME_OBJECT_ID {
 004219A0    0000002D    +       BOOL __cdecl Overlay_FlashCounter(void);
 004219D0    00000145    +       void __cdecl Overlay_DrawAssaultTimer(void);
 00421B20    00000045    +       void __cdecl Overlay_DrawGameInfo(bool pickup_state);
-00421B70    000000AB    *       void __cdecl Overlay_DrawHealthBar(int32_t flash_state);
-00421C20    00000097    *       void __cdecl Overlay_DrawAirBar(int32_t flash_state);
+00421B70    000000AB    +       void __cdecl Overlay_DrawHealthBar(bool flash_state);
+00421C20    00000097    *       void __cdecl Overlay_DrawAirBar(bool flash_state);
 00421CC0    00000028    -       void __cdecl Overlay_MakeAmmoString(char *string);
 00421CF0    00000132    *       void __cdecl Overlay_DrawAmmoInfo(void);
 00421E40    00000015    -       void __cdecl Overlay_InitialisePickUpDisplay(void);
@@ -2952,7 +2952,7 @@ typedef enum GAME_OBJECT_ID {
 
 00464060    -       uint32_t g_PerspectiveDistance = 0x3000000;
 00464068    -       void (*__cdecl g_PolyDrawRoutines[9])(const int16_t *);
-0046408C    -       float g_RhwFactor = 0x14000000.p0;
+0046408C    -       float g_RhwFactor = 335544320.0f; // 10*2**25
 004640B0    -       int32_t g_CineTrackID = 1;
 004640B8    -       int32_t g_CineTickRate = 0x8000; // 0x8000 = PHD_ONE/TICKS_PER_FRAME
 004640BC    -       int16_t g_CD_TrackID = -1;
@@ -3200,3 +3200,5 @@ typedef enum GAME_OBJECT_ID {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
+004D7928    +       int32_t g_OldHitPoints;
+004D7C3C    -       int32_t g_HealthBarTimer;

@@ -237,6 +237,7 @@ static void Inject_Overlay(void)
     INJECT(1, 0x004219A0, Overlay_FlashCounter);
     INJECT(1, 0x004219D0, Overlay_DrawAssaultTimer);
     INJECT(1, 0x00421B20, Overlay_DrawGameInfo);
+    INJECT(1, 0x00421B70, Overlay_DrawHealthBar);
 }
 
 static void Inject_Random(void)

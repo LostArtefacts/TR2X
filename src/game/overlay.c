@@ -5,11 +5,13 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "util.h"
 
 #include <stdio.h>
 
 #define FLASH_FRAMES 5
 
+static int32_t m_OldHitPoints = -1;
 static bool m_FlashState = false;
 static int32_t m_FlashCounter = 0;
 
@@ -74,7 +76,7 @@ void __cdecl Overlay_DrawAssaultTimer(void)
     }
 }
 
-void __cdecl Overlay_DrawGameInfo(bool pickup_state)
+void __cdecl Overlay_DrawGameInfo(const bool pickup_state)
 {
     Overlay_DrawAmmoInfo();
     Overlay_DrawModeInfo();
@@ -86,4 +88,31 @@ void __cdecl Overlay_DrawGameInfo(bool pickup_state)
         Overlay_DrawAssaultTimer();
     }
     Text_Draw();
+}
+
+void __cdecl Overlay_DrawHealthBar(const bool flash_state)
+{
+    int32_t hit_points = g_LaraItem->hit_points;
+    CLAMP(hit_points, 0, LARA_MAX_HITPOINTS);
+
+    if (m_OldHitPoints != hit_points) {
+        m_OldHitPoints = hit_points;
+        g_HealthBarTimer = 40;
+    }
+
+    int32_t timer = g_HealthBarTimer;
+    if (timer < 0) {
+        timer = 0;
+        g_HealthBarTimer = 0;
+    }
+
+    if (hit_points <= LARA_MAX_HITPOINTS / 4 && !flash_state) {
+        S_DrawHealthBar(0);
+        return;
+    }
+
+    if (timer <= 0 && g_Lara.gun_status != LGS_READY) {
+        return;
+    }
+    S_DrawHealthBar(hit_points / 10);
 }
