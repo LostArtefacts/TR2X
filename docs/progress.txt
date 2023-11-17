@@ -649,6 +649,15 @@ typedef struct PICKUP_INFO {
     int16_t sprite;
 } PICKUP_INFO;
 
+typedef enum INVENTORY_MODE {
+    INV_GAME_MODE,
+    INV_TITLE_MODE,
+    INV_KEYS_MODE,
+    INV_SAVE_MODE,
+    INV_LOAD_MODE,
+    INV_DEATH_MODE,
+} INVENTORY_MODE;
+
 typedef struct __unaligned INVENTORY_ITEM {
     char *string;
     int16_t obj_num;
@@ -1969,18 +1978,18 @@ typedef enum GAME_OBJECT_ID {
 00421920    00000076    -R      void __cdecl DrawHair(void);
 
 # game/health.c
-004219A0    0000002D    +       int32_t __cdecl Overlay_FlashCounter(void);
+004219A0    0000002D    +       BOOL __cdecl Overlay_FlashCounter(void);
 004219D0    00000145    +       void __cdecl Overlay_DrawAssaultTimer(void);
-00421B20    00000045    -       void __cdecl Overlay_DrawGameInfo(int32_t timed);
-00421B70    000000AB    -       void __cdecl Overlay_DrawHealthBar(int32_t flash_state);
-00421C20    00000097    -       void __cdecl Overlay_DrawAirBar(int32_t flash_state);
+00421B20    00000045    +       void __cdecl Overlay_DrawGameInfo(bool pickup_state);
+00421B70    000000AB    *       void __cdecl Overlay_DrawHealthBar(int32_t flash_state);
+00421C20    00000097    *       void __cdecl Overlay_DrawAirBar(int32_t flash_state);
 00421CC0    00000028    -       void __cdecl Overlay_MakeAmmoString(char *string);
-00421CF0    00000132    -       void __cdecl Overlay_DrawAmmoInfo(void);
+00421CF0    00000132    *       void __cdecl Overlay_DrawAmmoInfo(void);
 00421E40    00000015    -       void __cdecl Overlay_InitialisePickUpDisplay(void);
-00421E60    000000FD    -       void __cdecl Overlay_DrawPickups(int32_t timed);
+00421E60    000000FD    *       void __cdecl Overlay_DrawPickups(int32_t timed);
 00421F60    0000006C    -       void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);
 00421FD0    0000007A    *       void __cdecl Overlay_DisplayModeInfo(char* string);
-00422050    0000002C    -       void __cdecl Overlay_DrawModeInfo(void);
+00422050    0000002C    *       void __cdecl Overlay_DrawModeInfo(void);
 
 # game/inventory.c
 00422080    0000119E    -R      int32_t __cdecl Display_Inventory(int32_t inventory_mode);
@@ -2941,13 +2950,25 @@ typedef enum GAME_OBJECT_ID {
 #   + decompiled
 # Offset    Flags   Declaration
 
-00464060    -       int32_t g_PerspectiveDistance;
+00464060    -       uint32_t g_PerspectiveDistance = 0x3000000;
 00464068    -       void (*__cdecl g_PolyDrawRoutines[9])(const int16_t *);
-0046408C    -       float g_RhwFactor;
-004640BC    -       int16_t g_CD_TrackID;
-004640C4    -       int32_t g_FlipEffect;
+0046408C    -       float g_RhwFactor = 0x14000000.p0;
+004640B0    -       int32_t g_CineTrackID = 1;
+004640B8    -       int32_t g_CineTickRate = 0x8000; // 0x8000 = PHD_ONE/TICKS_PER_FRAME
+004640BC    -       int16_t g_CD_TrackID = -1;
+004640C4    -       int32_t g_FlipEffect = -1;
+004641F0    -       int32_t g_AssaultBestTime = -1;
 004641F8    -       void (*__cdecl g_EffectRoutines[32])(struct ITEM_INFO *item);
-00465A60    -       int16_t g_OptionMusicVolume;
+004642E8    -       int16_t g_GF_NumSecrets = 3;
+00464310    -       int16_t g_CineTargetAngle = 0x4000; // PHD_90
+004644E0    -       int32_t g_OverlayStatus = 1;
+004654E0    -       int16_t g_InvMainObjectsCount = 8;
+00465604    -       int16_t g_InvOptionObjectsCount = 4;
+00465618    -       BOOL g_GymInvOpenEnabled = TRUE;
+00465A50    -       int16_t g_InventoryChosen = -1;
+00465A54    -       enum INVENTORY_MODE g_InventoryMode = INV_TITLE_MODE;
+00465A5C    -       int16_t g_OptionSoundVolume = 165; // NOTE: value should be 10
+00465A60    -       int16_t g_OptionMusicVolume = 255; // NOTE: should be 10
 00465AD4    -       int32_t g_JumpPermitted = 1;
 00465AD8    -       int16_t g_LaraOldSlideAngle = 1;
 00465CD0    -       void (*__cdecl g_LaraControlRoutines[71])(struct ITEM_INFO *item, struct COLL_INFO *coll);
@@ -2955,8 +2976,12 @@ typedef enum GAME_OBJECT_ID {
 00465E20    -       void (*__cdecl g_LaraCollisionRoutines[71])(struct ITEM_INFO *item, struct COLL_INFO *coll);
 00466290    -       int8_t g_TextSpacing[80];
 004662E0    -       int8_t g_TextASCIIMap[];
+00466400    -       int32_t g_BGND_PaletteIndex = -1;
 00466480    -       double g_GameSizer = 1.0;
 00466488    -       double g_GameSizerCopy = 1.0;
+00466490    -       int32_t g_FadeValue = 0x100000;
+00466494    -       int32_t g_FadeLimit = 0x100000;
+00466498    -       int32_t g_FadeAdder = 0x8000;
 00466BB0    +       int32_t g_RandControl;
 00466BB4    +       int32_t g_RandDraw;
 00466F70    -       struct CONTROL_LAYOUT g_Layout[2];
@@ -3043,9 +3068,17 @@ typedef enum GAME_OBJECT_ID {
 004D7780    -       int32_t g_CineFrameCurrent;
 004D778C    -       int32_t g_IsChunkyCamera;
 004D7794    -       int32_t g_NoInputCounter;
+004D7798    -       BOOL g_IsResetFlag;
+004D779C    -       int32_t g_FlipTimer;
 004D77A0    -       int32_t g_LOSNumRooms = 0;
-004D77AC    -       int32_t g_IsDemoLevelType;
+004D77A4    -       BOOL g_StopInventory;
+004D77AC    -       BOOL g_IsDemoLevelType;
+004D77B0    -       BOOL g_IsDemoLoaded;
+004D77C0    -       int g_BoundStart;
+004D77C4    -       int g_BoundEnd;
 004D77E0    -       int32_t g_IsAssaultTimerDisplay;
+004D77E4    -       BOOL g_IsAssaultTimerActive;
+004D77E8    -       BOOL g_IsMonkAngry;
 004D780C    -       int8_t g_GF_StartGame;
 004D7920    +       BOOL g_FlashState;
 004D7924    +       int32_t g_FlashCounter;

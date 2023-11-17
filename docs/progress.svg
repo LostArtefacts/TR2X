@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.23% (356)</tspan> · <tspan class="known">68.31% (832)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.31% (357)</tspan> · <tspan class="known">68.23% (831)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="218.33" height="6" x="0" y="0" class="decompiled"/>
-<rect width="510.27" height="6" x="218.33" y="0" class="known"/>
+<rect width="218.95" height="6" x="0" y="0" class="decompiled"/>
+<rect width="509.65" height="6" x="218.95" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -391,9 +391,9 @@
 <rect width="12" height="12" x="165" y="90" class="known"><title>void __cdecl InitialiseHair(void);</title></rect>
 <rect width="12" height="12" x="180" y="90" class="known"><title>void __cdecl HairControl(int32_t in_cutscene);</title></rect>
 <rect width="12" height="12" x="195" y="90" class="known"><title>void __cdecl DrawHair(void);</title></rect>
-<rect width="12" height="12" x="210" y="90" class="decompiled"><title>int32_t __cdecl Overlay_FlashCounter(void);</title></rect>
+<rect width="12" height="12" x="210" y="90" class="decompiled"><title>BOOL __cdecl Overlay_FlashCounter(void);</title></rect>
 <rect width="12" height="12" x="225" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
-<rect width="12" height="12" x="240" y="90" class="known"><title>void __cdecl Overlay_DrawGameInfo(int32_t timed);</title></rect>
+<rect width="12" height="12" x="240" y="90" class="decompiled"><title>void __cdecl Overlay_DrawGameInfo(bool pickup_state);</title></rect>
 <rect width="12" height="12" x="255" y="90" class="known"><title>void __cdecl Overlay_DrawHealthBar(int32_t flash_state);</title></rect>
 <rect width="12" height="12" x="270" y="90" class="known"><title>void __cdecl Overlay_DrawAirBar(int32_t flash_state);</title></rect>
 <rect width="12" height="12" x="285" y="90" class="known"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.88%</tspan> · <tspan class="known">71.79%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.90%</tspan> · <tspan class="known">71.77%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="208.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="536.29" height="6" x="208.26" y="0" class="known"/>
+<rect width="208.42" height="6" x="0" y="0" class="decompiled"/>
+<rect width="536.14" height="6" x="208.42" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -2146,7 +2146,7 @@
 <rect width="4.74" height="4.50" x="711.51" y="261.54" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
 <rect width="4.74" height="4.50" x="719.25" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlay(int32_t sample_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
 <rect width="4.74" height="4.50" x="726.99" y="261.54" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_OutPlayLooped(int32_t track_id, uint16_t volume, int32_t pitch, int32_t pan);</title></rect>
-<rect width="4.63" height="4.50" x="734.73" y="261.54" class="known"><title>void __cdecl Overlay_DrawGameInfo(int32_t timed);</title></rect>
+<rect width="4.63" height="4.50" x="734.73" y="261.54" class="decompiled"><title>void __cdecl Overlay_DrawGameInfo(bool pickup_state);</title></rect>
 <rect width="4.63" height="4.50" x="742.37" y="261.54" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
 <rect width="4.64" height="4.50" x="640.82" y="269.04" class="decompiled"><title>bool __cdecl S_Audio_Sample_IsTrackPlaying(int32_t track_id);</title></rect>
 <rect width="4.64" height="4.39" x="640.82" y="276.54" class="known"><title>void __cdecl FallingBlockCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
@@ -2305,7 +2305,7 @@
 <rect width="3.24" height="3.12" x="675.50" y="365.77" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseAllTracks(void);</title></rect>
 <rect width="3.24" height="3.12" x="675.50" y="371.88" class="known"><title>void __cdecl S_DrawScreenFBox(int32_t sx, int32_t sy, int32_t z, int32_t width, int32_t height, BYTE color_idx, const struct GOURAUD_FILL *gour, uint16_t flags);</title></rect>
 <rect width="3.31" height="2.92" x="681.74" y="309.52" class="known"><title>void __cdecl Demo_GetInput(void);</title></rect>
-<rect width="3.31" height="2.92" x="688.05" y="309.52" class="decompiled"><title>int32_t __cdecl Overlay_FlashCounter(void);</title></rect>
+<rect width="3.31" height="2.92" x="688.05" y="309.52" class="decompiled"><title>BOOL __cdecl Overlay_FlashCounter(void);</title></rect>
 <rect width="3.31" height="2.92" x="694.36" y="309.52" class="known"><title>void __cdecl WinInStart(void);</title></rect>
 <rect width="3.17" height="2.92" x="700.66" y="309.52" class="known"><title>void __cdecl ChandelierFX(struct ITEM_INFO *item);</title></rect>
 <rect width="3.17" height="2.92" x="706.83" y="309.52" class="known"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>

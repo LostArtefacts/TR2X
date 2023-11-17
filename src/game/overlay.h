@@ -4,3 +4,4 @@
 
 bool __cdecl Overlay_FlashCounter(void);
 void __cdecl Overlay_DrawAssaultTimer(void);
+void __cdecl Overlay_DrawGameInfo(bool pickup_state);

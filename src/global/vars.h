@@ -6,13 +6,25 @@
 #include "inject_util.h"
 
 // clang-format off
-#define g_PerspectiveDistance (*(int32_t*)0x00464060)
+#define g_PerspectiveDistance (*(uint32_t*)0x00464060) // = 0x3000000
 #define g_PolyDrawRoutines (*((void(__cdecl  *(*)[9])(const int16_t *))0x00464068))
-#define g_RhwFactor (*(float*)0x0046408C)
-#define g_CD_TrackID (*(int16_t*)0x004640BC)
-#define g_FlipEffect (*(int32_t*)0x004640C4)
+#define g_RhwFactor (*(float*)0x0046408C) // = 0x14000000.p0
+#define g_CineTrackID (*(int32_t*)0x004640B0) // = 1
+#define g_CineTickRate (*(int32_t*)0x004640B8) // = 0x8000
+#define g_CD_TrackID (*(int16_t*)0x004640BC) // = -1
+#define g_FlipEffect (*(int32_t*)0x004640C4) // = -1
+#define g_AssaultBestTime (*(int32_t*)0x004641F0) // = -1
 #define g_EffectRoutines (*((void(__cdecl  *(*)[32])(struct ITEM_INFO *item))0x004641F8))
-#define g_OptionMusicVolume (*(int16_t*)0x00465A60)
+#define g_GF_NumSecrets (*(int16_t*)0x004642E8) // = 3
+#define g_CineTargetAngle (*(int16_t*)0x00464310) // = 0x4000
+#define g_OverlayStatus (*(int32_t*)0x004644E0) // = 1
+#define g_InvMainObjectsCount (*(int16_t*)0x004654E0) // = 8
+#define g_InvOptionObjectsCount (*(int16_t*)0x00465604) // = 4
+#define g_GymInvOpenEnabled (*(BOOL*)0x00465618) // = TRUE
+#define g_InventoryChosen (*(int16_t*)0x00465A50) // = -1
+#define g_InventoryMode (*(enum INVENTORY_MODE*)0x00465A54) // = INV_TITLE_MODE
+#define g_OptionSoundVolume (*(int16_t*)0x00465A5C) // = 165
+#define g_OptionMusicVolume (*(int16_t*)0x00465A60) // = 255
 #define g_JumpPermitted (*(int32_t*)0x00465AD4) // = 1
 #define g_LaraOldSlideAngle (*(int16_t*)0x00465AD8) // = 1
 #define g_LaraControlRoutines (*((void(__cdecl  *(*)[71])(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00465CD0))
@@ -20,8 +32,12 @@
 #define g_LaraCollisionRoutines (*((void(__cdecl  *(*)[71])(struct ITEM_INFO *item, struct COLL_INFO *coll))0x00465E20))
 #define g_TextSpacing (*(int8_t(*)[80])0x00466290)
 #define g_TextASCIIMap (*(int8_t(*)[])0x004662E0)
+#define g_BGND_PaletteIndex (*(int32_t*)0x00466400) // = -1
 #define g_GameSizer (*(double*)0x00466480) // = 1.0
 #define g_GameSizerCopy (*(double*)0x00466488) // = 1.0
+#define g_FadeValue (*(int32_t*)0x00466490) // = 0x100000
+#define g_FadeLimit (*(int32_t*)0x00466494) // = 0x100000
+#define g_FadeAdder (*(int32_t*)0x00466498) // = 0x8000
 #define g_Layout (*(struct CONTROL_LAYOUT(*)[2])0x00466F70)
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f
@@ -103,9 +119,17 @@
 #define g_CineFrameCurrent (*(int32_t*)0x004D7780)
 #define g_IsChunkyCamera (*(int32_t*)0x004D778C)
 #define g_NoInputCounter (*(int32_t*)0x004D7794)
+#define g_IsResetFlag (*(BOOL*)0x004D7798)
+#define g_FlipTimer (*(int32_t*)0x004D779C)
 #define g_LOSNumRooms (*(int32_t*)0x004D77A0) // = 0
-#define g_IsDemoLevelType (*(int32_t*)0x004D77AC)
+#define g_StopInventory (*(BOOL*)0x004D77A4)
+#define g_IsDemoLevelType (*(BOOL*)0x004D77AC)
+#define g_IsDemoLoaded (*(BOOL*)0x004D77B0)
+#define g_BoundStart (*(int*)0x004D77C0)
+#define g_BoundEnd (*(int*)0x004D77C4)
 #define g_IsAssaultTimerDisplay (*(int32_t*)0x004D77E0)
+#define g_IsAssaultTimerActive (*(BOOL*)0x004D77E4)
+#define g_IsMonkAngry (*(BOOL*)0x004D77E8)
 #define g_GF_StartGame (*(int8_t*)0x004D780C)
 #define g_IsInventoryActive (*(uint16_t*)0x004D7978)
 #define g_LevelItemCount (*(int32_t*)0x004D7C38)

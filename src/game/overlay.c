@@ -1,7 +1,9 @@
 #include "game/overlay.h"
 
 #include "game/output.h"
+#include "game/text.h"
 #include "global/const.h"
+#include "global/funcs.h"
 #include "global/vars.h"
 
 #include <stdio.h>
@@ -70,4 +72,18 @@ void __cdecl Overlay_DrawAssaultTimer(void)
             x += digit_width;
         }
     }
+}
+
+void __cdecl Overlay_DrawGameInfo(bool pickup_state)
+{
+    Overlay_DrawAmmoInfo();
+    Overlay_DrawModeInfo();
+    if (g_OverlayStatus > 0) {
+        bool flash = Overlay_FlashCounter();
+        Overlay_DrawHealthBar(flash);
+        Overlay_DrawAirBar(flash);
+        Overlay_DrawPickups(pickup_state);
+        Overlay_DrawAssaultTimer();
+    }
+    Text_Draw();
 }
