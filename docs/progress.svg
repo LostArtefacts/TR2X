@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.97% (365)</tspan> · <tspan class="known">67.57% (823)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.05% (366)</tspan> · <tspan class="known">67.49% (822)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="223.85" height="6" x="0" y="0" class="decompiled"/>
-<rect width="504.75" height="6" x="223.85" y="0" class="known"/>
+<rect width="224.47" height="6" x="0" y="0" class="decompiled"/>
+<rect width="504.13" height="6" x="224.47" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -402,7 +402,7 @@
 <rect width="12" height="12" x="330" y="90" class="decompiled"><title>void __cdecl Overlay_DrawPickups(bool pickup_state);</title></rect>
 <rect width="12" height="12" x="345" y="90" class="decompiled"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
 <rect width="12" height="12" x="360" y="90" class="decompiled"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
-<rect width="12" height="12" x="375" y="90" class="known"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
+<rect width="12" height="12" x="375" y="90" class="decompiled"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
 <rect width="12" height="12" x="390" y="90" class="known"><title>int32_t __cdecl Display_Inventory(int32_t inventory_mode);</title></rect>
 <rect width="12" height="12" x="405" y="90" class="known"><title>void __cdecl Construct_Inventory(void);</title></rect>
 <rect width="12" height="12" x="420" y="90" class="known"><title>void __cdecl SelectMeshes(struct INVENTORY_ITEM *inv_item);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.24%</tspan> · <tspan class="known">71.43%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.26%</tspan> · <tspan class="known">71.42%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="210.98" height="6" x="0" y="0" class="decompiled"/>
-<rect width="533.58" height="6" x="210.98" y="0" class="known"/>
+<rect width="211.07" height="6" x="0" y="0" class="decompiled"/>
+<rect width="533.48" height="6" x="211.07" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -2308,7 +2308,7 @@
 <rect width="3.31" height="2.92" x="688.05" y="309.52" class="decompiled"><title>BOOL __cdecl Overlay_FlashCounter(void);</title></rect>
 <rect width="3.31" height="2.92" x="694.36" y="309.52" class="known"><title>void __cdecl WinInStart(void);</title></rect>
 <rect width="3.17" height="2.92" x="700.66" y="309.52" class="known"><title>void __cdecl ChandelierFX(struct ITEM_INFO *item);</title></rect>
-<rect width="3.17" height="2.92" x="706.83" y="309.52" class="known"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
+<rect width="3.17" height="2.92" x="706.83" y="309.52" class="decompiled"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
 <rect width="3.17" height="2.92" x="713" y="309.52" class="known"><title>void __cdecl Inv_RingCalcAdders(struct RING_INFO *ring, int16_t rotation_duration);</title></rect>
 <rect width="3.17" height="2.92" x="719.17" y="309.52" class="known"><title>void __cdecl Inv_RingMotionSetup(struct RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames);</title></rect>
 <rect width="3.17" height="2.92" x="725.33" y="309.52" class="decompiled"><title>void __cdecl Lara_State_Fallback(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>

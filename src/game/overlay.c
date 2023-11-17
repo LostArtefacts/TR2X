@@ -284,3 +284,16 @@ void __cdecl Overlay_DisplayModeInfo(const char *const string)
     }
     g_DisplayModeInfoTimer = 2.5 * FRAMES_PER_SECOND;
 }
+
+void __cdecl Overlay_DrawModeInfo(void)
+{
+    if (g_DisplayModeTextInfo == NULL) {
+        return;
+    }
+
+    g_DisplayModeInfoTimer--;
+    if (g_DisplayModeInfoTimer == 0) {
+        Text_Remove(g_DisplayModeTextInfo);
+        g_DisplayModeTextInfo = NULL;
+    }
+}

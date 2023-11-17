@@ -1995,7 +1995,7 @@ typedef enum GAME_OBJECT_ID {
 00421E60    000000FD    +       void __cdecl Overlay_DrawPickups(bool pickup_state);
 00421F60    0000006C    +       void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);
 00421FD0    0000007A    +       void __cdecl Overlay_DisplayModeInfo(char* string);
-00422050    0000002C    *       void __cdecl Overlay_DrawModeInfo(void);
+00422050    0000002C    +       void __cdecl Overlay_DrawModeInfo(void);
 
 # game/inventory.c
 00422080    0000119E    -R      int32_t __cdecl Display_Inventory(int32_t inventory_mode);

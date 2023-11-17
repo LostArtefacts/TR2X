@@ -13,3 +13,4 @@ void __cdecl Overlay_InitialisePickUpDisplay(void);
 void __cdecl Overlay_DrawPickups(const bool pickup_state);
 void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);
 void __cdecl Overlay_DisplayModeInfo(const char *string);
+void __cdecl Overlay_DrawModeInfo(void);
