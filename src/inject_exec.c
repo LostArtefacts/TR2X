@@ -242,6 +242,7 @@ static void Inject_Overlay(void)
     INJECT(1, 0x00421CC0, Overlay_MakeAmmoString);
     INJECT(1, 0x00421CF0, Overlay_DrawAmmoInfo);
     INJECT(1, 0x00421E40, Overlay_InitialisePickUpDisplay);
+    INJECT(1, 0x00421E60, Overlay_DrawPickups);
 }
 
 static void Inject_Random(void)

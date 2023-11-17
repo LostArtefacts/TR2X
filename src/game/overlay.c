@@ -13,6 +13,7 @@
 #define AMMO_X (-10)
 #define AMMO_Y 35
 
+static int32_t m_OldGameTimer = 0;
 static int32_t m_OldHitPoints = -1;
 static bool m_FlashState = false;
 static int32_t m_FlashCounter = 0;
@@ -206,5 +207,41 @@ void __cdecl Overlay_InitialisePickUpDisplay(void)
 {
     for (int i = 0; i < MAX_PICKUPS; i++) {
         g_Pickups[i].timer = 0;
+    }
+}
+
+void __cdecl Overlay_DrawPickups(const bool pickup_state)
+{
+    const int32_t time = g_SaveGame.statistics.timer - m_OldGameTimer;
+    m_OldGameTimer = g_SaveGame.statistics.timer;
+
+    if (time < +0 || time >= 60) {
+        return;
+    }
+
+    static const int32_t max_columns = 4;
+    const int32_t cell_h = g_PhdWinWidth / 10;
+    const int32_t cell_v = cell_h * 2 / 3;
+    int32_t x = g_PhdWinWidth - cell_h;
+    int32_t y = g_PhdWinHeight - cell_h;
+
+    int32_t column = 0;
+    for (int i = 0; i < 12; i++) {
+        struct PICKUP_INFO *const pickup = &g_Pickups[i];
+        if (pickup_state) {
+            pickup->timer -= time;
+        }
+
+        if (pickup->timer <= 0) {
+            pickup->timer = 0;
+        } else {
+            if (column == max_columns) {
+                y -= cell_v;
+                x = g_PhdWinWidth - cell_h;
+            }
+            column++;
+            Output_DrawPickup(x, y, 12 * WALL_L, pickup->sprite, 0x1000);
+        }
+        x -= cell_h;
     }
 }
