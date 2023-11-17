@@ -134,3 +134,20 @@ void __cdecl Overlay_DrawAirBar(const bool flash_state)
         S_DrawAirBar(air * 100 / LARA_MAX_AIR);
     }
 }
+
+void __cdecl Overlay_MakeAmmoString(char *const string)
+{
+    for (char *c = string; *c != '\0'; c++) {
+        if (*c == ' ') {
+            continue;
+        }
+
+        if (*c - 'A' >= 0) {
+            // ammo sprites
+            *c += 0xC - 'A';
+        } else {
+            // digits
+            *c += 1 - '0';
+        }
+    }
+}

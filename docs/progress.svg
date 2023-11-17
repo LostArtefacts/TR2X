@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.47% (359)</tspan> · <tspan class="known">68.06% (829)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.56% (360)</tspan> · <tspan class="known">67.98% (828)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="220.17" height="6" x="0" y="0" class="decompiled"/>
-<rect width="508.43" height="6" x="220.17" y="0" class="known"/>
+<rect width="220.79" height="6" x="0" y="0" class="decompiled"/>
+<rect width="507.81" height="6" x="220.79" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -396,7 +396,7 @@
 <rect width="12" height="12" x="240" y="90" class="decompiled"><title>void __cdecl Overlay_DrawGameInfo(bool pickup_state);</title></rect>
 <rect width="12" height="12" x="255" y="90" class="decompiled"><title>void __cdecl Overlay_DrawHealthBar(bool flash_state);</title></rect>
 <rect width="12" height="12" x="270" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAirBar(bool flash_state);</title></rect>
-<rect width="12" height="12" x="285" y="90" class="known"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
+<rect width="12" height="12" x="285" y="90" class="decompiled"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
 <rect width="12" height="12" x="300" y="90" class="known"><title>void __cdecl Overlay_DrawAmmoInfo(void);</title></rect>
 <rect width="12" height="12" x="315" y="90" class="known"><title>void __cdecl Overlay_InitialisePickUpDisplay(void);</title></rect>
 <rect width="12" height="12" x="330" y="90" class="known"><title>void __cdecl Overlay_DrawPickups(int32_t timed);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.99%</tspan> · <tspan class="known">71.68%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.01%</tspan> · <tspan class="known">71.67%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="209.12" height="6" x="0" y="0" class="decompiled"/>
-<rect width="535.44" height="6" x="209.12" y="0" class="known"/>
+<rect width="209.21" height="6" x="0" y="0" class="decompiled"/>
+<rect width="535.35" height="6" x="209.21" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -2332,7 +2332,7 @@
 <rect width="2.71" height="2.96" x="710.86" y="315.45" class="decompiled"><title>void __cdecl Text_AddOutline(struct TEXTSTRING *string, int16_t enable, int16_t colour, uint16_t *gour_ptr, uint16_t flags);</title></rect>
 <rect width="2.71" height="2.96" x="716.57" y="315.45" class="known"><title>void __cdecl DInputKeyboardRelease(void);</title></rect>
 <rect width="2.71" height="2.96" x="722.28" y="315.45" class="known"><title>void __cdecl HWR_ResetTexSource(void);</title></rect>
-<rect width="2.57" height="2.96" x="727.99" y="315.45" class="known"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
+<rect width="2.57" height="2.96" x="727.99" y="315.45" class="decompiled"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
 <rect width="2.57" height="2.96" x="733.56" y="315.45" class="known"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
 <rect width="2.43" height="2.96" x="739.14" y="315.45" class="decompiled"><title>void __cdecl Matrix_Push_I(void);</title></rect>
 <rect width="2.43" height="2.96" x="744.57" y="315.45" class="decompiled"><title>void __cdecl Lara_State_PPReady(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
