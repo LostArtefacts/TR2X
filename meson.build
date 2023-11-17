@@ -91,6 +91,7 @@ dll_sources = [
   'src/game/matrix.c',
   'src/game/music.c',
   'src/game/output.c',
+  'src/game/overlay.c',
   'src/game/random.c',
   'src/game/shell.c',
   'src/game/sound.c',

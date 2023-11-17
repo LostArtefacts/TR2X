@@ -15,6 +15,7 @@
 #include "game/matrix.h"
 #include "game/music.h"
 #include "game/output.h"
+#include "game/overlay.h"
 #include "game/random.h"
 #include "game/shell.h"
 #include "game/sound.h"
@@ -34,6 +35,8 @@ static void Inject_Output(void);
 static void Inject_Music(void);
 static void Inject_Sound(void);
 
+static void Inject_Overlay(void);
+static void Inject_Random(void);
 static void Inject_Items(void);
 static void Inject_Effects(void);
 static void Inject_LOS(void);
@@ -227,6 +230,11 @@ static void Inject_Music(void)
 static void Inject_Sound(void)
 {
     INJECT(1, 0x00455380, Sound_SetMasterVolume);
+}
+
+static void Inject_Overlay(void)
+{
+    INJECT(1, 0x004219A0, Overlay_FlashCounter);
 }
 
 static void Inject_Random(void)
@@ -489,6 +497,8 @@ void Inject_Exec(void)
     Inject_Music();
     Inject_Sound();
 
+    Inject_Overlay();
+    Inject_Random();
     Inject_Items();
     Inject_Effects();
     Inject_LOS();

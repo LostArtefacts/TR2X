@@ -1969,7 +1969,7 @@ typedef enum GAME_OBJECT_ID {
 00421920    00000076    -R      void __cdecl DrawHair(void);
 
 # game/health.c
-004219A0    0000002D    -       int32_t __cdecl Overlay_FlashCounter(void);
+004219A0    0000002D    +       int32_t __cdecl Overlay_FlashCounter(void);
 004219D0    00000145    -       void __cdecl Overlay_DrawAssaultTimer(void);
 00421B20    00000045    -       void __cdecl Overlay_DrawGameInfo(int32_t timed);
 00421B70    000000AB    -       void __cdecl Overlay_DrawHealthBar(int32_t flash_state);
@@ -3046,6 +3046,8 @@ typedef enum GAME_OBJECT_ID {
 004D77A0    -       int32_t g_LOSNumRooms = 0;
 004D77AC    -       int32_t g_IsDemoLevelType;
 004D780C    -       int8_t g_GF_StartGame;
+004D7920    +       BOOL g_FlashState;
+004D7924    +       int32_t g_FlashCounter;
 004D7978    -       uint16_t g_IsInventoryActive;
 004D7C38    -       int32_t g_LevelItemCount;
 004D7C80    -       int32_t g_SoundTrackIds[128];
