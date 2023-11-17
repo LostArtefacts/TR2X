@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.15% (355)</tspan> · <tspan class="known">68.39% (833)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.23% (356)</tspan> · <tspan class="known">68.31% (832)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="217.72" height="6" x="0" y="0" class="decompiled"/>
-<rect width="510.88" height="6" x="217.72" y="0" class="known"/>
+<rect width="218.33" height="6" x="0" y="0" class="decompiled"/>
+<rect width="510.27" height="6" x="218.33" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -392,7 +392,7 @@
 <rect width="12" height="12" x="180" y="90" class="known"><title>void __cdecl HairControl(int32_t in_cutscene);</title></rect>
 <rect width="12" height="12" x="195" y="90" class="known"><title>void __cdecl DrawHair(void);</title></rect>
 <rect width="12" height="12" x="210" y="90" class="decompiled"><title>int32_t __cdecl Overlay_FlashCounter(void);</title></rect>
-<rect width="12" height="12" x="225" y="90" class="known"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
+<rect width="12" height="12" x="225" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
 <rect width="12" height="12" x="240" y="90" class="known"><title>void __cdecl Overlay_DrawGameInfo(int32_t timed);</title></rect>
 <rect width="12" height="12" x="255" y="90" class="known"><title>void __cdecl Overlay_DrawHealthBar(int32_t flash_state);</title></rect>
 <rect width="12" height="12" x="270" y="90" class="known"><title>void __cdecl Overlay_DrawAirBar(int32_t flash_state);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.78%</tspan> · <tspan class="known">71.89%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.88%</tspan> · <tspan class="known">71.79%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="207.55" height="6" x="0" y="0" class="decompiled"/>
-<rect width="537.01" height="6" x="207.55" y="0" class="known"/>
+<rect width="208.26" height="6" x="0" y="0" class="decompiled"/>
+<rect width="536.29" height="6" x="208.26" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1592,7 +1592,7 @@
 <rect width="13.51" height="13.49" x="635.60" y="76.23" class="known"><title>void __cdecl MovableBlock(int16_t item_num);</title></rect>
 <rect width="13.46" height="13.49" x="652.10" y="76.23" class="known"><title>void __cdecl Effect_Draw(int16_t fx_num);</title></rect>
 <rect width="13.41" height="13.49" x="668.56" y="76.23" class="decompiled"><title>int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);</title></rect>
-<rect width="13.36" height="13.49" x="684.97" y="76.23" class="known"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
+<rect width="13.36" height="13.49" x="684.97" y="76.23" class="decompiled"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
 <rect width="13.31" height="13.49" x="701.33" y="76.23" class="known"><title>int16_t __cdecl StartGame(int32_t level_num, GF_LEVEL_TYPE level_type);</title></rect>
 <rect width="13.26" height="13.49" x="717.64" y="76.23" class="decompiled"><title>void __cdecl Lara_State_Run(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="13.11" height="13.49" x="733.89" y="76.23" class="decompiled"><title>int32_t __cdecl Output_ZedClipper(int32_t vtx_count, struct POINT_INFO *pts, struct VERTEX_INFO *vtx);</title></rect>

@@ -203,7 +203,6 @@
 #define InitialiseHair ((void __cdecl (*)(void))0x00420EA0)
 #define HairControl ((void __cdecl (*)(int32_t in_cutscene))0x00420F20)
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
-#define Overlay_DrawAssaultTimer ((void __cdecl (*)(void))0x004219D0)
 #define Overlay_DrawGameInfo ((void __cdecl (*)(int32_t timed))0x00421B20)
 #define Overlay_DrawHealthBar ((void __cdecl (*)(int32_t flash_state))0x00421B70)
 #define Overlay_DrawAirBar ((void __cdecl (*)(int32_t flash_state))0x00421C20)

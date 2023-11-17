@@ -235,6 +235,7 @@ static void Inject_Sound(void)
 static void Inject_Overlay(void)
 {
     INJECT(1, 0x004219A0, Overlay_FlashCounter);
+    INJECT(1, 0x004219D0, Overlay_DrawAssaultTimer);
 }
 
 static void Inject_Random(void)

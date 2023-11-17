@@ -105,6 +105,7 @@
 #define g_NoInputCounter (*(int32_t*)0x004D7794)
 #define g_LOSNumRooms (*(int32_t*)0x004D77A0) // = 0
 #define g_IsDemoLevelType (*(int32_t*)0x004D77AC)
+#define g_IsAssaultTimerDisplay (*(int32_t*)0x004D77E0)
 #define g_GF_StartGame (*(int8_t*)0x004D780C)
 #define g_IsInventoryActive (*(uint16_t*)0x004D7978)
 #define g_LevelItemCount (*(int32_t*)0x004D7C38)
@@ -161,6 +162,7 @@
 #define g_UVAdd (*(int32_t*)0x004D934C)
 #define g_GameVid_IsWindowedVGA (*(int8_t*)0x004D9351)
 #define g_IsFMVPlaying (*(int32_t*)0x004D9EAC)
+#define g_CurrentLevel (*(int32_t*)0x004D9EC0)
 #define g_LevelComplete (*(int32_t*)0x004D9EC4)
 #define g_HWR_VertexBuffer (*(D3DTLVERTEX(*)[0x2000])0x004D9ED8)
 #define g_HWR_PageHandles (*(HWR_TEX_HANDLE(*)[32])0x00519EE0)

@@ -1,3 +1,5 @@
+#define FRAMES_PER_SECOND 30
+
 #define PHD_ONE 0x10000
 #define PHD_HALF 0x100
 #define PHD_DEGREE (PHD_ONE / 360) // = 182
