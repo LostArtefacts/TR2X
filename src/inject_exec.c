@@ -241,6 +241,7 @@ static void Inject_Overlay(void)
     INJECT(1, 0x00421C20, Overlay_DrawAirBar);
     INJECT(1, 0x00421CC0, Overlay_MakeAmmoString);
     INJECT(1, 0x00421CF0, Overlay_DrawAmmoInfo);
+    INJECT(1, 0x00421E40, Overlay_InitialisePickUpDisplay);
 }
 
 static void Inject_Random(void)

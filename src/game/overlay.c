@@ -201,3 +201,10 @@ void __cdecl Overlay_DrawAmmoInfo(void)
         Text_AlignRight(g_AmmoTextInfo, true);
     }
 }
+
+void __cdecl Overlay_InitialisePickUpDisplay(void)
+{
+    for (int i = 0; i < MAX_PICKUPS; i++) {
+        g_Pickups[i].timer = 0;
+    }
+}
