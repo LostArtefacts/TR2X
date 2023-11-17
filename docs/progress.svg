@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.80% (363)</tspan> · <tspan class="known">67.73% (825)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.89% (364)</tspan> · <tspan class="known">67.65% (824)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="222.63" height="6" x="0" y="0" class="decompiled"/>
-<rect width="505.97" height="6" x="222.63" y="0" class="known"/>
+<rect width="223.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="505.36" height="6" x="223.24" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -400,7 +400,7 @@
 <rect width="12" height="12" x="300" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAmmoInfo(void);</title></rect>
 <rect width="12" height="12" x="315" y="90" class="decompiled"><title>void __cdecl Overlay_InitialisePickUpDisplay(void);</title></rect>
 <rect width="12" height="12" x="330" y="90" class="decompiled"><title>void __cdecl Overlay_DrawPickups(bool pickup_state);</title></rect>
-<rect width="12" height="12" x="345" y="90" class="known"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
+<rect width="12" height="12" x="345" y="90" class="decompiled"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
 <rect width="12" height="12" x="360" y="90" class="known"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
 <rect width="12" height="12" x="375" y="90" class="known"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
 <rect width="12" height="12" x="390" y="90" class="known"><title>int32_t __cdecl Display_Inventory(int32_t inventory_mode);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.18%</tspan> · <tspan class="known">71.50%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.21%</tspan> · <tspan class="known">71.47%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="210.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="534.08" height="6" x="210.48" y="0" class="known"/>
+<rect width="210.71" height="6" x="0" y="0" class="decompiled"/>
+<rect width="533.85" height="6" x="210.71" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1991,7 +1991,7 @@
 <rect width="6.68" height="6.52" x="588.98" y="312.84" class="known"><title>BOOL __cdecl UT_CenterWindow(HWND hWnd);</title></rect>
 <rect width="6.68" height="6.43" x="588.98" y="322.36" class="known"><title>void __cdecl UT_MemBlt(BYTE *dstBuf, DWORD dstX, DWORD dstY, DWORD width, DWORD height, DWORD dstPitch, BYTE *srcBuf, DWORD srcX, DWORD srcY, DWORD srcPitch);</title></rect>
 <rect width="6.68" height="6.26" x="588.98" y="331.79" class="decompiled"><title>int32_t __cdecl Output_VisibleZClip(const struct PHD_VBUF *vtx0, const struct PHD_VBUF *vtx1, const struct PHD_VBUF *vtx2);</title></rect>
-<rect width="6.68" height="6.26" x="588.98" y="341.05" class="known"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
+<rect width="6.68" height="6.26" x="588.98" y="341.05" class="decompiled"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
 <rect width="6.68" height="6.26" x="588.98" y="350.31" class="decompiled"><title>int16_t __cdecl Effect_Create(int16_t room_num);</title></rect>
 <rect width="6.68" height="6.26" x="588.98" y="359.57" class="known"><title>void *__cdecl game_malloc(uint32_t alloc_size, uint32_t buf_index);</title></rect>
 <rect width="6.68" height="6.17" x="588.98" y="368.83" class="decompiled"><title>void __cdecl Output_SetFarZ(int32_t far_z);</title></rect>

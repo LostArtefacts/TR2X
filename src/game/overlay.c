@@ -1,5 +1,6 @@
 #include "game/overlay.h"
 
+#include "game/music.h"
 #include "game/output.h"
 #include "game/text.h"
 #include "global/const.h"
@@ -243,5 +244,22 @@ void __cdecl Overlay_DrawPickups(const bool pickup_state)
             Output_DrawPickup(x, y, 12 * WALL_L, pickup->sprite, 0x1000);
         }
         x -= cell_h;
+    }
+}
+
+void __cdecl Overlay_AddDisplayPickup(const int16_t obj_num)
+{
+    if (obj_num == O_SECRET_1 || obj_num == O_SECRET_2
+        || obj_num == O_SECRET_3) {
+        Music_Play(g_GameFlow.secret_track, false);
+    }
+
+    for (int i = 0; i < MAX_PICKUPS; i++) {
+        struct PICKUP_INFO *const pickup = &g_Pickups[i];
+        if (pickup->timer <= 0) {
+            pickup->timer = 2.5 * FRAMES_PER_SECOND;
+            pickup->sprite = g_Objects[obj_num].mesh_idx;
+            return;
+        }
     }
 }
