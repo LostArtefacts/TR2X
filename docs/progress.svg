@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.39% (358)</tspan> · <tspan class="known">68.14% (830)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.47% (359)</tspan> · <tspan class="known">68.06% (829)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="219.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="509.04" height="6" x="219.56" y="0" class="known"/>
+<rect width="220.17" height="6" x="0" y="0" class="decompiled"/>
+<rect width="508.43" height="6" x="220.17" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -395,7 +395,7 @@
 <rect width="12" height="12" x="225" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
 <rect width="12" height="12" x="240" y="90" class="decompiled"><title>void __cdecl Overlay_DrawGameInfo(bool pickup_state);</title></rect>
 <rect width="12" height="12" x="255" y="90" class="decompiled"><title>void __cdecl Overlay_DrawHealthBar(bool flash_state);</title></rect>
-<rect width="12" height="12" x="270" y="90" class="known"><title>void __cdecl Overlay_DrawAirBar(bool flash_state);</title></rect>
+<rect width="12" height="12" x="270" y="90" class="decompiled"><title>void __cdecl Overlay_DrawAirBar(bool flash_state);</title></rect>
 <rect width="12" height="12" x="285" y="90" class="known"><title>void __cdecl Overlay_MakeAmmoString(char *string);</title></rect>
 <rect width="12" height="12" x="300" y="90" class="known"><title>void __cdecl Overlay_DrawAmmoInfo(void);</title></rect>
 <rect width="12" height="12" x="315" y="90" class="known"><title>void __cdecl Overlay_InitialisePickUpDisplay(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.95%</tspan> · <tspan class="known">71.72%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">27.99%</tspan> · <tspan class="known">71.68%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="208.79" height="6" x="0" y="0" class="decompiled"/>
-<rect width="535.77" height="6" x="208.79" y="0" class="known"/>
+<rect width="209.12" height="6" x="0" y="0" class="decompiled"/>
+<rect width="535.44" height="6" x="209.12" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1857,7 +1857,7 @@
 <rect width="8.17" height="8.29" x="545.84" y="277.09" class="known"><title>void __cdecl WarriorSparkleTrail(struct ITEM_INFO *item);</title></rect>
 <rect width="8.17" height="8.29" x="545.84" y="288.38" class="known"><title>void __cdecl CreateBackBuffer(void);</title></rect>
 <rect width="8.17" height="8.29" x="545.84" y="299.68" class="known"><title>bool __cdecl CreateTexturePageSurface(TEXPAGE_DESC *desc);</title></rect>
-<rect width="8.17" height="8.22" x="545.84" y="310.97" class="known"><title>void __cdecl Overlay_DrawAirBar(bool flash_state);</title></rect>
+<rect width="8.17" height="8.22" x="545.84" y="310.97" class="decompiled"><title>void __cdecl Overlay_DrawAirBar(bool flash_state);</title></rect>
 <rect width="8.17" height="8.22" x="545.84" y="322.19" class="known"><title>void __cdecl AdjustTextureUVs(bool reset_uv_add);</title></rect>
 <rect width="8.17" height="8.15" x="545.84" y="333.42" class="decompiled"><title>void __cdecl Output_DrawScreenSprite2D(int32_t sx, int32_t sy, int32_t sz, int32_t scale_h, int32_t scale_v, int16_t sprite_idx, int16_t shade, uint16_t flags);</title></rect>
 <rect width="8.17" height="8.15" x="545.84" y="344.56" class="known"><title>void __cdecl Lara_Control_Cutscene(int16_t item_num);</title></rect>

@@ -10,6 +10,8 @@
 #include <stdio.h>
 
 #define FLASH_FRAMES 5
+#define AMMO_X (-10)
+#define AMMO_Y 35
 
 static int32_t m_OldHitPoints = -1;
 static bool m_FlashState = false;
@@ -114,5 +116,21 @@ void __cdecl Overlay_DrawHealthBar(const bool flash_state)
     if (timer <= 0 && g_Lara.gun_status != LGS_READY) {
         return;
     }
-    S_DrawHealthBar(hit_points / 10);
+    S_DrawHealthBar(hit_points * 100 / LARA_MAX_HITPOINTS);
+}
+
+void __cdecl Overlay_DrawAirBar(const bool flash_state)
+{
+    if (g_Lara.water_status != LWS_UNDERWATER
+        && g_Lara.water_status != LWS_SURFACE) {
+        return;
+    }
+
+    int32_t air = g_Lara.air;
+    CLAMP(air, 0, LARA_MAX_AIR);
+    if (air <= 450 && !flash_state) {
+        S_DrawAirBar(0);
+    } else {
+        S_DrawAirBar(air * 100 / LARA_MAX_AIR);
+    }
 }

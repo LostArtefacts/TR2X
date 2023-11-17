@@ -8,7 +8,7 @@
 // clang-format off
 #define g_PerspectiveDistance (*(uint32_t*)0x00464060) // = 0x3000000
 #define g_PolyDrawRoutines (*((void(__cdecl  *(*)[9])(const int16_t *))0x00464068))
-#define g_RhwFactor (*(float*)0x0046408C) // = 0x14000000.p0
+#define g_RhwFactor (*(float*)0x0046408C) // = 335544320.0f
 #define g_CineTrackID (*(int32_t*)0x004640B0) // = 1
 #define g_CineTickRate (*(int32_t*)0x004640B8) // = 0x8000
 #define g_CD_TrackID (*(int16_t*)0x004640BC) // = -1
@@ -131,7 +131,27 @@
 #define g_IsAssaultTimerActive (*(BOOL*)0x004D77E4)
 #define g_IsMonkAngry (*(BOOL*)0x004D77E8)
 #define g_GF_StartGame (*(int8_t*)0x004D780C)
+#define g_AmmoTextInfo (*(TEXTSTRING **)0x004D792C)
+#define g_DisplayModeTextInfo (*(TEXTSTRING **)0x004D7930)
+#define g_DisplayModeInfoTimer (*(DWORD*)0x004D7934)
+#define g_InvMainCurrent (*(UINT16*)0x004D7938)
+#define g_InvKeyObjectsCount (*(UINT16*)0x004D793C)
+#define g_InvKeysCurrent (*(UINT16*)0x004D7940)
+#define g_InvOptionCurrent (*(UINT16*)0x004D7944)
+#define g_InvRingText (*(TEXTSTRING**)0x004D7954)
+#define g_InvUpArrow1 (*(TEXTSTRING**)0x004D795C)
+#define g_InvUpArrow2 (*(TEXTSTRING**)0x004D7960)
+#define g_InvDownArrow1 (*(TEXTSTRING**)0x004D7964)
+#define g_InvDownArrow2 (*(TEXTSTRING**)0x004D7968)
+#define g_InputDB (*(uint32_t*)0x004D796C)
 #define g_IsInventoryActive (*(uint16_t*)0x004D7978)
+#define g_IsInventoryActive (*(uint16_t*)0x004D7978)
+#define g_InvDemoMode (*(BOOL*)0x004D79A0)
+#define g_IsInvOptionsDelay (*(BOOL*)0x004D79B4)
+#define g_InvOptionsDelayCounter (*(int32_t*)0x004D79B8)
+#define g_SoundOptionLine (*(uint16_t*)0x004D79BC)
+#define g_StatsRequester (*(struct REQUEST_INFO*)0x004D79C0)
+#define g_Assault (*(struct ASSAULT_STATS*)0x004D7BD8)
 #define g_LevelItemCount (*(int32_t*)0x004D7C38)
 #define g_HealthBarTimer (*(int32_t*)0x004D7C3C)
 #define g_SoundTrackIds (*(int32_t(*)[128])0x004D7C80)

@@ -433,6 +433,12 @@ typedef struct __unaligned REQUEST_INFO {
     uint32_t render_height;
 } REQUEST_INFO;
 
+typedef struct ASSAULT_STATS {
+    uint32_t best_time[10];
+    uint32_t best_finish[10];
+    uint32_t finish_count;
+} ASSAULT_STATS;
+
 typedef struct SORT_ITEM {
     int32_t _0;
     int32_t _1;
@@ -1982,7 +1988,7 @@ typedef enum GAME_OBJECT_ID {
 004219D0    00000145    +       void __cdecl Overlay_DrawAssaultTimer(void);
 00421B20    00000045    +       void __cdecl Overlay_DrawGameInfo(bool pickup_state);
 00421B70    000000AB    +       void __cdecl Overlay_DrawHealthBar(bool flash_state);
-00421C20    00000097    *       void __cdecl Overlay_DrawAirBar(bool flash_state);
+00421C20    00000097    +       void __cdecl Overlay_DrawAirBar(bool flash_state);
 00421CC0    00000028    -       void __cdecl Overlay_MakeAmmoString(char *string);
 00421CF0    00000132    *       void __cdecl Overlay_DrawAmmoInfo(void);
 00421E40    00000015    -       void __cdecl Overlay_InitialisePickUpDisplay(void);
@@ -3082,8 +3088,30 @@ typedef enum GAME_OBJECT_ID {
 004D780C    -       int8_t g_GF_StartGame;
 004D7920    +       BOOL g_FlashState;
 004D7924    +       int32_t g_FlashCounter;
+004D7928    +       int32_t g_OldHitPoints;
+004D792C    -       TEXTSTRING *g_AmmoTextInfo;
+004D7930    -       TEXTSTRING *g_DisplayModeTextInfo;
+004D7934    -       DWORD g_DisplayModeInfoTimer;
+004D7938    -       UINT16 g_InvMainCurrent;
+004D793C    -       UINT16 g_InvKeyObjectsCount;
+004D7940    -       UINT16 g_InvKeysCurrent;
+004D7944    -       UINT16 g_InvOptionCurrent;
+004D7954    -       TEXTSTRING* g_InvRingText;
+004D795C    -       TEXTSTRING* g_InvUpArrow1;
+004D7960    -       TEXTSTRING* g_InvUpArrow2;
+004D7964    -       TEXTSTRING* g_InvDownArrow1;
+004D7968    -       TEXTSTRING* g_InvDownArrow2;
+004D796C    -       uint32_t g_InputDB;
 004D7978    -       uint16_t g_IsInventoryActive;
+004D7978    -       uint16_t g_IsInventoryActive;
+004D79A0    -       BOOL g_InvDemoMode;
+004D79B4    -       BOOL g_IsInvOptionsDelay;
+004D79B8    -       int32_t g_InvOptionsDelayCounter;
+004D79BC    -       uint16_t g_SoundOptionLine;
+004D79C0    -       struct REQUEST_INFO g_StatsRequester;
+004D7BD8    -       struct ASSAULT_STATS g_Assault;
 004D7C38    -       int32_t g_LevelItemCount;
+004D7C3C    -       int32_t g_HealthBarTimer;
 004D7C80    -       int32_t g_SoundTrackIds[128];
 004D7EBC    -       LPDIRECT3DDEVICE2 g_D3DDev;
 004D7EE4    -       bool g_IsGameWindowCreated;
@@ -3200,5 +3228,3 @@ typedef enum GAME_OBJECT_ID {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
-004D7928    +       int32_t g_OldHitPoints;
-004D7C3C    -       int32_t g_HealthBarTimer;
