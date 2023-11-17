@@ -1,6 +1,7 @@
 #include "game/text.h"
 
 #include "game/output.h"
+#include "game/overlay.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -25,7 +26,7 @@
 
 void __cdecl Text_Init(void)
 {
-    Overlay_DisplayModeInfo(0);
+    Overlay_DisplayModeInfo(NULL);
     for (int i = 0; i < TEXT_MAX_STRINGS; i++) {
         g_TextstringTable[i].flags.all = 0;
     }

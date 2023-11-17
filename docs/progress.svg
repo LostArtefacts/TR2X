@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.89% (364)</tspan> · <tspan class="known">67.65% (824)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.97% (365)</tspan> · <tspan class="known">67.57% (823)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="223.24" height="6" x="0" y="0" class="decompiled"/>
-<rect width="505.36" height="6" x="223.24" y="0" class="known"/>
+<rect width="223.85" height="6" x="0" y="0" class="decompiled"/>
+<rect width="504.75" height="6" x="223.85" y="0" class="known"/>
 <rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
 <rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
 </g>
@@ -401,7 +401,7 @@
 <rect width="12" height="12" x="315" y="90" class="decompiled"><title>void __cdecl Overlay_InitialisePickUpDisplay(void);</title></rect>
 <rect width="12" height="12" x="330" y="90" class="decompiled"><title>void __cdecl Overlay_DrawPickups(bool pickup_state);</title></rect>
 <rect width="12" height="12" x="345" y="90" class="decompiled"><title>void __cdecl Overlay_AddDisplayPickup(int16_t obj_num);</title></rect>
-<rect width="12" height="12" x="360" y="90" class="known"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
+<rect width="12" height="12" x="360" y="90" class="decompiled"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
 <rect width="12" height="12" x="375" y="90" class="known"><title>void __cdecl Overlay_DrawModeInfo(void);</title></rect>
 <rect width="12" height="12" x="390" y="90" class="known"><title>int32_t __cdecl Display_Inventory(int32_t inventory_mode);</title></rect>
 <rect width="12" height="12" x="405" y="90" class="known"><title>void __cdecl Construct_Inventory(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.21%</tspan> · <tspan class="known">71.47%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.24%</tspan> · <tspan class="known">71.43%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="210.71" height="6" x="0" y="0" class="decompiled"/>
-<rect width="533.85" height="6" x="210.71" y="0" class="known"/>
+<rect width="210.98" height="6" x="0" y="0" class="decompiled"/>
+<rect width="533.58" height="6" x="210.98" y="0" class="known"/>
 <rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
 </g>
@@ -1955,7 +1955,7 @@
 <rect width="7.15" height="7.06" x="640.15" y="206.76" class="known"><title>void __cdecl FireM16(int32_t running);</title></rect>
 <rect width="7.07" height="7.06" x="650.30" y="206.76" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="7.07" height="7.06" x="660.37" y="206.76" class="known"><title>int16_t __cdecl Diver_Harpoon(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE y_rot, int16_t room_num);</title></rect>
-<rect width="7.07" height="7.06" x="670.44" y="206.76" class="known"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
+<rect width="7.07" height="7.06" x="670.44" y="206.76" class="decompiled"><title>void __cdecl Overlay_DisplayModeInfo(char* string);</title></rect>
 <rect width="6.99" height="7.06" x="680.51" y="206.76" class="known"><title>void __cdecl Misc_EffectSpaz(struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
 <rect width="6.99" height="7.06" x="690.49" y="206.76" class="decompiled"><title>void __cdecl Lara_Col_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="6.99" height="7.06" x="700.48" y="206.76" class="known"><title>BOOL __cdecl LoadCinematic(HANDLE handle);</title></rect>

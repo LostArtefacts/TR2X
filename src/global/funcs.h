@@ -203,7 +203,6 @@
 #define InitialiseHair ((void __cdecl (*)(void))0x00420EA0)
 #define HairControl ((void __cdecl (*)(int32_t in_cutscene))0x00420F20)
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
-#define Overlay_DisplayModeInfo ((void __cdecl (*)(char* string))0x00421FD0)
 #define Overlay_DrawModeInfo ((void __cdecl (*)(void))0x00422050)
 #define Display_Inventory ((int32_t __cdecl (*)(int32_t inventory_mode))0x00422080)
 #define Construct_Inventory ((void __cdecl (*)(void))0x00423310)

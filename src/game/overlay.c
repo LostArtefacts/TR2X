@@ -13,6 +13,8 @@
 #define FLASH_FRAMES 5
 #define AMMO_X (-10)
 #define AMMO_Y 35
+#define MODE_INFO_X (-16)
+#define MODE_INFO_Y (-16)
 
 static int32_t m_OldGameTimer = 0;
 static int32_t m_OldHitPoints = -1;
@@ -262,4 +264,23 @@ void __cdecl Overlay_AddDisplayPickup(const int16_t obj_num)
             return;
         }
     }
+}
+
+void __cdecl Overlay_DisplayModeInfo(const char *const string)
+{
+    if (string == NULL) {
+        Text_Remove(g_DisplayModeTextInfo);
+        g_DisplayModeTextInfo = NULL;
+        return;
+    }
+
+    if (g_DisplayModeTextInfo != NULL) {
+        Text_ChangeText(g_DisplayModeTextInfo, string);
+    } else {
+        g_DisplayModeTextInfo =
+            Text_Create(MODE_INFO_X, MODE_INFO_Y, 0, string);
+        Text_AlignRight(g_DisplayModeTextInfo, 1);
+        Text_AlignBottom(g_DisplayModeTextInfo, 1);
+    }
+    g_DisplayModeInfoTimer = 2.5 * FRAMES_PER_SECOND;
 }
