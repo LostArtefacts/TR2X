@@ -4168,18 +4168,21 @@ void __cdecl Output_InsertPoly_Gouraud(
 void __cdecl Output_DrawClippedPoly_Textured(const int32_t vtx_count)
 {
     for (int i = 0; i < vtx_count; i++) {
-        double tu = g_VBuffer[i].u * (double)PHD_ONE / g_VBuffer[i].rhw;
-        double tv = g_VBuffer[i].v * (double)PHD_ONE / g_VBuffer[i].rhw;
+        const VERTEX_INFO *vbuf = &g_VBuffer[i];
+        D3DTLVERTEX *vbuf_d3d = &g_VBufferD3D[i];
+        vbuf_d3d->sx = vbuf->x;
+        vbuf_d3d->sy = vbuf->y;
+        vbuf_d3d->sz = g_FltResZBuf - g_FltResZORhw * vbuf->rhw;
+        vbuf_d3d->rhw = vbuf->rhw;
+        vbuf_d3d->color = Output_ShadeLight(vbuf->g);
+
+        double tu = vbuf->u / (double)PHD_ONE / vbuf->rhw;
+        double tv = vbuf->v / (double)PHD_ONE / vbuf->rhw;
         CLAMP(tu, 0.0, 1.0);
         CLAMP(tv, 0.0, 1.0);
 
-        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
-        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
-        g_HWR_VertexPtr[i].sz = g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
-        g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
-        g_HWR_VertexPtr[i].color = Output_ShadeLight(g_VBuffer[i].g);
-        g_HWR_VertexPtr[i].tu = tu;
-        g_HWR_VertexPtr[i].tv = tv;
+        vbuf_d3d->tv = tv;
+        vbuf_d3d->tu = tu;
     }
 
     g_D3DDev->lpVtbl->DrawPrimitive(
