@@ -4195,12 +4195,14 @@ void __cdecl Output_DrawPoly_Gouraud(
     const int32_t blue)
 {
     for (int i = 0; i < vtx_count; i++) {
-        g_HWR_VertexPtr[i].sx = g_VBuffer[i].x;
-        g_HWR_VertexPtr[i].sy = g_VBuffer[i].y;
-        g_HWR_VertexPtr[i].sz = g_FltResZBuf - g_FltResZORhw * g_VBuffer[i].rhw;
-        g_HWR_VertexPtr[i].rhw = g_VBuffer[i].rhw;
-        g_HWR_VertexPtr[i].color =
-            Output_ShadeLightColor(g_VBuffer[i].g, red, green, blue, 0xFF);
+        const VERTEX_INFO *vbuf = &g_VBuffer[i];
+        D3DTLVERTEX *vbuf_d3d = &g_VBufferD3D[i];
+        vbuf_d3d->sx = vbuf->x;
+        vbuf_d3d->sy = vbuf->y;
+        vbuf_d3d->sz = g_FltResZBuf - g_FltResZORhw * vbuf->rhw;
+        vbuf_d3d->rhw = vbuf->rhw;
+        vbuf_d3d->color =
+            Output_ShadeLightColor(vbuf->g, red, green, blue, 0xFF);
     }
 
     g_D3DDev->lpVtbl->DrawPrimitive(
