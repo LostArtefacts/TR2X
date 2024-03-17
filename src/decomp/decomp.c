@@ -197,6 +197,50 @@ size_t __cdecl CompPCX(
     return pic_data - *pcx_data + sizeof(RGB888) * 256;
 }
 
+size_t __cdecl EncodeLinePCX(
+    const uint8_t *src, const int32_t width, uint8_t *dst)
+{
+    const uint8_t *const dst_start = dst;
+    int32_t run_count = 1;
+    uint8_t last = *src;
+
+    for (int32_t i = 1; i < width; i++) {
+        uint8_t current = *src++;
+        if (*src == last) {
+            run_count++;
+            if (run_count == 63) {
+                const size_t add = EncodePutPCX(last, 0x3Fu, dst);
+                if (add == 0) {
+                    return 0;
+                }
+                dst += add;
+                run_count = 0;
+            }
+        } else {
+            if (run_count != 0) {
+                const size_t add = EncodePutPCX(last, run_count, dst);
+                if (add == 0) {
+                    return 0;
+                }
+                dst += add;
+            }
+            last = current;
+            run_count = 1;
+        }
+    }
+
+    if (run_count != 0) {
+        const size_t add = EncodePutPCX(last, run_count, dst);
+        if (add == 0) {
+            return 0;
+        }
+        dst += add;
+    }
+
+    const size_t total = dst - dst_start;
+    return total;
+}
+
 size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer)
 {
     if (num == 0 || num > 63) {

@@ -2773,7 +2773,7 @@ typedef enum GAME_OBJECT_ID {
 0044E890    0000003C    +       void __cdecl Shell_ExitSystem(const char *message);
 0044E8E0    0000010F    +R      void __cdecl ScreenShotPCX(void);
 0044E9F0    000000AE    +R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);
-0044EAA0    000000D2    -R      DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);
+0044EAA0    000000D2    +R      DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);
 0044EB80    0000003E    +R      DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);
 0044EBC0    000001F5    *R      void __cdecl ScreenShot(LPDDS screen);
 0044EDC0    0000007F    -R      void __cdecl do_inventory_options(INVENTORY_ITEM *item);
