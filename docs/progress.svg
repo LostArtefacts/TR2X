@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.62% (373)</tspan> · <tspan class="known">66.91% (815)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.71% (374)</tspan> · <tspan class="known">66.83% (814)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="228.76" height="6" x="0" y="0" class="decompiled"/>
-<rect width="499.84" height="6" x="228.76" y="0" class="known"/>
+<rect width="229.37" height="6" x="0" y="0" class="decompiled"/>
+<rect width="499.23" height="6" x="229.37" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1120,7 +1120,7 @@
 <rect width="12" height="12" x="600" y="300" class="decompiled"><title>void __cdecl ScreenShotPCX(void);</title></rect>
 <rect width="12" height="12" x="615" y="300" class="decompiled"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);</title></rect>
 <rect width="12" height="12" x="630" y="300" class="known"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
-<rect width="12" height="12" x="645" y="300" class="known"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
+<rect width="12" height="12" x="645" y="300" class="decompiled"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
 <rect width="12" height="12" x="660" y="300" class="known"><title>void __cdecl ScreenShot(LPDDS screen);</title></rect>
 <rect width="12" height="12" x="675" y="300" class="known"><title>void __cdecl do_inventory_options(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="690" y="300" class="known"><title>void __cdecl do_passport_option(INVENTORY_ITEM *item);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.60%</tspan> · <tspan class="known">71.07%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.62%</tspan> · <tspan class="known">71.06%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="213.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="530.92" height="6" x="213.64" y="0" class="known"/>
+<rect width="213.77" height="6" x="0" y="0" class="decompiled"/>
+<rect width="530.79" height="6" x="213.77" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -2176,7 +2176,7 @@
 <rect width="4.10" height="4.25" x="721.61" y="269.04" class="known"><title>void __cdecl ready_flare(void);</title></rect>
 <rect width="4.10" height="4.25" x="728.71" y="269.04" class="known"><title>void __cdecl FallingBlockFloor(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="4.10" height="4.25" x="735.81" y="269.04" class="known"><title>void __cdecl Enumerate3DDevices(struct DISPLAY_ADAPTER *adapter);</title></rect>
-<rect width="4.10" height="4.25" x="742.90" y="269.04" class="known"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
+<rect width="4.10" height="4.25" x="742.90" y="269.04" class="decompiled"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
 <rect width="4.42" height="3.93" x="648.46" y="276.30" class="known"><title>int32_t __stdcall SE_PropSheetCallback(HWND hwndDlg, UINT uMsg, LPARAM lParam);</title></rect>
 <rect width="4.42" height="3.93" x="655.89" y="276.30" class="known"><title>HWR_TEX_HANDLE __cdecl GetTexturePageHandle(int32_t page_idx);</title></rect>
 <rect width="4.30" height="3.93" x="663.31" y="276.30" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>

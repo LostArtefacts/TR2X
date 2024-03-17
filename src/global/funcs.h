@@ -678,7 +678,6 @@
 #define WinGameStart ((int32_t __cdecl (*)(void))0x0044E7A0)
 #define Shell_Shutdown ((void __cdecl (*)(void))0x0044E820)
 #define EncodeLinePCX ((DWORD __cdecl (*)(BYTE *src, DWORD width, BYTE *dst))0x0044EAA0)
-#define EncodePutPCX ((DWORD __cdecl (*)(BYTE value, BYTE num, BYTE *buffer))0x0044EB80)
 #define ScreenShot ((void __cdecl (*)(LPDDS screen))0x0044EBC0)
 #define do_inventory_options ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EDC0)
 #define do_passport_option ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EED0)

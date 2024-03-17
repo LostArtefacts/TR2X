@@ -196,3 +196,19 @@ size_t __cdecl CompPCX(
 
     return pic_data - *pcx_data + sizeof(RGB888) * 256;
 }
+
+size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer)
+{
+    if (num == 0 || num > 63) {
+        return 0;
+    }
+
+    if (num == 1 && (value & 0xC0) != 0xC0) {
+        buffer[0] = value;
+        return 1;
+    }
+
+    buffer[0] = num | 0xC0;
+    buffer[1] = value;
+    return 2;
+}
