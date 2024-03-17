@@ -113,6 +113,7 @@ static void Inject_Math(void)
 
 static void Inject_Shell(void)
 {
+    INJECT(1, 0x0044E770, Shell_Cleanup);
     INJECT(1, 0x0044E890, Shell_ExitSystem);
     INJECT(1, 0x00454980, Shell_Main);
 }

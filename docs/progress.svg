@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.13% (367)</tspan> · <tspan class="known">67.41% (821)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.21% (368)</tspan> · <tspan class="known">67.32% (820)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="225.08" height="6" x="0" y="0" class="decompiled"/>
-<rect width="503.52" height="6" x="225.08" y="0" class="known"/>
+<rect width="225.69" height="6" x="0" y="0" class="decompiled"/>
+<rect width="502.91" height="6" x="225.69" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1111,7 +1111,7 @@
 <rect width="12" height="12" x="465" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
 <rect width="12" height="12" x="495" y="300" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
-<rect width="12" height="12" x="510" y="300" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
+<rect width="12" height="12" x="510" y="300" class="decompiled"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="12" height="12" x="525" y="300" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="12" height="12" x="540" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="555" y="300" class="todo"><title>sub_44E860</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.29%</tspan> · <tspan class="known">71.39%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.31%</tspan> · <tspan class="known">71.36%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="211.29" height="6" x="0" y="0" class="decompiled"/>
-<rect width="533.27" height="6" x="211.29" y="0" class="known"/>
+<rect width="211.48" height="6" x="0" y="0" class="decompiled"/>
+<rect width="533.08" height="6" x="211.48" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -2079,7 +2079,7 @@
 <rect width="5.39" height="5.41" x="616.62" y="270.30" class="known"><title>void __cdecl Object_Collision(int16_t item_num, struct ITEM_INFO *lara_item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="278.72" class="known"><title>int32_t __cdecl Item_IsTriggerActive(struct ITEM_INFO *item);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="287.13" class="known"><title>BOOL __cdecl LoadAnimatedTextures(HANDLE handle);</title></rect>
-<rect width="5.39" height="5.41" x="616.62" y="295.54" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
+<rect width="5.39" height="5.41" x="616.62" y="295.54" class="decompiled"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="303.96" class="known"><title>void __cdecl ReqItemLeftalign(struct REQUEST_INFO *req, struct TEXTSTRING *txt);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="312.27" class="decompiled"><title>void __cdecl Lara_State_FastDive(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="320.59" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>

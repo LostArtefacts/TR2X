@@ -2765,7 +2765,7 @@ typedef enum GAME_OBJECT_ID {
 0044E520    000001D6    -R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
 0044E700    00000064    +R      int32_t __cdecl GameInit(bool skip_cd_init);
-0044E770    00000055    *       void __cdecl Shell_Cleanup(void);
+0044E770    00000055    +       void __cdecl Shell_Cleanup(void);
 0044E7A0    0000007C    -R      int32_t __cdecl WinGameStart(void);
 0044E820    00000039    *       void __cdecl Shell_Shutdown(void);
 0044E860    00000017    -R      sub_44E860

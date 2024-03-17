@@ -1,6 +1,7 @@
 #include "game/shell.h"
 
 #include "game/input.h"
+#include "game/music.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -138,6 +139,11 @@ BOOL __cdecl Shell_Main(void)
     S_SaveSettings();
     GameBuf_Shutdown();
     return true;
+}
+
+void __cdecl Shell_Cleanup(void)
+{
+    Music_Shutdown();
 }
 
 void __cdecl Shell_ExitSystem(const char *message)
