@@ -2771,7 +2771,7 @@ typedef enum GAME_OBJECT_ID {
 0044E860    00000017    -R      sub_44E860
 0044E880    00000010    -R      sub_44E880
 0044E890    0000003C    +       void __cdecl Shell_ExitSystem(const char *message);
-0044E8E0    0000010F    -R      void __cdecl ScreenShotPCX(void);
+0044E8E0    0000010F    +R      void __cdecl ScreenShotPCX(void);
 0044E9F0    000000AE    -R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);
 0044EAA0    000000D2    -R      DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);
 0044EB80    0000003E    -R      DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);
@@ -3188,6 +3188,7 @@ typedef enum GAME_OBJECT_ID {
 0051A234    +       int8_t g_IsF11Pressed;
 0051A238    -       HINSTANCE g_GameModule;
 0051A23C    -       char *g_CmdLine;
+0051A240    -       int32_t g_ScreenshotCounter;
 0051B918    -       RECT g_PhdWinRect;
 0051B928    -       int32_t g_HiRes;
 0051B930    -       RGB888 g_GamePalette8[256];

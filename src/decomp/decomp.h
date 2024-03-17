@@ -9,3 +9,4 @@ int32_t __stdcall WinMain(
     int32_t nShowCmd);
 const char *__cdecl DecodeErrorMessage(int32_t error_code);
 int32_t __cdecl RenderErrorBox(int32_t error_code);
+void __cdecl ScreenShotPCX(void);

@@ -677,7 +677,6 @@
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
 #define WinGameStart ((int32_t __cdecl (*)(void))0x0044E7A0)
 #define Shell_Shutdown ((void __cdecl (*)(void))0x0044E820)
-#define ScreenShotPCX ((void __cdecl (*)(void))0x0044E8E0)
 #define CompPCX ((DWORD __cdecl (*)(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data))0x0044E9F0)
 #define EncodeLinePCX ((DWORD __cdecl (*)(BYTE *src, DWORD width, BYTE *dst))0x0044EAA0)
 #define EncodePutPCX ((DWORD __cdecl (*)(BYTE value, BYTE num, BYTE *buffer))0x0044EB80)

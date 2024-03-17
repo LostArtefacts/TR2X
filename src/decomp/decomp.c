@@ -104,3 +104,54 @@ int32_t __cdecl RenderErrorBox(int32_t error_code)
     sprintf(buffer, "Render init failed with \"%s\"", decoded);
     return UT_MessageBox(buffer, 0);
 }
+
+void __cdecl ScreenShotPCX(void)
+{
+    LPDDS screen = g_SavedAppSettings.render_mode == RM_SOFTWARE
+        ? g_RenderBufferSurface
+        : g_PrimaryBufferSurface;
+
+    DDSURFACEDESC desc;
+    desc.dwSize = sizeof(desc);
+
+    int32_t result;
+    while (true) {
+        result = IDirectDrawSurface_Lock(screen, 0, &desc, 0, 0);
+        if (result != DDERR_WASSTILLDRAWING) {
+            break;
+        }
+    }
+
+    if (result == DDERR_SURFACELOST) {
+        IDirectDrawSurface_Restore(screen);
+    }
+
+    if (FAILED(result)) {
+        return;
+    }
+
+    uint8_t *pcx_data;
+    int32_t pcx_size = CompPCX(
+        desc.lpSurface, desc.dwWidth, desc.dwHeight, g_GamePalette8, &pcx_data);
+
+    IDirectDrawSurface_Unlock(screen, &desc);
+    if (!pcx_size) {
+        return;
+    }
+
+    g_ScreenshotCounter++;
+    if (g_ScreenshotCounter > 9999) {
+        g_ScreenshotCounter = 1;
+    }
+
+    char file_name[20];
+    sprintf(file_name, "tomb%04d.pcx", g_ScreenshotCounter);
+
+    HANDLE handle = CreateFileA(
+        file_name, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL,
+        NULL);
+    DWORD bytes_written;
+    WriteFile(handle, pcx_data, pcx_size, &bytes_written, 0);
+    CloseHandle(handle);
+    GlobalFree(pcx_data);
+}
