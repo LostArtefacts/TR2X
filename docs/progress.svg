@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.87% (376)</tspan> · <tspan class="known">66.67% (812)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.95% (377)</tspan> · <tspan class="known">66.58% (811)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="230.60" height="6" x="0" y="0" class="decompiled"/>
-<rect width="498" height="6" x="230.60" y="0" class="known"/>
+<rect width="231.21" height="6" x="0" y="0" class="decompiled"/>
+<rect width="497.39" height="6" x="231.21" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -959,7 +959,7 @@
 <rect width="12" height="12" x="435" y="255" class="unused"><title>sub_447160</title></rect>
 <rect width="12" height="12" x="450" y="255" class="unused"><title>sub_447170</title></rect>
 <rect width="12" height="12" x="465" y="255" class="unused"><title>sub_4471C0</title></rect>
-<rect width="12" height="12" x="480" y="255" class="known"><title>bool __cdecl DInputCreate(void);</title></rect>
+<rect width="12" height="12" x="480" y="255" class="decompiled"><title>bool __cdecl DInputCreate(void);</title></rect>
 <rect width="12" height="12" x="495" y="255" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="12" height="12" x="510" y="255" class="known"><title>void __cdecl WinInReadKeyboard(LPVOID lpInputData);</title></rect>
 <rect width="12" height="12" x="525" y="255" class="known"><title>DWORD __cdecl WinInReadJoystick(int32_t *x, int32_t *y);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.83%</tspan> · <tspan class="known">70.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.84%</tspan> · <tspan class="known">70.84%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="215.33" height="6" x="0" y="0" class="decompiled"/>
-<rect width="529.23" height="6" x="215.33" y="0" class="known"/>
+<rect width="215.40" height="6" x="0" y="0" class="decompiled"/>
+<rect width="529.16" height="6" x="215.40" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -2373,7 +2373,7 @@
 <rect width="2.57" height="2.07" x="698.40" y="347.76" class="known"><title>void __cdecl Inv_RingMotionRotation(struct RING_INFO *ring, int16_t rotation, int16_t target);</title></rect>
 <rect width="2.57" height="2.07" x="698.40" y="352.82" class="known"><title>void __cdecl DrawMovableBlock(struct ITEM_INFO *item);</title></rect>
 <rect width="2.57" height="2.07" x="698.40" y="357.89" class="known"><title>void __cdecl WinVidFreeWindow(void);</title></rect>
-<rect width="2.57" height="2.07" x="698.40" y="362.95" class="known"><title>bool __cdecl DInputCreate(void);</title></rect>
+<rect width="2.57" height="2.07" x="698.40" y="362.95" class="decompiled"><title>bool __cdecl DInputCreate(void);</title></rect>
 <rect width="2.57" height="2.07" x="698.40" y="368.02" class="known"><title>bool __cdecl HWR_Init(void);</title></rect>
 <rect width="2.57" height="1.92" x="698.40" y="373.08" class="known"><title>void __cdecl Lara_InitialiseLoad(int16_t item_num);</title></rect>
 <rect width="2.33" height="2.14" x="703.97" y="327.05" class="known"><title>void __cdecl init_game_malloc(void);</title></rect>

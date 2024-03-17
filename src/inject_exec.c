@@ -53,6 +53,7 @@ static void Inject_S_FlaggedString(void);
 
 static void Inject_Decomp(void)
 {
+    INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x004498C0, DecodeErrorMessage);
     INJECT(1, 0x0044E4E0, RenderErrorBox);
     INJECT(1, 0x0044E520, WinMain);

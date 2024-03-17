@@ -5,8 +5,10 @@
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
+#include "lib/dinput.h"
 #include "specific/s_audio_sample.h"
 
+#include <dinput.h>
 #include <stdio.h>
 
 int32_t __cdecl GameInit(void)
@@ -342,4 +344,9 @@ void __cdecl Screenshot(LPDDS screen)
             ScreenshotTGA(screen, 16);
         }
     }
+}
+
+bool __cdecl DInputCreate(void)
+{
+    return SUCCEEDED(DirectInputCreate(g_GameModule, 1280, &g_DInput, NULL));
 }

@@ -2613,7 +2613,7 @@ typedef enum GAME_OBJECT_ID {
 00447160    00000018    x       sub_447160
 00447170    00000039    x       sub_447170
 004471C0    0000002F    x       sub_4471C0
-004471F0    00000022    -R      bool __cdecl DInputCreate(void);
+004471F0    00000022    +R      bool __cdecl DInputCreate(void);
 00447220    0000001A    -R      void __cdecl DInputRelease(void);
 00447240    0000005A    -R      void __cdecl WinInReadKeyboard(LPVOID lpInputData);
 004472A0    000000F3    -R      DWORD __cdecl WinInReadJoystick(int32_t *x, int32_t *y);
@@ -3233,3 +3233,4 @@ typedef enum GAME_OBJECT_ID {
 00526314    -       int16_t g_CineFrameIdx;
 00526320    -       struct CAMERA_INFO g_Camera;
 005263CC    -       struct BOX_INFO *g_Boxes;
+004D855C    -       LPDIRECTINPUT g_DInput;

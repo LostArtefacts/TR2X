@@ -18,3 +18,4 @@ size_t __cdecl CompPCX(
 size_t __cdecl EncodeLinePCX(const uint8_t *src, int32_t width, uint8_t *dst);
 size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer);
 void __cdecl Screenshot(LPDDS screen);
+bool __cdecl DInputCreate(void);

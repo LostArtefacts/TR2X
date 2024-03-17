@@ -563,7 +563,6 @@
 #define InsertDisplayMode ((DISPLAY_MODE *__thiscall (*)(DISPLAY_MODE_LIST *modeList, DISPLAY_MODE_NODE *before))0x00446FF0)
 #define InsertDisplayModeInListHead ((DISPLAY_MODE *__thiscall (*)(DISPLAY_MODE_LIST *modeList))0x00447010)
 #define InsertDisplayModeInListTail ((DISPLAY_MODE *__thiscall (*)(DISPLAY_MODE_LIST *modeList))0x00447060)
-#define DInputCreate ((bool __cdecl (*)(void))0x004471F0)
 #define DInputRelease ((void __cdecl (*)(void))0x00447220)
 #define WinInReadKeyboard ((void __cdecl (*)(LPVOID lpInputData))0x00447240)
 #define WinInReadJoystick ((DWORD __cdecl (*)(int32_t *x, int32_t *y))0x004472A0)

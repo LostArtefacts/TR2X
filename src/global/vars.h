@@ -186,6 +186,7 @@
 #define g_FullScreenBPP (*(int32_t*)0x004D8370)
 #define g_FullScreenVGA (*(int32_t*)0x004D8374)
 #define g_IsGameToExit (*(uint8_t*)0x004D8378)
+#define g_DInput (*(LPDIRECTINPUT*)0x004D855C)
 #define g_ScreenSizer (*(int32_t*)0x004D8568)
 #define g_IsVidSizeLock (*(int32_t*)0x004D856C)
 #define g_SampleFreqs (*(DWORD(*)[256])0x004D8570)
