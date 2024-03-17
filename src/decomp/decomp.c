@@ -105,13 +105,13 @@ int32_t __cdecl RenderErrorBox(int32_t error_code)
     return UT_MessageBox(buffer, 0);
 }
 
-void __cdecl ScreenShotPCX(void)
+void __cdecl ScreenshotPCX(void)
 {
     LPDDS screen = g_SavedAppSettings.render_mode == RM_SOFTWARE
         ? g_RenderBufferSurface
         : g_PrimaryBufferSurface;
 
-    DDSURFACEDESC desc;
+    DDSURFACEDESC desc = { 0 };
     desc.dwSize = sizeof(desc);
 
     int32_t result;
@@ -255,4 +255,91 @@ size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer)
     buffer[0] = num | 0xC0;
     buffer[1] = value;
     return 2;
+}
+
+void __cdecl ScreenshotTGA(IDirectDrawSurface3 *screen, int32_t bpp)
+{
+    DDSURFACEDESC desc;
+    memset(&desc, 0, sizeof(desc));
+    desc.dwSize = sizeof(desc);
+
+    if (FAILED(WinVidBufferLock(screen, &desc, 0x21u))) {
+        return;
+    }
+
+    const int32_t width = desc.dwWidth;
+    const int32_t height = desc.dwHeight;
+
+    g_ScreenshotCounter++;
+
+    char file_name[20];
+    sprintf(file_name, "tomb%04d.tga", g_ScreenshotCounter);
+
+    FILE *handle = fopen(file_name, "wb");
+    if (!handle) {
+        goto cleanup;
+    }
+
+    const TGA_HEADER header = {
+        .id_length = 0,
+        .color_map_type = 0,
+        .data_type_code = 2, // Uncompressed, RGB images
+        .color_map_origin = 0,
+        .color_map_length = 0,
+        .color_map_depth = 0,
+        .x_origin = 0,
+        .y_origin = 0,
+        .width = width,
+        .height = height,
+        .bpp = 16,
+        .image_descriptor = 0,
+    };
+
+    fwrite(&header, sizeof(TGA_HEADER), 1, handle);
+
+    uint8_t *tga_pic =
+        (uint8_t *)GlobalAlloc(GMEM_FIXED, width * height * (bpp / 8));
+    uint8_t *src = desc.lpSurface + desc.lPitch * (height - 1);
+
+    uint8_t *dst = tga_pic;
+    for (int32_t y = 0; y < height; y++) {
+        if (desc.ddpfPixelFormat.dwRBitMask == 0xF800) {
+            // R5G6B5 - transform
+            for (int32_t x = 0; x < width; x++) {
+                const uint16_t sample = ((uint16_t *)src)[x];
+                ((uint16_t *)dst)[x] =
+                    ((sample & 0xFFC0) >> 1) | (sample & 0x001F);
+            }
+        } else {
+            // X1R5G5B5 - good
+            memcpy(dst, src, sizeof(uint16_t) * width);
+        }
+        src -= desc.lPitch;
+        dst += sizeof(uint16_t) * width;
+    }
+    fwrite(tga_pic, 2 * height * width, 1, handle);
+
+cleanup:
+    if (tga_pic) {
+        GlobalFree(tga_pic);
+    }
+
+    if (handle) {
+        fclose(handle);
+    }
+    WinVidBufferUnlock(screen, &desc);
+}
+
+void __cdecl Screenshot(LPDDS screen)
+{
+    DDSURFACEDESC desc = { 0 };
+    desc.dwSize = sizeof(desc);
+
+    if (SUCCEEDED(IDirectDrawSurface_GetSurfaceDesc(screen, &desc))) {
+        if (desc.ddpfPixelFormat.dwRGBBitCount == 8) {
+            ScreenshotPCX();
+        } else if (desc.ddpfPixelFormat.dwRGBBitCount == 16) {
+            ScreenshotTGA(screen, 16);
+        }
+    }
 }

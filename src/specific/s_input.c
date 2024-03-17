@@ -1,5 +1,6 @@
 #include "specific/s_input.h"
 
+#include "decomp/decomp.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -185,7 +186,7 @@ bool __cdecl S_Input_Update(void)
     }
 
     if (KEY_DOWN(DIK_S)) {
-        ScreenShot(g_PrimaryBufferSurface);
+        Screenshot(g_PrimaryBufferSurface);
     }
 
     const bool is_shift_pressed = KEY_DOWN(DIK_LSHIFT) || KEY_DOWN(DIK_RSHIFT);

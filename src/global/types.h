@@ -1863,4 +1863,19 @@ typedef struct PCX_HEADER {
     uint8_t reserved_data[54];
 } PCX_HEADER;
 
+typedef struct TGA_HEADER {
+    uint8_t id_length;
+    uint8_t color_map_type;
+    uint8_t data_type_code;
+    uint16_t color_map_origin;
+    uint16_t color_map_length;
+    uint8_t color_map_depth;
+    uint16_t x_origin;
+    uint16_t y_origin;
+    uint16_t width;
+    uint16_t height;
+    uint8_t bpp;
+    uint8_t image_descriptor;
+} TGA_HEADER;
+
 #pragma pack(pop)

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.79% (375)</tspan> · <tspan class="known">66.75% (813)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.87% (376)</tspan> · <tspan class="known">66.67% (812)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="229.99" height="6" x="0" y="0" class="decompiled"/>
-<rect width="498.61" height="6" x="229.99" y="0" class="known"/>
+<rect width="230.60" height="6" x="0" y="0" class="decompiled"/>
+<rect width="498" height="6" x="230.60" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1117,11 +1117,11 @@
 <rect width="12" height="12" x="555" y="300" class="todo"><title>sub_44E860</title></rect>
 <rect width="12" height="12" x="570" y="300" class="todo"><title>sub_44E880</title></rect>
 <rect width="12" height="12" x="585" y="300" class="decompiled"><title>void __cdecl Shell_ExitSystem(const char *message);</title></rect>
-<rect width="12" height="12" x="600" y="300" class="decompiled"><title>void __cdecl ScreenShotPCX(void);</title></rect>
+<rect width="12" height="12" x="600" y="300" class="decompiled"><title>void __cdecl ScreenshotPCX(void);</title></rect>
 <rect width="12" height="12" x="615" y="300" class="decompiled"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);</title></rect>
 <rect width="12" height="12" x="630" y="300" class="decompiled"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
 <rect width="12" height="12" x="645" y="300" class="decompiled"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
-<rect width="12" height="12" x="660" y="300" class="known"><title>void __cdecl ScreenShot(LPDDS screen);</title></rect>
+<rect width="12" height="12" x="660" y="300" class="decompiled"><title>void __cdecl Screenshot(LPDDS screen);</title></rect>
 <rect width="12" height="12" x="675" y="300" class="known"><title>void __cdecl do_inventory_options(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="690" y="300" class="known"><title>void __cdecl do_passport_option(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="705" y="300" class="known"><title>void __cdecl do_detail_option(INVENTORY_ITEM *item);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.68%</tspan> · <tspan class="known">70.99%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.83%</tspan> · <tspan class="known">70.85%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="214.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="530.33" height="6" x="214.23" y="0" class="known"/>
+<rect width="215.33" height="6" x="0" y="0" class="decompiled"/>
+<rect width="529.23" height="6" x="215.33" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -1487,7 +1487,7 @@
 <rect width="17.36" height="17.87" x="390.95" y="234.66" class="known"><title>void __cdecl ControlBodyPart(int16_t fx_num);</title></rect>
 <rect width="17.36" height="17.59" x="390.95" y="255.54" class="known"><title>void __cdecl SkidooBaddieCollision(struct ITEM_INFO *skidoo);</title></rect>
 <rect width="17.36" height="17.46" x="390.95" y="276.12" class="known"><title>void __cdecl S_DrawAirBar(int32_t percent);</title></rect>
-<rect width="17.36" height="17.42" x="390.95" y="296.59" class="known"><title>void __cdecl ScreenShot(LPDDS screen);</title></rect>
+<rect width="17.36" height="17.42" x="390.95" y="296.59" class="decompiled"><title>void __cdecl Screenshot(LPDDS screen);</title></rect>
 <rect width="17.36" height="17.38" x="390.95" y="317.01" class="known"><title>void __cdecl MineControl(int16_t mine_num);</title></rect>
 <rect width="17.36" height="17.34" x="390.95" y="337.40" class="known"><title>int32_t __cdecl Box_SearchLOT(struct LOT_INFO *lot, int32_t expansion);</title></rect>
 <rect width="17.36" height="17.26" x="390.95" y="357.74" class="known"><title>void __cdecl S_PrintShadow(int16_t radius, int16_t *obj_ptr, ITEM_INFO *item);</title></rect>
@@ -1646,7 +1646,7 @@
 <rect width="12.25" height="11.80" x="465.10" y="275.02" class="known"><title>int32_t __cdecl Inv_RemoveItem(int32_t item_num);</title></rect>
 <rect width="12.25" height="11.80" x="465.10" y="289.83" class="known"><title>int16_t __cdecl TitleSequence(void);</title></rect>
 <rect width="12.25" height="11.75" x="465.10" y="304.63" class="known"><title>void __cdecl Inv_RingInit(struct RING_INFO *ring, int16_t type, struct INVENTORY_ITEM **list, int16_t qty, int16_t current, struct IMOTION_INFO *imo);</title></rect>
-<rect width="12.25" height="11.75" x="465.10" y="319.38" class="decompiled"><title>void __cdecl ScreenShotPCX(void);</title></rect>
+<rect width="12.25" height="11.75" x="465.10" y="319.38" class="decompiled"><title>void __cdecl ScreenshotPCX(void);</title></rect>
 <rect width="12.25" height="11.70" x="465.10" y="334.13" class="decompiled"><title>bool __cdecl S_Audio_Sample_Load(int32_t sample_id, LPWAVEFORMATEX format, const void *data, int32_t data_size);</title></rect>
 <rect width="12.25" height="11.59" x="465.10" y="348.83" class="decompiled"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12.25" height="11.59" x="465.10" y="363.41" class="known"><title>void __cdecl CopterControl(int16_t item_num);</title></rect>
