@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.95% (377)</tspan> · <tspan class="known">66.58% (811)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.03% (378)</tspan> · <tspan class="known">66.50% (810)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="231.21" height="6" x="0" y="0" class="decompiled"/>
-<rect width="497.39" height="6" x="231.21" y="0" class="known"/>
+<rect width="231.83" height="6" x="0" y="0" class="decompiled"/>
+<rect width="496.77" height="6" x="231.83" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -960,7 +960,7 @@
 <rect width="12" height="12" x="450" y="255" class="unused"><title>sub_447170</title></rect>
 <rect width="12" height="12" x="465" y="255" class="unused"><title>sub_4471C0</title></rect>
 <rect width="12" height="12" x="480" y="255" class="decompiled"><title>bool __cdecl DInputCreate(void);</title></rect>
-<rect width="12" height="12" x="495" y="255" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
+<rect width="12" height="12" x="495" y="255" class="decompiled"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="12" height="12" x="510" y="255" class="known"><title>void __cdecl WinInReadKeyboard(LPVOID lpInputData);</title></rect>
 <rect width="12" height="12" x="525" y="255" class="known"><title>DWORD __cdecl WinInReadJoystick(int32_t *x, int32_t *y);</title></rect>
 <rect width="12" height="12" x="540" y="255" class="todo"><title>sub_4473A0</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.84%</tspan> · <tspan class="known">70.84%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.84%</tspan> · <tspan class="known">70.83%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="215.40" height="6" x="0" y="0" class="decompiled"/>
-<rect width="529.16" height="6" x="215.40" y="0" class="known"/>
+<rect width="215.46" height="6" x="0" y="0" class="decompiled"/>
+<rect width="529.10" height="6" x="215.46" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -2417,7 +2417,7 @@
 <rect width="1.91" height="1.57" x="708.89" y="355.67" class="known"><title>void __cdecl BridgeFlatCeiling(struct ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="360.24" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
 <rect width="1.91" height="1.40" x="708.89" y="364.80" class="known"><title>bool __cdecl EnumerateDisplayAdapters(struct DISPLAY_ADAPTER_LIST *displayAdapterList);</title></rect>
-<rect width="1.91" height="1.40" x="708.89" y="369.20" class="known"><title>void __cdecl DInputRelease(void);</title></rect>
+<rect width="1.91" height="1.40" x="708.89" y="369.20" class="decompiled"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="1.91" height="1.40" x="708.89" y="373.60" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="1.51" height="1.78" x="713.79" y="341.96" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
 <rect width="1.51" height="1.60" x="713.79" y="346.74" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>

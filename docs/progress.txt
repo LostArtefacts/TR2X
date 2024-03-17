@@ -2614,7 +2614,7 @@ typedef enum GAME_OBJECT_ID {
 00447170    00000039    x       sub_447170
 004471C0    0000002F    x       sub_4471C0
 004471F0    00000022    +R      bool __cdecl DInputCreate(void);
-00447220    0000001A    -R      void __cdecl DInputRelease(void);
+00447220    0000001A    +R      void __cdecl DInputRelease(void);
 00447240    0000005A    -R      void __cdecl WinInReadKeyboard(LPVOID lpInputData);
 004472A0    000000F3    -R      DWORD __cdecl WinInReadJoystick(int32_t *x, int32_t *y);
 004473A0    00000005    -R      sub_4473A0

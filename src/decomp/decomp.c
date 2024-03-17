@@ -350,3 +350,11 @@ bool __cdecl DInputCreate(void)
 {
     return SUCCEEDED(DirectInputCreate(g_GameModule, 1280, &g_DInput, NULL));
 }
+
+void __cdecl DInputRelease(void)
+{
+    if (g_DInput) {
+        IDirectInput_Release(g_DInput);
+        g_DInput = NULL;
+    }
+}
