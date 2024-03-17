@@ -40,21 +40,21 @@ struct TEXTSTRING *__cdecl Text_Create(
         return NULL;
     }
 
-    struct TEXTSTRING *result = NULL;
+    int32_t free_idx = -1;
     for (int i = 0; i < TEXT_MAX_STRINGS; i++) {
         struct TEXTSTRING *const string = &g_TextstringTable[i];
         if (!string->flags.active) {
-            result = string;
+            free_idx = i;
             break;
         }
     }
 
-    if (result == NULL) {
+    if (free_idx == -1) {
         return NULL;
     }
 
-    const int32_t i = result - g_TextstringTable;
-    result->text = g_TextstringBuffers[i];
+    struct TEXTSTRING *result = &g_TextstringTable[free_idx];
+    result->text = g_TextstringBuffers[free_idx];
     result->scale.h = PHD_ONE;
     result->scale.v = PHD_ONE;
     result->pos.x = (x * Text_GetScaleH(PHD_ONE)) / PHD_ONE;
@@ -72,6 +72,7 @@ struct TEXTSTRING *__cdecl Text_Create(
     result->bgnd_off.x = 0;
     result->bgnd_off.y = 0;
     result->bgnd_off.z = 0;
+    result->flags.all = 0;
     result->flags.active = 1;
     g_TextstringCount++;
 
