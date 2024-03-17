@@ -69,12 +69,12 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.05% (366)</tspan> · <tspan class="known">67.49% (822)</tspan> · <tspan class="todo">0.66% (8)</tspan> · <tspan class="unused">1.81% (22)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.13% (367)</tspan> · <tspan class="known">67.41% (821)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="224.47" height="6" x="0" y="0" class="decompiled"/>
-<rect width="504.13" height="6" x="224.47" y="0" class="known"/>
-<rect width="4.91" height="6" x="728.60" y="0" class="todo"/>
-<rect width="13.49" height="6" x="733.51" y="0" class="unused"/>
+<rect width="225.08" height="6" x="0" y="0" class="decompiled"/>
+<rect width="503.52" height="6" x="225.08" y="0" class="known"/>
+<rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
+<rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
@@ -997,7 +997,7 @@
 <rect width="12" height="12" x="255" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_AdjustTrackVolumeAndPan(int32_t track_id, int32_t volume, int32_t pan);</title></rect>
 <rect width="12" height="12" x="270" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_AdjustTrackPitch(int32_t track_id, int32_t pitch);</title></rect>
 <rect width="12" height="12" x="285" y="270" class="decompiled"><title>void __cdecl S_Audio_Sample_CloseTrack(int32_t track_id);</title></rect>
-<rect width="12" height="12" x="300" y="270" class="todo"><title>sub_447FA0</title></rect>
+<rect width="12" height="12" x="300" y="270" class="unused"><title>sub_447FA0</title></rect>
 <rect width="12" height="12" x="315" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_Init(void);</title></rect>
 <rect width="12" height="12" x="330" y="270" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(struct SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="12" height="12" x="345" y="270" class="decompiled"><title>BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);</title></rect>
@@ -1110,7 +1110,7 @@
 <rect width="12" height="12" x="450" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
 <rect width="12" height="12" x="465" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
-<rect width="12" height="12" x="495" y="300" class="known"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
+<rect width="12" height="12" x="495" y="300" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
 <rect width="12" height="12" x="510" y="300" class="known"><title>void __cdecl Shell_Cleanup(void);</title></rect>
 <rect width="12" height="12" x="525" y="300" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="12" height="12" x="540" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
@@ -1299,12 +1299,12 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.26%</tspan> · <tspan class="known">71.42%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.29%</tspan> · <tspan class="known">71.39%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="211.07" height="6" x="0" y="0" class="decompiled"/>
-<rect width="533.48" height="6" x="211.07" y="0" class="known"/>
-<rect width="0.13" height="6" x="744.56" y="0" class="todo"/>
-<rect width="2.31" height="6" x="744.69" y="0" class="unused"/>
+<rect width="211.29" height="6" x="0" y="0" class="decompiled"/>
+<rect width="533.27" height="6" x="211.29" y="0" class="known"/>
+<rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
+<rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="58" height="69.33" x="0" y="0" class="decompiled"><title>void __cdecl Output_WGTMapPersp32FP(int32_t y1, int32_t y2, uint8_t *tex_page);</title></rect>
@@ -2018,7 +2018,7 @@
 <rect width="6.36" height="6.05" x="598.66" y="272.09" class="decompiled"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
 <rect width="6.36" height="6.05" x="598.66" y="281.14" class="known"><title>int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="6.36" height="5.87" x="598.66" y="290.19" class="known"><title>void __cdecl CreateBubble(struct PHD_3DPOS *pos, int16_t room_num);</title></rect>
-<rect width="6.36" height="5.87" x="598.66" y="299.06" class="known"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
+<rect width="6.36" height="5.87" x="598.66" y="299.06" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
 <rect width="6.36" height="5.87" x="598.66" y="307.93" class="known"><title>void __thiscall SE_DrawBitmap(BITMAP_RESOURCE *bmpRsrc, HDC hdc, int32_t x, int32_t y);</title></rect>
 <rect width="6.36" height="5.78" x="598.66" y="316.80" class="known"><title>void __cdecl swap_meshes_with_meshswap1(struct ITEM_INFO *item);</title></rect>
 <rect width="6.36" height="5.78" x="598.66" y="325.58" class="known"><title>void __cdecl swap_meshes_with_meshswap2(struct ITEM_INFO *item);</title></rect>
@@ -2513,7 +2513,7 @@
 <rect width="0.10" height="0.10" x="748.30" y="370.23" class="known"><title>void __cdecl DoInventoryPicture(void);</title></rect>
 <rect width="0.10" height="0.10" x="742.84" y="372.66" class="unused"><title>sub_444BB0</title></rect>
 <rect width="0.10" height="0.10" x="742.84" y="374.44" class="todo"><title>sub_4473A0</title></rect>
-<rect width="0.10" height="0.10" x="742.84" y="376.22" class="todo"><title>sub_447FA0</title></rect>
+<rect width="0.10" height="0.10" x="742.84" y="376.22" class="unused"><title>sub_447FA0</title></rect>
 <rect width="0.10" height="0.10" x="745.18" y="372.66" class="todo"><title>sub_448410</title></rect>
 <rect width="0.10" height="0.10" x="747.59" y="372.66" class="todo"><title>sub_4523A0</title></rect>
 <rect width="0.10" height="0.10" x="745.18" y="374.39" class="known"><title>LONG __cdecl CloseGameRegistryKey(void);</title></rect>

@@ -1,5 +1,6 @@
 #include "inject_exec.h"
 
+#include "decomp/decomp.h"
 #include "game/camera.h"
 #include "game/effects.h"
 #include "game/input.h"
@@ -25,6 +26,8 @@
 #include "specific/s_flagged_string.h"
 #include "specific/s_input.h"
 
+static void Inject_Decomp(void);
+
 static void Inject_Camera(void);
 static void Inject_Math(void);
 static void Inject_Matrix(void);
@@ -47,6 +50,11 @@ static void Inject_Lara_Col(void);
 static void Inject_S_Audio_Sample(void);
 static void Inject_S_Input(void);
 static void Inject_S_FlaggedString(void);
+
+static void Inject_Decomp(void)
+{
+    INJECT(1, 0x0044E700, GameInit);
+}
 
 static void Inject_Camera(void)
 {
@@ -498,6 +506,8 @@ static void Inject_S_FlaggedString(void)
 
 void Inject_Exec(void)
 {
+    Inject_Decomp();
+
     Inject_Camera();
     Inject_Math();
     Inject_Matrix();
