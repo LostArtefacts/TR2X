@@ -58,6 +58,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x0044E520, WinMain);
     INJECT(1, 0x0044E700, GameInit);
     INJECT(1, 0x0044E8E0, ScreenShotPCX);
+    INJECT(1, 0x0044E9F0, CompPCX);
 }
 
 static void Inject_Camera(void)

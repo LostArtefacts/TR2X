@@ -1842,4 +1842,25 @@ typedef struct XBUF_XGUVP {
     float rhw2;
 } XBUF_XGUVP;
 
+typedef struct PCX_HEADER {
+    uint8_t manufacturer;
+    uint8_t version;
+    uint8_t rle;
+    uint8_t bpp;
+    uint16_t x_min;
+    uint16_t y_min;
+    uint16_t x_max;
+    uint16_t y_max;
+    uint16_t h_dpi;
+    uint16_t v_dpi;
+    RGB888 palette[16];
+    uint8_t reserved;
+    uint8_t planes;
+    uint16_t bytes_per_line;
+    uint16_t pal_pnterpret;
+    uint16_t h_res;
+    uint16_t v_res;
+    uint8_t reserved_data[54];
+} PCX_HEADER;
+
 #pragma pack(pop)

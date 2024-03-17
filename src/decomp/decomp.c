@@ -155,3 +155,44 @@ void __cdecl ScreenShotPCX(void)
     CloseHandle(handle);
     GlobalFree(pcx_data);
 }
+
+size_t __cdecl CompPCX(
+    uint8_t *bitmap, int32_t width, int32_t height, RGB888 *palette,
+    uint8_t **pcx_data)
+{
+    *pcx_data = (uint8_t *)GlobalAlloc(
+        GMEM_FIXED,
+        sizeof(PCX_HEADER) + sizeof(RGB888) * 256 + width * height * 2);
+    if (*pcx_data == NULL) {
+        return 0;
+    }
+
+    PCX_HEADER *pcx_header = (PCX_HEADER *)*pcx_data;
+    pcx_header->manufacturer = 10;
+    pcx_header->version = 5;
+    pcx_header->rle = 1;
+    pcx_header->bpp = 8;
+    pcx_header->planes = 1;
+    pcx_header->x_min = 0;
+    pcx_header->y_min = 0;
+    pcx_header->x_max = width - 1;
+    pcx_header->y_max = height - 1;
+    pcx_header->h_dpi = width;
+    pcx_header->v_dpi = height;
+    pcx_header->bytes_per_line = width;
+
+    uint8_t *pic_data = *pcx_data + sizeof(PCX_HEADER);
+    for (int y = 0; y < height; y++) {
+        pic_data += EncodeLinePCX(bitmap, width, pic_data);
+        bitmap += width;
+    }
+
+    *pic_data++ = 0x0C;
+    for (int i = 0; i < 256; i++) {
+        *pic_data++ = palette[i].red;
+        *pic_data++ = palette[i].green;
+        *pic_data++ = palette[i].blue;
+    }
+
+    return pic_data - *pcx_data + sizeof(RGB888) * 256;
+}
