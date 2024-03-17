@@ -2761,7 +2761,7 @@ typedef enum GAME_OBJECT_ID {
 0044D870    0000007F    +       void __cdecl Random_Seed(void);
 0044D8F0    00000120    +       BOOL __cdecl S_Input_Key(KEYMAP keymap);
 0044DA10    00000AC4    +       bool __cdecl Input_Update(void);
-0044E4E0    0000003C    -R      int32_t __cdecl RenderErrorBox(int32_t error_code);
+0044E4E0    0000003C    +R      int32_t __cdecl RenderErrorBox(int32_t error_code);
 0044E520    000001D6    +R      int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);
 0044E6F0    00000001    x       sub_44E6F0
 0044E700    00000064    +R      int32_t __cdecl GameInit(bool skip_cd_init);

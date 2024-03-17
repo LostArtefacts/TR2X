@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.30% (369)</tspan> · <tspan class="known">67.24% (819)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.38% (370)</tspan> · <tspan class="known">67.16% (818)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="226.31" height="6" x="0" y="0" class="decompiled"/>
-<rect width="502.29" height="6" x="226.31" y="0" class="known"/>
+<rect width="226.92" height="6" x="0" y="0" class="decompiled"/>
+<rect width="501.68" height="6" x="226.92" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1107,7 +1107,7 @@
 <rect width="12" height="12" x="405" y="300" class="decompiled"><title>void __cdecl Random_Seed(void);</title></rect>
 <rect width="12" height="12" x="420" y="300" class="decompiled"><title>BOOL __cdecl S_Input_Key(KEYMAP keymap);</title></rect>
 <rect width="12" height="12" x="435" y="300" class="decompiled"><title>bool __cdecl Input_Update(void);</title></rect>
-<rect width="12" height="12" x="450" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
+<rect width="12" height="12" x="450" y="300" class="decompiled"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
 <rect width="12" height="12" x="465" y="300" class="decompiled"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
 <rect width="12" height="12" x="495" y="300" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.45%</tspan> · <tspan class="known">71.23%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.47%</tspan> · <tspan class="known">71.21%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="212.51" height="6" x="0" y="0" class="decompiled"/>
-<rect width="532.05" height="6" x="212.51" y="0" class="known"/>
+<rect width="212.64" height="6" x="0" y="0" class="decompiled"/>
+<rect width="531.92" height="6" x="212.64" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -2189,7 +2189,7 @@
 <rect width="4.18" height="3.93" x="714.08" y="276.30" class="known"><title>void __cdecl ControlCutShotgun(int16_t item_num);</title></rect>
 <rect width="4.18" height="3.93" x="721.26" y="276.30" class="known"><title>void __cdecl InitialiseBlade(int16_t item_num);</title></rect>
 <rect width="4.18" height="3.93" x="728.45" y="276.30" class="known"><title>void __cdecl InitialiseRollingBall(int16_t item_num);</title></rect>
-<rect width="4.18" height="3.93" x="735.63" y="276.30" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
+<rect width="4.18" height="3.93" x="735.63" y="276.30" class="decompiled"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
 <rect width="4.18" height="3.93" x="742.82" y="276.30" class="decompiled"><title>void __cdecl Shell_ExitSystem(const char *message);</title></rect>
 <rect width="4.19" height="3.93" x="648.46" y="283.23" class="decompiled"><title>void __cdecl S_Audio_Sample_OutCloseAllTracks(void);</title></rect>
 <rect width="4.19" height="3.81" x="648.46" y="290.15" class="known"><title>int32_t __cdecl CheckForHoldingState(int32_t state);</title></rect>

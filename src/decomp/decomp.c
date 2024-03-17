@@ -7,6 +7,8 @@
 #include "global/vars.h"
 #include "specific/s_audio_sample.h"
 
+#include <stdio.h>
+
 int32_t __cdecl GameInit(void)
 {
     Music_Shutdown();
@@ -88,4 +90,12 @@ int32_t __stdcall WinMain(
 cleanup:
     Shell_Cleanup();
     return g_AppResultCode;
+}
+
+int32_t __cdecl RenderErrorBox(int32_t error_code)
+{
+    char buffer[128];
+    const char *decoded = DecodeErrorMessage(error_code);
+    sprintf(buffer, "Render init failed with \"%s\"", decoded);
+    return UT_MessageBox(buffer, 0);
 }
