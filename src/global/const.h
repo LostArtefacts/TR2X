@@ -135,3 +135,5 @@
 
 #define FOG_START (12 * WALL_L) // = 12288
 #define FOG_END (20 * WALL_L) // = 20480
+
+#define IDS_DX5_REQUIRED 1

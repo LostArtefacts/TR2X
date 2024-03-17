@@ -54,6 +54,7 @@ static void Inject_S_FlaggedString(void);
 static void Inject_Decomp(void)
 {
     INJECT(1, 0x0044E700, GameInit);
+    INJECT(1, 0x0044E520, WinMain);
 }
 
 static void Inject_Camera(void)

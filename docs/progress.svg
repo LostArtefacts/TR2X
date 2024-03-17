@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.21% (368)</tspan> · <tspan class="known">67.32% (820)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">30.30% (369)</tspan> · <tspan class="known">67.24% (819)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="225.69" height="6" x="0" y="0" class="decompiled"/>
-<rect width="502.91" height="6" x="225.69" y="0" class="known"/>
+<rect width="226.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="502.29" height="6" x="226.31" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1108,7 +1108,7 @@
 <rect width="12" height="12" x="420" y="300" class="decompiled"><title>BOOL __cdecl S_Input_Key(KEYMAP keymap);</title></rect>
 <rect width="12" height="12" x="435" y="300" class="decompiled"><title>bool __cdecl Input_Update(void);</title></rect>
 <rect width="12" height="12" x="450" y="300" class="known"><title>int32_t __cdecl RenderErrorBox(int32_t error_code);</title></rect>
-<rect width="12" height="12" x="465" y="300" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
+<rect width="12" height="12" x="465" y="300" class="decompiled"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
 <rect width="12" height="12" x="495" y="300" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
 <rect width="12" height="12" x="510" y="300" class="decompiled"><title>void __cdecl Shell_Cleanup(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.31%</tspan> · <tspan class="known">71.36%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.45%</tspan> · <tspan class="known">71.23%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="211.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="533.08" height="6" x="211.48" y="0" class="known"/>
+<rect width="212.51" height="6" x="0" y="0" class="decompiled"/>
+<rect width="532.05" height="6" x="212.51" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -1503,7 +1503,7 @@
 <rect width="16.78" height="16.77" x="593.32" y="21.70" class="known"><title>void __cdecl CreateFlare(int32_t thrown);</title></rect>
 <rect width="16.74" height="16.77" x="613.09" y="21.70" class="known"><title>void __cdecl ShowGymStatsText(char *time_str, int32_t type);</title></rect>
 <rect width="16.74" height="16.77" x="632.83" y="21.70" class="known"><title>BOOL __cdecl LoadItems(HANDLE handle);</title></rect>
-<rect width="16.74" height="16.77" x="652.57" y="21.70" class="known"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
+<rect width="16.74" height="16.77" x="652.57" y="21.70" class="decompiled"><title>int32_t __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd);</title></rect>
 <rect width="16.70" height="16.77" x="672.31" y="21.70" class="decompiled"><title>const int16_t *__cdecl Output_CalcObjectVertices(const int16_t *obj_ptr);</title></rect>
 <rect width="16.49" height="16.77" x="692" y="21.70" class="decompiled"><title>void __cdecl Matrix_GenerateW2V(struct PHD_3DPOS *viewpos);</title></rect>
 <rect width="16.32" height="16.77" x="711.49" y="21.70" class="known"><title>void __cdecl S_DrawHealthBar(int32_t percent);</title></rect>

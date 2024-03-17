@@ -218,6 +218,8 @@
 #define g_Input (*(int32_t*)0x0051A208)
 #define g_IsVidModeLock (*(int8_t*)0x0051A20C)
 #define g_JoyKeys (*(int32_t*)0x0051A210)
+#define g_GameModule (*(HINSTANCE*)0x0051A238)
+#define g_CmdLine (*(char **)0x0051A23C)
 #define g_PhdWinRect (*(RECT*)0x0051B918)
 #define g_HiRes (*(int32_t*)0x0051B928)
 #define g_GamePalette8 (*(RGB888(*)[256])0x0051B930)

@@ -677,7 +677,6 @@
 #define game_free ((void __cdecl (*)(uint32_t free_size))0x0044D740)
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
 #define RenderErrorBox ((int32_t __cdecl (*)(int32_t error_code))0x0044E4E0)
-#define WinMain ((int32_t __stdcall (*)(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int32_t nShowCmd))0x0044E520)
 #define WinGameStart ((int32_t __cdecl (*)(void))0x0044E7A0)
 #define Shell_Shutdown ((void __cdecl (*)(void))0x0044E820)
 #define ScreenShotPCX ((void __cdecl (*)(void))0x0044E8E0)
