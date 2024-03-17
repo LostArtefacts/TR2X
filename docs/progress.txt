@@ -2682,7 +2682,7 @@ typedef enum GAME_OBJECT_ID {
 00449500    00000105    -R      void __cdecl FmvBackToGame(void);
 00449610    0000023A    *R      void __cdecl GameApplySettings(struct APP_SETTINGS *new_settings);
 00449850    00000067    -R      void __cdecl UpdateGameResolution(void);
-004498C0    0000000C    -R      LPCTSTR __cdecl DecodeErrorMessage(DWORD error_code);
+004498C0    0000000C    +R      LPCTSTR __cdecl DecodeErrorMessage(DWORD error_code);
 004498D0    00000049    -R      BOOL __cdecl ReadFileSync(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);
 00449920    00000188    -R      BOOL __cdecl LoadTexturePages(HANDLE handle);
 00449AB0    000003A0    -R      BOOL __cdecl LoadRooms(HANDLE handle);
@@ -2988,6 +2988,7 @@ typedef enum GAME_OBJECT_ID {
 00466490    -       int32_t g_FadeValue = 0x100000;
 00466494    -       int32_t g_FadeLimit = 0x100000;
 00466498    -       int32_t g_FadeAdder = 0x8000;
+004664E8    -       const char *g_ErrorMessages[43];
 00466BB0    +       int32_t g_RandControl;
 00466BB4    +       int32_t g_RandDraw;
 00466F70    -       struct CONTROL_LAYOUT g_Layout[2];

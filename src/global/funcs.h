@@ -604,7 +604,6 @@
 #define FmvBackToGame ((void __cdecl (*)(void))0x00449500)
 #define GameApplySettings ((void __cdecl (*)(struct APP_SETTINGS *new_settings))0x00449610)
 #define UpdateGameResolution ((void __cdecl (*)(void))0x00449850)
-#define DecodeErrorMessage ((LPCTSTR __cdecl (*)(DWORD error_code))0x004498C0)
 #define ReadFileSync ((BOOL __cdecl (*)(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped))0x004498D0)
 #define LoadTexturePages ((BOOL __cdecl (*)(HANDLE handle))0x00449920)
 #define LoadRooms ((BOOL __cdecl (*)(HANDLE handle))0x00449AB0)

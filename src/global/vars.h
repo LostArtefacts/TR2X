@@ -38,6 +38,7 @@
 #define g_FadeValue (*(int32_t*)0x00466490) // = 0x100000
 #define g_FadeLimit (*(int32_t*)0x00466494) // = 0x100000
 #define g_FadeAdder (*(int32_t*)0x00466498) // = 0x8000
+#define g_ErrorMessages (*(const char *(*)[43])0x004664E8)
 #define g_Layout (*(struct CONTROL_LAYOUT(*)[2])0x00466F70)
 #define g_MidSort (*(int32_t*)0x0046C300) // = 0
 #define g_ViewportAspectRatio (*(float*)0x0046C304) // = 0.0f

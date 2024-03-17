@@ -92,6 +92,11 @@ cleanup:
     return g_AppResultCode;
 }
 
+const char *__cdecl DecodeErrorMessage(int32_t error_code)
+{
+    return g_ErrorMessages[error_code];
+}
+
 int32_t __cdecl RenderErrorBox(int32_t error_code)
 {
     char buffer[128];
