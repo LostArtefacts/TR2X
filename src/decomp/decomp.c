@@ -358,3 +358,19 @@ void __cdecl DInputRelease(void)
         g_DInput = NULL;
     }
 }
+
+void __cdecl WinInReadKeyboard(uint8_t *input_data)
+{
+    if (SUCCEEDED(IDirectInputDevice_GetDeviceState(
+            IDID_SysKeyboard, 256, input_data))) {
+        return;
+    }
+
+    if (SUCCEEDED(IDirectInputDevice_Acquire(IDID_SysKeyboard))
+        && SUCCEEDED(IDirectInputDevice_GetDeviceState(
+            IDID_SysKeyboard, 256, input_data))) {
+        return;
+    }
+
+    memset(input_data, 0, 256);
+}

@@ -20,3 +20,4 @@ size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer);
 void __cdecl Screenshot(LPDDS screen);
 bool __cdecl DInputCreate(void);
 void __cdecl DInputRelease(void);
+void __cdecl WinInReadKeyboard(uint8_t *input_data);
