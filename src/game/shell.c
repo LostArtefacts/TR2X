@@ -1,5 +1,6 @@
 #include "game/shell.h"
 
+#include "decomp/decomp.h"
 #include "game/input.h"
 #include "game/music.h"
 #include "global/funcs.h"

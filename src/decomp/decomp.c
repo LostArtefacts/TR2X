@@ -382,3 +382,15 @@ int32_t __cdecl WinGameStart(void)
     // }
     return 0;
 }
+
+void __cdecl Shell_Shutdown(void)
+{
+    WinInFinish();
+    S_Audio_Sample_Shutdown();
+    RenderFinish(1);
+    WinVidFinish();
+    WinVidHideGameWindow();
+    if (g_ErrorMessage[0]) {
+        MessageBoxA(NULL, g_ErrorMessage, NULL, MB_ICONWARNING);
+    }
+}

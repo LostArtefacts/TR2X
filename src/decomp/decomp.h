@@ -22,3 +22,4 @@ bool __cdecl DInputCreate(void);
 void __cdecl DInputRelease(void);
 void __cdecl WinInReadKeyboard(uint8_t *input_data);
 int32_t __cdecl WinGameStart(void);
+void __cdecl Shell_Shutdown(void);
