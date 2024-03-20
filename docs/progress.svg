@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.43% (395)</tspan> · <tspan class="known">65.11% (793)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.51% (396)</tspan> · <tspan class="known">65.02% (792)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="242.25" height="6" x="0" y="0" class="decompiled"/>
-<rect width="486.35" height="6" x="242.25" y="0" class="known"/>
+<rect width="242.87" height="6" x="0" y="0" class="decompiled"/>
+<rect width="485.73" height="6" x="242.87" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -914,7 +914,7 @@
 <rect width="12" height="12" x="510" y="240" class="decompiled"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
 <rect width="12" height="12" x="525" y="240" class="decompiled"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="540" y="240" class="decompiled"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
-<rect width="12" height="12" x="555" y="240" class="known"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
+<rect width="12" height="12" x="555" y="240" class="decompiled"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
 <rect width="12" height="12" x="570" y="240" class="known"><title>HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);</title></rect>
 <rect width="12" height="12" x="585" y="240" class="known"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
 <rect width="12" height="12" x="600" y="240" class="known"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fillColor);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.33%</tspan> · <tspan class="known">70.35%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.37%</tspan> · <tspan class="known">70.31%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="219.07" height="6" x="0" y="0" class="decompiled"/>
-<rect width="525.49" height="6" x="219.07" y="0" class="known"/>
+<rect width="219.36" height="6" x="0" y="0" class="decompiled"/>
+<rect width="525.20" height="6" x="219.36" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1912,7 +1912,7 @@
 <rect width="7.66" height="7.59" x="567.89" y="325.31" class="known"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);</title></rect>
 <rect width="7.66" height="7.59" x="567.89" y="335.89" class="known"><title>bool __cdecl IntroFMV(const char *file_name1, const char *file_name2);</title></rect>
 <rect width="7.66" height="7.51" x="567.89" y="346.48" class="known"><title>void __cdecl DyingMonk(int16_t item_num);</title></rect>
-<rect width="7.66" height="7.51" x="567.89" y="356.99" class="known"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
+<rect width="7.66" height="7.51" x="567.89" y="356.99" class="decompiled"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
 <rect width="7.66" height="7.51" x="567.89" y="367.49" class="known"><title>int32_t __cdecl CreateTexturePalette(RGB888 *pal);</title></rect>
 <rect width="7.92" height="7.19" x="578.55" y="196.57" class="decompiled"><title>void __cdecl Lara_SwimTurn(struct ITEM_INFO *item);</title></rect>
 <rect width="7.92" height="7.19" x="589.47" y="196.57" class="known"><title>void __cdecl Sound_UpdateContinued(void);</title></rect>

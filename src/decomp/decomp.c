@@ -646,3 +646,27 @@ bool __cdecl ShowDDrawGameWindow(bool active)
     g_IsDDrawGameWindowShow = true;
     return true;
 }
+
+bool __cdecl HideDDrawGameWindow(void)
+{
+    if (!g_GameWindowHandle || !g_DDraw) {
+        return false;
+    }
+    if (!g_IsDDrawGameWindowShow) {
+        return true;
+    }
+
+    WinVidHideGameWindow();
+    g_IsGameWindowUpdating = true;
+    const HRESULT result = IDirectDraw_SetCooperativeLevel(
+        g_DDraw, g_GameWindowHandle, DDSCL_NORMAL);
+    if (SUCCEEDED(result)) {
+        g_IsDDrawGameWindowShow = false;
+        SetWindowPos(
+            g_GameWindowHandle, NULL, g_GameWindowX, g_GameWindowY, 0, 0,
+            SWP_NOCOPYBITS | SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE);
+    }
+
+    g_IsGameWindowUpdating = false;
+    return SUCCEEDED(result);
+}
