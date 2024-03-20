@@ -33,3 +33,4 @@ int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);
 bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);
 HWND __cdecl WinVidFindGameWindow(void);
 bool __cdecl WinVidSpinMessageLoop(bool need_wait);
+void __cdecl WinVidShowGameWindow(int32_t cmd_show);

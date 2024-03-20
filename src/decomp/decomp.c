@@ -582,3 +582,14 @@ bool __cdecl WinVidSpinMessageLoop(bool need_wait)
     g_MessageLoopCounter--;
     return true;
 }
+
+void __cdecl WinVidShowGameWindow(const int32_t cmd_show)
+{
+    if (cmd_show != SW_SHOW || !g_IsGameWindowShow) {
+        g_IsGameWindowUpdating = true;
+        ShowWindow(g_GameWindowHandle, cmd_show);
+        UpdateWindow(g_GameWindowHandle);
+        g_IsGameWindowUpdating = false;
+        g_IsGameWindowShow = true;
+    }
+}

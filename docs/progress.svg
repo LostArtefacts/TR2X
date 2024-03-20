@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.10% (391)</tspan> · <tspan class="known">65.44% (797)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.18% (392)</tspan> · <tspan class="known">65.35% (796)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="239.80" height="6" x="0" y="0" class="decompiled"/>
-<rect width="488.80" height="6" x="239.80" y="0" class="known"/>
+<rect width="240.41" height="6" x="0" y="0" class="decompiled"/>
+<rect width="488.19" height="6" x="240.41" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -910,7 +910,7 @@
 <rect width="12" height="12" x="450" y="240" class="decompiled"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
 <rect width="12" height="12" x="465" y="240" class="decompiled"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
 <rect width="12" height="12" x="480" y="240" class="decompiled"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
-<rect width="12" height="12" x="495" y="240" class="known"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
+<rect width="12" height="12" x="495" y="240" class="decompiled"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
 <rect width="12" height="12" x="510" y="240" class="known"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
 <rect width="12" height="12" x="525" y="240" class="known"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="540" y="240" class="known"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.23%</tspan> · <tspan class="known">70.45%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.24%</tspan> · <tspan class="known">70.43%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="218.31" height="6" x="0" y="0" class="decompiled"/>
-<rect width="526.25" height="6" x="218.31" y="0" class="known"/>
+<rect width="218.46" height="6" x="0" y="0" class="decompiled"/>
+<rect width="526.10" height="6" x="218.46" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -2156,7 +2156,7 @@
 <rect width="4.64" height="4.28" x="640.82" y="306.09" class="known"><title>void __cdecl draw_right_gun(struct ITEM_INFO *item);</title></rect>
 <rect width="4.64" height="4.28" x="640.82" y="313.37" class="known"><title>void __cdecl draw_left_gun(struct ITEM_INFO *item);</title></rect>
 <rect width="4.64" height="4.28" x="640.82" y="320.64" class="known"><title>void __cdecl InitialiseCult1(int16_t item_num);</title></rect>
-<rect width="4.64" height="4.28" x="640.82" y="327.92" class="known"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
+<rect width="4.64" height="4.28" x="640.82" y="327.92" class="decompiled"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
 <rect width="4.64" height="4.28" x="640.82" y="335.20" class="known"><title>void __cdecl S_FadeToBlack(void);</title></rect>
 <rect width="4.64" height="4.17" x="640.82" y="342.48" class="known"><title>void __cdecl ShutThatDoor(struct DOORPOS_DATA *d);</title></rect>
 <rect width="4.64" height="4.17" x="640.82" y="349.65" class="known"><title>int32_t __cdecl UT_ErrorBox(UINT uID, HWND hWnd);</title></rect>
