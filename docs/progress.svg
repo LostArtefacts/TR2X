@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.77% (387)</tspan> · <tspan class="known">65.76% (801)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.86% (388)</tspan> · <tspan class="known">65.68% (800)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="237.35" height="6" x="0" y="0" class="decompiled"/>
-<rect width="491.25" height="6" x="237.35" y="0" class="known"/>
+<rect width="237.96" height="6" x="0" y="0" class="decompiled"/>
+<rect width="490.64" height="6" x="237.96" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -905,7 +905,7 @@
 <rect width="12" height="12" x="375" y="240" class="decompiled"><title>void __cdecl WinVidClearMinWindowSize(void);</title></rect>
 <rect width="12" height="12" x="390" y="240" class="decompiled"><title>void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="405" y="240" class="decompiled"><title>void __cdecl WinVidClearMaxWindowSize(void);</title></rect>
-<rect width="12" height="12" x="420" y="240" class="known"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
+<rect width="12" height="12" x="420" y="240" class="decompiled"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="435" y="240" class="known"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="450" y="240" class="known"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
 <rect width="12" height="12" x="465" y="240" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.11%</tspan> · <tspan class="known">70.56%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.13%</tspan> · <tspan class="known">70.54%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="217.46" height="6" x="0" y="0" class="decompiled"/>
-<rect width="527.10" height="6" x="217.46" y="0" class="known"/>
+<rect width="217.62" height="6" x="0" y="0" class="decompiled"/>
+<rect width="526.94" height="6" x="217.62" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -2131,7 +2131,7 @@
 <rect width="4.84" height="4.73" x="632.98" y="332.05" class="known"><title>void __cdecl LaraBurn(void);</title></rect>
 <rect width="4.84" height="4.73" x="632.98" y="339.78" class="known"><title>BOOL __cdecl ReadFileSync(HANDLE handle, LPVOID lpBuffer, DWORD nBytesToRead, LPDWORD lpnBytesRead, LPOVERLAPPED lpOverlapped);</title></rect>
 <rect width="4.84" height="4.62" x="632.98" y="347.51" class="known"><title>void __cdecl AddDynamicLight(int32_t x, int32_t y, int32_t z, int32_t intensity, int32_t falloff);</title></rect>
-<rect width="4.84" height="4.62" x="632.98" y="355.13" class="known"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
+<rect width="4.84" height="4.62" x="632.98" y="355.13" class="decompiled"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
 <rect width="4.84" height="4.62" x="632.98" y="362.75" class="known"><title>DISPLAY_ADAPTER_NODE *__cdecl WinVidGetDisplayAdapter(GUID *lpGuid);</title></rect>
 <rect width="4.84" height="4.62" x="632.98" y="370.38" class="known"><title>DISPLAY_MODE *__thiscall InsertDisplayModeInListHead(DISPLAY_MODE_LIST *modeList);</title></rect>
 <rect width="4.96" height="4.50" x="640.82" y="261.54" class="decompiled"><title>const struct SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(GUID *guid);</title></rect>

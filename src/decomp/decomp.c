@@ -483,6 +483,17 @@ void __cdecl WinVidClearMaxWindowSize(void)
     g_IsMaxWindowSizeSet = false;
 }
 
+int32_t __cdecl CalculateWindowWidth(const int32_t width, const int32_t height)
+{
+    if (g_SavedAppSettings.aspect_mode == AM_4_3) {
+        return 4 * height / 3;
+    }
+    if (g_SavedAppSettings.aspect_mode == AM_16_9) {
+        return 16 * height / 9;
+    }
+    return width;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {
