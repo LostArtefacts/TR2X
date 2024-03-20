@@ -2560,7 +2560,7 @@ typedef enum GAME_OBJECT_ID {
 00444C30    00000033    -R      void __cdecl DDrawRelease(void);
 00444C70    00000073    -R      void __cdecl GameWindowCalculateSizeFromClient(int32_t *width, int32_t *height);
 00444CF0    0000006A    -R      void __cdecl GameWindowCalculateSizeFromClientByZero(int32_t *width, int32_t *height);
-00444D60    00000041    -R      void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height);
+00444D60    00000041    +R      void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height);
 00444DB0    00000008    -R      void __cdecl WinVidClearMinWindowSize(void);
 00444DC0    00000041    -R      void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height);
 00444E10    00000008    -R      void __cdecl WinVidClearMaxWindowSize(void);
@@ -3125,6 +3125,9 @@ typedef enum GAME_OBJECT_ID {
 004D7EE8    -       bool g_IsGameWindowUpdating;
 004D7EEC    -       bool g_IsDDrawGameWindowShow;
 004D7EF0    -       int32_t g_MinWindowClientWidth;
+004D7ED0    -       int32_t g_MinWindowClientHeight;
+004D8388    -       int32_t g_MinWindowWidth;
+004D838C    -       int32_t g_MinWindowHeight;
 004D7EF4    -       bool g_IsGameWindowShow;
 004D7EF8    -       bool g_IsMinWindowSizeSet;
 004D7EFC    -       int32_t g_MaxWindowClientWidth;

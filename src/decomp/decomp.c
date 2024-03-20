@@ -453,6 +453,16 @@ int16_t __cdecl TitleSequence(void)
     return GFD_EXIT_GAME;
 }
 
+void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height)
+{
+    g_MinWindowClientWidth = width;
+    g_MinWindowClientHeight = height;
+    GameWindowCalculateSizeFromClient(&width, &height);
+    g_MinWindowWidth = width;
+    g_MinWindowHeight = height;
+    g_IsMinWindowSizeSet = true;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {
