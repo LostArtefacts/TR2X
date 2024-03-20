@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.94% (389)</tspan> · <tspan class="known">65.60% (799)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.02% (390)</tspan> · <tspan class="known">65.52% (798)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="238.57" height="6" x="0" y="0" class="decompiled"/>
-<rect width="490.03" height="6" x="238.57" y="0" class="known"/>
+<rect width="239.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="489.41" height="6" x="239.19" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -907,7 +907,7 @@
 <rect width="12" height="12" x="405" y="240" class="decompiled"><title>void __cdecl WinVidClearMaxWindowSize(void);</title></rect>
 <rect width="12" height="12" x="420" y="240" class="decompiled"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="435" y="240" class="decompiled"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
-<rect width="12" height="12" x="450" y="240" class="known"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
+<rect width="12" height="12" x="450" y="240" class="decompiled"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
 <rect width="12" height="12" x="465" y="240" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
 <rect width="12" height="12" x="480" y="240" class="decompiled"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
 <rect width="12" height="12" x="495" y="240" class="known"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.14%</tspan> · <tspan class="known">70.53%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.22%</tspan> · <tspan class="known">70.45%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="217.71" height="6" x="0" y="0" class="decompiled"/>
-<rect width="526.85" height="6" x="217.71" y="0" class="known"/>
+<rect width="218.27" height="6" x="0" y="0" class="decompiled"/>
+<rect width="526.28" height="6" x="218.27" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1665,7 +1665,7 @@
 <rect width="11.93" height="11.51" x="661.37" y="108.31" class="known"><title>void __cdecl FmvBackToGame(void);</title></rect>
 <rect width="11.93" height="11.51" x="676.31" y="108.31" class="known"><title>void __cdecl S_DisplayPicture(const char *file_name, BOOL is_title);</title></rect>
 <rect width="11.88" height="11.51" x="691.24" y="108.31" class="known"><title>void __cdecl undraw_shotgun(int32_t weapon_type);</title></rect>
-<rect width="11.88" height="11.51" x="706.12" y="108.31" class="known"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
+<rect width="11.88" height="11.51" x="706.12" y="108.31" class="decompiled"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
 <rect width="11.53" height="11.51" x="720.99" y="108.31" class="known"><title>void __cdecl IcicleControl(int16_t item_num);</title></rect>
 <rect width="11.48" height="11.51" x="735.52" y="108.31" class="decompiled"><title>void __cdecl Overlay_DrawPickups(bool pickup_state);</title></rect>
 <rect width="11.45" height="11.47" x="480.35" y="122.81" class="decompiled"><title>void __cdecl Matrix_InterpolateArm(void);</title></rect>

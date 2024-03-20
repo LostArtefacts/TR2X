@@ -59,6 +59,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x00444E10, WinVidClearMaxWindowSize);
     INJECT(1, 0x00444E20, CalculateWindowWidth);
     INJECT(1, 0x00444E70, CalculateWindowHeight);
+    INJECT(1, 0x00444EA0, WinVidGetMinMaxInfo);
     INJECT(1, 0x00444FD0, WinVidSpinMessageLoop);
     INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x00447220, DInputRelease);

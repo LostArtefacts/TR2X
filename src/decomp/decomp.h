@@ -30,4 +30,5 @@ void __cdecl WinVidClearMinWindowSize(void);
 void __cdecl WinVidClearMaxWindowSize(void);
 int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);
 int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);
+bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);
 bool __cdecl WinVidSpinMessageLoop(bool need_wait);

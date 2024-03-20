@@ -505,6 +505,45 @@ int32_t __cdecl CalculateWindowHeight(const int32_t width, const int32_t height)
     return height;
 }
 
+bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info)
+{
+    if (!g_IsGameWindowCreated) {
+        return false;
+    }
+
+    if (g_IsGameFullScreen) {
+        info->ptMaxTrackSize.x = g_FullScreenWidth;
+        info->ptMaxTrackSize.y = g_FullScreenHeight;
+        info->ptMinTrackSize.x = g_FullScreenWidth;
+        info->ptMinTrackSize.y = g_FullScreenHeight;
+        info->ptMaxSize.x = g_FullScreenWidth;
+        info->ptMaxSize.y = g_FullScreenHeight;
+        return true;
+    }
+
+    if (g_IsMinWindowSizeSet) {
+        info->ptMinTrackSize.x = g_MinWindowWidth;
+        info->ptMinTrackSize.y = g_MinWindowHeight;
+    }
+
+    if (g_IsMinMaxInfoSpecial) {
+        int32_t width = g_GameWindowWidth;
+        int32_t height = g_GameWindowHeight;
+        GameWindowCalculateSizeFromClient(&width, &height);
+        info->ptMaxSize.x = width;
+        info->ptMaxTrackSize.x = width;
+        info->ptMaxSize.y = height;
+        info->ptMaxTrackSize.y = height;
+    } else if (g_IsMaxWindowSizeSet) {
+        info->ptMaxTrackSize.x = g_MaxWindowWidth;
+        info->ptMaxTrackSize.y = g_MaxWindowHeight;
+        info->ptMaxSize.x = g_MaxWindowWidth;
+        info->ptMaxSize.y = g_MaxWindowHeight;
+    }
+
+    return g_IsMinWindowSizeSet || g_IsMaxWindowSizeSet;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {
