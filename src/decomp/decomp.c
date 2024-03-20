@@ -494,6 +494,17 @@ int32_t __cdecl CalculateWindowWidth(const int32_t width, const int32_t height)
     return width;
 }
 
+int32_t __cdecl CalculateWindowHeight(const int32_t width, const int32_t height)
+{
+    if (g_SavedAppSettings.aspect_mode == AM_4_3) {
+        return (3 * width) / 4;
+    }
+    if (g_SavedAppSettings.aspect_mode == AM_16_9) {
+        return (9 * width) / 16;
+    }
+    return height;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {
