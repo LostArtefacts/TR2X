@@ -27,4 +27,5 @@ int16_t __cdecl TitleSequence(void);
 void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height);
 void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height);
 void __cdecl WinVidClearMinWindowSize(void);
+void __cdecl WinVidClearMaxWindowSize(void);
 bool __cdecl WinVidSpinMessageLoop(bool need_wait);

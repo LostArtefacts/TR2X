@@ -478,6 +478,11 @@ void __cdecl WinVidClearMinWindowSize(void)
     g_IsMinWindowSizeSet = false;
 }
 
+void __cdecl WinVidClearMaxWindowSize(void)
+{
+    g_IsMaxWindowSizeSet = false;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {
