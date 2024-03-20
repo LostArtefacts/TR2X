@@ -2567,7 +2567,7 @@ typedef enum GAME_OBJECT_ID {
 00444E20    00000048    +R      int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);
 00444E70    00000028    +R      int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);
 00444EA0    00000104    +R      bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);
-00444FB0    00000011    -R      HWND __cdecl WinVidFindGameWindow(void);
+00444FB0    00000011    +R      HWND __cdecl WinVidFindGameWindow(void);
 00444FD0    000000E2    +R      bool __cdecl WinVidSpinMessageLoop(bool needWait);
 004450C0    00000043    -R      void __cdecl WinVidShowGameWindow(int32_t nCmdShow);
 00445110    0000003A    -R      void __cdecl WinVidHideGameWindow(void);

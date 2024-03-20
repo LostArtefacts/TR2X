@@ -9,6 +9,9 @@
 #define PHD_45 (PHD_ONE / 8) // = 8192 = 0x2000
 #define PHD_135 (PHD_45 * 3) // = 24576 = 0x6000
 
+#define CLASS_NAME "Dude:TombRaiderII:DDWndClass"
+#define WINDOW_NAME "Tomb Raider II"
+
 #define W2V_SHIFT 14
 #define WALL_L 1024
 #define WALL_SHIFT 10

@@ -544,6 +544,11 @@ bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info)
     return g_IsMinWindowSizeSet || g_IsMaxWindowSizeSet;
 }
 
+HWND __cdecl WinVidFindGameWindow(void)
+{
+    return FindWindowA(CLASS_NAME, WINDOW_NAME);
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {

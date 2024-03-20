@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.02% (390)</tspan> · <tspan class="known">65.52% (798)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.10% (391)</tspan> · <tspan class="known">65.44% (797)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="239.19" height="6" x="0" y="0" class="decompiled"/>
-<rect width="489.41" height="6" x="239.19" y="0" class="known"/>
+<rect width="239.80" height="6" x="0" y="0" class="decompiled"/>
+<rect width="488.80" height="6" x="239.80" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -908,7 +908,7 @@
 <rect width="12" height="12" x="420" y="240" class="decompiled"><title>int32_t __cdecl CalculateWindowWidth(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="435" y="240" class="decompiled"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="450" y="240" class="decompiled"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
-<rect width="12" height="12" x="465" y="240" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
+<rect width="12" height="12" x="465" y="240" class="decompiled"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
 <rect width="12" height="12" x="480" y="240" class="decompiled"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
 <rect width="12" height="12" x="495" y="240" class="known"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
 <rect width="12" height="12" x="510" y="240" class="known"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.22%</tspan> · <tspan class="known">70.45%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.23%</tspan> · <tspan class="known">70.45%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="218.27" height="6" x="0" y="0" class="decompiled"/>
-<rect width="526.28" height="6" x="218.27" y="0" class="known"/>
+<rect width="218.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="526.25" height="6" x="218.31" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -2469,7 +2469,7 @@
 <rect width="0.98" height="0.76" x="726.65" y="374.24" class="unused"><title>sub_4470C0</title></rect>
 <rect width="1.01" height="0.73" x="730.63" y="354.82" class="unused"><title>sub_447A90</title></rect>
 <rect width="1.01" height="0.73" x="734.63" y="354.82" class="known"><title>void __cdecl SafeFreePalette(int32_t palette_idx);</title></rect>
-<rect width="0.79" height="0.73" x="738.64" y="354.82" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
+<rect width="0.79" height="0.73" x="738.64" y="354.82" class="decompiled"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
 <rect width="0.79" height="0.73" x="742.43" y="354.82" class="known"><title>void __cdecl GameBuf_Shutdown(void);</title></rect>
 <rect width="0.79" height="0.73" x="746.21" y="354.82" class="known"><title>HWND __cdecl SE_FindSetupDialog(void);</title></rect>
 <rect width="0.92" height="0.38" x="730.63" y="358.55" class="decompiled"><title>void __cdecl Text_RemoveBackground(struct TEXTSTRING *string);</title></rect>
