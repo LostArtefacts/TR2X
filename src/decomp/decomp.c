@@ -463,6 +463,16 @@ void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height)
     g_IsMinWindowSizeSet = true;
 }
 
+void __cdecl WinVidSetMaxWindowSize(int32_t width, int32_t height)
+{
+    g_MaxWindowClientWidth = width;
+    g_MaxWindowClientHeight = height;
+    GameWindowCalculateSizeFromClient(&width, &height);
+    g_MaxWindowWidth = width;
+    g_MaxWindowHeight = height;
+    g_IsMaxWindowSizeSet = true;
+}
+
 void __cdecl WinVidClearMinWindowSize(void)
 {
     g_IsMinWindowSizeSet = false;
