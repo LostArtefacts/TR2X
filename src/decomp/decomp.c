@@ -2,6 +2,7 @@
 
 #include "game/music.h"
 #include "game/shell.h"
+#include "game/text.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -393,4 +394,61 @@ void __cdecl Shell_Shutdown(void)
     if (g_ErrorMessage[0]) {
         MessageBoxA(NULL, g_ErrorMessage, NULL, MB_ICONWARNING);
     }
+}
+
+int16_t __cdecl TitleSequence(void)
+{
+    Text_Init();
+    TempVideoAdjust(1, 1.0);
+
+    g_NoInputCounter = 0;
+
+    if (!g_IsTitleLoaded) {
+        if (!Level_Initialise(0, 0)) {
+            return GFD_EXIT_GAME;
+        }
+        g_IsTitleLoaded = TRUE;
+    }
+
+    S_DisplayPicture("data/title.pcx", 1);
+    if (g_GameFlow.title_track) {
+        Music_Play(g_GameFlow.title_track, 1);
+    }
+
+    Display_Inventory(INV_TITLE_MODE);
+
+    S_FadeToBlack();
+    S_DontDisplayPicture();
+
+    Music_Stop();
+    if (g_IsResetFlag) {
+        g_IsResetFlag = 0;
+        return GFD_START_DEMO;
+    }
+
+    if (g_InventoryChosen == O_PHOTO_OPTION) {
+        return GFD_START_GAME | LV_GYM;
+    }
+
+    if (g_InventoryChosen == O_PASSPORT_OPTION) {
+        const int32_t slot_num = g_InventoryExtraData[1];
+
+        if (g_InventoryExtraData[0] == 0) {
+            Inv_RemoveAllItems();
+            S_LoadGame(&g_SaveGame, sizeof(SAVEGAME_INFO), slot_num);
+            return GFD_START_SAVED_GAME | slot_num;
+        }
+
+        if (g_InventoryExtraData[0] == 1) {
+            InitialiseStartInfo();
+            int32_t level_id = LV_FIRST;
+            if ((g_GameFlow.flags & GFF_SELECT_ANY_LEVEL) != 0) {
+                level_id = LV_FIRST + slot_num;
+            }
+            return GFD_START_GAME | level_id;
+        }
+        return GFD_EXIT_GAME;
+    }
+
+    return GFD_EXIT_GAME;
 }

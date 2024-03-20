@@ -748,7 +748,6 @@
 #define SE_AdvancedDlgUpdate ((void __cdecl (*)(HWND hwndDlg))0x004548B0)
 #define SE_AdvancedDlgInit ((void __cdecl (*)(HWND hwndDlg))0x00454950)
 #define SE_FindSetupDialog ((HWND __cdecl (*)(void))0x00454960)
-#define TitleSequence ((int16_t __cdecl (*)(void))0x00454C50)
 #define CheckCheatMode ((void __cdecl (*)(void))0x00454D60)
 #define S_SaveSettings ((void __cdecl (*)(void))0x004550C0)
 #define S_LoadSettings ((void __cdecl (*)(void))0x00455140)

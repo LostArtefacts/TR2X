@@ -894,6 +894,20 @@ typedef struct BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+typedef enum LEVEL_TYPE {
+    LV_GYM = 0,
+    LV_FIRST = 1,
+} LEVEL_TYPE;
+
+typedef enum INVENTORY_MODE {
+    INV_GAME_MODE,
+    INV_TITLE_MODE,
+    INV_KEYS_MODE,
+    INV_SAVE_MODE,
+    INV_LOAD_MODE,
+    INV_DEATH_MODE,
+} INVENTORY_MODE;
+
 // clang-format off
 typedef enum GAME_FLOW_DIR {
     GFD_START_GAME       = 0x0000,

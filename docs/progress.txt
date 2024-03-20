@@ -869,6 +869,11 @@ typedef struct __unaligned BOX_INFO {
     uint16_t overlap_index;
 } BOX_INFO;
 
+typedef enum LEVEL_TYPE {
+    LV_GYM = 0,
+    LV_FIRST = 1,
+} LEVEL_TYPE;
+
 typedef enum GAME_FLOW_FLAG {
     GFF_DEMO_VERSION              = 0x0001,
     GFF_TITLE_DISABLED            = 0x0002,
@@ -2768,8 +2773,8 @@ typedef enum GAME_OBJECT_ID {
 0044E770    00000055    +       void __cdecl Shell_Cleanup(void);
 0044E7A0    0000007C    +R      int32_t __cdecl WinGameStart(void);
 0044E820    00000039    +       void __cdecl Shell_Shutdown(void);
-0044E860    00000017    -R      sub_44E860
-0044E880    00000010    -R      sub_44E880
+0044E860    00000017    xR      sub_44E860
+0044E880    00000010    xR      sub_44E880
 0044E890    0000003C    +       void __cdecl Shell_ExitSystem(const char *message);
 0044E8E0    0000010F    +R      void __cdecl ScreenshotPCX(void);
 0044E9F0    000000AE    +R      DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB888 *palette, BYTE **pcx_data);
@@ -2855,7 +2860,7 @@ typedef enum GAME_OBJECT_ID {
 00454950    0000000E    -R      void __cdecl SE_AdvancedDlgInit(HWND hwndDlg);
 00454960    00000011    -R      HWND __cdecl SE_FindSetupDialog(void);
 00454980    000002D0    +       BOOL __cdecl Shell_Main(void);
-00454C50    00000110    *R      int16_t __cdecl TitleSequence(void);
+00454C50    00000110    +R      int16_t __cdecl TitleSequence(void);
 00454D60    0000032D    -R      void __cdecl CheckCheatMode(void);
 004550C0    0000007D    *R      void __cdecl S_SaveSettings(void);
 00455140    000000DB    *R      void __cdecl S_LoadSettings(void);
@@ -3235,3 +3240,5 @@ typedef enum GAME_OBJECT_ID {
 005263CC    -       struct BOX_INFO *g_Boxes;
 004D855C    -       LPDIRECTINPUT g_DInput;
 004D8560    -       LPDIRECTINPUTDEVICE IDID_SysKeyboard;
+0051BDA0    -       BOOL g_IsTitleLoaded;
+004D7980    -       int32_t g_InventoryExtraData[8];
