@@ -593,3 +593,14 @@ void __cdecl WinVidShowGameWindow(const int32_t cmd_show)
         g_IsGameWindowShow = true;
     }
 }
+
+void __cdecl WinVidHideGameWindow(void)
+{
+    if (g_IsGameWindowShow) {
+        g_IsGameWindowUpdating = true;
+        ShowWindow(g_GameWindowHandle, SW_HIDE);
+        UpdateWindow(g_GameWindowHandle);
+        g_IsGameWindowUpdating = false;
+        g_IsGameWindowShow = false;
+    }
+}

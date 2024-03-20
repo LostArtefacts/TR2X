@@ -63,6 +63,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x00444FB0, WinVidFindGameWindow);
     INJECT(1, 0x00444FD0, WinVidSpinMessageLoop);
     INJECT(1, 0x004450C0, WinVidShowGameWindow);
+    INJECT(1, 0x00445110, WinVidHideGameWindow);
     INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x00447220, DInputRelease);
     INJECT(1, 0x00447240, WinInReadKeyboard);
