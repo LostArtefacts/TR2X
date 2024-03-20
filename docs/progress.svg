@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.12% (379)</tspan> · <tspan class="known">66.42% (809)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.20% (380)</tspan> · <tspan class="known">66.34% (808)</tspan> · <tspan class="todo">0.57% (7)</tspan> · <tspan class="unused">1.89% (23)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="232.44" height="6" x="0" y="0" class="decompiled"/>
-<rect width="496.16" height="6" x="232.44" y="0" class="known"/>
+<rect width="233.05" height="6" x="0" y="0" class="decompiled"/>
+<rect width="495.55" height="6" x="233.05" y="0" class="known"/>
 <rect width="4.29" height="6" x="728.60" y="0" class="todo"/>
 <rect width="14.11" height="6" x="732.89" y="0" class="unused"/>
 </g>
@@ -1112,7 +1112,7 @@
 <rect width="12" height="12" x="480" y="300" class="unused"><title>sub_44E6F0</title></rect>
 <rect width="12" height="12" x="495" y="300" class="decompiled"><title>int32_t __cdecl GameInit(bool skip_cd_init);</title></rect>
 <rect width="12" height="12" x="510" y="300" class="decompiled"><title>void __cdecl Shell_Cleanup(void);</title></rect>
-<rect width="12" height="12" x="525" y="300" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
+<rect width="12" height="12" x="525" y="300" class="decompiled"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="12" height="12" x="540" y="300" class="known"><title>void __cdecl Shell_Shutdown(void);</title></rect>
 <rect width="12" height="12" x="555" y="300" class="todo"><title>sub_44E860</title></rect>
 <rect width="12" height="12" x="570" y="300" class="todo"><title>sub_44E880</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.87%</tspan> · <tspan class="known">70.80%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">28.91%</tspan> · <tspan class="known">70.77%</tspan> · <tspan class="todo">0.02%</tspan> · <tspan class="unused">0.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="215.66" height="6" x="0" y="0" class="decompiled"/>
-<rect width="528.90" height="6" x="215.66" y="0" class="known"/>
+<rect width="215.93" height="6" x="0" y="0" class="decompiled"/>
+<rect width="528.63" height="6" x="215.93" y="0" class="known"/>
 <rect width="0.12" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.32" height="6" x="744.68" y="0" class="unused"/>
 </g>
@@ -1951,7 +1951,7 @@
 <rect width="7.23" height="7.06" x="599.21" y="206.76" class="known"><title>void __cdecl draw_pistols(int32_t weapon_type);</title></rect>
 <rect width="7.23" height="7.06" x="609.45" y="206.76" class="known"><title>void __cdecl InitialiseDyingMonk(int16_t item_num);</title></rect>
 <rect width="7.23" height="7.06" x="619.68" y="206.76" class="known"><title>void __cdecl SkidooExplode(struct ITEM_INFO *skidoo);</title></rect>
-<rect width="7.23" height="7.06" x="629.91" y="206.76" class="known"><title>int32_t __cdecl WinGameStart(void);</title></rect>
+<rect width="7.23" height="7.06" x="629.91" y="206.76" class="decompiled"><title>int32_t __cdecl WinGameStart(void);</title></rect>
 <rect width="7.15" height="7.06" x="640.15" y="206.76" class="known"><title>void __cdecl FireM16(int32_t running);</title></rect>
 <rect width="7.07" height="7.06" x="650.30" y="206.76" class="decompiled"><title>void __cdecl Matrix_TranslateAbs(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="7.07" height="7.06" x="660.37" y="206.76" class="known"><title>int16_t __cdecl Diver_Harpoon(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE y_rot, int16_t room_num);</title></rect>

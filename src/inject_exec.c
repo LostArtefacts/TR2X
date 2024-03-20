@@ -60,6 +60,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x0044E4E0, RenderErrorBox);
     INJECT(1, 0x0044E520, WinMain);
     INJECT(1, 0x0044E700, GameInit);
+    INJECT(1, 0x0044E7A0, WinGameStart);
     INJECT(1, 0x0044E8E0, ScreenshotPCX);
     INJECT(1, 0x0044E9F0, CompPCX);
     INJECT(1, 0x0044EAA0, EncodeLinePCX);

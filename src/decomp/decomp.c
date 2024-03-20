@@ -32,11 +32,6 @@ int32_t __stdcall WinMain(
     HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine,
     int32_t nShowCmd)
 {
-    BOOL is_setup_requested; // ebx
-    int32_t app_settings_status; // eax
-    int32_t v9; // esi
-    char finish; // [esp+2Ch] [ebp+8h]
-
     g_GameModule = hInstance;
     g_CmdLine = lpCmdLine;
     HWND game_window = WinVidFindGameWindow();
@@ -51,13 +46,13 @@ int32_t __stdcall WinMain(
 
     // TODO: install exception handler
 
-    is_setup_requested = UT_FindArg("setup") != 0;
+    bool is_setup_requested = UT_FindArg("setup") != 0;
     if (!GameInit()) {
         UT_ErrorBox(IDS_DX5_REQUIRED, NULL);
         goto cleanup;
     }
 
-    app_settings_status = SE_ReadAppSettings(&g_SavedAppSettings);
+    int32_t app_settings_status = SE_ReadAppSettings(&g_SavedAppSettings);
     if (!app_settings_status) {
         goto cleanup;
     }
@@ -373,4 +368,17 @@ void __cdecl WinInReadKeyboard(uint8_t *input_data)
     }
 
     memset(input_data, 0, 256);
+}
+
+int32_t __cdecl WinGameStart(void)
+{
+    // try {
+    WinVidStart();
+    RenderStart(1);
+    S_Audio_Sample_Init2(0);
+    WinInStart();
+    // } catch (int error) {
+    //     return error;
+    // }
+    return 0;
 }

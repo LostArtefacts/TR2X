@@ -672,7 +672,6 @@
 #define game_malloc ((void *__cdecl (*)(uint32_t alloc_size, uint32_t buf_index))0x0044D6C0)
 #define game_free ((void __cdecl (*)(uint32_t free_size))0x0044D740)
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
-#define WinGameStart ((int32_t __cdecl (*)(void))0x0044E7A0)
 #define Shell_Shutdown ((void __cdecl (*)(void))0x0044E820)
 #define do_inventory_options ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EDC0)
 #define do_passport_option ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EED0)
