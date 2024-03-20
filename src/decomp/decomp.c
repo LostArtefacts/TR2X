@@ -452,3 +452,37 @@ int16_t __cdecl TitleSequence(void)
 
     return GFD_EXIT_GAME;
 }
+
+bool __cdecl WinVidSpinMessageLoop(bool need_wait)
+{
+    if (g_IsMessageLoopClosed) {
+        return 0;
+    }
+
+    g_MessageLoopCounter++;
+
+    do {
+        if (need_wait) {
+            WaitMessage();
+        } else {
+            need_wait = true;
+        }
+
+        MSG msg;
+        while (PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE)) {
+            TranslateMessage(&msg);
+            DispatchMessageA(&msg);
+            if (msg.message == WM_QUIT) {
+                g_AppResultCode = msg.wParam;
+                g_IsMessageLoopClosed = true;
+                g_IsGameToExit = true;
+                g_StopInventory = true;
+                g_MessageLoopCounter--;
+                return 0;
+            }
+        }
+    } while (!g_IsGameWindowActive || g_IsGameWindowMinimized);
+
+    g_MessageLoopCounter--;
+    return true;
+}

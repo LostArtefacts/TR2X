@@ -521,7 +521,6 @@
 #define CalculateWindowHeight ((int32_t __cdecl (*)(int32_t width, int32_t height))0x00444E70)
 #define WinVidGetMinMaxInfo ((bool __cdecl (*)(LPMINMAXINFO info))0x00444EA0)
 #define WinVidFindGameWindow ((HWND __cdecl (*)(void))0x00444FB0)
-#define WinVidSpinMessageLoop ((bool __cdecl (*)(bool needWait))0x00444FD0)
 #define WinVidShowGameWindow ((void __cdecl (*)(int32_t nCmdShow))0x004450C0)
 #define WinVidHideGameWindow ((void __cdecl (*)(void))0x00445110)
 #define WinVidSetGameWindowSize ((void __cdecl (*)(int32_t width, int32_t height))0x00445150)

@@ -24,3 +24,4 @@ void __cdecl WinInReadKeyboard(uint8_t *input_data);
 int32_t __cdecl WinGameStart(void);
 void __cdecl Shell_Shutdown(void);
 int16_t __cdecl TitleSequence(void);
+bool __cdecl WinVidSpinMessageLoop(bool need_wait);

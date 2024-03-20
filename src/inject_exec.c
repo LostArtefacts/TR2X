@@ -53,6 +53,7 @@ static void Inject_S_FlaggedString(void);
 
 static void Inject_Decomp(void)
 {
+    INJECT(1, 0x00444FD0, WinVidSpinMessageLoop);
     INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x00447220, DInputRelease);
     INJECT(1, 0x00447240, WinInReadKeyboard);

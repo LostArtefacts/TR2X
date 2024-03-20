@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.36% (382)</tspan> · <tspan class="known">66.17% (806)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">31.44% (383)</tspan> · <tspan class="known">66.09% (805)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="234.28" height="6" x="0" y="0" class="decompiled"/>
-<rect width="494.32" height="6" x="234.28" y="0" class="known"/>
+<rect width="234.89" height="6" x="0" y="0" class="decompiled"/>
+<rect width="493.71" height="6" x="234.89" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -909,7 +909,7 @@
 <rect width="12" height="12" x="435" y="240" class="known"><title>int32_t __cdecl CalculateWindowHeight(int32_t width, int32_t height);</title></rect>
 <rect width="12" height="12" x="450" y="240" class="known"><title>bool __cdecl WinVidGetMinMaxInfo(LPMINMAXINFO info);</title></rect>
 <rect width="12" height="12" x="465" y="240" class="known"><title>HWND __cdecl WinVidFindGameWindow(void);</title></rect>
-<rect width="12" height="12" x="480" y="240" class="known"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
+<rect width="12" height="12" x="480" y="240" class="decompiled"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
 <rect width="12" height="12" x="495" y="240" class="known"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
 <rect width="12" height="12" x="510" y="240" class="known"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
 <rect width="12" height="12" x="525" y="240" class="known"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29%</tspan> · <tspan class="known">70.67%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.07%</tspan> · <tspan class="known">70.60%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="216.65" height="6" x="0" y="0" class="decompiled"/>
-<rect width="527.91" height="6" x="216.65" y="0" class="known"/>
+<rect width="217.14" height="6" x="0" y="0" class="decompiled"/>
+<rect width="527.42" height="6" x="217.14" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1706,7 +1706,7 @@
 <rect width="10.66" height="10.80" x="494.80" y="364.20" class="decompiled"><title>void __cdecl Effect_Kill(int16_t fx_num);</title></rect>
 <rect width="10.71" height="10.74" x="508.46" y="122.81" class="known"><title>void __cdecl BigBowlControl(int16_t item_num);</title></rect>
 <rect width="10.65" height="10.74" x="522.17" y="122.81" class="decompiled"><title>void __cdecl Lara_SlideSlope(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
-<rect width="10.65" height="10.74" x="535.82" y="122.81" class="known"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
+<rect width="10.65" height="10.74" x="535.82" y="122.81" class="decompiled"><title>bool __cdecl WinVidSpinMessageLoop(bool needWait);</title></rect>
 <rect width="10.65" height="10.74" x="549.47" y="122.81" class="decompiled"><title>BOOL __stdcall S_Audio_Sample_DSoundEnumCallback(LPGUID guid, LPCTSTR description, LPCTSTR module, LPVOID context);</title></rect>
 <rect width="10.59" height="10.74" x="563.12" y="122.81" class="decompiled"><title>int32_t __cdecl Lara_TestWall(struct ITEM_INFO *item, int32_t front, int32_t right, int32_t down);</title></rect>
 <rect width="10.59" height="10.74" x="576.71" y="122.81" class="known"><title>int32_t __cdecl SkidooCheckGeton(int16_t item_num, struct COLL_INFO *coll);</title></rect>
