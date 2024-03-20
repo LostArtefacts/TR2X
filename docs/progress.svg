@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.35% (394)</tspan> · <tspan class="known">65.19% (794)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.43% (395)</tspan> · <tspan class="known">65.11% (793)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="241.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="486.96" height="6" x="241.64" y="0" class="known"/>
+<rect width="242.25" height="6" x="0" y="0" class="decompiled"/>
+<rect width="486.35" height="6" x="242.25" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -913,7 +913,7 @@
 <rect width="12" height="12" x="495" y="240" class="decompiled"><title>void __cdecl WinVidShowGameWindow(int32_t nCmdShow);</title></rect>
 <rect width="12" height="12" x="510" y="240" class="decompiled"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
 <rect width="12" height="12" x="525" y="240" class="decompiled"><title>void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);</title></rect>
-<rect width="12" height="12" x="540" y="240" class="known"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
+<rect width="12" height="12" x="540" y="240" class="decompiled"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
 <rect width="12" height="12" x="555" y="240" class="known"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
 <rect width="12" height="12" x="570" y="240" class="known"><title>HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);</title></rect>
 <rect width="12" height="12" x="585" y="240" class="known"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.28%</tspan> · <tspan class="known">70.40%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.33%</tspan> · <tspan class="known">70.35%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="218.70" height="6" x="0" y="0" class="decompiled"/>
-<rect width="525.86" height="6" x="218.70" y="0" class="known"/>
+<rect width="219.07" height="6" x="0" y="0" class="decompiled"/>
+<rect width="525.49" height="6" x="219.07" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1827,7 +1827,7 @@
 <rect width="8.66" height="8.89" x="534.18" y="330.45" class="known"><title>int32_t __cdecl Box_ValidBox(struct ITEM_INFO *item, int16_t zone_num, int16_t box_num);</title></rect>
 <rect width="8.66" height="8.89" x="534.18" y="342.34" class="known"><title>void __cdecl ShootAtLara(struct FX_INFO *fx);</title></rect>
 <rect width="8.66" height="8.89" x="534.18" y="354.23" class="known"><title>int16_t __cdecl GunMiss(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
-<rect width="8.66" height="8.89" x="534.18" y="366.11" class="known"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
+<rect width="8.66" height="8.89" x="534.18" y="366.11" class="decompiled"><title>bool __cdecl ShowDDrawGameWindow(bool active);</title></rect>
 <rect width="8.66" height="8.75" x="545.84" y="173.80" class="decompiled"><title>void __cdecl Lara_State_Extra_StartHouse(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="8.59" height="8.75" x="557.50" y="173.80" class="known"><title>int32_t __cdecl Box_EscapeBox(struct ITEM_INFO *item, struct ITEM_INFO *enemy, int16_t box_num);</title></rect>
 <rect width="8.59" height="8.75" x="569.09" y="173.80" class="known"><title>void __cdecl DoLotsOfBlood(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num, int32_t num);</title></rect>

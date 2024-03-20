@@ -612,3 +612,37 @@ void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height)
         g_GameWindowHandle, NULL, 0, 0, width, height,
         SWP_NOCOPYBITS | SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOMOVE);
 }
+
+bool __cdecl ShowDDrawGameWindow(bool active)
+{
+    if (!g_GameWindowHandle || !g_DDraw) {
+        return false;
+    }
+    if (g_IsDDrawGameWindowShow) {
+        return true;
+    }
+
+    RECT rect;
+    GetWindowRect(g_GameWindowHandle, &rect);
+    g_GameWindowX = rect.left;
+    g_GameWindowY = rect.top;
+
+    if (active) {
+        WinVidShowGameWindow(SW_SHOW);
+    }
+
+    g_IsGameWindowUpdating = true;
+    uint32_t flags = DDSCL_ALLOWMODEX | DDSCL_EXCLUSIVE | DDSCL_ALLOWREBOOT
+        | DDSCL_FULLSCREEN;
+    if (!active)
+        flags |= DDSCL_NOWINDOWCHANGES;
+    const HRESULT result =
+        IDirectDraw_SetCooperativeLevel(g_DDraw, g_GameWindowHandle, flags);
+    g_IsGameWindowUpdating = false;
+    if (FAILED(result)) {
+        return false;
+    }
+
+    g_IsDDrawGameWindowShow = true;
+    return true;
+}

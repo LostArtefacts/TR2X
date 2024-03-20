@@ -36,3 +36,4 @@ bool __cdecl WinVidSpinMessageLoop(bool need_wait);
 void __cdecl WinVidShowGameWindow(int32_t cmd_show);
 void __cdecl WinVidHideGameWindow(void);
 void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);
+bool __cdecl ShowDDrawGameWindow(bool active);
