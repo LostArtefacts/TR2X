@@ -604,3 +604,11 @@ void __cdecl WinVidHideGameWindow(void)
         g_IsGameWindowShow = false;
     }
 }
+
+void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height)
+{
+    GameWindowCalculateSizeFromClient(&width, &height);
+    SetWindowPos(
+        g_GameWindowHandle, NULL, 0, 0, width, height,
+        SWP_NOCOPYBITS | SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOMOVE);
+}
