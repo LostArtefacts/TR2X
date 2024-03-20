@@ -463,6 +463,11 @@ void __cdecl WinVidSetMinWindowSize(int32_t width, int32_t height)
     g_IsMinWindowSizeSet = true;
 }
 
+void __cdecl WinVidClearMinWindowSize(void)
+{
+    g_IsMinWindowSizeSet = false;
+}
+
 bool __cdecl WinVidSpinMessageLoop(bool need_wait)
 {
     if (g_IsMessageLoopClosed) {

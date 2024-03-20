@@ -513,7 +513,6 @@
 #define DDrawRelease ((void __cdecl (*)(void))0x00444C30)
 #define GameWindowCalculateSizeFromClient ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444C70)
 #define GameWindowCalculateSizeFromClientByZero ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444CF0)
-#define WinVidClearMinWindowSize ((void __cdecl (*)(void))0x00444DB0)
 #define WinVidSetMaxWindowSize ((void __cdecl (*)(int32_t width, int32_t height))0x00444DC0)
 #define WinVidClearMaxWindowSize ((void __cdecl (*)(void))0x00444E10)
 #define CalculateWindowWidth ((int32_t __cdecl (*)(int32_t width, int32_t height))0x00444E20)
