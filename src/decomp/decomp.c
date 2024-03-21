@@ -909,3 +909,35 @@ bool __cdecl WinVidGoWindowed(
     disp_mode->height = height;
     return true;
 }
+
+void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *disp_adapter)
+{
+    DISPLAY_MODE disp_mode;
+
+    disp_adapter->sw_windowed_supported = 0;
+    disp_adapter->hw_windowed_supported = 0;
+    disp_adapter->screen_width = 0;
+    if (disp_adapter->adapter_guid_ptr != NULL && !DDrawCreate(NULL)) {
+        return;
+    }
+
+    bool result = WinVidGetDisplayMode(&disp_mode);
+    DDrawRelease();
+
+    if (!result) {
+        return;
+    }
+
+    disp_mode.width &= ~0x1F;
+    if (disp_mode.width * 3 / 4 > disp_mode.height) {
+        disp_mode.width = (disp_mode.height * 4 / 3) & 0x1F;
+    }
+
+    disp_adapter->sw_windowed_supported = disp_mode.vga == VGA_256_COLOR;
+    disp_adapter->hw_windowed_supported = disp_adapter->hw_render_supported
+        && (disp_adapter->hw_device_desc.dwFlags & D3DDD_DEVICERENDERBITDEPTH)
+            != 0
+        && (GetRenderBitDepth(disp_mode.bpp)
+            & disp_adapter->hw_device_desc.dwDeviceRenderBitDepth)
+            != 0;
+}

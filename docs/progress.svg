@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.58% (409)</tspan> · <tspan class="known">63.96% (779)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.66% (410)</tspan> · <tspan class="known">63.88% (778)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="250.84" height="6" x="0" y="0" class="decompiled"/>
-<rect width="477.76" height="6" x="250.84" y="0" class="known"/>
+<rect width="251.45" height="6" x="0" y="0" class="decompiled"/>
+<rect width="477.15" height="6" x="251.45" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -928,7 +928,7 @@
 <rect width="12" height="12" x="720" y="240" class="decompiled"><title>bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);</title></rect>
 <rect width="12" height="12" x="735" y="240" class="decompiled"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode);</title></rect>
 <rect width="12" height="12" x="0" y="255" class="decompiled"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
-<rect width="12" height="12" x="15" y="255" class="known"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);</title></rect>
+<rect width="12" height="12" x="15" y="255" class="decompiled"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *disp_adapter);</title></rect>
 <rect width="12" height="12" x="30" y="255" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
 <rect width="12" height="12" x="45" y="255" class="known"><title>bool __cdecl WinVidGetDisplayModes(void);</title></rect>
 <rect width="12" height="12" x="60" y="255" class="known"><title>HRESULT __stdcall EnumDisplayModesCallback(LPDDSDESC lpDDSurfaceDesc, LPVOID lpContext);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.76%</tspan> · <tspan class="known">69.91%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.82%</tspan> · <tspan class="known">69.85%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="222.31" height="6" x="0" y="0" class="decompiled"/>
-<rect width="522.25" height="6" x="222.31" y="0" class="known"/>
+<rect width="222.78" height="6" x="0" y="0" class="decompiled"/>
+<rect width="521.78" height="6" x="222.78" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1730,7 +1730,7 @@
 <rect width="10.18" height="10.54" x="508.46" y="204.84" class="decompiled"><title>void __cdecl Lara_Col_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="10.18" height="10.54" x="508.46" y="218.38" class="known"><title>bool __cdecl SE_GraphicsTestStart(void);</title></rect>
 <rect width="10.18" height="10.42" x="508.46" y="231.92" class="known"><title>int16_t __cdecl Creature_Turn(struct ITEM_INFO *item, int16_t maximum_turn);</title></rect>
-<rect width="10.18" height="10.42" x="508.46" y="245.34" class="known"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);</title></rect>
+<rect width="10.18" height="10.42" x="508.46" y="245.34" class="decompiled"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *disp_adapter);</title></rect>
 <rect width="10.18" height="10.35" x="508.46" y="258.76" class="known"><title>void __cdecl LiftControl(int16_t item_num);</title></rect>
 <rect width="10.18" height="10.29" x="508.46" y="272.11" class="decompiled"><title>void __cdecl Output_InsertTransQuad(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
 <rect width="10.18" height="10.29" x="508.46" y="285.40" class="decompiled"><title>void __cdecl Lara_State_ForwardJump(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
