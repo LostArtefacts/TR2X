@@ -294,7 +294,7 @@ bool __cdecl S_Input_Update(void)
                         .width = g_GameVidWidth,
                         .height = g_GameVidHeight,
                         .bpp = g_GameVidBPP,
-                        .vga = VGA_NoVga,
+                        .vga = VGA_NO_VGA,
                     };
 
                     const struct DISPLAY_MODE_NODE *mode = NULL;
@@ -329,7 +329,7 @@ bool __cdecl S_Input_Update(void)
                     .width = g_GameVidWidth,
                     .height = g_GameVidHeight,
                     .bpp = new_settings.render_mode == RM_HARDWARE ? 16 : 8,
-                    .vga = VGA_NoVga,
+                    .vga = VGA_NO_VGA,
                 };
 
                 const struct DISPLAY_MODE_NODE *mode = NULL;

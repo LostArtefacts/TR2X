@@ -41,10 +41,10 @@ typedef struct PHD_3DPOS {
 } PHD_3DPOS;
 
 typedef enum VGA_MODE {
-    VGA_NoVga,
-    VGA_256Color,
-    VGA_ModeX,
-    VGA_Standard,
+    VGA_NO_VGA,
+    VGA_256_COLOR,
+    VGA_MODEX,
+    VGA_STANDARD,
 } VGA_MODE;
 
 typedef struct BITMAP_RESOURCE {

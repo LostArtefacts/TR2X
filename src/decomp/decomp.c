@@ -812,3 +812,30 @@ DWORD __cdecl CalculateCompatibleColor(
     );
     // clang-format on
 }
+
+bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode)
+{
+    DDSDESC dsp = { .dwSize = sizeof(DDSDESC), 0 };
+
+    if (FAILED(IDirectDraw_GetDisplayMode(g_DDraw, &dsp))) {
+        return false;
+    }
+
+    // clang-format off
+    if (!(dsp.dwFlags & DDSD_WIDTH)
+        || !(dsp.dwFlags & DDSD_HEIGHT)
+        || !(dsp.dwFlags & DDSD_PIXELFORMAT)
+        || !(dsp.ddpfPixelFormat.dwFlags & DDPF_RGB)
+    ) {
+        return false;
+    }
+    // clang-format on
+
+    disp_mode->width = dsp.dwWidth;
+    disp_mode->height = dsp.dwHeight;
+    disp_mode->bpp = dsp.ddpfPixelFormat.dwRGBBitCount;
+    disp_mode->vga = (dsp.ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED8) != 0
+        ? VGA_256_COLOR
+        : VGA_NO_VGA;
+    return true;
+}

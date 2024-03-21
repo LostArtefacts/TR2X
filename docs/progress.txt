@@ -8,10 +8,10 @@ typedef LPDIRECTDRAWSURFACE3 LPDDS;
 typedef D3DTEXTUREHANDLE HWR_TEX_HANDLE;
 
 typedef enum VGA_MODE {
-    VGA_NoVga,
-    VGA_256Color,
-    VGA_ModeX,
-    VGA_Standard,
+    VGA_NO_VGA,
+    VGA_256_COLOR,
+    VGA_MODEX,
+    VGA_STANDARD,
 } VGA_MODE;
 
 typedef struct __unaligned BITMAP_RESOURCE {
@@ -2584,7 +2584,7 @@ typedef enum GAME_OBJECT_ID {
 00445550    00000071    +R      void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);
 004455D0    00000044    +R      void __cdecl BitMaskGetNumberOfBits(DWORD bit_mask, DWORD *bit_depth, DWORD *bit_offset);
 00445620    00000061    +R      DWORD __cdecl CalculateCompatibleColor(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha);
-00445690    0000008C    -R      bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *dispMode);
+00445690    0000008C    +R      bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);
 00445720    00000088    -R      bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);
 004457B0    0000010B    -R      bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);
 004458C0    000000D5    -R      void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);

@@ -53,3 +53,4 @@ void __cdecl BitMaskGetNumberOfBits(
 DWORD __cdecl CalculateCompatibleColor(
     const COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue,
     int32_t alpha);
+bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);
