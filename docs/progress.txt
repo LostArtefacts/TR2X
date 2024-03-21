@@ -2574,7 +2574,7 @@ typedef enum GAME_OBJECT_ID {
 00445150    00000035    +R      void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);
 00445190    000000A7    +R      bool __cdecl ShowDDrawGameWindow(bool active);
 00445240    00000087    +R      bool __cdecl HideDDrawGameWindow(void);
-004452D0    00000044    -R      HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);
+004452D0    00000044    +R      HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);
 00445320    00000046    -R      HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);
 00445370    0000004D    -R      bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fillColor);
 004453C0    0000003D    -R      HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);
@@ -3252,3 +3252,4 @@ typedef enum GAME_OBJECT_ID {
 004D837C    -       int32_t g_GameWindowY;
 004D7EE0    -       LPDIRECTDRAW g_DDraw;
 004D8380    -       int32_t g_GameWindowX;
+00463150    -       GUID g_IID_IDirectDrawSurface3;

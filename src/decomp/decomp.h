@@ -38,3 +38,4 @@ void __cdecl WinVidHideGameWindow(void);
 void __cdecl WinVidSetGameWindowSize(int32_t width, int32_t height);
 bool __cdecl ShowDDrawGameWindow(bool active);
 bool __cdecl HideDDrawGameWindow(void);
+HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);

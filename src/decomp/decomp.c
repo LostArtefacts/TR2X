@@ -670,3 +670,17 @@ bool __cdecl HideDDrawGameWindow(void)
     g_IsGameWindowUpdating = false;
     return SUCCEEDED(result);
 }
+
+HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface)
+{
+    LPDIRECTDRAWSURFACE sub_surface;
+    HRESULT rc = IDirectDraw_CreateSurface(g_DDraw, dsp, &sub_surface, NULL);
+
+    if SUCCEEDED (rc) {
+        rc = IDirectDrawSurface_QueryInterface(
+            sub_surface, &g_IID_IDirectDrawSurface3, (LPVOID *)surface);
+        IDirectDrawSurface_Release(sub_surface);
+    }
+
+    return rc;
+}
