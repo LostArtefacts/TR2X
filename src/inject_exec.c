@@ -75,6 +75,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x00445430, WinVidCopyBitmapToBuffer);
     INJECT(1, 0x004454C0, GetRenderBitDepth);
     INJECT(1, 0x00445550, WinVidGetColorBitMasks);
+    INJECT(1, 0x004455D0, BitMaskGetNumberOfBits);
     INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x00447220, DInputRelease);
     INJECT(1, 0x00447240, WinInReadKeyboard);

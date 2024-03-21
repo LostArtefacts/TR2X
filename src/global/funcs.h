@@ -513,7 +513,6 @@
 #define DDrawRelease ((void __cdecl (*)(void))0x00444C30)
 #define GameWindowCalculateSizeFromClient ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444C70)
 #define GameWindowCalculateSizeFromClientByZero ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444CF0)
-#define BitMaskGetNumberOfBits ((void __cdecl (*)(DWORD bitMask, DWORD *bitDepth, DWORD *bitOffset))0x004455D0)
 #define CalculateCompatibleColor ((DWORD __cdecl (*)(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha))0x00445620)
 #define WinVidGetDisplayMode ((bool __cdecl (*)(DISPLAY_MODE *dispMode))0x00445690)
 #define WinVidGoFullScreen ((bool __cdecl (*)(DISPLAY_MODE *dispMode))0x00445720)

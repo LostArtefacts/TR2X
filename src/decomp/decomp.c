@@ -776,3 +776,25 @@ void __thiscall WinVidGetColorBitMasks(
         bm->dwRGBAlphaBitMask, &bm->dwRGBAlphaBitDepth,
         &bm->dwRGBAlphaBitOffset);
 }
+
+void __cdecl BitMaskGetNumberOfBits(
+    DWORD bit_mask, DWORD *bit_depth, DWORD *bit_offset)
+{
+    if (!bit_mask) {
+        *bit_offset = 0;
+        *bit_depth = 0;
+        return;
+    }
+
+    int32_t i;
+
+    for (i = 0; (bit_mask & 1) == 0; i++) {
+        bit_mask >>= 1;
+    }
+    *bit_offset = i;
+
+    for (i = 0; bit_mask != 0; i++) {
+        bit_mask >>= 1;
+    }
+    *bit_depth = i;
+}

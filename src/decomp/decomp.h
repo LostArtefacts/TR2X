@@ -48,3 +48,5 @@ bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap);
 DWORD __cdecl GetRenderBitDepth(uint32_t rgb_bit_count);
 void __thiscall WinVidGetColorBitMasks(
     COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);
+void __cdecl BitMaskGetNumberOfBits(
+    DWORD bit_mask, DWORD *bit_depth, DWORD *bit_offset);
