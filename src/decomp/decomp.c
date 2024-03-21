@@ -726,3 +726,22 @@ HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc)
     }
     return rc;
 }
+
+bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap)
+{
+    DDSURFACEDESC desc;
+    if (FAILED(
+            WinVidBufferLock(surface, &desc, DDLOCK_WRITEONLY | DDLOCK_WAIT))) {
+        return false;
+    }
+
+    const uint8_t *src = (const uint8_t *)bitmap;
+    uint8_t *dst = (uint8_t *)desc.lpSurface;
+    for (int i = 0; i < (int)desc.dwHeight; i++) {
+        memcpy(dst, src, desc.dwWidth);
+        src += desc.dwWidth;
+        dst += desc.lPitch;
+    }
+    WinVidBufferUnlock(surface, &desc);
+    return true;
+}

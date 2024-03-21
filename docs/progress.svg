@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.92% (401)</tspan> · <tspan class="known">64.61% (787)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33% (402)</tspan> · <tspan class="known">64.53% (786)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="245.93" height="6" x="0" y="0" class="decompiled"/>
-<rect width="482.67" height="6" x="245.93" y="0" class="known"/>
+<rect width="246.55" height="6" x="0" y="0" class="decompiled"/>
+<rect width="482.05" height="6" x="246.55" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -920,7 +920,7 @@
 <rect width="12" height="12" x="600" y="240" class="decompiled"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);</title></rect>
 <rect width="12" height="12" x="615" y="240" class="decompiled"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
 <rect width="12" height="12" x="630" y="240" class="decompiled"><title>HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);</title></rect>
-<rect width="12" height="12" x="645" y="240" class="known"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, BYTE *bitmap);</title></rect>
+<rect width="12" height="12" x="645" y="240" class="decompiled"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap);</title></rect>
 <rect width="12" height="12" x="660" y="240" class="known"><title>DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);</title></rect>
 <rect width="12" height="12" x="675" y="240" class="known"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat);</title></rect>
 <rect width="12" height="12" x="690" y="240" class="known"><title>void __cdecl BitMaskGetNumberOfBits(DWORD bitMask, DWORD *bitDepth, DWORD *bitOffset);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.46%</tspan> · <tspan class="known">70.22%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.50%</tspan> · <tspan class="known">70.17%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="220.05" height="6" x="0" y="0" class="decompiled"/>
-<rect width="524.51" height="6" x="220.05" y="0" class="known"/>
+<rect width="220.36" height="6" x="0" y="0" class="decompiled"/>
+<rect width="524.20" height="6" x="220.36" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1886,7 +1886,7 @@
 <rect width="7.84" height="8.03" x="600.62" y="185.54" class="decompiled"><title>void __cdecl Lara_Col_Reach(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.84" height="8.03" x="611.46" y="185.54" class="known"><title>int32_t __cdecl GetCollisionAnim(struct ITEM_INFO *skidoo, struct PHD_VECTOR *moved);</title></rect>
 <rect width="7.84" height="8.03" x="622.29" y="185.54" class="known"><title>void __cdecl FlameEmitterControl(int16_t item_num);</title></rect>
-<rect width="7.84" height="8.03" x="633.13" y="185.54" class="known"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, BYTE *bitmap);</title></rect>
+<rect width="7.84" height="8.03" x="633.13" y="185.54" class="decompiled"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap);</title></rect>
 <rect width="7.76" height="8.03" x="643.97" y="185.54" class="known"><title>void __cdecl CutscenePlayer1_Initialise(int16_t item_num);</title></rect>
 <rect width="7.76" height="8.03" x="654.73" y="185.54" class="known"><title>void __cdecl FloodFX(struct ITEM_INFO *item);</title></rect>
 <rect width="7.69" height="8.03" x="665.49" y="185.54" class="known"><title>void __cdecl HWR_LoadTexturePages(int32_t pages_count, void *pages_buf, RGB888 *palette);</title></rect>
