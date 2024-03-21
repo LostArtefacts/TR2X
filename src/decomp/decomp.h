@@ -46,3 +46,5 @@ HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);
 HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);
 bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap);
 DWORD __cdecl GetRenderBitDepth(uint32_t rgb_bit_count);
+void __thiscall WinVidGetColorBitMasks(
+    COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);

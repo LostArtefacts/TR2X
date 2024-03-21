@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.09% (403)</tspan> · <tspan class="known">64.45% (785)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.17% (404)</tspan> · <tspan class="known">64.37% (784)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="247.16" height="6" x="0" y="0" class="decompiled"/>
-<rect width="481.44" height="6" x="247.16" y="0" class="known"/>
+<rect width="247.77" height="6" x="0" y="0" class="decompiled"/>
+<rect width="480.83" height="6" x="247.77" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -922,7 +922,7 @@
 <rect width="12" height="12" x="630" y="240" class="decompiled"><title>HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);</title></rect>
 <rect width="12" height="12" x="645" y="240" class="decompiled"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap);</title></rect>
 <rect width="12" height="12" x="660" y="240" class="decompiled"><title>DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);</title></rect>
-<rect width="12" height="12" x="675" y="240" class="known"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat);</title></rect>
+<rect width="12" height="12" x="675" y="240" class="decompiled"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);</title></rect>
 <rect width="12" height="12" x="690" y="240" class="known"><title>void __cdecl BitMaskGetNumberOfBits(DWORD bitMask, DWORD *bitDepth, DWORD *bitOffset);</title></rect>
 <rect width="12" height="12" x="705" y="240" class="known"><title>DWORD __cdecl CalculateCompatibleColor(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha);</title></rect>
 <rect width="12" height="12" x="720" y="240" class="known"><title>bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *dispMode);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.52%</tspan> · <tspan class="known">70.15%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.55%</tspan> · <tspan class="known">70.12%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="220.51" height="6" x="0" y="0" class="decompiled"/>
-<rect width="524.04" height="6" x="220.51" y="0" class="known"/>
+<rect width="220.76" height="6" x="0" y="0" class="decompiled"/>
+<rect width="523.80" height="6" x="220.76" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1979,7 +1979,7 @@
 <rect width="6.85" height="6.60" x="720.53" y="216.82" class="known"><title>void __cdecl Richochet(struct GAME_VECTOR *pos);</title></rect>
 <rect width="6.85" height="6.60" x="730.38" y="216.82" class="decompiled"><title>void __cdecl Lara_LookLeftRight(void);</title></rect>
 <rect width="6.77" height="6.60" x="740.23" y="216.82" class="known"><title>void __cdecl ControlSplash1(int16_t fx_num);</title></rect>
-<rect width="6.68" height="6.69" x="588.98" y="226.42" class="known"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat);</title></rect>
+<rect width="6.68" height="6.69" x="588.98" y="226.42" class="decompiled"><title>void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);</title></rect>
 <rect width="6.68" height="6.69" x="588.98" y="236.11" class="known"><title>BOOL __cdecl LoadPalettes(HANDLE handle);</title></rect>
 <rect width="6.68" height="6.69" x="588.98" y="245.80" class="known"><title>bool __cdecl GetRegistryBinaryValue(LPCTSTR lpValueName, LPBYTE value, DWORD valueSize, LPBYTE defaultValue);</title></rect>
 <rect width="6.68" height="6.60" x="588.98" y="255.48" class="known"><title>void __cdecl ready_shotgun(int32_t weapon_type);</title></rect>

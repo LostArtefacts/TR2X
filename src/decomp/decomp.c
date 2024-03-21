@@ -761,3 +761,18 @@ DWORD __cdecl GetRenderBitDepth(const uint32_t rgb_bit_count)
     }
     return 0;
 }
+
+void __thiscall WinVidGetColorBitMasks(
+    COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format)
+{
+    bm->dwRBitMask = pixel_format->dwRBitMask;
+    bm->dwGBitMask = pixel_format->dwGBitMask;
+    bm->dwBBitMask = pixel_format->dwBBitMask;
+    bm->dwRGBAlphaBitMask = pixel_format->dwRGBAlphaBitMask;
+    BitMaskGetNumberOfBits(bm->dwRBitMask, &bm->dwRBitDepth, &bm->dwRBitOffset);
+    BitMaskGetNumberOfBits(bm->dwGBitMask, &bm->dwGBitDepth, &bm->dwGBitOffset);
+    BitMaskGetNumberOfBits(bm->dwBBitMask, &bm->dwBBitDepth, &bm->dwBBitOffset);
+    BitMaskGetNumberOfBits(
+        bm->dwRGBAlphaBitMask, &bm->dwRGBAlphaBitDepth,
+        &bm->dwRGBAlphaBitOffset);
+}
