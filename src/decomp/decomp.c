@@ -706,3 +706,14 @@ bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color)
         surface, rect, NULL, NULL, DDBLT_WAIT | DDBLT_COLORFILL, &blt);
     return SUCCEEDED(rc);
 }
+
+HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags)
+{
+    memset(desc, 0, sizeof(DDSURFACEDESC));
+    desc->dwSize = sizeof(DDSURFACEDESC);
+    HRESULT rc = IDirectDrawSurface_Lock(surface, NULL, desc, flags, NULL);
+    if (SUCCEEDED(rc)) {
+        g_LockedBufferCount++;
+    }
+    return rc;
+}

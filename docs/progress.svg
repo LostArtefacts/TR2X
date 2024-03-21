@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.76% (399)</tspan> · <tspan class="known">64.78% (789)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.84% (400)</tspan> · <tspan class="known">64.70% (788)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="244.71" height="6" x="0" y="0" class="decompiled"/>
-<rect width="483.89" height="6" x="244.71" y="0" class="known"/>
+<rect width="245.32" height="6" x="0" y="0" class="decompiled"/>
+<rect width="483.28" height="6" x="245.32" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -918,7 +918,7 @@
 <rect width="12" height="12" x="570" y="240" class="decompiled"><title>HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);</title></rect>
 <rect width="12" height="12" x="585" y="240" class="decompiled"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
 <rect width="12" height="12" x="600" y="240" class="decompiled"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);</title></rect>
-<rect width="12" height="12" x="615" y="240" class="known"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
+<rect width="12" height="12" x="615" y="240" class="decompiled"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
 <rect width="12" height="12" x="630" y="240" class="known"><title>HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);</title></rect>
 <rect width="12" height="12" x="645" y="240" class="known"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, BYTE *bitmap);</title></rect>
 <rect width="12" height="12" x="660" y="240" class="known"><title>DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.43%</tspan> · <tspan class="known">70.24%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.45%</tspan> · <tspan class="known">70.23%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="219.83" height="6" x="0" y="0" class="decompiled"/>
-<rect width="524.73" height="6" x="219.83" y="0" class="known"/>
+<rect width="219.97" height="6" x="0" y="0" class="decompiled"/>
+<rect width="524.59" height="6" x="219.97" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -2181,7 +2181,7 @@
 <rect width="4.42" height="3.93" x="655.89" y="276.30" class="known"><title>HWR_TEX_HANDLE __cdecl GetTexturePageHandle(int32_t page_idx);</title></rect>
 <rect width="4.30" height="3.93" x="663.31" y="276.30" class="decompiled"><title>void __cdecl Matrix_RotYXZsuperpack_I(int16_t **pprot1, int16_t **pprot2, int32_t skip);</title></rect>
 <rect width="4.30" height="3.93" x="670.61" y="276.30" class="known"><title>int32_t __cdecl KeyTrigger(int16_t item_num);</title></rect>
-<rect width="4.30" height="3.93" x="677.92" y="276.30" class="known"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
+<rect width="4.30" height="3.93" x="677.92" y="276.30" class="decompiled"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
 <rect width="4.30" height="3.93" x="685.22" y="276.30" class="known"><title>int32_t __cdecl SE_SoundTestExecute(void);</title></rect>
 <rect width="4.18" height="3.93" x="692.53" y="276.30" class="decompiled"><title>void __cdecl Output_DrawPolyGTMap(const int16_t *obj_ptr);</title></rect>
 <rect width="4.18" height="3.93" x="699.71" y="276.30" class="decompiled"><title>void __cdecl Output_DrawPolyWGTMap(const int16_t *obj_ptr);</title></rect>

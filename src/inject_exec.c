@@ -70,6 +70,7 @@ static void Inject_Decomp(void)
     INJECT(1, 0x004452D0, DDrawSurfaceCreate);
     INJECT(1, 0x00445320, DDrawSurfaceRestoreLost);
     INJECT(1, 0x00445370, WinVidClearBuffer);
+    INJECT(1, 0x004453C0, WinVidBufferLock);
     INJECT(1, 0x004471F0, DInputCreate);
     INJECT(1, 0x00447220, DInputRelease);
     INJECT(1, 0x00447240, WinInReadKeyboard);
