@@ -684,3 +684,17 @@ HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface)
 
     return rc;
 }
+
+HRESULT __cdecl DDrawSurfaceRestoreLost(
+    LPDDS surface1, LPDDS surface2, bool blank)
+{
+    HRESULT rc = IDirectDrawSurface_IsLost(surface1);
+    if (rc != DDERR_SURFACELOST) {
+        return rc;
+    }
+    rc = IDirectDrawSurface_Restore(surface2 != NULL ? surface2 : surface1);
+    if (blank && SUCCEEDED(rc)) {
+        WinVidClearBuffer(surface1, 0, 0);
+    }
+    return rc;
+}
