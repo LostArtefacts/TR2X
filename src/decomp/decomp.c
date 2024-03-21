@@ -109,8 +109,7 @@ void __cdecl ScreenshotPCX(void)
         ? g_RenderBufferSurface
         : g_PrimaryBufferSurface;
 
-    DDSURFACEDESC desc = { 0 };
-    desc.dwSize = sizeof(desc);
+    DDSURFACEDESC desc = { .dwSize = sizeof(DDSURFACEDESC), 0 };
 
     int32_t result;
     while (true) {
@@ -257,9 +256,10 @@ size_t __cdecl EncodePutPCX(uint8_t value, uint8_t num, uint8_t *buffer)
 
 void __cdecl ScreenshotTGA(IDirectDrawSurface3 *screen, int32_t bpp)
 {
-    DDSURFACEDESC desc;
-    memset(&desc, 0, sizeof(desc));
-    desc.dwSize = sizeof(desc);
+    DDSURFACEDESC desc = {
+        .dwSize = sizeof(DDSURFACEDESC),
+        0,
+    };
 
     if (FAILED(WinVidBufferLock(screen, &desc, 0x21u))) {
         return;
@@ -331,7 +331,7 @@ cleanup:
 void __cdecl Screenshot(LPDDS screen)
 {
     DDSURFACEDESC desc = { 0 };
-    desc.dwSize = sizeof(desc);
+    desc.dwSize = sizeof(DDSURFACEDESC);
 
     if (SUCCEEDED(IDirectDrawSurface_GetSurfaceDesc(screen, &desc))) {
         if (desc.ddpfPixelFormat.dwRGBBitCount == 8) {
@@ -744,4 +744,20 @@ bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, const BYTE *bitmap)
     }
     WinVidBufferUnlock(surface, &desc);
     return true;
+}
+
+DWORD __cdecl GetRenderBitDepth(const uint32_t rgb_bit_count)
+{
+    switch (rgb_bit_count) {
+        // clang-format off
+        case 1:    return DDBD_1;
+        case 2:    return DDBD_2;
+        case 4:    return DDBD_4;
+        case 8:    return DDBD_8;
+        case 0x10: return DDBD_16;
+        case 0x18: return DDBD_24;
+        case 0x20: return DDBD_32;
+        // clang-format on
+    }
+    return 0;
 }
