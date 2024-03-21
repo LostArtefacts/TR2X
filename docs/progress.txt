@@ -2578,7 +2578,7 @@ typedef enum GAME_OBJECT_ID {
 00445320    00000046    +R      HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);
 00445370    0000004D    +R      bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);
 004453C0    0000003D    +R      HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);
-00445400    00000025    -R      HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);
+00445400    00000025    +R      HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);
 00445430    00000090    -R      bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, BYTE *bitmap);
 004454C0    00000046    -R      DWORD __cdecl GetRenderBitDepth(DWORD dwRGBBitCount);
 00445550    00000071    -R      void __thiscall WinVidGetColorBitMasks(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat);

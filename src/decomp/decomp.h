@@ -43,3 +43,4 @@ HRESULT __cdecl DDrawSurfaceRestoreLost(
     LPDDS surface1, LPDDS surface2, bool blank);
 bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);
 HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);
+HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);

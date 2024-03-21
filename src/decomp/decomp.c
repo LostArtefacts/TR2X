@@ -717,3 +717,12 @@ HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags)
     }
     return rc;
 }
+
+HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc)
+{
+    HRESULT rc = surface->lpVtbl->Unlock(surface, desc->lpSurface);
+    if (SUCCEEDED(rc)) {
+        g_LockedBufferCount--;
+    }
+    return rc;
+}

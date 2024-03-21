@@ -513,7 +513,6 @@
 #define DDrawRelease ((void __cdecl (*)(void))0x00444C30)
 #define GameWindowCalculateSizeFromClient ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444C70)
 #define GameWindowCalculateSizeFromClientByZero ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444CF0)
-#define WinVidBufferUnlock ((HRESULT __cdecl (*)(LPDDS surface, LPDDSDESC desc))0x00445400)
 #define WinVidCopyBitmapToBuffer ((bool __cdecl (*)(LPDDS surface, BYTE *bitmap))0x00445430)
 #define GetRenderBitDepth ((DWORD __cdecl (*)(DWORD dwRGBBitCount))0x004454C0)
 #define WinVidGetColorBitMasks ((void __thiscall (*)(COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixelFormat))0x00445550)
