@@ -698,3 +698,11 @@ HRESULT __cdecl DDrawSurfaceRestoreLost(
     }
     return rc;
 }
+
+bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color)
+{
+    DDBLTFX blt = { .dwFillColor = fill_color, .dwSize = sizeof(DDBLTFX), 0 };
+    HRESULT rc = IDirectDrawSurface_Blt(
+        surface, rect, NULL, NULL, DDBLT_WAIT | DDBLT_COLORFILL, &blt);
+    return SUCCEEDED(rc);
+}

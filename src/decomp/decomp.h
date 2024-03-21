@@ -41,3 +41,4 @@ bool __cdecl HideDDrawGameWindow(void);
 HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);
 HRESULT __cdecl DDrawSurfaceRestoreLost(
     LPDDS surface1, LPDDS surface2, bool blank);
+bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);

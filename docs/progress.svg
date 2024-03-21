@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.68% (398)</tspan> · <tspan class="known">64.86% (790)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">32.76% (399)</tspan> · <tspan class="known">64.78% (789)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="244.09" height="6" x="0" y="0" class="decompiled"/>
-<rect width="484.51" height="6" x="244.09" y="0" class="known"/>
+<rect width="244.71" height="6" x="0" y="0" class="decompiled"/>
+<rect width="483.89" height="6" x="244.71" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -917,7 +917,7 @@
 <rect width="12" height="12" x="555" y="240" class="decompiled"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>
 <rect width="12" height="12" x="570" y="240" class="decompiled"><title>HRESULT __cdecl DDrawSurfaceCreate(LPDDSDESC dsp, LPDDS *surface);</title></rect>
 <rect width="12" height="12" x="585" y="240" class="decompiled"><title>HRESULT __cdecl DDrawSurfaceRestoreLost(LPDDS surface1, LPDDS surface2, bool blank);</title></rect>
-<rect width="12" height="12" x="600" y="240" class="known"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fillColor);</title></rect>
+<rect width="12" height="12" x="600" y="240" class="decompiled"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);</title></rect>
 <rect width="12" height="12" x="615" y="240" class="known"><title>HRESULT __cdecl WinVidBufferLock(LPDDS surface, LPDDSDESC desc, DWORD flags);</title></rect>
 <rect width="12" height="12" x="630" y="240" class="known"><title>HRESULT __cdecl WinVidBufferUnlock(LPDDS surface, LPDDSDESC desc);</title></rect>
 <rect width="12" height="12" x="645" y="240" class="known"><title>bool __cdecl WinVidCopyBitmapToBuffer(LPDDS surface, BYTE *bitmap);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.41%</tspan> · <tspan class="known">70.27%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.43%</tspan> · <tspan class="known">70.24%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="219.66" height="6" x="0" y="0" class="decompiled"/>
-<rect width="524.90" height="6" x="219.66" y="0" class="known"/>
+<rect width="219.83" height="6" x="0" y="0" class="decompiled"/>
+<rect width="524.73" height="6" x="219.83" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -2111,7 +2111,7 @@
 <rect width="4.93" height="5.16" x="664.70" y="253.38" class="known"><title>double __cdecl UT_Microseconds(void);</title></rect>
 <rect width="4.83" height="5.16" x="672.63" y="253.38" class="decompiled"><title>void __cdecl Lara_State_Extra_StartAnim(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.83" height="5.16" x="680.46" y="253.38" class="known"><title>void __cdecl BGND_Free(void);</title></rect>
-<rect width="4.83" height="5.16" x="688.29" y="253.38" class="known"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fillColor);</title></rect>
+<rect width="4.83" height="5.16" x="688.29" y="253.38" class="decompiled"><title>bool __cdecl WinVidClearBuffer(LPDDS surface, LPRECT rect, DWORD fill_color);</title></rect>
 <rect width="4.83" height="5.16" x="696.12" y="253.38" class="known"><title>void __cdecl WinVidExitMessage(void);</title></rect>
 <rect width="4.73" height="5.16" x="703.94" y="253.38" class="decompiled"><title>void __cdecl Lara_State_Extra_Breath(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="4.73" height="5.16" x="711.67" y="253.38" class="known"><title>void __cdecl WriteSG(void *pointer, int32_t size);</title></rect>
