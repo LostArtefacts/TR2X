@@ -839,3 +839,28 @@ bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode)
         : VGA_NO_VGA;
     return true;
 }
+
+bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode)
+{
+    g_FullScreenWidth = disp_mode->width;
+    g_FullScreenHeight = disp_mode->height;
+    g_FullScreenBPP = disp_mode->bpp;
+    g_FullScreenVGA = disp_mode->vga;
+
+    if (!ShowDDrawGameWindow(true)) {
+        return false;
+    }
+
+    g_IsGameWindowUpdating = true;
+    const HRESULT rc = IDirectDraw4_SetDisplayMode(
+        g_DDraw, disp_mode->width, disp_mode->height, disp_mode->bpp, 0,
+        disp_mode->vga == VGA_STANDARD ? DDSDM_STANDARDVGAMODE : 0);
+    g_IsGameWindowUpdating = false;
+
+    if (FAILED(rc)) {
+        return false;
+    }
+
+    g_IsGameFullScreen = true;
+    return true;
+}

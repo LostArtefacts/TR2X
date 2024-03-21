@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.42% (407)</tspan> · <tspan class="known">64.12% (781)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.50% (408)</tspan> · <tspan class="known">64.04% (780)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="249.61" height="6" x="0" y="0" class="decompiled"/>
-<rect width="478.99" height="6" x="249.61" y="0" class="known"/>
+<rect width="250.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="478.37" height="6" x="250.23" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -926,7 +926,7 @@
 <rect width="12" height="12" x="690" y="240" class="decompiled"><title>void __cdecl BitMaskGetNumberOfBits(DWORD bit_mask, DWORD *bit_depth, DWORD *bit_offset);</title></rect>
 <rect width="12" height="12" x="705" y="240" class="decompiled"><title>DWORD __cdecl CalculateCompatibleColor(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha);</title></rect>
 <rect width="12" height="12" x="720" y="240" class="decompiled"><title>bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);</title></rect>
-<rect width="12" height="12" x="735" y="240" class="known"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);</title></rect>
+<rect width="12" height="12" x="735" y="240" class="decompiled"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode);</title></rect>
 <rect width="12" height="12" x="0" y="255" class="known"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
 <rect width="12" height="12" x="15" y="255" class="known"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);</title></rect>
 <rect width="12" height="12" x="30" y="255" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.64%</tspan> · <tspan class="known">70.03%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.68%</tspan> · <tspan class="known">69.99%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="221.43" height="6" x="0" y="0" class="decompiled"/>
-<rect width="523.13" height="6" x="221.43" y="0" class="known"/>
+<rect width="221.73" height="6" x="0" y="0" class="decompiled"/>
+<rect width="522.83" height="6" x="221.73" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1909,7 +1909,7 @@
 <rect width="7.66" height="7.66" x="567.89" y="293.32" class="decompiled"><title>void __cdecl Lara_ResetLook(void);</title></rect>
 <rect width="7.66" height="7.66" x="567.89" y="303.98" class="decompiled"><title>void __cdecl Lara_State_TurnLeft(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="7.66" height="7.66" x="567.89" y="314.64" class="known"><title>void __cdecl S_OutputPolyList(void);</title></rect>
-<rect width="7.66" height="7.59" x="567.89" y="325.31" class="known"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *dispMode);</title></rect>
+<rect width="7.66" height="7.59" x="567.89" y="325.31" class="decompiled"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode);</title></rect>
 <rect width="7.66" height="7.59" x="567.89" y="335.89" class="known"><title>bool __cdecl IntroFMV(const char *file_name1, const char *file_name2);</title></rect>
 <rect width="7.66" height="7.51" x="567.89" y="346.48" class="known"><title>void __cdecl DyingMonk(int16_t item_num);</title></rect>
 <rect width="7.66" height="7.51" x="567.89" y="356.99" class="decompiled"><title>bool __cdecl HideDDrawGameWindow(void);</title></rect>

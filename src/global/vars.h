@@ -161,7 +161,7 @@
 #define g_D3DDev (*(LPDIRECT3DDEVICE2*)0x004D7EBC)
 #define g_MinWindowClientHeight (*(int32_t*)0x004D7ED0)
 #define g_MaxWindowHeight (*(int32_t*)0x004D7EDC)
-#define g_DDraw (*(LPDIRECTDRAW*)0x004D7EE0)
+#define g_DDraw (*(LPDIRECTDRAW3*)0x004D7EE0)
 #define g_IsGameWindowCreated (*(bool*)0x004D7EE4)
 #define g_IsGameWindowUpdating (*(bool*)0x004D7EE8)
 #define g_IsDDrawGameWindowShow (*(bool*)0x004D7EEC)
