@@ -50,3 +50,6 @@ void __thiscall WinVidGetColorBitMasks(
     COLOR_BIT_MASKS *bm, LPDDPIXELFORMAT pixel_format);
 void __cdecl BitMaskGetNumberOfBits(
     DWORD bit_mask, DWORD *bit_depth, DWORD *bit_offset);
+DWORD __cdecl CalculateCompatibleColor(
+    const COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue,
+    int32_t alpha);

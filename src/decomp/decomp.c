@@ -798,3 +798,17 @@ void __cdecl BitMaskGetNumberOfBits(
     }
     *bit_depth = i;
 }
+
+DWORD __cdecl CalculateCompatibleColor(
+    const COLOR_BIT_MASKS *const mask, const int32_t red, const int32_t green,
+    const int32_t blue, const int32_t alpha)
+{
+    // clang-format off
+    return (
+        (red   >> (8 - mask->dwRBitDepth) << mask->dwRBitOffset) |
+        (green >> (8 - mask->dwGBitDepth) << mask->dwGBitOffset) |
+        (blue  >> (8 - mask->dwBBitDepth) << mask->dwBBitOffset) |
+        (alpha >> (8 - mask->dwRGBAlphaBitDepth) << mask->dwRGBAlphaBitOffset)
+    );
+    // clang-format on
+}
