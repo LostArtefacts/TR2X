@@ -513,7 +513,6 @@
 #define DDrawRelease ((void __cdecl (*)(void))0x00444C30)
 #define GameWindowCalculateSizeFromClient ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444C70)
 #define GameWindowCalculateSizeFromClientByZero ((void __cdecl (*)(int32_t *width, int32_t *height))0x00444CF0)
-#define WinVidGoWindowed ((bool __cdecl (*)(int32_t width, int32_t height, DISPLAY_MODE *dispMode))0x004457B0)
 #define WinVidSetDisplayAdapter ((void __cdecl (*)(DISPLAY_ADAPTER *dispAdapter))0x004458C0)
 #define CompareVideoModes ((bool __thiscall (*)(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2))0x004459A0)
 #define WinVidGetDisplayModes ((bool __cdecl (*)(void))0x004459F0)

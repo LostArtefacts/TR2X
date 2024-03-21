@@ -55,3 +55,5 @@ DWORD __cdecl CalculateCompatibleColor(
     int32_t alpha);
 bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);
 bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode);
+bool __cdecl WinVidGoWindowed(
+    int32_t width, int32_t height, DISPLAY_MODE *disp_mode);

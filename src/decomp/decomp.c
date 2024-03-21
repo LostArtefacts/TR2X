@@ -864,3 +864,48 @@ bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode)
     g_IsGameFullScreen = true;
     return true;
 }
+
+bool __cdecl WinVidGoWindowed(
+    int32_t width, int32_t height, DISPLAY_MODE *disp_mode)
+{
+    if (!HideDDrawGameWindow()) {
+        return false;
+    }
+    if (!WinVidGetDisplayMode(disp_mode)) {
+        return false;
+    }
+
+    int32_t max_width = disp_mode->width;
+    int32_t max_height =
+        CalculateWindowHeight(disp_mode->width, disp_mode->height);
+    if (max_height > disp_mode->height) {
+        max_height = disp_mode->height;
+        max_width = CalculateWindowWidth(disp_mode->width, max_height);
+    }
+    WinVidSetMaxWindowSize(max_width, max_height);
+
+    if (width > max_width || height > max_height) {
+        width = max_width;
+        height = max_height;
+    }
+
+    g_IsGameFullScreen = false;
+    g_IsGameWindowUpdating = true;
+    WinVidSetGameWindowSize(width, height);
+    g_IsGameWindowUpdating = false;
+
+    RECT rect;
+    GetClientRect(g_GameWindowHandle, &rect);
+    MapWindowPoints(g_GameWindowHandle, NULL, (LPPOINT)&rect, 2);
+
+    if ((rect.left > 0 || rect.right < disp_mode->width)
+        && (rect.top > 0 || rect.bottom < disp_mode->height)) {
+        WinVidShowGameWindow(SW_SHOW);
+    } else {
+        WinVidShowGameWindow(SW_MAXIMIZE);
+    }
+
+    disp_mode->width = width;
+    disp_mode->height = height;
+    return true;
+}

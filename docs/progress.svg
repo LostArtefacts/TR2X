@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.50% (408)</tspan> · <tspan class="known">64.04% (780)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">33.58% (409)</tspan> · <tspan class="known">63.96% (779)</tspan> · <tspan class="todo">0.41% (5)</tspan> · <tspan class="unused">2.05% (25)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="250.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="478.37" height="6" x="250.23" y="0" class="known"/>
+<rect width="250.84" height="6" x="0" y="0" class="decompiled"/>
+<rect width="477.76" height="6" x="250.84" y="0" class="known"/>
 <rect width="3.07" height="6" x="728.60" y="0" class="todo"/>
 <rect width="15.33" height="6" x="731.67" y="0" class="unused"/>
 </g>
@@ -927,7 +927,7 @@
 <rect width="12" height="12" x="705" y="240" class="decompiled"><title>DWORD __cdecl CalculateCompatibleColor(COLOR_BIT_MASKS *mask, int32_t red, int32_t green, int32_t blue, int32_t alpha);</title></rect>
 <rect width="12" height="12" x="720" y="240" class="decompiled"><title>bool __cdecl WinVidGetDisplayMode(DISPLAY_MODE *disp_mode);</title></rect>
 <rect width="12" height="12" x="735" y="240" class="decompiled"><title>bool __cdecl WinVidGoFullScreen(DISPLAY_MODE *disp_mode);</title></rect>
-<rect width="12" height="12" x="0" y="255" class="known"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
+<rect width="12" height="12" x="0" y="255" class="decompiled"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
 <rect width="12" height="12" x="15" y="255" class="known"><title>void __cdecl WinVidSetDisplayAdapter(DISPLAY_ADAPTER *dispAdapter);</title></rect>
 <rect width="12" height="12" x="30" y="255" class="known"><title>bool __thiscall CompareVideoModes(const DISPLAY_MODE *mode1, const DISPLAY_MODE *mode2);</title></rect>
 <rect width="12" height="12" x="45" y="255" class="known"><title>bool __cdecl WinVidGetDisplayModes(void);</title></rect>
@@ -1299,10 +1299,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.68%</tspan> · <tspan class="known">69.99%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">29.76%</tspan> · <tspan class="known">69.91%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="221.73" height="6" x="0" y="0" class="decompiled"/>
-<rect width="522.83" height="6" x="221.73" y="0" class="known"/>
+<rect width="222.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="522.25" height="6" x="222.31" y="0" class="known"/>
 <rect width="0.10" height="6" x="744.56" y="0" class="todo"/>
 <rect width="2.40" height="6" x="744.60" y="0" class="unused"/>
 </g>
@@ -1651,7 +1651,7 @@
 <rect width="12.25" height="11.59" x="465.10" y="348.83" class="decompiled"><title>void __cdecl Lara_State_Compress(struct ITEM_INFO *item, struct COLL_INFO *coll);</title></rect>
 <rect width="12.25" height="11.59" x="465.10" y="363.41" class="known"><title>void __cdecl CopterControl(int16_t item_num);</title></rect>
 <rect width="12.28" height="11.51" x="480.35" y="108.31" class="known"><title>void __cdecl ControlLavaBlob(int16_t fx_num);</title></rect>
-<rect width="12.28" height="11.51" x="495.62" y="108.31" class="known"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
+<rect width="12.28" height="11.51" x="495.62" y="108.31" class="decompiled"><title>bool __cdecl WinVidGoWindowed(int32_t width, int32_t height, DISPLAY_MODE *dispMode);</title></rect>
 <rect width="12.22" height="11.51" x="510.90" y="108.31" class="known"><title>void __cdecl InitColours(void);</title></rect>
 <rect width="12.22" height="11.51" x="526.12" y="108.31" class="known"><title>void __cdecl Pendulum(int16_t item_num);</title></rect>
 <rect width="12.16" height="11.51" x="541.34" y="108.31" class="known"><title>void __cdecl KillerStatueControl(int16_t item_num);</title></rect>
