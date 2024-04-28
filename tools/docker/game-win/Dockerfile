@@ -21,6 +21,26 @@ RUN apt-get update \
         make
 
 
+# SDL
+FROM mingw as sdl
+RUN git clone https://github.com/libsdl-org/SDL -b SDL2
+RUN apt-get install -y automake
+RUN cd SDL \
+    && aclocal -I acinclude \
+    && autoconf \
+    && mkdir build \
+    && cd build \
+    && ../configure \
+        --host=i686-w64-mingw32 \
+        --build=i686-pc-mingw32 \
+        --prefix=/ext/ \
+        --enable-shared \
+        --enable-static \
+    && make -j 4 \
+    && make install
+
+
+
 # TR2X
 FROM mingw
 
@@ -28,15 +48,19 @@ FROM mingw
 RUN mkdir /app
 WORKDIR /app
 
+COPY --from=sdl /ext/ /ext/
+
 # system dependencies
 # configure pkgconfig manually
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=967969
+ENV PKG_CONFIG_LIBDIR=/ext/lib/
+ENV PKG_CONFIG_PATH=/ext/lib/pkgconfig/
 RUN apt-get install -y \
         mingw-w64-tools \
         pkg-config \
         upx \
         python3-pip \
-    && python3 -m pip install \
+    && python3 -m pip install --break-system-packages \
         pyjson5 \
         meson \
         ninja
