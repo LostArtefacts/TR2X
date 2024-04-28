@@ -5,6 +5,7 @@ project('TR2X', ['c'],
   ],
 )
 
+dep_trx = subproject('libtrx')
 c_compiler = meson.get_compiler('c')
 
 build_opts = [
@@ -59,6 +60,10 @@ if host_machine.system() == 'windows'
   link_args += ['-static']
 endif
 
+libtrx_sources = [
+  'src/shared/memory.c',
+]
+
 exe_sources = [
   'src/main_exe.c',
   exe_resources,
@@ -102,7 +107,6 @@ dll_sources = [
   'src/lib/winmm.c',
   'src/log.c',
   'src/main_dll.c',
-  'src/memory.c',
   'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',
   'src/specific/s_flagged_string.c',
@@ -131,5 +135,6 @@ library(
   name_prefix: '',
   include_directories: ['src/'],
   dependencies: dependencies,
+  link_with: dep_trx.get_variable('libtrx'),
   link_args: link_args,
 )
