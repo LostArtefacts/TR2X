@@ -1,6 +1,6 @@
 #include "game/music.h"
 
-#include "log.h"
+#include "shared/log.h"
 #include "specific/s_music.h"
 #include "specific/s_music_mm.h"
 #include "specific/s_music_pauld.h"

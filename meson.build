@@ -105,7 +105,6 @@ dll_sources = [
   'src/inject_exec.c',
   'src/inject_util.c',
   'src/lib/winmm.c',
-  'src/log.c',
   'src/main_dll.c',
   'src/specific/s_audio_sample.c',
   'src/specific/s_filesystem.c',

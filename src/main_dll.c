@@ -1,6 +1,7 @@
+#include "filesystem.h"
 #include "inject_exec.h"
 #include "lib/winmm.h"
-#include "log.h"
+#include "shared/log.h"
 
 #include <stdio.h>
 #include <windows.h>
@@ -10,7 +11,7 @@ DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
     switch (ul_reason_for_call) {
     case DLL_PROCESS_ATTACH:
-        Log_Init();
+        Log_Init(File_GetFullPath("TR2X.log"));
         LOG_DEBUG("Injected\n");
 
         WinMM_Load();

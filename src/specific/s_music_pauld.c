@@ -5,7 +5,7 @@
 #include "global/types.h"
 #include "global/vars.h"
 #include "lib/winmm.h"
-#include "log.h"
+#include "shared/log.h"
 
 #include <inttypes.h>
 #include <stdarg.h>

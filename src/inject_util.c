@@ -1,6 +1,6 @@
 #include "inject_util.h"
 
-#include "log.h"
+#include "shared/log.h"
 
 #include <windows.h>
 
