@@ -7,9 +7,9 @@
 #include "game/text.h"
 #include "global/const.h"
 #include "global/types.h"
-#include "shared/log.h"
 #include "util.h"
 
+#include <libtrx/log.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>

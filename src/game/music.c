@@ -1,9 +1,10 @@
 #include "game/music.h"
 
-#include "shared/log.h"
 #include "specific/s_music.h"
 #include "specific/s_music_mm.h"
 #include "specific/s_music_pauld.h"
+
+#include <libtrx/log.h>
 
 S_MUSIC_BACKEND *m_CurrentBackend = NULL;
 S_MUSIC_BACKEND **m_Backends = NULL;

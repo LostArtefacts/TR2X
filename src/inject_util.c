@@ -1,7 +1,6 @@
 #include "inject_util.h"
 
-#include "shared/log.h"
-
+#include <libtrx/log.h>
 #include <windows.h>
 
 void InjectImpl(bool enable, void (*from)(void), void (*to)(void))

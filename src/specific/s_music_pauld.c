@@ -4,10 +4,10 @@
 #include "global/types.h"
 #include "global/vars.h"
 #include "lib/winmm.h"
-#include "shared/filesystem.h"
-#include "shared/log.h"
 
 #include <inttypes.h>
+#include <libtrx/filesystem.h>
+#include <libtrx/log.h>
 #include <stdarg.h>
 #include <stdio.h>
 

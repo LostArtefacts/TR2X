@@ -1,9 +1,9 @@
 #include "inject_exec.h"
 #include "lib/winmm.h"
-#include "shared/filesystem.h"
-#include "shared/log.h"
 
 #include <SDL2/SDL.h>
+#include <libtrx/filesystem.h>
+#include <libtrx/log.h>
 #include <stdio.h>
 #include <windows.h>
 

@@ -3,7 +3,8 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "lib/winmm.h"
-#include "shared/log.h"
+
+#include <libtrx/log.h>
 
 static bool __cdecl S_Music_MM_Init(void);
 static void __cdecl S_Music_MM_Shutdown(void);

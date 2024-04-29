@@ -5,7 +5,7 @@ project('TR2X', ['c'],
   ],
 )
 
-dep_trx = subproject('libtrx')
+trx = subproject('libtrx')
 c_compiler = meson.get_compiler('c')
 
 build_opts = [
@@ -19,6 +19,7 @@ add_project_arguments(build_opts, language: 'c')
 staticdeps = get_option('staticdeps')
 
 null_dep = dependency('', required: false)
+dep_trx = trx.get_variable('dep_trx')
 dep_sdl2 = dependency('SDL2', static: staticdeps)
 dep_mathlibrary = c_compiler.find_library('m', static: staticdeps, required : false)
 
@@ -60,10 +61,6 @@ if host_machine.system() == 'windows'
 
   link_args += ['-static']
 endif
-
-libtrx_sources = [
-  'src/shared/memory.c',
-]
 
 exe_sources = [
   'src/main_exe.c',
@@ -114,7 +111,8 @@ dll_sources = [
   dll_resources,
 ]
 
-dependencies = [
+dll_dependencies = [
+  dep_trx,
   dep_sdl2,
   dep_mathlibrary,
 ]
@@ -132,8 +130,10 @@ library(
   'TR2X',
   dll_sources,
   name_prefix: '',
-  include_directories: ['src/'],
-  dependencies: dependencies,
-  link_with: dep_trx.get_variable('libtrx'),
+  include_directories: [
+    'src/',
+    include_directories('subprojects/libtrx/include', is_system: true),
+  ],
+  dependencies: dll_dependencies,
   link_args: link_args,
 )

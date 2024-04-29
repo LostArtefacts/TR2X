@@ -4,8 +4,9 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "lib/dsound.h"
-#include "shared/log.h"
 #include "specific/s_flagged_string.h"
+
+#include <libtrx/log.h>
 
 const SOUND_ADAPTER_NODE *__cdecl S_Audio_Sample_GetAdapter(const GUID *guid)
 {
