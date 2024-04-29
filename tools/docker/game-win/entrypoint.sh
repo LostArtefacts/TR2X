@@ -1,28 +1,22 @@
 #!/usr/bin/env python3
 from pathlib import Path
 
-from shared.docker import BaseGameEntrypoint
+from libtrx.cli.game_docker_entrypoint import run_script
 
-
-class WindowsEntrypoint(BaseGameEntrypoint):
-    BUILD_ROOT = Path("/app/build/win/")
-    COMPILE_ARGS = [
+run_script(
+    ship_dir=Path("/app/data/ship/"),
+    build_root=Path("/app/build/win/"),
+    compile_args=[
         "--cross",
         "/app/tools/docker/game-win/meson_linux_mingw32.txt",
-    ]
-    RELEASE_ZIP_SUFFIX = "Windows"
-    RELEASE_ZIP_FILES = [
-        (BUILD_ROOT / "TR2X.exe", "TR2X.exe"),
-        (BUILD_ROOT / "TR2X.dll", "TR2X.dll"),
-    ]
-
-    def post_compile(self) -> None:
-        if self.target == "release":
-            for path in self.BUILD_ROOT.glob("*.exe"):
-                self.compress_exe(path)
-            for path in self.BUILD_ROOT.glob("*.dll"):
-                self.compress_exe(path)
-
-
-if __name__ == "__main__":
-    WindowsEntrypoint().run()
+    ],
+    release_zip_filename="TR2X-{version}-Windows.zip",
+    release_zip_files=[
+        (Path("/app/build/win/TR2X.exe"), "TR2X.exe"),
+        (Path("/app/build/win/TR2X.dll"), "TR2X.dll"),
+    ],
+    compressable_exes=[
+        Path("/app/build/win/TR2X.exe"),
+        Path("/app/build/win/TR2X.dll"),
+    ],
+)

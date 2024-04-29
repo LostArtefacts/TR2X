@@ -8,8 +8,8 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from shared.ida_progress import parse_progress_file, Symbol
-from shared.common import PROGRESS_FILE
+from tr2x.ida_progress import parse_progress_file, Symbol
+from tr2x.paths import TR2X_PROGRESS_FILE
 
 try:
     import idaapi
@@ -93,7 +93,7 @@ def import_symbols(symbols: list[Symbol]) -> None:
 
 
 def main():
-    progress_file = parse_progress_file(PROGRESS_FILE)
+    progress_file = parse_progress_file(TR2X_PROGRESS_FILE)
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmpdir = Path(tmpdir)

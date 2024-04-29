@@ -5,9 +5,10 @@
 #include "global/vars.h"
 #include "lib/winmm.h"
 
-#include <inttypes.h>
 #include <libtrx/filesystem.h>
 #include <libtrx/log.h>
+
+#include <inttypes.h>
 #include <stdarg.h>
 #include <stdio.h>
 

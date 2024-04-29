@@ -473,7 +473,8 @@ class FunctionTreeGrid(Container):
                     // GRID_MAX_SQUARES
                 )
                 * (GRID_SQUARE_SIZE + GRID_SQUARE_MARGIN)
-            ) + GRID_SQUARE_MARGIN,
+            )
+            + GRID_SQUARE_MARGIN,
         )
 
         for result in squarify(

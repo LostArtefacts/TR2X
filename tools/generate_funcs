@@ -5,12 +5,12 @@ from dataclasses import dataclass
 from enum import StrEnum
 from pathlib import Path
 
-from shared.common import PROGRESS_FILE, SRC_DIR
-from shared.ida_progress import Symbol, parse_progress_file
+from tr2x.ida_progress import Symbol, parse_progress_file
+from tr2x.paths import TR2X_PROGRESS_FILE, TR2X_SRC_DIR
 
-FUNCS_H_FILE = SRC_DIR / "global/funcs.h"
-VARS_H_FILE = SRC_DIR / "global/vars.h"
-TYPES_H_FILE = SRC_DIR / "global/types.h"
+FUNCS_H_FILE = TR2X_SRC_DIR / "global/funcs.h"
+VARS_H_FILE = TR2X_SRC_DIR / "global/vars.h"
+TYPES_H_FILE = TR2X_SRC_DIR / "global/types.h"
 
 
 COMMON_HEADER = [
@@ -160,7 +160,7 @@ def make_types_h(types: list[str]) -> None:
 
 
 def main() -> None:
-    progress_file = parse_progress_file(PROGRESS_FILE)
+    progress_file = parse_progress_file(TR2X_PROGRESS_FILE)
 
     make_funcs_h(progress_file.functions)
     make_vars_h(progress_file.variables)
