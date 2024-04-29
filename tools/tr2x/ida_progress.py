@@ -2,8 +2,15 @@
 import re
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
-from enum import StrEnum
+from enum import StrEnum, auto
 from pathlib import Path
+
+
+class SymbolStatus(StrEnum):
+    DECOMPILED = auto()
+    KNOWN = auto()
+    TODO = auto()
+    UNUSED = auto()
 
 
 class ProgressFileSection(StrEnum):
@@ -16,11 +23,38 @@ class ProgressFileSection(StrEnum):
 class Symbol:
     offset: int
     signature: str
+    size: int | None = None
     flags: str = ""
 
     @property
     def offset_str(self) -> str:
         return f"0x{self.offset:08X}"
+
+    @property
+    def is_decompiled(self) -> bool:
+        return "+" in self.flags
+
+    @property
+    def is_called(self) -> bool:
+        return "*" in self.flags
+
+    @property
+    def is_unused(self) -> bool:
+        return "x" in self.flags
+
+    @property
+    def is_known(self) -> bool:
+        return not re.search(r"(\s|^)sub_", self.signature)
+
+    @property
+    def status(self) -> SymbolStatus:
+        if self.is_decompiled:
+            return SymbolStatus.DECOMPILED
+        elif self.is_unused:
+            return SymbolStatus.UNUSED
+        elif self.is_known:
+            return SymbolStatus.KNOWN
+        return SymbolStatus.TODO
 
 
 @dataclass
@@ -72,6 +106,7 @@ def parse_progress_file(path: Path) -> ProgressFile:
                 Symbol(
                     signature=signature,
                     offset=to_int(offset),
+                    size=to_int(size),
                     flags=flags,
                 )
             )

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 import re
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
@@ -8,6 +8,9 @@ from functools import cache
 from itertools import groupby
 from pathlib import Path
 from typing import Any
+
+from tr2x.ida_progress import Symbol, SymbolStatus, parse_progress_file
+from tr2x.paths import TR2X_PROGRESS_FILE
 
 DOCUMENT_MARGIN = Decimal(2)
 GRID_MAX_SQUARES = 50
@@ -35,13 +38,6 @@ EPSILON = Decimal("0.1")
 class SumMode(StrEnum):
     BYTES = auto()
     COUNT = auto()
-
-
-class FunctionStatus(StrEnum):
-    DECOMPILED = auto()
-    KNOWN = auto()
-    TODO = auto()
-    UNUSED = auto()
 
 
 @dataclass
@@ -207,41 +203,7 @@ def squarify(
     yield from Squarify(items, key, box).run()
 
 
-@dataclass
-class Function:
-    signature: str
-    offset: int
-    size: int
-    flags: str
-
-    @property
-    def is_decompiled(self) -> bool:
-        return "+" in self.flags
-
-    @property
-    def is_called(self) -> bool:
-        return "*" in self.flags
-
-    @property
-    def is_unused(self) -> bool:
-        return "x" in self.flags
-
-    @property
-    def is_known(self) -> bool:
-        return not re.search(r"(\s|^)sub_", self.signature)
-
-    @property
-    def status(self) -> FunctionStatus:
-        if self.is_decompiled:
-            return FunctionStatus.DECOMPILED
-        elif self.is_unused:
-            return FunctionStatus.UNUSED
-        elif self.is_known:
-            return FunctionStatus.KNOWN
-        return FunctionStatus.TODO
-
-
-def collect_functions() -> Iterable[Function]:
+def collect_functions() -> Iterable[Symbol]:
     in_functions = False
     for line in PROGRESS_TXT_FILE.open():
         line = line.strip()
@@ -259,7 +221,7 @@ def collect_functions() -> Iterable[Function]:
         )
         if not offset.replace("-", ""):
             continue
-        yield Function(
+        yield Symbol(
             signature=func_signature,
             offset=int(offset, 16),
             size=int(size, 16),
@@ -410,7 +372,7 @@ class TranslateShape(Container):
 
 @dataclass
 class LegendSection(Container):
-    def __init__(self, all_functions: list[Function]) -> None:
+    def __init__(self, all_functions: list[Symbol]) -> None:
         super().__init__()
 
         functions_status_map = get_functions_status_map(all_functions)
@@ -419,14 +381,14 @@ class LegendSection(Container):
         self.children.append(self.title)
 
         captions = {
-            FunctionStatus.DECOMPILED: "Function fully decompiled",
-            FunctionStatus.UNUSED: "Function not used by the game",
-            FunctionStatus.KNOWN: "Function not yet decompiled, but with a known signature",
-            FunctionStatus.TODO: "Function not yet decompiled, with an unknown signature",
+            SymbolStatus.DECOMPILED: "Function fully decompiled",
+            SymbolStatus.UNUSED: "Function not used by the game",
+            SymbolStatus.KNOWN: "Function not yet decompiled, but with a known signature",
+            SymbolStatus.TODO: "Function not yet decompiled, with an unknown signature",
         }
 
         y = self.title.size + TEXT_MARGIN
-        for status in FunctionStatus:
+        for status in SymbolStatus:
             caption = captions[status]
             functions = functions_status_map[status]
             legend_text = TranslateShape(
@@ -439,7 +401,7 @@ class LegendSection(Container):
 
 
 class FunctionGrid(Container):
-    def __init__(self, all_functions: list[Function]) -> None:
+    def __init__(self, all_functions: list[Symbol]) -> None:
         super().__init__()
         for i, function in enumerate(all_functions):
             x = (i % GRID_MAX_SQUARES) * (
@@ -461,7 +423,7 @@ class FunctionGrid(Container):
 
 
 class FunctionTreeGrid(Container):
-    def __init__(self, all_functions: list[Function]) -> None:
+    def __init__(self, all_functions: list[Symbol]) -> None:
         super().__init__()
         box = Box(
             x1=ZERO,
@@ -498,8 +460,8 @@ class FunctionTreeGrid(Container):
 
 
 def get_function_done_percentage(
-    chosen_functions: list[Function],
-    all_functions: list[Function],
+    chosen_functions: list[Symbol],
+    all_functions: list[Symbol],
     mode: SumMode,
 ) -> MyFraction:
     match mode:
@@ -515,12 +477,12 @@ def get_function_done_percentage(
 
 
 class ProgressBar(Container):
-    def __init__(self, all_functions: list[Function], mode: SumMode) -> None:
+    def __init__(self, all_functions: list[Symbol], mode: SumMode) -> None:
         super().__init__()
         lx2 = ZERO
 
         def sorter(function):
-            return list(FunctionStatus).index(function.status)
+            return list(SymbolStatus).index(function.status)
 
         for status_value, group in groupby(
             sorted(all_functions, key=sorter), sorter
@@ -550,10 +512,10 @@ class ProgressBar(Container):
 
 
 def get_functions_status_map(
-    all_functions: list[Function],
-) -> dict[FunctionStatus, list[Function]]:
-    functions_status_map: dict[FunctionStatus, list[Function]] = {
-        status: [] for status in FunctionStatus
+    all_functions: list[Symbol],
+) -> dict[SymbolStatus, list[Symbol]]:
+    functions_status_map: dict[SymbolStatus, list[Symbol]] = {
+        status: [] for status in SymbolStatus
     }
     for function in all_functions:
         functions_status_map[function.status].append(function)
@@ -561,8 +523,8 @@ def get_functions_status_map(
 
 
 def get_progress_parts(
-    all_functions: list[Function],
-) -> dict[FunctionStatus, tuple[list[Function], dict[SumMode, MyFraction]]]:
+    all_functions: list[Symbol],
+) -> dict[SymbolStatus, tuple[list[Symbol], dict[SumMode, MyFraction]]]:
     functions_status_map = get_functions_status_map(all_functions)
 
     return {
@@ -575,13 +537,13 @@ def get_progress_parts(
                 for mode in SumMode
             },
         )
-        for status in FunctionStatus
+        for status in SymbolStatus
     }
 
 
 class GridSection(Container):
     def __init__(
-        self, header: str, all_functions: list[Function], mode: SumMode
+        self, header: str, all_functions: list[Symbol], mode: SumMode
     ) -> None:
         super().__init__()
         header_shape = Text(x=ZERO, y=ZERO, text=header)
@@ -606,7 +568,7 @@ class GridSection(Container):
             x=GRID_WIDTH,
             y=Decimal(3),
             size=Decimal(12),
-            class_name=FunctionStatus.TODO.value,
+            class_name=SymbolStatus.TODO.value,
             text=(
                 '<tspan text-anchor="end">'
                 + " · ".join(
@@ -618,7 +580,7 @@ class GridSection(Container):
                         else ""
                     )
                     + "</tspan>"
-                    for status in FunctionStatus
+                    for status in SymbolStatus
                 )
                 + "</tspan>"
             ),
@@ -637,7 +599,7 @@ class GridSection(Container):
 
 
 class ProgressSVG(Container):
-    def __init__(self, all_functions: list[Function]) -> None:
+    def __init__(self, all_functions: list[Symbol]) -> None:
         super().__init__()
 
         y = ZERO
@@ -737,10 +699,10 @@ class ProgressSVG(Container):
 
 
 def main() -> None:
-    functions = list(collect_functions())
+    progress_file = parse_progress_file(TR2X_PROGRESS_FILE)
 
     with PROGRESS_SVG_FILE.open("w") as handle:
-        svg = ProgressSVG(functions)
+        svg = ProgressSVG(progress_file.functions)
         print(svg.render(), file=handle)
 
 
