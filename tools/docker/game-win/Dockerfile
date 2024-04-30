@@ -36,6 +36,47 @@ RUN cd pcre2 \
 
 
 
+# zlib
+FROM mingw as zlib
+RUN git clone https://github.com/madler/zlib
+RUN cd zlib \
+    && make -f win32/Makefile.gcc \
+        SHARED_MODE=1 \
+        BINARY_PATH=/ext/bin \
+        INCLUDE_PATH=/ext/include \
+        LIBRARY_PATH=/ext/lib \
+        PREFIX=i686-w64-mingw32- \
+        -j 4 install
+
+
+
+# libav
+FROM mingw as libav
+RUN apt-get install -y \
+    nasm
+RUN git clone \
+    --depth 1 \
+    --branch "n4.4.1" \
+    https://github.com/FFmpeg/FFmpeg
+COPY --from=zlib /ext/ /usr/i686-w64-mingw32/
+COPY ./tools/ffmpeg_flags.txt /tmp/ffmpeg_flags.txt
+RUN cd FFmpeg \
+    && ./configure \
+        --arch=x86 \
+        --target-os=mingw32 \
+        --cross-prefix=i686-w64-mingw32- \
+        --prefix=/ext/ \
+        --cc=i686-w64-mingw32-gcc \
+        --strip=i686-w64-mingw32-strip \
+        --pkg-config=i686-w64-mingw32-pkg-config \
+        --enable-static \
+        --disable-shared \
+        $(cat /tmp/ffmpeg_flags.txt) \
+    && make -j 4 \
+    && make install
+
+
+
 # SDL
 FROM mingw as sdl
 RUN git clone https://github.com/libsdl-org/SDL -b SDL2
@@ -63,8 +104,10 @@ FROM mingw
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=sdl /ext/ /ext/
 COPY --from=pcre2 /ext/ /ext/
+COPY --from=zlib /ext/ /ext/
+COPY --from=libav /ext/ /ext/
+COPY --from=sdl /ext/ /ext/
 
 # system dependencies
 # configure pkgconfig manually

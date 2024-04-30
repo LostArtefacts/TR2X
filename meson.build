@@ -106,8 +106,6 @@ dll_sources = [
   'src/specific/s_audio_sample.c',
   'src/specific/s_flagged_string.c',
   'src/specific/s_input.c',
-  'src/specific/s_music_mm.c',
-  'src/specific/s_music_pauld.c',
   dll_resources,
 ]
 
