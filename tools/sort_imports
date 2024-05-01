@@ -10,7 +10,9 @@ run_script(
         TR2X_REPO_DIR / "build/windows",
     ],
     system_include_dirs=[TR2X_REPO_DIR / "subprojects/libtrx/include"],
-    own_include_map={},
+    own_include_map={
+        "game/music/music_main.c": "game/music.h",
+    },
     fix_map={},
     forced_order=["<ddrawi.h>", "<d3dhal.h>"],
 )
