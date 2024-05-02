@@ -3,8 +3,13 @@
     - `/pos`
     - `/tp [room_num]`
     - `/tp [x] [y] [z]`
+    - `/hp`
+    - `/hp [num]`
+    - `/heal`
 - changed the music backend to SDL + libav
 - fixed seams around underwater portals (#76)
+- fixed Lara's climb down camera angle (#78)
+- fixed healthbar and airbar flashing the wrong way when at low values (#82)
 
 ## [0.1.1](https://github.com/LostArtefacts/TR2X/compare/0.1...0.1.1) - 2024-04-27
 - fixed Lara's shadow with z-buffer option on (#64, regression from 0.1)
