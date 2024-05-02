@@ -665,12 +665,10 @@ const int16_t *__cdecl Output_CalcRoomVertices(
             double ys = yv * persp + g_FltWinCenterY;
 
             if (g_IsWibbleEffect && obj_ptr[4] >= 0) {
-                xs += g_WibbleTable
-                    [((uint8_t)g_WibbleOffset + (uint8_t)vbuf->ys)
-                     % WIBBLE_SIZE];
-                ys += g_WibbleTable
-                    [((uint8_t)g_WibbleOffset + (uint8_t)vbuf->xs)
-                     % WIBBLE_SIZE];
+                xs +=
+                    g_WibbleTable[(g_WibbleOffset + (uint8_t)ys) % WIBBLE_SIZE];
+                ys +=
+                    g_WibbleTable[(g_WibbleOffset + (uint8_t)xs) % WIBBLE_SIZE];
             }
 
             if (xs < g_FltWinLeft) {
