@@ -10,21 +10,21 @@
 #include <math.h>
 #include <stdio.h>
 
-static bool Console_Cmd_IsFloatRound(const float num);
-static bool Console_Cmd_Pos(const char *const args);
-static bool Console_Cmd_Teleport(const char *const args);
-static bool Console_Cmd_SetHealth(const char *const args);
-static bool Console_Cmd_Heal(const char *const args);
+static COMMAND_RESULT Console_Cmd_IsFloatRound(const float num);
+static COMMAND_RESULT Console_Cmd_Pos(const char *const args);
+static COMMAND_RESULT Console_Cmd_Teleport(const char *const args);
+static COMMAND_RESULT Console_Cmd_SetHealth(const char *const args);
+static COMMAND_RESULT Console_Cmd_Heal(const char *const args);
 
-static inline bool Console_Cmd_IsFloatRound(const float num)
+static inline COMMAND_RESULT Console_Cmd_IsFloatRound(const float num)
 {
     return (fabsf(num) - roundf(num)) < 0.0001f;
 }
 
-static bool Console_Cmd_Pos(const char *const args)
+static COMMAND_RESULT Console_Cmd_Pos(const char *const args)
 {
     if (!g_Objects[O_LARA].loaded) {
-        return false;
+        return CR_UNAVAILABLE;
     }
 
     Console_Log(
@@ -34,13 +34,13 @@ static bool Console_Cmd_Pos(const char *const args)
         g_LaraItem->rot.x * 360.0f / (float)PHD_ONE,
         g_LaraItem->rot.y * 360.0f / (float)PHD_ONE,
         g_LaraItem->rot.z * 360.0f / (float)PHD_ONE);
-    return true;
+    return CR_SUCCESS;
 }
 
-static bool Console_Cmd_Teleport(const char *const args)
+static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
 {
     if (!g_Objects[O_LARA].loaded || !g_LaraItem->hit_points) {
-        return false;
+        return CR_UNAVAILABLE;
     }
 
     // X Y Z
@@ -56,12 +56,12 @@ static bool Console_Cmd_Teleport(const char *const args)
 
             if (Item_Teleport(g_LaraItem, x * WALL_L, y * WALL_L, z * WALL_L)) {
                 Console_Log("Teleported to position: %.3f %.3f %.3f", x, y, z);
-                return true;
+                return CR_SUCCESS;
             }
 
             Console_Log(
                 "Failed to teleport to position: %.3f %.3f %.3f", x, y, z);
-            return true;
+            return CR_FAILURE;
         }
     }
 
@@ -73,7 +73,7 @@ static bool Console_Cmd_Teleport(const char *const args)
                 Console_Log(
                     "Invalid room: %d. Valid rooms are 0-%d", room_num,
                     g_RoomCount - 1);
-                return true;
+                return CR_FAILURE;
             }
 
             const ROOM_INFO *const room = &g_Rooms[room_num];
@@ -93,53 +93,53 @@ static bool Console_Cmd_Teleport(const char *const args)
                 int32_t z = z1 + Random_GetControl() * (z2 - z1) / 0x7FFF;
                 if (Item_Teleport(g_LaraItem, x, y, z)) {
                     Console_Log("Teleported to room: %d", room_num);
-                    return true;
+                    return CR_SUCCESS;
                 }
             }
 
             Console_Log("Failed to teleport to room: %d", room_num);
-            return true;
+            return CR_FAILURE;
         }
     }
 
-    return false;
+    return CR_BAD_INVOCATION;
 }
 
-static bool Console_Cmd_SetHealth(const char *const args)
+static COMMAND_RESULT Console_Cmd_SetHealth(const char *const args)
 {
     if (!g_Objects[O_LARA].loaded) {
-        return false;
+        return CR_UNAVAILABLE;
     }
 
     if (strcmp(args, "") == 0) {
         Console_Log("Current Lara's health: %d", g_LaraItem->hit_points);
-        return true;
+        return CR_SUCCESS;
     }
 
     int32_t hp;
     if (sscanf(args, "%d", &hp) != 1) {
-        return false;
+        return CR_BAD_INVOCATION;
     }
 
     g_LaraItem->hit_points = hp;
     Console_Log("Lara's health set to %d", hp);
-    return true;
+    return CR_SUCCESS;
 }
 
-static bool Console_Cmd_Heal(const char *const args)
+static COMMAND_RESULT Console_Cmd_Heal(const char *const args)
 {
     if (!g_Objects[O_LARA].loaded) {
-        return false;
+        return CR_UNAVAILABLE;
     }
 
     if (g_LaraItem->hit_points == LARA_MAX_HITPOINTS) {
         Console_Log("Lara's already at full health");
-        return true;
+        return CR_SUCCESS;
     }
 
     g_LaraItem->hit_points = LARA_MAX_HITPOINTS;
     Console_Log("Healed Lara back to full health");
-    return true;
+    return CR_SUCCESS;
 }
 
 CONSOLE_COMMAND g_ConsoleCommands[] = {
