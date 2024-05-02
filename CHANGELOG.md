@@ -4,6 +4,7 @@
     - `/tp [room_num]`
     - `/tp [x] [y] [z]`
 - changed the music backend to SDL + libav
+- fixed console text passing some keys to the game engine (#75)
 - fixed console text glitches when starting or ending game
 
 ## [0.1.1](https://github.com/LostArtefacts/TR2X/compare/0.1...0.1.1) - 2024-04-27

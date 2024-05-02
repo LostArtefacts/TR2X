@@ -1,6 +1,7 @@
 #include "specific/s_input.h"
 
 #include "decomp/decomp.h"
+#include "game/console.h"
 #include "global/const.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -67,6 +68,10 @@ bool __cdecl S_Input_Update(void)
 {
     WinVidSpinMessageLoop(0);
     WinInReadKeyboard(g_DIKeys);
+
+    if (Console_IsOpened()) {
+        return false;
+    }
 
     int32_t joy_xpos = 0;
     int32_t joy_ypos = 0;
