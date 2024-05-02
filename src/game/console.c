@@ -70,6 +70,13 @@ void Console_Init(void)
         Text_AlignBottom(m_Logs[i].ts, true);
         Text_SetMultiline(m_Logs[i].ts, true);
     }
+
+    // in case this is called after text reinitializes its textstrings,
+    // fix the broken pointers
+    if (m_Prompt.prompt_ts != NULL) {
+        m_Prompt.prompt_ts = NULL;
+        Console_Open();
+    }
 }
 
 void Console_Shutdown(void)
@@ -82,11 +89,18 @@ void Console_Shutdown(void)
 
 void Console_Open(void)
 {
-    LOG_DEBUG("opening console!");
+    if (!m_IsOpened) {
+        LOG_DEBUG("opening console!");
+    }
     m_IsOpened = true;
 
-    if (m_Prompt.prompt_ts) {
-        return;
+    if (m_Prompt.prompt_ts != NULL) {
+        Text_Remove(m_Prompt.prompt_ts);
+        m_Prompt.prompt_ts = NULL;
+    }
+    if (m_Prompt.caret_ts != NULL) {
+        Text_Remove(m_Prompt.caret_ts);
+        m_Prompt.caret_ts = NULL;
     }
 
     m_Prompt.caret = strlen(m_Prompt.text);
@@ -101,6 +115,8 @@ void Console_Open(void)
     Text_SetScale(
         m_Prompt.prompt_ts, PHD_ONE * m_PromptScale, PHD_ONE * m_PromptScale);
     Text_AlignBottom(m_Prompt.prompt_ts, true);
+
+    Console_UpdateCaretTextstring();
 }
 
 void Console_Close(void)
