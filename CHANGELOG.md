@@ -4,6 +4,7 @@
     - `/tp [room_num]`
     - `/tp [x] [y] [z]`
 - changed the music backend to SDL + libav
+- fixed healthbar and airbar flashing the wrong way when at low values (#82)
 
 ## [0.1.1](https://github.com/LostArtefacts/TR2X/compare/0.1...0.1.1) - 2024-04-27
 - fixed Lara's shadow with z-buffer option on (#64, regression from 0.1)
