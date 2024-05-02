@@ -3,6 +3,9 @@
     - `/pos`
     - `/tp [room_num]`
     - `/tp [x] [y] [z]`
+    - `/hp`
+    - `/hp [num]`
+    - `/heal`
 - changed the music backend to SDL + libav
 
 ## [0.1.1](https://github.com/LostArtefacts/TR2X/compare/0.1...0.1.1) - 2024-04-27

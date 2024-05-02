@@ -13,6 +13,8 @@
 static bool Console_Cmd_IsFloatRound(const float num);
 static bool Console_Cmd_Pos(const char *const args);
 static bool Console_Cmd_Teleport(const char *const args);
+static bool Console_Cmd_SetHealth(const char *const args);
+static bool Console_Cmd_Heal(const char *const args);
 
 static inline bool Console_Cmd_IsFloatRound(const float num)
 {
@@ -103,8 +105,47 @@ static bool Console_Cmd_Teleport(const char *const args)
     return false;
 }
 
+static bool Console_Cmd_SetHealth(const char *const args)
+{
+    if (!g_Objects[O_LARA].loaded) {
+        return false;
+    }
+
+    if (strcmp(args, "") == 0) {
+        Console_Log("Current Lara's health: %d", g_LaraItem->hit_points);
+        return true;
+    }
+
+    int32_t hp;
+    if (sscanf(args, "%d", &hp) != 1) {
+        return false;
+    }
+
+    g_LaraItem->hit_points = hp;
+    Console_Log("Lara's health set to %d", hp);
+    return true;
+}
+
+static bool Console_Cmd_Heal(const char *const args)
+{
+    if (!g_Objects[O_LARA].loaded) {
+        return false;
+    }
+
+    if (g_LaraItem->hit_points == LARA_MAX_HITPOINTS) {
+        Console_Log("Lara's already at full health");
+        return true;
+    }
+
+    g_LaraItem->hit_points = LARA_MAX_HITPOINTS;
+    Console_Log("Healed Lara back to full health");
+    return true;
+}
+
 CONSOLE_COMMAND g_ConsoleCommands[] = {
     { .prefix = "pos", .proc = Console_Cmd_Pos },
     { .prefix = "tp", .proc = Console_Cmd_Teleport },
+    { .prefix = "hp", .proc = Console_Cmd_SetHealth },
+    { .prefix = "heal", .proc = Console_Cmd_Heal },
     { .prefix = NULL, .proc = NULL },
 };
