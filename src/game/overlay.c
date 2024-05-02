@@ -105,22 +105,14 @@ void __cdecl Overlay_DrawHealthBar(const bool flash_state)
         m_OldHitPoints = hit_points;
         g_HealthBarTimer = 40;
     }
+    CLAMPL(g_HealthBarTimer, 0);
 
-    int32_t timer = g_HealthBarTimer;
-    if (timer < 0) {
-        timer = 0;
-        g_HealthBarTimer = 0;
+    const int32_t percent = hit_points * 100 / LARA_MAX_HITPOINTS;
+    if (hit_points <= LARA_MAX_HITPOINTS / 4) {
+        S_DrawHealthBar(flash_state ? percent : 0);
+    } else if (g_HealthBarTimer > 0 || g_Lara.gun_status == LGS_READY) {
+        S_DrawHealthBar(percent);
     }
-
-    if (hit_points <= LARA_MAX_HITPOINTS / 4 && !flash_state) {
-        S_DrawHealthBar(0);
-        return;
-    }
-
-    if (timer <= 0 && g_Lara.gun_status != LGS_READY) {
-        return;
-    }
-    S_DrawHealthBar(hit_points * 100 / LARA_MAX_HITPOINTS);
 }
 
 void __cdecl Overlay_DrawAirBar(const bool flash_state)
@@ -132,10 +124,11 @@ void __cdecl Overlay_DrawAirBar(const bool flash_state)
 
     int32_t air = g_Lara.air;
     CLAMP(air, 0, LARA_MAX_AIR);
-    if (air <= 450 && !flash_state) {
-        S_DrawAirBar(0);
+    const int32_t percent = air * 100 / LARA_MAX_AIR;
+    if (air <= 450) {
+        S_DrawAirBar(flash_state ? percent : 0);
     } else {
-        S_DrawAirBar(air * 100 / LARA_MAX_AIR);
+        S_DrawAirBar(percent);
     }
 }
 
