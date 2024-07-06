@@ -2,3 +2,4 @@
 /TR2X*.zip
 /TR2X*.exe
 /TR2X*.dll
+__pycache__/
