@@ -913,6 +913,7 @@ int32_t __cdecl Creature_CanTargetEnemy(
     target.pos.x = enemy->pos.x;
     target.pos.y = enemy->pos.y - STEP_L * 3;
     target.pos.z = enemy->pos.z;
+    target.room_num = enemy->room_num;
 
     return LOS_Check(&start, &target);
 }
