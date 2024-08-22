@@ -60,6 +60,7 @@ void __cdecl Diver_Control(int16_t item_num)
         target.pos.x = g_LaraItem->pos.x;
         target.pos.y = g_LaraItem->pos.y - (LARA_HEIGHT - 150);
         target.pos.z = g_LaraItem->pos.z;
+        target.room_num = g_LaraItem->room_num;
         shoot = LOS_Check(&start, &target);
 
         if (shoot) {
@@ -82,6 +83,7 @@ void __cdecl Diver_Control(int16_t item_num)
         target.pos.x = g_LaraItem->pos.x;
         target.pos.y = g_LaraItem->pos.y;
         target.pos.z = g_LaraItem->pos.z;
+        target.room_num = g_LaraItem->room_num;
 
         shoot = LOS_Check(&start, &target);
     } else {

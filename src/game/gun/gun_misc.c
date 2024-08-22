@@ -6,6 +6,7 @@
 #include "game/math_misc.h"
 #include "game/matrix.h"
 #include "game/random.h"
+#include "game/room.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 #include "util.h"
@@ -234,6 +235,8 @@ int32_t __cdecl Gun_FireWeapon(
         hit_pos.pos.x = view.pos.x + ((dist * g_MatrixPtr->_20) >> W2V_SHIFT);
         hit_pos.pos.y = view.pos.y + ((dist * g_MatrixPtr->_21) >> W2V_SHIFT);
         hit_pos.pos.z = view.pos.z + ((dist * g_MatrixPtr->_22) >> W2V_SHIFT);
+        hit_pos.room_num =
+            Room_GetIndexFromPos(hit_pos.pos.x, hit_pos.pos.y, hit_pos.pos.z);
         const bool object_on_los = LOS_Check(&start, &hit_pos);
         const int16_t item_to_smash = LOS_CheckSmashable(&start, &hit_pos);
         if (item_to_smash == NO_ITEM) {
@@ -254,6 +257,8 @@ int32_t __cdecl Gun_FireWeapon(
             view.pos.y + ((best_dist * g_MatrixPtr->_21) >> W2V_SHIFT);
         hit_pos.pos.z =
             view.pos.z + ((best_dist * g_MatrixPtr->_22) >> W2V_SHIFT);
+        hit_pos.room_num =
+            Room_GetIndexFromPos(hit_pos.pos.x, hit_pos.pos.y, hit_pos.pos.z);
         const int16_t item_to_smash = LOS_CheckSmashable(&start, &hit_pos);
         if (item_to_smash != NO_ITEM) {
             Gun_SmashItem(item_to_smash, weapon_type);

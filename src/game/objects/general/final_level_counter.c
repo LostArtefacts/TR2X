@@ -30,6 +30,7 @@ static int16_t __cdecl FinalLevelCounter_FindBestBoss(void)
         target.pos.x = item->pos.x;
         target.pos.y = item->pos.y - STEP_L * 2;
         target.pos.z = item->pos.z;
+        target.room_num = item->room_num;
 
         g_LaraItem = g_LaraItem;
         if (!LOS_Check(&start, &target)) {

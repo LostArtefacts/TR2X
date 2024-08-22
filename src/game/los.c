@@ -263,7 +263,10 @@ int32_t __cdecl LOS_Check(
     int32_t los1;
     int32_t los2;
 
-    if (ABS(target->z - start->z) > ABS(target->x - start->x)) {
+    const int32_t dx = ABS(target->x - start->x);
+    const int32_t dz = ABS(target->z - start->z);
+
+    if (dz > dx) {
         los1 = LOS_CheckX(start, target);
         los2 = LOS_CheckZ(start, target);
     } else {
@@ -273,6 +276,10 @@ int32_t __cdecl LOS_Check(
 
     if (!los2) {
         return 0;
+    }
+
+    if (dx == 0 && dz == 0) {
+        target->room_num = start->room_num;
     }
 
     const SECTOR_INFO *const sector =
