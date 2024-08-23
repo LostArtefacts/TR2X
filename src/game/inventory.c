@@ -818,8 +818,7 @@ void __cdecl Inv_DrawInventoryItem(INVENTORY_ITEM *const inv_item)
                     Output_DrawScreenSprite(
                         sx + sprite->pos.x, sy + sprite->pos.y, sprite->pos.z,
                         sprite->param1, sprite->param2,
-                        g_StaticObjects[O_ALPHABET].mesh_idx
-                            + sprite->sprite_num,
+                        g_Objects[O_ALPHABET].mesh_idx + sprite->sprite_num,
                         4096, 0);
                     break;
 
