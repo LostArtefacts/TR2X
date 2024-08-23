@@ -778,7 +778,7 @@ void __cdecl Lara_State_Extra_PullDagger(ITEM_INFO *item, COLL_INFO *coll)
 
 void __cdecl Lara_State_Extra_StartAnim(ITEM_INFO *item, COLL_INFO *coll)
 {
-    int16_t room_num;
+    int16_t room_num = item->room_num;
     const SECTOR_INFO *sector =
         Room_GetSector(item->pos.x, item->pos.y, item->pos.z, &room_num);
     Room_GetHeight(sector, item->pos.x, item->pos.y, item->pos.z);
