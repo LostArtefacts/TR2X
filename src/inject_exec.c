@@ -341,6 +341,7 @@ static void Inject_Shell(const bool enable)
 static void Inject_Option(const bool enable)
 {
     INJECT(enable, 0x0044EDC0, Option_DoInventory);
+    INJECT(enable, 0x0044EED0, Option_Passport);
 }
 
 static void Inject_Text(const bool enable)

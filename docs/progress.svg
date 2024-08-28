@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">56.65% (690)</tspan> · <tspan class="known">40.89% (498)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">56.73% (691)</tspan> · <tspan class="known">40.80% (497)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="423.18" height="6" x="0" y="0" class="decompiled"/>
-<rect width="305.42" height="6" x="423.18" y="0" class="known"/>
+<rect width="423.79" height="6" x="0" y="0" class="decompiled"/>
+<rect width="304.81" height="6" x="423.79" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1122,7 +1122,7 @@
 <rect width="12" height="12" x="645" y="300" class="decompiled"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
 <rect width="12" height="12" x="660" y="300" class="decompiled"><title>void __cdecl Screenshot(LPDDS screen);</title></rect>
 <rect width="12" height="12" x="675" y="300" class="decompiled"><title>void __cdecl Option_DoInventory(INVENTORY_ITEM *item);</title></rect>
-<rect width="12" height="12" x="690" y="300" class="known"><title>void __cdecl Option_Passport(INVENTORY_ITEM *item);</title></rect>
+<rect width="12" height="12" x="690" y="300" class="decompiled"><title>void __cdecl Option_Passport(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="705" y="300" class="known"><title>void __cdecl Option_Detail(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="720" y="300" class="known"><title>void __cdecl Option_Sound(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="735" y="300" class="known"><title>void __cdecl Option_Compass(INVENTORY_ITEM *item);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.13%</tspan> · <tspan class="known">40.55%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.60%</tspan> · <tspan class="known">40.08%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="441.67" height="6" x="0" y="0" class="decompiled"/>
-<rect width="302.89" height="6" x="441.67" y="0" class="known"/>
+<rect width="445.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="299.37" height="6" x="445.19" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1329,7 +1329,7 @@
 <rect width="35.22" height="33.49" x="104.17" y="234.91" class="decompiled"><title>void __cdecl Room_TestTriggers(int16_t *data, int32_t heavy);</title></rect>
 <rect width="35.22" height="33.06" x="104.17" y="271.40" class="decompiled"><title>void __cdecl Collide_GetCollisionInfo(COLL_INFO *coll, int32_t xpos, int32_t ypos, int32_t zpos, int16_t room_num, int32_t obj_height);</title></rect>
 <rect width="35.22" height="32.62" x="104.17" y="307.45" class="decompiled"><title>void __cdecl Lara_Control(int16_t item_num);</title></rect>
-<rect width="35.22" height="31.93" x="104.17" y="343.07" class="known"><title>void __cdecl Option_Passport(INVENTORY_ITEM *item);</title></rect>
+<rect width="35.22" height="31.93" x="104.17" y="343.07" class="decompiled"><title>void __cdecl Option_Passport(INVENTORY_ITEM *item);</title></rect>
 <rect width="31.68" height="35.34" x="142.39" y="0" class="decompiled"><title>void __cdecl Output_InsertGT3_ZBuffered(const PHD_VBUF *vtx0, const PHD_VBUF *vtx1, const PHD_VBUF *vtx2, const PHD_TEXTURE *texture, const PHD_UV *uv0, const PHD_UV *uv1, const PHD_UV *uv2);</title></rect>
 <rect width="31.68" height="34.77" x="142.39" y="38.34" class="decompiled"><title>void __cdecl Boat_Control(int16_t item_num);</title></rect>
 <rect width="31.68" height="33.69" x="142.39" y="76.11" class="known"><title>void __cdecl TrapObjects(void);</title></rect>

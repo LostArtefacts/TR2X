@@ -3962,7 +3962,7 @@ typedef enum {
 0x0044EB80  0x003E  +R      DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);
 0x0044EBC0  0x01F5  +R      void __cdecl Screenshot(LPDDS screen);
 0x0044EDC0  0x007F  +       void __cdecl Option_DoInventory(INVENTORY_ITEM *item);
-0x0044EED0  0x0648  -       void __cdecl Option_Passport(INVENTORY_ITEM *item);
+0x0044EED0  0x0648  +       void __cdecl Option_Passport(INVENTORY_ITEM *item);
 0x0044F520  0x02DA  -       void __cdecl Option_Detail(INVENTORY_ITEM *item);
 0x0044F800  0x049D  -       void __cdecl Option_Sound(INVENTORY_ITEM *item);
 0x0044FCA0  0x00C0  -       void __cdecl Option_Compass(INVENTORY_ITEM *item);
