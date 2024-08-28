@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">56.57% (689)</tspan> · <tspan class="known">40.97% (499)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">56.65% (690)</tspan> · <tspan class="known">40.89% (498)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="422.56" height="6" x="0" y="0" class="decompiled"/>
-<rect width="306.04" height="6" x="422.56" y="0" class="known"/>
+<rect width="423.18" height="6" x="0" y="0" class="decompiled"/>
+<rect width="305.42" height="6" x="423.18" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1121,7 +1121,7 @@
 <rect width="12" height="12" x="630" y="300" class="decompiled"><title>DWORD __cdecl EncodeLinePCX(BYTE *src, DWORD width, BYTE *dst);</title></rect>
 <rect width="12" height="12" x="645" y="300" class="decompiled"><title>DWORD __cdecl EncodePutPCX(BYTE value, BYTE num, BYTE *buffer);</title></rect>
 <rect width="12" height="12" x="660" y="300" class="decompiled"><title>void __cdecl Screenshot(LPDDS screen);</title></rect>
-<rect width="12" height="12" x="675" y="300" class="known"><title>void __cdecl Option_DoInventory(INVENTORY_ITEM *item);</title></rect>
+<rect width="12" height="12" x="675" y="300" class="decompiled"><title>void __cdecl Option_DoInventory(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="690" y="300" class="known"><title>void __cdecl Option_Passport(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="705" y="300" class="known"><title>void __cdecl Option_Detail(INVENTORY_ITEM *item);</title></rect>
 <rect width="12" height="12" x="720" y="300" class="known"><title>void __cdecl Option_Sound(INVENTORY_ITEM *item);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.09%</tspan> · <tspan class="known">40.58%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.13%</tspan> · <tspan class="known">40.55%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="441.39" height="6" x="0" y="0" class="decompiled"/>
-<rect width="303.17" height="6" x="441.39" y="0" class="known"/>
+<rect width="441.67" height="6" x="0" y="0" class="decompiled"/>
+<rect width="302.89" height="6" x="441.67" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1937,7 +1937,7 @@
 <rect width="7.43" height="7.11" x="578.55" y="267.90" class="known"><title>void __cdecl InitialiseSkidman(int16_t item_num);</title></rect>
 <rect width="7.43" height="7.11" x="578.55" y="278.01" class="known"><title>bool __cdecl WinInputInit(void);</title></rect>
 <rect width="7.43" height="7.11" x="578.55" y="288.12" class="decompiled"><title>void __cdecl Random_Seed(void);</title></rect>
-<rect width="7.43" height="7.11" x="578.55" y="298.23" class="known"><title>void __cdecl Option_DoInventory(INVENTORY_ITEM *item);</title></rect>
+<rect width="7.43" height="7.11" x="578.55" y="298.23" class="decompiled"><title>void __cdecl Option_DoInventory(INVENTORY_ITEM *item);</title></rect>
 <rect width="7.43" height="7.03" x="578.55" y="308.34" class="known"><title>void __cdecl BellControl(int16_t item_num);</title></rect>
 <rect width="7.43" height="7.03" x="578.55" y="318.37" class="known"><title>void __cdecl Option_Controls_FlashConflicts(void);</title></rect>
 <rect width="7.43" height="7.03" x="578.55" y="328.40" class="known"><title>void __cdecl S_SyncPictureBufferPalette(void);</title></rect>

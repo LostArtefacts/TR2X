@@ -365,7 +365,6 @@
 #define game_malloc ((void *__cdecl (*)(size_t alloc_size, GAME_BUFFER buf_index))0x0044D6C0)
 #define game_free ((void __cdecl (*)(size_t free_size))0x0044D740)
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
-#define Option_DoInventory ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EDC0)
 #define Option_Passport ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044EED0)
 #define Option_Detail ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044F520)
 #define Option_Sound ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044F800)
