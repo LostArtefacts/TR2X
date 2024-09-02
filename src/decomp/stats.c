@@ -2,6 +2,7 @@
 
 #include "game/input.h"
 #include "game/music.h"
+#include "game/requester.h"
 #include "game/text.h"
 #include "global/funcs.h"
 #include "global/types.h"
@@ -10,10 +11,6 @@
 #include <libtrx/log.h>
 
 #include <stdio.h>
-
-static int32_t m_ShowGymStatsTextMode = 0;
-static int32_t m_ShowStatsTextMode = 0;
-static int32_t m_ShowEndStatsTextMode = 0;
 
 // TODO: consolidate with STATISTICS_INFO
 typedef struct {
@@ -59,10 +56,8 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
     char text1[32];
     char text2[32];
 
-    if (m_ShowGymStatsTextMode == 1) {
-        if (Requester_Display(&g_StatsRequester, 1, 1)) {
-            m_ShowGymStatsTextMode = 0;
-        } else {
+    if (g_StatsRequester.ready) {
+        if (!Requester_Display(&g_StatsRequester, 1, 1)) {
             g_InputDB = 0;
             g_Input = 0;
         }
@@ -112,20 +107,18 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
             REQ_CENTER, NULL, REQ_CENTER);
     }
 
-    m_ShowGymStatsTextMode = 1;
+    g_StatsRequester.ready = 1;
 }
 
 void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
 {
     char buffer[32];
 
-    if (m_ShowStatsTextMode == 1) {
+    if (g_StatsRequester.ready) {
         Requester_ChangeItem(
             &g_StatsRequester, 0, g_GF_GameStrings[GF_S_GAME_MISC_TIME_TAKEN],
             REQ_ALIGN_LEFT, time_str, REQ_ALIGN_RIGHT);
-        if (Requester_Display(&g_StatsRequester, type, 1)) {
-            m_ShowStatsTextMode = 0;
-        } else {
+        if (!Requester_Display(&g_StatsRequester, type, 1)) {
             g_InputDB = 0;
             g_Input = 0;
         }
@@ -210,17 +203,15 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_DISTANCE_TRAVELLED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
-    m_ShowStatsTextMode = 1;
+    g_StatsRequester.ready = 1;
 }
 
 void __cdecl ShowEndStatsText(void)
 {
     char buffer[32];
 
-    if (m_ShowEndStatsTextMode == 1) {
-        if (Requester_Display(&g_StatsRequester, 0, 1)) {
-            m_ShowEndStatsTextMode = 0;
-        } else {
+    if (g_StatsRequester.ready) {
+        if (!Requester_Display(&g_StatsRequester, 0, 1)) {
             g_InputDB = 0;
             g_Input = 0;
         }
@@ -296,7 +287,7 @@ void __cdecl ShowEndStatsText(void)
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_DISTANCE_TRAVELLED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
-    m_ShowEndStatsTextMode = 1;
+    g_StatsRequester.ready = 1;
 }
 
 int32_t __cdecl LevelStats(const int32_t level_num)
@@ -345,6 +336,8 @@ int32_t __cdecl LevelStats(const int32_t level_num)
         }
     }
 
+    Requester_Shutdown(&g_StatsRequester);
+
     CreateStartInfo(level_num + 1);
     g_SaveGame.current_level = level_num + 1;
     start->available = 0;
@@ -389,6 +382,8 @@ int32_t __cdecl GameStats(const int32_t level_num)
             break;
         }
     }
+
+    Requester_Shutdown(&g_StatsRequester);
 
     g_SaveGame.bonus_flag = 1;
     for (int32_t level = LV_FIRST; level <= g_GameFlow.num_levels; level++) {

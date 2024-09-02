@@ -397,7 +397,8 @@ typedef enum {
 
 typedef struct __unaligned {
     uint16_t no_selector : 1;
-    uint16_t pad : 15;
+    uint16_t ready : 1; // not present in the OG
+    uint16_t pad : 14;
     uint16_t items_count;
     uint16_t selected;
     uint16_t visible_count;

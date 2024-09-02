@@ -63,4 +63,5 @@ void __cdecl Requester_Init(REQUEST_INFO *const req)
 void __cdecl Requester_Shutdown(REQUEST_INFO *const req)
 {
     Requester_ClearTextStrings(req);
+    req->ready = 0;
 }
