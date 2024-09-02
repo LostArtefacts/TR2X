@@ -12,6 +12,46 @@
 #include <stdio.h>
 
 static int32_t m_ShowStatsTextMode = 0;
+static int32_t m_ShowEndStatsTextMode = 0;
+
+// TODO: consolidate with STATISTICS_INFO
+typedef struct {
+    uint32_t timer;
+    uint32_t ammo_used;
+    uint32_t ammo_hits;
+    uint32_t distance;
+    uint32_t kills;
+    uint8_t found_secrets; // this is no longer a bitmask
+    uint8_t total_secrets; // this is not present in STATISTICS_INFO
+    uint8_t medipacks;
+} STATS;
+
+static STATS Stats_GetEndGameStats(void)
+{
+    STATS result = { 0 };
+
+    const int32_t total_levels = g_GameFlow.num_levels - g_GameFlow.num_demos;
+    for (int32_t i = LV_FIRST; i < total_levels; i++) {
+        result.timer += g_SaveGame.start[i].statistics.timer;
+        result.ammo_used += g_SaveGame.start[i].statistics.shots;
+        result.ammo_hits += g_SaveGame.start[i].statistics.hits;
+        result.kills += g_SaveGame.start[i].statistics.kills;
+        result.distance += g_SaveGame.start[i].statistics.distance;
+        result.medipacks += g_SaveGame.start[i].statistics.medipacks;
+
+        // TODO: #170, consult GFE_NUM_SECRETS rather than hardcoding this
+        if (i < total_levels - 2) {
+            for (int32_t j = 0; j < 3; j++) {
+                if (g_SaveGame.start[i].statistics.secrets & (1 << j)) {
+                    result.found_secrets++;
+                }
+                result.total_secrets++;
+            }
+        }
+    }
+
+    return result;
+}
 
 void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
 {
@@ -109,6 +149,92 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     m_ShowStatsTextMode = 1;
+}
+
+void __cdecl ShowEndStatsText(void)
+{
+    char buffer[32];
+
+    if (m_ShowEndStatsTextMode == 1) {
+        if (Display_Requester(&g_StatsRequester, 0, 1)) {
+            m_ShowEndStatsTextMode = 0;
+        } else {
+            g_InputDB = 0;
+            g_Input = 0;
+        }
+        return;
+    }
+
+    g_StatsRequester.no_selector = 1;
+    SetPCRequesterSize(&g_StatsRequester, 7, -32);
+    g_StatsRequester.line_height = 18;
+    g_StatsRequester.items_count = 0;
+    g_StatsRequester.selected = 0;
+    g_StatsRequester.line_offset = 0;
+    g_StatsRequester.line_old_offset = 0;
+    g_StatsRequester.pix_width = 304;
+    g_StatsRequester.x_pos = 0;
+    g_StatsRequester.z_pos = 0;
+    g_StatsRequester.pitem_strings1 = g_ValidLevelStrings1;
+    g_StatsRequester.pitem_strings2 = g_ValidLevelStrings2;
+    g_StatsRequester.item_string_len = MAX_LEVEL_NAME_SIZE;
+
+    Init_Requester(&g_StatsRequester);
+    SetRequesterHeading(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_FINAL_STATISTICS], 0,
+        0, 0);
+
+    const STATS stats = Stats_GetEndGameStats();
+
+    const int32_t sec = stats.timer / FRAMES_PER_SECOND;
+    sprintf(
+        buffer, "%02d:%02d:%02d", (sec / 60) / 60, (sec / 60) % 60, sec % 60);
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_TIME_TAKEN],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    sprintf(
+        buffer, "%d %s %d", stats.found_secrets,
+        g_GF_GameStrings[GF_S_GAME_MISC_OF], stats.total_secrets);
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_SECRETS_FOUND],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    sprintf(buffer, "%d", stats.kills);
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_KILLS],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    sprintf(buffer, "%d", stats.ammo_used);
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_AMMO_USED],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    sprintf(buffer, "%d", stats.ammo_hits);
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HITS],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    if ((stats.medipacks & 1) != 0) {
+        sprintf(buffer, "%d.5", stats.medipacks >> 1);
+    } else {
+        sprintf(buffer, "%d.0", stats.medipacks >> 1);
+    }
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HEALTH_PACKS_USED],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    const int32_t distance = stats.distance / 445;
+    if (distance < 1000) {
+        sprintf(buffer, "%dm", distance);
+    } else {
+        sprintf(buffer, "%d.%02dkm", distance / 1000, distance % 100);
+    }
+    AddRequesterItem(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_DISTANCE_TRAVELLED],
+        REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
+
+    m_ShowEndStatsTextMode = 1;
 }
 
 int32_t __cdecl LevelStats(const int32_t level_num)

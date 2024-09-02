@@ -201,6 +201,7 @@ static void Inject_Decomp(const bool enable)
     INJECT(enable, 0x00446F80, WinVidFinish);
     INJECT(enable, 0x00414220, Misc_Move3DPosTo3DPos);
     INJECT(enable, 0x00426520, ShowStatsText);
+    INJECT(enable, 0x004268C0, ShowEndStatsText);
     INJECT(enable, 0x0044C680, LevelStats);
     INJECT(enable, 0x0044C850, GameStats);
 }

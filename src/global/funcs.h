@@ -136,7 +136,6 @@
 #define SetPCRequesterSize ((void __cdecl (*)(REQUEST_INFO *req, int32_t maxlines, int32_t ypos))0x00426270)
 #define AddAssaultTime ((int32_t __cdecl (*)(uint32_t time))0x004262B0)
 #define ShowGymStatsText ((void __cdecl (*)(char *time_str, int32_t type))0x00426340)
-#define ShowEndStatsText ((void __cdecl (*)(void))0x004268C0)
 #define HarpoonBolt_Control ((void __cdecl (*)(int16_t item_num))0x0042C0F0)
 #define Rocket_Control ((void __cdecl (*)(int16_t item_num))0x0042C530)
 #define Flare_DoLight ((int32_t __cdecl (*)(XYZ_32 *pos, int32_t flare_age))0x0042F7A0)

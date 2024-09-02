@@ -3247,7 +3247,7 @@ typedef enum {
 0x004262B0  0x0081  -R      int32_t __cdecl AddAssaultTime(uint32_t time);
 0x00426340  0x01D6  -R      void __cdecl ShowGymStatsText(char *time_str, int32_t type);
 0x00426520  0x0397  +R      void __cdecl ShowStatsText(char *time_str, int32_t type);
-0x004268C0  0x0425  -R      void __cdecl ShowEndStatsText(void);
+0x004268C0  0x0425  +R      void __cdecl ShowEndStatsText(void);
 
 # game/items.c
 0x00426CF0  0x0052  +       void __cdecl Item_InitialiseArray(int32_t num_items);
@@ -4652,3 +4652,4 @@ typedef enum {
 0x004D7C30  +       int32_t m_ShowStatsTextMode;
 0x005207E0  -       char g_ValidLevelStrings1[];
 0x00521720  -       char g_ValidLevelStrings2[];
+0x004D7C34  +       int32_t m_ShowEndStatsTextMode;
