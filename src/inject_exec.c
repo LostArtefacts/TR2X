@@ -345,6 +345,7 @@ static void Inject_Option(const bool enable)
 {
     INJECT(enable, 0x0044EDC0, Option_DoInventory);
     INJECT(enable, 0x0044EED0, Option_Passport);
+    INJECT(enable, 0x0044FCA0, Option_Compass);
 }
 
 static void Inject_Text(const bool enable)

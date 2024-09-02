@@ -3976,7 +3976,7 @@ typedef enum {
 0x0044EED0  0x0648  +       void __cdecl Option_Passport(INVENTORY_ITEM *item);
 0x0044F520  0x02DA  -       void __cdecl Option_Detail(INVENTORY_ITEM *item);
 0x0044F800  0x049D  -       void __cdecl Option_Sound(INVENTORY_ITEM *item);
-0x0044FCA0  0x00C0  -       void __cdecl Option_Compass(INVENTORY_ITEM *item);
+0x0044FCA0  0x00C0  +       void __cdecl Option_Compass(INVENTORY_ITEM *item);
 0x0044FD60  0x007E  -       void __cdecl Option_Controls_FlashConflicts(void);
 0x0044FDE0  0x0040  -       void __cdecl Option_Controls_DefaultConflict(void);
 0x0044FE20  0x06F4  -       void __cdecl Option_Controls(INVENTORY_ITEM *item);

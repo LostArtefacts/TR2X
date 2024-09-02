@@ -14,4 +14,5 @@ void __cdecl Option_Sound_Shutdown(INVENTORY_ITEM *item);
 
 void __cdecl Option_Controls_Shutdown(INVENTORY_ITEM *item);
 
+void __cdecl Option_Compass(INVENTORY_ITEM *item);
 void __cdecl Option_Compass_Shutdown(INVENTORY_ITEM *item);

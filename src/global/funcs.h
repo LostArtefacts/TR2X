@@ -364,7 +364,6 @@
 #define CalculateWibbleTable ((void __cdecl (*)(void))0x0044D780)
 #define Option_Detail ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044F520)
 #define Option_Sound ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044F800)
-#define Option_Compass ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044FCA0)
 #define Option_Controls_FlashConflicts ((void __cdecl (*)(void))0x0044FD60)
 #define Option_Controls_DefaultConflict ((void __cdecl (*)(void))0x0044FDE0)
 #define Option_Controls ((void __cdecl (*)(INVENTORY_ITEM *item))0x0044FE20)
