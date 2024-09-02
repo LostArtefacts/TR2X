@@ -412,7 +412,8 @@ typedef enum {
 } KEYMAP;
 
 typedef struct __unaligned {
-    uint16_t req_flags;
+    uint16_t no_selector : 1;
+    uint16_t pad : 15;
     uint16_t items_count;
     uint16_t selected;
     uint16_t visible_count;
@@ -2817,5 +2818,16 @@ typedef enum {
     IT_QTY       = 1,
     IT_NUMBER_OF = 2,
 } INV_TEXT;
+
+typedef enum {
+    REQ_CENTER      = 0x00,
+    REQ_USE         = 0x01,
+    REQ_ALIGN_LEFT  = 0x02,
+    REQ_ALIGN_RIGHT = 0x04,
+    REQ_HEADING     = 0x08,
+    REQ_BEST_TIME   = 0x10,
+    REQ_NORMAL_TIME = 0x20,
+    REQ_NO_TIME     = 0x40,
+} REQUESTER_FLAGS;
 
 // clang-format on

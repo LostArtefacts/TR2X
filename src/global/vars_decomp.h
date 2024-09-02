@@ -386,6 +386,8 @@
 #define g_NextItemActive (*(int16_t*)0x005207C8)
 #define g_NextEffectActive (*(int16_t*)0x005207CA)
 #define g_PrevItemActive (*(int16_t*)0x005207CC)
+#define g_ValidLevelStrings1 (*(char(*)[])0x005207E0)
+#define g_ValidLevelStrings2 (*(char(*)[])0x00521720)
 #define g_Pickups (*(PICKUP_INFO(*)[12])0x00521CA0)
 #define g_GF_Pickup1Strings (*(char ***)0x00521DC0)
 #define g_GF_CutsceneFileNames (*(char ***)0x00521DC4)

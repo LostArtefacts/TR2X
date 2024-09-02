@@ -50,6 +50,7 @@
 #define MAX_EFFECTS 100
 #define MAX_PICKUPS 12
 #define MAX_LEVELS 24
+#define MAX_LEVEL_NAME_SIZE 50 // TODO: get rid of this limit
 #define MAX_DEMO_FILES MAX_LEVELS
 #define MAX_DEMO_SIZE 9000
 
