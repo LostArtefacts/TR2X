@@ -60,7 +60,7 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
     char text2[32];
 
     if (m_ShowGymStatsTextMode == 1) {
-        if (Display_Requester(&g_StatsRequester, 1, 1)) {
+        if (Requester_Display(&g_StatsRequester, 1, 1)) {
             m_ShowGymStatsTextMode = 0;
         } else {
             g_InputDB = 0;
@@ -70,7 +70,7 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
     }
 
     g_StatsRequester.no_selector = 1;
-    SetPCRequesterSize(&g_StatsRequester, 7, -32);
+    Requester_SetSize(&g_StatsRequester, 7, -32);
     g_StatsRequester.line_height = 18;
     g_StatsRequester.items_count = 0;
     g_StatsRequester.selected = 0;
@@ -83,8 +83,8 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
     g_StatsRequester.pitem_strings2 = g_ValidLevelStrings2;
     g_StatsRequester.item_string_len = MAX_LEVEL_NAME_SIZE;
 
-    Init_Requester(&g_StatsRequester);
-    SetRequesterHeading(
+    Requester_Init(&g_StatsRequester);
+    Requester_SetHeading(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_BEST_TIMES],
         REQ_CENTER, NULL, 0);
 
@@ -102,12 +102,12 @@ void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
             text2, "%02d:%02d.%-2d", sec / 60, sec % 60,
             g_Assault.best_time[i] % FRAMES_PER_SECOND
                 / (FRAMES_PER_SECOND / 10));
-        AddRequesterItem(
+        Requester_AddItem(
             &g_StatsRequester, text1, REQ_ALIGN_LEFT, text2, REQ_ALIGN_RIGHT);
     }
 
     if (i == 0) {
-        AddRequesterItem(
+        Requester_AddItem(
             &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_NO_TIMES_SET],
             REQ_CENTER, NULL, REQ_CENTER);
     }
@@ -120,10 +120,10 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
     char buffer[32];
 
     if (m_ShowStatsTextMode == 1) {
-        ChangeRequesterItem(
+        Requester_ChangeItem(
             &g_StatsRequester, 0, g_GF_GameStrings[GF_S_GAME_MISC_TIME_TAKEN],
             REQ_ALIGN_LEFT, time_str, REQ_ALIGN_RIGHT);
-        if (Display_Requester(&g_StatsRequester, type, 1)) {
+        if (Requester_Display(&g_StatsRequester, type, 1)) {
             m_ShowStatsTextMode = 0;
         } else {
             g_InputDB = 0;
@@ -133,7 +133,7 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
     }
 
     g_StatsRequester.no_selector = 1;
-    SetPCRequesterSize(&g_StatsRequester, 7, -32);
+    Requester_SetSize(&g_StatsRequester, 7, -32);
     g_StatsRequester.line_height = 18;
     g_StatsRequester.items_count = 0;
     g_StatsRequester.selected = 0;
@@ -146,11 +146,11 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
     g_StatsRequester.pitem_strings2 = g_ValidLevelStrings2;
     g_StatsRequester.item_string_len = MAX_LEVEL_NAME_SIZE;
 
-    Init_Requester(&g_StatsRequester);
-    SetRequesterHeading(
+    Requester_Init(&g_StatsRequester);
+    Requester_SetHeading(
         &g_StatsRequester, g_GF_LevelNames[g_CurrentLevel], REQ_CENTER, NULL,
         0);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_TIME_TAKEN],
         REQ_ALIGN_LEFT, time_str, REQ_ALIGN_RIGHT);
 
@@ -171,23 +171,23 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
         if (num_secrets == 0) {
             sprintf(buffer, g_GF_GameStrings[GF_S_GAME_MISC_NONE]);
         }
-        AddRequesterItem(
+        Requester_AddItem(
             &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_SECRETS_FOUND],
             REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
     }
 
     sprintf(buffer, "%d", g_SaveGame.statistics.kills);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_KILLS],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(buffer, "%d", g_SaveGame.statistics.shots);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_AMMO_USED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(buffer, "%d", g_SaveGame.statistics.hits);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HITS],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
@@ -196,7 +196,7 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
     } else {
         sprintf(buffer, "%d.0", g_SaveGame.statistics.medipacks >> 1);
     }
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HEALTH_PACKS_USED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
@@ -206,7 +206,7 @@ void __cdecl ShowStatsText(const char *const time_str, const int32_t type)
     } else {
         sprintf(buffer, "%d.%02dkm", distance / 1000, distance % 100);
     }
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_DISTANCE_TRAVELLED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
@@ -218,7 +218,7 @@ void __cdecl ShowEndStatsText(void)
     char buffer[32];
 
     if (m_ShowEndStatsTextMode == 1) {
-        if (Display_Requester(&g_StatsRequester, 0, 1)) {
+        if (Requester_Display(&g_StatsRequester, 0, 1)) {
             m_ShowEndStatsTextMode = 0;
         } else {
             g_InputDB = 0;
@@ -228,7 +228,7 @@ void __cdecl ShowEndStatsText(void)
     }
 
     g_StatsRequester.no_selector = 1;
-    SetPCRequesterSize(&g_StatsRequester, 7, -32);
+    Requester_SetSize(&g_StatsRequester, 7, -32);
     g_StatsRequester.line_height = 18;
     g_StatsRequester.items_count = 0;
     g_StatsRequester.selected = 0;
@@ -241,8 +241,8 @@ void __cdecl ShowEndStatsText(void)
     g_StatsRequester.pitem_strings2 = g_ValidLevelStrings2;
     g_StatsRequester.item_string_len = MAX_LEVEL_NAME_SIZE;
 
-    Init_Requester(&g_StatsRequester);
-    SetRequesterHeading(
+    Requester_Init(&g_StatsRequester);
+    Requester_SetHeading(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_FINAL_STATISTICS], 0,
         0, 0);
 
@@ -251,29 +251,29 @@ void __cdecl ShowEndStatsText(void)
     const int32_t sec = stats.timer / FRAMES_PER_SECOND;
     sprintf(
         buffer, "%02d:%02d:%02d", (sec / 60) / 60, (sec / 60) % 60, sec % 60);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_TIME_TAKEN],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(
         buffer, "%d %s %d", stats.found_secrets,
         g_GF_GameStrings[GF_S_GAME_MISC_OF], stats.total_secrets);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_SECRETS_FOUND],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(buffer, "%d", stats.kills);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_KILLS],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(buffer, "%d", stats.ammo_used);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_AMMO_USED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
     sprintf(buffer, "%d", stats.ammo_hits);
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HITS],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
@@ -282,7 +282,7 @@ void __cdecl ShowEndStatsText(void)
     } else {
         sprintf(buffer, "%d.0", stats.medipacks >> 1);
     }
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_HEALTH_PACKS_USED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 
@@ -292,7 +292,7 @@ void __cdecl ShowEndStatsText(void)
     } else {
         sprintf(buffer, "%d.%02dkm", distance / 1000, distance % 100);
     }
-    AddRequesterItem(
+    Requester_AddItem(
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_DISTANCE_TRAVELLED],
         REQ_ALIGN_LEFT, buffer, REQ_ALIGN_RIGHT);
 

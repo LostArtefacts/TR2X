@@ -375,10 +375,10 @@ int32_t __cdecl GF_LoadScriptFile(const char *const fname)
     g_Inv_Item_Controls.string = g_GF_PCStrings[GF_S_PC_CONTROLS];
     g_Inv_Item_Photo.string = g_GF_GameStrings[GF_S_GAME_INV_ITEM_LARA_HOME];
 
-    SetRequesterHeading(
+    Requester_SetHeading(
         &g_LoadGameRequester, g_GF_GameStrings[GF_S_GAME_PASSPORT_SELECT_LEVEL],
         0, 0, 0);
-    SetRequesterHeading(
+    Requester_SetHeading(
         &g_SaveGameRequester, g_GF_GameStrings[GF_S_GAME_PASSPORT_SELECT_LEVEL],
         0, 0, 0);
 

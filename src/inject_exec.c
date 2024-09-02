@@ -43,6 +43,7 @@
 #include "game/output.h"
 #include "game/overlay.h"
 #include "game/random.h"
+#include "game/requester.h"
 #include "game/room.h"
 #include "game/room_draw.h"
 #include "game/shell.h"
@@ -62,6 +63,7 @@ static void Inject_Room(bool enable);
 static void Inject_Math(bool enable);
 static void Inject_Matrix(bool enable);
 static void Inject_Shell(bool enable);
+static void Inject_Requester(bool enable);
 static void Inject_Option(bool enable);
 static void Inject_Text(bool enable);
 static void Inject_Input(bool enable);
@@ -339,6 +341,11 @@ static void Inject_Shell(const bool enable)
     INJECT(enable, 0x0044E770, Shell_Cleanup);
     INJECT(enable, 0x0044E890, Shell_ExitSystem);
     INJECT(enable, 0x00454980, Shell_Main);
+}
+
+static void Inject_Requester(const bool enable)
+{
+    INJECT(enable, 0x00425630, Requester_Shutdown);
 }
 
 static void Inject_Option(const bool enable)
@@ -933,6 +940,7 @@ void Inject_Exec(void)
     Inject_Math(true);
     Inject_Matrix(true);
     Inject_Shell(true);
+    Inject_Requester(true);
     Inject_Option(true);
     Inject_Text(true);
     Inject_Input(true);

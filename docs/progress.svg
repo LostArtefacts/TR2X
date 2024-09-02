@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">57.06% (695)</tspan> · <tspan class="known">40.48% (493)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">57.14% (696)</tspan> · <tspan class="known">40.39% (492)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="426.24" height="6" x="0" y="0" class="decompiled"/>
-<rect width="302.36" height="6" x="426.24" y="0" class="known"/>
+<rect width="426.86" height="6" x="0" y="0" class="decompiled"/>
+<rect width="301.74" height="6" x="426.86" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -437,17 +437,17 @@
 <rect width="12" height="12" x="120" y="105" class="known"><title>void __cdecl Inv_Ring_MotionCameraPitch(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="135" y="105" class="known"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="150" y="105" class="known"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
-<rect width="12" height="12" x="165" y="105" class="known"><title>void __cdecl Init_Requester(REQUEST_INFO *req);</title></rect>
-<rect width="12" height="12" x="180" y="105" class="known"><title>void __cdecl Remove_Requester(REQUEST_INFO *req);</title></rect>
-<rect width="12" height="12" x="195" y="105" class="known"><title>void __cdecl ReqItemCentreAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
-<rect width="12" height="12" x="210" y="105" class="known"><title>void __cdecl ReqItemLeftalign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
-<rect width="12" height="12" x="225" y="105" class="known"><title>void __cdecl ReqItemRightalign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
-<rect width="12" height="12" x="240" y="105" class="known"><title>int32_t __cdecl Display_Requester(REQUEST_INFO *req, int32_t des, int32_t backgrounds);</title></rect>
-<rect width="12" height="12" x="255" y="105" class="known"><title>void __cdecl SetRequesterHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);</title></rect>
-<rect width="12" height="12" x="270" y="105" class="known"><title>void __cdecl RemoveAllReqItems(REQUEST_INFO *req);</title></rect>
-<rect width="12" height="12" x="285" y="105" class="known"><title>void __cdecl ChangeRequesterItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
-<rect width="12" height="12" x="300" y="105" class="known"><title>void __cdecl AddRequesterItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
-<rect width="12" height="12" x="315" y="105" class="known"><title>void __cdecl SetPCRequesterSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);</title></rect>
+<rect width="12" height="12" x="165" y="105" class="known"><title>void __cdecl Requester_Init(REQUEST_INFO *req);</title></rect>
+<rect width="12" height="12" x="180" y="105" class="decompiled"><title>void __cdecl Requester_Shutdown(REQUEST_INFO *req);</title></rect>
+<rect width="12" height="12" x="195" y="105" class="known"><title>void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="12" height="12" x="210" y="105" class="known"><title>void __cdecl Requester_Item_LeftAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="12" height="12" x="225" y="105" class="known"><title>void __cdecl Requester_Item_RightAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="12" height="12" x="240" y="105" class="known"><title>int32_t __cdecl Requester_Display(REQUEST_INFO *req, int32_t des, int32_t backgrounds);</title></rect>
+<rect width="12" height="12" x="255" y="105" class="known"><title>void __cdecl Requester_SetHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);</title></rect>
+<rect width="12" height="12" x="270" y="105" class="known"><title>void __cdecl Requster_RemoveAllItems(REQUEST_INFO *req);</title></rect>
+<rect width="12" height="12" x="285" y="105" class="known"><title>void __cdecl Requester_ChangeItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
+<rect width="12" height="12" x="300" y="105" class="known"><title>void __cdecl Requester_AddItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
+<rect width="12" height="12" x="315" y="105" class="known"><title>void __cdecl Requester_SetSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);</title></rect>
 <rect width="12" height="12" x="330" y="105" class="known"><title>int32_t __cdecl AddAssaultTime(uint32_t time);</title></rect>
 <rect width="12" height="12" x="345" y="105" class="decompiled"><title>void __cdecl ShowGymStatsText(char *time_str, int32_t type);</title></rect>
 <rect width="12" height="12" x="360" y="105" class="decompiled"><title>void __cdecl ShowStatsText(char *time_str, int32_t type);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.37%</tspan> · <tspan class="known">39.30%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.42%</tspan> · <tspan class="known">39.26%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="450.97" height="6" x="0" y="0" class="decompiled"/>
-<rect width="293.59" height="6" x="450.97" y="0" class="known"/>
+<rect width="451.32" height="6" x="0" y="0" class="decompiled"/>
+<rect width="293.24" height="6" x="451.32" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1318,7 +1318,7 @@
 <rect width="40.17" height="45.70" x="61" y="161.94" class="known"><title>void __cdecl HairControl(int32_t in_cutscene);</title></rect>
 <rect width="40.17" height="40.30" x="61" y="210.64" class="decompiled"><title>int32_t __cdecl Creature_Animate(int16_t item_num, int16_t angle, int16_t tilt);</title></rect>
 <rect width="40.17" height="38.57" x="61" y="253.94" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3(const int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);</title></rect>
-<rect width="40.17" height="38.34" x="61" y="295.51" class="known"><title>int32_t __cdecl Display_Requester(REQUEST_INFO *req, int32_t des, int32_t backgrounds);</title></rect>
+<rect width="40.17" height="38.34" x="61" y="295.51" class="known"><title>int32_t __cdecl Requester_Display(REQUEST_INFO *req, int32_t des, int32_t backgrounds);</title></rect>
 <rect width="40.17" height="38.15" x="61" y="336.85" class="known"><title>void __cdecl ExtractSaveGameInfo(void);</title></rect>
 <rect width="35.22" height="38.72" x="104.17" y="0" class="decompiled"><title>void __cdecl Camera_SmartShift(GAME_VECTOR *target, void (*__cdecl shift)(int32_t *x, int32_t *y, int32_t *h, int32_t target_x, int32_t target_y, int32_t target_h, int32_t left, int32_t top, int32_t right, int32_t bottom));</title></rect>
 <rect width="35.22" height="37.07" x="104.17" y="41.72" class="known"><title>void __cdecl SE_GraphicsDlgUpdate(HWND hwndDlg);</title></rect>
@@ -1762,7 +1762,7 @@
 <rect width="9.54" height="9.84" x="521.63" y="188.59" class="known"><title>void __cdecl Splash(ITEM_INFO *item);</title></rect>
 <rect width="9.54" height="9.77" x="521.63" y="201.42" class="known"><title>int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="9.54" height="9.77" x="521.63" y="214.20" class="decompiled"><title>void __cdecl Gun_AimWeapon(WEAPON_INFO *winfo, LARA_ARM *arm);</title></rect>
-<rect width="9.54" height="9.71" x="521.63" y="226.97" class="known"><title>void __cdecl ChangeRequesterItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
+<rect width="9.54" height="9.71" x="521.63" y="226.97" class="known"><title>void __cdecl Requester_ChangeItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
 <rect width="9.54" height="9.71" x="521.63" y="239.68" class="decompiled"><title>void __cdecl Option_Compass(INVENTORY_ITEM *item);</title></rect>
 <rect width="9.54" height="9.71" x="521.63" y="252.39" class="known"><title>void __cdecl AnimateTextures(int32_t ticks);</title></rect>
 <rect width="9.54" height="9.64" x="521.63" y="265.09" class="known"><title>void __cdecl DeathSlideCollision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);</title></rect>
@@ -1803,7 +1803,7 @@
 <rect width="8.96" height="9.08" x="643.53" y="161.72" class="decompiled"><title>DWORD __cdecl CompPCX(BYTE *bitmap, DWORD width, DWORD height, RGB_888 *palette, BYTE **pcx_data);</title></rect>
 <rect width="8.96" height="9.08" x="655.49" y="161.72" class="known"><title>void __cdecl SyncSurfacePalettes(void *src_data, int32_t width, int32_t height, int32_t src_pitch, RGB_888 *src_palette, void *dst_data, int32_t dst_pitch, RGB_888 *dst_palette, bool preserve_sys_palette);</title></rect>
 <rect width="8.89" height="9.08" x="667.45" y="161.72" class="decompiled"><title>int32_t __cdecl Lara_TestEdgeCatch(ITEM_INFO *item, COLL_INFO *coll, int32_t *edge);</title></rect>
-<rect width="8.82" height="9.08" x="679.34" y="161.72" class="known"><title>void __cdecl AddRequesterItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
+<rect width="8.82" height="9.08" x="679.34" y="161.72" class="known"><title>void __cdecl Requester_AddItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);</title></rect>
 <rect width="8.82" height="9.08" x="691.16" y="161.72" class="known"><title>void __cdecl SpiderLeap(int16_t item_num, int16_t angle);</title></rect>
 <rect width="8.75" height="9.08" x="702.99" y="161.72" class="decompiled"><title>bool __cdecl Matrix_TranslateRel(int32_t x, int32_t y, int32_t z);</title></rect>
 <rect width="8.75" height="9.08" x="714.74" y="161.72" class="decompiled"><title>int32_t __cdecl Item_GetAnimChange(ITEM_INFO *item, const ANIM_STRUCT *anim);</title></rect>
@@ -1813,7 +1813,7 @@
 <rect width="8.66" height="9.17" x="534.18" y="185.97" class="known"><title>void __cdecl S_CopyScreenToBuffer(void);</title></rect>
 <rect width="8.66" height="9.10" x="534.18" y="198.14" class="decompiled"><title>void __cdecl Matrix_RotX(int16_t rx);</title></rect>
 <rect width="8.66" height="9.10" x="534.18" y="210.24" class="decompiled"><title>const int16_t *__cdecl Output_InsertObjectGT3_ZBuffered(const int16_t *obj_ptr, int32_t num, SORT_TYPE sort_type);</title></rect>
-<rect width="8.66" height="9.10" x="534.18" y="222.34" class="known"><title>void __cdecl SetRequesterHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);</title></rect>
+<rect width="8.66" height="9.10" x="534.18" y="222.34" class="known"><title>void __cdecl Requester_SetHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);</title></rect>
 <rect width="8.66" height="9.10" x="534.18" y="234.44" class="decompiled"><title>int32_t __cdecl Lara_CheckForLetGo(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="8.66" height="9.10" x="534.18" y="246.54" class="decompiled"><title>void __cdecl Gun_FindTargetPoint(const ITEM_INFO *item, GAME_VECTOR *target);</title></rect>
 <rect width="8.66" height="9.10" x="534.18" y="258.64" class="known"><title>bool __cdecl GuidStringToBinary(LPCTSTR lpString, GUID *guid);</title></rect>
@@ -1829,7 +1829,7 @@
 <rect width="8.66" height="8.75" x="545.84" y="173.80" class="decompiled"><title>void __cdecl Lara_State_Extra_StartHouse(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="8.59" height="8.75" x="557.50" y="173.80" class="decompiled"><title>int32_t __cdecl Box_EscapeBox(const ITEM_INFO *item, const ITEM_INFO *enemy, int16_t box_num);</title></rect>
 <rect width="8.59" height="8.75" x="569.09" y="173.80" class="known"><title>void __cdecl DoLotsOfBlood(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE direction, int16_t room_num, int32_t num);</title></rect>
-<rect width="8.52" height="8.75" x="580.68" y="173.80" class="known"><title>void __cdecl Remove_Requester(REQUEST_INFO *req);</title></rect>
+<rect width="8.52" height="8.75" x="580.68" y="173.80" class="decompiled"><title>void __cdecl Requester_Shutdown(REQUEST_INFO *req);</title></rect>
 <rect width="8.52" height="8.75" x="592.20" y="173.80" class="decompiled"><title>void __cdecl Lara_State_Extra_FinalAnim(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="8.52" height="8.75" x="603.72" y="173.80" class="known"><title>int32_t __cdecl OnTrapDoor(ITEM_INFO *item, int32_t x, int32_t z);</title></rect>
 <rect width="8.45" height="8.75" x="615.23" y="173.80" class="known"><title>bool __cdecl LoadTexturePage(int32_t page_idx, bool reset);</title></rect>
@@ -1923,7 +1923,7 @@
 <rect width="7.67" height="7.19" x="665.33" y="196.57" class="known"><title>void __cdecl Object_DrawSpriteItem(ITEM_INFO *item);</title></rect>
 <rect width="7.67" height="7.19" x="676.01" y="196.57" class="decompiled"><title>void __cdecl Lara_Col_Fallback(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="7.59" height="7.19" x="686.68" y="196.57" class="known"><title>void __cdecl ControlBlood1(int16_t fx_num);</title></rect>
-<rect width="7.59" height="7.19" x="697.28" y="196.57" class="known"><title>void __cdecl Init_Requester(REQUEST_INFO *req);</title></rect>
+<rect width="7.59" height="7.19" x="697.28" y="196.57" class="known"><title>void __cdecl Requester_Init(REQUEST_INFO *req);</title></rect>
 <rect width="7.59" height="7.19" x="707.87" y="196.57" class="decompiled"><title>void __cdecl HWR_EnableZBuffer(bool z_write_enable, bool z_enable);</title></rect>
 <rect width="7.51" height="7.19" x="718.46" y="196.57" class="decompiled"><title>int32_t __cdecl Inv_AnimateInventoryItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="7.51" height="7.19" x="728.98" y="196.57" class="known"><title>void __cdecl RingIsNotOpen(RING_INFO *ring);</title></rect>
@@ -2072,13 +2072,13 @@
 <rect width="5.24" height="5.77" x="725.29" y="244.61" class="known"><title>int32_t __cdecl SE_GraphicsTest(void);</title></rect>
 <rect width="5.24" height="5.77" x="733.53" y="244.61" class="known"><title>int32_t __cdecl SE_SoundTest(void);</title></rect>
 <rect width="5.24" height="5.77" x="741.76" y="244.61" class="known"><title>void __thiscall SE_ChangeBitmapPalette(BITMAP_RESOURCE *bmpRsrc, HWND hWnd);</title></rect>
-<rect width="5.39" height="5.51" x="616.62" y="253.38" class="known"><title>void __cdecl ReqItemRightalign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="5.39" height="5.51" x="616.62" y="253.38" class="known"><title>void __cdecl Requester_Item_RightAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="261.89" class="decompiled"><title>void __cdecl Room_GetNewRoom(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="270.30" class="decompiled"><title>void __cdecl Object_Collision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="278.72" class="decompiled"><title>int32_t __cdecl Item_IsTriggerActive(ITEM_INFO *item);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="287.13" class="decompiled"><title>BOOL __cdecl Level_LoadAnimatedTextures(HANDLE handle);</title></rect>
 <rect width="5.39" height="5.41" x="616.62" y="295.54" class="decompiled"><title>void __cdecl Shell_Cleanup(void);</title></rect>
-<rect width="5.39" height="5.31" x="616.62" y="303.96" class="known"><title>void __cdecl ReqItemLeftalign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="5.39" height="5.31" x="616.62" y="303.96" class="known"><title>void __cdecl Requester_Item_LeftAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="312.27" class="decompiled"><title>void __cdecl Lara_State_FastDive(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="320.59" class="known"><title>int32_t __cdecl DoDynamics(int32_t height, int32_t fall_speed, int32_t *y);</title></rect>
 <rect width="5.39" height="5.31" x="616.62" y="328.90" class="decompiled"><title>bool __cdecl DDrawCreate(LPGUID lpGUID);</title></rect>
@@ -2203,7 +2203,7 @@
 <rect width="4.19" height="3.70" x="648.46" y="358.03" class="known"><title>void __cdecl TrapDoorFloor(ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="4.19" height="3.70" x="648.46" y="364.72" class="decompiled"><title>void __cdecl WinVidHideGameWindow(void);</title></rect>
 <rect width="4.19" height="3.58" x="648.46" y="371.42" class="decompiled"><title>void __cdecl Output_InitPolyList(void);</title></rect>
-<rect width="3.77" height="3.99" x="655.65" y="283.23" class="known"><title>void __cdecl SetPCRequesterSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);</title></rect>
+<rect width="3.77" height="3.99" x="655.65" y="283.23" class="known"><title>void __cdecl Requester_SetSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);</title></rect>
 <rect width="3.77" height="3.99" x="662.43" y="283.23" class="decompiled"><title>int16_t __cdecl Item_Create(void);</title></rect>
 <rect width="3.77" height="3.99" x="669.20" y="283.23" class="decompiled"><title>void __cdecl Lara_State_SwitchOn(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="3.77" height="3.99" x="675.97" y="283.23" class="known"><title>void __cdecl SwitchControl(int16_t item_num);</title></rect>
@@ -2410,7 +2410,7 @@
 <rect width="1.57" height="2.09" x="740.86" y="336.88" class="known"><title>int32_t __cdecl GetFreeTexturePageIndex(void);</title></rect>
 <rect width="1.57" height="2.09" x="745.43" y="336.88" class="known"><title>void __thiscall SE_UpdateBitmapPalette(BITMAP_RESOURCE *bmpRsrc, HWND hWnd, HWND hSender);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="341.96" class="known"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
-<rect width="1.91" height="1.57" x="708.89" y="346.53" class="known"><title>void __cdecl ReqItemCentreAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
+<rect width="1.91" height="1.57" x="708.89" y="346.53" class="known"><title>void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="351.10" class="decompiled"><title>void __cdecl Lara_ControlExtra(int16_t item_num);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="355.67" class="known"><title>void __cdecl BridgeFlatCeiling(ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="360.24" class="decompiled"><title>int32_t __fastcall Math_Sin(int16_t angle);</title></rect>
@@ -2450,7 +2450,7 @@
 <rect width="1.18" height="0.98" x="722.47" y="354.74" class="decompiled"><title>void __cdecl Lara_State_Dive(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="1.18" height="0.98" x="722.47" y="358.72" class="known"><title>void __cdecl S_AdjustTexelCoordinates(void);</title></rect>
 <rect width="1.18" height="0.98" x="722.47" y="362.70" class="known"><title>void __cdecl SE_GraphicsTestFinish(void);</title></rect>
-<rect width="1.18" height="0.78" x="722.47" y="366.67" class="known"><title>void __cdecl RemoveAllReqItems(REQUEST_INFO *req);</title></rect>
+<rect width="1.18" height="0.78" x="722.47" y="366.67" class="known"><title>void __cdecl Requster_RemoveAllItems(REQUEST_INFO *req);</title></rect>
 <rect width="1.18" height="0.78" x="722.47" y="370.45" class="decompiled"><title>void __cdecl Lara_State_UpJump(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="1.18" height="0.78" x="722.47" y="374.22" class="decompiled"><title>void __cdecl Lara_State_Extra_Airlock(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="0.89" height="1.05" x="726.65" y="350.77" class="decompiled"><title>void __cdecl Lara_Col_TurnLeft(ITEM_INFO *item, COLL_INFO *coll);</title></rect>

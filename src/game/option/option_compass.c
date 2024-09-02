@@ -1,5 +1,6 @@
 #include "decomp/stats.h"
 #include "game/option/option.h"
+#include "game/requester.h"
 #include "game/sound.h"
 #include "global/funcs.h"
 #include "global/vars.h"
@@ -28,5 +29,5 @@ void __cdecl Option_Compass(INVENTORY_ITEM *const item)
 
 void Option_Compass_Shutdown(INVENTORY_ITEM *const item)
 {
-    Remove_Requester(&g_StatsRequester);
+    Requester_Shutdown(&g_StatsRequester);
 }

@@ -3233,17 +3233,17 @@ typedef enum {
 0x00425530  0x0063  -R      void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);
 
 # game/invtext.c
-0x004255A0  0x0082  -R      void __cdecl Init_Requester(REQUEST_INFO *req);
-0x00425630  0x00A3  -R      void __cdecl Remove_Requester(REQUEST_INFO *req);
-0x004256E0  0x001B  -R      void __cdecl ReqItemCentreAlign(REQUEST_INFO *req, TEXTSTRING *txt);
-0x00425700  0x0054  -R      void __cdecl ReqItemLeftalign(REQUEST_INFO *req, TEXTSTRING *txt);
-0x00425760  0x0056  -R      void __cdecl ReqItemRightalign(REQUEST_INFO *req, TEXTSTRING *txt);
-0x004257C0  0x0866  -R      int32_t __cdecl Display_Requester(REQUEST_INFO *req, int32_t des, int32_t backgrounds);
-0x00426030  0x00AA  -R      void __cdecl SetRequesterHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);
-0x004260E0  0x0013  -R      void __cdecl RemoveAllReqItems(REQUEST_INFO *req);
-0x00426100  0x00C0  -R      void __cdecl ChangeRequesterItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);
-0x004261C0  0x00AC  -R      void __cdecl AddRequesterItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);
-0x00426270  0x0039  -R      void __cdecl SetPCRequesterSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);
+0x004255A0  0x0082  -       void __cdecl Requester_Init(REQUEST_INFO *req);
+0x00425630  0x00A3  +       void __cdecl Requester_Shutdown(REQUEST_INFO *req);
+0x004256E0  0x001B  -       void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);
+0x00425700  0x0054  -       void __cdecl Requester_Item_LeftAlign(REQUEST_INFO *req, TEXTSTRING *txt);
+0x00425760  0x0056  -       void __cdecl Requester_Item_RightAlign(REQUEST_INFO *req, TEXTSTRING *txt);
+0x004257C0  0x0866  -       int32_t __cdecl Requester_Display(REQUEST_INFO *req, int32_t des, int32_t backgrounds);
+0x00426030  0x00AA  -       void __cdecl Requester_SetHeading(REQUEST_INFO *req, char *text1, uint32_t flags1, char *text2, uint32_t flags2);
+0x004260E0  0x0013  -       void __cdecl Requster_RemoveAllItems(REQUEST_INFO *req);
+0x00426100  0x00C0  -       void __cdecl Requester_ChangeItem(REQUEST_INFO *req, int32_t item, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);
+0x004261C0  0x00AC  -       void __cdecl Requester_AddItem(REQUEST_INFO *req, const char *text1, uint32_t flags1, const char *text2, uint32_t flags2);
+0x00426270  0x0039  -       void __cdecl Requester_SetSize(REQUEST_INFO *req, int32_t maxlines, int32_t ypos);
 0x004262B0  0x0081  -R      int32_t __cdecl AddAssaultTime(uint32_t time);
 0x00426340  0x01D6  +R      void __cdecl ShowGymStatsText(char *time_str, int32_t type);
 0x00426520  0x0397  +R      void __cdecl ShowStatsText(char *time_str, int32_t type);

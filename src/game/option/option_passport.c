@@ -1,4 +1,5 @@
 #include "game/option/option.h"
+#include "game/requester.h"
 #include "game/sound.h"
 #include "game/text.h"
 #include "global/funcs.h"
@@ -32,17 +33,17 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
         }
 
         if (g_PassportMode == PASSPORT_MODE_LOAD_GAME) {
-            SetPCRequesterSize(&g_LoadGameRequester, 10, -32);
+            Requester_SetSize(&g_LoadGameRequester, 10, -32);
 
             const int32_t select =
-                Display_Requester(&g_LoadGameRequester, 1, 1);
+                Requester_Display(&g_LoadGameRequester, 1, 1);
             if (select != 0) {
                 if (select > 0) {
                     g_Inv_ExtraData[1] = select - 1;
                 }
                 g_PassportMode = PASSPORT_MODE_BROWSE;
             } else if (g_InputDB & IN_RIGHT) {
-                Remove_Requester(&g_LoadGameRequester);
+                Requester_Shutdown(&g_LoadGameRequester);
                 g_PassportMode = PASSPORT_MODE_BROWSE;
             } else {
                 g_Input = 0;
@@ -68,7 +69,7 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
                 g_Inv_ItemText[IT_NAME] = NULL;
 
                 GetSavedGamesList(&g_LoadGameRequester);
-                SetRequesterHeading(
+                Requester_SetHeading(
                     &g_LoadGameRequester,
                     g_GF_GameStrings[GF_S_GAME_PASSPORT_LOAD_GAME], 0, NULL, 0);
 
@@ -91,11 +92,11 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
             || g_PassportMode == PASSPORT_MODE_SELECT_LEVEL) {
             int32_t select;
             if (g_PassportMode == PASSPORT_MODE_LOAD_GAME) {
-                SetPCRequesterSize(&g_LoadGameRequester, 10, -32);
-                select = Display_Requester(&g_LoadGameRequester, 1, 1);
+                Requester_SetSize(&g_LoadGameRequester, 10, -32);
+                select = Requester_Display(&g_LoadGameRequester, 1, 1);
             } else {
-                SetPCRequesterSize(&g_SaveGameRequester, 10, -32);
-                select = Display_Requester(&g_SaveGameRequester, 1, 1);
+                Requester_SetSize(&g_SaveGameRequester, 10, -32);
+                select = Requester_Display(&g_SaveGameRequester, 1, 1);
             }
 
             if (select != 0) {
@@ -105,9 +106,9 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
                 g_PassportMode = PASSPORT_MODE_BROWSE;
             } else if (g_InputDB & (IN_LEFT | IN_RIGHT)) {
                 if (g_PassportMode == PASSPORT_MODE_LOAD_GAME) {
-                    Remove_Requester(&g_LoadGameRequester);
+                    Requester_Shutdown(&g_LoadGameRequester);
                 } else {
-                    Remove_Requester(&g_SaveGameRequester);
+                    Requester_Shutdown(&g_SaveGameRequester);
                 }
                 g_PassportMode = PASSPORT_MODE_BROWSE;
             } else {
@@ -145,7 +146,7 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
                 g_Inv_ItemText[IT_NAME] = NULL;
 
                 GetSavedGamesList(&g_LoadGameRequester);
-                SetRequesterHeading(
+                Requester_SetHeading(
                     &g_LoadGameRequester,
                     g_GF_GameStrings[GF_S_GAME_PASSPORT_SAVE_GAME], 0, NULL, 0);
 
@@ -160,9 +161,9 @@ void __cdecl Option_Passport(INVENTORY_ITEM *const item)
                 Text_Remove(g_Inv_ItemText[IT_NAME]);
                 g_Inv_ItemText[IT_NAME] = NULL;
 
-                Init_Requester(&g_SaveGameRequester);
+                Requester_Init(&g_SaveGameRequester);
                 GetValidLevelsList(&g_SaveGameRequester);
-                SetRequesterHeading(
+                Requester_SetHeading(
                     &g_SaveGameRequester,
                     g_GF_GameStrings[GF_S_GAME_PASSPORT_SELECT_LEVEL], 0, NULL,
                     0);
@@ -279,8 +280,8 @@ void Option_Passport_Shutdown(INVENTORY_ITEM *const item)
     Text_Remove(g_PasswordText1);
     g_PasswordText1 = NULL;
 
-    Remove_Requester(&g_LoadGameRequester);
-    Remove_Requester(&g_SaveGameRequester);
+    Requester_Shutdown(&g_LoadGameRequester);
+    Requester_Shutdown(&g_SaveGameRequester);
 
     g_PassportMode = PASSPORT_MODE_BROWSE;
 }

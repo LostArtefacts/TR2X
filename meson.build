@@ -125,6 +125,7 @@ dll_sources = [
   'src/game/output.c',
   'src/game/overlay.c',
   'src/game/random.c',
+  'src/game/requester.c',
   'src/game/room.c',
   'src/game/room_draw.c',
   'src/game/shell.c',
