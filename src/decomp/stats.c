@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
+static int32_t m_ShowGymStatsTextMode = 0;
 static int32_t m_ShowStatsTextMode = 0;
 static int32_t m_ShowEndStatsTextMode = 0;
 
@@ -51,6 +52,67 @@ static STATS Stats_GetEndGameStats(void)
     }
 
     return result;
+}
+
+void __cdecl ShowGymStatsText(const char *const time_str, const int32_t type)
+{
+    char text1[32];
+    char text2[32];
+
+    if (m_ShowGymStatsTextMode == 1) {
+        if (Display_Requester(&g_StatsRequester, 1, 1)) {
+            m_ShowGymStatsTextMode = 0;
+        } else {
+            g_InputDB = 0;
+            g_Input = 0;
+        }
+        return;
+    }
+
+    g_StatsRequester.no_selector = 1;
+    SetPCRequesterSize(&g_StatsRequester, 7, -32);
+    g_StatsRequester.line_height = 18;
+    g_StatsRequester.items_count = 0;
+    g_StatsRequester.selected = 0;
+    g_StatsRequester.line_offset = 0;
+    g_StatsRequester.line_old_offset = 0;
+    g_StatsRequester.pix_width = 304;
+    g_StatsRequester.x_pos = 0;
+    g_StatsRequester.z_pos = 0;
+    g_StatsRequester.pitem_strings1 = g_ValidLevelStrings1;
+    g_StatsRequester.pitem_strings2 = g_ValidLevelStrings2;
+    g_StatsRequester.item_string_len = MAX_LEVEL_NAME_SIZE;
+
+    Init_Requester(&g_StatsRequester);
+    SetRequesterHeading(
+        &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_BEST_TIMES],
+        REQ_CENTER, NULL, 0);
+
+    int32_t i;
+    for (i = 0; i < 10; i++) {
+        if (!g_Assault.best_time[i]) {
+            break;
+        }
+
+        sprintf(
+            text1, "%2d: %s %d", i + 1, g_GF_GameStrings[GF_S_GAME_MISC_FINISH],
+            g_Assault.best_finish[i]);
+        const int32_t sec = g_Assault.best_time[i] / FRAMES_PER_SECOND;
+        sprintf(
+            text2, "%02d:%02d.%-2d", sec / 60, sec % 60,
+            g_Assault.best_time[i] % FRAMES_PER_SECOND
+                / (FRAMES_PER_SECOND / 10));
+        AddRequesterItem(
+            &g_StatsRequester, text1, REQ_ALIGN_LEFT, text2, REQ_ALIGN_RIGHT);
+    }
+
+    if (i == 0) {
+        AddRequesterItem(
+            &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_NO_TIMES_SET],
+            REQ_CENTER, NULL, REQ_CENTER);
+    }
+
+    m_ShowGymStatsTextMode = 1;
 }
 
 void __cdecl ShowStatsText(const char *const time_str, const int32_t type)

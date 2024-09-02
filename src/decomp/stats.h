@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 
+void __cdecl ShowGymStatsText(const char *time_str, int32_t type);
 void __cdecl ShowStatsText(const char *time_str, int32_t type);
 void __cdecl ShowEndStatsText(void);
 
