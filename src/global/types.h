@@ -434,15 +434,15 @@ typedef struct __unaligned {
     uint32_t background_flags;
     uint32_t moreup_flags;
     uint32_t moredown_flags;
-    uint32_t item_flags1[24];
-    uint32_t item_flags2[24];
+    uint32_t item_flags1[24]; // MAX_REQUESTER_ITEMS
+    uint32_t item_flags2[24]; // MAX_REQUESTER_ITEMS
     TEXTSTRING *heading_text1;
     TEXTSTRING *heading_text2;
     TEXTSTRING *background_text;
     TEXTSTRING *moreup_text;
     TEXTSTRING *moredown_text;
-    TEXTSTRING *item_texts1[24];
-    TEXTSTRING *item_texts2[24];
+    TEXTSTRING *item_texts1[24]; // MAX_REQUESTER_ITEMS
+    TEXTSTRING *item_texts2[24]; // MAX_REQUESTER_ITEMS
     char heading_string1[32];
     char heading_string2[32];
     uint32_t render_width;

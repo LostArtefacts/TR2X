@@ -418,15 +418,15 @@ typedef struct __unaligned {
     uint32_t background_flags;
     uint32_t moreup_flags;
     uint32_t moredown_flags;
-    uint32_t item_flags1[24];
-    uint32_t item_flags2[24];
+    uint32_t item_flags1[24]; // MAX_REQUESTER_ITEMS
+    uint32_t item_flags2[24]; // MAX_REQUESTER_ITEMS
     TEXTSTRING *heading_text1;
     TEXTSTRING *heading_text2;
     TEXTSTRING *background_text;
     TEXTSTRING *moreup_text;
     TEXTSTRING *moredown_text;
-    TEXTSTRING *item_texts1[24];
-    TEXTSTRING *item_texts2[24];
+    TEXTSTRING *item_texts1[24]; // MAX_REQUESTER_ITEMS
+    TEXTSTRING *item_texts2[24]; // MAX_REQUESTER_ITEMS
     char heading_string1[32];
     char heading_string2[32];
     uint32_t render_width;
@@ -3233,7 +3233,7 @@ typedef enum {
 0x00425530  0x0063  -R      void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);
 
 # game/invtext.c
-0x004255A0  0x0082  -       void __cdecl Requester_Init(REQUEST_INFO *req);
+0x004255A0  0x0082  +       void __cdecl Requester_Init(REQUEST_INFO *req);
 0x00425630  0x00A3  +       void __cdecl Requester_Shutdown(REQUEST_INFO *req);
 0x004256E0  0x001B  -       void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);
 0x00425700  0x0054  -       void __cdecl Requester_Item_LeftAlign(REQUEST_INFO *req, TEXTSTRING *txt);
@@ -4654,3 +4654,5 @@ typedef enum {
 0x00521720  -       char g_ValidLevelStrings2[];
 0x004D7C34  +       int32_t m_ShowEndStatsTextMode;
 0x004D7C2C  +       int32_t m_ShowGymStatsTextMode;
+0x00520D00  -       uint32_t g_RequesterFlags1[24]; // MAX_REQUESTER_ITEMS
+0x00520CA0  -       uint32_t g_RequesterFlags2[24]; // MAX_REQUESTER_ITEMS

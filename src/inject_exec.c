@@ -345,6 +345,7 @@ static void Inject_Shell(const bool enable)
 
 static void Inject_Requester(const bool enable)
 {
+    INJECT(enable, 0x004255A0, Requester_Init);
     INJECT(enable, 0x00425630, Requester_Shutdown);
 }
 
