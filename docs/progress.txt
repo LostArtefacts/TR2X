@@ -4450,7 +4450,7 @@ typedef enum {
 0x005263A0  -       int16_t *g_GroundZone[][2];
 0x005263C8  -       uint16_t *g_Overlap;
 0x005206C0  -       CREATURE_INFO *g_BaddieSlots;
-0x00526312  -       int16_t g_CineLevelID;
+0x00526312  +       int16_t g_CineLevelID;
 0x005252B8  -       int32_t g_DrawRoomsCount;
 0x00525B20  -       int16_t g_DrawRoomsArray[100];
 0x00525BEC  -       int32_t g_DynamicLightCount;

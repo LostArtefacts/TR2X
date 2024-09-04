@@ -1,6 +1,13 @@
 #pragma once
 
-#include <stdint.h>
+#include "global/types.h"
+
+typedef struct {
+    struct {
+        GF_LEVEL_TYPE type;
+        int32_t num;
+    } current_level;
+} GAME_INFO;
 
 typedef struct {
     const char *key;
@@ -20,5 +27,6 @@ typedef struct {
 } GAMEFLOW_NEW;
 
 extern GAMEFLOW_NEW g_GameflowNew;
+extern GAME_INFO g_GameInfo;
 
 void GF_N_LoadStrings(int32_t level_num);

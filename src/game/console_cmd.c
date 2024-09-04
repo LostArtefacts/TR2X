@@ -2,6 +2,7 @@
 
 #include "game/console.h"
 #include "game/game_string.h"
+#include "game/gameflow/gameflow_new.h"
 #include "game/items.h"
 #include "game/lara/lara_cheat.h"
 #include "game/objects/common.h"
@@ -58,6 +59,12 @@ static COMMAND_RESULT Console_Cmd_Pos(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
 {
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
     if (!g_Objects[O_LARA].loaded || !g_LaraItem->hit_points) {
         return CR_UNAVAILABLE;
     }
@@ -182,6 +189,12 @@ static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_SetHealth(const char *const args)
 {
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
     if (!g_Objects[O_LARA].loaded) {
         return CR_UNAVAILABLE;
     }
@@ -203,6 +216,12 @@ static COMMAND_RESULT Console_Cmd_SetHealth(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_Heal(const char *const args)
 {
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
     if (!g_Objects[O_LARA].loaded) {
         return CR_UNAVAILABLE;
     }
@@ -219,6 +238,12 @@ static COMMAND_RESULT Console_Cmd_Heal(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_Fly(const char *const args)
 {
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
     if (!g_Objects[O_LARA].loaded) {
         return CR_UNAVAILABLE;
     }
@@ -228,6 +253,12 @@ static COMMAND_RESULT Console_Cmd_Fly(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_FlipMap(const char *const args)
 {
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
     bool new_state;
     if (String_Equivalent(args, "")) {
         new_state = !g_FlipStatus;
@@ -322,8 +353,8 @@ static COMMAND_RESULT Console_Cmd_LoadGame(const char *const args)
 
 static COMMAND_RESULT Console_Cmd_SaveGame(const char *const args)
 {
-    int32_t slot_num = -1;
-    if (sscanf(args, "%d", &slot_num) != 1) {
+    int32_t slot_num;
+    if (!String_ParseInteger(args, &slot_num)) {
         return CR_BAD_INVOCATION;
     }
 
@@ -335,8 +366,13 @@ static COMMAND_RESULT Console_Cmd_SaveGame(const char *const args)
         return CR_BAD_INVOCATION;
     }
 
-    if (g_LaraItem == NULL) {
-        Console_Log(GS(OSD_SAVE_GAME_FAIL), slot_num);
+    if (g_GameInfo.current_level.type == GFL_TITLE
+        || g_GameInfo.current_level.type == GFL_DEMO
+        || g_GameInfo.current_level.type == GFL_CUTSCENE) {
+        return CR_UNAVAILABLE;
+    }
+
+    if (g_LaraItem == NULL || g_LaraItem->hit_points <= 0) {
         return CR_UNAVAILABLE;
     }
 

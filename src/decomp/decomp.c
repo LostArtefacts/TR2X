@@ -567,7 +567,7 @@ int16_t __cdecl TitleSequence(void)
     g_NoInputCounter = 0;
 
     if (!g_IsTitleLoaded) {
-        if (!Level_Initialise(0, 0)) {
+        if (!Level_Initialise(0, GFL_TITLE)) {
             return GFD_EXIT_GAME;
         }
         g_IsTitleLoaded = true;
@@ -1126,7 +1126,6 @@ void __cdecl Game_SetCutsceneTrack(const int32_t track)
 
 int32_t __cdecl Game_Cutscene_Start(const int32_t level_num)
 {
-    g_CineLevelID = level_num;
     g_IsTitleLoaded = false;
     S_FadeToBlack();
     if (!Level_Initialise(level_num, GFL_CUTSCENE)) {
@@ -1137,7 +1136,7 @@ int32_t __cdecl Game_Cutscene_Start(const int32_t level_num)
     CutscenePlayer1_Initialise(g_Lara.item_num);
     g_Camera.target_angle = g_CineTargetAngle;
 
-    const int32_t old_sound_active = g_SoundIsActive;
+    const bool old_sound_active = g_SoundIsActive;
     g_SoundIsActive = false;
 
     g_CineFrameIdx = 0;
@@ -1335,8 +1334,12 @@ void __cdecl CutscenePlayerGen_Initialise(const int16_t item_num)
     item->dynamic_light = 0;
 }
 
-int32_t __cdecl Level_Initialise(int32_t level_num, int32_t level_type)
+int32_t __cdecl Level_Initialise(
+    const int32_t level_num, const GF_LEVEL_TYPE level_type)
 {
+    g_GameInfo.current_level.num = level_num;
+    g_GameInfo.current_level.type = level_type;
+
     if (level_type != GFL_TITLE && level_type != GFL_CUTSCENE) {
         g_CurrentLevel = level_num;
     }

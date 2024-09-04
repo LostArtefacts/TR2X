@@ -8,6 +8,7 @@
 #include <assert.h>
 
 GAMEFLOW_NEW g_GameflowNew;
+GAME_INFO g_GameInfo;
 
 static void GF_N_LoadObjectString(const char *key, const char *value);
 static void GF_N_LoadGameString(const char *key, const char *value);

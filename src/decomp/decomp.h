@@ -66,7 +66,7 @@ void __cdecl CutscenePlayer_Control(int16_t item_num);
 void __cdecl Lara_Control_Cutscene(int16_t item_num);
 void __cdecl CutscenePlayer1_Initialise(int16_t item_num);
 void __cdecl CutscenePlayerGen_Initialise(int16_t item_num);
-int32_t __cdecl Level_Initialise(int32_t level_num, int32_t level_type);
+int32_t __cdecl Level_Initialise(int32_t level_num, GF_LEVEL_TYPE level_type);
 void __cdecl CreateScreenBuffers(void);
 void __cdecl CreatePrimarySurface(void);
 void __cdecl CreateBackBuffer(void);
