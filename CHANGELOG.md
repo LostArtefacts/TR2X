@@ -14,6 +14,7 @@
 - added an option to fix M16 accuracy while running (#45)
 - fixed killing the T-Rex with a grenade launcher crashing the game (#168)
 - fixed secret rewards not displaying shotgun ammo (#159)
+- fixed `/tp` console command during special animations in HSH and Offshore Rig (#178, regression from 0.2)
 - fixed console registering key inputs too eagerly (regression from 0.2)
 - fixed console not being drawn in cutscenes (#180, regression from 0.2)
 - fixed sounds not playing under certain circumstances (#113, regression from 0.2)
