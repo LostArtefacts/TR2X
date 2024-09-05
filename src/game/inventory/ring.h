@@ -7,3 +7,4 @@ void __cdecl Inv_Ring_Init(
     int16_t current, IMOTION_INFO *imo);
 void __cdecl Inv_Ring_GetView(const RING_INFO *ring, PHD_3DPOS *view);
 void __cdecl Inv_Ring_Light(const RING_INFO *ring);
+void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);

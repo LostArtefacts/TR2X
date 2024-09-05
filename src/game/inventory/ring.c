@@ -88,3 +88,11 @@ void __cdecl Inv_Ring_Light(const RING_INFO *const ring)
     Math_GetVectorAngles(ring->light.x, ring->light.y, ring->light.z, angles);
     Output_RotateLight(angles[1], angles[0]);
 }
+
+void __cdecl Inv_Ring_CalcAdders(
+    RING_INFO *const ring, const int16_t rotation_duration)
+{
+    ring->angle_adder = PHD_360 / ring->number_of_objects;
+    ring->rot_adder_l = ring->angle_adder / rotation_duration;
+    ring->rot_adder_r = -ring->angle_adder / rotation_duration;
+}
