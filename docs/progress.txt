@@ -3226,7 +3226,7 @@ typedef enum {
 0x004251B0  0x002C  +       void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);
 0x004251E0  0x013E  +       void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);
 0x00425320  0x002F  +       void __cdecl Inv_Ring_RotateLeft(RING_INFO *ring);
-0x00425350  0x002F  -       void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);
+0x00425350  0x002F  +       void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);
 0x00425380  0x0063  -       void __cdecl Inv_Ring_MotionInit(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);
 0x004253F0  0x002C  -       void __cdecl Inv_Ring_MotionSetup(RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames);
 0x00425420  0x0026  -       void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);

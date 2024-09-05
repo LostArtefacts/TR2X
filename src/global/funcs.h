@@ -105,7 +105,6 @@
 #define Inv_RemoveAllItems ((void __cdecl (*)(void))0x00424CB0)
 #define Inv_RemoveItem ((int32_t __cdecl (*)(GAME_OBJECT_ID object_num))0x00424CD0)
 #define RemoveInventoryText ((void __cdecl (*)(void))0x00424FD0)
-#define Inv_Ring_RotateRight ((void __cdecl (*)(RING_INFO *ring))0x00425350)
 #define Inv_Ring_MotionInit ((void __cdecl (*)(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target))0x00425380)
 #define Inv_Ring_MotionSetup ((void __cdecl (*)(RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames))0x004253F0)
 #define Inv_Ring_MotionRadius ((void __cdecl (*)(RING_INFO *ring, int16_t target))0x00425420)

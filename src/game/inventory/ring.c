@@ -176,3 +176,15 @@ void __cdecl Inv_Ring_RotateLeft(RING_INFO *const ring)
     ring->rot_count = RING_ROTATE_DURATION;
     ring->rot_adder = ring->rot_adder_l;
 }
+
+void __cdecl Inv_Ring_RotateRight(RING_INFO *const ring)
+{
+    ring->rotating = 1;
+    if (ring->current_object + 1 >= ring->number_of_objects) {
+        ring->target_object = 0;
+    } else {
+        ring->target_object = ring->current_object + 1;
+    }
+    ring->rot_count = RING_ROTATE_DURATION;
+    ring->rot_adder = ring->rot_adder_r;
+}

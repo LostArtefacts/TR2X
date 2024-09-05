@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.52% (725)</tspan> · <tspan class="known">38.01% (463)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.61% (726)</tspan> · <tspan class="known">37.93% (462)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="444.64" height="6" x="0" y="0" class="decompiled"/>
-<rect width="283.96" height="6" x="444.64" y="0" class="known"/>
+<rect width="445.26" height="6" x="0" y="0" class="decompiled"/>
+<rect width="283.34" height="6" x="445.26" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -428,7 +428,7 @@
 <rect width="12" height="12" x="735" y="90" class="decompiled"><title>void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);</title></rect>
 <rect width="12" height="12" x="0" y="105" class="decompiled"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="15" y="105" class="decompiled"><title>void __cdecl Inv_Ring_RotateLeft(RING_INFO *ring);</title></rect>
-<rect width="12" height="12" x="30" y="105" class="known"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
+<rect width="12" height="12" x="30" y="105" class="decompiled"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="45" y="105" class="known"><title>void __cdecl Inv_Ring_MotionInit(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);</title></rect>
 <rect width="12" height="12" x="60" y="105" class="known"><title>void __cdecl Inv_Ring_MotionSetup(RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames);</title></rect>
 <rect width="12" height="12" x="75" y="105" class="known"><title>void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.01%</tspan> · <tspan class="known">35.67%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.02%</tspan> · <tspan class="known">35.65%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="478.12" height="6" x="0" y="0" class="decompiled"/>
-<rect width="266.44" height="6" x="478.12" y="0" class="known"/>
+<rect width="478.23" height="6" x="0" y="0" class="decompiled"/>
+<rect width="266.33" height="6" x="478.23" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2294,7 +2294,7 @@
 <rect width="3.24" height="3.25" x="675.50" y="309.52" class="decompiled"><title>void __cdecl Creature_Initialise(int16_t item_num);</title></rect>
 <rect width="3.24" height="3.25" x="675.50" y="315.77" class="decompiled"><title>int32_t __cdecl Room_FindGridShift(int32_t src, int32_t dst);</title></rect>
 <rect width="3.24" height="3.25" x="675.50" y="322.02" class="decompiled"><title>void __cdecl Inv_Ring_RotateLeft(RING_INFO *ring);</title></rect>
-<rect width="3.24" height="3.25" x="675.50" y="328.27" class="known"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
+<rect width="3.24" height="3.25" x="675.50" y="328.27" class="decompiled"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
 <rect width="3.24" height="3.25" x="675.50" y="334.52" class="decompiled"><title>void __cdecl Lara_State_SwanDive(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="3.24" height="3.25" x="675.50" y="340.77" class="known"><title>void __cdecl BridgeTilt2Floor(ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>
 <rect width="3.24" height="3.25" x="675.50" y="347.02" class="unused"><title>sub_4471C0</title></rect>
