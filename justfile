@@ -42,10 +42,12 @@ _docker_run *args:
 
 
 image-win force="1":           (_docker_build "tools/docker/game-win/Dockerfile" "rrdash/tr2x" force)
+image-win-config force="1":    (_docker_build "tools/docker/config/Dockerfile" "rrdash/tr1x-config" force)
 
 push-image-win:                (image-win "0") (_docker_push "rrdash/tr2x")
 
 build-win target='debug':      (image-win "0") (_docker_run "-e" "TARGET="+target "rrdash/tr2x")
+build-win-config:              (image-win-config "0")    (_docker_run "rrdash/tr1x-config")
 
 package-win target='release':  (build-win target) (_docker_run "rrdash/tr2x" "package")
 
