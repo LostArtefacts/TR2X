@@ -97,6 +97,7 @@ dll_sources = [
   'src/game/hwr.c',
   'src/game/input.c',
   'src/game/inventory/common.c',
+  'src/game/inventory/ring.c',
   'src/game/inventory/vars.c',
   'src/game/items.c',
   'src/game/lara/lara_cheat.c',

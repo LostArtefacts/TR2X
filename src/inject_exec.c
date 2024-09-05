@@ -19,6 +19,7 @@
 #include "game/hwr.h"
 #include "game/input.h"
 #include "game/inventory/common.h"
+#include "game/inventory/ring.h"
 #include "game/items.h"
 #include "game/lara/lara_cheat.h"
 #include "game/lara/lara_col.h"
@@ -621,6 +622,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00423590, Inv_DrawInventoryItem);
     INJECT(enable, 0x004242F0, Inv_AddItem);
     INJECT(enable, 0x00424DE0, Inv_GetItemOption);
+    INJECT(enable, 0x00425000, Inv_Ring_Init);
 }
 
 static void Inject_Lara_Control(const bool enable)

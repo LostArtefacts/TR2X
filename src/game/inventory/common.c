@@ -2,6 +2,7 @@
 
 #include "game/demo.h"
 #include "game/input.h"
+#include "game/inventory/ring.h"
 #include "game/inventory/vars.h"
 #include "game/items.h"
 #include "game/lara/lara_control.h"
