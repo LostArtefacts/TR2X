@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.34% (735)</tspan> · <tspan class="known">37.19% (453)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.43% (736)</tspan> · <tspan class="known">37.11% (452)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="450.78" height="6" x="0" y="0" class="decompiled"/>
-<rect width="277.83" height="6" x="450.78" y="0" class="known"/>
+<rect width="451.39" height="6" x="0" y="0" class="decompiled"/>
+<rect width="277.21" height="6" x="451.39" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -417,7 +417,7 @@
 <rect width="12" height="12" x="570" y="90" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="12" height="12" x="585" y="90" class="decompiled"><title>int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="600" y="90" class="decompiled"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
-<rect width="12" height="12" x="615" y="90" class="known"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
+<rect width="12" height="12" x="615" y="90" class="decompiled"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="630" y="90" class="known"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
 <rect width="12" height="12" x="645" y="90" class="known"><title>int32_t __cdecl Inv_RemoveItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="660" y="90" class="decompiled"><title>int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.25%</tspan> · <tspan class="known">35.43%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.28%</tspan> · <tspan class="known">35.39%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="479.92" height="6" x="0" y="0" class="decompiled"/>
-<rect width="264.64" height="6" x="479.92" y="0" class="known"/>
+<rect width="480.18" height="6" x="0" y="0" class="decompiled"/>
+<rect width="264.38" height="6" x="480.18" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1961,7 +1961,7 @@
 <rect width="6.90" height="7.06" x="720.37" y="206.76" class="decompiled"><title>void __cdecl Creature_Collision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);</title></rect>
 <rect width="6.90" height="7.06" x="730.27" y="206.76" class="known"><title>void __cdecl LaraBubbles(ITEM_INFO *item);</title></rect>
 <rect width="6.82" height="7.06" x="740.18" y="206.76" class="decompiled"><title>void __cdecl Door_Collision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);</title></rect>
-<rect width="7.29" height="6.60" x="588.98" y="216.82" class="known"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
+<rect width="7.29" height="6.60" x="588.98" y="216.82" class="decompiled"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="7.29" height="6.60" x="599.26" y="216.82" class="decompiled"><title>bool __cdecl Music_Init(void);</title></rect>
 <rect width="7.20" height="6.60" x="609.55" y="216.82" class="known"><title>int16_t __cdecl Knife(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="7.20" height="6.60" x="619.75" y="216.82" class="known"><title>void __cdecl DrawHair(void);</title></rect>

@@ -2,6 +2,7 @@
 
 #include "decomp/decomp.h"
 #include "game/console.h"
+#include "game/inventory/backpack.h"
 #include "game/lara/lara_control.h"
 #include "global/const.h"
 #include "global/funcs.h"

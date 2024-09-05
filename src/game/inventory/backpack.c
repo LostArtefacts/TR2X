@@ -299,3 +299,22 @@ void Inv_AddItemNTimes(GAME_OBJECT_ID object_num, int32_t qty)
         Inv_AddItem(object_num);
     }
 }
+
+int32_t __cdecl Inv_RequestItem(const GAME_OBJECT_ID object_num)
+{
+    const GAME_OBJECT_ID option_object_id = Inv_GetItemOption(object_num);
+
+    for (int32_t i = 0; i < g_Inv_MainObjectsCount; i++) {
+        if (g_Inv_MainList[i]->obj_num == option_object_id) {
+            return g_Inv_MainQtys[i];
+        }
+    }
+
+    for (int32_t i = 0; i < g_Inv_KeyObjectsCount; i++) {
+        if (g_Inv_KeysList[i]->obj_num == option_object_id) {
+            return g_Inv_KeysQtys[i];
+        }
+    }
+
+    return 0;
+}
