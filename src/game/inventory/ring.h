@@ -24,3 +24,5 @@ void __cdecl Inv_Ring_MotionCameraPos(RING_INFO *ring, int16_t target);
 void __cdecl Inv_Ring_MotionCameraPitch(RING_INFO *ring, int16_t target);
 void __cdecl Inv_Ring_MotionItemSelect(
     RING_INFO *ring, const INVENTORY_ITEM *inv_item);
+void __cdecl Inv_Ring_MotionItemDeselect(
+    RING_INFO *ring, const INVENTORY_ITEM *inv_item);

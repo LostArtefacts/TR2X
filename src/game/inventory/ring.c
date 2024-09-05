@@ -275,3 +275,18 @@ void __cdecl Inv_Ring_MotionItemSelect(
     imo->item_z_trans_target = inv_item->z_trans_sel;
     imo->item_z_trans_rate = inv_item->z_trans_sel / imo->count;
 }
+
+void __cdecl Inv_Ring_MotionItemDeselect(
+    RING_INFO *const ring, const INVENTORY_ITEM *const inv_item)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->item_pt_x_rot_target = 0;
+    imo->item_pt_x_rot_rate = -(inv_item->x_rot_pt_sel / imo->count);
+    imo->item_x_rot_target = inv_item->x_rot_nosel;
+    imo->item_x_rot_rate =
+        (inv_item->x_rot_nosel - inv_item->x_rot_sel) / imo->count;
+    imo->item_y_trans_target = 0;
+    imo->item_y_trans_rate = -(inv_item->y_trans_sel / imo->count);
+    imo->item_z_trans_target = 0;
+    imo->item_z_trans_rate = -(inv_item->z_trans_sel / imo->count);
+}

@@ -105,7 +105,6 @@
 #define Inv_RemoveAllItems ((void __cdecl (*)(void))0x00424CB0)
 #define Inv_RemoveItem ((int32_t __cdecl (*)(GAME_OBJECT_ID object_num))0x00424CD0)
 #define RemoveInventoryText ((void __cdecl (*)(void))0x00424FD0)
-#define Inv_Ring_MotionItemDeselect ((void __cdecl (*)(RING_INFO *ring, INVENTORY_ITEM *inv_item))0x00425530)
 #define HarpoonBolt_Control ((void __cdecl (*)(int16_t item_num))0x0042C0F0)
 #define Rocket_Control ((void __cdecl (*)(int16_t item_num))0x0042C530)
 #define Flare_DoLight ((int32_t __cdecl (*)(XYZ_32 *pos, int32_t flare_age))0x0042F7A0)

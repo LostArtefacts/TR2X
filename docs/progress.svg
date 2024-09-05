@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.18% (733)</tspan> · <tspan class="known">37.36% (455)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.26% (734)</tspan> · <tspan class="known">37.27% (454)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="449.55" height="6" x="0" y="0" class="decompiled"/>
-<rect width="279.05" height="6" x="449.55" y="0" class="known"/>
+<rect width="450.16" height="6" x="0" y="0" class="decompiled"/>
+<rect width="278.44" height="6" x="450.16" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -436,7 +436,7 @@
 <rect width="12" height="12" x="105" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionCameraPos(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="120" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionCameraPitch(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="135" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
-<rect width="12" height="12" x="150" y="105" class="known"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="12" height="12" x="150" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="165" y="105" class="decompiled"><title>void __cdecl Requester_Init(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="180" y="105" class="decompiled"><title>void __cdecl Requester_Shutdown(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="195" y="105" class="decompiled"><title>void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.13%</tspan> · <tspan class="known">35.54%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.16%</tspan> · <tspan class="known">35.51%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="479.05" height="6" x="0" y="0" class="decompiled"/>
-<rect width="265.51" height="6" x="479.05" y="0" class="known"/>
+<rect width="479.27" height="6" x="0" y="0" class="decompiled"/>
+<rect width="265.29" height="6" x="479.27" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2021,7 +2021,7 @@
 <rect width="6.36" height="5.78" x="598.66" y="316.80" class="known"><title>void __cdecl swap_meshes_with_meshswap1(ITEM_INFO *item);</title></rect>
 <rect width="6.36" height="5.78" x="598.66" y="325.58" class="known"><title>void __cdecl swap_meshes_with_meshswap2(ITEM_INFO *item);</title></rect>
 <rect width="6.36" height="5.78" x="598.66" y="334.36" class="decompiled"><title>void __cdecl Inv_Ring_MotionInit(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);</title></rect>
-<rect width="6.36" height="5.78" x="598.66" y="343.14" class="known"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="6.36" height="5.78" x="598.66" y="343.14" class="decompiled"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="6.36" height="5.69" x="598.66" y="351.92" class="known"><title>void __cdecl InitialiseStartInfo(void);</title></rect>
 <rect width="6.36" height="5.69" x="598.66" y="360.62" class="known"><title>void __cdecl IncreaseScreenSize(void);</title></rect>
 <rect width="6.36" height="5.69" x="598.66" y="369.31" class="known"><title>void __cdecl DecreaseScreenSize(void);</title></rect>
