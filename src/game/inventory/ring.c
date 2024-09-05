@@ -1,6 +1,7 @@
 #include "game/inventory/ring.h"
 
 #include "game/math_misc.h"
+#include "game/output.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -78,4 +79,12 @@ void __cdecl Inv_Ring_GetView(
     view->rot.x = angles[1] + ring->camera_pitch;
     view->rot.y = angles[0];
     view->rot.z = 0;
+}
+
+void __cdecl Inv_Ring_Light(const RING_INFO *const ring)
+{
+    g_LsDivider = 0x6000;
+    int16_t angles[2];
+    Math_GetVectorAngles(ring->light.x, ring->light.y, ring->light.z, angles);
+    Output_RotateLight(angles[1], angles[0]);
 }
