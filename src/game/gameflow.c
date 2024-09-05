@@ -5,7 +5,7 @@
 #include "game/demo.h"
 #include "game/game.h"
 #include "game/gun/gun.h"
-#include "game/inventory/common.h"
+#include "game/inventory/backpack.h"
 #include "game/objects/names.h"
 #include "game/overlay.h"
 #include "game/requester.h"

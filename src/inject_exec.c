@@ -18,6 +18,7 @@
 #include "game/gun/gun_rifle.h"
 #include "game/hwr.h"
 #include "game/input.h"
+#include "game/inventory/backpack.h"
 #include "game/inventory/common.h"
 #include "game/inventory/ring.h"
 #include "game/items.h"

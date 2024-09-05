@@ -5,7 +5,7 @@
 #include "game/creature.h"
 #include "game/game_string.h"
 #include "game/gameflow/gameflow_new.h"
-#include "game/inventory/common.h"
+#include "game/inventory/backpack.h"
 #include "game/items.h"
 #include "game/lara/lara_cheat.h"
 #include "game/lara/lara_control.h"
