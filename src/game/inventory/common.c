@@ -2,6 +2,7 @@
 
 #include "game/demo.h"
 #include "game/input.h"
+#include "game/inventory/backpack.h"
 #include "game/inventory/ring.h"
 #include "game/inventory/vars.h"
 #include "game/lara/lara_control.h"
@@ -20,10 +21,34 @@
 #include "global/types.h"
 #include "global/vars.h"
 
+#include <stdio.h>
+
 #define TITLE_RING_OBJECTS 3
 #define OPTION_RING_OBJECTS 3
 
 static TEXTSTRING *m_VersionText = NULL;
+
+static void Inv_ShowItemQuantity(const char *fmt, int32_t qty);
+static void Inv_ShowAmmoQuantity(const char *fmt, int32_t qty);
+
+static void Inv_ShowItemQuantity(const char *const fmt, const int32_t qty)
+{
+    if (g_Inv_ItemText[1] == NULL && !g_SaveGame.bonus_flag) {
+        char string[64];
+        sprintf(string, fmt, qty);
+        Overlay_MakeAmmoString(string);
+        g_Inv_ItemText[1] = Text_Create(64, -56, 0, string);
+        Text_AlignBottom(g_Inv_ItemText[1], true);
+        Text_CentreH(g_Inv_ItemText[1], true);
+    }
+}
+
+static void Inv_ShowAmmoQuantity(const char *const fmt, const int32_t qty)
+{
+    if (!g_SaveGame.bonus_flag) {
+        Inv_ShowItemQuantity(fmt, qty);
+    }
+}
 
 void __cdecl Inv_Construct(void)
 {
@@ -297,7 +322,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                      || imo.status == RNG_CLOSING_ITEM)
                     && !ring.rotating && !(g_Input & IN_LEFT)
                     && !(g_Input & IN_RIGHT)) {
-                    RingNotActive(inv_item);
+                    Inv_RingNotActive(inv_item);
                 }
             }
 
@@ -1051,4 +1076,125 @@ void __cdecl Inv_RingIsNotOpen(RING_INFO *const ring)
     g_Inv_DownArrow1 = NULL;
     Text_Remove(g_Inv_DownArrow2);
     g_Inv_DownArrow2 = NULL;
+}
+
+void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
+{
+    if (g_Inv_ItemText[0] == NULL) {
+        switch (inv_item->obj_num) {
+        case O_PASSPORT_OPTION:
+            break;
+        case O_PUZZLE_OPTION_1:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Puzzle1Strings[g_CurrentLevel]);
+            break;
+        case O_PUZZLE_OPTION_2:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Puzzle2Strings[g_CurrentLevel]);
+            break;
+        case O_PUZZLE_OPTION_3:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Puzzle3Strings[g_CurrentLevel]);
+            break;
+        case O_PUZZLE_OPTION_4:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Puzzle4Strings[g_CurrentLevel]);
+            break;
+        case O_KEY_OPTION_1:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Key1Strings[g_CurrentLevel]);
+            break;
+        case O_KEY_OPTION_2:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Key2Strings[g_CurrentLevel]);
+            break;
+        case O_KEY_OPTION_3:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Key3Strings[g_CurrentLevel]);
+            break;
+        case O_KEY_OPTION_4:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Key4Strings[g_CurrentLevel]);
+            break;
+        case O_PICKUP_OPTION_1:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Pickup1Strings[g_CurrentLevel]);
+            break;
+        case O_PICKUP_OPTION_2:
+            g_Inv_ItemText[0] =
+                Text_Create(0, -16, 0, g_GF_Pickup2Strings[g_CurrentLevel]);
+            break;
+        default:
+            g_Inv_ItemText[0] = Text_Create(0, -16, 0, inv_item->string);
+            break;
+        }
+
+        if (g_Inv_ItemText[0]) {
+            Text_AlignBottom(g_Inv_ItemText[0], true);
+            Text_CentreH(g_Inv_ItemText[0], true);
+        }
+    }
+
+    const int32_t qty = Inv_RequestItem(inv_item->obj_num);
+    switch (inv_item->obj_num) {
+    case O_SHOTGUN_OPTION:
+        Inv_ShowAmmoQuantity(
+            "%5d", g_Lara.shotgun_ammo.ammo / SHOTGUN_AMMO_CLIP);
+        break;
+    case O_MAGNUM_OPTION:
+        Inv_ShowAmmoQuantity("%5d", g_Lara.magnum_ammo.ammo);
+        break;
+    case O_UZI_OPTION:
+        Inv_ShowAmmoQuantity("%5d", g_Lara.uzi_ammo.ammo);
+        break;
+    case O_HARPOON_OPTION:
+        Inv_ShowAmmoQuantity("%5d", g_Lara.harpoon_ammo.ammo);
+        break;
+    case O_M16_OPTION:
+        Inv_ShowAmmoQuantity("%5d", g_Lara.m16_ammo.ammo);
+        break;
+    case O_GRENADE_OPTION:
+        Inv_ShowAmmoQuantity("%5d", g_Lara.grenade_ammo.ammo);
+        break;
+    case O_SHOTGUN_AMMO_OPTION:
+        Inv_ShowAmmoQuantity("%d", SHOTGUN_SHELL_COUNT * qty);
+        break;
+
+    case O_MAGNUM_AMMO_OPTION:
+    case O_UZI_AMMO_OPTION:
+    case O_HARPOON_AMMO_OPTION:
+    case O_M16_AMMO_OPTION:
+        Inv_ShowAmmoQuantity("%d", 2 * qty);
+        break;
+
+    case O_GRENADE_AMMO_OPTION:
+    case O_FLARES_OPTION:
+        Inv_ShowAmmoQuantity("%d", qty);
+        break;
+
+    case O_SMALL_MEDIPACK_OPTION:
+    case O_LARGE_MEDIPACK_OPTION:
+        g_HealthBarTimer = 40;
+        Overlay_DrawHealthBar(Overlay_FlashCounter());
+        Inv_ShowItemQuantity("%d", qty);
+        break;
+
+    case O_PUZZLE_OPTION_1:
+    case O_PUZZLE_OPTION_2:
+    case O_PUZZLE_OPTION_3:
+    case O_PUZZLE_OPTION_4:
+    case O_KEY_OPTION_1:
+    case O_KEY_OPTION_2:
+    case O_KEY_OPTION_3:
+    case O_KEY_OPTION_4:
+    case O_PICKUP_OPTION_1:
+    case O_PICKUP_OPTION_2:
+        if (qty > 1) {
+            Inv_ShowItemQuantity("%d", qty);
+        }
+        break;
+
+    default:
+        break;
+    }
 }

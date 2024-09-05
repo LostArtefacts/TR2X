@@ -12,3 +12,4 @@ void __cdecl Inv_DoInventoryPicture(void);
 void __cdecl Inv_DoInventoryBackground(void);
 void __cdecl Inv_RingIsOpen(RING_INFO *ring);
 void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);
+void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *inv_item);
