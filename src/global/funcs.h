@@ -93,7 +93,6 @@
 #define HairControl ((void __cdecl (*)(int32_t in_cutscene))0x00420F20)
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
 #define GetDebouncedInput ((int32_t __cdecl (*)(int32_t input))0x004239C0)
-#define Inv_DoInventoryPicture ((void __cdecl (*)(void))0x004239E0)
 #define Inv_DoInventoryBackground ((void __cdecl (*)(void))0x004239F0)
 #define InitColours ((void __cdecl (*)(void))0x00423B30)
 #define RingIsOpen ((void __cdecl (*)(RING_INFO *ring))0x00423C40)

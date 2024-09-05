@@ -935,3 +935,8 @@ GAME_OBJECT_ID Inv_GetItemOption(const GAME_OBJECT_ID object_id)
 
     return Object_GetCognate(object_id, g_ItemToInvObjectMap);
 }
+
+void __cdecl Inv_DoInventoryPicture(void)
+{
+    S_CopyBufferToScreen();
+}
