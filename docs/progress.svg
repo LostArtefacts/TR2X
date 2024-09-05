@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">61.25% (746)</tspan> · <tspan class="known">36.29% (442)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">61.33% (747)</tspan> · <tspan class="known">36.21% (441)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="457.52" height="6" x="0" y="0" class="decompiled"/>
-<rect width="271.08" height="6" x="457.52" y="0" class="known"/>
+<rect width="458.14" height="6" x="0" y="0" class="decompiled"/>
+<rect width="270.47" height="6" x="458.14" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -407,7 +407,7 @@
 <rect width="12" height="12" x="420" y="90" class="decompiled"><title>void __cdecl Inv_SelectMeshes(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="435" y="90" class="decompiled"><title>int32_t __cdecl Inv_AnimateInventoryItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="450" y="90" class="decompiled"><title>void __cdecl Inv_DrawInventoryItem(INVENTORY_ITEM *inv_item);</title></rect>
-<rect width="12" height="12" x="465" y="90" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>
+<rect width="12" height="12" x="465" y="90" class="decompiled"><title>int32_t __cdecl Input_GetDebounced(int32_t input);</title></rect>
 <rect width="12" height="12" x="480" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryPicture(void);</title></rect>
 <rect width="12" height="12" x="495" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
 <rect width="12" height="12" x="510" y="90" class="decompiled"><title>void __cdecl Inv_InitColors(void);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.96%</tspan> · <tspan class="known">34.71%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.97%</tspan> · <tspan class="known">34.71%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="485.26" height="6" x="0" y="0" class="decompiled"/>
-<rect width="259.30" height="6" x="485.26" y="0" class="known"/>
+<rect width="485.31" height="6" x="0" y="0" class="decompiled"/>
+<rect width="259.25" height="6" x="485.31" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2418,7 +2418,7 @@
 <rect width="1.91" height="1.40" x="708.89" y="369.20" class="decompiled"><title>void __cdecl DInputRelease(void);</title></rect>
 <rect width="1.91" height="1.40" x="708.89" y="373.60" class="decompiled"><title>bool __cdecl S_Audio_Sample_DSoundEnumerate(SOUND_ADAPTER_LIST *adapter_list);</title></rect>
 <rect width="1.51" height="1.78" x="713.79" y="341.96" class="decompiled"><title>int32_t __fastcall Math_SinImpl(int16_t angle);</title></rect>
-<rect width="1.51" height="1.60" x="713.79" y="346.74" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>
+<rect width="1.51" height="1.60" x="713.79" y="346.74" class="decompiled"><title>int32_t __cdecl Input_GetDebounced(int32_t input);</title></rect>
 <rect width="1.51" height="1.60" x="713.79" y="351.34" class="decompiled"><title>bool __cdecl HWR_VertexBufferFull(void);</title></rect>
 <rect width="1.51" height="1.41" x="713.79" y="355.94" class="decompiled"><title>void __cdecl Lara_State_SlideBack(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="1.51" height="1.41" x="713.79" y="360.35" class="known"><title>void __cdecl Flare_DrawMeshes(void);</title></rect>

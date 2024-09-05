@@ -416,6 +416,7 @@ static void Inject_Text(const bool enable)
 static void Inject_Input(const bool enable)
 {
     INJECT(enable, 0x0044DA10, Input_Update);
+    INJECT(enable, 0x004239C0, Input_GetDebounced);
 }
 
 static void Inject_Output(const bool enable)
