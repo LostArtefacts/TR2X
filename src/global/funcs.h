@@ -94,7 +94,6 @@
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
 #define GetDebouncedInput ((int32_t __cdecl (*)(int32_t input))0x004239C0)
 #define InitColours ((void __cdecl (*)(void))0x00423B30)
-#define RingIsOpen ((void __cdecl (*)(RING_INFO *ring))0x00423C40)
 #define RingIsNotOpen ((void __cdecl (*)(RING_INFO *ring))0x00423DB0)
 #define RingNotActive ((void __cdecl (*)(INVENTORY_ITEM *inv_item))0x00423E40)
 #define RingActive ((void __cdecl (*)(void))0x004242B0)

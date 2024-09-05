@@ -3209,7 +3209,7 @@ typedef enum {
 
 # game/invfunc.c
 0x00423B30  0x010A  -R      void __cdecl InitColours(void);
-0x00423C40  0x0167  -R      void __cdecl RingIsOpen(RING_INFO *ring);
+0x00423C40  0x0167  +       void __cdecl Inv_RingIsOpen(RING_INFO *ring);
 0x00423DB0  0x0081  -R      void __cdecl RingIsNotOpen(RING_INFO *ring);
 0x00423E40  0x0369  -R      void __cdecl RingNotActive(INVENTORY_ITEM *inv_item);
 0x004242B0  0x0032  -R      void __cdecl RingActive(void);

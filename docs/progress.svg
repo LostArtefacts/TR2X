@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.76% (740)</tspan> · <tspan class="known">36.78% (448)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.84% (741)</tspan> · <tspan class="known">36.70% (447)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="453.84" height="6" x="0" y="0" class="decompiled"/>
-<rect width="274.76" height="6" x="453.84" y="0" class="known"/>
+<rect width="454.46" height="6" x="0" y="0" class="decompiled"/>
+<rect width="274.15" height="6" x="454.46" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -411,7 +411,7 @@
 <rect width="12" height="12" x="480" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryPicture(void);</title></rect>
 <rect width="12" height="12" x="495" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
 <rect width="12" height="12" x="510" y="90" class="known"><title>void __cdecl InitColours(void);</title></rect>
-<rect width="12" height="12" x="525" y="90" class="known"><title>void __cdecl RingIsOpen(RING_INFO *ring);</title></rect>
+<rect width="12" height="12" x="525" y="90" class="decompiled"><title>void __cdecl Inv_RingIsOpen(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="540" y="90" class="known"><title>void __cdecl RingIsNotOpen(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="555" y="90" class="known"><title>void __cdecl RingNotActive(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="570" y="90" class="known"><title>void __cdecl RingActive(void);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.46%</tspan> · <tspan class="known">35.21%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.56%</tspan> · <tspan class="known">35.11%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="481.51" height="6" x="0" y="0" class="decompiled"/>
-<rect width="263.05" height="6" x="481.51" y="0" class="known"/>
+<rect width="482.30" height="6" x="0" y="0" class="decompiled"/>
+<rect width="262.26" height="6" x="482.30" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1568,7 +1568,7 @@
 <rect width="14.80" height="13.84" x="556.78" y="59.39" class="decompiled"><title>void __cdecl Boat_Animation(ITEM_INFO *boat, int32_t collide);</title></rect>
 <rect width="14.80" height="13.84" x="574.58" y="59.39" class="known"><title>void __cdecl Flare_Draw(void);</title></rect>
 <rect width="14.75" height="13.84" x="592.38" y="59.39" class="decompiled"><title>int32_t __cdecl Room_GetWaterHeight(int32_t x, int32_t y, int32_t z, int16_t room_num);</title></rect>
-<rect width="14.70" height="13.84" x="610.13" y="59.39" class="known"><title>void __cdecl RingIsOpen(RING_INFO *ring);</title></rect>
+<rect width="14.70" height="13.84" x="610.13" y="59.39" class="decompiled"><title>void __cdecl Inv_RingIsOpen(RING_INFO *ring);</title></rect>
 <rect width="14.65" height="13.84" x="627.83" y="59.39" class="decompiled"><title>void __cdecl Gun_Rifle_Draw(LARA_GUN_TYPE weapon_type);</title></rect>
 <rect width="14.60" height="13.84" x="645.48" y="59.39" class="known"><title>BOOL __cdecl S_FrontEndCheck(void);</title></rect>
 <rect width="14.55" height="13.84" x="663.08" y="59.39" class="known"><title>void __cdecl FlameControl(int16_t fx_num);</title></rect>

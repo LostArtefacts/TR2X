@@ -305,7 +305,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 || imo.status == RNG_SELECTED || imo.status == RNG_DESELECTING
                 || imo.status == RNG_DESELECT
                 || imo.status == RNG_CLOSING_ITEM) {
-                RingIsOpen(&ring);
+                Inv_RingIsOpen(&ring);
             } else {
                 RingIsNotOpen(&ring);
             }
@@ -977,4 +977,62 @@ void __cdecl Inv_DoInventoryBackground(void)
         g_Meshes[g_Objects[O_INV_BACKGROUND].mesh_idx]);
 
     Matrix_Pop();
+}
+
+void __cdecl Inv_RingIsOpen(RING_INFO *const ring)
+{
+    if (g_Inv_Mode == INV_TITLE_MODE) {
+        return;
+    }
+
+    if (g_Inv_RingText == NULL) {
+        switch (ring->type) {
+        case RT_MAIN:
+            g_Inv_RingText = Text_Create(
+                0, 26, 0, g_GF_GameStrings[GF_S_GAME_HEADING_INVENTORY]);
+            break;
+
+        case RT_OPTION:
+            if (g_Inv_Mode == INV_DEATH_MODE) {
+                g_Inv_RingText = Text_Create(
+                    0, 26, 0, g_GF_GameStrings[GF_S_GAME_HEADING_GAME_OVER]);
+            } else {
+                g_Inv_RingText = Text_Create(
+                    0, 26, 0, g_GF_GameStrings[GF_S_GAME_HEADING_OPTION]);
+            }
+            Text_CentreH(g_Inv_RingText, true);
+            break;
+
+        case RT_KEYS:
+            g_Inv_RingText = Text_Create(
+                0, 26, 0, g_GF_GameStrings[GF_S_GAME_HEADING_ITEMS]);
+            break;
+        }
+
+        Text_CentreH(g_Inv_RingText, true);
+    }
+
+    if (g_Inv_Mode == INV_KEYS_MODE || g_Inv_Mode == INV_DEATH_MODE) {
+        return;
+    }
+
+    if (g_Inv_UpArrow1 == NULL) {
+        if (ring->type == RT_OPTION
+            || (ring->type == RT_MAIN && g_Inv_KeyObjectsCount > 0)) {
+            g_Inv_UpArrow1 = Text_Create(20, 28, 0, "[");
+            g_Inv_UpArrow2 = Text_Create(-20, 28, 0, "[");
+            Text_AlignRight(g_Inv_UpArrow2, true);
+        }
+    }
+
+    if (g_Inv_DownArrow1 == NULL
+        && ((
+            (ring->type == RT_MAIN && !g_GameFlow.lockout_option_ring)
+            || ring->type == RT_KEYS))) {
+        g_Inv_DownArrow1 = Text_Create(20, -15, 0, "]");
+        Text_AlignBottom(g_Inv_DownArrow1, true);
+        g_Inv_DownArrow2 = Text_Create(-20, -15, 0, "]");
+        Text_AlignBottom(g_Inv_DownArrow2, true);
+        Text_AlignRight(g_Inv_DownArrow2, true);
+    }
 }
