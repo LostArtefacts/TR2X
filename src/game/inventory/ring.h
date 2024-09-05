@@ -20,3 +20,4 @@ void __cdecl Inv_Ring_MotionSetup(
 void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);
 void __cdecl Inv_Ring_MotionRotation(
     RING_INFO *ring, int16_t rotation, int16_t target);
+void __cdecl Inv_Ring_MotionCameraPos(RING_INFO *ring, int16_t target);
