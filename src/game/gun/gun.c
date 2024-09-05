@@ -50,7 +50,7 @@ void __cdecl Gun_Control(void)
 
         if (g_Lara.request_gun_type != g_Lara.gun_type || (g_Input & IN_DRAW)) {
             if (g_Lara.request_gun_type == LGT_FLARE
-                || (g_Lara.skidoo == NO_ITEM
+                || (g_Lara.skidoo == NO_ITEM && g_Lara.water_status != LWS_CHEAT
                     && (g_Lara.request_gun_type == LGT_HARPOON
                         || g_Lara.water_status == LWS_ABOVE_WATER
                         || (g_Lara.water_status == LWS_WADE
@@ -81,6 +81,10 @@ void __cdecl Gun_Control(void)
         }
 
         if ((g_Input & IN_DRAW) || g_Lara.request_gun_type != g_Lara.gun_type) {
+            g_Lara.gun_status = LGS_UNDRAW;
+        } else if (
+            g_Lara.gun_type == LGT_HARPOON
+            && g_Lara.water_status == LWS_CHEAT) {
             g_Lara.gun_status = LGS_UNDRAW;
         } else if (
             g_Lara.gun_type != LGT_HARPOON
