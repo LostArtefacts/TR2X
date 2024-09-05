@@ -11,3 +11,6 @@ void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);
 void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);
 void __cdecl Inv_Ring_RotateLeft(RING_INFO *ring);
 void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);
+void __cdecl Inv_Ring_MotionInit(
+    RING_INFO *ring, int16_t frames, RING_STATUS status,
+    RING_STATUS status_target);
