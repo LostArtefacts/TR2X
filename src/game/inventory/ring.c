@@ -260,3 +260,18 @@ void __cdecl Inv_Ring_MotionCameraPitch(
     imo->camera_pitch_target = target;
     imo->camera_pitch_rate = target / imo->count;
 }
+
+void __cdecl Inv_Ring_MotionItemSelect(
+    RING_INFO *const ring, const INVENTORY_ITEM *const inv_item)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->item_pt_x_rot_target = inv_item->x_rot_pt_sel;
+    imo->item_pt_x_rot_rate = inv_item->x_rot_pt_sel / imo->count;
+    imo->item_x_rot_target = inv_item->x_rot_sel;
+    imo->item_x_rot_rate =
+        (inv_item->x_rot_sel - inv_item->x_rot_nosel) / imo->count;
+    imo->item_y_trans_target = inv_item->y_trans_sel;
+    imo->item_y_trans_rate = inv_item->y_trans_sel / imo->count;
+    imo->item_z_trans_target = inv_item->z_trans_sel;
+    imo->item_z_trans_rate = inv_item->z_trans_sel / imo->count;
+}

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.10% (732)</tspan> · <tspan class="known">37.44% (456)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.18% (733)</tspan> · <tspan class="known">37.36% (455)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="448.94" height="6" x="0" y="0" class="decompiled"/>
-<rect width="279.67" height="6" x="448.94" y="0" class="known"/>
+<rect width="449.55" height="6" x="0" y="0" class="decompiled"/>
+<rect width="279.05" height="6" x="449.55" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -435,7 +435,7 @@
 <rect width="12" height="12" x="90" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionRotation(RING_INFO *ring, int16_t rotation, int16_t target);</title></rect>
 <rect width="12" height="12" x="105" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionCameraPos(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="120" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionCameraPitch(RING_INFO *ring, int16_t target);</title></rect>
-<rect width="12" height="12" x="135" y="105" class="known"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="12" height="12" x="135" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="150" y="105" class="known"><title>void __cdecl Inv_Ring_MotionItemDeselect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="165" y="105" class="decompiled"><title>void __cdecl Requester_Init(REQUEST_INFO *req);</title></rect>
 <rect width="12" height="12" x="180" y="105" class="decompiled"><title>void __cdecl Requester_Shutdown(REQUEST_INFO *req);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.10%</tspan> · <tspan class="known">35.57%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.13%</tspan> · <tspan class="known">35.54%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="478.85" height="6" x="0" y="0" class="decompiled"/>
-<rect width="265.71" height="6" x="478.85" y="0" class="known"/>
+<rect width="479.05" height="6" x="0" y="0" class="decompiled"/>
+<rect width="265.51" height="6" x="479.05" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2044,7 +2044,7 @@
 <rect width="5.61" height="6.07" x="608.02" y="244.61" class="known"><title>bool __cdecl GetRegistryDwordValue(LPCTSTR lpValueName, DWORD *pValue, DWORD defaultValue);</title></rect>
 <rect width="5.61" height="5.97" x="608.02" y="253.67" class="decompiled"><title>void __cdecl Item_UpdateRoom(ITEM_INFO *item, int32_t height);</title></rect>
 <rect width="5.61" height="5.97" x="608.02" y="262.64" class="known"><title>void __cdecl ControlBirdTweeter(int16_t item_num);</title></rect>
-<rect width="5.61" height="5.97" x="608.02" y="271.61" class="known"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="5.61" height="5.97" x="608.02" y="271.61" class="decompiled"><title>void __cdecl Inv_Ring_MotionItemSelect(RING_INFO *ring, INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="5.61" height="5.97" x="608.02" y="280.58" class="decompiled"><title>void __cdecl Lara_Col_ClimbLeft(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="5.61" height="5.97" x="608.02" y="289.55" class="known"><title>void __cdecl BaddieBiteEffect(ITEM_INFO *item, BITE_INFO *bite);</title></rect>
 <rect width="5.61" height="5.97" x="608.02" y="298.52" class="known"><title>LRESULT __stdcall SE_NewPropSheetWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);</title></rect>
