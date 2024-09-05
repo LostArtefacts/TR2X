@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.43% (736)</tspan> · <tspan class="known">37.11% (452)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.51% (737)</tspan> · <tspan class="known">37.03% (451)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="451.39" height="6" x="0" y="0" class="decompiled"/>
-<rect width="277.21" height="6" x="451.39" y="0" class="known"/>
+<rect width="452" height="6" x="0" y="0" class="decompiled"/>
+<rect width="276.60" height="6" x="452" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -418,7 +418,7 @@
 <rect width="12" height="12" x="585" y="90" class="decompiled"><title>int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="600" y="90" class="decompiled"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="615" y="90" class="decompiled"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
-<rect width="12" height="12" x="630" y="90" class="known"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
+<rect width="12" height="12" x="630" y="90" class="decompiled"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
 <rect width="12" height="12" x="645" y="90" class="known"><title>int32_t __cdecl Inv_RemoveItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="660" y="90" class="decompiled"><title>int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="675" y="90" class="known"><title>void __cdecl RemoveInventoryText(void);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.28%</tspan> · <tspan class="known">35.39%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.29%</tspan> · <tspan class="known">35.38%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="480.18" height="6" x="0" y="0" class="decompiled"/>
-<rect width="264.38" height="6" x="480.18" y="0" class="known"/>
+<rect width="480.24" height="6" x="0" y="0" class="decompiled"/>
+<rect width="264.32" height="6" x="480.24" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2409,7 +2409,7 @@
 <rect width="1.57" height="2.09" x="736.30" y="336.88" class="known"><title>int32_t __cdecl GetFreePaletteIndex(void);</title></rect>
 <rect width="1.57" height="2.09" x="740.86" y="336.88" class="known"><title>int32_t __cdecl GetFreeTexturePageIndex(void);</title></rect>
 <rect width="1.57" height="2.09" x="745.43" y="336.88" class="known"><title>void __thiscall SE_UpdateBitmapPalette(BITMAP_RESOURCE *bmpRsrc, HWND hWnd, HWND hSender);</title></rect>
-<rect width="1.91" height="1.57" x="708.89" y="341.96" class="known"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
+<rect width="1.91" height="1.57" x="708.89" y="341.96" class="decompiled"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="346.53" class="decompiled"><title>void __cdecl Requester_Item_CenterAlign(REQUEST_INFO *req, TEXTSTRING *txt);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="351.10" class="decompiled"><title>void __cdecl Lara_ControlExtra(int16_t item_num);</title></rect>
 <rect width="1.91" height="1.57" x="708.89" y="355.67" class="known"><title>void __cdecl BridgeFlatCeiling(ITEM_INFO *item, int32_t x, int32_t y, int32_t z, int32_t *height);</title></rect>

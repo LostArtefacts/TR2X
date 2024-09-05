@@ -30,7 +30,7 @@ void __cdecl Inv_InsertItem(INVENTORY_ITEM *const inv_item)
             }
         }
 
-        for (int i = g_Inv_KeyObjectsCount; i > n - 1; i--) {
+        for (int32_t i = g_Inv_KeyObjectsCount; i > n - 1; i--) {
             g_Inv_KeysList[i + 1] = g_Inv_KeysList[i];
             g_Inv_KeysQtys[i + 1] = g_Inv_KeysQtys[i];
         }
@@ -302,19 +302,27 @@ void Inv_AddItemNTimes(GAME_OBJECT_ID object_num, int32_t qty)
 
 int32_t __cdecl Inv_RequestItem(const GAME_OBJECT_ID object_num)
 {
-    const GAME_OBJECT_ID option_object_id = Inv_GetItemOption(object_num);
+    const GAME_OBJECT_ID inv_object_id = Inv_GetItemOption(object_num);
 
     for (int32_t i = 0; i < g_Inv_MainObjectsCount; i++) {
-        if (g_Inv_MainList[i]->obj_num == option_object_id) {
+        if (g_Inv_MainList[i]->obj_num == inv_object_id) {
             return g_Inv_MainQtys[i];
         }
     }
 
     for (int32_t i = 0; i < g_Inv_KeyObjectsCount; i++) {
-        if (g_Inv_KeysList[i]->obj_num == option_object_id) {
+        if (g_Inv_KeysList[i]->obj_num == inv_object_id) {
             return g_Inv_KeysQtys[i];
         }
     }
 
     return 0;
+}
+
+void __cdecl Inv_RemoveAllItems(void)
+{
+    g_Inv_MainObjectsCount = 0;
+    g_Inv_MainCurrent = 0;
+    g_Inv_KeyObjectsCount = 0;
+    g_Inv_KeysCurrent = 0;
 }
