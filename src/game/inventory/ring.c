@@ -96,3 +96,71 @@ void __cdecl Inv_Ring_CalcAdders(
     ring->rot_adder_l = ring->angle_adder / rotation_duration;
     ring->rot_adder_r = -ring->angle_adder / rotation_duration;
 }
+
+void __cdecl Inv_Ring_DoMotions(RING_INFO *const ring)
+{
+    IMOTION_INFO *const imo = ring->imo;
+
+    if (imo->count != 0) {
+        ring->radius += imo->radius_rate;
+        ring->camera.pos.y += imo->camera_y_rate;
+        ring->ring_pos.rot.y += imo->rotate_rate;
+        ring->camera_pitch += imo->camera_pitch_rate;
+
+        INVENTORY_ITEM *const inv_item = ring->list[ring->current_object];
+        inv_item->x_rot_pt += imo->item_pt_x_rot_rate;
+        inv_item->x_rot += imo->item_x_rot_rate;
+        inv_item->y_trans += imo->item_y_trans_rate;
+        inv_item->z_trans += imo->item_z_trans_rate;
+
+        imo->count--;
+        if (imo->count == 0) {
+            imo->status = imo->status_target;
+
+            if (imo->radius_rate != 0) {
+                imo->radius_rate = 0;
+                ring->radius = imo->radius_target;
+            }
+            if (imo->camera_y_rate != 0) {
+                imo->camera_y_rate = 0;
+                ring->camera.pos.y = imo->camera_y_target;
+            }
+            if (imo->rotate_rate != 0) {
+                imo->rotate_rate = 0;
+                ring->ring_pos.rot.y = imo->rotate_target;
+            }
+            if (imo->item_pt_x_rot_rate != 0) {
+                imo->item_pt_x_rot_rate = 0;
+                inv_item->x_rot_pt = imo->item_pt_x_rot_target;
+            }
+            if (imo->item_x_rot_rate != 0) {
+                imo->item_x_rot_rate = 0;
+                inv_item->x_rot = imo->item_x_rot_target;
+            }
+            if (imo->item_y_trans_rate != 0) {
+                imo->item_y_trans_rate = 0;
+                inv_item->y_trans = imo->item_y_trans_target;
+            }
+            if (imo->item_z_trans_rate != 0) {
+                imo->item_z_trans_rate = 0;
+                inv_item->z_trans = imo->item_z_trans_target;
+            }
+            if (imo->camera_pitch_rate != 0) {
+                imo->camera_pitch_rate = 0;
+                ring->camera_pitch = imo->camera_pitch_target;
+            }
+        }
+    }
+
+    if (ring->rotating) {
+        ring->ring_pos.rot.y += ring->rot_adder;
+        ring->rot_count--;
+
+        if (ring->rot_count == 0) {
+            ring->current_object = ring->target_object;
+            ring->ring_pos.rot.y =
+                -PHD_90 - ring->target_object * ring->angle_adder;
+            ring->rotating = 0;
+        }
+    }
+}

@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.36% (723)</tspan> · <tspan class="known">38.18% (465)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.44% (724)</tspan> · <tspan class="known">38.10% (464)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="443.42" height="6" x="0" y="0" class="decompiled"/>
-<rect width="285.18" height="6" x="443.42" y="0" class="known"/>
+<rect width="444.03" height="6" x="0" y="0" class="decompiled"/>
+<rect width="284.57" height="6" x="444.03" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -426,7 +426,7 @@
 <rect width="12" height="12" x="705" y="90" class="decompiled"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
 <rect width="12" height="12" x="720" y="90" class="decompiled"><title>void __cdecl Inv_Ring_Light(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="735" y="90" class="decompiled"><title>void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);</title></rect>
-<rect width="12" height="12" x="0" y="105" class="known"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
+<rect width="12" height="12" x="0" y="105" class="decompiled"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="15" y="105" class="known"><title>void __cdecl Inv_Ring_RotateLeft(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="30" y="105" class="known"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="45" y="105" class="known"><title>void __cdecl Inv_Ring_MotionInit(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">63.90%</tspan> · <tspan class="known">35.77%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">63.99%</tspan> · <tspan class="known">35.68%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="477.32" height="6" x="0" y="0" class="decompiled"/>
-<rect width="267.23" height="6" x="477.32" y="0" class="known"/>
+<rect width="478.02" height="6" x="0" y="0" class="decompiled"/>
+<rect width="266.54" height="6" x="478.02" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1597,7 +1597,7 @@
 <rect width="13.48" height="13.11" x="448.61" y="92.72" class="decompiled"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
 <rect width="13.48" height="13.11" x="448.61" y="108.84" class="known"><title>void __cdecl DoSnowEffect(ITEM_INFO *skidoo);</title></rect>
 <rect width="13.48" height="13.06" x="448.61" y="124.95" class="decompiled"><title>void __cdecl Lara_UseItem(GAME_OBJECT_ID object_num);</title></rect>
-<rect width="13.48" height="13.01" x="448.61" y="141.01" class="known"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
+<rect width="13.48" height="13.01" x="448.61" y="141.01" class="decompiled"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
 <rect width="13.48" height="13.01" x="448.61" y="157.03" class="known"><title>void __cdecl DartEmitterControl(int16_t item_num);</title></rect>
 <rect width="13.48" height="12.96" x="448.61" y="173.04" class="decompiled"><title>void __cdecl Output_InsertTransQuad_Sorted(int32_t x, int32_t y, int32_t width, int32_t height, int32_t z);</title></rect>
 <rect width="13.48" height="12.96" x="448.61" y="189.01" class="known"><title>void __cdecl WaterFall(int16_t fx_num);</title></rect>

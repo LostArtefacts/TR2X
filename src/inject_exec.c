@@ -626,6 +626,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00425110, Inv_Ring_GetView);
     INJECT(enable, 0x00425170, Inv_Ring_Light);
     INJECT(enable, 0x004251B0, Inv_Ring_CalcAdders);
+    INJECT(enable, 0x004251E0, Inv_Ring_DoMotions);
 }
 
 static void Inject_Lara_Control(const bool enable)
