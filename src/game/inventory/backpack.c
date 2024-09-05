@@ -5,6 +5,41 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 
+void __cdecl Inv_InsertItem(INVENTORY_ITEM *const inv_item)
+{
+    int32_t n;
+
+    if (inv_item->inv_pos < 100) {
+        for (n = 0; n < g_Inv_MainObjectsCount; n++) {
+            if (g_Inv_MainList[n]->inv_pos > inv_item->inv_pos) {
+                break;
+            }
+        }
+
+        for (int32_t i = g_Inv_MainObjectsCount; i > n - 1; i--) {
+            g_Inv_MainList[i + 1] = g_Inv_MainList[i];
+            g_Inv_MainQtys[i + 1] = g_Inv_MainQtys[i];
+        }
+        g_Inv_MainList[n] = inv_item;
+        g_Inv_MainQtys[n] = 1;
+        g_Inv_MainObjectsCount++;
+    } else {
+        for (n = 0; n < g_Inv_KeyObjectsCount; n++) {
+            if (g_Inv_KeysList[n]->inv_pos > inv_item->inv_pos) {
+                break;
+            }
+        }
+
+        for (int i = g_Inv_KeyObjectsCount; i > n - 1; i--) {
+            g_Inv_KeysList[i + 1] = g_Inv_KeysList[i];
+            g_Inv_KeysQtys[i + 1] = g_Inv_KeysQtys[i];
+        }
+        g_Inv_KeysList[n] = inv_item;
+        g_Inv_KeysQtys[n] = 1;
+        g_Inv_KeyObjectsCount++;
+    }
+}
+
 int32_t __cdecl Inv_AddItem(const GAME_OBJECT_ID object_id)
 {
     const GAME_OBJECT_ID inv_object_id = Inv_GetItemOption(object_id);
@@ -16,7 +51,7 @@ int32_t __cdecl Inv_AddItem(const GAME_OBJECT_ID object_id)
         const INVENTORY_ITEM *const inv_item = g_Inv_MainList[i];
         if (inv_item->obj_num == inv_object_id) {
             const int32_t qty = object_id == O_FLARES_ITEM ? FLARE_AMMO_QTY : 1;
-            g_InvMainQtys[i] += qty;
+            g_Inv_MainQtys[i] += qty;
             return true;
         }
     }
@@ -24,7 +59,7 @@ int32_t __cdecl Inv_AddItem(const GAME_OBJECT_ID object_id)
     for (int32_t i = 0; i < g_Inv_KeyObjectsCount; i++) {
         const INVENTORY_ITEM *const inv_item = g_Inv_KeysList[i];
         if (inv_item->obj_num == inv_object_id) {
-            g_InvKeysQtys[i]++;
+            g_Inv_KeysQtys[i]++;
             return true;
         }
     }

@@ -100,7 +100,6 @@
 #define RingIsNotOpen ((void __cdecl (*)(RING_INFO *ring))0x00423DB0)
 #define RingNotActive ((void __cdecl (*)(INVENTORY_ITEM *inv_item))0x00423E40)
 #define RingActive ((void __cdecl (*)(void))0x004242B0)
-#define Inv_InsertItem ((void __cdecl (*)(INVENTORY_ITEM *inv_item))0x00424B00)
 #define Inv_RequestItem ((int32_t __cdecl (*)(GAME_OBJECT_ID object_num))0x00424C30)
 #define Inv_RemoveAllItems ((void __cdecl (*)(void))0x00424CB0)
 #define Inv_RemoveItem ((int32_t __cdecl (*)(GAME_OBJECT_ID object_num))0x00424CD0)

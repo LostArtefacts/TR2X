@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.26% (734)</tspan> · <tspan class="known">37.27% (454)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.34% (735)</tspan> · <tspan class="known">37.19% (453)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="450.16" height="6" x="0" y="0" class="decompiled"/>
-<rect width="278.44" height="6" x="450.16" y="0" class="known"/>
+<rect width="450.78" height="6" x="0" y="0" class="decompiled"/>
+<rect width="277.83" height="6" x="450.78" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -416,7 +416,7 @@
 <rect width="12" height="12" x="555" y="90" class="known"><title>void __cdecl RingNotActive(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="570" y="90" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="12" height="12" x="585" y="90" class="decompiled"><title>int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);</title></rect>
-<rect width="12" height="12" x="600" y="90" class="known"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="12" height="12" x="600" y="90" class="decompiled"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="615" y="90" class="known"><title>int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="630" y="90" class="known"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
 <rect width="12" height="12" x="645" y="90" class="known"><title>int32_t __cdecl Inv_RemoveItem(GAME_OBJECT_ID object_num);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.16%</tspan> · <tspan class="known">35.51%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.25%</tspan> · <tspan class="known">35.43%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="479.27" height="6" x="0" y="0" class="decompiled"/>
-<rect width="265.29" height="6" x="479.27" y="0" class="known"/>
+<rect width="479.92" height="6" x="0" y="0" class="decompiled"/>
+<rect width="264.64" height="6" x="479.92" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1620,7 +1620,7 @@
 <rect width="13.19" height="12.58" x="546.69" y="92.72" class="decompiled"><title>int32_t __cdecl Lara_TestSlide(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="13.03" height="12.58" x="562.89" y="92.72" class="known"><title>void __cdecl DrawSphereOfDoom(ITEM_INFO *item);</title></rect>
 <rect width="12.93" height="12.58" x="578.92" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_Sorted(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
-<rect width="12.82" height="12.58" x="594.84" y="92.72" class="known"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
+<rect width="12.82" height="12.58" x="594.84" y="92.72" class="decompiled"><title>void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12.77" height="12.58" x="610.66" y="92.72" class="known"><title>void __cdecl SphereOfDoomCollision(int16_t item_num, ITEM_INFO *lara_item, COLL_INFO *coll);</title></rect>
 <rect width="12.77" height="12.58" x="626.43" y="92.72" class="known"><title>int32_t __cdecl Collide_TestCollision(ITEM_INFO *item, const ITEM_INFO *lara_item);</title></rect>
 <rect width="12.77" height="12.58" x="642.20" y="92.72" class="decompiled"><title>void __cdecl HWR_InitState(void);</title></rect>

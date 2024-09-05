@@ -3214,7 +3214,7 @@ typedef enum {
 0x00423E40  0x0369  -R      void __cdecl RingNotActive(INVENTORY_ITEM *inv_item);
 0x004242B0  0x0032  -R      void __cdecl RingActive(void);
 0x004242F0  0x06BE  +       int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);
-0x00424B00  0x0129  -       void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);
+0x00424B00  0x0129  +       void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);
 0x00424C30  0x0077  -       int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);
 0x00424CB0  0x001B  -       void __cdecl Inv_RemoveAllItems(void);
 0x00424CD0  0x0110  -       int32_t __cdecl Inv_RemoveItem(GAME_OBJECT_ID object_num);
@@ -4664,8 +4664,8 @@ typedef enum {
 0x00521BE0  -       uint32_t g_SaveGameReqFlags2[24]; // MAX_REQUESTER_ITEMS
 0x004D9EC8  -       int32_t g_SaveCounter;
 0x00466B80  -       int16_t g_SavedLevels[24]; // MAX_LEVELS
-0x004654E8  -       int16_t g_InvMainQtys[];
-0x00465578  -       int16_t g_InvKeysQtys[];
+0x004654E8  -       int16_t g_Inv_MainQtys[];
+0x00465578  -       int16_t g_Inv_KeysQtys[];
 0x0046773C  -       int32_t g_DetailLevel;
 0x0051A250  -       int32_t g_LayoutPage;
 0x0051A24C  +       int32_t g_KeySelector;
