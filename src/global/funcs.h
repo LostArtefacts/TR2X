@@ -100,7 +100,6 @@
 #define RingIsNotOpen ((void __cdecl (*)(RING_INFO *ring))0x00423DB0)
 #define RingNotActive ((void __cdecl (*)(INVENTORY_ITEM *inv_item))0x00423E40)
 #define RingActive ((void __cdecl (*)(void))0x004242B0)
-#define Inv_RemoveItem ((int32_t __cdecl (*)(GAME_OBJECT_ID object_num))0x00424CD0)
 #define RemoveInventoryText ((void __cdecl (*)(void))0x00424FD0)
 #define HarpoonBolt_Control ((void __cdecl (*)(int16_t item_num))0x0042C0F0)
 #define Rocket_Control ((void __cdecl (*)(int16_t item_num))0x0042C530)

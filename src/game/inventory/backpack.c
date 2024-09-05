@@ -326,3 +326,39 @@ void __cdecl Inv_RemoveAllItems(void)
     g_Inv_KeyObjectsCount = 0;
     g_Inv_KeysCurrent = 0;
 }
+
+int32_t Inv_RemoveItem(const GAME_OBJECT_ID object_id)
+{
+    const GAME_OBJECT_ID inv_object_id = Inv_GetItemOption(object_id);
+
+    for (int32_t i = 0; i < g_Inv_MainObjectsCount; i++) {
+        if (g_Inv_MainList[i]->obj_num == inv_object_id) {
+            g_Inv_MainQtys[i]--;
+            if (g_Inv_MainQtys[i] > 0) {
+                return true;
+            }
+            g_Inv_MainObjectsCount--;
+            for (int32_t j = i; j < g_Inv_MainObjectsCount; j++) {
+                g_Inv_MainList[j] = g_Inv_MainList[j + 1];
+                g_Inv_MainQtys[j] = g_Inv_MainQtys[j + 1];
+            }
+        }
+    }
+
+    for (int32_t i = 0; i < g_Inv_KeyObjectsCount; i++) {
+        if (g_Inv_KeysList[i]->obj_num == inv_object_id) {
+            g_Inv_KeysQtys[i]--;
+            if (g_Inv_KeysQtys[i] > 0) {
+                return true;
+            }
+            g_Inv_KeyObjectsCount--;
+            for (int32_t j = i; j < g_Inv_KeyObjectsCount; j++) {
+                g_Inv_KeysList[j] = g_Inv_KeysList[j + 1];
+                g_Inv_KeysQtys[j] = g_Inv_KeysQtys[j + 1];
+            }
+            return true;
+        }
+    }
+
+    return false;
+}
