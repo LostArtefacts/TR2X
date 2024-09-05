@@ -252,3 +252,11 @@ void __cdecl Inv_Ring_MotionCameraPos(
     imo->camera_y_target = target;
     imo->camera_y_rate = (target - ring->camera.pos.y) / imo->count;
 }
+
+void __cdecl Inv_Ring_MotionCameraPitch(
+    RING_INFO *const ring, const int16_t target)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->camera_pitch_target = target;
+    imo->camera_pitch_rate = target / imo->count;
+}
