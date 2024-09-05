@@ -12,11 +12,11 @@ void __cdecl Text_SetScale(
 void __cdecl Text_Flash(TEXTSTRING *string, int16_t enable, int16_t rate);
 void __cdecl Text_AddBackground(
     TEXTSTRING *string, int16_t x_size, int16_t y_size, int16_t x_off,
-    int16_t y_off, int16_t z_off, int16_t colour, const uint16_t *gour_ptr,
+    int16_t y_off, int16_t z_off, INV_COLOR color, const uint16_t *gour_ptr,
     uint16_t flags);
 void __cdecl Text_RemoveBackground(TEXTSTRING *string);
 void __cdecl Text_AddOutline(
-    TEXTSTRING *string, int16_t enable, int16_t colour,
+    TEXTSTRING *string, int16_t enable, INV_COLOR color,
     const uint16_t *gour_ptr, uint16_t flags);
 void __cdecl Text_RemoveOutline(TEXTSTRING *string);
 void __cdecl Text_CentreH(TEXTSTRING *string, int16_t enable);

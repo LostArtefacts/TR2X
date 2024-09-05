@@ -140,7 +140,7 @@ void __cdecl Text_Flash(
 void __cdecl Text_AddBackground(
     TEXTSTRING *const string, const int16_t x_size, const int16_t y_size,
     const int16_t x_off, const int16_t y_off, const int16_t z_off,
-    const int16_t colour, const uint16_t *const gour_ptr, const uint16_t flags)
+    const INV_COLOR color, const uint16_t *const gour_ptr, const uint16_t flags)
 {
     if (string == NULL) {
         return;
@@ -153,7 +153,7 @@ void __cdecl Text_AddBackground(
     string->bgnd_off.x = (scale_h * x_off) / PHD_ONE;
     string->bgnd_off.y = (scale_v * y_off) / PHD_ONE;
     string->bgnd_off.z = z_off;
-    string->bgnd_colour = colour;
+    string->bgnd_color = color;
     string->bgnd_gour = gour_ptr;
     string->bgnd_flags = flags;
 }
@@ -167,7 +167,7 @@ void __cdecl Text_RemoveBackground(TEXTSTRING *const string)
 }
 
 void __cdecl Text_AddOutline(
-    TEXTSTRING *const string, const int16_t enable, const int16_t colour,
+    TEXTSTRING *const string, const int16_t enable, const INV_COLOR color,
     const uint16_t *const gour_ptr, const uint16_t flags)
 {
     if (string == NULL) {
@@ -175,7 +175,7 @@ void __cdecl Text_AddOutline(
     }
     string->flags.outline = 1;
     string->outl_gour = gour_ptr;
-    string->outl_colour = colour;
+    string->outl_color = color;
     string->outl_flags = flags;
 }
 
@@ -467,7 +467,7 @@ void __cdecl Text_DrawText(TEXTSTRING *const string)
     if (string->flags.background) {
         S_DrawScreenFBox(
             box_x, box_y, string->bgnd_off.z + z + 2, box_w, box_h,
-            string->bgnd_colour, (const GOURAUD_FILL *)string->bgnd_gour,
+            string->bgnd_color, (const GOURAUD_FILL *)string->bgnd_gour,
             string->bgnd_flags);
     }
 

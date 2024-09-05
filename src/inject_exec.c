@@ -623,6 +623,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00423590, Inv_DrawInventoryItem);
     INJECT(enable, 0x004239E0, Inv_DoInventoryPicture);
     INJECT(enable, 0x004239F0, Inv_DoInventoryBackground);
+    INJECT(enable, 0x00423B30, Inv_InitColors);
     INJECT(enable, 0x00423C40, Inv_RingIsOpen);
     INJECT(enable, 0x00423DB0, Inv_RingIsNotOpen);
     INJECT(enable, 0x00423E40, Inv_RingNotActive);

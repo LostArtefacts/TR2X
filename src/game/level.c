@@ -524,7 +524,7 @@ static void __cdecl Level_LoadDepthQ(VFILE *const file)
         memcpy(g_GamePalette8, palette, sizeof(g_GamePalette8));
 
         for (int32_t i = 0; i < 256; i++) {
-            g_DepthQIndex[i] = S_COLOUR(
+            g_DepthQIndex[i] = S_COLOR(
                 g_GamePalette8[i].red, g_GamePalette8[i].green,
                 g_GamePalette8[i].blue);
         }

@@ -301,9 +301,9 @@ typedef struct __unaligned {
         int16_t rate;
         int16_t count;
     } flash;
-    int16_t bgnd_colour;
+    int16_t bgnd_color;
     const uint16_t *bgnd_gour;
-    int16_t outl_colour;
+    int16_t outl_color;
     const uint16_t *outl_gour;
     struct {
         int16_t x;
@@ -1037,6 +1037,21 @@ typedef enum {
     RT_OPTION = 1,
     RT_KEYS   = 2,
 } RING_TYPE;
+
+typedef enum {
+    INV_COLOR_BLACK      = 0,
+    INV_COLOR_GRAY       = 1,
+    INV_COLOR_WHITE      = 2,
+    INV_COLOR_RED        = 3,
+    INV_COLOR_ORANGE     = 4,
+    INV_COLOR_YELLOW     = 5,
+    INV_COLOR_DARK_GREEN = 12,
+    INV_COLOR_GREEN      = 13,
+    INV_COLOR_CYAN       = 14,
+    INV_COLOR_BLUE       = 15,
+    INV_COLOR_MAGENTA    = 16,
+    INV_COLOR_NUMBER_OF  = 17,
+} INV_COLOR;
 
 typedef enum {
     INV_GAME_MODE  = 0,

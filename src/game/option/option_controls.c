@@ -35,8 +35,9 @@ static void Option_Controls_InitText(void)
     Text_CentreV(g_ControlsText[0], 1);
     Option_Controls_ShowControls();
     m_Cursor = -1;
-    Text_AddBackground(g_ControlsText[0], 0, 0, 0, 0, 48, 0, 0, 0);
-    Text_AddOutline(g_ControlsText[0], 1, 15, 0, 0);
+    Text_AddBackground(
+        g_ControlsText[0], 0, 0, 0, 0, 48, INV_COLOR_BLACK, 0, 0);
+    Text_AddOutline(g_ControlsText[0], 1, INV_COLOR_BLUE, 0, 0);
 }
 
 static void Option_Controls_ShutdownText(void)
@@ -75,8 +76,9 @@ static void Option_Controls_Control_Navigate(void)
             }
             g_ControlsTextB[m_Cursor]->pos.z = 0;
             Text_AddBackground(
-                g_ControlsTextB[m_Cursor], 0, 0, 0, 0, 0, 0, 0, 0);
-            Text_AddOutline(g_ControlsTextB[m_Cursor], 1, 15, 0, 0);
+                g_ControlsTextB[m_Cursor], 0, 0, 0, 0, 0, INV_COLOR_BLACK, 0,
+                0);
+            Text_AddOutline(g_ControlsTextB[m_Cursor], 1, INV_COLOR_BLUE, 0, 0);
         }
     } else if (
         (g_InputDB & IN_DESELECT)

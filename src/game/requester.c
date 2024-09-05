@@ -100,10 +100,11 @@ int32_t __cdecl Requester_Display(
             Text_AlignBottom(req->heading_text1, true);
             if (backgrounds) {
                 Text_AddBackground(
-                    req->heading_text1, req->pix_width - 4, 0, 0, 0, 8, 0,
-                    g_Requester_MainGour1, 2u);
+                    req->heading_text1, req->pix_width - 4, 0, 0, 0, 8,
+                    INV_COLOR_BLACK, g_Requester_MainGour1, 2);
                 Text_AddOutline(
-                    req->heading_text1, 1, 4, g_Requester_MainGour2, 0);
+                    req->heading_text1, 1, INV_COLOR_ORANGE,
+                    g_Requester_MainGour2, 0);
             }
         }
 
@@ -126,10 +127,11 @@ int32_t __cdecl Requester_Display(
             Text_AlignBottom(req->heading_text2, true);
             if (backgrounds) {
                 Text_AddBackground(
-                    req->heading_text2, req->pix_width - 4, 0, 0, 0, 8, 0,
-                    g_Requester_MainGour1, 2u);
+                    req->heading_text2, req->pix_width - 4, 0, 0, 0, 8,
+                    INV_COLOR_BLACK, g_Requester_MainGour1, 2);
                 Text_AddOutline(
-                    req->heading_text2, 1, 4, g_Requester_MainGour2, 0);
+                    req->heading_text2, 1, INV_COLOR_ORANGE,
+                    g_Requester_MainGour2, 0);
             }
         }
 
@@ -151,10 +153,11 @@ int32_t __cdecl Requester_Display(
         Text_AlignBottom(req->background_text, true);
         Text_AddBackground(
             req->background_text, req->pix_width,
-            req->line_height + lines_height + 12, 0, 0, 48, 0,
-            g_Requester_BackgroundGour1, 1u);
+            req->line_height + lines_height + 12, 0, 0, 48, INV_COLOR_BLACK,
+            g_Requester_BackgroundGour1, 1);
         Text_AddOutline(
-            req->background_text, 1, 15, g_Requester_BackgroundGour2, 0);
+            req->background_text, 1, INV_COLOR_BLUE,
+            g_Requester_BackgroundGour2, 0);
     }
 
     /* arrows */
@@ -194,9 +197,10 @@ int32_t __cdecl Requester_Display(
                 Text_RemoveOutline(*text1);
             } else {
                 Text_AddBackground(
-                    *text1, req->pix_width - 12, 0, 0, 0, 16, 0,
-                    g_Requester_UnselectionGour1, 1u);
-                Text_AddOutline(*text1, 1, 4, g_Requester_SelectionGour2, 0);
+                    *text1, req->pix_width - 12, 0, 0, 0, 16, INV_COLOR_BLACK,
+                    g_Requester_UnselectionGour1, 1);
+                Text_AddOutline(
+                    *text1, 1, INV_COLOR_ORANGE, g_Requester_SelectionGour2, 0);
             }
 
             if (req->pitem_flags1[n] & REQ_ALIGN_LEFT) {

@@ -400,6 +400,7 @@
 #define g_ValidLevelStrings1 (*(char(*)[])0x005207E0)
 #define g_RequesterFlags2 (*(uint32_t(*)[24])0x00520CA0)
 #define g_RequesterFlags1 (*(uint32_t(*)[24])0x00520D00)
+#define g_InvColors (*(uint16_t(*)[17])0x005216E0)
 #define g_ValidLevelStrings2 (*(char(*)[])0x00521720)
 #define g_SaveGameReqFlags2 (*(uint32_t(*)[24])0x00521BE0)
 #define g_SaveGameReqFlags1 (*(uint32_t(*)[24])0x00521C40)

@@ -1373,7 +1373,7 @@ int32_t __cdecl Level_Initialise(
     g_Effects = game_malloc(MAX_EFFECTS * sizeof(FX_INFO), GBUF_EFFECTS_ARRAY);
     Effect_InitialiseArray();
     LOT_InitialiseArray();
-    InitColours();
+    Inv_InitColors();
     Text_Init();
     Overlay_InitialisePickUpDisplay();
     S_InitialiseScreen(level_type);
