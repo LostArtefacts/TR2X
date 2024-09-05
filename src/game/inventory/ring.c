@@ -236,3 +236,11 @@ void __cdecl Inv_Ring_MotionRadius(RING_INFO *const ring, const int16_t target)
     imo->radius_target = target;
     imo->radius_rate = (target - ring->radius) / imo->count;
 }
+
+void __cdecl Inv_Ring_MotionRotation(
+    RING_INFO *const ring, const int16_t rotation, const int16_t target)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->rotate_target = target;
+    imo->rotate_rate = rotation / imo->count;
+}

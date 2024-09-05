@@ -632,6 +632,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00425380, Inv_Ring_MotionInit);
     INJECT(enable, 0x004253F0, Inv_Ring_MotionSetup);
     INJECT(enable, 0x00425420, Inv_Ring_MotionRadius);
+    INJECT(enable, 0x00425450, Inv_Ring_MotionRotation);
 }
 
 static void Inject_Lara_Control(const bool enable)
