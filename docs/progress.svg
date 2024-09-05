@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">61.08% (744)</tspan> · <tspan class="known">36.45% (444)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">61.17% (745)</tspan> · <tspan class="known">36.37% (443)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="456.30" height="6" x="0" y="0" class="decompiled"/>
-<rect width="272.31" height="6" x="456.30" y="0" class="known"/>
+<rect width="456.91" height="6" x="0" y="0" class="decompiled"/>
+<rect width="271.69" height="6" x="456.91" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -421,7 +421,7 @@
 <rect width="12" height="12" x="630" y="90" class="decompiled"><title>void __cdecl Inv_RemoveAllItems(void);</title></rect>
 <rect width="12" height="12" x="645" y="90" class="decompiled"><title>int32_t __cdecl Inv_RemoveItem(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="660" y="90" class="decompiled"><title>int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);</title></rect>
-<rect width="12" height="12" x="675" y="90" class="known"><title>void __cdecl RemoveInventoryText(void);</title></rect>
+<rect width="12" height="12" x="675" y="90" class="decompiled"><title>void __cdecl Inv_RemoveInventoryText(void);</title></rect>
 <rect width="12" height="12" x="690" y="90" class="decompiled"><title>void __cdecl Inv_Ring_Init(RING_INFO *ring, int16_t type, INVENTORY_ITEM **list, int16_t qty, int16_t current, IMOTION_INFO *imo);</title></rect>
 <rect width="12" height="12" x="705" y="90" class="decompiled"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
 <rect width="12" height="12" x="720" y="90" class="decompiled"><title>void __cdecl Inv_Ring_Light(RING_INFO *ring);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.87%</tspan> · <tspan class="known">34.80%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.88%</tspan> · <tspan class="known">34.79%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="484.60" height="6" x="0" y="0" class="decompiled"/>
-<rect width="259.96" height="6" x="484.60" y="0" class="known"/>
+<rect width="484.68" height="6" x="0" y="0" class="decompiled"/>
+<rect width="259.88" height="6" x="484.68" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2350,7 +2350,7 @@
 <rect width="2.34" height="2.75" x="693.06" y="338.66" class="known"><title>HRESULT __cdecl EnumerateTextureFormats(void);</title></rect>
 <rect width="2.34" height="2.60" x="693.06" y="344.42" class="decompiled"><title>void __cdecl Room_TriggerMusicTrack(int16_t value, int16_t flags, int16_t type);</title></rect>
 <rect width="2.34" height="2.60" x="693.06" y="350.01" class="known"><title>void __cdecl AssaultStart(ITEM_INFO *item);</title></rect>
-<rect width="2.34" height="2.60" x="693.06" y="355.61" class="known"><title>void __cdecl RemoveInventoryText(void);</title></rect>
+<rect width="2.34" height="2.60" x="693.06" y="355.61" class="decompiled"><title>void __cdecl Inv_RemoveInventoryText(void);</title></rect>
 <rect width="2.34" height="2.60" x="693.06" y="361.21" class="decompiled"><title>void __cdecl Sound_Shutdown(void);</title></rect>
 <rect width="2.34" height="2.60" x="693.06" y="366.81" class="decompiled"><title>int16_t __cdecl Text_GetTextLength(const char *text);</title></rect>
 <rect width="2.34" height="2.60" x="693.06" y="372.40" class="known"><title>bool __cdecl DInputEnumDevices(JOYSTICK_LIST *joystickList);</title></rect>

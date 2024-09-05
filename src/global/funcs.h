@@ -94,7 +94,6 @@
 #define DrawHair ((void __cdecl (*)(void))0x00421920)
 #define GetDebouncedInput ((int32_t __cdecl (*)(int32_t input))0x004239C0)
 #define InitColours ((void __cdecl (*)(void))0x00423B30)
-#define RemoveInventoryText ((void __cdecl (*)(void))0x00424FD0)
 #define HarpoonBolt_Control ((void __cdecl (*)(int16_t item_num))0x0042C0F0)
 #define Rocket_Control ((void __cdecl (*)(int16_t item_num))0x0042C530)
 #define Flare_DoLight ((int32_t __cdecl (*)(XYZ_32 *pos, int32_t flare_age))0x0042F7A0)

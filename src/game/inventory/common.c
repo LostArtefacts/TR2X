@@ -195,7 +195,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
     do {
         if (g_GF_OverrideDir != (GAME_FLOW_DIR)-1) {
             INVENTORY_ITEM *inv_item = ring.list[ring.current_object];
-            RemoveInventoryText();
+            Inv_RemoveInventoryText();
             Option_ShutdownInventory(inv_item);
             return GFD_OVERRIDE;
         }
@@ -702,7 +702,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
         }
     } while (imo.status != RNG_DONE);
 
-    RemoveInventoryText();
+    Inv_RemoveInventoryText();
     S_FinishInventory();
     g_Inv_IsActive = 0;
 
@@ -1201,8 +1201,13 @@ void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
 
 void __cdecl Inv_RingActive(void)
 {
-    Text_Remove(g_Inv_ItemText[0]);
-    g_Inv_ItemText[0] = NULL;
-    Text_Remove(g_Inv_ItemText[1]);
-    g_Inv_ItemText[1] = NULL;
+    Inv_RemoveInventoryText();
+}
+
+void __cdecl Inv_RemoveInventoryText(void)
+{
+    for (int32_t i = 0; i < 2; i++) {
+        Text_Remove(g_Inv_ItemText[i]);
+        g_Inv_ItemText[i] = NULL;
+    }
 }

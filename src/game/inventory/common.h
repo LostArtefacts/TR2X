@@ -14,3 +14,4 @@ void __cdecl Inv_RingIsOpen(RING_INFO *ring);
 void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);
 void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *inv_item);
 void __cdecl Inv_RingActive(void);
+void __cdecl Inv_RemoveInventoryText(void);
