@@ -217,3 +217,15 @@ void __cdecl Inv_Ring_MotionInit(
 
     imo->misc = 0;
 }
+
+void __cdecl Inv_Ring_MotionSetup(
+    RING_INFO *const ring, const RING_STATUS status,
+    const RING_STATUS status_target, const int16_t frames)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->count = frames;
+    imo->status = status;
+    imo->status_target = status_target;
+    imo->radius_rate = 0;
+    imo->camera_y_rate = 0;
+}
