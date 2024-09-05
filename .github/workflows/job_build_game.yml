@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - platform: win
-            just_target: package-win
+            just_target: package-win-all
 
     steps:
       - name: Install dependencies

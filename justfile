@@ -41,15 +41,16 @@ _docker_run *args:
         {{args}}
 
 
-image-win force="1":           (_docker_build "tools/docker/game-win/Dockerfile" "rrdash/tr2x" force)
-image-win-config force="1":    (_docker_build "tools/docker/config/Dockerfile" "rrdash/tr1x-config" force)
+image-win force="1":              (_docker_build "tools/docker/game-win/Dockerfile" "rrdash/tr2x" force)
+image-win-config force="1":       (_docker_build "tools/docker/config/Dockerfile" "rrdash/tr2x-config" force)
 
-push-image-win:                (image-win "0") (_docker_push "rrdash/tr2x")
+push-image-win:                   (image-win "0") (_docker_push "rrdash/tr2x")
 
-build-win target='debug':      (image-win "0") (_docker_run "-e" "TARGET="+target "rrdash/tr2x")
-build-win-config:              (image-win-config "0")    (_docker_run "rrdash/tr1x-config")
+build-win target='debug':         (image-win "0")        (_docker_run "-e" "TARGET="+target "rrdash/tr2x")
+build-win-config:                 (image-win-config "0") (_docker_run "rrdash/tr2x-config")
 
-package-win target='release':  (build-win target) (_docker_run "rrdash/tr2x" "package")
+package-win target='release':     (build-win target) (_docker_run "rrdash/tr2x" "package")
+package-win-all target='release': (build-win target) (build-win-config) (_docker_run "rrdash/tr2x" "package")
 
 output-current-version:
     tools/get_version
