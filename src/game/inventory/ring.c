@@ -1,5 +1,6 @@
 #include "game/inventory/ring.h"
 
+#include "game/math_misc.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -9,6 +10,7 @@
 #define RING_RADIUS 688
 #define RING_CAMERA_START_HEIGHT (-1536)
 #define RING_CAMERA_HEIGHT (-256)
+#define RING_CAMERA_Y_OFFSET (-96)
 
 void __cdecl Inv_Ring_Init(
     RING_INFO *const ring, const RING_TYPE type, INVENTORY_ITEM **const list,
@@ -60,4 +62,20 @@ void __cdecl Inv_Ring_Init(
     ring->light.x = -1536;
     ring->light.y = 256;
     ring->light.z = 1024;
+}
+
+void __cdecl Inv_Ring_GetView(
+    const RING_INFO *const ring, PHD_3DPOS *const view)
+{
+    int16_t angles[2];
+
+    Math_GetVectorAngles(
+        -ring->camera.pos.x, RING_CAMERA_Y_OFFSET - ring->camera.pos.y,
+        ring->radius - ring->camera.pos.z, angles);
+    view->pos.x = ring->camera.pos.x;
+    view->pos.y = ring->camera.pos.y;
+    view->pos.z = ring->camera.pos.z;
+    view->rot.x = angles[1] + ring->camera_pitch;
+    view->rot.y = angles[0];
+    view->rot.z = 0;
 }

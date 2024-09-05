@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.11% (720)</tspan> · <tspan class="known">38.42% (468)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.20% (721)</tspan> · <tspan class="known">38.34% (467)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="441.58" height="6" x="0" y="0" class="decompiled"/>
-<rect width="287.02" height="6" x="441.58" y="0" class="known"/>
+<rect width="442.19" height="6" x="0" y="0" class="decompiled"/>
+<rect width="286.41" height="6" x="442.19" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -423,7 +423,7 @@
 <rect width="12" height="12" x="660" y="90" class="decompiled"><title>int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);</title></rect>
 <rect width="12" height="12" x="675" y="90" class="known"><title>void __cdecl RemoveInventoryText(void);</title></rect>
 <rect width="12" height="12" x="690" y="90" class="decompiled"><title>void __cdecl Inv_Ring_Init(RING_INFO *ring, int16_t type, INVENTORY_ITEM **list, int16_t qty, int16_t current, IMOTION_INFO *imo);</title></rect>
-<rect width="12" height="12" x="705" y="90" class="known"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
+<rect width="12" height="12" x="705" y="90" class="decompiled"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
 <rect width="12" height="12" x="720" y="90" class="known"><title>void __cdecl Inv_Ring_Light(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="735" y="90" class="known"><title>void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);</title></rect>
 <rect width="12" height="12" x="0" y="105" class="known"><title>void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">63.84%</tspan> · <tspan class="known">35.83%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">63.87%</tspan> · <tspan class="known">35.81%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="476.88" height="6" x="0" y="0" class="decompiled"/>
-<rect width="267.68" height="6" x="476.88" y="0" class="known"/>
+<rect width="477.09" height="6" x="0" y="0" class="decompiled"/>
+<rect width="267.47" height="6" x="477.09" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2030,7 +2030,7 @@
 <rect width="5.98" height="5.97" x="625.97" y="235.64" class="decompiled"><title>int32_t __cdecl Music_GetFrames(void);</title></rect>
 <rect width="5.98" height="5.97" x="634.95" y="235.64" class="known"><title>bool __cdecl SE_RegisterSetupWindowClass(void);</title></rect>
 <rect width="5.98" height="5.97" x="643.93" y="235.64" class="decompiled"><title>void __fastcall Output_FlatA(int32_t y0, int32_t y1, uint8_t color_idx); // actually, __watcall, which is esoteric and rarely supported</title></rect>
-<rect width="5.89" height="5.97" x="652.91" y="235.64" class="known"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
+<rect width="5.89" height="5.97" x="652.91" y="235.64" class="decompiled"><title>void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);</title></rect>
 <rect width="5.89" height="5.97" x="661.79" y="235.64" class="decompiled"><title>void __cdecl Lara_State_SurfLeft(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="5.89" height="5.97" x="670.68" y="235.64" class="decompiled"><title>void __cdecl Lara_State_SurfRight(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="5.89" height="5.97" x="679.56" y="235.64" class="decompiled"><title>BOOL __cdecl Level_LoadCameras(HANDLE handle);</title></rect>

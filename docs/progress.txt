@@ -3221,7 +3221,7 @@ typedef enum {
 0x00424DE0  0x00C1  +       int32_t __cdecl Inv_GetItemOption(GAME_OBJECT_ID object_num);
 0x00424FD0  0x0024  -R      void __cdecl RemoveInventoryText(void);
 0x00425000  0x010F  +       void __cdecl Inv_Ring_Init(RING_INFO *ring, int16_t type, INVENTORY_ITEM **list, int16_t qty, int16_t current, IMOTION_INFO *imo);
-0x00425110  0x0060  -       void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);
+0x00425110  0x0060  +       void __cdecl Inv_Ring_GetView(RING_INFO *ring, PHD_3DPOS *viewer);
 0x00425170  0x0040  -       void __cdecl Inv_Ring_Light(RING_INFO *ring);
 0x004251B0  0x002C  -       void __cdecl Inv_Ring_CalcAdders(RING_INFO *ring, int16_t rotation_duration);
 0x004251E0  0x013E  -       void __cdecl Inv_Ring_DoMotions(RING_INFO *ring);
