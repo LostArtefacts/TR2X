@@ -5,6 +5,7 @@
 #include "game/inventory/ring.h"
 #include "game/inventory/vars.h"
 #include "game/lara/lara_control.h"
+#include "game/math_misc.h"
 #include "game/matrix.h"
 #include "game/music.h"
 #include "game/objects/common.h"
@@ -232,9 +233,9 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
         }
         S_AnimateTextures(g_Inv_NFrames);
 
-        PHD_3DPOS viewpos;
-        Inv_Ring_GetView(&ring, &viewpos);
-        Matrix_GenerateW2V(&viewpos);
+        PHD_3DPOS view;
+        Inv_Ring_GetView(&ring, &view);
+        Matrix_GenerateW2V(&view);
         Inv_Ring_Light(&ring);
 
         Matrix_Push();
@@ -274,12 +275,12 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                         const int32_t delta =
                             inv_item->y_rot_sel - inv_item->y_rot;
                         if (delta != 0) {
-                            if (delta > 0 && delta < 0x8000) {
+                            if (delta > 0 && delta < PHD_180) {
                                 inv_item->y_rot += 1024;
                             } else {
                                 inv_item->y_rot -= 1024;
                             }
-                            inv_item->y_rot &= 0xFC00;
+                            inv_item->y_rot &= ~(1024 - 1);
                         }
                     } else if (
                         ring.number_of_objects == 1
@@ -320,7 +321,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
             Matrix_Push();
             Matrix_RotYXZ(angle, 0, 0);
             Matrix_TranslateRel(ring.radius, 0, 0);
-            Matrix_RotYXZ(0x4000, inv_item->x_rot_pt, 0);
+            Matrix_RotYXZ(PHD_90, inv_item->x_rot_pt, 0);
             Inv_DrawInventoryItem(inv_item);
             Matrix_Pop();
             angle += ring.angle_adder;
@@ -373,7 +374,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                     Inv_Ring_MotionRadius(&ring, 0);
                     Inv_Ring_MotionCameraPos(&ring, -1536);
                     Inv_Ring_MotionRotation(
-                        &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                        &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                     g_Input = 0;
                     g_InputDB = 0;
                 }
@@ -444,7 +445,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                                 &ring, RNG_CLOSING, RNG_OPTION2MAIN, 24);
                             Inv_Ring_MotionRadius(&ring, 0);
                             Inv_Ring_MotionRotation(
-                                &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                                &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                             Inv_Ring_MotionCameraPitch(&ring, 0x2000);
                             imo.misc = 0x2000;
                         }
@@ -455,7 +456,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                                 &ring, RNG_CLOSING, RNG_MAIN2KEYS, 24);
                             Inv_Ring_MotionRadius(&ring, 0);
                             Inv_Ring_MotionRotation(
-                                &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                                &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                             Inv_Ring_MotionCameraPitch(&ring, 0x2000);
                             imo.misc = 0x2000;
                         }
@@ -472,7 +473,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                                 &ring, RNG_CLOSING, RNG_KEYS2MAIN, 24);
                             Inv_Ring_MotionRadius(&ring, 0);
                             Inv_Ring_MotionRotation(
-                                &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                                &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                             Inv_Ring_MotionCameraPitch(&ring, -0x2000);
                             imo.misc = -0x2000;
                         }
@@ -485,7 +486,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                                 &ring, RNG_CLOSING, RNG_MAIN2OPTION, 24);
                             Inv_Ring_MotionRadius(&ring, 0);
                             Inv_Ring_MotionRotation(
-                                &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                                &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                             Inv_Ring_MotionCameraPitch(&ring, -0x2000);
                             imo.misc = -0x2000;
                         }
@@ -508,9 +509,9 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 ring.current_object = g_Inv_OptionCurrent;
                 Inv_Ring_CalcAdders(&ring, 24);
                 Inv_Ring_MotionRotation(
-                    &ring, 0x8000,
+                    &ring, PHD_180,
                     -16384 - ring.angle_adder * ring.current_object);
-                ring.ring_pos.rot.y = imo.rotate_target + 0x8000;
+                ring.ring_pos.rot.y = imo.rotate_target + PHD_180;
                 break;
 
             case RNG_MAIN2KEYS:
@@ -527,9 +528,9 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 ring.current_object = g_Inv_KeysCurrent;
                 Inv_Ring_CalcAdders(&ring, 24);
                 Inv_Ring_MotionRotation(
-                    &ring, 0x8000,
+                    &ring, PHD_180,
                     -16384 - ring.angle_adder * ring.current_object);
-                ring.ring_pos.rot.y = imo.rotate_target + 0x8000;
+                ring.ring_pos.rot.y = imo.rotate_target + PHD_180;
                 break;
 
             case RNG_KEYS2MAIN:
@@ -545,9 +546,9 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 ring.current_object = g_Inv_MainCurrent;
                 Inv_Ring_CalcAdders(&ring, 24);
                 Inv_Ring_MotionRotation(
-                    &ring, 0x8000,
+                    &ring, PHD_180,
                     -16384 - ring.angle_adder * ring.current_object);
-                ring.ring_pos.rot.y = imo.rotate_target + 0x8000;
+                ring.ring_pos.rot.y = imo.rotate_target + PHD_180;
                 break;
 
             case RNG_OPTION2MAIN:
@@ -564,9 +565,9 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 ring.current_object = g_Inv_MainCurrent;
                 Inv_Ring_CalcAdders(&ring, 24);
                 Inv_Ring_MotionRotation(
-                    &ring, 0x8000,
+                    &ring, PHD_180,
                     -16384 - ring.angle_adder * ring.current_object);
-                ring.ring_pos.rot.y = imo.rotate_target + 0x8000;
+                ring.ring_pos.rot.y = imo.rotate_target + PHD_180;
                 break;
 
             case RNG_SELECTED: {
@@ -666,7 +667,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                     Inv_Ring_MotionRadius(&ring, 0);
                     Inv_Ring_MotionCameraPos(&ring, -1536);
                     Inv_Ring_MotionRotation(
-                        &ring, 0x8000, ring.ring_pos.rot.y + 0x8000);
+                        &ring, PHD_180, ring.ring_pos.rot.y + PHD_180);
                 }
                 break;
 
@@ -939,4 +940,41 @@ GAME_OBJECT_ID Inv_GetItemOption(const GAME_OBJECT_ID object_id)
 void __cdecl Inv_DoInventoryPicture(void)
 {
     S_CopyBufferToScreen();
+}
+
+void __cdecl Inv_DoInventoryBackground(void)
+{
+    S_CopyBufferToScreen();
+    if (!g_Objects[O_INV_BACKGROUND].loaded) {
+        return;
+    }
+
+    int16_t angles[2];
+    Math_GetVectorAngles(0, 4096, 0, angles);
+    PHD_3DPOS view;
+    view.pos.x = 0;
+    view.pos.y = -512;
+    view.pos.z = 0;
+    view.rot.x = angles[1];
+    view.rot.y = angles[0];
+    view.rot.z = 0;
+    Matrix_GenerateW2V(&view);
+
+    g_LsDivider = 0x6000;
+    Math_GetVectorAngles(-1536, 256, 1024, angles);
+    Output_RotateLight(angles[1], angles[0]);
+
+    Matrix_Push();
+    Matrix_TranslateAbs(0, 12288, 0);
+    Matrix_RotYXZ(0, PHD_90, PHD_180);
+
+    const int16_t *rot =
+        g_Anims[g_Objects[O_INV_BACKGROUND].anim_idx].frame_ptr + FBBOX_ROT;
+    Matrix_RotYXZsuperpack(&rot, 0);
+    Matrix_RotYXZ(PHD_180, 0, 0);
+
+    Output_InsertInventoryBackground(
+        g_Meshes[g_Objects[O_INV_BACKGROUND].mesh_idx]);
+
+    Matrix_Pop();
 }

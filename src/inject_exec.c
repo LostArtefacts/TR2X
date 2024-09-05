@@ -622,6 +622,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00423500, Inv_AnimateInventoryItem);
     INJECT(enable, 0x00423590, Inv_DrawInventoryItem);
     INJECT(enable, 0x004239E0, Inv_DoInventoryPicture);
+    INJECT(enable, 0x004239F0, Inv_DoInventoryBackground);
     INJECT(enable, 0x004242F0, Inv_AddItem);
     INJECT(enable, 0x00424B00, Inv_InsertItem);
     INJECT(enable, 0x00424C30, Inv_RequestItem);

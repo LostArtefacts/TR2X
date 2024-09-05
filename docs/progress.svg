@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.67% (739)</tspan> · <tspan class="known">36.86% (449)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.76% (740)</tspan> · <tspan class="known">36.78% (448)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="453.23" height="6" x="0" y="0" class="decompiled"/>
-<rect width="275.37" height="6" x="453.23" y="0" class="known"/>
+<rect width="453.84" height="6" x="0" y="0" class="decompiled"/>
+<rect width="274.76" height="6" x="453.84" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -409,7 +409,7 @@
 <rect width="12" height="12" x="450" y="90" class="decompiled"><title>void __cdecl Inv_DrawInventoryItem(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="465" y="90" class="known"><title>int32_t __cdecl GetDebouncedInput(int32_t input);</title></rect>
 <rect width="12" height="12" x="480" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryPicture(void);</title></rect>
-<rect width="12" height="12" x="495" y="90" class="known"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
+<rect width="12" height="12" x="495" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
 <rect width="12" height="12" x="510" y="90" class="known"><title>void __cdecl InitColours(void);</title></rect>
 <rect width="12" height="12" x="525" y="90" class="known"><title>void __cdecl RingIsOpen(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="540" y="90" class="known"><title>void __cdecl RingIsNotOpen(RING_INFO *ring);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.37%</tspan> · <tspan class="known">35.30%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.46%</tspan> · <tspan class="known">35.21%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="480.84" height="6" x="0" y="0" class="decompiled"/>
-<rect width="263.72" height="6" x="480.84" y="0" class="known"/>
+<rect width="481.51" height="6" x="0" y="0" class="decompiled"/>
+<rect width="263.05" height="6" x="481.51" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1615,7 +1615,7 @@
 <rect width="13.41" height="12.58" x="465.10" y="92.72" class="decompiled"><title>void __cdecl Output_InsertSkybox(const int16_t *obj_ptr);</title></rect>
 <rect width="13.35" height="12.58" x="481.50" y="92.72" class="decompiled"><title>void __cdecl Output_InsertLine_ZBuffered(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t z, uint8_t color_idx);</title></rect>
 <rect width="13.30" height="12.58" x="497.85" y="92.72" class="decompiled"><title>void __cdecl Overlay_DrawAmmoInfo(void);</title></rect>
-<rect width="13.30" height="12.58" x="514.15" y="92.72" class="known"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
+<rect width="13.30" height="12.58" x="514.15" y="92.72" class="decompiled"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
 <rect width="13.25" height="12.58" x="530.45" y="92.72" class="decompiled"><title>int32_t __cdecl Creature_Vault(int16_t item_num, int16_t angle, int32_t vault, int32_t shift);</title></rect>
 <rect width="13.19" height="12.58" x="546.69" y="92.72" class="decompiled"><title>int32_t __cdecl Lara_TestSlide(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="13.03" height="12.58" x="562.89" y="92.72" class="known"><title>void __cdecl DrawSphereOfDoom(ITEM_INFO *item);</title></rect>
