@@ -340,7 +340,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 || imo.status == RNG_OPTION2MAIN
                 || imo.status == RNG_EXITING_INVENTORY || imo.status == RNG_DONE
                 || ring.rotating) {
-                RingActive();
+                Inv_RingActive();
             }
 
             Matrix_Push();
@@ -1197,4 +1197,12 @@ void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
     default:
         break;
     }
+}
+
+void __cdecl Inv_RingActive(void)
+{
+    Text_Remove(g_Inv_ItemText[0]);
+    g_Inv_ItemText[0] = NULL;
+    Text_Remove(g_Inv_ItemText[1]);
+    g_Inv_ItemText[1] = NULL;
 }

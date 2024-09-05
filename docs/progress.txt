@@ -3212,7 +3212,7 @@ typedef enum {
 0x00423C40  0x0167  +       void __cdecl Inv_RingIsOpen(RING_INFO *ring);
 0x00423DB0  0x0081  +       void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);
 0x00423E40  0x0369  +       void __cdecl Inv_RingNotActive(INVENTORY_ITEM *inv_item);
-0x004242B0  0x0032  -R      void __cdecl RingActive(void);
+0x004242B0  0x0032  +       void __cdecl Inv_RingActive(void);
 0x004242F0  0x06BE  +       int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);
 0x00424B00  0x0129  +       void __cdecl Inv_InsertItem(INVENTORY_ITEM *inv_item);
 0x00424C30  0x0077  +       int32_t __cdecl Inv_RequestItem(GAME_OBJECT_ID object_num);

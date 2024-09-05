@@ -626,6 +626,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00423C40, Inv_RingIsOpen);
     INJECT(enable, 0x00423DB0, Inv_RingIsNotOpen);
     INJECT(enable, 0x00423E40, Inv_RingNotActive);
+    INJECT(enable, 0x004242B0, Inv_RingActive);
     INJECT(enable, 0x004242F0, Inv_AddItem);
     INJECT(enable, 0x00424B00, Inv_InsertItem);
     INJECT(enable, 0x00424C30, Inv_RequestItem);
