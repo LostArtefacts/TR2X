@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.77% (728)</tspan> · <tspan class="known">37.77% (460)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">59.85% (729)</tspan> · <tspan class="known">37.68% (459)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="446.48" height="6" x="0" y="0" class="decompiled"/>
-<rect width="282.12" height="6" x="446.48" y="0" class="known"/>
+<rect width="447.10" height="6" x="0" y="0" class="decompiled"/>
+<rect width="281.50" height="6" x="447.10" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -431,7 +431,7 @@
 <rect width="12" height="12" x="30" y="105" class="decompiled"><title>void __cdecl Inv_Ring_RotateRight(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="45" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionInit(RING_INFO *ring, int16_t frames, int16_t status, int16_t status_target);</title></rect>
 <rect width="12" height="12" x="60" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionSetup(RING_INFO *ring, int16_t status, int16_t status_target, int16_t frames);</title></rect>
-<rect width="12" height="12" x="75" y="105" class="known"><title>void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);</title></rect>
+<rect width="12" height="12" x="75" y="105" class="decompiled"><title>void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="90" y="105" class="known"><title>void __cdecl Inv_Ring_MotionRotation(RING_INFO *ring, int16_t rotation, int16_t target);</title></rect>
 <rect width="12" height="12" x="105" y="105" class="known"><title>void __cdecl Inv_Ring_MotionCameraPos(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="12" height="12" x="120" y="105" class="known"><title>void __cdecl Inv_Ring_MotionCameraPitch(RING_INFO *ring, int16_t target);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.06%</tspan> · <tspan class="known">35.61%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.07%</tspan> · <tspan class="known">35.60%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="478.54" height="6" x="0" y="0" class="decompiled"/>
-<rect width="266.02" height="6" x="478.54" y="0" class="known"/>
+<rect width="478.62" height="6" x="0" y="0" class="decompiled"/>
+<rect width="265.94" height="6" x="478.62" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -2337,7 +2337,7 @@
 <rect width="2.60" height="2.78" x="687.46" y="321.40" class="known"><title>void __cdecl InitialiseLevelFlags(void);</title></rect>
 <rect width="2.60" height="2.78" x="687.46" y="327.18" class="decompiled"><title>void __cdecl Text_Draw(void);</title></rect>
 <rect width="2.60" height="2.78" x="687.46" y="332.96" class="known"><title>void __cdecl S_FadeOutInventory(BOOL isFade);</title></rect>
-<rect width="2.60" height="2.63" x="687.46" y="338.74" class="known"><title>void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);</title></rect>
+<rect width="2.60" height="2.63" x="687.46" y="338.74" class="decompiled"><title>void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);</title></rect>
 <rect width="2.60" height="2.63" x="687.46" y="344.37" class="known"><title>LPCTSTR __cdecl GetFullPath(LPCTSTR file_name);</title></rect>
 <rect width="2.60" height="2.63" x="687.46" y="350" class="known"><title>void __cdecl ScreenClear(bool is_phd_win_size);</title></rect>
 <rect width="2.60" height="2.63" x="687.46" y="355.63" class="decompiled"><title>int32_t __cdecl S_Audio_Sample_CalculateSamplePan(int16_t pan);</title></rect>

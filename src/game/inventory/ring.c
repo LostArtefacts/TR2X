@@ -229,3 +229,10 @@ void __cdecl Inv_Ring_MotionSetup(
     imo->radius_rate = 0;
     imo->camera_y_rate = 0;
 }
+
+void __cdecl Inv_Ring_MotionRadius(RING_INFO *const ring, const int16_t target)
+{
+    IMOTION_INFO *const imo = ring->imo;
+    imo->radius_target = target;
+    imo->radius_rate = (target - ring->radius) / imo->count;
+}

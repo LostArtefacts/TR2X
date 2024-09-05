@@ -17,3 +17,4 @@ void __cdecl Inv_Ring_MotionInit(
 void __cdecl Inv_Ring_MotionSetup(
     RING_INFO *ring, RING_STATUS status, RING_STATUS status_target,
     int16_t frames);
+void __cdecl Inv_Ring_MotionRadius(RING_INFO *ring, int16_t target);
