@@ -69,10 +69,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">Tomb2.exe progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.84% (741)</tspan> · <tspan class="known">36.70% (447)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">60.92% (742)</tspan> · <tspan class="known">36.62% (446)</tspan> · <tspan class="todo">0% (0)</tspan> · <tspan class="unused">2.46% (30)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="454.46" height="6" x="0" y="0" class="decompiled"/>
-<rect width="274.15" height="6" x="454.46" y="0" class="known"/>
+<rect width="455.07" height="6" x="0" y="0" class="decompiled"/>
+<rect width="273.53" height="6" x="455.07" y="0" class="known"/>
 <rect width="18.40" height="6" x="728.60" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -412,7 +412,7 @@
 <rect width="12" height="12" x="495" y="90" class="decompiled"><title>void __cdecl Inv_DoInventoryBackground(void);</title></rect>
 <rect width="12" height="12" x="510" y="90" class="known"><title>void __cdecl InitColours(void);</title></rect>
 <rect width="12" height="12" x="525" y="90" class="decompiled"><title>void __cdecl Inv_RingIsOpen(RING_INFO *ring);</title></rect>
-<rect width="12" height="12" x="540" y="90" class="known"><title>void __cdecl RingIsNotOpen(RING_INFO *ring);</title></rect>
+<rect width="12" height="12" x="540" y="90" class="decompiled"><title>void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);</title></rect>
 <rect width="12" height="12" x="555" y="90" class="known"><title>void __cdecl RingNotActive(INVENTORY_ITEM *inv_item);</title></rect>
 <rect width="12" height="12" x="570" y="90" class="known"><title>void __cdecl RingActive(void);</title></rect>
 <rect width="12" height="12" x="585" y="90" class="decompiled"><title>int32_t __cdecl Inv_AddItem(GAME_OBJECT_ID object_num);</title></rect>
@@ -1298,10 +1298,10 @@
 </g>
 <g transform="translate(0 546)">
 <text x="0" y="7.50">Tomb2.exe progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.56%</tspan> · <tspan class="known">35.11%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="decompiled">64.60%</tspan> · <tspan class="known">35.07%</tspan> · <tspan class="todo">0%</tspan> · <tspan class="unused">0.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="482.30" height="6" x="0" y="0" class="decompiled"/>
-<rect width="262.26" height="6" x="482.30" y="0" class="known"/>
+<rect width="482.58" height="6" x="0" y="0" class="decompiled"/>
+<rect width="261.98" height="6" x="482.58" y="0" class="known"/>
 <rect width="2.44" height="6" x="744.56" y="0" class="unused"/>
 </g>
 <g transform="translate(0 31)">
@@ -1926,7 +1926,7 @@
 <rect width="7.59" height="7.19" x="697.28" y="196.57" class="decompiled"><title>void __cdecl Requester_Init(REQUEST_INFO *req);</title></rect>
 <rect width="7.59" height="7.19" x="707.87" y="196.57" class="decompiled"><title>void __cdecl HWR_EnableZBuffer(bool z_write_enable, bool z_enable);</title></rect>
 <rect width="7.51" height="7.19" x="718.46" y="196.57" class="decompiled"><title>int32_t __cdecl Inv_AnimateInventoryItem(INVENTORY_ITEM *inv_item);</title></rect>
-<rect width="7.51" height="7.19" x="728.98" y="196.57" class="known"><title>void __cdecl RingIsNotOpen(RING_INFO *ring);</title></rect>
+<rect width="7.51" height="7.19" x="728.98" y="196.57" class="decompiled"><title>void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);</title></rect>
 <rect width="7.51" height="7.19" x="739.49" y="196.57" class="decompiled"><title>int32_t __cdecl AddAssaultTime(uint32_t time);</title></rect>
 <rect width="7.43" height="7.27" x="578.55" y="206.76" class="decompiled"><title>void __cdecl Lara_Col_Stop(ITEM_INFO *item, COLL_INFO *coll);</title></rect>
 <rect width="7.43" height="7.27" x="578.55" y="217.03" class="decompiled"><title>void __cdecl Lara_Col_Roll(ITEM_INFO *item, COLL_INFO *coll);</title></rect>

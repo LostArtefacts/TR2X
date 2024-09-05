@@ -307,7 +307,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
                 || imo.status == RNG_CLOSING_ITEM) {
                 Inv_RingIsOpen(&ring);
             } else {
-                RingIsNotOpen(&ring);
+                Inv_RingIsNotOpen(&ring);
             }
 
             if (imo.status == RNG_OPENING || imo.status == RNG_CLOSING
@@ -1035,4 +1035,20 @@ void __cdecl Inv_RingIsOpen(RING_INFO *const ring)
         Text_AlignBottom(g_Inv_DownArrow2, true);
         Text_AlignRight(g_Inv_DownArrow2, true);
     }
+}
+
+void __cdecl Inv_RingIsNotOpen(RING_INFO *const ring)
+{
+    Text_Remove(g_Inv_TagText);
+    g_Inv_TagText = NULL;
+    Text_Remove(g_Inv_RingText);
+    g_Inv_RingText = NULL;
+    Text_Remove(g_Inv_UpArrow1);
+    g_Inv_UpArrow1 = NULL;
+    Text_Remove(g_Inv_UpArrow2);
+    g_Inv_UpArrow2 = NULL;
+    Text_Remove(g_Inv_DownArrow1);
+    g_Inv_DownArrow1 = NULL;
+    Text_Remove(g_Inv_DownArrow2);
+    g_Inv_DownArrow2 = NULL;
 }

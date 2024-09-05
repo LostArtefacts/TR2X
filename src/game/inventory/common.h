@@ -11,3 +11,4 @@ GAME_OBJECT_ID Inv_GetItemOption(GAME_OBJECT_ID object_id);
 void __cdecl Inv_DoInventoryPicture(void);
 void __cdecl Inv_DoInventoryBackground(void);
 void __cdecl Inv_RingIsOpen(RING_INFO *ring);
+void __cdecl Inv_RingIsNotOpen(RING_INFO *ring);
