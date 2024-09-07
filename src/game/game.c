@@ -286,6 +286,7 @@ int32_t __cdecl Game_Loop(const bool demo_mode)
 
     g_GameMode = GAMEMODE_NOT_IN_GAME;
 
+    Overlay_HideGameInfo();
     S_Audio_Sample_OutCloseAllTracks();
     Music_Stop();
 

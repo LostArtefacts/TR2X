@@ -2,6 +2,7 @@
 
 #include "game/input.h"
 #include "game/music.h"
+#include "game/overlay.h"
 #include "game/requester.h"
 #include "game/text.h"
 #include "global/funcs.h"
@@ -309,7 +310,7 @@ int32_t __cdecl LevelStats(const int32_t level_num)
 
     TempVideoAdjust(g_HiRes, 1.0);
     FadeToPal(30, g_GamePalette8);
-    Text_Init();
+    Overlay_HideGameInfo();
     S_CopyScreenToBuffer();
 
     while (g_Input & IN_SELECT) {
@@ -357,8 +358,7 @@ int32_t __cdecl GameStats(const int32_t level_num)
     start->statistics.secrets = g_SaveGame.statistics.secrets;
     start->statistics.medipacks = g_SaveGame.statistics.medipacks;
 
-    Text_Init();
-
+    Overlay_HideGameInfo();
     while (g_Input & IN_SELECT) {
         Input_Update();
     }

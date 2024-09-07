@@ -1374,7 +1374,7 @@ int32_t __cdecl Level_Initialise(
     Effect_InitialiseArray();
     LOT_InitialiseArray();
     Inv_InitColors();
-    Text_Init();
+    Overlay_HideGameInfo();
     Overlay_InitialisePickUpDisplay();
     S_InitialiseScreen(level_type);
     g_HealthBarTimer = 100;

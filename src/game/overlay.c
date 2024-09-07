@@ -133,6 +133,15 @@ void __cdecl Overlay_DrawAirBar(const bool flash_state)
     }
 }
 
+void Overlay_HideGameInfo(void)
+{
+    Text_Remove(g_AmmoTextInfo);
+    g_AmmoTextInfo = NULL;
+
+    Text_Remove(g_DisplayModeTextInfo);
+    g_DisplayModeTextInfo = NULL;
+}
+
 void __cdecl Overlay_MakeAmmoString(char *const string)
 {
     for (char *c = string; *c != '\0'; c++) {
