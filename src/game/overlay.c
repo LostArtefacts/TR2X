@@ -243,7 +243,7 @@ void __cdecl Overlay_DrawPickups(const bool timed)
     }
 }
 
-void __cdecl Overlay_AddDisplayPickup(const GAME_OBJECT_ID object_id)
+void __cdecl Overlay_AddDisplayPickup(const int16_t object_id)
 {
     if (object_id == O_SECRET_1 || object_id == O_SECRET_2
         || object_id == O_SECRET_3) {
