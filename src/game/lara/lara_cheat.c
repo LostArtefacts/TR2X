@@ -318,6 +318,10 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
         Item_NewRoom(item_num, room_num);
     }
 
+    if (g_Lara.gun_status == LGS_HANDS_BUSY) {
+        g_Lara.gun_status = LGS_ARMLESS;
+    }
+
     Lara_GetOffVehicle();
 
     const ROOM_INFO *const room = &g_Rooms[g_LaraItem->room_num];
