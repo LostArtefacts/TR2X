@@ -167,7 +167,8 @@ static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
             const ITEM_INFO *const item = &g_Items[item_num];
             if (Object_IsObjectType(item->object_id, g_PickupObjects)
                 && (item->status == IS_INVISIBLE
-                    || item->status == IS_DEACTIVATED)) {
+                    || item->status == IS_DEACTIVATED
+                    || item->room_num == NO_ROOM)) {
                 continue;
             }
 
