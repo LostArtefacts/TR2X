@@ -5,6 +5,7 @@
 #include "game/console.h"
 #include "game/creature.h"
 #include "game/game_string.h"
+#include "game/gun/gun.h"
 #include "game/inventory/backpack.h"
 #include "game/items.h"
 #include "game/lara/lara_control.h"
@@ -24,6 +25,25 @@
 static void Lara_Cheat_GiveAllGunsImpl(void);
 static void Lara_Cheat_GiveAllMedpacksImpl(void);
 static void Lara_Cheat_GiveAllKeysImpl(void);
+static bool Lara_Cheat_HasFlare(void);
+static void Lara_Cheat_ReinitialiseGunMeshes(bool has_flare);
+
+static bool Lara_Cheat_HasFlare(void)
+{
+    // TODO: consider refactoring flare check once more is known about overall
+    // flare control.
+    return g_Lara.mesh_ptrs[LM_HAND_L]
+        == g_Meshes[g_Objects[O_LARA_FLARE].mesh_idx + LM_HAND_L];
+}
+
+static void Lara_Cheat_ReinitialiseGunMeshes(const bool has_flare)
+{
+    Lara_InitialiseMeshes(g_CurrentLevel);
+    Gun_InitialiseNewWeapon();
+    if (has_flare) {
+        Flare_DrawMeshes();
+    }
+}
 
 static void Lara_Cheat_GiveAllGunsImpl(void)
 {
@@ -75,6 +95,7 @@ bool __cdecl Lara_Cheat_EnterFlyMode(void)
         return false;
     }
 
+    const bool has_flare = Lara_Cheat_HasFlare();
     Lara_GetOffVehicle();
 
     if (g_Lara.water_status != LWS_UNDERWATER || g_LaraItem->hit_points <= 0) {
@@ -103,7 +124,7 @@ bool __cdecl Lara_Cheat_EnterFlyMode(void)
     g_Lara.mesh_effects = 0;
     g_Lara.extra_anim = 0;
 
-    Lara_InitialiseMeshes(g_CurrentLevel);
+    Lara_Cheat_ReinitialiseGunMeshes(has_flare);
     g_Camera.type = CAM_CHASE;
     Output_AlterFOV(GAME_FOV * PHD_DEGREE);
 
@@ -116,6 +137,8 @@ bool __cdecl Lara_Cheat_ExitFlyMode(void)
     if (g_LaraItem == NULL) {
         return false;
     }
+
+    const bool has_flare = Lara_Cheat_HasFlare();
 
     const ROOM_INFO *const room = &g_Rooms[g_LaraItem->room_num];
     const bool room_submerged = (room->flags & RF_UNDERWATER) != 0;
@@ -136,7 +159,14 @@ bool __cdecl Lara_Cheat_ExitFlyMode(void)
         g_Lara.torso_x_rot = 0;
         g_Lara.torso_y_rot = 0;
     }
-    g_Lara.gun_status = LGS_ARMLESS;
+
+    if (g_Lara.weapon_item != NO_ITEM) {
+        g_Lara.gun_status = LGS_UNDRAW;
+    } else {
+        g_Lara.gun_status = LGS_ARMLESS;
+    }
+
+    Lara_Cheat_ReinitialiseGunMeshes(has_flare);
 
     Console_Log(GS(OSD_FLY_MODE_OFF));
     return true;
@@ -322,6 +352,7 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
         g_Lara.gun_status = LGS_ARMLESS;
     }
 
+    const bool has_flare = Lara_Cheat_HasFlare();
     Lara_GetOffVehicle();
 
     const ROOM_INFO *const room = &g_Rooms[g_LaraItem->room_num];
@@ -360,7 +391,7 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
     g_Lara.mesh_effects = 0;
     g_Lara.extra_anim = 0;
 
-    Lara_InitialiseMeshes(g_CurrentLevel);
+    Lara_Cheat_ReinitialiseGunMeshes(has_flare);
     g_Camera.type = CAM_CHASE;
     Output_AlterFOV(GAME_FOV * PHD_DEGREE);
 
