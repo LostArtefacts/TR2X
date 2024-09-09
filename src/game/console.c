@@ -166,7 +166,7 @@ void Console_Open(void)
 
     m_Prompt.caret = strlen(m_Prompt.text);
 
-    m_Prompt.caret_ts = Text_Create(MARGIN, -MARGIN, 0, "\x26");
+    m_Prompt.caret_ts = Text_Create(MARGIN, -MARGIN, 0, "\x11");
     Text_SetScale(
         m_Prompt.caret_ts, PHD_ONE * m_PromptScale, PHD_ONE * m_PromptScale);
     Text_AlignBottom(m_Prompt.caret_ts, true);

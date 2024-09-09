@@ -19,7 +19,7 @@
 #define CHAR_SECRET_1 0x7Fu
 #define CHAR_SECRET_2 0x80u
 #define CHAR_SECRET_3 0x81u
-#define IS_CHAR_LEGAL(c) ((c) <= CHAR_SECRET_3 && ((c) <= 10u || (c) >= 32u))
+#define IS_CHAR_LEGAL(c) ((c) <= CHAR_SECRET_3 && ((c) <= 18u || (c) >= 32u))
 #define IS_CHAR_SECRET(c) ((c) >= CHAR_SECRET_1 && (c) <= CHAR_SECRET_3)
 #define IS_CHAR_DIACRITIC(c)                                                   \
     ((c) == '(' || (c) == ')' || (c) == '$' || (c) == '~')
