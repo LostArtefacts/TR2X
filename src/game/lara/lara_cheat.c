@@ -352,34 +352,38 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
         g_Lara.gun_status = LGS_ARMLESS;
     }
 
-    const bool has_flare = Lara_Cheat_HasFlare();
     Lara_GetOffVehicle();
 
-    const ROOM_INFO *const room = &g_Rooms[g_LaraItem->room_num];
-    const bool room_submerged = (room->flags & RF_UNDERWATER) != 0;
-    const int16_t water_height = Room_GetWaterHeight(
-        g_LaraItem->pos.x, g_LaraItem->pos.y, g_LaraItem->pos.z,
-        g_LaraItem->room_num);
+    if (g_Lara.extra_anim) {
+        const ROOM_INFO *const room = &g_Rooms[g_LaraItem->room_num];
+        const bool room_submerged = (room->flags & RF_UNDERWATER) != 0;
+        const int16_t water_height = Room_GetWaterHeight(
+            g_LaraItem->pos.x, g_LaraItem->pos.y, g_LaraItem->pos.z,
+            g_LaraItem->room_num);
 
-    if (room_submerged || (water_height != NO_HEIGHT && water_height > 0)) {
-        g_Lara.water_status = LWS_UNDERWATER;
-        g_LaraItem->current_anim_state = LS_SWIM;
-        g_LaraItem->goal_anim_state = LS_SWIM;
-        g_LaraItem->anim_num =
-            g_Objects[O_LARA].anim_idx + LA_UNDERWATER_SWIM_FORWARD_DRIFT;
-        g_LaraItem->frame_num = g_Anims[g_LaraItem->anim_num].frame_base;
-    } else {
-        g_Lara.water_status = LWS_ABOVE_WATER;
-        g_LaraItem->current_anim_state = LS_STOP;
-        g_LaraItem->goal_anim_state = LS_STOP;
-        g_LaraItem->anim_num = g_Objects[O_LARA].anim_idx + LA_STAND_STILL;
-        g_LaraItem->frame_num = g_Anims[g_LaraItem->anim_num].frame_base;
-        g_LaraItem->rot.x = 0;
-        g_LaraItem->rot.z = 0;
-        g_Lara.head_x_rot = 0;
-        g_Lara.head_y_rot = 0;
-        g_Lara.torso_x_rot = 0;
-        g_Lara.torso_y_rot = 0;
+        if (room_submerged || (water_height != NO_HEIGHT && water_height > 0)) {
+            g_Lara.water_status = LWS_UNDERWATER;
+            g_LaraItem->current_anim_state = LS_SWIM;
+            g_LaraItem->goal_anim_state = LS_SWIM;
+            g_LaraItem->anim_num =
+                g_Objects[O_LARA].anim_idx + LA_UNDERWATER_SWIM_FORWARD_DRIFT;
+            g_LaraItem->frame_num = g_Anims[g_LaraItem->anim_num].frame_base;
+        } else {
+            g_Lara.water_status = LWS_ABOVE_WATER;
+            g_LaraItem->current_anim_state = LS_STOP;
+            g_LaraItem->goal_anim_state = LS_STOP;
+            g_LaraItem->anim_num = g_Objects[O_LARA].anim_idx + LA_STAND_STILL;
+            g_LaraItem->frame_num = g_Anims[g_LaraItem->anim_num].frame_base;
+            g_LaraItem->rot.x = 0;
+            g_LaraItem->rot.z = 0;
+            g_Lara.head_x_rot = 0;
+            g_Lara.head_y_rot = 0;
+            g_Lara.torso_x_rot = 0;
+            g_Lara.torso_y_rot = 0;
+        }
+        g_Lara.extra_anim = 0;
+        const bool has_flare = Lara_Cheat_HasFlare();
+        Lara_Cheat_ReinitialiseGunMeshes(has_flare);
     }
 
     g_Lara.spaz_effect_count = 0;
@@ -389,9 +393,7 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
     g_Lara.air = LARA_MAX_AIR;
     g_Lara.death_timer = 0;
     g_Lara.mesh_effects = 0;
-    g_Lara.extra_anim = 0;
 
-    Lara_Cheat_ReinitialiseGunMeshes(has_flare);
     g_Camera.type = CAM_CHASE;
     Output_AlterFOV(GAME_FOV * PHD_DEGREE);
 
