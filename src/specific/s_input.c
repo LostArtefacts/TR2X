@@ -2,6 +2,7 @@
 
 #include "decomp/decomp.h"
 #include "game/console.h"
+#include "game/gameflow/gameflow_new.h"
 #include "game/input.h"
 #include "game/inventory/backpack.h"
 #include "game/lara/lara_control.h"
@@ -196,39 +197,41 @@ bool __cdecl S_Input_Update(void)
         return g_IsGameToExit;
     }
 
-    if (KEY_DOWN(DIK_1) && Inv_RequestItem(O_PISTOL_OPTION)) {
-        g_Lara.request_gun_type = LGT_PISTOLS;
-    } else if (KEY_DOWN(DIK_2) && Inv_RequestItem(O_SHOTGUN_OPTION)) {
-        g_Lara.request_gun_type = LGT_SHOTGUN;
-    } else if (KEY_DOWN(DIK_3) && Inv_RequestItem(O_MAGNUM_OPTION)) {
-        g_Lara.request_gun_type = LGT_MAGNUMS;
-    } else if (KEY_DOWN(DIK_4) && Inv_RequestItem(O_UZI_OPTION)) {
-        g_Lara.request_gun_type = LGT_UZIS;
-    } else if (KEY_DOWN(DIK_5) && Inv_RequestItem(O_HARPOON_OPTION)) {
-        g_Lara.request_gun_type = LGT_HARPOON;
-    } else if (KEY_DOWN(DIK_6) && Inv_RequestItem(O_M16_OPTION)) {
-        g_Lara.request_gun_type = LGT_M16;
-    } else if (KEY_DOWN(DIK_7) && Inv_RequestItem(O_GRENADE_OPTION)) {
-        g_Lara.request_gun_type = LGT_GRENADE;
-    } else if (KEY_DOWN(DIK_0) && Inv_RequestItem(O_FLARES_OPTION)) {
-        g_Lara.request_gun_type = LGT_FLARE;
-    }
-
-    if (KEY_DOWN(DIK_8) && Inv_RequestItem(O_SMALL_MEDIPACK_OPTION)) {
-        if (m_MediPackCooldown == 0) {
-            Lara_UseItem(O_SMALL_MEDIPACK_OPTION);
+    if (g_GameInfo.current_level.type != GFL_DEMO) {
+        if (KEY_DOWN(DIK_1) && Inv_RequestItem(O_PISTOL_OPTION)) {
+            g_Lara.request_gun_type = LGT_PISTOLS;
+        } else if (KEY_DOWN(DIK_2) && Inv_RequestItem(O_SHOTGUN_OPTION)) {
+            g_Lara.request_gun_type = LGT_SHOTGUN;
+        } else if (KEY_DOWN(DIK_3) && Inv_RequestItem(O_MAGNUM_OPTION)) {
+            g_Lara.request_gun_type = LGT_MAGNUMS;
+        } else if (KEY_DOWN(DIK_4) && Inv_RequestItem(O_UZI_OPTION)) {
+            g_Lara.request_gun_type = LGT_UZIS;
+        } else if (KEY_DOWN(DIK_5) && Inv_RequestItem(O_HARPOON_OPTION)) {
+            g_Lara.request_gun_type = LGT_HARPOON;
+        } else if (KEY_DOWN(DIK_6) && Inv_RequestItem(O_M16_OPTION)) {
+            g_Lara.request_gun_type = LGT_M16;
+        } else if (KEY_DOWN(DIK_7) && Inv_RequestItem(O_GRENADE_OPTION)) {
+            g_Lara.request_gun_type = LGT_GRENADE;
+        } else if (KEY_DOWN(DIK_0) && Inv_RequestItem(O_FLARES_OPTION)) {
+            g_Lara.request_gun_type = LGT_FLARE;
         }
-        m_MediPackCooldown = 15;
-    }
-    if (KEY_DOWN(DIK_9) && Inv_RequestItem(O_LARGE_MEDIPACK_OPTION)) {
-        if (m_MediPackCooldown == 0) {
-            Lara_UseItem(O_LARGE_MEDIPACK_OPTION);
-        }
-        m_MediPackCooldown = 15;
-    }
 
-    if (m_MediPackCooldown > 0) {
-        m_MediPackCooldown--;
+        if (KEY_DOWN(DIK_8) && Inv_RequestItem(O_SMALL_MEDIPACK_OPTION)) {
+            if (m_MediPackCooldown == 0) {
+                Lara_UseItem(O_SMALL_MEDIPACK_OPTION);
+            }
+            m_MediPackCooldown = 15;
+        }
+        if (KEY_DOWN(DIK_9) && Inv_RequestItem(O_LARGE_MEDIPACK_OPTION)) {
+            if (m_MediPackCooldown == 0) {
+                Lara_UseItem(O_LARGE_MEDIPACK_OPTION);
+            }
+            m_MediPackCooldown = 15;
+        }
+
+        if (m_MediPackCooldown > 0) {
+            m_MediPackCooldown--;
+        }
     }
 
     if (KEY_DOWN(DIK_S)) {

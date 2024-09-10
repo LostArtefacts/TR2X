@@ -17,6 +17,7 @@
 - added an option to fix M16 accuracy while running (#45)
 - added a .NET-based configuration tool (#197)
 - changed the default flare key from `/` to `.` to avoid conflicts with the console (#163)
+- fixed numeric keys interfering with the demos (#172)
 - fixed explosions sometimes being drawn too dark (#187)
 - fixed killing the T-Rex with a grenade launcher crashing the game (#168)
 - fixed secret rewards not displaying shotgun ammo (#159)
