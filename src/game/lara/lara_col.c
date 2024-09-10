@@ -147,7 +147,7 @@ bool __cdecl Lara_TestWaterStepOut(
         return false;
     }
 
-    if (coll->side_mid.floor >= -STEP_L / 2) {
+    if (coll->side_mid.floor < -STEP_L / 2) {
         item->current_anim_state = LS_WATER_OUT;
         item->goal_anim_state = LS_STOP;
         item->anim_num = LA_ONWATER_TO_WADE;
