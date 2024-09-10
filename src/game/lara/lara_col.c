@@ -231,12 +231,12 @@ void __cdecl Lara_Col_Walk(ITEM_INFO *item, COLL_INFO *coll)
 
     if (Lara_DeflectEdge(item, coll)) {
         if (item->frame_num >= 29 && item->frame_num <= 47) {
-            item->anim_num = LA_WALK_STOP_RIGHT;
+            item->anim_num = LA_WALK_STOP_LEFT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         } else if (
             (item->frame_num >= 22 && item->frame_num <= 28)
             || (item->frame_num >= 48 && item->frame_num <= 57)) {
-            item->anim_num = LA_WALK_STOP_LEFT;
+            item->anim_num = LA_WALK_STOP_RIGHT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
             Lara_CollideStop(item, coll);
@@ -249,10 +249,10 @@ void __cdecl Lara_Col_Walk(ITEM_INFO *item, COLL_INFO *coll)
 
     if (coll->side_mid.floor > STEP_L / 2) {
         if (item->frame_num >= 28 && item->frame_num <= 45) {
-            item->anim_num = LA_WALK_DOWN_RIGHT;
+            item->anim_num = LA_WALK_DOWN_LEFT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
-            item->anim_num = LA_WALK_DOWN_LEFT;
+            item->anim_num = LA_WALK_DOWN_RIGHT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
@@ -260,10 +260,10 @@ void __cdecl Lara_Col_Walk(ITEM_INFO *item, COLL_INFO *coll)
     if (coll->side_mid.floor >= -STEPUP_HEIGHT
         && coll->side_mid.floor < -STEP_L / 2) {
         if (item->frame_num >= 27 && item->frame_num <= 44) {
-            item->anim_num = LA_WALK_UP_STEP_RIGHT;
+            item->anim_num = LA_WALK_UP_STEP_LEFT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         } else {
-            item->anim_num = LA_WALK_UP_STEP_LEFT;
+            item->anim_num = LA_WALK_UP_STEP_RIGHT;
             item->frame_num = g_Anims[item->anim_num].frame_base;
         }
     }
