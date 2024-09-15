@@ -187,9 +187,8 @@ bool __cdecl Lara_Cheat_ExitFlyMode(void)
         g_Lara.gun_status = LGS_UNDRAW;
     } else {
         g_Lara.gun_status = LGS_ARMLESS;
+        Lara_Cheat_ReinitialiseGunMeshes();
     }
-
-    Lara_Cheat_ReinitialiseGunMeshes();
 
     Console_Log(GS(OSD_FLY_MODE_OFF));
     return true;
