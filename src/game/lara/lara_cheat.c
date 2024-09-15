@@ -26,6 +26,7 @@ static void Lara_Cheat_GiveAllGunsImpl(void);
 static void Lara_Cheat_GiveAllMedpacksImpl(void);
 static void Lara_Cheat_GiveAllKeysImpl(void);
 static void Lara_Cheat_ReinitialiseGunMeshes(void);
+static void Lara_Cheat_ResetGunStatus(void);
 
 static void Lara_Cheat_ReinitialiseGunMeshes(void)
 {
@@ -79,6 +80,30 @@ static void Lara_Cheat_GiveAllKeysImpl(void)
     Inv_AddItem(O_PICKUP_ITEM_2);
 }
 
+static void Lara_Cheat_ResetGunStatus(void)
+{
+    const bool has_flare = g_Lara.mesh_ptrs[LM_HAND_L]
+        == g_Meshes[g_Objects[O_LARA_FLARE].mesh_idx + LM_HAND_L];
+    if (has_flare) {
+        g_Lara.gun_type = LGT_FLARE;
+        return;
+    }
+
+    g_Lara.gun_status = LGS_ARMLESS;
+    g_Lara.gun_type = LGT_UNARMED;
+    g_Lara.request_gun_type = LGT_UNARMED;
+    g_Lara.weapon_item = NO_ITEM;
+    g_Lara.gun_status = LGS_ARMLESS;
+    g_Lara.left_arm.frame_num = 0;
+    g_Lara.left_arm.lock = 0;
+    g_Lara.right_arm.frame_num = 0;
+    g_Lara.right_arm.lock = 0;
+    g_Lara.left_arm.anim_num = g_LaraItem->anim_num;
+    g_Lara.right_arm.anim_num = g_LaraItem->anim_num;
+    g_Lara.left_arm.frame_base = g_Anims[g_LaraItem->anim_num].frame_ptr;
+    g_Lara.right_arm.frame_base = g_Anims[g_LaraItem->anim_num].frame_ptr;
+}
+
 void __cdecl Lara_Cheat_EndLevel(void)
 {
     g_LevelComplete = true;
@@ -89,6 +114,10 @@ bool __cdecl Lara_Cheat_EnterFlyMode(void)
 {
     if (g_LaraItem == NULL) {
         return false;
+    }
+
+    if (g_Lara.extra_anim) {
+        Lara_Cheat_ResetGunStatus();
     }
 
     Lara_GetOffVehicle();
@@ -377,6 +406,7 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
         }
 
         g_Lara.extra_anim = 0;
+        Lara_Cheat_ResetGunStatus();
         Lara_Cheat_ReinitialiseGunMeshes();
     }
 
