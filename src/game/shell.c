@@ -4,6 +4,7 @@
 #include "decomp/decomp.h"
 #include "game/console.h"
 #include "game/demo.h"
+#include "game/game_string.h"
 #include "game/gameflow.h"
 #include "game/gameflow/reader.h"
 #include "game/input.h"
@@ -24,6 +25,8 @@ BOOL __cdecl Shell_Main(void)
     g_ScreenSizer = 0;
     g_GameSizer = 1.0;
     g_GameSizerCopy = 1.0;
+
+    GameString_Init();
 
     Config_Read();
     if (!S_InitialiseSystem()) {
@@ -160,6 +163,7 @@ BOOL __cdecl Shell_Main(void)
     S_SaveSettings();
     GameBuf_Shutdown();
     Config_Write();
+    GameString_Shutdown();
     return true;
 }
 

@@ -5,6 +5,8 @@
 #include "global/enum_str.h"
 #include "global/types.h"
 
+#include <libtrx/log.h>
+
 #include <assert.h>
 
 GAMEFLOW_NEW g_GameflowNew;
@@ -27,10 +29,12 @@ static void GF_N_LoadObjectString(
 
 static void GF_N_LoadGameString(const char *const key, const char *const value)
 {
-    const GAME_STRING_ID game_string =
-        ENUM_STRING_GET(GAME_STRING_ID, key, GS_INVALID);
-    if (game_string != GS_INVALID) {
-        GameString_Set(game_string, value);
+    if (!GameString_IsKnown(key)) {
+        LOG_ERROR("Invalid game string key: %s", key);
+    } else if (value == NULL) {
+        LOG_ERROR("Invalid game string value: %s", key);
+    } else {
+        GameString_Define(key, value);
     }
 }
 
