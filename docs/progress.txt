@@ -2106,7 +2106,7 @@ typedef enum { // decompiled
     O_ROLLING_BALL_1        = 60,
     O_DARTS                 = 61,
     O_DART_EMITTER          = 62,
-    O_DRAW_BRIDGE           = 63,
+    O_DRAWBRIDGE            = 63,
     O_TEETH_TRAP            = 64,
     O_LIFT                  = 65,
     O_GENERAL               = 66,
