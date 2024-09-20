@@ -10,11 +10,11 @@
 
 #define CUTSCENE_DELAY (5 * FRAMES_PER_SECOND) // = 150
 
-static int16_t __cdecl FinalLevelCounter_FindBestBoss(void);
-static void __cdecl FinalLevelCounter_ActivateLastBoss(void);
-static void __cdecl FinalLevelCounter_PrepareCutscene(int16_t item_num);
+static int16_t __cdecl M_FindBestBoss(void);
+static void __cdecl M_ActivateLastBoss(void);
+static void __cdecl M_PrepareCutscene(int16_t item_num);
 
-static int16_t __cdecl FinalLevelCounter_FindBestBoss(void)
+static int16_t __cdecl M_FindBestBoss(void)
 {
     int32_t best_dist = 0;
     int16_t best_item = g_FinalBossItem[0];
@@ -48,9 +48,9 @@ static int16_t __cdecl FinalLevelCounter_FindBestBoss(void)
     return best_item;
 }
 
-static void __cdecl FinalLevelCounter_ActivateLastBoss(void)
+static void __cdecl M_ActivateLastBoss(void)
 {
-    const int16_t item_num = FinalLevelCounter_FindBestBoss();
+    const int16_t item_num = M_FindBestBoss();
     ITEM_INFO *const item = &g_Items[item_num];
     item->touch_bits = 0;
     item->status = IS_ACTIVE;
@@ -60,7 +60,7 @@ static void __cdecl FinalLevelCounter_ActivateLastBoss(void)
     g_FinalBossActive = 1;
 }
 
-static void __cdecl FinalLevelCounter_PrepareCutscene(const int16_t item_num)
+static void __cdecl M_PrepareCutscene(const int16_t item_num)
 {
     ITEM_INFO *const item = &g_Items[item_num];
     Creature_Kill(item, 0, 0, LA_EXTRA_FINAL_ANIM);
@@ -77,14 +77,14 @@ void __cdecl FinalLevelCounter_Control(const int16_t item_num)
 {
     if (g_SaveGame.statistics.kills == g_FinalLevelCount
         && !g_FinalBossActive) {
-        FinalLevelCounter_ActivateLastBoss();
+        M_ActivateLastBoss();
         return;
     }
 
     if (g_SaveGame.statistics.kills > g_FinalLevelCount) {
         g_FinalBossActive++;
         if (g_FinalBossActive == CUTSCENE_DELAY) {
-            FinalLevelCounter_PrepareCutscene(item_num);
+            M_PrepareCutscene(item_num);
         }
     }
 }

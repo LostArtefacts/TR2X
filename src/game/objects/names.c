@@ -60,13 +60,12 @@ ENUM_STRING_MAP ENUM_STRING_MAP(GAME_OBJECT_ID)[] = {
     { NULL, -1 }
 };
 
-static int32_t Object_NameMatch(const char *user_input, const char *name);
-static void Object_TryMatch(
+static int32_t M_NameMatch(const char *user_input, const char *name);
+static void M_TryMatch(
     VECTOR *matches, const char *user_input, const char *name,
     GAME_OBJECT_ID object_id);
 
-static int32_t Object_NameMatch(
-    const char *const user_input, const char *const name)
+static int32_t M_NameMatch(const char *const user_input, const char *const name)
 {
     int32_t score;
 
@@ -88,11 +87,11 @@ static int32_t Object_NameMatch(
     return score;
 }
 
-static void Object_TryMatch(
+static void M_TryMatch(
     VECTOR *const matches, const char *const user_input, const char *const name,
     const GAME_OBJECT_ID object_id)
 {
-    int32_t score = Object_NameMatch(user_input, name);
+    int32_t score = M_NameMatch(user_input, name);
     if (!g_Objects[object_id].loaded) {
         score -= GOOD_MATCH_THRESHOLD;
     }
@@ -153,7 +152,7 @@ GAME_OBJECT_ID *Object_IdsFromName(
         if (filter != NULL && !filter(object_id)) {
             continue;
         }
-        Object_TryMatch(matches, user_input, item->string, object_id);
+        M_TryMatch(matches, user_input, item->string, object_id);
     }
 
     // Store matches from hardcoded strings
@@ -161,8 +160,7 @@ GAME_OBJECT_ID *Object_IdsFromName(
         if (filter != NULL && !filter(object_id)) {
             continue;
         }
-        Object_TryMatch(
-            matches, user_input, Object_GetName(object_id), object_id);
+        M_TryMatch(matches, user_input, Object_GetName(object_id), object_id);
     }
 
     // If we got a perfect match, discard poor matches

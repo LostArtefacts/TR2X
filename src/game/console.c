@@ -45,14 +45,14 @@ static const double m_LogScale = 0.8;
 static const char m_ValidPromptChars[] =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.- ";
 
-static void Console_ShutdownPrompt(void);
-static void Console_ShutdownLogs(void);
-static void Console_UpdatePromptTextstring(void);
-static void Console_UpdateCaretTextstring(void);
-static COMMAND_RESULT Console_Eval(const char *cmdline);
+static void M_ShutdownPrompt(void);
+static void M_ShutdownLogs(void);
+static void M_UpdatePromptTextstring(void);
+static void M_UpdateCaretTextstring(void);
+static COMMAND_RESULT M_Eval(const char *cmdline);
 
 extern CONSOLE_COMMAND *g_ConsoleCommands[];
-static void Console_ShutdownPrompt(void)
+static void M_ShutdownPrompt(void)
 {
     if (m_Prompt.prompt_ts != NULL) {
         Text_Remove(m_Prompt.prompt_ts);
@@ -64,7 +64,7 @@ static void Console_ShutdownPrompt(void)
     }
 }
 
-static void Console_ShutdownLogs(void)
+static void M_ShutdownLogs(void)
 {
     for (int32_t i = 0; i < MAX_LOG_LINES; i++) {
         Text_Remove(m_Logs[i].ts);
@@ -72,12 +72,12 @@ static void Console_ShutdownLogs(void)
     }
 }
 
-static void Console_UpdatePromptTextstring(void)
+static void M_UpdatePromptTextstring(void)
 {
     Text_ChangeText(m_Prompt.prompt_ts, m_Prompt.text);
 }
 
-static void Console_UpdateCaretTextstring(void)
+static void M_UpdateCaretTextstring(void)
 {
     const char old = m_Prompt.prompt_ts->text[m_Prompt.caret];
     m_Prompt.prompt_ts->text[m_Prompt.caret] = '\0';
@@ -87,7 +87,7 @@ static void Console_UpdateCaretTextstring(void)
     Text_SetPos(m_Prompt.caret_ts, MARGIN + width, -MARGIN);
 }
 
-static COMMAND_RESULT Console_Eval(const char *const cmdline)
+static COMMAND_RESULT M_Eval(const char *const cmdline)
 {
     const char *args = NULL;
     const CONSOLE_COMMAND *matching_cmd = NULL;
@@ -155,14 +155,14 @@ void Console_Init(void)
 void Console_Shutdown(void)
 {
     m_IsOpened = false;
-    Console_ShutdownPrompt();
-    Console_ShutdownLogs();
+    M_ShutdownPrompt();
+    M_ShutdownLogs();
 }
 
 void Console_Open(void)
 {
     if (m_IsOpened) {
-        Console_ShutdownPrompt();
+        M_ShutdownPrompt();
     } else {
         LOG_DEBUG("opening console!");
     }
@@ -181,7 +181,7 @@ void Console_Open(void)
         m_Prompt.prompt_ts, PHD_ONE * m_PromptScale, PHD_ONE * m_PromptScale);
     Text_AlignBottom(m_Prompt.prompt_ts, true);
 
-    Console_UpdateCaretTextstring();
+    M_UpdateCaretTextstring();
 }
 
 void Console_Close(void)
@@ -189,7 +189,7 @@ void Console_Close(void)
     LOG_DEBUG("closing console!");
     m_IsOpened = false;
     strcpy(m_Prompt.text, "");
-    Console_ShutdownPrompt();
+    M_ShutdownPrompt();
 }
 
 bool Console_IsOpened(void)
@@ -205,7 +205,7 @@ void Console_Confirm(void)
     }
 
     LOG_INFO("executing command: %s", m_Prompt.text);
-    Console_Eval(m_Prompt.text);
+    M_Eval(m_Prompt.text);
     Console_Close();
 }
 
@@ -225,7 +225,7 @@ bool Console_HandleKeyDown(const uint32_t key)
         }
         if (m_Prompt.caret > 0) {
             m_Prompt.caret--;
-            Console_UpdateCaretTextstring();
+            M_UpdateCaretTextstring();
         }
         return true;
 
@@ -235,7 +235,7 @@ bool Console_HandleKeyDown(const uint32_t key)
         }
         if (m_Prompt.caret < (int32_t)strlen(m_Prompt.text)) {
             m_Prompt.caret++;
-            Console_UpdateCaretTextstring();
+            M_UpdateCaretTextstring();
         }
         return true;
 
@@ -244,7 +244,7 @@ bool Console_HandleKeyDown(const uint32_t key)
             return false;
         }
         m_Prompt.caret = 0;
-        Console_UpdateCaretTextstring();
+        M_UpdateCaretTextstring();
         return true;
 
     case VK_END:
@@ -252,7 +252,7 @@ bool Console_HandleKeyDown(const uint32_t key)
             return false;
         }
         m_Prompt.caret = strlen(m_Prompt.text);
-        Console_UpdateCaretTextstring();
+        M_UpdateCaretTextstring();
         return true;
 
     case VK_BACK:
@@ -264,8 +264,8 @@ bool Console_HandleKeyDown(const uint32_t key)
                 m_Prompt.text[i - 1] = m_Prompt.text[i];
             }
             m_Prompt.caret--;
-            Console_UpdatePromptTextstring();
-            Console_UpdateCaretTextstring();
+            M_UpdatePromptTextstring();
+            M_UpdateCaretTextstring();
         }
         return true;
     }
@@ -304,8 +304,8 @@ void Console_HandleChar(const uint32_t char_)
 
     m_Prompt.caret += insert_length;
     m_Prompt.text[MAX_PROMPT_LENGTH - 1] = '\0';
-    Console_UpdatePromptTextstring();
-    Console_UpdateCaretTextstring();
+    M_UpdatePromptTextstring();
+    M_UpdateCaretTextstring();
 }
 
 void Console_Log(const char *fmt, ...)

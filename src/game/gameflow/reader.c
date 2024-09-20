@@ -8,12 +8,13 @@
 #include <libtrx/log.h>
 #include <libtrx/memory.h>
 
-static void GF_N_StringTableShutdown(GAMEFLOW_NEW_STRING_ENTRY *dest);
-static bool GF_N_LoadStringTable(
+static void M_StringTableShutdown(GAMEFLOW_NEW_STRING_ENTRY *dest);
+static bool M_LoadStringTable(
     struct json_object_s *root_obj, const char *key,
     GAMEFLOW_NEW_STRING_ENTRY **dest);
+static bool M_LoadScriptLevels(struct json_object_s *obj, GAMEFLOW_NEW *gf);
 
-static void GF_N_StringTableShutdown(GAMEFLOW_NEW_STRING_ENTRY *const dest)
+static void M_StringTableShutdown(GAMEFLOW_NEW_STRING_ENTRY *const dest)
 {
     if (dest == NULL) {
         return;
@@ -27,7 +28,7 @@ static void GF_N_StringTableShutdown(GAMEFLOW_NEW_STRING_ENTRY *const dest)
     Memory_Free(dest);
 }
 
-static bool GF_N_LoadStringTable(
+static bool M_LoadStringTable(
     struct json_object_s *const root_obj, const char *const key,
     GAMEFLOW_NEW_STRING_ENTRY **dest)
 {
@@ -68,7 +69,7 @@ static bool GF_N_LoadStringTable(
     return true;
 }
 
-static bool GF_N_LoadScriptLevels(
+static bool M_LoadScriptLevels(
     struct json_object_s *obj, GAMEFLOW_NEW *const gf)
 {
     bool result = true;
@@ -105,10 +106,10 @@ static bool GF_N_LoadScriptLevels(
             goto end;
         }
 
-        result &= GF_N_LoadStringTable(
+        result &= M_LoadStringTable(
             jlvl_obj, "object_strings", &level->object_strings);
-        result &= GF_N_LoadStringTable(
-            jlvl_obj, "game_strings", &level->game_strings);
+        result &=
+            M_LoadStringTable(jlvl_obj, "game_strings", &level->game_strings);
     }
 
 end:
@@ -144,9 +145,9 @@ bool GF_N_Load(const char *const path)
     GAMEFLOW_NEW *const gf = &g_GameflowNew;
     struct json_object_s *root_obj = json_value_as_object(root);
     result &=
-        GF_N_LoadStringTable(root_obj, "object_strings", &gf->object_strings);
-    result &= GF_N_LoadStringTable(root_obj, "game_strings", &gf->game_strings);
-    result &= GF_N_LoadScriptLevels(root_obj, gf);
+        M_LoadStringTable(root_obj, "object_strings", &gf->object_strings);
+    result &= M_LoadStringTable(root_obj, "game_strings", &gf->game_strings);
+    result &= M_LoadScriptLevels(root_obj, gf);
 
 end:
     if (root) {
@@ -167,10 +168,10 @@ void GF_N_Shutdown(void)
     GAMEFLOW_NEW *const gf = &g_GameflowNew;
 
     for (int32_t i = 0; i < gf->level_count; i++) {
-        GF_N_StringTableShutdown(gf->levels[i].object_strings);
-        GF_N_StringTableShutdown(gf->levels[i].game_strings);
+        M_StringTableShutdown(gf->levels[i].object_strings);
+        M_StringTableShutdown(gf->levels[i].game_strings);
     }
 
-    GF_N_StringTableShutdown(gf->object_strings);
-    GF_N_StringTableShutdown(gf->game_strings);
+    M_StringTableShutdown(gf->object_strings);
+    M_StringTableShutdown(gf->game_strings);
 }

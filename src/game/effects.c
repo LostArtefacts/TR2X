@@ -6,10 +6,10 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 
-static void Effect_RemoveActive(const int16_t fx_num);
-static void Effect_RemoveDrawn(const int16_t fx_num);
+static void M_RemoveActive(const int16_t fx_num);
+static void M_RemoveDrawn(const int16_t fx_num);
 
-static void Effect_RemoveActive(const int16_t fx_num)
+static void M_RemoveActive(const int16_t fx_num)
 {
     FX_INFO *const fx = &g_Effects[fx_num];
     int16_t link_num = g_NextEffectActive;
@@ -27,7 +27,7 @@ static void Effect_RemoveActive(const int16_t fx_num)
     }
 }
 
-static void Effect_RemoveDrawn(const int16_t fx_num)
+static void M_RemoveDrawn(const int16_t fx_num)
 {
     FX_INFO *const fx = &g_Effects[fx_num];
     int16_t link_num = g_Rooms[fx->room_num].fx_num;
@@ -83,8 +83,8 @@ int16_t __cdecl Effect_Create(const int16_t room_num)
 void __cdecl Effect_Kill(const int16_t fx_num)
 {
     FX_INFO *const fx = &g_Effects[fx_num];
-    Effect_RemoveActive(fx_num);
-    Effect_RemoveDrawn(fx_num);
+    M_RemoveActive(fx_num);
+    M_RemoveDrawn(fx_num);
 
     fx->next_fx = g_NextEffectFree;
     g_NextEffectFree = fx_num;

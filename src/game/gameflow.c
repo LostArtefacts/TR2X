@@ -21,17 +21,17 @@
 
 #define GF_CURRENT_VERSION 3
 
-static void GF_ReadStringTable(
+static void M_ReadStringTable(
     VFILE *file, int32_t count, char ***table, char **buffer);
 
-static GF_ADD_INV GF_ModifyInventory_GetGunAdder(LARA_GUN_TYPE gun_type);
-static GF_ADD_INV GF_ModifyInventory_GetAmmoAdder(LARA_GUN_TYPE gun_type);
-static GF_ADD_INV GF_ModifyInventory_GetItemAdder(GAME_OBJECT_ID object_id);
-static void GF_ModifyInventory_GunOrAmmo(
+static GF_ADD_INV M_ModifyInventory_GetGunAdder(LARA_GUN_TYPE gun_type);
+static GF_ADD_INV M_ModifyInventory_GetAmmoAdder(LARA_GUN_TYPE gun_type);
+static GF_ADD_INV M_ModifyInventory_GetItemAdder(GAME_OBJECT_ID object_id);
+static void M_ModifyInventory_GunOrAmmo(
     START_INFO *start, int32_t type, LARA_GUN_TYPE gun_type);
-static void GF_ModifyInventory_Item(int32_t type, GAME_OBJECT_ID object_id);
+static void M_ModifyInventory_Item(int32_t type, GAME_OBJECT_ID object_id);
 
-static void GF_ReadStringTable(
+static void M_ReadStringTable(
     VFILE *const file, const int32_t count, char ***const table,
     char **const buffer)
 {
@@ -54,7 +54,7 @@ static void GF_ReadStringTable(
     }
 }
 
-static GF_ADD_INV GF_ModifyInventory_GetGunAdder(const LARA_GUN_TYPE gun_type)
+static GF_ADD_INV M_ModifyInventory_GetGunAdder(const LARA_GUN_TYPE gun_type)
 {
     // clang-format off
     switch (gun_type) {
@@ -70,7 +70,7 @@ static GF_ADD_INV GF_ModifyInventory_GetGunAdder(const LARA_GUN_TYPE gun_type)
     // clang-format on
 }
 
-static GF_ADD_INV GF_ModifyInventory_GetAmmoAdder(const LARA_GUN_TYPE gun_type)
+static GF_ADD_INV M_ModifyInventory_GetAmmoAdder(const LARA_GUN_TYPE gun_type)
 {
     // clang-format off
     switch (gun_type) {
@@ -86,8 +86,7 @@ static GF_ADD_INV GF_ModifyInventory_GetAmmoAdder(const LARA_GUN_TYPE gun_type)
     // clang-format on
 }
 
-static GF_ADD_INV GF_ModifyInventory_GetItemAdder(
-    const GAME_OBJECT_ID object_id)
+static GF_ADD_INV M_ModifyInventory_GetItemAdder(const GAME_OBJECT_ID object_id)
 {
     // clang-format off
     switch (object_id) {
@@ -109,7 +108,7 @@ static GF_ADD_INV GF_ModifyInventory_GetItemAdder(
     // clang-format on
 }
 
-static void GF_ModifyInventory_GunOrAmmo(
+static void M_ModifyInventory_GunOrAmmo(
     START_INFO *const start, const int32_t type, const LARA_GUN_TYPE gun_type)
 {
     const GAME_OBJECT_ID gun_item = Gun_GetGunObject(gun_type);
@@ -117,8 +116,8 @@ static void GF_ModifyInventory_GunOrAmmo(
     const int32_t ammo_qty = Gun_GetAmmoQuantity(gun_type);
     AMMO_INFO *const ammo_info = Gun_GetAmmoInfo(gun_type);
 
-    const GF_ADD_INV gun_adder = GF_ModifyInventory_GetGunAdder(gun_type);
-    const GF_ADD_INV ammo_adder = GF_ModifyInventory_GetAmmoAdder(gun_type);
+    const GF_ADD_INV gun_adder = M_ModifyInventory_GetGunAdder(gun_type);
+    const GF_ADD_INV ammo_adder = M_ModifyInventory_GetAmmoAdder(gun_type);
 
     if (Inv_RequestItem(gun_item)) {
         if (type == 1) {
@@ -170,10 +169,10 @@ static void GF_ModifyInventory_GunOrAmmo(
     }
 }
 
-static void GF_ModifyInventory_Item(
+static void M_ModifyInventory_Item(
     const int32_t type, const GAME_OBJECT_ID object_id)
 {
-    const GF_ADD_INV item_adder = GF_ModifyInventory_GetItemAdder(object_id);
+    const GF_ADD_INV item_adder = M_ModifyInventory_GetItemAdder(object_id);
     int32_t qty = 0;
     if (type == 1) {
         qty = g_GF_SecretInvItems[item_adder];
@@ -252,20 +251,20 @@ BOOL __cdecl GF_LoadFromFile(const char *const file_name)
     g_GameFlow.level_complete_track = VFile_ReadU8(file);
     VFile_Skip(file, 4);
 
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_LevelNames, &g_GF_LevelNamesBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_pictures, &g_GF_PicFilenames,
         &g_GF_PicFilenamesBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_titles, &g_GF_TitleFileNames,
         &g_GF_TitleFileNamesBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_fmvs, &g_GF_FMVFilenames, &g_GF_FMVFilenamesBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_LevelFileNames,
         &g_GF_LevelFileNamesBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_cutscenes, &g_GF_CutsceneFileNames,
         &g_GF_CutsceneFileNamesBuf);
 
@@ -289,35 +288,35 @@ BOOL __cdecl GF_LoadFromFile(const char *const file_name)
         return false;
     }
 
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, GF_S_GAME_NUMBER_OF, &g_GF_GameStrings, &g_GF_GameStringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, GF_S_PC_NUMBER_OF, &g_GF_PCStrings, &g_GF_PCStringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Puzzle1Strings,
         &g_GF_Puzzle1StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Puzzle2Strings,
         &g_GF_Puzzle2StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Puzzle3Strings,
         &g_GF_Puzzle3StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Puzzle4Strings,
         &g_GF_Puzzle4StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Pickup1Strings,
         &g_GF_Pickup1StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Pickup2Strings,
         &g_GF_Pickup2StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Key1Strings, &g_GF_Key1StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Key2Strings, &g_GF_Key2StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Key3Strings, &g_GF_Key3StringsBuf);
-    GF_ReadStringTable(
+    M_ReadStringTable(
         file, g_GameFlow.num_levels, &g_GF_Key4Strings, &g_GF_Key4StringsBuf);
 
     VFile_Close(file);
@@ -651,26 +650,26 @@ void __cdecl GF_ModifyInventory(const int32_t level, const int32_t type)
         Inv_AddItem(O_PISTOL_ITEM);
     }
 
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_MAGNUMS);
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_UZIS);
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_SHOTGUN);
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_HARPOON);
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_M16);
-    GF_ModifyInventory_GunOrAmmo(start, type, LGT_GRENADE);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_MAGNUMS);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_UZIS);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_SHOTGUN);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_HARPOON);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_M16);
+    M_ModifyInventory_GunOrAmmo(start, type, LGT_GRENADE);
 
-    GF_ModifyInventory_Item(type, O_FLARE_ITEM);
-    GF_ModifyInventory_Item(type, O_SMALL_MEDIPACK_ITEM);
-    GF_ModifyInventory_Item(type, O_LARGE_MEDIPACK_ITEM);
-    GF_ModifyInventory_Item(type, O_PICKUP_ITEM_1);
-    GF_ModifyInventory_Item(type, O_PICKUP_ITEM_2);
-    GF_ModifyInventory_Item(type, O_PUZZLE_ITEM_1);
-    GF_ModifyInventory_Item(type, O_PUZZLE_ITEM_2);
-    GF_ModifyInventory_Item(type, O_PUZZLE_ITEM_3);
-    GF_ModifyInventory_Item(type, O_PUZZLE_ITEM_4);
-    GF_ModifyInventory_Item(type, O_KEY_ITEM_1);
-    GF_ModifyInventory_Item(type, O_KEY_ITEM_2);
-    GF_ModifyInventory_Item(type, O_KEY_ITEM_3);
-    GF_ModifyInventory_Item(type, O_KEY_ITEM_4);
+    M_ModifyInventory_Item(type, O_FLARE_ITEM);
+    M_ModifyInventory_Item(type, O_SMALL_MEDIPACK_ITEM);
+    M_ModifyInventory_Item(type, O_LARGE_MEDIPACK_ITEM);
+    M_ModifyInventory_Item(type, O_PICKUP_ITEM_1);
+    M_ModifyInventory_Item(type, O_PICKUP_ITEM_2);
+    M_ModifyInventory_Item(type, O_PUZZLE_ITEM_1);
+    M_ModifyInventory_Item(type, O_PUZZLE_ITEM_2);
+    M_ModifyInventory_Item(type, O_PUZZLE_ITEM_3);
+    M_ModifyInventory_Item(type, O_PUZZLE_ITEM_4);
+    M_ModifyInventory_Item(type, O_KEY_ITEM_1);
+    M_ModifyInventory_Item(type, O_KEY_ITEM_2);
+    M_ModifyInventory_Item(type, O_KEY_ITEM_3);
+    M_ModifyInventory_Item(type, O_KEY_ITEM_4);
 
     for (int32_t i = 0; i < GF_ADD_INV_NUMBER_OF; i++) {
         if (type == 1) {

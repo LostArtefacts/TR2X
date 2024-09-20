@@ -21,10 +21,10 @@ static float m_MusicVolume = 0.0f;
 static int32_t m_AudioStreamID = -1;
 static const MUSIC_BACKEND *m_Backend = NULL;
 
-static const MUSIC_BACKEND *Music_FindBackend(void);
-static void Music_StreamFinished(int32_t stream_id, void *user_data);
+static const MUSIC_BACKEND *M_FindBackend(void);
+static void M_StreamFinished(int32_t stream_id, void *user_data);
 
-static const MUSIC_BACKEND *Music_FindBackend(void)
+static const MUSIC_BACKEND *M_FindBackend(void)
 {
     MUSIC_BACKEND *all_backends[] = {
         Music_Backend_Files_Factory("music"),
@@ -47,7 +47,7 @@ static const MUSIC_BACKEND *Music_FindBackend(void)
     return NULL;
 }
 
-static void Music_StreamFinished(const int32_t stream_id, void *const user_data)
+static void M_StreamFinished(const int32_t stream_id, void *const user_data)
 {
     // When a stream finishes, play the remembered background BGM.
     if (stream_id == m_AudioStreamID) {
@@ -67,7 +67,7 @@ bool __cdecl Music_Init(void)
         return true;
     }
 
-    m_Backend = Music_FindBackend();
+    m_Backend = M_FindBackend();
     if (m_Backend == NULL) {
         LOG_ERROR("No music backend is available");
         goto finish;
@@ -90,7 +90,7 @@ void __cdecl Music_Shutdown(void)
         return;
     }
 
-    // We are only interested in calling Music_StreamFinished if a stream
+    // We are only interested in calling M_StreamFinished if a stream
     // finished by itself. In cases where we end the streams early by hand,
     // we clear the finish callback in order to avoid resuming the BGM playback
     // just after we stop it.
@@ -132,7 +132,7 @@ void __cdecl Music_Play(int16_t track_id, bool is_looped)
 
     Audio_Stream_SetIsLooped(m_AudioStreamID, is_looped);
     Audio_Stream_SetVolume(m_AudioStreamID, m_MusicVolume);
-    Audio_Stream_SetFinishCallback(m_AudioStreamID, Music_StreamFinished, NULL);
+    Audio_Stream_SetFinishCallback(m_AudioStreamID, M_StreamFinished, NULL);
 
 finish:
     g_CD_TrackID = track_id;

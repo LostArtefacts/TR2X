@@ -37,25 +37,28 @@
 
 #define IDI_MAINICON 100
 
-static bool InsertDisplayModeInListSorted(
+static bool M_InsertDisplayModeInListSorted(
     DISPLAY_MODE_LIST *mode_list, DISPLAY_MODE *src_mode);
 
-static void DisplayModeListInit(DISPLAY_MODE_LIST *mode_list);
-static void DisplayModeListDelete(DISPLAY_MODE_LIST *mode_list);
-static bool DisplayModeListCopy(DISPLAY_MODE_LIST *dst, DISPLAY_MODE_LIST *src);
-static DISPLAY_MODE *InsertDisplayMode(
+static void M_DisplayModeListInit(DISPLAY_MODE_LIST *mode_list);
+static void M_DisplayModeListDelete(DISPLAY_MODE_LIST *mode_list);
+static bool M_DisplayModeListCopy(
+    DISPLAY_MODE_LIST *dst, DISPLAY_MODE_LIST *src);
+static DISPLAY_MODE *M_InsertDisplayMode(
     DISPLAY_MODE_LIST *mode_list, DISPLAY_MODE_NODE *before);
-static DISPLAY_MODE *InsertDisplayModeInListHead(DISPLAY_MODE_LIST *mode_list);
-static DISPLAY_MODE *InsertDisplayModeInListTail(DISPLAY_MODE_LIST *mode_list);
+static DISPLAY_MODE *M_InsertDisplayModeInListHead(
+    DISPLAY_MODE_LIST *mode_list);
+static DISPLAY_MODE *M_InsertDisplayModeInListTail(
+    DISPLAY_MODE_LIST *mode_list);
 
-static void DisplayModeListInit(DISPLAY_MODE_LIST *mode_list)
+static void M_DisplayModeListInit(DISPLAY_MODE_LIST *mode_list)
 {
     mode_list->head = NULL;
     mode_list->tail = NULL;
     mode_list->count = 0;
 }
 
-static void DisplayModeListDelete(DISPLAY_MODE_LIST *mode_list)
+static void M_DisplayModeListDelete(DISPLAY_MODE_LIST *mode_list)
 {
     DISPLAY_MODE_NODE *node;
     DISPLAY_MODE_NODE *nextNode;
@@ -64,28 +67,29 @@ static void DisplayModeListDelete(DISPLAY_MODE_LIST *mode_list)
         nextNode = node->next;
         free(node);
     }
-    DisplayModeListInit(mode_list);
+    M_DisplayModeListInit(mode_list);
 }
 
-static bool DisplayModeListCopy(DISPLAY_MODE_LIST *dst, DISPLAY_MODE_LIST *src)
+static bool M_DisplayModeListCopy(
+    DISPLAY_MODE_LIST *dst, DISPLAY_MODE_LIST *src)
 {
     if (dst == NULL || src == NULL || dst == src) {
         return false;
     }
 
-    DisplayModeListDelete(dst);
+    M_DisplayModeListDelete(dst);
     for (DISPLAY_MODE_NODE *node = src->head; node != NULL; node = node->next) {
-        DISPLAY_MODE *dst_mode = InsertDisplayModeInListTail(dst);
+        DISPLAY_MODE *dst_mode = M_InsertDisplayModeInListTail(dst);
         *dst_mode = node->body;
     }
     return true;
 }
 
-static DISPLAY_MODE *InsertDisplayMode(
+static DISPLAY_MODE *M_InsertDisplayMode(
     DISPLAY_MODE_LIST *mode_list, DISPLAY_MODE_NODE *before)
 {
     if (!before || !before->previous) {
-        return InsertDisplayModeInListHead(mode_list);
+        return M_InsertDisplayModeInListHead(mode_list);
     }
 
     DISPLAY_MODE_NODE *node = malloc(sizeof(DISPLAY_MODE_NODE));
@@ -103,7 +107,7 @@ static DISPLAY_MODE *InsertDisplayMode(
     return &node->body;
 }
 
-static DISPLAY_MODE *InsertDisplayModeInListHead(DISPLAY_MODE_LIST *mode_list)
+static DISPLAY_MODE *M_InsertDisplayModeInListHead(DISPLAY_MODE_LIST *mode_list)
 {
     DISPLAY_MODE_NODE *node = malloc(sizeof(DISPLAY_MODE_NODE));
     if (!node) {
@@ -126,7 +130,7 @@ static DISPLAY_MODE *InsertDisplayModeInListHead(DISPLAY_MODE_LIST *mode_list)
     return &node->body;
 }
 
-static DISPLAY_MODE *InsertDisplayModeInListTail(DISPLAY_MODE_LIST *mode_list)
+static DISPLAY_MODE *M_InsertDisplayModeInListTail(DISPLAY_MODE_LIST *mode_list)
 {
     DISPLAY_MODE_NODE *node = malloc(sizeof(DISPLAY_MODE_NODE));
     if (!node) {
@@ -149,24 +153,24 @@ static DISPLAY_MODE *InsertDisplayModeInListTail(DISPLAY_MODE_LIST *mode_list)
     return &node->body;
 }
 
-static bool InsertDisplayModeInListSorted(
+static bool M_InsertDisplayModeInListSorted(
     DISPLAY_MODE_LIST *mode_list, DISPLAY_MODE *src_mode)
 {
     DISPLAY_MODE *dst_mode = NULL;
 
     if (mode_list->head == NULL
         || CompareVideoModes(src_mode, &mode_list->head->body)) {
-        dst_mode = InsertDisplayModeInListHead(mode_list);
+        dst_mode = M_InsertDisplayModeInListHead(mode_list);
         goto finish;
     }
     for (DISPLAY_MODE_NODE *node = mode_list->head; node != NULL;
          node = node->next) {
         if (CompareVideoModes(src_mode, &node->body)) {
-            dst_mode = InsertDisplayMode(mode_list, node);
+            dst_mode = M_InsertDisplayMode(mode_list, node);
             goto finish;
         }
     }
-    dst_mode = InsertDisplayModeInListTail(mode_list);
+    dst_mode = M_InsertDisplayModeInListTail(mode_list);
 
 finish:
     if (dst_mode == NULL) {
@@ -2424,11 +2428,13 @@ HRESULT __stdcall EnumDisplayModesCallback(
     if (adapter->hw_render_supported
         && (render_bit_depth & adapter->hw_device_desc.dwDeviceRenderBitDepth)
             != 0) {
-        InsertDisplayModeInListSorted(&adapter->hw_disp_mode_list, &video_mode);
+        M_InsertDisplayModeInListSorted(
+            &adapter->hw_disp_mode_list, &video_mode);
     }
 
     if (sw_renderer_supported) {
-        InsertDisplayModeInListSorted(&adapter->sw_disp_mode_list, &video_mode);
+        M_InsertDisplayModeInListSorted(
+            &adapter->sw_disp_mode_list, &video_mode);
     }
 
     return DDENUMRET_OK;
@@ -2452,8 +2458,8 @@ bool __cdecl WinVidGetDisplayAdapters(void)
                               *next_node = NULL;
          node != NULL; node = next_node) {
         next_node = node->next;
-        DisplayModeListDelete(&node->body.sw_disp_mode_list);
-        DisplayModeListDelete(&node->body.hw_disp_mode_list);
+        M_DisplayModeListDelete(&node->body.sw_disp_mode_list);
+        M_DisplayModeListDelete(&node->body.hw_disp_mode_list);
         S_FlaggedString_Delete(&node->body.driver_name);
         S_FlaggedString_Delete(&node->body.driver_desc);
         free(node);
@@ -2508,8 +2514,8 @@ BOOL WINAPI EnumDisplayAdaptersCallback(
     list_node->previous = adapter_list->tail;
 
     S_FlaggedString_InitAdapter(&list_node->body);
-    DisplayModeListInit(&list_node->body.hw_disp_mode_list);
-    DisplayModeListInit(&list_node->body.sw_disp_mode_list);
+    M_DisplayModeListInit(&list_node->body.hw_disp_mode_list);
+    M_DisplayModeListInit(&list_node->body.sw_disp_mode_list);
 
     if (!adapter_list->head) {
         adapter_list->head = list_node;
@@ -2913,13 +2919,13 @@ void __cdecl WinVidStart(void)
     S_FlaggedString_Copy(
         &g_CurrentDisplayAdapter.driver_name, &preferred->driver_name);
 
-    DisplayModeListInit(&g_CurrentDisplayAdapter.hw_disp_mode_list);
-    DisplayModeListCopy(
+    M_DisplayModeListInit(&g_CurrentDisplayAdapter.hw_disp_mode_list);
+    M_DisplayModeListCopy(
         &g_CurrentDisplayAdapter.hw_disp_mode_list,
         &preferred->hw_disp_mode_list);
 
-    DisplayModeListInit(&g_CurrentDisplayAdapter.sw_disp_mode_list);
-    DisplayModeListCopy(
+    M_DisplayModeListInit(&g_CurrentDisplayAdapter.sw_disp_mode_list);
+    M_DisplayModeListCopy(
         &g_CurrentDisplayAdapter.sw_disp_mode_list,
         &preferred->sw_disp_mode_list);
 

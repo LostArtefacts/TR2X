@@ -18,30 +18,29 @@ typedef struct {
     UI_WIDGET *right_column;
 } UI_CONTROLS_DIALOG;
 
-static int32_t UI_ControlsDialog_GetWidth(const UI_CONTROLS_DIALOG *self);
-static int32_t UI_ControlsDialog_GetHeight(const UI_CONTROLS_DIALOG *self);
-static void UI_ControlsDialog_SetPosition(
-    UI_CONTROLS_DIALOG *self, int32_t x, int32_t y);
-static void UI_ControlsDialog_Control(UI_CONTROLS_DIALOG *self);
-static void UI_ControlsDialog_Free(UI_CONTROLS_DIALOG *self);
+static int32_t M_GetWidth(const UI_CONTROLS_DIALOG *self);
+static int32_t M_GetHeight(const UI_CONTROLS_DIALOG *self);
+static void M_SetPosition(UI_CONTROLS_DIALOG *self, int32_t x, int32_t y);
+static void M_Control(UI_CONTROLS_DIALOG *self);
+static void M_Free(UI_CONTROLS_DIALOG *self);
 
-static int32_t UI_ControlsDialog_GetWidth(const UI_CONTROLS_DIALOG *const self)
+static int32_t M_GetWidth(const UI_CONTROLS_DIALOG *const self)
 {
     return self->window->get_width(self->window);
 }
 
-static int32_t UI_ControlsDialog_GetHeight(const UI_CONTROLS_DIALOG *const self)
+static int32_t M_GetHeight(const UI_CONTROLS_DIALOG *const self)
 {
     return self->window->get_height(self->window);
 }
 
-static void UI_ControlsDialog_SetPosition(
+static void M_SetPosition(
     UI_CONTROLS_DIALOG *const self, const int32_t x, const int32_t y)
 {
     return self->window->set_position(self->window, x, y);
 }
 
-static void UI_ControlsDialog_Control(UI_CONTROLS_DIALOG *const self)
+static void M_Control(UI_CONTROLS_DIALOG *const self)
 {
     if (UI_ControlsController_Control(self->controller)) {
         // Trigger the UI updates only if anything has changed.
@@ -51,7 +50,7 @@ static void UI_ControlsDialog_Control(UI_CONTROLS_DIALOG *const self)
     }
 }
 
-static void UI_ControlsDialog_Free(UI_CONTROLS_DIALOG *const self)
+static void M_Free(UI_CONTROLS_DIALOG *const self)
 {
     self->left_column->free(self->left_column);
     self->right_column->free(self->right_column);
@@ -66,11 +65,11 @@ UI_WIDGET *UI_ControlsDialog_Create(UI_CONTROLS_CONTROLLER *const controller)
 {
     UI_CONTROLS_DIALOG *const self = Memory_Alloc(sizeof(UI_CONTROLS_DIALOG));
     self->vtable = (UI_WIDGET_VTABLE) {
-        .control = (UI_WIDGET_CONTROL)UI_ControlsDialog_Control,
-        .get_width = (UI_WIDGET_GET_WIDTH)UI_ControlsDialog_GetWidth,
-        .get_height = (UI_WIDGET_GET_HEIGHT)UI_ControlsDialog_GetHeight,
-        .set_position = (UI_WIDGET_SET_POSITION)UI_ControlsDialog_SetPosition,
-        .free = (UI_WIDGET_FREE)UI_ControlsDialog_Free,
+        .control = (UI_WIDGET_CONTROL)M_Control,
+        .get_width = (UI_WIDGET_GET_WIDTH)M_GetWidth,
+        .get_height = (UI_WIDGET_GET_HEIGHT)M_GetHeight,
+        .set_position = (UI_WIDGET_SET_POSITION)M_SetPosition,
+        .free = (UI_WIDGET_FREE)M_Free,
     };
 
     self->controller = controller;

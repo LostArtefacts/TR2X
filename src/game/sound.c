@@ -53,28 +53,28 @@ typedef enum {
 
 #define DECIBEL_LUT_SIZE 512
 
-static int32_t Sound_ConvertVolumeToDecibel(int32_t volume);
-static int32_t Sound_ConvertPanToDecibel(uint16_t pan);
-static float Sound_ConvertPitch(float pitch);
-static int32_t Sound_Play(
-    int32_t track_id, int32_t volume, float pitch, int32_t pan, bool is_looped);
-
-static void Sound_Slot_Clear(SOUND_SLOT *const slot);
-static void Sound_Slot_ClearAll(void);
-static void Sound_Slot_Close(SOUND_SLOT *const slot);
-static void Sound_Slot_Update(SOUND_SLOT *const slot);
-
 static int32_t m_DecibelLUT[DECIBEL_LUT_SIZE] = { 0 };
 static SOUND_SLOT m_SoundSlots[SOUND_MAX_SLOTS] = { 0 };
 
-static int32_t Sound_ConvertVolumeToDecibel(const int32_t volume)
+static int32_t M_ConvertVolumeToDecibel(int32_t volume);
+static int32_t M_ConvertPanToDecibel(uint16_t pan);
+static float M_ConvertPitch(float pitch);
+static int32_t M_Play(
+    int32_t track_id, int32_t volume, float pitch, int32_t pan, bool is_looped);
+
+static void M_ClearSlot(SOUND_SLOT *const slot);
+static void M_ClearAllSlots(void);
+static void M_CloseSlot(SOUND_SLOT *const slot);
+static void M_UpdateSlot(SOUND_SLOT *const slot);
+
+static int32_t M_ConvertVolumeToDecibel(const int32_t volume)
 {
     const double adjusted_volume = g_MasterVolume * volume;
     const double scaler = 0x1.p-21; // 2.0e-21
     return (adjusted_volume * scaler - 1.0) * 5000.0;
 }
 
-static int32_t Sound_ConvertPanToDecibel(const uint16_t pan)
+static int32_t M_ConvertPanToDecibel(const uint16_t pan)
 {
     const int32_t result = sin((pan / 32767.0) * M_PI) * (DECIBEL_LUT_SIZE / 2);
     if (result > 0) {
@@ -86,47 +86,47 @@ static int32_t Sound_ConvertPanToDecibel(const uint16_t pan)
     }
 }
 
-static float Sound_ConvertPitch(const float pitch)
+static float M_ConvertPitch(const float pitch)
 {
     return pitch / 0x10000.p0;
 }
 
-static int32_t Sound_Play(
+static int32_t M_Play(
     const int32_t sample_num, const int32_t volume, const float pitch,
     const int32_t pan, const bool is_looped)
 {
     const int32_t handle = Audio_Sample_Play(
-        sample_num, Sound_ConvertVolumeToDecibel(volume),
-        Sound_ConvertPitch(pitch), Sound_ConvertPanToDecibel(pan), is_looped);
+        sample_num, M_ConvertVolumeToDecibel(volume), M_ConvertPitch(pitch),
+        M_ConvertPanToDecibel(pan), is_looped);
     return handle;
 }
 
-static void Sound_Slot_ClearAll(void)
+static void M_ClearAllSlots(void)
 {
     for (int32_t i = 0; i < SOUND_MAX_SLOTS; i++) {
         SOUND_SLOT *const slot = &m_SoundSlots[i];
-        Sound_Slot_Clear(slot);
+        M_ClearSlot(slot);
     }
 }
 
-static void Sound_Slot_Clear(SOUND_SLOT *const slot)
+static void M_ClearSlot(SOUND_SLOT *const slot)
 {
     slot->sample_num = -1;
     slot->handle = AUDIO_NO_SOUND;
 }
 
-static void Sound_Slot_Close(SOUND_SLOT *const slot)
+static void M_CloseSlot(SOUND_SLOT *const slot)
 {
     Audio_Sample_Close(slot->handle);
-    Sound_Slot_Clear(slot);
+    M_ClearSlot(slot);
 }
 
-static void Sound_Slot_Update(SOUND_SLOT *const slot)
+static void M_UpdateSlot(SOUND_SLOT *const slot)
 {
-    Audio_Sample_SetPan(slot->handle, Sound_ConvertPanToDecibel(slot->pan));
-    Audio_Sample_SetPitch(slot->handle, Sound_ConvertPitch(slot->pitch));
+    Audio_Sample_SetPan(slot->handle, M_ConvertPanToDecibel(slot->pan));
+    Audio_Sample_SetPitch(slot->handle, M_ConvertPitch(slot->pitch));
     Audio_Sample_SetVolume(
-        slot->handle, Sound_ConvertVolumeToDecibel(slot->volume));
+        slot->handle, M_ConvertVolumeToDecibel(slot->volume));
 }
 
 void __cdecl Sound_Init(void)
@@ -142,7 +142,7 @@ void __cdecl Sound_Init(void)
     }
 
     Sound_SetMasterVolume(32);
-    Sound_Slot_ClearAll();
+    M_ClearAllSlots();
     g_SoundIsActive = true;
 }
 
@@ -153,7 +153,7 @@ void __cdecl Sound_Shutdown(void)
     }
 
     Audio_Shutdown();
-    Sound_Slot_ClearAll();
+    M_ClearAllSlots();
 }
 
 void __cdecl Sound_SetMasterVolume(int32_t volume)
@@ -270,7 +270,7 @@ void __cdecl Sound_Effect(
                 if (Audio_Sample_IsPlaying(i)) {
                     return;
                 }
-                Sound_Slot_Clear(slot);
+                M_ClearSlot(slot);
             }
         }
         break;
@@ -279,7 +279,7 @@ void __cdecl Sound_Effect(
         for (int32_t i = 0; i < SOUND_MAX_SLOTS; i++) {
             SOUND_SLOT *const slot = &m_SoundSlots[i];
             if (slot->sample_num == sample_num) {
-                Sound_Slot_Close(slot);
+                M_CloseSlot(slot);
                 break;
             }
         }
@@ -301,7 +301,7 @@ void __cdecl Sound_Effect(
     }
 
     const bool is_looped = mode == SOUND_MODE_LOOPED;
-    int32_t handle = Sound_Play(track_id, volume, pitch, pan, is_looped);
+    int32_t handle = M_Play(track_id, volume, pitch, pan, is_looped);
 
     if (handle == AUDIO_NO_SOUND) {
         int32_t min_volume = 0x8000;
@@ -316,8 +316,8 @@ void __cdecl Sound_Effect(
 
         if (min_slot >= 0 && volume >= min_volume) {
             SOUND_SLOT *const slot = &m_SoundSlots[min_slot];
-            Sound_Slot_Close(slot);
-            handle = Sound_Play(track_id, volume, pitch, pan, is_looped);
+            M_CloseSlot(slot);
+            handle = M_Play(track_id, volume, pitch, pan, is_looped);
         }
     }
 
@@ -357,7 +357,7 @@ void __cdecl Sound_StopEffect(const int32_t sample_id)
         SOUND_SLOT *const slot = &m_SoundSlots[i];
         if (slot->sample_num >= sample_num
             && slot->sample_num < sample_num + num_samples) {
-            Sound_Slot_Close(slot);
+            M_CloseSlot(slot);
         }
     }
 }
@@ -365,7 +365,7 @@ void __cdecl Sound_StopEffect(const int32_t sample_id)
 void __cdecl Sound_StopAllSamples(void)
 {
     Audio_Sample_CloseAll();
-    Sound_Slot_ClearAll();
+    M_ClearAllSlots();
 }
 
 void __cdecl Sound_EndScene(void)
@@ -383,13 +383,13 @@ void __cdecl Sound_EndScene(void)
 
         if ((s->flags & SOUND_MODE_MASK) == SOUND_MODE_LOOPED) {
             if (slot->volume == 0) {
-                Sound_Slot_Close(slot);
+                M_CloseSlot(slot);
             } else {
-                Sound_Slot_Update(slot);
+                M_UpdateSlot(slot);
                 slot->volume = 0;
             }
         } else if (!Audio_Sample_IsPlaying(slot->handle)) {
-            Sound_Slot_Clear(slot);
+            M_ClearSlot(slot);
         }
     }
 }

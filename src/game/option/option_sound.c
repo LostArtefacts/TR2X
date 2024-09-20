@@ -10,10 +10,10 @@
 
 #include <stdio.h>
 
-static void Option_Sound_InitText(void);
-static void Option_Sound_ShutdownText(void);
+static void M_InitText(void);
+static void M_ShutdownText(void);
 
-static void Option_Sound_InitText(void)
+static void M_InitText(void)
 {
     CLAMPG(g_OptionMusicVolume, 10);
     CLAMPG(g_OptionSoundVolume, 10);
@@ -43,7 +43,7 @@ static void Option_Sound_InitText(void)
     }
 }
 
-static void Option_Sound_ShutdownText(void)
+static void M_ShutdownText(void)
 {
     for (int32_t i = 0; i < 4; i++) {
         Text_Remove(g_SoundText[i]);
@@ -53,7 +53,7 @@ static void Option_Sound_ShutdownText(void)
 
 void Option_Sound_Shutdown(void)
 {
-    Option_Sound_ShutdownText();
+    M_ShutdownText();
 }
 
 void __cdecl Option_Sound(INVENTORY_ITEM *const item)
@@ -61,7 +61,7 @@ void __cdecl Option_Sound(INVENTORY_ITEM *const item)
     char text[8];
 
     if (g_SoundText[0] == NULL) {
-        Option_Sound_InitText();
+        M_InitText();
     }
 
     if ((g_InputDB & IN_FORWARD) && g_SoundOptionLine > 0) {

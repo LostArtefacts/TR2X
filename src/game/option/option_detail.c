@@ -4,10 +4,10 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 
-static void Option_Detail_InitText(void);
-static void Option_Detail_ShutdownText(void);
+static void M_InitText(void);
+static void M_ShutdownText(void);
 
-static void Option_Detail_InitText(void)
+static void M_InitText(void)
 {
     g_DetailText[0] =
         Text_Create(0, 50, 0, g_GF_GameStrings[GF_S_GAME_DETAIL_LOW]);
@@ -31,7 +31,7 @@ static void Option_Detail_InitText(void)
     }
 }
 
-static void Option_Detail_ShutdownText(void)
+static void M_ShutdownText(void)
 {
     for (int32_t i = 0; i < 5; i++) {
         Text_Remove(g_DetailText[i]);
@@ -42,7 +42,7 @@ static void Option_Detail_ShutdownText(void)
 void __cdecl Option_Detail(INVENTORY_ITEM *const item)
 {
     if (g_DetailText[0] == NULL) {
-        Option_Detail_InitText();
+        M_InitText();
     }
 
     if ((g_InputDB & IN_BACK) && g_DetailLevel > 0) {
@@ -75,11 +75,11 @@ void __cdecl Option_Detail(INVENTORY_ITEM *const item)
     }
 
     if (g_InputDB & (IN_SELECT | IN_DESELECT)) {
-        Option_Detail_ShutdownText();
+        M_ShutdownText();
     }
 }
 
 void Option_Detail_Shutdown(void)
 {
-    Option_Detail_ShutdownText();
+    M_ShutdownText();
 }

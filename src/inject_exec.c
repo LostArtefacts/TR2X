@@ -62,52 +62,52 @@
 #include "specific/s_flagged_string.h"
 #include "specific/s_input.h"
 
-static void Inject_Decomp_General(const bool enable);
-static void Inject_Decomp_Stats(const bool enable);
-static void Inject_Decomp_Effects(const bool enable);
-static void Inject_HWR(bool enable);
+static void M_DecompGeneral(const bool enable);
+static void M_DecompStats(const bool enable);
+static void M_DecompEffects(const bool enable);
+static void M_HWR(bool enable);
 
-static void Inject_Camera(bool enable);
-static void Inject_Collide(bool enable);
-static void Inject_Room(bool enable);
-static void Inject_Math(bool enable);
-static void Inject_Matrix(bool enable);
-static void Inject_Shell(bool enable);
-static void Inject_Requester(bool enable);
-static void Inject_Option(bool enable);
-static void Inject_Text(bool enable);
-static void Inject_Input(bool enable);
-static void Inject_Output(bool enable);
-static void Inject_Music(bool enable);
-static void Inject_Sound(bool enable);
+static void M_Camera(bool enable);
+static void M_Collide(bool enable);
+static void M_Room(bool enable);
+static void M_Math(bool enable);
+static void M_Matrix(bool enable);
+static void M_Shell(bool enable);
+static void M_Requester(bool enable);
+static void M_Option(bool enable);
+static void M_Text(bool enable);
+static void M_Input(bool enable);
+static void M_Output(bool enable);
+static void M_Music(bool enable);
+static void M_Sound(bool enable);
 
-static void Inject_Demo(bool enable);
-static void Inject_Gameflow(bool enable);
-static void Inject_Overlay(bool enable);
-static void Inject_Random(bool enable);
-static void Inject_Items(bool enable);
-static void Inject_Effects(bool enable);
-static void Inject_LOS(bool enable);
-static void Inject_People(bool enable);
-static void Inject_Level(bool enable);
-static void Inject_Inventory(bool enable);
-static void Inject_Lara_Look(bool enable);
-static void Inject_Lara_Draw(bool enable);
-static void Inject_Lara_Misc(bool enable);
-static void Inject_Lara_State(bool enable);
-static void Inject_Lara_Col(bool enable);
-static void Inject_Gun(bool enable);
+static void M_Demo(bool enable);
+static void M_Gameflow(bool enable);
+static void M_Overlay(bool enable);
+static void M_Random(bool enable);
+static void M_Items(bool enable);
+static void M_Effects(bool enable);
+static void M_LOS(bool enable);
+static void M_People(bool enable);
+static void M_Level(bool enable);
+static void M_Inventory(bool enable);
+static void M_Lara_Look(bool enable);
+static void M_Lara_Draw(bool enable);
+static void M_Lara_Misc(bool enable);
+static void M_Lara_State(bool enable);
+static void M_Lara_Col(bool enable);
+static void M_Gun(bool enable);
 
-static void Inject_Creature(bool enable);
-static void Inject_Box(bool enable);
-static void Inject_Lot(bool enable);
-static void Inject_Objects(bool enable);
+static void M_Creature(bool enable);
+static void M_Box(bool enable);
+static void M_Lot(bool enable);
+static void M_Objects(bool enable);
 
-static void Inject_S_Audio_Sample(bool enable);
-static void Inject_S_Input(bool enable);
-static void Inject_S_FlaggedString(bool enable);
+static void M_S_Audio_Sample(bool enable);
+static void M_S_Input(bool enable);
+static void M_S_FlaggedString(bool enable);
 
-static void Inject_Decomp_General(const bool enable)
+static void M_DecompGeneral(const bool enable)
 {
     INJECT(enable, 0x00411F50, Game_SetCutsceneTrack);
     INJECT(enable, 0x00411F60, Game_Cutscene_Start);
@@ -216,7 +216,7 @@ static void Inject_Decomp_General(const bool enable)
     INJECT(enable, 0x004550C0, S_SaveSettings);
 }
 
-static void Inject_Decomp_Stats(const bool enable)
+static void M_DecompStats(const bool enable)
 {
     INJECT(enable, 0x004262B0, AddAssaultTime);
     INJECT(enable, 0x00426340, ShowGymStatsText);
@@ -226,12 +226,12 @@ static void Inject_Decomp_Stats(const bool enable)
     INJECT(enable, 0x0044C850, GameStats);
 }
 
-static void Inject_Decomp_Effects(const bool enable)
+static void M_DecompEffects(const bool enable)
 {
     INJECT(enable, 0x00433360, Effect_ExplodingDeath);
 }
 
-static void Inject_HWR(bool enable)
+static void M_HWR(bool enable)
 {
     INJECT(enable, 0x0044CFE0, HWR_InitState);
     INJECT(enable, 0x0044D110, HWR_ResetTexSource);
@@ -249,7 +249,7 @@ static void Inject_HWR(bool enable)
     INJECT(enable, 0x0044D5E0, HWR_Init);
 }
 
-static void Inject_Background(const bool enable)
+static void M_Background(const bool enable)
 {
     INJECT(enable, 0x00443990, BGND_Make640x480);
     INJECT(enable, 0x00443B50, BGND_AddTexture);
@@ -263,7 +263,7 @@ static void Inject_Background(const bool enable)
     INJECT(enable, 0x00444510, BGND_Init);
 }
 
-static void Inject_Camera(const bool enable)
+static void M_Camera(const bool enable)
 {
     INJECT(enable, 0x004105A0, Camera_Initialise);
     INJECT(enable, 0x00410650, Camera_Move);
@@ -282,13 +282,13 @@ static void Inject_Camera(const bool enable)
     INJECT(enable, 0x00415100, Camera_RefreshFromTrigger);
 }
 
-static void Inject_Collide(const bool enable)
+static void M_Collide(const bool enable)
 {
     INJECT(enable, 0x004128F0, Collide_GetCollisionInfo);
     INJECT(enable, 0x00412FE0, Collide_CollideStaticObjects);
 }
 
-static void Inject_Game(const bool enable)
+static void M_Game(const bool enable)
 {
     INJECT(enable, 0x00414390, Game_Control);
     INJECT(enable, 0x00418990, Game_Draw);
@@ -297,7 +297,7 @@ static void Inject_Game(const bool enable)
     INJECT(enable, 0x0044C5D0, Game_Loop);
 }
 
-static void Inject_Room(const bool enable)
+static void M_Room(const bool enable)
 {
     INJECT(enable, 0x00412FB0, Room_FindGridShift);
     INJECT(enable, 0x004133D0, Room_GetNearbyRooms);
@@ -322,7 +322,7 @@ static void Inject_Room(const bool enable)
     INJECT(enable, 0x00416800, Room_TriggerMusicTrack);
 }
 
-static void Inject_Matrix(const bool enable)
+static void M_Matrix(const bool enable)
 {
     INJECT(enable, 0x00401000, Matrix_GenerateW2V);
     INJECT(enable, 0x004011D0, Matrix_LookAt);
@@ -350,7 +350,7 @@ static void Inject_Matrix(const bool enable)
     INJECT(enable, 0x0045729E, Matrix_PushUnit);
 }
 
-static void Inject_Math(const bool enable)
+static void M_Math(const bool enable)
 {
     INJECT(enable, 0x00457C10, Math_Atan);
     INJECT(enable, 0x00457C58, Math_Cos);
@@ -359,14 +359,14 @@ static void Inject_Math(const bool enable)
     INJECT(enable, 0x00401250, Math_GetVectorAngles);
 }
 
-static void Inject_Shell(const bool enable)
+static void M_Shell(const bool enable)
 {
     INJECT(enable, 0x0044E770, Shell_Cleanup);
     INJECT(enable, 0x0044E890, Shell_ExitSystem);
     INJECT(enable, 0x00454980, Shell_Main);
 }
 
-static void Inject_Requester(const bool enable)
+static void M_Requester(const bool enable)
 {
     INJECT(enable, 0x004255A0, Requester_Init);
     INJECT(enable, 0x00425630, Requester_Shutdown);
@@ -381,7 +381,7 @@ static void Inject_Requester(const bool enable)
     INJECT(enable, 0x00426270, Requester_SetSize);
 }
 
-static void Inject_Option(const bool enable)
+static void M_Option(const bool enable)
 {
     INJECT(enable, 0x0044EDC0, Option_DoInventory);
     INJECT(enable, 0x0044EED0, Option_Passport);
@@ -391,7 +391,7 @@ static void Inject_Option(const bool enable)
     INJECT(enable, 0x0044FE20, Option_Controls);
 }
 
-static void Inject_Text(const bool enable)
+static void M_Text(const bool enable)
 {
     INJECT(enable, 0x00440450, Text_Init);
     INJECT(enable, 0x00440480, Text_Create);
@@ -415,13 +415,13 @@ static void Inject_Text(const bool enable)
     INJECT(enable, 0x00440ED0, Text_GetScaleV);
 }
 
-static void Inject_Input(const bool enable)
+static void M_Input(const bool enable)
 {
     INJECT(enable, 0x0044DA10, Input_Update);
     INJECT(enable, 0x004239C0, Input_GetDebounced);
 }
 
-static void Inject_Output(const bool enable)
+static void M_Output(const bool enable)
 {
     INJECT(enable, 0x004019E0, Output_InsertPolygons);
     INJECT(enable, 0x00401AE0, Output_InsertRoom);
@@ -499,7 +499,7 @@ static void Inject_Output(const bool enable)
     INJECT(enable, 0x0041BA50, Output_InsertPolygons_I);
 }
 
-static void Inject_Music(const bool enable)
+static void M_Music(const bool enable)
 {
     INJECT(enable, 0x004553E0, Music_Init);
     INJECT(enable, 0x00455460, Music_Shutdown);
@@ -509,7 +509,7 @@ static void Inject_Music(const bool enable)
     INJECT(enable, 0x004556B0, Music_SetVolume);
 }
 
-static void Inject_Sound(const bool enable)
+static void M_Sound(const bool enable)
 {
     INJECT(enable, 0x00455380, Sound_SetMasterVolume);
     INJECT(enable, 0x0041C560, Sound_UpdateEffects);
@@ -520,7 +520,7 @@ static void Inject_Sound(const bool enable)
     INJECT(enable, 0x0043F980, Sound_Init);
 }
 
-static void Inject_Demo(const bool enable)
+static void M_Demo(const bool enable)
 {
     INJECT(enable, 0x00416910, Demo_Control);
     INJECT(enable, 0x00416970, Demo_Start);
@@ -528,7 +528,7 @@ static void Inject_Demo(const bool enable)
     INJECT(enable, 0x00416BF0, Demo_GetInput);
 }
 
-static void Inject_Gameflow(bool enable)
+static void M_Gameflow(bool enable)
 {
     INJECT(enable, 0x0041FA60, GF_LoadScriptFile);
     INJECT(enable, 0x0041FC50, GF_DoFrontendSequence);
@@ -538,7 +538,7 @@ static void Inject_Gameflow(bool enable)
     INJECT(enable, 0x0044B6C0, GF_LoadFromFile);
 }
 
-static void Inject_Overlay(const bool enable)
+static void M_Overlay(const bool enable)
 {
     INJECT(enable, 0x004219A0, Overlay_FlashCounter);
     INJECT(enable, 0x004219D0, Overlay_DrawAssaultTimer);
@@ -554,7 +554,7 @@ static void Inject_Overlay(const bool enable)
     INJECT(enable, 0x00422050, Overlay_DrawModeInfo);
 }
 
-static void Inject_Random(const bool enable)
+static void M_Random(const bool enable)
 {
     INJECT(enable, 0x0044C970, Random_GetControl);
     INJECT(enable, 0x0044C990, Random_SeedControl);
@@ -563,7 +563,7 @@ static void Inject_Random(const bool enable)
     INJECT(enable, 0x0044D870, Random_Seed);
 }
 
-static void Inject_Items(const bool enable)
+static void M_Items(const bool enable)
 {
     INJECT(enable, 0x00426CF0, Item_InitialiseArray);
     INJECT(enable, 0x00426D50, Item_Kill);
@@ -589,7 +589,7 @@ static void Inject_Items(const bool enable)
     INJECT(enable, 0x0041C0B0, Item_GetBestFrame);
 }
 
-static void Inject_Effects(const bool enable)
+static void M_Effects(const bool enable)
 {
     INJECT(enable, 0x004272F0, Effect_InitialiseArray);
     INJECT(enable, 0x00427320, Effect_Create);
@@ -598,7 +598,7 @@ static void Inject_Effects(const bool enable)
     INJECT(enable, 0x00419890, Effect_Draw);
 }
 
-static void Inject_LOS(const bool enable)
+static void M_LOS(const bool enable)
 {
     INJECT(enable, 0x00415BE0, LOS_Check);
     INJECT(enable, 0x00415C80, LOS_CheckZ);
@@ -607,17 +607,17 @@ static void Inject_LOS(const bool enable)
     INJECT(enable, 0x00416340, LOS_CheckSmashable);
 }
 
-static void Inject_People(const bool enable)
+static void M_People(const bool enable)
 {
     INJECT(enable, 0x00435E00, Creature_CanTargetEnemy);
 }
 
-static void Inject_Level(const bool enable)
+static void M_Level(const bool enable)
 {
     INJECT(enable, 0x0044B260, Level_Load);
 }
 
-static void Inject_Inventory(const bool enable)
+static void M_Inventory(const bool enable)
 {
     INJECT(enable, 0x00422080, Inv_Display);
     INJECT(enable, 0x00423310, Inv_Construct);
@@ -654,7 +654,7 @@ static void Inject_Inventory(const bool enable)
     INJECT(enable, 0x00425530, Inv_Ring_MotionItemDeselect);
 }
 
-static void Inject_Lara_Control(const bool enable)
+static void M_Lara_Control(const bool enable)
 {
     INJECT(enable, 0x00427580, Lara_HandleAboveWater);
     INJECT(enable, 0x00431670, Lara_HandleSurface);
@@ -670,20 +670,20 @@ static void Inject_Lara_Control(const bool enable)
     INJECT(enable, 0x00431570, Lara_InitialiseMeshes);
 }
 
-static void Inject_Lara_Draw(const bool enable)
+static void M_Lara_Draw(const bool enable)
 {
     INJECT(enable, 0x00419DF0, Lara_Draw);
     INJECT(enable, 0x0041AB20, Lara_Draw_I);
 }
 
-static void Inject_Lara_Look(const bool enable)
+static void M_Lara_Look(const bool enable)
 {
     INJECT(enable, 0x00427720, Lara_LookUpDown);
     INJECT(enable, 0x00427790, Lara_LookLeftRight);
     INJECT(enable, 0x00427810, Lara_ResetLook);
 }
 
-static void Inject_Lara_Misc(const bool enable)
+static void M_Lara_Misc(const bool enable)
 {
     INJECT(enable, 0x0042A0A0, Lara_GetCollisionInfo);
     INJECT(enable, 0x0042A0E0, Lara_SlideSlope);
@@ -723,7 +723,7 @@ static void Inject_Lara_Misc(const bool enable)
     INJECT(enable, 0x00442D80, Lara_TouchLava);
 }
 
-static void Inject_Lara_State(const bool enable)
+static void M_Lara_State(const bool enable)
 {
     INJECT(enable, 0x00432180, Lara_SwimTurn);
     INJECT(enable, 0x004278A0, Lara_State_Walk);
@@ -794,7 +794,7 @@ static void Inject_Lara_State(const bool enable)
     INJECT(enable, 0x00432410, Lara_State_UWTwist);
 }
 
-static void Inject_Lara_Col(const bool enable)
+static void M_Lara_Col(const bool enable)
 {
     INJECT(enable, 0x00428C00, Lara_Fallen);
     INJECT(enable, 0x00428C60, Lara_CollideStop);
@@ -850,7 +850,7 @@ static void Inject_Lara_Col(const bool enable)
     INJECT(enable, 0x00432440, Lara_Col_UWDeath);
 }
 
-static void Inject_Gun(bool enable)
+static void M_Gun(bool enable)
 {
     INJECT(enable, 0x0042BC00, Gun_Rifle_DrawMeshes);
     INJECT(enable, 0x0042BC40, Gun_Rifle_UndrawMeshes);
@@ -885,7 +885,7 @@ static void Inject_Gun(bool enable)
     INJECT(enable, 0x0042F740, Gun_GetWeaponAnim);
 }
 
-static void Inject_Creature(const bool enable)
+static void M_Creature(const bool enable)
 {
     INJECT(enable, 0x0040E1B0, Creature_Initialise);
     INJECT(enable, 0x0040E1E0, Creature_Activate);
@@ -907,7 +907,7 @@ static void Inject_Creature(const bool enable)
     INJECT(enable, 0x00413860, Creature_Collision);
 }
 
-static void Inject_Box(const bool enable)
+static void M_Box(const bool enable)
 {
     INJECT(enable, 0x0040E490, Box_SearchLOT);
     INJECT(enable, 0x0040E690, Box_UpdateLOT);
@@ -919,7 +919,7 @@ static void Inject_Box(const bool enable)
     INJECT(enable, 0x0040F3D0, Box_BadFloor);
 }
 
-static void Inject_Lot(const bool enable)
+static void M_Lot(const bool enable)
 {
     INJECT(enable, 0x00432A60, LOT_InitialiseArray);
     INJECT(enable, 0x00432AC0, LOT_DisableBaddieAI);
@@ -929,7 +929,7 @@ static void Inject_Lot(const bool enable)
     INJECT(enable, 0x00432F90, LOT_ClearLOT);
 }
 
-static void Inject_Objects(const bool enable)
+static void M_Objects(const bool enable)
 {
     INJECT(enable, 0x0040C880, Bird_Initialise);
     INJECT(enable, 0x0040C910, Bird_Control);
@@ -957,7 +957,7 @@ static void Inject_Objects(const bool enable)
     INJECT(enable, 0x00442F40, Ember_Control);
 }
 
-static void Inject_S_Audio_Sample(const bool enable)
+static void M_S_Audio_Sample(const bool enable)
 {
     INJECT(enable, 0x00447BC0, S_Audio_Sample_GetAdapter);
     INJECT(enable, 0x00447C10, S_Audio_Sample_CloseAllTracks);
@@ -987,12 +987,12 @@ static void Inject_S_Audio_Sample(const bool enable)
     INJECT(enable, 0x004553C0, S_Audio_Sample_OutIsTrackPlaying);
 }
 
-static void Inject_S_Input(const bool enable)
+static void M_S_Input(const bool enable)
 {
     INJECT(enable, 0x0044D8F0, S_Input_Key);
 }
 
-static void Inject_S_FlaggedString(const bool enable)
+static void M_S_FlaggedString(const bool enable)
 {
     INJECT(enable, 0x00445F00, S_FlaggedString_Delete);
     INJECT(enable, 0x00446100, S_FlaggedString_InitAdapter);
@@ -1001,53 +1001,53 @@ static void Inject_S_FlaggedString(const bool enable)
 
 void Inject_Exec(void)
 {
-    Inject_Decomp_General(true);
-    Inject_Decomp_Stats(true);
-    Inject_Decomp_Effects(true);
-    Inject_HWR(true);
-    Inject_Background(true);
+    M_DecompGeneral(true);
+    M_DecompStats(true);
+    M_DecompEffects(true);
+    M_HWR(true);
+    M_Background(true);
 
-    Inject_Camera(true);
-    Inject_Collide(true);
-    Inject_Game(true);
-    Inject_Room(true);
-    Inject_Math(true);
-    Inject_Matrix(true);
-    Inject_Shell(true);
-    Inject_Requester(true);
-    Inject_Option(true);
-    Inject_Text(true);
-    Inject_Input(true);
-    Inject_Output(true);
-    Inject_Music(true);
-    Inject_Sound(true);
+    M_Camera(true);
+    M_Collide(true);
+    M_Game(true);
+    M_Room(true);
+    M_Math(true);
+    M_Matrix(true);
+    M_Shell(true);
+    M_Requester(true);
+    M_Option(true);
+    M_Text(true);
+    M_Input(true);
+    M_Output(true);
+    M_Music(true);
+    M_Sound(true);
 
-    Inject_Demo(true);
-    Inject_Gameflow(true);
-    Inject_Overlay(true);
-    Inject_Random(true);
-    Inject_Items(true);
-    Inject_Effects(true);
-    Inject_LOS(true);
-    Inject_People(true);
-    Inject_Level(true);
+    M_Demo(true);
+    M_Gameflow(true);
+    M_Overlay(true);
+    M_Random(true);
+    M_Items(true);
+    M_Effects(true);
+    M_LOS(true);
+    M_People(true);
+    M_Level(true);
 
-    Inject_Inventory(true);
+    M_Inventory(true);
 
-    Inject_Lara_Control(true);
-    Inject_Lara_Draw(true);
-    Inject_Lara_Look(true);
-    Inject_Lara_Misc(true);
-    Inject_Lara_State(true);
-    Inject_Lara_Col(true);
-    Inject_Gun(true);
+    M_Lara_Control(true);
+    M_Lara_Draw(true);
+    M_Lara_Look(true);
+    M_Lara_Misc(true);
+    M_Lara_State(true);
+    M_Lara_Col(true);
+    M_Gun(true);
 
-    Inject_Creature(true);
-    Inject_Box(true);
-    Inject_Lot(true);
-    Inject_Objects(true);
+    M_Creature(true);
+    M_Box(true);
+    M_Lot(true);
+    M_Objects(true);
 
-    Inject_S_Audio_Sample(true);
-    Inject_S_Input(true);
-    Inject_S_FlaggedString(true);
+    M_S_Audio_Sample(true);
+    M_S_Input(true);
+    M_S_FlaggedString(true);
 }

@@ -24,10 +24,10 @@
 #define CLIMB_HANG 900
 #define CLIMB_SHIFT 70
 
-static void __cdecl Lara_TakeHit_Impl(
+static void __cdecl M_TakeHit(
     ITEM_INFO *const lara_item, const int32_t dx, const int32_t dz);
 
-static void __cdecl Lara_TakeHit_Impl(
+static void __cdecl M_TakeHit(
     ITEM_INFO *const lara_item, const int32_t dx, const int32_t dz)
 {
     const PHD_ANGLE hit_angle = lara_item->rot.y + PHD_180 - Math_Atan(dz, dx);
@@ -1032,7 +1032,7 @@ void __cdecl Lara_TakeHit(
 {
     const int32_t dx = g_Lara.spaz_effect->pos.x - lara_item->pos.x;
     const int32_t dz = g_Lara.spaz_effect->pos.z - lara_item->pos.z;
-    Lara_TakeHit_Impl(lara_item, dx, dz);
+    M_TakeHit(lara_item, dx, dz);
     g_Lara.spaz_effect_count--;
 }
 
@@ -1153,7 +1153,7 @@ void __cdecl Lara_Push(
     dz -= (c * rz - s * rx) >> W2V_SHIFT;
 
     if (spaz_on && bounds->max_y - bounds->min_y > STEP_L) {
-        Lara_TakeHit_Impl(lara_item, dx, dz);
+        M_TakeHit(lara_item, dx, dz);
     }
 
     int16_t old_facing = coll->facing;

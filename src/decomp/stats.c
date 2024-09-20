@@ -25,7 +25,7 @@ typedef struct {
     uint8_t medipacks;
 } STATS;
 
-static STATS Stats_GetEndGameStats(void)
+static STATS M_GetEndGameStats(void)
 {
     STATS result = { 0 };
 
@@ -238,7 +238,7 @@ void __cdecl ShowEndStatsText(void)
         &g_StatsRequester, g_GF_GameStrings[GF_S_GAME_MISC_FINAL_STATISTICS], 0,
         0, 0);
 
-    const STATS stats = Stats_GetEndGameStats();
+    const STATS stats = M_GetEndGameStats();
 
     const int32_t sec = stats.timer / FRAMES_PER_SECOND;
     sprintf(

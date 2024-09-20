@@ -52,11 +52,11 @@ typedef struct __unaligned
 }
 WAVE_FILE_HEADER;
 
-static void S_Audio_Sample_CreateWAV(
+static void M_CreateWAV(
     const LPWAVEFORMATEX format, const void *data, size_t data_size,
     char **buffer, size_t *buffer_size);
 
-static void S_Audio_Sample_CreateWAV(
+static void M_CreateWAV(
     const LPWAVEFORMATEX format, const void *const data, const size_t data_size,
     char **const buffer, size_t *const buffer_size)
 {
@@ -109,7 +109,7 @@ bool __cdecl S_Audio_Sample_Load(
 {
     char *wave = NULL;
     size_t wave_size;
-    S_Audio_Sample_CreateWAV(format, data, data_size, &wave, &wave_size);
+    M_CreateWAV(format, data, data_size, &wave, &wave_size);
 
     const bool result = Audio_Sample_LoadSingle(sample_id, wave, wave_size);
     Memory_FreePointer(&wave);

@@ -15,9 +15,9 @@
 static int16_t m_MaxUsedItemCount = 0;
 static BOUNDS_16 m_InterpolatedBounds = { 0 };
 
-static OBJECT_BOUNDS Item_ConvertBounds(const int16_t *bounds_in);
+static OBJECT_BOUNDS M_ConvertBounds(const int16_t *bounds_in);
 
-static OBJECT_BOUNDS Item_ConvertBounds(const int16_t *const bounds_in)
+static OBJECT_BOUNDS M_ConvertBounds(const int16_t *const bounds_in)
 {
     // TODO: remove this conversion utility once we gain control over its
     // incoming arguments
@@ -354,7 +354,7 @@ int32_t __cdecl Item_TestPosition(
     const int16_t *const bounds_in, const ITEM_INFO *const src_item,
     const ITEM_INFO *const dst_item)
 {
-    const OBJECT_BOUNDS bounds = Item_ConvertBounds(bounds_in);
+    const OBJECT_BOUNDS bounds = M_ConvertBounds(bounds_in);
 
     const XYZ_16 rot = {
         .x = dst_item->rot.x - src_item->rot.x,

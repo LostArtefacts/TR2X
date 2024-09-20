@@ -22,13 +22,13 @@
 #include <libtrx/utils.h>
 #include <libtrx/vector.h>
 
-static void Lara_Cheat_GiveAllGunsImpl(void);
-static void Lara_Cheat_GiveAllMedpacksImpl(void);
-static void Lara_Cheat_GiveAllKeysImpl(void);
-static void Lara_Cheat_ReinitialiseGunMeshes(void);
-static void Lara_Cheat_ResetGunStatus(void);
+static void M_GiveAllGunsImpl(void);
+static void M_GiveAllMedpacksImpl(void);
+static void M_GiveAllKeysImpl(void);
+static void M_ReinitialiseGunMeshes(void);
+static void M_ResetGunStatus(void);
 
-static void Lara_Cheat_ReinitialiseGunMeshes(void)
+static void M_ReinitialiseGunMeshes(void)
 {
     // TODO: consider refactoring flare check once more is known about overall
     // flare control.
@@ -42,7 +42,7 @@ static void Lara_Cheat_ReinitialiseGunMeshes(void)
     }
 }
 
-static void Lara_Cheat_GiveAllGunsImpl(void)
+static void M_GiveAllGunsImpl(void)
 {
     Inv_AddItem(O_PISTOL_ITEM);
     Inv_AddItem(O_MAGNUM_ITEM);
@@ -59,14 +59,14 @@ static void Lara_Cheat_GiveAllGunsImpl(void)
     g_Lara.grenade_ammo.ammo = 300;
 }
 
-static void Lara_Cheat_GiveAllMedpacksImpl(void)
+static void M_GiveAllMedpacksImpl(void)
 {
     Inv_AddItemNTimes(O_FLARES_ITEM, 10);
     Inv_AddItemNTimes(O_SMALL_MEDIPACK_ITEM, 10);
     Inv_AddItemNTimes(O_LARGE_MEDIPACK_ITEM, 10);
 }
 
-static void Lara_Cheat_GiveAllKeysImpl(void)
+static void M_GiveAllKeysImpl(void)
 {
     Inv_AddItem(O_PUZZLE_ITEM_1);
     Inv_AddItem(O_PUZZLE_ITEM_2);
@@ -80,7 +80,7 @@ static void Lara_Cheat_GiveAllKeysImpl(void)
     Inv_AddItem(O_PICKUP_ITEM_2);
 }
 
-static void Lara_Cheat_ResetGunStatus(void)
+static void M_ResetGunStatus(void)
 {
     const bool has_flare = g_Lara.mesh_ptrs[LM_HAND_L]
         == g_Meshes[g_Objects[O_LARA_FLARE].mesh_idx + LM_HAND_L];
@@ -117,7 +117,7 @@ bool __cdecl Lara_Cheat_EnterFlyMode(void)
     }
 
     if (g_Lara.extra_anim) {
-        Lara_Cheat_ResetGunStatus();
+        M_ResetGunStatus();
     }
 
     Lara_GetOffVehicle();
@@ -149,7 +149,7 @@ bool __cdecl Lara_Cheat_EnterFlyMode(void)
     g_Lara.burn = 0;
     g_Lara.extra_anim = 0;
 
-    Lara_Cheat_ReinitialiseGunMeshes();
+    M_ReinitialiseGunMeshes();
     g_Camera.type = CAM_CHASE;
     Output_AlterFOV(GAME_FOV * PHD_DEGREE);
 
@@ -187,7 +187,7 @@ bool __cdecl Lara_Cheat_ExitFlyMode(void)
         g_Lara.gun_status = LGS_UNDRAW;
     } else {
         g_Lara.gun_status = LGS_ARMLESS;
-        Lara_Cheat_ReinitialiseGunMeshes();
+        M_ReinitialiseGunMeshes();
     }
 
     Console_Log(GS(OSD_FLY_MODE_OFF));
@@ -245,8 +245,8 @@ bool Lara_Cheat_OpenNearestDoor(void)
 
 void __cdecl Lara_Cheat_GetStuff(void)
 {
-    Lara_Cheat_GiveAllGunsImpl();
-    Lara_Cheat_GiveAllMedpacksImpl();
+    M_GiveAllGunsImpl();
+    M_GiveAllMedpacksImpl();
 }
 
 bool Lara_Cheat_GiveAllKeys(void)
@@ -255,7 +255,7 @@ bool Lara_Cheat_GiveAllKeys(void)
         return false;
     }
 
-    Lara_Cheat_GiveAllKeysImpl();
+    M_GiveAllKeysImpl();
 
     Sound_Effect(SFX_LARA_KEY, NULL, SPM_ALWAYS);
     Console_Log(GS(OSD_GIVE_ITEM_ALL_KEYS));
@@ -268,7 +268,7 @@ bool Lara_Cheat_GiveAllGuns(void)
         return false;
     }
 
-    Lara_Cheat_GiveAllGunsImpl();
+    M_GiveAllGunsImpl();
 
     Sound_Effect(SFX_LARA_RELOAD, NULL, SPM_ALWAYS);
     Console_Log(GS(OSD_GIVE_ITEM_ALL_GUNS));
@@ -281,9 +281,9 @@ bool Lara_Cheat_GiveAllItems(void)
         return false;
     }
 
-    Lara_Cheat_GiveAllGunsImpl();
-    Lara_Cheat_GiveAllKeysImpl();
-    Lara_Cheat_GiveAllMedpacksImpl();
+    M_GiveAllGunsImpl();
+    M_GiveAllKeysImpl();
+    M_GiveAllMedpacksImpl();
 
     Sound_Effect(SFX_LARA_HOLSTER, &g_LaraItem->pos, SPM_NORMAL);
     Console_Log(GS(OSD_GIVE_ITEM_CHEAT));
@@ -405,8 +405,8 @@ bool Lara_Cheat_Teleport(int32_t x, int32_t y, int32_t z)
         }
 
         g_Lara.extra_anim = 0;
-        Lara_Cheat_ResetGunStatus();
-        Lara_Cheat_ReinitialiseGunMeshes();
+        M_ResetGunStatus();
+        M_ReinitialiseGunMeshes();
     }
 
     g_Lara.spaz_effect_count = 0;

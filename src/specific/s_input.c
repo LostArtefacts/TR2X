@@ -60,10 +60,10 @@ static bool m_IsF8Pressed = false;
 static bool m_IsF11Pressed = false;
 static int32_t m_MediPackCooldown = 0;
 
-static bool S_Input_KbdKey(int32_t layout_num, INPUT_ROLE role);
-static bool S_Input_JoyKey(int32_t layout_num, INPUT_ROLE role);
+static bool M_KbdKey(int32_t layout_num, INPUT_ROLE role);
+static bool M_JoyKey(int32_t layout_num, INPUT_ROLE role);
 
-static bool S_Input_KbdKey(const int32_t layout_num, const INPUT_ROLE role)
+static bool M_KbdKey(const int32_t layout_num, const INPUT_ROLE role)
 {
     uint16_t key = Input_GetAssignedKey(layout_num, role);
     if (key >= 0x100) {
@@ -90,7 +90,7 @@ static bool S_Input_KbdKey(const int32_t layout_num, const INPUT_ROLE role)
     return false;
 }
 
-static bool S_Input_JoyKey(const int32_t layout_num, const INPUT_ROLE role)
+static bool M_JoyKey(const int32_t layout_num, const INPUT_ROLE role)
 {
     uint16_t key = Input_GetAssignedKey(layout_num, role);
     if (key < 0x100) {
@@ -101,8 +101,8 @@ static bool S_Input_JoyKey(const int32_t layout_num, const INPUT_ROLE role)
 
 bool __cdecl S_Input_Key(const INPUT_ROLE role)
 {
-    return S_Input_KbdKey(1, role) || S_Input_JoyKey(1, role)
-        || (!g_ConflictLayout[role] && S_Input_KbdKey(0, role));
+    return M_KbdKey(1, role) || M_JoyKey(1, role)
+        || (!g_ConflictLayout[role] && M_KbdKey(0, role));
 }
 
 // TODO: refactor me!!!

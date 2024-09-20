@@ -28,12 +28,12 @@
 
 static TEXTSTRING *m_VersionText = NULL;
 
-static void Inv_RemoveItemsText(void);
-static void Inv_RemoveAllText(void);
-static void Inv_ShowItemQuantity(const char *fmt, int32_t qty);
-static void Inv_ShowAmmoQuantity(const char *fmt, int32_t qty);
+static void M_RemoveItemsText(void);
+static void M_RemoveAllText(void);
+static void M_ShowItemQuantity(const char *fmt, int32_t qty);
+static void M_ShowAmmoQuantity(const char *fmt, int32_t qty);
 
-static void Inv_RemoveItemsText(void)
+static void M_RemoveItemsText(void)
 {
     for (int32_t i = 0; i < 2; i++) {
         Text_Remove(g_Inv_ItemText[i]);
@@ -41,9 +41,9 @@ static void Inv_RemoveItemsText(void)
     }
 }
 
-static void Inv_RemoveAllText(void)
+static void M_RemoveAllText(void)
 {
-    Inv_RemoveItemsText();
+    M_RemoveItemsText();
 
     Text_Remove(g_Inv_TagText);
     g_Inv_TagText = NULL;
@@ -62,7 +62,7 @@ static void Inv_RemoveAllText(void)
     m_VersionText = NULL;
 }
 
-static void Inv_ShowItemQuantity(const char *const fmt, const int32_t qty)
+static void M_ShowItemQuantity(const char *const fmt, const int32_t qty)
 {
     if (g_Inv_ItemText[1] == NULL && !g_SaveGame.bonus_flag) {
         char string[64];
@@ -74,10 +74,10 @@ static void Inv_ShowItemQuantity(const char *const fmt, const int32_t qty)
     }
 }
 
-static void Inv_ShowAmmoQuantity(const char *const fmt, const int32_t qty)
+static void M_ShowAmmoQuantity(const char *const fmt, const int32_t qty)
 {
     if (!g_SaveGame.bonus_flag) {
-        Inv_ShowItemQuantity(fmt, qty);
+        M_ShowItemQuantity(fmt, qty);
     }
 }
 
@@ -240,7 +240,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
     do {
         if (g_GF_OverrideDir != (GAME_FLOW_DIR)-1) {
             INVENTORY_ITEM *inv_item = ring.list[ring.current_object];
-            Inv_RemoveAllText();
+            M_RemoveAllText();
             Option_ShutdownInventory(inv_item);
             return GFD_OVERRIDE;
         }
@@ -748,7 +748,7 @@ int32_t __cdecl Inv_Display(int32_t inventory_mode)
         }
     } while (imo.status != RNG_DONE);
 
-    Inv_RemoveAllText();
+    M_RemoveAllText();
     S_FinishInventory();
     g_Inv_IsActive = 0;
 
@@ -1184,45 +1184,44 @@ void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
     const int32_t qty = Inv_RequestItem(inv_item->object_id);
     switch (inv_item->object_id) {
     case O_SHOTGUN_OPTION:
-        Inv_ShowAmmoQuantity(
-            "%5d", g_Lara.shotgun_ammo.ammo / SHOTGUN_AMMO_CLIP);
+        M_ShowAmmoQuantity("%5d", g_Lara.shotgun_ammo.ammo / SHOTGUN_AMMO_CLIP);
         break;
     case O_MAGNUM_OPTION:
-        Inv_ShowAmmoQuantity("%5d", g_Lara.magnum_ammo.ammo);
+        M_ShowAmmoQuantity("%5d", g_Lara.magnum_ammo.ammo);
         break;
     case O_UZI_OPTION:
-        Inv_ShowAmmoQuantity("%5d", g_Lara.uzi_ammo.ammo);
+        M_ShowAmmoQuantity("%5d", g_Lara.uzi_ammo.ammo);
         break;
     case O_HARPOON_OPTION:
-        Inv_ShowAmmoQuantity("%5d", g_Lara.harpoon_ammo.ammo);
+        M_ShowAmmoQuantity("%5d", g_Lara.harpoon_ammo.ammo);
         break;
     case O_M16_OPTION:
-        Inv_ShowAmmoQuantity("%5d", g_Lara.m16_ammo.ammo);
+        M_ShowAmmoQuantity("%5d", g_Lara.m16_ammo.ammo);
         break;
     case O_GRENADE_OPTION:
-        Inv_ShowAmmoQuantity("%5d", g_Lara.grenade_ammo.ammo);
+        M_ShowAmmoQuantity("%5d", g_Lara.grenade_ammo.ammo);
         break;
     case O_SHOTGUN_AMMO_OPTION:
-        Inv_ShowAmmoQuantity("%d", SHOTGUN_SHELL_COUNT * qty);
+        M_ShowAmmoQuantity("%d", SHOTGUN_SHELL_COUNT * qty);
         break;
 
     case O_MAGNUM_AMMO_OPTION:
     case O_UZI_AMMO_OPTION:
     case O_HARPOON_AMMO_OPTION:
     case O_M16_AMMO_OPTION:
-        Inv_ShowAmmoQuantity("%d", 2 * qty);
+        M_ShowAmmoQuantity("%d", 2 * qty);
         break;
 
     case O_GRENADE_AMMO_OPTION:
     case O_FLARES_OPTION:
-        Inv_ShowAmmoQuantity("%d", qty);
+        M_ShowAmmoQuantity("%d", qty);
         break;
 
     case O_SMALL_MEDIPACK_OPTION:
     case O_LARGE_MEDIPACK_OPTION:
         g_HealthBarTimer = 40;
         Overlay_DrawHealthBar(Overlay_FlashCounter());
-        Inv_ShowItemQuantity("%d", qty);
+        M_ShowItemQuantity("%d", qty);
         break;
 
     case O_PUZZLE_OPTION_1:
@@ -1236,7 +1235,7 @@ void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
     case O_PICKUP_OPTION_1:
     case O_PICKUP_OPTION_2:
         if (qty > 1) {
-            Inv_ShowItemQuantity("%d", qty);
+            M_ShowItemQuantity("%d", qty);
         }
         break;
 
@@ -1247,5 +1246,5 @@ void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
 
 void __cdecl Inv_RingActive(void)
 {
-    Inv_RemoveItemsText();
+    M_RemoveItemsText();
 }

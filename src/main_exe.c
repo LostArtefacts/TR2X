@@ -6,7 +6,7 @@
 // The path to the legitimate host process
 const char *m_HostProcessPath = "Tomb2.exe";
 
-static bool FileExists(const char *path)
+static bool M_FileExists(const char *path)
 {
     DWORD fileAttributes = GetFileAttributes(path);
     if (fileAttributes != INVALID_FILE_ATTRIBUTES
@@ -16,7 +16,7 @@ static bool FileExists(const char *path)
     return false;
 }
 
-static bool InjectDLL(HANDLE process_handle, const char *dll_path)
+static bool M_InjectDLL(HANDLE process_handle, const char *dll_path)
 {
     bool success = false;
     LPVOID load_library_addr =
@@ -24,7 +24,7 @@ static bool InjectDLL(HANDLE process_handle, const char *dll_path)
 
     fprintf(stderr, "Injecting %s\n", dll_path);
 
-    if (!FileExists(dll_path)) {
+    if (!M_FileExists(dll_path)) {
         fprintf(stderr, "DLL does not exist.\n");
         goto finish;
     }
@@ -133,7 +133,7 @@ int32_t main(const int32_t argc, const char *const argv[])
         goto finish;
     }
 
-    if (!InjectDLL(pi.hProcess, dll_path)) {
+    if (!M_InjectDLL(pi.hProcess, dll_path)) {
         fprintf(stderr, "Failed to inject the DLL.\n");
         goto finish;
     }

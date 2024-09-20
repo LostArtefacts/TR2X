@@ -13,28 +13,28 @@ CONFIG g_Config = { 0 };
 
 static const char *m_ConfigPath = DIR_CONFIG "/TR2X.json5";
 
-static void Config_Load(struct json_object_s *root_obj);
-static void Config_Dump(struct json_object_s *root_obj);
+static void M_Load(struct json_object_s *root_obj);
+static void M_Dump(struct json_object_s *root_obj);
 
-static void Config_Load(struct json_object_s *root_obj)
+static void M_Load(struct json_object_s *root_obj)
 {
     ConfigFile_LoadOptions(root_obj, g_ConfigOptionMap);
 }
 
-static void Config_Dump(struct json_object_s *root_obj)
+static void M_Dump(struct json_object_s *root_obj)
 {
     ConfigFile_DumpOptions(root_obj, g_ConfigOptionMap);
 }
 
 bool Config_Read(void)
 {
-    return ConfigFile_Read(m_ConfigPath, &Config_Load);
+    return ConfigFile_Read(m_ConfigPath, &M_Load);
 }
 
 bool Config_Write(void)
 {
     File_CreateDirectory(DIR_CONFIG);
-    return ConfigFile_Write(m_ConfigPath, &Config_Dump);
+    return ConfigFile_Write(m_ConfigPath, &M_Dump);
 }
 
 void Config_Sanitize(void)

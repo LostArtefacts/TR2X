@@ -24,14 +24,12 @@ typedef struct {
     CDAUDIO_TRACK *tracks;
 } BACKEND_DATA;
 
-static bool Music_Backend_CDAudio_Parse(BACKEND_DATA *const data);
-static bool Music_Backend_CDAudio_Init(MUSIC_BACKEND *const backend);
-static const char *Music_Backend_CDAudio_Describe(
-    const MUSIC_BACKEND *const backend);
-static int32_t Music_Backend_CDAudio_Play(
-    const MUSIC_BACKEND *const backend, int32_t track_id);
+static bool M_Parse(BACKEND_DATA *data);
+static bool M_Init(MUSIC_BACKEND *backend);
+static const char *M_Describe(const MUSIC_BACKEND *backend);
+static int32_t M_Play(const MUSIC_BACKEND *backend, int32_t track_id);
 
-static bool Music_Backend_CDAudio_Parse(BACKEND_DATA *const data)
+static bool M_Parse(BACKEND_DATA *const data)
 {
     assert(data != NULL);
 
@@ -105,7 +103,7 @@ parse_end:
     return true;
 }
 
-static bool Music_Backend_CDAudio_Init(MUSIC_BACKEND *const backend)
+static bool M_Init(MUSIC_BACKEND *const backend)
 {
     assert(backend != NULL);
     BACKEND_DATA *data = backend->data;
@@ -116,7 +114,7 @@ static bool Music_Backend_CDAudio_Init(MUSIC_BACKEND *const backend)
         return false;
     }
 
-    if (!Music_Backend_CDAudio_Parse(data)) {
+    if (!M_Parse(data)) {
         LOG_ERROR("Failed to parse CDAudio data");
         return false;
     }
@@ -124,8 +122,7 @@ static bool Music_Backend_CDAudio_Init(MUSIC_BACKEND *const backend)
     return true;
 }
 
-static const char *Music_Backend_CDAudio_Describe(
-    const MUSIC_BACKEND *const backend)
+static const char *M_Describe(const MUSIC_BACKEND *const backend)
 {
     assert(backend != NULL);
     const BACKEND_DATA *const data = backend->data;
@@ -133,8 +130,8 @@ static const char *Music_Backend_CDAudio_Describe(
     return data->description;
 }
 
-static int32_t Music_Backend_CDAudio_Play(
-    const MUSIC_BACKEND *const backend, int32_t track_id)
+static int32_t M_Play(
+    const MUSIC_BACKEND *const backend, const int32_t track_id)
 {
     assert(backend != NULL);
     const BACKEND_DATA *const data = backend->data;
@@ -174,9 +171,9 @@ MUSIC_BACKEND *Music_Backend_CDAudio_Factory(const char *path)
 
     MUSIC_BACKEND *backend = Memory_Alloc(sizeof(MUSIC_BACKEND));
     backend->data = data;
-    backend->init = Music_Backend_CDAudio_Init;
-    backend->describe = Music_Backend_CDAudio_Describe;
-    backend->play = Music_Backend_CDAudio_Play;
+    backend->init = M_Init;
+    backend->describe = M_Describe;
+    backend->play = M_Play;
     return backend;
 }
 

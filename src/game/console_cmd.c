@@ -29,10 +29,10 @@
 #include <math.h>
 #include <stdio.h>
 
-static bool Console_Cmd_CanTargetObject(GAME_OBJECT_ID object_id);
-static bool Console_Cmd_CanTargetObjectCreature(GAME_OBJECT_ID object_id);
-static bool Console_Cmd_CanTargetObjectPickup(GAME_OBJECT_ID object_id);
-static bool Console_Cmd_IsFloatRound(float num);
+static bool M_CanTargetObject(GAME_OBJECT_ID object_id);
+static bool M_CanTargetObjectCreature(GAME_OBJECT_ID object_id);
+static bool M_CanTargetObjectPickup(GAME_OBJECT_ID object_id);
+static bool M_IsFloatRound(float num);
 static COMMAND_RESULT Console_Cmd_Teleport(const char *args);
 static COMMAND_RESULT Console_Cmd_Fly(const char *const args);
 static COMMAND_RESULT Console_Cmd_FlipMap(const char *args);
@@ -47,25 +47,25 @@ static COMMAND_RESULT Console_Cmd_ExitToTitle(const char *args);
 static COMMAND_RESULT Console_Cmd_ExitGame(const char *args);
 static COMMAND_RESULT Console_Cmd_Abortion(const char *args);
 
-static bool Console_Cmd_CanTargetObject(const GAME_OBJECT_ID object_id)
+static bool M_CanTargetObject(const GAME_OBJECT_ID object_id)
 {
     return !Object_IsObjectType(object_id, g_NullObjects)
         && !Object_IsObjectType(object_id, g_AnimObjects)
         && !Object_IsObjectType(object_id, g_InvObjects);
 }
 
-static bool Console_Cmd_CanTargetObjectCreature(const GAME_OBJECT_ID object_id)
+static bool M_CanTargetObjectCreature(const GAME_OBJECT_ID object_id)
 {
     return Object_IsObjectType(object_id, g_EnemyObjects)
         || Object_IsObjectType(object_id, g_FriendObjects);
 }
 
-static bool Console_Cmd_CanTargetObjectPickup(const GAME_OBJECT_ID object_id)
+static bool M_CanTargetObjectPickup(const GAME_OBJECT_ID object_id)
 {
     return Object_IsObjectType(object_id, g_PickupObjects);
 }
 
-static inline bool Console_Cmd_IsFloatRound(const float num)
+static inline bool M_IsFloatRound(const float num)
 {
     return (fabsf(num) - roundf(num)) < 0.0001f;
 }
@@ -86,10 +86,10 @@ static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
     {
         float x, y, z;
         if (sscanf(args, "%f %f %f", &x, &y, &z) == 3) {
-            if (Console_Cmd_IsFloatRound(x)) {
+            if (M_IsFloatRound(x)) {
                 x += 0.5f;
             }
-            if (Console_Cmd_IsFloatRound(z)) {
+            if (M_IsFloatRound(z)) {
                 z += 0.5f;
             }
 
@@ -142,7 +142,7 @@ static COMMAND_RESULT Console_Cmd_Teleport(const char *const args)
     if (!String_Equivalent(args, "")) {
         int32_t match_count = 0;
         GAME_OBJECT_ID *matching_objs =
-            Object_IdsFromName(args, &match_count, Console_Cmd_CanTargetObject);
+            Object_IdsFromName(args, &match_count, M_CanTargetObject);
 
         const ITEM_INFO *best_item = NULL;
         int32_t best_distance = INT32_MAX;
@@ -299,8 +299,8 @@ static COMMAND_RESULT Console_Cmd_Kill(const char *args)
         bool matches_found = false;
         int32_t num_killed = 0;
         int32_t match_count = 0;
-        GAME_OBJECT_ID *matching_objs = Object_IdsFromName(
-            args, &match_count, Console_Cmd_CanTargetObjectCreature);
+        GAME_OBJECT_ID *matching_objs =
+            Object_IdsFromName(args, &match_count, M_CanTargetObjectCreature);
 
         for (int16_t item_num = 0; item_num < Item_GetTotalCount();
              item_num++) {
@@ -376,8 +376,8 @@ static COMMAND_RESULT Console_Cmd_GiveItem(const char *args)
 
     bool found = false;
     int32_t match_count = 0;
-    GAME_OBJECT_ID *matching_objs = Object_IdsFromName(
-        args, &match_count, Console_Cmd_CanTargetObjectPickup);
+    GAME_OBJECT_ID *matching_objs =
+        Object_IdsFromName(args, &match_count, M_CanTargetObjectPickup);
     for (int32_t i = 0; i < match_count; i++) {
         const GAME_OBJECT_ID object_id = matching_objs[i];
         if (g_Objects[object_id].loaded) {
