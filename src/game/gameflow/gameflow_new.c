@@ -1,10 +1,10 @@
 #include "game/gameflow/gameflow_new.h"
 
 #include "game/game_string.h"
-#include "global/enum_str.h"
 #include "global/types.h"
 #include "global/vars.h"
 
+#include <libtrx/enum_map.h>
 #include <libtrx/game/gameflow/types.h>
 #include <libtrx/game/objects/names.h>
 #include <libtrx/log.h>
@@ -21,10 +21,10 @@ static void M_LoadGameStrings(const int32_t level_num);
 
 static void M_LoadObjectString(const char *const key, const char *const value)
 {
-    const GAME_OBJECT_ID object =
-        ENUM_STRING_GET(GAME_OBJECT_ID, key, NO_OBJECT);
-    if (object != NO_OBJECT) {
-        Object_SetName(object, value);
+    const GAME_OBJECT_ID object_id =
+        ENUM_MAP_GET(GAME_OBJECT_ID, key, NO_OBJECT);
+    if (object_id != NO_OBJECT) {
+        Object_SetName(object_id, value);
     }
 }
 

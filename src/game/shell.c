@@ -13,6 +13,7 @@
 #include "global/funcs.h"
 #include "global/vars.h"
 
+#include <libtrx/enum_map.h>
 #include <libtrx/game/ui/common.h>
 #include <libtrx/memory.h>
 
@@ -28,6 +29,7 @@ BOOL __cdecl Shell_Main(void)
     g_GameSizerCopy = 1.0;
 
     GameString_Init();
+    EnumMap_Init();
     Config_Init();
     UI_Init();
 
@@ -161,6 +163,7 @@ BOOL __cdecl Shell_Main(void)
 
     S_SaveSettings();
     GameBuf_Shutdown();
+    EnumMap_Shutdown();
     GameString_Shutdown();
     return true;
 }
