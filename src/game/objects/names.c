@@ -16,11 +16,6 @@
 
 #define GOOD_MATCH_THRESHOLD 50
 
-typedef struct {
-    int32_t score;
-    GAME_OBJECT_ID object_id;
-} MATCH;
-
 static const INVENTORY_ITEM *const m_InvItems[] = {
     &g_Inv_Item_Stopwatch,   &g_Inv_Item_Pistols,
     &g_Inv_Item_Flare,       &g_Inv_Item_Shotgun,
@@ -60,50 +55,6 @@ ENUM_STRING_MAP ENUM_STRING_MAP(GAME_OBJECT_ID)[] = {
     { NULL, -1 }
 };
 
-static int32_t M_NameMatch(const char *user_input, const char *name);
-static void M_TryMatch(
-    VECTOR *matches, const char *user_input, const char *name,
-    GAME_OBJECT_ID object_id);
-
-static int32_t M_NameMatch(const char *const user_input, const char *const name)
-{
-    int32_t score;
-
-    char *regex = Memory_Alloc(strlen(user_input) + 5);
-    strcpy(regex, "\\b");
-    strcat(regex, user_input);
-    strcat(regex, "\\b");
-    if (String_Match(name, regex)) {
-        // Match by full word.
-        score = GOOD_MATCH_THRESHOLD + strlen(user_input) * 100 / strlen(name);
-    } else if (String_CaseSubstring(name, user_input)) {
-        // Match by substring.
-        score = strlen(user_input) * 100 / strlen(name);
-    } else {
-        // No match.
-        score = 0;
-    }
-    Memory_FreePointer(&regex);
-    return score;
-}
-
-static void M_TryMatch(
-    VECTOR *const matches, const char *const user_input, const char *const name,
-    const GAME_OBJECT_ID object_id)
-{
-    int32_t score = M_NameMatch(user_input, name);
-    if (!g_Objects[object_id].loaded) {
-        score -= GOOD_MATCH_THRESHOLD;
-    }
-    if (score > 0) {
-        MATCH match = {
-            .score = score,
-            .object_id = object_id,
-        };
-        Vector_Add(matches, &match);
-    }
-}
-
 const char *Object_GetName(const GAME_OBJECT_ID object_id)
 {
     // TODO: remove this in favor of changing the INVENTORY_ITEM.text directly
@@ -140,89 +91,53 @@ GAME_OBJECT_ID *Object_IdsFromName(
     const char *user_input, int32_t *out_match_count,
     bool (*filter)(GAME_OBJECT_ID))
 {
-    // first, calculate the number of matches to allocate
-    VECTOR *matches = Vector_Create(sizeof(MATCH));
+    VECTOR *source = Vector_Create(sizeof(STRING_FUZZY_SOURCE));
 
-    // Store matches from customizable inventory strings
+    // Check customizable inventory strings
     for (const INVENTORY_ITEM *const *item_ptr = m_InvItems; *item_ptr != NULL;
          item_ptr++) {
         const INVENTORY_ITEM *const item = *item_ptr;
         const GAME_OBJECT_ID object_id =
             Object_GetCognateInverse(item->object_id, g_ItemToInvObjectMap);
+        LOG_DEBUG("%d %s", object_id, item->string);
         if (filter != NULL && !filter(object_id)) {
             continue;
         }
-        M_TryMatch(matches, user_input, item->string, object_id);
+        STRING_FUZZY_SOURCE source_item = {
+            .key = item->string,
+            .value = (void *)(intptr_t)object_id,
+            .weight = 1,
+        };
+        Vector_Add(source, &source_item);
     }
 
-    // Store matches from hardcoded strings
+    // Check hardcoded object names
     for (GAME_OBJECT_ID object_id = 0; object_id < O_NUMBER_OF; object_id++) {
         if (filter != NULL && !filter(object_id)) {
             continue;
         }
-        M_TryMatch(matches, user_input, Object_GetName(object_id), object_id);
+        STRING_FUZZY_SOURCE source_item = {
+            .key = Object_GetName(object_id),
+            .value = (void *)(intptr_t)object_id,
+            .weight = 1,
+        };
+        Vector_Add(source, &source_item);
     }
 
-    // If we got a perfect match, discard poor matches
-    bool good_matches = false;
-    for (int i = 0; i < matches->count; i++) {
-        const MATCH *const match = Vector_Get(matches, i);
-        if (match->score >= GOOD_MATCH_THRESHOLD) {
-            good_matches = true;
-        }
-    }
-    if (good_matches) {
-        for (int i = matches->count - 1; i >= 0; i--) {
-            const MATCH *const match = Vector_Get(matches, i);
-            if (match->score < GOOD_MATCH_THRESHOLD) {
-                Vector_RemoveAt(matches, i);
-            }
-        }
-    }
-
-    // sort by match length so that best-matching results appear first
-    for (int i = 0; i < matches->count; i++) {
-        for (int j = i + 1; j < matches->count; j++) {
-            if (((const MATCH *)Vector_Get(matches, i))->score
-                < ((const MATCH *)Vector_Get(matches, j))->score) {
-                Vector_Swap(matches, i, j);
-            }
-        }
-    }
-    for (int i = 0; i < matches->count; i++) {
-        const MATCH *const match = Vector_Get(matches, i);
-        LOG_DEBUG(
-            "%d. %s (%d)", i, Object_GetName(match->object_id), match->score);
-    }
-
-    // Make sure the returned matching object ids are unique
-    GAME_OBJECT_ID *unique_ids =
+    VECTOR *matches = String_FuzzyMatch(user_input, source);
+    GAME_OBJECT_ID *results =
         Memory_Alloc(sizeof(GAME_OBJECT_ID) * (matches->count + 1));
-
-    int32_t unique_count = 0;
     for (int32_t i = 0; i < matches->count; i++) {
-        const MATCH *const match = Vector_Get(matches, i);
-        bool is_unique = true;
-        for (int32_t j = 0; j < unique_count; j++) {
-            if (match->object_id == unique_ids[j]) {
-                is_unique = false;
-                break;
-            }
-        }
-        if (is_unique) {
-            unique_ids[unique_count++] = match->object_id;
-        }
+        const STRING_FUZZY_MATCH *const match = Vector_Get(matches, i);
+        results[i] = (GAME_OBJECT_ID)(intptr_t)match->value;
+    }
+    results[matches->count] = NO_OBJECT;
+    if (out_match_count != NULL) {
+        *out_match_count = matches->count;
     }
 
     Vector_Free(matches);
     matches = NULL;
 
-    // Finalize results
-    unique_ids[unique_count] = NO_OBJECT;
-    if (out_match_count != NULL) {
-        *out_match_count = unique_count;
-    }
-
-    Memory_FreePointer(&matches);
-    return unique_ids;
+    return results;
 }
