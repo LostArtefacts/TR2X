@@ -10,7 +10,7 @@ GAME_STRING_DEF_PATHS = [
     TR2X_SRC_DIR / "game/game_string.def",
     LIBTRX_INCLUDE_DIR / "game/game_string.def",
 ]
-OBJECT_STRINGS_DEF_PATH = TR2X_SRC_DIR / "game/objects/names.def"
+OBJECT_STRINGS_DEF_PATH = LIBTRX_INCLUDE_DIR / "game/objects/names_tr2.def"
 
 
 def get_strings_map(paths: list[Path]) -> dict[str, str]:

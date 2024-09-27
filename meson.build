@@ -141,7 +141,6 @@ dll_sources = [
   'src/game/objects/general/body_part.c',
   'src/game/objects/general/door.c',
   'src/game/objects/general/final_level_counter.c',
-  'src/game/objects/names.c',
   'src/game/objects/traps/ember_emitter.c',
   'src/game/objects/traps/flame_emitter.c',
   'src/game/objects/vars.c',

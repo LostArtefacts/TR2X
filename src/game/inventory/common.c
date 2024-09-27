@@ -21,6 +21,8 @@
 #include "global/types.h"
 #include "global/vars.h"
 
+#include <libtrx/game/objects/names.h>
+
 #include <stdio.h>
 
 #define TITLE_RING_OBJECTS 3
@@ -1127,52 +1129,9 @@ void __cdecl Inv_RingIsNotOpen(RING_INFO *const ring)
 void __cdecl Inv_RingNotActive(const INVENTORY_ITEM *const inv_item)
 {
     if (g_Inv_ItemText[0] == NULL) {
-        switch (inv_item->object_id) {
-        case O_PASSPORT_OPTION:
-            break;
-        case O_PUZZLE_OPTION_1:
+        if (inv_item->object_id != O_PASSPORT_OPTION) {
             g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Puzzle1Strings[g_CurrentLevel]);
-            break;
-        case O_PUZZLE_OPTION_2:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Puzzle2Strings[g_CurrentLevel]);
-            break;
-        case O_PUZZLE_OPTION_3:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Puzzle3Strings[g_CurrentLevel]);
-            break;
-        case O_PUZZLE_OPTION_4:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Puzzle4Strings[g_CurrentLevel]);
-            break;
-        case O_KEY_OPTION_1:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Key1Strings[g_CurrentLevel]);
-            break;
-        case O_KEY_OPTION_2:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Key2Strings[g_CurrentLevel]);
-            break;
-        case O_KEY_OPTION_3:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Key3Strings[g_CurrentLevel]);
-            break;
-        case O_KEY_OPTION_4:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Key4Strings[g_CurrentLevel]);
-            break;
-        case O_PICKUP_OPTION_1:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Pickup1Strings[g_CurrentLevel]);
-            break;
-        case O_PICKUP_OPTION_2:
-            g_Inv_ItemText[0] =
-                Text_Create(0, -16, 0, g_GF_Pickup2Strings[g_CurrentLevel]);
-            break;
-        default:
-            g_Inv_ItemText[0] = Text_Create(0, -16, 0, inv_item->string);
-            break;
+                Text_Create(0, -16, 0, Object_GetName(inv_item->object_id));
         }
 
         if (g_Inv_ItemText[0]) {

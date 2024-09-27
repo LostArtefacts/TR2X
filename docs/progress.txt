@@ -2042,7 +2042,7 @@ typedef enum { // decompiled
 } LARA_MESH;
 
 typedef enum { // decompiled
-    O_NONE                  = -1,
+    NO_OBJECT               = -1,
     O_LARA                  = 0,
     O_LARA_PISTOLS          = 1,
     O_LARA_HAIR             = 2,
