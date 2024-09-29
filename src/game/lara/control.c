@@ -979,6 +979,9 @@ void Lara_GetOffVehicle(void)
         g_LaraItem->goal_anim_state = LS_STOP;
         g_LaraItem->anim_num = LA_STAND_STILL;
         g_LaraItem->frame_num = g_Anims[g_LaraItem->anim_num].frame_base;
+
+        g_LaraItem->rot.x = 0;
+        g_LaraItem->rot.z = 0;
     }
 }
 

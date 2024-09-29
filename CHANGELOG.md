@@ -2,6 +2,7 @@
 - added `/sfx` command
 - fixed crash in the `/set` console command (regression from 0.3)
 - fixed using console in cutscenes immediately exiting the game (regression from 0.3)
+- fixed Lara remaining tilted when teleporting off a vehicle while on a slope (#275, regression from 0.3)
 
 ## [0.3](https://github.com/LostArtefacts/TR2X/compare/0.2-460-g4721b93...0.3) - 2024-09-20
 - added new console commands:
