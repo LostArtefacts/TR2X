@@ -93,7 +93,6 @@ dll_sources = [
   'src/game/collide.c',
   'src/game/console/cmd/flipmap.c',
   'src/game/console/cmd/load_game.c',
-  'src/game/console/cmd/play_level.c',
   'src/game/console/cmd/save_game.c',
   'src/game/console/common.c',
   'src/game/console/setup.c',

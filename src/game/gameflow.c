@@ -353,7 +353,7 @@ int32_t __cdecl GF_DoFrontendSequence(void)
 }
 
 int32_t __cdecl GF_DoLevelSequence(
-    const int32_t start_level, const GF_LEVEL_TYPE type)
+    const int32_t start_level, const GAMEFLOW_LEVEL_TYPE type)
 {
     GF_N_LoadStrings(start_level);
 
@@ -378,7 +378,7 @@ int32_t __cdecl GF_DoLevelSequence(
 }
 
 int32_t __cdecl GF_InterpretSequence(
-    const int16_t *ptr, GF_LEVEL_TYPE type, const int32_t seq_type)
+    const int16_t *ptr, GAMEFLOW_LEVEL_TYPE type, const int32_t seq_type)
 {
     g_GF_NoFloor = false;
     g_GF_DeadlyWater = false;
@@ -431,7 +431,7 @@ int32_t __cdecl GF_InterpretSequence(
             if (ptr[1] > g_GameFlow.num_levels) {
                 dir = GFD_EXIT_TO_TITLE;
             } else if (type != GFL_STORY) {
-                if (type == GFL_MIDSTORY) {
+                if (type == GFL_MID_STORY) {
                     return GFD_EXIT_TO_TITLE;
                 }
                 dir = Game_Start(ptr[1], type);
@@ -453,7 +453,7 @@ int32_t __cdecl GF_InterpretSequence(
                 g_CurrentLevel = level;
                 // TODO: make Game_Cutscene_Start return GAME_FLOW_DIR
                 if (result == 2
-                    && (type == GFL_STORY || type == GFL_MIDSTORY)) {
+                    && (type == GFL_STORY || type == GFL_MID_STORY)) {
                     return GFD_EXIT_TO_TITLE;
                 }
                 if (result == 3) {
@@ -469,7 +469,7 @@ int32_t __cdecl GF_InterpretSequence(
             break;
 
         case GFE_LEVEL_COMPLETE:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 if (LevelStats(g_CurrentLevel)) {
                     return GFD_EXIT_TO_TITLE;
                 }
@@ -480,7 +480,7 @@ int32_t __cdecl GF_InterpretSequence(
 
         case GFE_DEMO_PLAY:
             if (type != GFL_SAVED && type != GFL_STORY
-                && type != GFL_MIDSTORY) {
+                && type != GFL_MID_STORY) {
                 return Demo_Start(ptr[1]);
             }
             ptr += 2;
@@ -498,7 +498,7 @@ int32_t __cdecl GF_InterpretSequence(
             break;
 
         case GFE_SUNSET:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_SunsetEnabled = true;
             }
             ptr++;
@@ -509,14 +509,14 @@ int32_t __cdecl GF_InterpretSequence(
             break;
 
         case GFE_DEADLY_WATER:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_DeadlyWater = true;
             }
             ptr++;
             break;
 
         case GFE_REMOVE_WEAPONS:
-            if (type != GFL_STORY && type != GFL_MIDSTORY
+            if (type != GFL_STORY && type != GFL_MID_STORY
                 && type != GFL_SAVED) {
                 g_GF_RemoveWeapons = true;
             }
@@ -540,14 +540,14 @@ int32_t __cdecl GF_InterpretSequence(
             break;
 
         case GFE_NO_FLOOR:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_NoFloor = ptr[1];
             }
             ptr += 2;
             break;
 
         case GFE_ADD_TO_INV:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 if (ptr[1] < 1000) {
                     g_GF_SecretInvItems[ptr[1]]++;
                 } else if (type != GFL_SAVED) {
@@ -558,28 +558,28 @@ int32_t __cdecl GF_InterpretSequence(
             break;
 
         case GFE_START_ANIM:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_LaraStartAnim = ptr[1];
             }
             ptr += 2;
             break;
 
         case GFE_NUM_SECRETS:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_NumSecrets = ptr[1];
             }
             ptr += 2;
             break;
 
         case GFE_KILL_TO_COMPLETE:
-            if (type != GFL_STORY && type != GFL_MIDSTORY) {
+            if (type != GFL_STORY && type != GFL_MID_STORY) {
                 g_GF_Kill2Complete = true;
             }
             ptr++;
             break;
 
         case GFE_REMOVE_AMMO:
-            if (type != GFL_STORY && type != GFL_MIDSTORY
+            if (type != GFL_STORY && type != GFL_MID_STORY
                 && type != GFL_SAVED) {
                 g_GF_RemoveAmmo = true;
             }
@@ -591,7 +591,7 @@ int32_t __cdecl GF_InterpretSequence(
         }
     }
 
-    if (type == GFL_STORY || type == GFL_MIDSTORY) {
+    if (type == GFL_STORY || type == GFL_MID_STORY) {
         return 0;
     }
     return dir;

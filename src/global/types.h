@@ -6,6 +6,7 @@
 
 #include <libtrx/game/collision.h>
 #include <libtrx/game/effects.h>
+#include <libtrx/game/gameflow/types.h>
 #include <libtrx/game/items.h>
 #include <libtrx/game/lara/types.h>
 #include <libtrx/game/lot.h>
@@ -548,18 +549,6 @@ typedef struct __unaligned {
     int16_t angle;
     int16_t enemy_facing;
 } AI_INFO;
-
-typedef enum {
-    GFL_NOLEVEL  = -1,
-    GFL_TITLE    = 0,
-    GFL_NORMAL   = 1,
-    GFL_SAVED    = 2,
-    GFL_DEMO     = 3,
-    GFL_CUTSCENE = 4,
-    GFL_STORY    = 5,
-    GFL_QUIET    = 6,
-    GFL_MIDSTORY = 7,
-} GF_LEVEL_TYPE;
 
 typedef struct __unaligned {
     int16_t timer;

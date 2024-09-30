@@ -200,7 +200,7 @@ int32_t __cdecl Game_DrawCinematic(void)
 }
 
 int16_t __cdecl Game_Start(
-    const int32_t level_num, const GF_LEVEL_TYPE level_type)
+    const int32_t level_num, const GAMEFLOW_LEVEL_TYPE level_type)
 {
     if (level_type == GFL_NORMAL || level_type == GFL_SAVED
         || level_type == GFL_DEMO) {

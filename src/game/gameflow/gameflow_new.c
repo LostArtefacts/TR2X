@@ -217,6 +217,26 @@ void GF_N_LoadStrings(const int32_t level_num)
     }
 }
 
+int32_t Gameflow_GetLevelCount(void)
+{
+    return g_GameflowNew.level_count;
+}
+
+const char *Gameflow_GetLevelFileName(int32_t level_num)
+{
+    return g_GF_LevelFileNames[level_num];
+}
+
+const char *Gameflow_GetLevelTitle(int32_t level_num)
+{
+    return g_GF_LevelNames[level_num];
+}
+
+int32_t Gameflow_GetGymLevelNumber(void)
+{
+    return g_GameFlow.gym_enabled ? LV_GYM : -1;
+}
+
 void Gameflow_OverrideCommand(const GAMEFLOW_COMMAND command)
 {
     switch (command.action) {

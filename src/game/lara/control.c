@@ -710,7 +710,7 @@ void __cdecl Lara_InitialiseLoad(const int16_t item_num)
     g_LaraItem = &g_Items[item_num];
 }
 
-void __cdecl Lara_Initialise(const GF_LEVEL_TYPE type)
+void __cdecl Lara_Initialise(const GAMEFLOW_LEVEL_TYPE type)
 {
     ITEM *const item = g_LaraItem;
 

@@ -1349,7 +1349,7 @@ void __cdecl CutscenePlayerGen_Initialise(const int16_t item_num)
 }
 
 int32_t __cdecl Level_Initialise(
-    const int32_t level_num, const GF_LEVEL_TYPE level_type)
+    const int32_t level_num, const GAMEFLOW_LEVEL_TYPE level_type)
 {
     g_GameInfo.current_level.num = level_num;
     g_GameInfo.current_level.type = level_type;
@@ -1978,7 +1978,7 @@ bool __cdecl ApplySettings(const APP_SETTINGS *const new_settings)
         g_SavedAppSettings = *new_settings;
 
     RenderStart(false);
-    S_InitialiseScreen(GFL_NOLEVEL);
+    S_InitialiseScreen(GFL_NO_LEVEL);
 
     if (g_SavedAppSettings.render_mode != old_settings.render_mode) {
         S_ReloadLevelGraphics(1, 1);

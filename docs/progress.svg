@@ -384,8 +384,8 @@
 <rect width="12" height="12" x="75" y="90" class="known"><title>void __cdecl WarriorControl(int16_t item_num);</title></rect>
 <rect width="12" height="12" x="90" y="90" class="decompiled"><title>int32_t __cdecl GF_LoadScriptFile(const char *fname);</title></rect>
 <rect width="12" height="12" x="105" y="90" class="decompiled"><title>int32_t __cdecl GF_DoFrontendSequence(void);</title></rect>
-<rect width="12" height="12" x="120" y="90" class="decompiled"><title>int32_t __cdecl GF_DoLevelSequence(int32_t level, GF_LEVEL_TYPE type);</title></rect>
-<rect width="12" height="12" x="135" y="90" class="decompiled"><title>int32_t __cdecl GF_InterpretSequence(int16_t *ptr, GF_LEVEL_TYPE type, int32_t seq_type);</title></rect>
+<rect width="12" height="12" x="120" y="90" class="decompiled"><title>int32_t __cdecl GF_DoLevelSequence(int32_t level, GAMEFLOW_LEVEL_TYPE type);</title></rect>
+<rect width="12" height="12" x="135" y="90" class="decompiled"><title>int32_t __cdecl GF_InterpretSequence(int16_t *ptr, GAMEFLOW_LEVEL_TYPE type, int32_t seq_type);</title></rect>
 <rect width="12" height="12" x="150" y="90" class="decompiled"><title>void __cdecl GF_ModifyInventory(int32_t level, int32_t type);</title></rect>
 <rect width="12" height="12" x="165" y="90" class="known"><title>void __cdecl InitialiseHair(void);</title></rect>
 <rect width="12" height="12" x="180" y="90" class="known"><title>void __cdecl HairControl(int32_t in_cutscene);</title></rect>
@@ -1049,7 +1049,7 @@
 <rect width="12" height="12" x="300" y="285" class="known"><title>LPCTSTR __cdecl GetFullPath(LPCTSTR file_name);</title></rect>
 <rect width="12" height="12" x="315" y="285" class="known"><title>BOOL __cdecl SelectDrive(void);</title></rect>
 <rect width="12" height="12" x="330" y="285" class="decompiled"><title>bool __cdecl Level_Load(const char *file_name, int32_t level_num);</title></rect>
-<rect width="12" height="12" x="345" y="285" class="known"><title>BOOL __cdecl S_LoadLevelFile(LPCTSTR file_name, int32_t level_num, GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="12" height="12" x="345" y="285" class="known"><title>BOOL __cdecl S_LoadLevelFile(LPCTSTR file_name, int32_t level_num, GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="12" height="12" x="360" y="285" class="known"><title>void __cdecl S_UnloadLevelFile(void);</title></rect>
 <rect width="12" height="12" x="375" y="285" class="known"><title>void __cdecl S_AdjustTexelCoordinates(void);</title></rect>
 <rect width="12" height="12" x="390" y="285" class="known"><title>BOOL __cdecl S_ReloadLevelGraphics(BOOL reload_palettes, BOOL reload_tex_pages);</title></rect>
@@ -1068,7 +1068,7 @@
 <rect width="12" height="12" x="585" y="285" class="known"><title>void __cdecl S_Wait(int32_t timeout, BOOL input_check);</title></rect>
 <rect width="12" height="12" x="600" y="285" class="known"><title>bool __cdecl S_PlayFMV(const char *file_name);</title></rect>
 <rect width="12" height="12" x="615" y="285" class="known"><title>bool __cdecl S_IntroFMV(const char *file_name1, const char *file_name2);</title></rect>
-<rect width="12" height="12" x="630" y="285" class="decompiled"><title>int16_t __cdecl Game_Start(int32_t level_num, GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="12" height="12" x="630" y="285" class="decompiled"><title>int16_t __cdecl Game_Start(int32_t level_num, GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="12" height="12" x="645" y="285" class="decompiled"><title>int32_t __cdecl Game_Loop(bool demo_mode);</title></rect>
 <rect width="12" height="12" x="660" y="285" class="decompiled"><title>int32_t __cdecl LevelCompleteSequence(void);</title></rect>
 <rect width="12" height="12" x="675" y="285" class="decompiled"><title>int32_t __cdecl LevelStats(int32_t level_num);</title></rect>
@@ -1137,7 +1137,7 @@
 <rect width="12" height="12" x="120" y="315" class="known"><title>void __cdecl S_InitialisePolyList(BOOL clear_back_buffer);</title></rect>
 <rect width="12" height="12" x="135" y="315" class="known"><title>DWORD __cdecl S_DumpScreen(void);</title></rect>
 <rect width="12" height="12" x="150" y="315" class="known"><title>void __cdecl S_ClearScreen(void);</title></rect>
-<rect width="12" height="12" x="165" y="315" class="known"><title>void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="12" height="12" x="165" y="315" class="known"><title>void __cdecl S_InitialiseScreen(GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="12" height="12" x="180" y="315" class="known"><title>void __cdecl S_OutputPolyList(void);</title></rect>
 <rect width="12" height="12" x="195" y="315" class="known"><title>int32_t __cdecl S_GetObjectBounds(const BOUNDS_16 *bounds);</title></rect>
 <rect width="12" height="12" x="210" y="315" class="known"><title>void __cdecl S_InsertBackPolygon(int32_t x0, int32_t y0, int32_t x1, int32_t y1);</title></rect>
@@ -1353,7 +1353,7 @@
 <rect width="28.60" height="28.02" x="177.07" y="286.36" class="decompiled"><title>void __cdecl Option_Sound(INVENTORY_ITEM *item);</title></rect>
 <rect width="28.60" height="27.36" x="177.07" y="317.38" class="decompiled"><title>void __cdecl Sound_Effect(int32_t sample_id, const XYZ_32 *pos, uint32_t flags);</title></rect>
 <rect width="28.60" height="27.26" x="177.07" y="347.74" class="known"><title>void __cdecl PickUpCollision(int16_t item_num, ITEM *lara_item, COLL_INFO *coll);</title></rect>
-<rect width="27.61" height="28.13" x="208.67" y="0" class="decompiled"><title>int32_t __cdecl GF_InterpretSequence(int16_t *ptr, GF_LEVEL_TYPE type, int32_t seq_type);</title></rect>
+<rect width="27.61" height="28.13" x="208.67" y="0" class="decompiled"><title>int32_t __cdecl GF_InterpretSequence(int16_t *ptr, GAMEFLOW_LEVEL_TYPE type, int32_t seq_type);</title></rect>
 <rect width="27.61" height="27.18" x="208.67" y="31.13" class="decompiled"><title>TARGET_TYPE __cdecl Box_CalculateTarget(XYZ_32 *target, ITEM *item, LOT_INFO *lot);</title></rect>
 <rect width="27.61" height="26.61" x="208.67" y="61.31" class="decompiled"><title>void __cdecl Output_InsertGT4_ZBuffered(const PHD_VBUF *vtx0, const PHD_VBUF *vtx1, const PHD_VBUF *vtx2, const PHD_VBUF *vtx3, const PHD_TEXTURE *texture);</title></rect>
 <rect width="27.61" height="26.50" x="208.67" y="90.91" class="known"><title>int32_t __cdecl SkidooControl(void);</title></rect>
@@ -1591,7 +1591,7 @@
 <rect width="13.46" height="13.49" x="652.10" y="76.23" class="decompiled"><title>void __cdecl Effect_Draw(int16_t fx_num);</title></rect>
 <rect width="13.41" height="13.49" x="668.56" y="76.23" class="decompiled"><title>int32_t __cdecl Output_XGenXG(const int16_t *obj_ptr);</title></rect>
 <rect width="13.36" height="13.49" x="684.97" y="76.23" class="decompiled"><title>void __cdecl Overlay_DrawAssaultTimer(void);</title></rect>
-<rect width="13.31" height="13.49" x="701.33" y="76.23" class="decompiled"><title>int16_t __cdecl Game_Start(int32_t level_num, GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="13.31" height="13.49" x="701.33" y="76.23" class="decompiled"><title>int16_t __cdecl Game_Start(int32_t level_num, GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="13.26" height="13.49" x="717.64" y="76.23" class="decompiled"><title>void __cdecl Lara_State_Run(ITEM *item, COLL_INFO *coll);</title></rect>
 <rect width="13.11" height="13.49" x="733.89" y="76.23" class="decompiled"><title>int32_t __cdecl Output_ZedClipper(int32_t vtx_count, POINT_INFO *pts, VERTEX_INFO *vtx);</title></rect>
 <rect width="13.48" height="13.11" x="448.61" y="92.72" class="decompiled"><title>void __cdecl Output_DrawClippedPoly_Textured(int32_t vtx_count);</title></rect>
@@ -2012,7 +2012,7 @@
 <rect width="6.36" height="6.14" x="598.66" y="235.64" class="known"><title>void __cdecl ControlAlarmSound(int16_t item_num);</title></rect>
 <rect width="6.36" height="6.14" x="598.66" y="244.77" class="decompiled"><title>int32_t __cdecl Lara_HitCeiling(ITEM *item, COLL_INFO *coll);</title></rect>
 <rect width="6.36" height="6.14" x="598.66" y="253.91" class="decompiled"><title>void __cdecl UpdateGameResolution(void);</title></rect>
-<rect width="6.36" height="6.05" x="598.66" y="263.05" class="decompiled"><title>int32_t __cdecl GF_DoLevelSequence(int32_t level, GF_LEVEL_TYPE type);</title></rect>
+<rect width="6.36" height="6.05" x="598.66" y="263.05" class="decompiled"><title>int32_t __cdecl GF_DoLevelSequence(int32_t level, GAMEFLOW_LEVEL_TYPE type);</title></rect>
 <rect width="6.36" height="6.05" x="598.66" y="272.09" class="decompiled"><title>void __cdecl Lara_LookUpDown(void);</title></rect>
 <rect width="6.36" height="6.05" x="598.66" y="281.14" class="known"><title>int16_t __cdecl GunShot(int32_t x, int32_t y, int32_t z, int16_t speed, PHD_ANGLE yrot, int16_t room_num);</title></rect>
 <rect width="6.36" height="5.87" x="598.66" y="290.19" class="known"><title>void __cdecl CreateBubble(PHD_3DPOS *pos, int16_t room_num);</title></rect>
@@ -2224,7 +2224,7 @@
 <rect width="3.73" height="3.78" x="655.65" y="317.34" class="decompiled"><title>void __cdecl Text_ChangeText(TEXTSTRING *string, const char *text);</title></rect>
 <rect width="3.73" height="3.78" x="655.65" y="324.12" class="decompiled"><title>uint32_t __cdecl Text_GetScaleH(uint32_t value);</title></rect>
 <rect width="3.73" height="3.78" x="655.65" y="330.90" class="decompiled"><title>bool __cdecl D3DIsSupported(LPD3DDEVICEDESC desc);</title></rect>
-<rect width="3.73" height="3.78" x="655.65" y="337.68" class="known"><title>void __cdecl S_InitialiseScreen(GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="3.73" height="3.78" x="655.65" y="337.68" class="known"><title>void __cdecl S_InitialiseScreen(GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="3.73" height="3.78" x="655.65" y="344.46" class="known"><title>LONG __cdecl SetRegistryBinaryValue(LPCTSTR lpValueName, LPBYTE value, DWORD valueSize);</title></rect>
 <rect width="3.73" height="3.78" x="655.65" y="351.24" class="known"><title>void __thiscall SE_ReleaseBitmapResource(BITMAP_RESOURCE *bmpRsrc);</title></rect>
 <rect width="3.73" height="3.66" x="655.65" y="358.03" class="decompiled"><title>void __cdecl Output_PrintPolyList(uint8_t *surface_ptr);</title></rect>
@@ -2429,7 +2429,7 @@
 <rect width="1.55" height="1.37" x="722.86" y="341.96" class="unused"><title>sub_447160</title></rect>
 <rect width="1.55" height="1.37" x="727.42" y="341.96" class="unused"><title>sub_447A80</title></rect>
 <rect width="1.55" height="1.37" x="731.97" y="341.96" class="unused"><title>sub_447B30</title></rect>
-<rect width="1.55" height="1.37" x="736.53" y="341.96" class="known"><title>BOOL __cdecl S_LoadLevelFile(LPCTSTR file_name, int32_t level_num, GF_LEVEL_TYPE level_type);</title></rect>
+<rect width="1.55" height="1.37" x="736.53" y="341.96" class="known"><title>BOOL __cdecl S_LoadLevelFile(LPCTSTR file_name, int32_t level_num, GAMEFLOW_LEVEL_TYPE level_type);</title></rect>
 <rect width="1.55" height="1.37" x="741.08" y="341.96" class="known"><title>int32_t __cdecl UT_MessageBox(LPCTSTR lpText, HWND hWnd);</title></rect>
 <rect width="1.37" height="1.37" x="745.63" y="341.96" class="known"><title>void __cdecl AssaultReset(ITEM *item);</title></rect>
 <rect width="1.17" height="1.58" x="718.31" y="346.34" class="decompiled"><title>void __cdecl Text_SetScale(TEXTSTRING *string, int32_t scale_h, int32_t scale_v);</title></rect>

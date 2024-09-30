@@ -4,7 +4,7 @@
 
 typedef struct {
     struct {
-        GF_LEVEL_TYPE type;
+        GAMEFLOW_LEVEL_TYPE type;
         int32_t num;
     } current_level;
 } GAME_INFO;

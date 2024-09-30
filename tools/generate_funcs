@@ -115,6 +115,7 @@ def make_types_h(types: list[str]) -> None:
         "",
         "#include <libtrx/game/collision.h>",
         "#include <libtrx/game/effects.h>",
+        "#include <libtrx/game/gameflow/types.h>",
         "#include <libtrx/game/items.h>",
         "#include <libtrx/game/lara/types.h>",
         "#include <libtrx/game/lot.h>",
