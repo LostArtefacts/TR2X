@@ -1,5 +1,7 @@
 ## [Unreleased](https://github.com/LostArtefacts/TR2X/compare/stable...develop) - ××××-××-××
 - added `/sfx` command
+- added `/nextlevel` alias to `/endlevel` console command
+- added `/quit` alias to `/exit` console command
 - fixed crash in the `/set` console command (regression from 0.3)
 - fixed using console in cutscenes immediately exiting the game (regression from 0.3)
 - fixed Lara remaining tilted when teleporting off a vehicle while on a slope (#275, regression from 0.3)
