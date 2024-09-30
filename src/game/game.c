@@ -298,6 +298,11 @@ int32_t __cdecl Game_Loop(const bool demo_mode)
     return dir;
 }
 
+GAMEFLOW_LEVEL_TYPE Game_GetCurrentLevelType(void)
+{
+    return g_GameInfo.current_level.type;
+}
+
 bool Game_IsPlayable(void)
 {
     if (g_GameInfo.current_level.type == GFL_TITLE
