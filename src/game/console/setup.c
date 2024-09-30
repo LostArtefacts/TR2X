@@ -1,12 +1,11 @@
 #include "game/console/setup.h"
 
-#include "game/console/cmd/flipmap.h"
-
 #include <libtrx/game/console/cmd/config.h>
 #include <libtrx/game/console/cmd/die.h>
 #include <libtrx/game/console/cmd/end_level.h>
 #include <libtrx/game/console/cmd/exit_game.h>
 #include <libtrx/game/console/cmd/exit_to_title.h>
+#include <libtrx/game/console/cmd/flipmap.h>
 #include <libtrx/game/console/cmd/fly.h>
 #include <libtrx/game/console/cmd/give_item.h>
 #include <libtrx/game/console/cmd/heal.h>

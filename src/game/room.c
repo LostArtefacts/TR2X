@@ -833,6 +833,11 @@ void __cdecl Room_AlterFloorHeight(const ITEM *const item, const int32_t height)
     }
 }
 
+bool Room_GetFlipStatus(void)
+{
+    return g_FlipStatus;
+}
+
 void __cdecl Room_FlipMap(void)
 {
     for (int32_t i = 0; i < g_RoomCount; i++) {
