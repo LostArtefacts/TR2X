@@ -6,6 +6,8 @@
 #define TEXT_MAX_STRING_SIZE 64
 
 void __cdecl Text_Init(void);
+void Text_Shutdown(void);
+
 TEXTSTRING *__cdecl Text_Create(
     int32_t x, int32_t y, int32_t z, const char *string);
 void __cdecl Text_ChangeText(TEXTSTRING *string, const char *text);

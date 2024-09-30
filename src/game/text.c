@@ -34,13 +34,10 @@ void __cdecl Text_Init(void)
     for (int32_t i = 0; i < MAX_TEXTSTRINGS; i++) {
         m_TextStrings[i].flags.all = 0;
     }
+}
 
-    // TODO: move me outta here!
-    // instead Text_Init should be only called once per game launch, and
-    // everyone should clean up after themselves rather than creating dangling
-    // pointers.
-    Console_Shutdown();
-    Console_Init();
+void Text_Shutdown(void)
+{
 }
 
 TEXTSTRING *__cdecl Text_Create(

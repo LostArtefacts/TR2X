@@ -10,6 +10,7 @@
 #include "game/input.h"
 #include "game/music.h"
 #include "game/sound.h"
+#include "game/text.h"
 #include "global/funcs.h"
 #include "global/vars.h"
 
@@ -31,7 +32,9 @@ BOOL __cdecl Shell_Main(void)
     GameString_Init();
     EnumMap_Init();
     Config_Init();
+    Text_Init();
     UI_Init();
+    Console_Init();
 
     Config_Read();
     if (!S_InitialiseSystem()) {

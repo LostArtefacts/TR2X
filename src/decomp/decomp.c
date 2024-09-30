@@ -564,6 +564,7 @@ void __cdecl Shell_Shutdown(void)
     if (g_ErrorMessage[0]) {
         MessageBoxA(NULL, g_ErrorMessage, NULL, MB_ICONWARNING);
     }
+    Text_Shutdown();
     UI_Shutdown();
     Config_Shutdown();
 }
@@ -572,7 +573,6 @@ int16_t __cdecl TitleSequence(void)
 {
     GF_N_LoadStrings(-1);
 
-    Text_Init();
     TempVideoAdjust(1, 1.0);
     g_NoInputCounter = 0;
 
